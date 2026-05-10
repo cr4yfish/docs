@@ -1,0 +1,69 @@
+---
+title: "File storage and buckets in Genie Cloud"
+description: "Understand how Genie Cloud organizes file storage into buckets, what public and private buckets mean, and how to find your buckets in the Cloud tab."
+---
+
+When your app needs to store files — profile photos, uploaded documents, product images, attachments — Genie Cloud handles that through **storage buckets**. A bucket is a named container that holds files. Genie AI creates and configures buckets automatically based on what your app needs, so you never have to set up file hosting yourself.
+
+## How buckets are created
+
+When you describe a feature that involves files — for example, "let users upload a profile photo" or "allow customers to attach documents to orders" — Genie AI determines what kind of bucket is appropriate and creates it during the build. Each bucket is configured with the right access rules for how files in it will be used.
+
+Genie Cloud always provisions two foundational buckets for every project:
+
+<CardGroup cols={2}>
+  <Card title="public-assets" icon="globe">
+    Holds files that are meant to be visible to anyone, such as app content, logos, and public user profile images. Files stored here can be accessed directly via a URL without any sign-in.
+  </Card>
+  <Card title="private-storage" icon="lock">
+    Holds files that should only be accessible to authenticated users, such as private user files and internal assets. Access requires a valid session or a time-limited signed URL.
+  </Card>
+</CardGroup>
+
+Within these buckets, Genie organizes files into subfolders by purpose — for example, app content, user profile images, and private user uploads. You can browse the folder structure in the **Storage** tab of your project settings.
+
+If your app requires additional storage beyond these defaults, Genie will create extra buckets as needed.
+
+## Public vs private buckets
+
+The most important property of a bucket is whether it is **public** or **private**.
+
+<Tabs>
+  <Tab title="Public buckets">
+    Files in a public bucket can be accessed by anyone with the file URL — no sign-in required. This is appropriate for images shown to all visitors, downloadable assets, or any content that is intentionally open.
+
+    In the Cloud tab, public buckets display a **Public** badge.
+  </Tab>
+  <Tab title="Private buckets">
+    Files in a private bucket require authentication to access. Your app generates time-limited signed URLs when it needs to display or deliver a private file to a user. The URL expires after one hour by default, so it cannot be shared or bookmarked indefinitely.
+
+    In the Cloud tab, private buckets display a **Private** badge.
+  </Tab>
+</Tabs>
+
+<Warning>
+  Do not store sensitive documents or user-specific files in a public bucket. Anyone with the URL can access them without signing in.
+</Warning>
+
+## Viewing your buckets in the Cloud tab
+
+Open **Settings** and go to the **Cloud** tab. The **Storage buckets** card in the summary row shows the total count of buckets in your project.
+
+Scroll down to the **Detected resources** section. The **Storage buckets** panel lists up to eight buckets, showing each one with:
+
+- **Bucket name** — the name Genie assigned when creating the bucket
+- **Public or Private** — shown as a badge indicating the access level
+- **File size limit** — the maximum size allowed for a single file upload in that bucket (displayed in human-readable units such as MB or GB)
+- **Created date** — when the bucket was created
+
+If your project has more than eight buckets, a note at the bottom of the panel shows how many additional buckets exist.
+
+<Tip>
+  To browse the actual files inside a bucket, switch to the **Storage** tab in project settings. From there you can navigate folders, upload files, download them, copy direct URLs, rename files, and delete items.
+</Tip>
+
+## File size limits
+
+Each bucket can have a maximum file size configured. This limit controls the largest file a user can upload to that bucket in a single upload. The limit is shown in the Cloud tab and enforced automatically — uploads that exceed it will be rejected before any data is stored.
+
+If your app needs a higher or lower file size limit for a particular bucket, describe the requirement to Genie in your project chat and it will update the bucket configuration.

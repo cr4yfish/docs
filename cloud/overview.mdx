@@ -1,0 +1,82 @@
+---
+title: "Genie Cloud: built-in backend for every app"
+description: "Genie Cloud gives your app a managed database, file storage, user authentication, and edge functions — set up automatically when you enable it."
+---
+
+Every app you build with Genie needs somewhere to store data, handle sign-ins, and run server-side logic. Genie Cloud is the hosted backend that provides all of that without any setup on your part. When you enable it for a project, Genie provisions a dedicated backend instance for that project and wires it into the app automatically.
+
+## What Genie Cloud includes
+
+<CardGroup cols={2}>
+  <Card title="Database" icon="table">
+    A fully managed relational database. Genie AI creates and updates tables as your app grows. You never have to write a query or touch a database config.
+  </Card>
+  <Card title="User authentication" icon="users">
+    Sign-up and sign-in flows for your app's visitors. Supports email, anonymous sessions, and OAuth providers such as Google.
+  </Card>
+  <Card title="File storage" icon="hard-drive">
+    Buckets for images, attachments, and any other files your app needs to store. Buckets can be public or private.
+  </Card>
+  <Card title="Edge functions" icon="workflow">
+    Server-side logic deployed close to your users. Genie AI writes and deploys these when your app requires backend processing.
+  </Card>
+</CardGroup>
+
+Genie Cloud also includes **automatic backups** and usage tracking, so your data is always protected and you can monitor how your app is growing.
+
+## Enabling Genie Cloud
+
+Genie Cloud is available on all paid plans. If your project does not have it enabled yet, you will see an **Enable Genie Cloud** button in the Cloud tab.
+
+<Steps>
+  <Step title="Open your project settings">
+    From your project, open **Settings** and navigate to the **Cloud** tab.
+  </Step>
+  <Step title="Enable Genie Cloud">
+    Click **Enable Genie Cloud**. Genie will begin provisioning your backend instance. The status badge changes to **provisioning** while this happens — it typically completes within a few minutes.
+  </Step>
+  <Step title="Wait for activation">
+    Once provisioning finishes, the status badge changes to **active** and all resources become visible in the Cloud tab.
+  </Step>
+</Steps>
+
+<Note>
+  Genie Cloud is included in all paid plans. If you are on the free plan, upgrading will unlock the **Enable Genie Cloud** button.
+</Note>
+
+## What the Cloud tab shows
+
+Once Genie Cloud is active, the **Cloud** tab gives you a live overview of your project's backend.
+
+### Status and plan summary
+
+At the top of the tab you will see six summary cards:
+
+| Card | What it shows |
+|---|---|
+| **Status** | Current state of your Cloud instance: `active`, `provisioning`, `deprovisioning`, `suspended`, or `deleted` |
+| **Plan** | The plan tier your Cloud instance is running on |
+| **Tables** | Total number of database tables Genie has created for this project |
+| **Edge functions** | Total number of deployed edge functions |
+| **Auth users** | Total number of registered and anonymous users |
+| **Storage buckets** | Total number of file storage buckets |
+
+### Instance overview
+
+Below the summary cards, the **Instance overview** section shows your project's connection details: the project URL, project reference ID, region, and the timestamps for when the instance was created and last updated.
+
+### Connection keys
+
+The **Connection keys** section shows whether each credential is configured — the anon key, service key, and database password each display a **Configured** or **Missing** badge. The actual secret values stay masked for security.
+
+### Detected resources
+
+Further down, the **Detected resources** section lists up to eight items from each category: database tables, edge functions, auth users, and storage buckets. If your project has more than eight in any category, a note at the bottom tells you how many more exist.
+
+## Advanced options
+
+At the bottom of the Cloud tab, the **Advanced** section contains a **Re-run bootstrap** button. Use this to re-sync your Genie Cloud configuration after changing onboarding or private mode settings, or to upgrade an existing project to the latest Genie Cloud version. The bootstrap is fully safe to run at any time — it does not delete any data.
+
+<Tip>
+  If you change your onboarding flow or private mode settings in the **Onboarding** tab, click **Re-run bootstrap** afterwards to apply those changes to your live Cloud instance.
+</Tip>

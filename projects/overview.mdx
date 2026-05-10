@@ -1,0 +1,76 @@
+---
+title: "Managing your Genie projects"
+description: "A project is the app Genie builds for you. Learn how to create one, navigate the project view, and use the live preview and chat history."
+---
+
+Every app you build in Genie lives inside a **project**. When you describe what you want to create, Genie generates a fully working app — that generated app is your project. Each project has its own URL, chat history, settings, and optionally a connected cloud backend. You can have as many projects as your plan allows, and each one is managed independently.
+
+## Creating a project
+
+You create a project directly from the Genie home screen by typing a description of the app you want to build into the prompt input and pressing **Enter** (or clicking **Generate**). Genie reads your description, generates the app, and opens it in the project view.
+
+<Steps>
+  <Step title="Open Genie">
+    Go to [genie.app](https://genie.app) and sign in to your account.
+  </Step>
+  <Step title="Describe your app">
+    Type a description of the app you want to build into the prompt field. Be as specific as you like — for example, "a task tracker for a small team with due dates and priority labels".
+  </Step>
+  <Step title="Generate">
+    Press **Enter** or click the send button. Genie will start building your app. Once it finishes, you are taken directly into the project view.
+  </Step>
+</Steps>
+
+<Tip>
+  You can also start from a pre-built template instead of writing a prompt from scratch. Templates give you a working starting point you can customize with follow-up prompts.
+</Tip>
+
+## The project view
+
+Once your project is created, the project view is where you spend most of your time. It has two main areas side by side: the **chat panel** on the left and the **live preview** on the right.
+
+<CardGroup cols={2}>
+  <Card title="Chat panel" icon="message-square">
+    The chat panel is where you talk to Genie. Type follow-up instructions — "add a search bar", "change the color scheme to dark blue" — and Genie updates the app in real time. Your full conversation history is saved and visible here.
+  </Card>
+  <Card title="Live preview" icon="monitor">
+    The live preview renders your app as it actually runs. You can click through it, fill in forms, and test behavior exactly as a real user would — without leaving the project view.
+  </Card>
+</CardGroup>
+
+### Chat history
+
+Every message you send and every response Genie gives is stored in the chat history for that project. You can scroll back through the entire conversation to review past changes, understand why something was built a certain way, or pick up where you left off after a break.
+
+### Project URL
+
+Each project gets a unique URL that you can use to open it directly. You can find this URL in **Settings** under the **General** tab, or simply copy it from your browser's address bar when you are viewing the live app. If your project is public, this URL works for anyone — no login required.
+
+On paid plans you can also connect a custom domain, so your app lives at an address you own. See [Publish and share your app](/projects/visibility) for details.
+
+## Remixing a project
+
+If you are viewing a public project that the owner has made remixable, you will see a **Remix** button in the project view. Clicking it creates a copy of that project in your own account — including all of its generated code — so you can build on top of it with your own prompts.
+
+If you are not signed in when you click **Remix**, Genie will redirect you to the login page first, then complete the remix once you are authenticated.
+
+<Tip>
+  To allow others to remix your own project, enable the **Remixable** toggle in **Settings > General**. See [Project settings](/projects/settings) for details.
+</Tip>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Project settings" icon="settings" href="/projects/settings">
+    Rename your project, add a description, and control who can see or remix it.
+  </Card>
+  <Card title="Publish and share" icon="globe" href="/projects/visibility">
+    Make your app public, get a shareable link, or connect a custom domain.
+  </Card>
+  <Card title="Store secrets" icon="key-round" href="/projects/secrets">
+    Add API keys and environment variables your app needs to run.
+  </Card>
+  <Card title="Genie Cloud" icon="cloud" href="/cloud/overview">
+    Connect a database, authentication, and file storage to your project.
+  </Card>
+</CardGroup>

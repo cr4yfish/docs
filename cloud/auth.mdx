@@ -1,0 +1,63 @@
+---
+title: "User authentication in Genie Cloud"
+description: "Learn how Genie Cloud handles sign-in and sign-up for your app, what anonymous users are, and how to review registered users in the Cloud tab."
+---
+
+If your app needs people to sign in — to save their data, access a personal dashboard, or take actions tied to their account — Genie Cloud provides the authentication layer automatically. When Genie AI determines that your app requires user accounts, it sets up sign-up, sign-in, and session management without you having to configure anything.
+
+## How authentication is provisioned
+
+When you describe a feature that involves user accounts — "let customers track their orders", "add a member area", "save preferences per user" — Genie AI enables authentication for your project as part of building the app. The sign-in and sign-up screens, the session handling, and the connection between a user's identity and their data are all generated and wired up automatically.
+
+You do not need to choose an authentication library, manage tokens, or write any sign-in logic. Genie handles all of it.
+
+## How your app's visitors sign in
+
+Once authentication is set up, visitors to your app can create an account and sign in using their email address. Depending on the OAuth providers you have enabled in your project's **Authentication** settings, users may also be able to sign in with Google.
+
+<Steps>
+  <Step title="Visitor arrives at your app">
+    When a visitor reaches a part of your app that requires an account, they are directed to the sign-in or sign-up screen that Genie generated.
+  </Step>
+  <Step title="They create an account or sign in">
+    New visitors sign up with their email address. Returning visitors sign in the same way. If you have enabled Google sign-in from the **Authentication** tab, that option also appears.
+  </Step>
+  <Step title="Genie Cloud creates a session">
+    After a successful sign-in, Genie Cloud creates a secure session for the user. Your app uses this session to show the right data for that person throughout their visit.
+  </Step>
+</Steps>
+
+## Anonymous users
+
+Not every visitor who interacts with your app needs to create an account. Genie Cloud can also track **anonymous users** — visitors who have a temporary session but have not signed up with an email address.
+
+An anonymous user record is created automatically when your app needs to persist something for a visitor across pages or sessions before they register. This is useful for features like a shopping cart, a progress tracker, or a quiz that works before sign-up.
+
+In the Cloud tab, anonymous users are shown with an **Anonymous** badge, while users who have signed up with an email or phone number are shown with a **User** badge.
+
+<Note>
+  Anonymous users are real entries in your auth system. They consume storage and count toward your auth user total, but they have no email or phone number attached to them. If a visitor later signs up, their anonymous session can be linked to their new account.
+</Note>
+
+## Viewing auth users in the Cloud tab
+
+Open **Settings** and go to the **Cloud** tab. The **Auth users** card in the summary row shows the total count of users who have a session in your project — both registered and anonymous.
+
+Scroll down to the **Detected resources** section. The **Auth users** panel lists up to eight users, showing each one with:
+
+- **Email or phone** — the contact detail the user signed up with, or a note that no contact is on file for anonymous users
+- **User ID** — the unique internal identifier for that user's account
+- **Last sign-in** — when the user most recently signed in, or a note if they have never completed a sign-in
+- **Anonymous or User** — a badge indicating whether the user is anonymous or has a verified identity
+
+If your project has more than eight users, a note at the bottom of the panel shows how many additional users exist.
+
+<Tip>
+  For a fuller view of your users — including the ability to assign roles, approve pending users in private-mode apps, and see totals broken down by type — open the **Users** tab in project settings.
+</Tip>
+
+## User roles and access control
+
+Genie Cloud supports a roles system that lets you control what different users can do in your app. Roles such as **admin**, **moderator**, and **member** can be assigned to individual users from the **Users** tab. Genie AI can use these roles when generating your app to show or hide features based on who is signed in.
+
+If you want to restrict your app so that only approved users can access it, enable **Private mode** from the **Onboarding** tab. In private mode, every new sign-up is held in a pending state until an admin approves them from the Users tab.

@@ -1,0 +1,101 @@
+---
+title: "Invite and manage workspace members"
+description: "Add teammates to your workspace via invite link or email, assign them the right role, change roles later, and remove members when needed."
+---
+
+Every workspace has a members list that determines who can access projects and what they can do. Owners and admins control the list: they can invite new people, adjust roles, and remove members at any time. Regular members and editors can see the workspace and work in projects, but they cannot manage other members or workspace settings.
+
+<Note>
+Only **owners** and **admins** can open **Settings** and manage workspace members. If you do not see the **Settings** link in the sidebar, contact your workspace owner.
+</Note>
+
+## Roles at a glance
+
+Genie has four workspace roles. Each role inherits all the permissions of the roles below it.
+
+<CardGroup cols={2}>
+  <Card title="Owner" icon="crown">
+    Full control over the workspace. Owners can manage all members — including promoting someone else to owner — change any setting, and delete the workspace. There is always at least one owner and an owner cannot leave the workspace without transferring ownership first.
+  </Card>
+  <Card title="Admin" icon="shield">
+    Can manage members (except other owners), toggle workspace settings, enable or disable the activity log, and manage MCP integrations. Admins always have access to all projects regardless of project-level access control.
+  </Card>
+  <Card title="Member" icon="user">
+    Can create new projects, edit any project they have access to, and collaborate normally. When project access control is enabled, members must be explicitly invited to individual projects by an admin or owner.
+  </Card>
+  <Card title="Editor" icon="pencil">
+    Can edit projects they have already been invited to, but cannot create new projects. This role is suited for external collaborators or contractors who should work on specific projects without broader access.
+  </Card>
+</CardGroup>
+
+## Invite people to your workspace
+
+You can invite new members by generating a shareable invite link. Each invite link carries a specific role, a maximum number of uses, and an expiry date.
+
+<Steps>
+  <Step title="Open Invitations">
+    From the workspace home, click **Settings** in the sidebar footer, then click **+ Invite** in the **Members & Roles** section header. This opens the **Invitations** page.
+  </Step>
+  <Step title="Configure the invite">
+    Fill in the three fields under **New Invitation**:
+
+    - **Role** — choose the role the invited person will receive when they accept: Editor, Member, Admin, or Owner.
+    - **Max Uses** — how many people can use this link before it expires. Default is 1.
+    - **Valid (days)** — how many days the link stays active. Default is 7.
+  </Step>
+  <Step title="Create and copy the link">
+    Click **Create Invite**. The new invite appears in the **Existing Invites** list below the form. Click **Copy link** next to it to copy the full invite URL to your clipboard.
+  </Step>
+  <Step title="Share the link">
+    Send the copied link to the person you want to invite — by email, Slack, or any other channel. When they open the link and click **Join Workspace**, they are added immediately with the role you chose.
+  </Step>
+</Steps>
+
+<Tip>
+Create a link with a high **Max Uses** count for open team onboarding (for example, when sharing a workspace link in a company-wide Slack channel), and a link with **Max Uses = 1** for one-off external invites.
+</Tip>
+
+## Manage existing members
+
+To view or change a member's role, go to **Settings** in the sidebar and find the **Members & Roles** section.
+
+### Find a member
+
+Use the search bar above the members table to filter by name or email address. You can also filter by role using the tab buttons: **All**, **Owner**, **Admin**, **Member**, or **Editor**.
+
+### Change a member's role
+
+<Steps>
+  <Step title="Open the member panel">
+    Click anywhere on a member's row in the table, or click the pencil icon on the right side of the row. A side panel slides in showing the member's current role and join date.
+  </Step>
+  <Step title="Select the new role">
+    Use the **Change role** dropdown to pick a new role. The options available depend on your own role: only owners can assign the Owner role to someone else.
+  </Step>
+  <Step title="Save">
+    Click **Save role**. The change takes effect immediately.
+  </Step>
+</Steps>
+
+### Remove a member
+
+<Steps>
+  <Step title="Open the member panel">
+    Click the member's row or the pencil icon to open their side panel.
+  </Step>
+  <Step title="Remove">
+    Scroll to the bottom of the panel and click **Remove member**. Confirm the action. The member loses access to the workspace and all its projects immediately.
+  </Step>
+</Steps>
+
+<Warning>
+Removing a member is immediate and cannot be undone from the UI. To restore access, you will need to send a new invite link.
+</Warning>
+
+### Leave a workspace
+
+If you are a member, admin, or editor (but not the sole owner), you can leave a workspace yourself. Open your own row in the members table and click **Leave workspace** at the bottom of the side panel.
+
+<Warning>
+If you are the only owner of a workspace, you cannot leave until you transfer ownership to another member.
+</Warning>

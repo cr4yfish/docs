@@ -1,0 +1,159 @@
+---
+title: "Get started with Genie in under five minutes"
+description: "Sign up, describe your app in plain English, watch it appear live in seconds, then share the link — no configuration, no code, no waiting."
+---
+
+Getting your first app running with Genie takes about five minutes. You sign up, type a description of what you want, and Genie generates a working app you can immediately preview and share. This guide walks you through the whole process from a blank browser tab to a live, shareable link.
+
+## Before you start
+
+You don't need an account to browse Genie, but you'll need one to build and save apps. Signing up is free — no credit card required.
+
+<Steps>
+
+  <Step title="Create your account">
+    Go to [genie.app](https://genie.app) and click **Start for free**. You can sign up with an email address or an existing Google or GitHub account.
+
+    Once you're in, you'll land on your dashboard. This is where all your projects live. On a fresh account it will be empty — that's about to change.
+  </Step>
+
+  <Step title="Start a new project">
+    Click **New project** from your dashboard. Genie opens a new project with a single input: the prompt box.
+
+    This is where you describe what you want to build. You don't need to think in technical terms — describe the tool the way you would explain it to a colleague.
+  </Step>
+
+  <Step title="Type your first prompt">
+    Write a description of the app you want in the prompt box. Be specific about the features that matter to you, but don't worry about length — one or two sentences is usually enough to get started.
+
+    **Good prompts include:**
+    - What the app does
+    - The key pieces of information it tracks
+    - How you want to view or interact with that information
+
+    Here are some examples to give you a sense of what works well:
+
+    <Tabs>
+      <Tab title="Task tracker">
+        ```
+        Build a task management app with kanban board columns, 
+        draggable cards, tag filters, and a stats summary showing 
+        tasks per status.
+        ```
+      </Tab>
+      <Tab title="Client CRM">
+        ```
+        Create a mini CRM with a contact table showing name, company, 
+        status, and last contact date. Clicking a row should open a 
+        side panel with activity notes.
+        ```
+      </Tab>
+      <Tab title="Startup landing page">
+        ```
+        Build a startup landing page with a gradient hero section, 
+        three feature blocks, social proof, a pricing toggle, and 
+        a sticky call-to-action bar.
+        ```
+      </Tab>
+      <Tab title="Inventory manager">
+        ```
+        Build a lightweight inventory manager with a searchable 
+        and sortable table, low stock highlights, a category filter, 
+        and a bulk quantity edit option.
+        ```
+      </Tab>
+    </Tabs>
+
+    <Tip>
+      Start specific, not general. "Build a task tracker with projects and a kanban board" gives Genie more to work with than "Build a productivity app." You can always expand scope later with follow-up prompts.
+    </Tip>
+  </Step>
+
+  <Step title="Watch your app generate">
+    Click **Generate** (or press Enter). Genie starts building immediately. You'll see progress in real time as the app takes shape.
+
+    Generation typically takes a few seconds. While it runs, Genie is creating the full app structure — layout, components, navigation, and any data models you described.
+
+    <Note>
+      Generation uses credits from your account. The free plan includes enough credits to get started. You can view your credit balance at any time in **Settings → Billing**.
+    </Note>
+  </Step>
+
+  <Step title="Preview your app in the live panel">
+    When generation finishes, the **live preview panel** opens on the right side of the screen. This is a fully interactive version of your app — click buttons, fill in forms, switch views. Everything works exactly as it will when you share it.
+
+    The preview updates in real time as you make changes.
+
+    Use the preview to check:
+    - Whether the layout matches what you had in mind
+    - Whether the right columns, fields, or sections are present
+    - Whether the navigation makes sense for how you'd actually use it
+  </Step>
+
+  <Step title="Refine with follow-up prompts">
+    The prompt box stays open below the preview. Type a follow-up instruction to change anything about the app.
+
+    You can be as specific or as casual as you like:
+
+    - `"Move the stats summary to the top"`
+    - `"Add a priority field to each task card"`
+    - `"Change the color scheme to green and gray"`
+    - `"Add a section for completed tasks"`
+
+    Each follow-up regenerates only the parts of the app affected by your request. You don't start from scratch — Genie applies your change to the existing app.
+
+    <Tip>
+      There's no limit on follow-up prompts for a project. Iterate freely until the app works exactly the way you need it to.
+    </Tip>
+  </Step>
+
+  <Step title="Share your app">
+    When you're happy with the result, click **Share** in the top bar. Genie gives you a public link you can send to anyone.
+
+    Recipients don't need a Genie account to use your app — they just open the link in a browser.
+
+    From the **Share** panel you can also:
+    - Copy the link to send directly
+    - Control visibility (public or private)
+    - Connect a custom domain from your project settings
+  </Step>
+
+</Steps>
+
+## What happens after you share
+
+Your app is live on Genie Cloud from the moment you share it. Genie handles hosting, security, and uptime automatically — there's nothing to configure or maintain. If you update the app with a follow-up prompt, the live version updates immediately.
+
+<CardGroup cols={2}>
+  <Card title="Manage your project" icon="folder" href="/projects/overview">
+    Rename your app, adjust settings, and manage project-level options.
+  </Card>
+  <Card title="Connect a custom domain" icon="globe" href="/projects/visibility">
+    Give your app a professional address instead of the default Genie URL.
+  </Card>
+  <Card title="Add integrations" icon="plug" href="/workspaces/integrations">
+    Connect tools like Stripe, Notion, or GitHub to expand what your app can do.
+  </Card>
+  <Card title="Understand your credits" icon="credit-card" href="/billing/credits">
+    See how credits are used and how to top up when you need more.
+  </Card>
+</CardGroup>
+
+## Prompt tips
+
+The quality of your prompt directly affects how closely the first generation matches what you want. These habits will save you follow-up rounds:
+
+<AccordionGroup>
+  <Accordion title="Describe the layout, not just the purpose">
+    Instead of "a dashboard," say "a dashboard with a sidebar, KPI stat cards at the top, and a data table below." Visual specifics help Genie pick the right structure.
+  </Accordion>
+  <Accordion title="Name the key data fields">
+    If your app tracks records, list the fields: "a contact table with name, company, email, status, and last contacted date." This prevents Genie from guessing what data matters.
+  </Accordion>
+  <Accordion title="Mention interactions you need">
+    If you want to click a row to open a detail panel, drag cards between columns, or filter a list by tag — say so. Genie supports these interactions but won't add them unless you ask.
+  </Accordion>
+  <Accordion title="Start with a template if you're unsure">
+    If you're not sure how to phrase your prompt, [browse templates](/templates). Each template comes with a complete example prompt you can use directly or modify.
+  </Accordion>
+</AccordionGroup>

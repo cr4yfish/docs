@@ -1,0 +1,84 @@
+{
+  "projectType": "saas",
+  "projectName": "Genie",
+  "projectDescription": "An AI-powered no-code app builder that lets non-technical users describe what they want and instantly generates real, deployable web apps with built-in cloud infrastructure.",
+  "theme": "almond",
+  "primaryColor": "#7C3AED",
+  "lightColor": "#EDE9FE",
+  "darkColor": "#4C1D95",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "quickstart",
+              "templates"
+            ]
+          },
+          {
+            "group": "Projects",
+            "pages": [
+              "projects/overview",
+              "projects/settings",
+              "projects/secrets",
+              "projects/visibility"
+            ]
+          },
+          {
+            "group": "Workspaces",
+            "pages": [
+              "workspaces/overview",
+              "workspaces/members",
+              "workspaces/integrations"
+            ]
+          },
+          {
+            "group": "Genie Cloud",
+            "pages": [
+              "cloud/overview",
+              "cloud/database",
+              "cloud/storage",
+              "cloud/auth"
+            ]
+          },
+          {
+            "group": "Billing & Plans",
+            "pages": [
+              "billing/plans",
+              "billing/credits",
+              "billing/topups"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "AI-powered app generation from natural language descriptions",
+    "Built-in Genie Cloud with database, auth, storage, and edge functions",
+    "Project templates for common use cases (portfolios, dashboards, CRMs, etc.)",
+    "MCP (Model Context Protocol) integrations with tools like Linear, GitHub, Notion, Stripe",
+    "Project secrets management for secure environment variable storage",
+    "Custom domain support for published projects",
+    "Community showcase to explore and remix public projects",
+    "Team workspaces with roles and permissions",
+    "Credit-based pricing with top-up options",
+    "Live app preview while building"
+  ],
+  "publicApiSurface": [
+    "POST /api/chat — send a prompt to generate or update a project",
+    "GET /api/plan — retrieve the current user's plan and credit balance",
+    "POST /api/billing/webhook — Stripe billing webhook",
+    "GET /api/billing/prices — fetch live Stripe pricing by interval",
+    "GET /api/project — list user projects",
+    "POST /api/project — create a new project",
+    "GET /api/usage — fetch credit usage",
+    "GET /api/mcp — MCP server endpoint for AI tool integrations",
+    "GET /api/preview — live preview of a project",
+    "POST /api/cloud — enable or manage Genie Cloud for a project"
+  ]
+}

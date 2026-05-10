@@ -1,0 +1,115 @@
+---
+title: "Project settings: name, description, and visibility"
+description: "Configure your project's display name, description, public or private visibility, and whether other users can remix it to build their own version."
+---
+
+Project settings give you control over how your app is identified and who can access it. You can update these at any time without affecting the running app. To open settings, click the **Settings** button inside the project view — the settings dialog opens with a sidebar of tabs on the left and the active tab's content on the right.
+
+## Opening project settings
+
+<Steps>
+  <Step title="Open your project">
+    Navigate to the project you want to configure.
+  </Step>
+  <Step title="Click Settings">
+    Click the **Settings** button (gear icon) in the project view. The project settings dialog opens.
+  </Step>
+  <Step title="Select the General tab">
+    The dialog opens on the **General** tab by default. This is where you find the name, description, visibility, and remixable settings.
+  </Step>
+</Steps>
+
+## General settings
+
+The **General** tab contains four fields. After making changes, click **Save** to apply them. Click **Cancel** to discard any edits.
+
+### Name
+
+The **Name** field sets the display name for your project. This name appears in your project list, in the browser tab when someone opens the project, and in the page title generated for SEO purposes.
+
+- Choose a name that describes what your app does, not just what it is (for example, "Team Task Tracker" rather than "My App").
+- You can rename a project at any time without breaking its URL or any other settings.
+
+### Description
+
+The **Description** field is a free-text area where you can write a short summary of your app. The description is used in a few places:
+
+- It pre-fills the **SEO description** in the **SEO** settings tab, which search engines use to index your project's public URL.
+- It gives context to anyone who finds your project in the public gallery (if your project is public).
+
+<Tip>
+  Write the description from the perspective of someone discovering your app for the first time. One or two sentences explaining what the app does and who it is for is usually enough.
+</Tip>
+
+### Visibility
+
+The **Visibility** toggle controls whether your project is **public** or **private**.
+
+| State | What it means |
+|---|---|
+| **Public** (toggle on) | Anyone with the link can view your live app. The project may also appear in public listings. |
+| **Private** (toggle off) | Only you can access the project. Visitors who try to open the link will not be able to view it. |
+
+<Note>
+  Changing visibility takes effect immediately after you save. If you switch a previously public project to private, existing links will stop working for other users right away.
+</Note>
+
+There is no separate "unlisted" state — a project is either fully public or fully private.
+
+### Remixable
+
+The **Remixable** toggle controls whether other signed-in users can create their own copy of your project using the **Remix** button.
+
+| State | What it means |
+|---|---|
+| **Remixable** (toggle on) | A **Remix** button appears on your public project. Anyone who clicks it gets a copy of your project in their own account. |
+| **Remixable off** (default) | No remix option is shown to other users. Your project code cannot be forked by others. |
+
+<Warning>
+  Remixing is only available on public projects. Enabling **Remixable** on a private project has no visible effect until the project is also made public.
+</Warning>
+
+When someone remixes your project, their copy is a fully independent project — changes they make do not affect your original. Genie tracks the origin by recording the source project's ID on the remixed copy.
+
+## Settings dialog tabs
+
+The settings dialog contains additional tabs beyond General. Here is a summary of what each tab covers:
+
+<AccordionGroup>
+  <Accordion title="General">
+    Name, description, visibility (public/private), and remixable toggle. Covered on this page.
+  </Accordion>
+  <Accordion title="SEO">
+    Title, description, canonical URL, Open Graph image, and noIndex flag for search engine optimization.
+  </Accordion>
+  <Accordion title="Authentication">
+    Enable or disable login providers (for example, email/password, social login) for your app's users.
+  </Accordion>
+  <Accordion title="Cloud">
+    Connect and manage Genie Cloud — the hosted backend that powers your app's database, auth, and storage.
+  </Accordion>
+  <Accordion title="Data">
+    Browse and manage the database tables in your connected Genie Cloud instance.
+  </Accordion>
+  <Accordion title="Storage">
+    Manage file storage buckets attached to your project via Genie Cloud.
+  </Accordion>
+  <Accordion title="Users">
+    View and manage the end-users who have signed up for your app (requires Genie Cloud).
+  </Accordion>
+  <Accordion title="Roles">
+    Define and assign roles that control what your app's users can access (requires Genie Cloud).
+  </Accordion>
+  <Accordion title="Onboarding">
+    Configure user onboarding flows for your app (requires Genie Cloud).
+  </Accordion>
+  <Accordion title="Edge Functions">
+    View edge functions deployed with your project via Genie Cloud.
+  </Accordion>
+  <Accordion title="Secrets">
+    Add, edit, and delete encrypted environment variables available to your running app. See [Store API keys and secrets](/projects/secrets).
+  </Accordion>
+  <Accordion title="Danger">
+    Irreversible actions such as deleting the project.
+  </Accordion>
+</AccordionGroup>

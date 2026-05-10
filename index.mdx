@@ -1,0 +1,134 @@
+---
+title: Genie Documentation
+description: The complete guide to Genie — build real apps from a plain-English prompt, manage projects, connect integrations, and deploy with your own domain.
+mode: frame
+---
+
+<div data-product-guide-index className="flex w-full flex-col gap-8 max-w-5xl mx-auto px-4 md:px-8 lg:px-12 py-10 lg:gap-14 lg:py-16">
+  <div className="flex max-w-[540px] flex-col gap-2 self-center text-center">
+    <h1 className="text-[30px] font-medium leading-9 tracking-tight text-gray-900 dark:text-gray-50">
+      Genie Documentation
+    </h1>
+    <p className="text-balance text-base leading-relaxed tracking-tight text-gray-600 dark:text-gray-400">
+      Build real apps without an IT department. Describe what you need, and Genie spins it up in seconds — complete with database, user logins, and file storage.
+    </p>
+  </div>
+
+  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <Card
+      title={<span className="product-guide-feature-card-title">Get started</span>}
+      icon="rocket"
+      href="/quickstart"
+      className="product-guide-feature-card"
+      size={64}
+    >
+      <span className="product-guide-feature-card-description">Build your first app in minutes — no code required.</span>
+    </Card>
+
+    <a
+      href="/projects/overview"
+      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+    >
+      <Icon icon="folder" color="rgb(var(--primary))" size={18} className="shrink-0" />
+      <div className="flex flex-col gap-1">
+        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Projects</span>
+        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+          Manage your apps, configure settings, and publish to the web.
+        </span>
+      </div>
+    </a>
+    <a
+      href="/cloud/overview"
+      className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+    >
+      <Icon icon="cloud" color="rgb(var(--primary))" size={18} className="shrink-0" />
+      <div className="flex flex-col gap-1">
+        <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Genie Cloud</span>
+        <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+          Built-in database, authentication, and file storage for every project.
+        </span>
+      </div>
+    </a>
+  </div>
+
+  <hr className="border-0 border-t border-border" />
+
+  <div className="flex flex-col gap-4">
+    <h2 className="font-serif text-xl font-medium leading-normal text-gray-900 dark:text-gray-50">Common tasks</h2>
+
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <a
+        href="/projects/secrets"
+        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="key-round" color="rgb(var(--primary))" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Store secrets</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            Add API keys and environment variables your app needs at runtime.
+          </span>
+        </div>
+      </a>
+      <a
+        href="/workspaces/integrations"
+        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="plug" color="rgb(var(--primary))" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Connect integrations</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            Link tools like GitHub, Linear, Notion, and Stripe to power your apps.
+          </span>
+        </div>
+      </a>
+      <a
+        href="/workspaces/members"
+        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="users" color="rgb(var(--primary))" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Invite your team</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            Add members to a workspace and control who can build and publish.
+          </span>
+        </div>
+      </a>
+      <a
+        href="/billing/plans"
+        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="credit-card" color="rgb(var(--primary))" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Choose a plan</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            Compare Starter, Genie, and Teams plans and understand your credits.
+          </span>
+        </div>
+      </a>
+      <a
+        href="/projects/visibility"
+        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="globe" color="rgb(var(--primary))" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Publish your app</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            Make your project public, share a link, or connect a custom domain.
+          </span>
+        </div>
+      </a>
+      <a
+        href="/templates"
+        className="rounded-2xl flex flex-col gap-4 border bg-gray-50 p-4 outline-none shadow-sm shadow-gray-950/5 transition hover:border-primary hover:shadow-md dark:bg-gray-950 dark:shadow-black/20 dark:hover:border-primary"
+      >
+        <Icon icon="layout-template" color="rgb(var(--primary))" size={18} className="shrink-0" />
+        <div className="flex flex-col gap-1">
+          <span className="font-serif text-base font-medium text-gray-900 dark:text-gray-50">Start from a template</span>
+          <span className="text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+            Pick a ready-made starting point for portfolios, dashboards, CRMs, and more.
+          </span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

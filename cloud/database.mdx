@@ -1,0 +1,38 @@
+---
+title: "Manage your app's database in Genie Cloud"
+description: "Learn how Genie AI creates and updates your app's database tables automatically, and how to inspect your tables and data from the Cloud tab."
+---
+
+When you describe what your app should do, Genie AI figures out what data it needs to store and creates the right database tables automatically. You do not need to design a schema, write SQL, or understand database concepts — Genie handles all of that as part of building your app.
+
+## How Genie creates your tables
+
+Every time you ask Genie to add a feature — a customer list, a booking form, an inventory tracker — it decides whether new tables are required and creates them in your Cloud database. If the feature fits into existing tables, it updates those instead. This happens in the background as part of the same conversation where you describe what you want.
+
+<Note>
+  Tables are created and managed by Genie AI. You do not need to create, modify, or delete them manually. Asking Genie to change your app's features is the right way to evolve your data structure.
+</Note>
+
+## Viewing your tables in the Cloud tab
+
+Open **Settings** and go to the **Cloud** tab. In the summary row at the top, the **Tables** card shows the total count of tables Genie has created for this project.
+
+Scroll down to the **Detected resources** section. The **Tables** panel lists up to eight of your project's tables by name. If your project has more than eight tables, a note below the list shows how many additional tables exist.
+
+<Tip>
+  To inspect the actual rows in your tables, switch to the **Data** tab in project settings. It shows a live preview of up to 25 records from any table you select.
+</Tip>
+
+## How your app reads and writes data
+
+Your app talks to the database through Genie Cloud's connection automatically. When a visitor fills in a form, submits a booking, or takes any action in your app, the generated app code writes that data to the correct table. When the app displays a list or dashboard, it reads from the same tables.
+
+You do not configure database connections or write any data access code. Genie generates all of that when it builds the app.
+
+## What happens to your data over time
+
+As you iterate on your app and ask Genie to add or change features, the AI may add new columns to existing tables or create additional tables. Existing rows are preserved — Genie's schema changes are additive and do not remove data you have already collected.
+
+<Warning>
+  If you ask Genie to remove a feature, it may stop writing to certain tables, but existing data in those tables is not automatically deleted. Your historical records remain intact.
+</Warning>

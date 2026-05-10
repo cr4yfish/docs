@@ -1,0 +1,123 @@
+---
+title: "Connect MCP integrations to your workspace"
+description: "Connect Linear, GitHub, Notion, Stripe, and more to your workspace via MCP servers — one shared connection available to every member and project."
+---
+
+Genie supports the Model Context Protocol (MCP), an open standard that lets AI assistants call tools in external services. When you connect an MCP server to your workspace, every member can use those tools inside any project — without each person setting up their own credentials. A single workspace-level connection covers your whole team.
+
+<Note>
+MCP integrations are available on the **Teams** plan. If your workspace is on a lower tier, the **Integrations** page will show an upgrade prompt. Only **owners** and **admins** can add or remove servers.
+</Note>
+
+## Open the integrations page
+
+In the workspace sidebar, click **Settings**, then click **Manage** in the **Integrations** section — or go directly to **Settings → Integrations** from the settings page.
+
+## Add a preset integration
+
+Genie includes one-click presets for the most popular tools. Preset connections have their server URL, transport, and authentication type pre-configured — you just authorise and go.
+
+<Steps>
+  <Step title="Click Add server">
+    On the **Integrations** page, click the **Add server** button in the **Connected servers** section header.
+  </Step>
+  <Step title="Pick a service">
+    A dialog (or bottom drawer on mobile) shows all available preset integrations. Click the tile for the service you want to connect.
+  </Step>
+  <Step title="Set a display name">
+    The form pre-fills a display name (for example, "Linear"). The name becomes the tool prefix used by the AI — for example, `linear__create_issue`. Edit it if you need to distinguish multiple connections to the same service.
+  </Step>
+  <Step title="Connect the server">
+    Click **Connect server**. For OAuth-based integrations, a second **Authorize** button appears on the server row — click it to start the OAuth flow and grant Genie access to your account. For Bearer token integrations, paste your API token into the **Bearer token** field before clicking **Connect server**.
+  </Step>
+  <Step title="Confirm the connection">
+    After a successful OAuth authorisation, Genie redirects you back to the **Integrations** page with a confirmation banner. Tools from the connected server become available to all workspace members on their next conversation turn.
+  </Step>
+</Steps>
+
+### Available preset integrations
+
+| Service | Server URL | Transport | Auth |
+|---|---|---|---|
+| **Linear** | `https://mcp.linear.app/sse` | SSE | OAuth2 |
+| **GitHub** | `https://api.githubcopilot.com/mcp/` | HTTP | OAuth2 |
+| **Notion** | `https://mcp.notion.com/mcp` | HTTP | OAuth2 |
+| **Atlassian** | `https://mcp.atlassian.com/v1/sse` | SSE | OAuth2 |
+| **Asana** | `https://mcp.asana.com/sse` | SSE | OAuth2 |
+| **Sentry** | `https://mcp.sentry.dev/mcp` | HTTP | OAuth2 |
+| **Stripe** | `https://mcp.stripe.com` | HTTP | Bearer token |
+| **Cloudflare** | `https://docs.mcp.cloudflare.com/sse` | SSE | OAuth2 |
+
+<Tip>
+Each preset tile shows a short description of what it covers — for example, Linear covers "Issues, projects, cycles" and Stripe covers "Payments & customers". Use these descriptions to decide which integrations your team actually needs before adding them.
+</Tip>
+
+## Add a custom server
+
+If the tool you need is not in the preset list, you can connect any MCP-compatible server manually.
+
+<Steps>
+  <Step title="Click Add server">
+    Open the **Add server** dialog from the **Integrations** page.
+  </Step>
+  <Step title="Choose Other">
+    Scroll to the bottom of the preset grid and click the **Other** tile labelled "Configure manually".
+  </Step>
+  <Step title="Fill in the server details">
+    Complete the form:
+
+    - **Display name** — a label for this server. It becomes the tool prefix (for example, `mycrm__get_contacts`).
+    - **Server URL** — the full URL of the MCP endpoint.
+    - **Description** (optional) — a note for your team about what this server does.
+    - **Transport** — choose **Streamable HTTP** (recommended for all servers built after March 2025) or **SSE** for older legacy servers.
+    - **Authentication** — choose the auth type that matches your server (see below).
+  </Step>
+  <Step title="Connect the server">
+    Click **Connect server**. If you chose OAuth2, click **Authorize** on the server row that appears to complete the OAuth flow. If you chose Bearer token, you will have already entered the token in the form.
+  </Step>
+</Steps>
+
+## Authentication types
+
+<Tabs>
+  <Tab title="OAuth 2.1">
+    Most preset integrations use OAuth 2.1. When you click **Authorize**, Genie discovers the service's authorisation server, dynamically registers a client, and completes the flow with PKCE. The resulting token is stored encrypted at the workspace level and refreshed automatically. No manual token management is required.
+
+    If an OAuth connection expires or is revoked, click **Re-authorize** on the server row to restart the flow without losing your configuration.
+  </Tab>
+  <Tab title="Bearer token">
+    Some services (including Stripe) use a static API key instead of OAuth. Paste the token into the **Bearer token** field when creating the server. The token is stored encrypted and is never returned to the browser after saving. All workspace members share this single token.
+
+    To rotate the token, click the edit icon on the server row, enter the new token, and click **Save changes**. Leave the field blank to keep the existing token.
+  </Tab>
+  <Tab title="None">
+    Some self-hosted or internal MCP servers do not require authentication. Select **None** as the auth type for these servers. Use this option only for servers on trusted private networks.
+  </Tab>
+</Tabs>
+
+## Manage connected servers
+
+Each connected server appears as a row in the **Connected servers** list. From the row you can:
+
+- **Enable / Disable** — temporarily turn a server off without removing it. Disabled servers do not provide tools to the AI.
+- **Authorize / Re-authorize** — (OAuth servers only) start or restart the OAuth flow.
+- **Edit** — change the display name, description, or bearer token.
+- **Remove** — permanently disconnect the server and delete its credentials.
+
+## Security
+
+<CardGroup cols={1}>
+  <Card title="Encrypted at rest" icon="lock">
+    All credentials — bearer tokens and OAuth tokens — are encrypted at rest. They are never returned to the browser after they are saved.
+  </Card>
+  <Card title="Audit trail" icon="shield-check">
+    Every add, update, rotation, and removal of an MCP server is recorded in the workspace activity log, giving owners and admins a complete record of credential changes.
+  </Card>
+  <Card title="Role-based access" icon="users">
+    Only owners and admins can add, edit, or remove servers. Members and editors can use the tools exposed by connected servers but cannot read or modify credentials.
+  </Card>
+</CardGroup>
+
+<Warning>
+Bearer tokens are shared across all workspace members. If a token is compromised, rotate it immediately using the **Edit** action on the server row and notify your team.
+</Warning>

@@ -1,0 +1,116 @@
+---
+title: "Publish and share your Genie app"
+description: "Control who can access your project, get a shareable link, let others remix your work, and connect a custom domain to your live app."
+---
+
+When you are ready to share your app with the world — or even just with a colleague — Genie gives you several tools to control access and distribution. You can make your project public, grab a shareable link, allow others to fork it with the Remix feature, and connect a custom domain so your app lives at your own URL.
+
+## Public vs. private
+
+Every project in Genie has a **visibility** setting that is either **public** or **private**. You control this with the **Visibility** toggle in **Settings > General**.
+
+<Tabs>
+  <Tab title="Public">
+    A public project is accessible to anyone who has the link — no Genie account required to view the live app. Public projects can also appear in community listings on Genie.
+
+    **When to use:** when you want to share your app with customers, collaborators, or the general public.
+  </Tab>
+  <Tab title="Private">
+    A private project is only accessible to you (the owner). Anyone else who navigates to the project URL will not be able to view it.
+
+    **When to use:** while you are building and testing, or for internal tools you do not want publicly accessible.
+  </Tab>
+</Tabs>
+
+<Note>
+  Changing visibility takes effect immediately after you click **Save** in project settings. There is no delay or re-deployment step.
+</Note>
+
+There is no separate "unlisted" state — a project is either fully public or fully private. The toggle in **Settings > General** is the only control you need.
+
+## Getting a shareable link
+
+Each project has a persistent URL you can send to anyone. You can find this URL in **Settings > General** or by copying it directly from your browser's address bar when you are viewing the live app.
+
+<Steps>
+  <Step title="Make the project public">
+    In **Settings > General**, turn on the **Visibility** toggle and click **Save**.
+  </Step>
+  <Step title="Copy the URL">
+    Copy the project URL from your browser's address bar, or from the URL shown in **Settings > General**.
+  </Step>
+  <Step title="Share it">
+    Paste the URL into an email, a chat message, or anywhere else. Recipients can open the live app immediately.
+  </Step>
+</Steps>
+
+## Remixable projects
+
+Making your project **remixable** allows other Genie users to create their own independent copy of your app with a single click. This is similar to "forking" in version control — the person who remixes gets a full copy they can customize without affecting your original.
+
+### Enabling remixing
+
+<Steps>
+  <Step title="Open Settings">
+    Click **Settings** in the project view to open the project settings dialog.
+  </Step>
+  <Step title="Go to the General tab">
+    The **General** tab is selected by default.
+  </Step>
+  <Step title="Turn on Remixable">
+    Toggle the **Remixable** switch to on.
+  </Step>
+  <Step title="Save">
+    Click **Save**. A **Remix** button now appears on your project for other signed-in users.
+  </Step>
+</Steps>
+
+### What happens when someone remixes
+
+When a signed-in user clicks **Remix** on your project:
+
+1. Genie creates a new project in their account.
+2. The new project is a complete copy of your generated app at the moment of remixing.
+3. Genie records that the new project was remixed from yours (tracked internally for attribution).
+4. The user is redirected to their new project, where they can prompt Genie to make further changes.
+
+Changes the other user makes to their remixed copy have no effect on your original project.
+
+<Note>
+  Remixing requires the user to be signed in to Genie. If an unauthenticated visitor clicks **Remix**, they are redirected to the login page and then returned to complete the remix after signing in.
+</Note>
+
+<Warning>
+  The **Remixable** toggle only has a visible effect when the project is also **public**. If your project is private, the Remix button is not shown even if Remixable is enabled.
+</Warning>
+
+## Custom domains
+
+You can connect a custom domain to your project so your app is accessible at a URL you own — for example, `app.yourbusiness.com` — instead of the default `genie-app.de` subdomain.
+
+Custom domain configuration is managed through **Genie Cloud**. Your project must have Genie Cloud connected before you can attach a custom domain.
+
+<Steps>
+  <Step title="Connect Genie Cloud">
+    If you have not already done so, open **Settings > Cloud** and connect Genie Cloud to your project. See [Genie Cloud overview](/cloud/overview) for instructions.
+  </Step>
+  <Step title="Add your domain">
+    In your Genie Cloud dashboard, navigate to the domain settings for your project and enter the custom domain you want to use.
+  </Step>
+  <Step title="Update your DNS">
+    Follow the DNS instructions provided by Genie Cloud. You will typically need to add a CNAME record pointing your domain to the Genie Cloud-provided hostname.
+  </Step>
+  <Step title="Wait for propagation">
+    DNS changes can take a few minutes to several hours to take effect globally. Once propagated, your app is accessible at your custom domain.
+  </Step>
+</Steps>
+
+Once your custom domain is active, visitors who go to your Genie URL are redirected automatically, so you can share either address without breaking anything.
+
+## Summary of sharing options
+
+| Option | Requires public project | Requires Genie Cloud | Who can access |
+|---|---|---|---|
+| Default project URL | Yes | No | Anyone with the link |
+| Remixing | Yes + Remixable enabled | No | Signed-in Genie users |
+| Custom domain | Yes | Yes | Anyone with the domain |

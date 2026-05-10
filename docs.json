@@ -1,0 +1,114 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "almond",
+  "name": "Genie",
+  "description": "Build real apps without a developer. Describe what you need and Genie generates it instantly.",
+  "colors": {
+    "primary": "#7C3AED",
+    "light": "#EDE9FE",
+    "dark": "#4C1D95"
+  },
+  "favicon": "/favicon.ico",
+  "icons": {
+    "library": "lucide"
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs"
+  },
+  "contextual": {
+    "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
+  },
+  "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Home",
+          "icon": "house",
+          "href": "/"
+        },
+        {
+          "anchor": "Community",
+          "icon": "users",
+          "href": "https://genie-app.de/community"
+        },
+        {
+          "anchor": "Pricing",
+          "icon": "credit-card",
+          "href": "https://genie-app.de/pricing"
+        }
+      ]
+    },
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "icon": "rocket",
+            "expanded": true,
+            "pages": [
+              "introduction",
+              "quickstart",
+              "templates"
+            ]
+          },
+          {
+            "group": "Projects",
+            "icon": "folder",
+            "pages": [
+              "projects/overview",
+              "projects/settings",
+              "projects/secrets",
+              "projects/visibility"
+            ]
+          },
+          {
+            "group": "Workspaces",
+            "icon": "building-2",
+            "pages": [
+              "workspaces/overview",
+              "workspaces/members",
+              "workspaces/integrations"
+            ]
+          },
+          {
+            "group": "Genie Cloud",
+            "icon": "cloud",
+            "pages": [
+              "cloud/overview",
+              "cloud/database",
+              "cloud/storage",
+              "cloud/auth"
+            ]
+          },
+          {
+            "group": "Billing & Plans",
+            "icon": "credit-card",
+            "pages": [
+              "billing/plans",
+              "billing/credits",
+              "billing/topups"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "links": [],
+    "primary": {
+      "type": "button",
+      "label": "Start building",
+      "href": "https://genie.app"
+    }
+  },
+  "footer": {
+    "socials": {
+      "x": "https://x.com/genie_app"
+    }
+  }
+}
