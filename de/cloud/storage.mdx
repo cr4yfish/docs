@@ -1,0 +1,69 @@
+---
+title: "Dateispeicher und Buckets in Genie Cloud"
+description: "Verstehe, wie Genie Cloud Dateispeicher in Buckets organisiert, was öffentliche und private Buckets bedeuten und wie du deine Buckets im Cloud-Tab findest."
+---
+
+Wenn deine App Dateien speichern muss — Profilfotos, hochgeladene Dokumente, Produktbilder, Anhänge — übernimmt Genie Cloud das über **Storage-Buckets**. Ein Bucket ist ein benannter Container, der Dateien enthält. Genie AI erstellt und konfiguriert Buckets automatisch basierend auf den Bedürfnissen deiner App, sodass du nie selbst File-Hosting einrichten musst.
+
+## Wie Buckets erstellt werden
+
+Wenn du eine Funktion beschreibst, die Dateien betrifft — zum Beispiel „lass Nutzer:innen ein Profilfoto hochladen" oder „erlaube Kundinnen, Dokumente an Bestellungen anzuhängen" — entscheidet Genie AI, welche Art von Bucket angemessen ist, und erstellt ihn während des Baus. Jeder Bucket wird mit den richtigen Zugriffsregeln dafür konfiguriert, wie die Dateien darin genutzt werden.
+
+Genie Cloud stellt für jedes Projekt immer zwei grundlegende Buckets bereit:
+
+<CardGroup cols={2}>
+  <Card title="public-assets" icon="globe">
+    Enthält Dateien, die für alle sichtbar sein sollen, etwa App-Inhalte, Logos und öffentliche Nutzer-Profilbilder. Dateien hier können direkt über eine URL ohne Anmeldung abgerufen werden.
+  </Card>
+  <Card title="private-storage" icon="lock">
+    Enthält Dateien, die nur für authentifizierte Nutzer:innen zugänglich sein sollen, etwa private Nutzerdateien und interne Assets. Der Zugriff erfordert eine gültige Sitzung oder eine zeitlich begrenzte signierte URL.
+  </Card>
+</CardGroup>
+
+Innerhalb dieser Buckets organisiert Genie Dateien nach Zweck in Unterordnern — zum Beispiel App-Inhalte, Nutzer-Profilbilder und private Nutzer-Uploads. Du kannst die Ordnerstruktur im Tab **Storage** deiner Projekteinstellungen durchsuchen.
+
+Wenn deine App zusätzlichen Speicher über diese Standardwerte hinaus benötigt, erstellt Genie weitere Buckets nach Bedarf.
+
+## Öffentliche vs. private Buckets
+
+Die wichtigste Eigenschaft eines Buckets ist, ob er **öffentlich** oder **privat** ist.
+
+<Tabs>
+  <Tab title="Öffentliche Buckets">
+    Dateien in einem öffentlichen Bucket können von jedem mit der Datei-URL abgerufen werden — keine Anmeldung erforderlich. Das eignet sich für Bilder, die allen Besucher:innen gezeigt werden, herunterladbare Assets oder bewusst offene Inhalte.
+
+    Im Cloud-Tab zeigen öffentliche Buckets ein **Öffentlich**-Badge.
+  </Tab>
+  <Tab title="Private Buckets">
+    Dateien in einem privaten Bucket erfordern Authentifizierung für den Zugriff. Deine App generiert zeitlich begrenzte signierte URLs, wenn sie eine private Datei einer Nutzerin anzeigen oder bereitstellen muss. Die URL läuft standardmäßig nach einer Stunde ab, sodass sie nicht unbegrenzt geteilt oder als Lesezeichen gespeichert werden kann.
+
+    Im Cloud-Tab zeigen private Buckets ein **Privat**-Badge.
+  </Tab>
+</Tabs>
+
+<Warning>
+  Speichere keine sensiblen Dokumente oder nutzerspezifischen Dateien in einem öffentlichen Bucket. Jeder mit der URL kann ohne Anmeldung darauf zugreifen.
+</Warning>
+
+## Buckets im Cloud-Tab ansehen
+
+Öffne **Einstellungen** und gehe zum Tab **Cloud**. Die Karte **Storage-Buckets** in der Übersichtszeile zeigt die Gesamtzahl der Buckets in deinem Projekt.
+
+Scrolle nach unten zum Abschnitt **Erkannte Ressourcen**. Das Panel **Storage-Buckets** listet bis zu acht Buckets auf, wobei jeder Folgendes zeigt:
+
+- **Bucket-Name** — der Name, den Genie beim Erstellen des Buckets vergeben hat
+- **Öffentlich oder privat** — als Badge dargestellt, das die Zugriffsstufe angibt
+- **Dateigrößen-Limit** — die maximale Größe eines einzelnen Datei-Uploads in diesem Bucket (in menschenlesbaren Einheiten wie MB oder GB angezeigt)
+- **Erstellungsdatum** — wann der Bucket erstellt wurde
+
+Hat dein Projekt mehr als acht Buckets, zeigt ein Hinweis am Ende des Panels, wie viele weitere existieren.
+
+<Tip>
+  Um die tatsächlichen Dateien in einem Bucket zu durchsuchen, wechsle in den Projekteinstellungen zum Tab **Storage**. Dort kannst du in Ordnern navigieren, Dateien hochladen, herunterladen, direkte URLs kopieren, Dateien umbenennen und Einträge löschen.
+</Tip>
+
+## Dateigrößen-Limits
+
+Für jeden Bucket kann eine maximale Dateigröße konfiguriert werden. Dieses Limit steuert die größte Datei, die eine Nutzerin in einem einzigen Upload in diesen Bucket hochladen kann. Das Limit wird im Cloud-Tab angezeigt und automatisch durchgesetzt — Uploads, die es überschreiten, werden abgelehnt, bevor Daten gespeichert werden.
+
+Wenn deine App ein höheres oder niedrigeres Dateigrößen-Limit für einen bestimmten Bucket benötigt, beschreibe die Anforderung im Projekt-Chat von Genie, und es passt die Bucket-Konfiguration an.

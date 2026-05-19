@@ -19,76 +19,160 @@
     "options": ["copy", "view", "assistant", "mcp", "add-mcp"]
   },
   "navigation": {
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Home",
-          "icon": "house",
-          "href": "/"
-        },
-        {
-          "anchor": "Community",
-          "icon": "users",
-          "href": "https://genie-app.de/community"
-        },
-        {
-          "anchor": "Pricing",
-          "icon": "credit-card",
-          "href": "https://genie-app.de/pricing"
-        }
-      ]
-    },
-    "tabs": [
+    "languages": [
       {
-        "tab": "Documentation",
-        "groups": [
+        "language": "en",
+        "default": true,
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Home",
+              "icon": "house",
+              "href": "/"
+            },
+            {
+              "anchor": "Community",
+              "icon": "users",
+              "href": "https://genie-app.de/community"
+            },
+            {
+              "anchor": "Pricing",
+              "icon": "credit-card",
+              "href": "https://genie-app.de/pricing"
+            }
+          ]
+        },
+        "tabs": [
           {
-            "group": "Get Started",
-            "icon": "rocket",
-            "expanded": true,
-            "pages": [
-              "introduction",
-              "quickstart",
-              "templates"
+            "tab": "Documentation",
+            "groups": [
+              {
+                "group": "Get Started",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "introduction",
+                  "quickstart",
+                  "templates"
+                ]
+              },
+              {
+                "group": "Projects",
+                "icon": "folder",
+                "pages": [
+                  "projects/overview",
+                  "projects/import-design",
+                  "projects/settings",
+                  "projects/secrets",
+                  "projects/visibility"
+                ]
+              },
+              {
+                "group": "Workspaces",
+                "icon": "building-2",
+                "pages": [
+                  "workspaces/overview",
+                  "workspaces/members",
+                  "workspaces/integrations"
+                ]
+              },
+              {
+                "group": "Genie Cloud",
+                "icon": "cloud",
+                "pages": [
+                  "cloud/overview",
+                  "cloud/database",
+                  "cloud/storage",
+                  "cloud/auth"
+                ]
+              },
+              {
+                "group": "Billing & Plans",
+                "icon": "credit-card",
+                "pages": [
+                  "billing/plans",
+                  "billing/credits",
+                  "billing/topups"
+                ]
+              }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "language": "de",
+        "global": {
+          "anchors": [
+            {
+              "anchor": "Startseite",
+              "icon": "house",
+              "href": "/de"
+            },
+            {
+              "anchor": "Community",
+              "icon": "users",
+              "href": "https://genie-app.de/community"
+            },
+            {
+              "anchor": "Preise",
+              "icon": "credit-card",
+              "href": "https://genie-app.de/pricing"
+            }
+          ]
+        },
+        "tabs": [
           {
-            "group": "Projects",
-            "icon": "folder",
-            "pages": [
-              "projects/overview",
-              "projects/import-design",
-              "projects/settings",
-              "projects/secrets",
-              "projects/visibility"
-            ]
-          },
-          {
-            "group": "Workspaces",
-            "icon": "building-2",
-            "pages": [
-              "workspaces/overview",
-              "workspaces/members",
-              "workspaces/integrations"
-            ]
-          },
-          {
-            "group": "Genie Cloud",
-            "icon": "cloud",
-            "pages": [
-              "cloud/overview",
-              "cloud/database",
-              "cloud/storage",
-              "cloud/auth"
-            ]
-          },
-          {
-            "group": "Billing & Plans",
-            "icon": "credit-card",
-            "pages": [
-              "billing/plans",
-              "billing/credits",
-              "billing/topups"
+            "tab": "Dokumentation",
+            "groups": [
+              {
+                "group": "Loslegen",
+                "icon": "rocket",
+                "expanded": true,
+                "pages": [
+                  "de/introduction",
+                  "de/quickstart",
+                  "de/templates"
+                ]
+              },
+              {
+                "group": "Projekte",
+                "icon": "folder",
+                "pages": [
+                  "de/projects/overview",
+                  "de/projects/import-design",
+                  "de/projects/settings",
+                  "de/projects/secrets",
+                  "de/projects/visibility"
+                ]
+              },
+              {
+                "group": "Workspaces",
+                "icon": "building-2",
+                "pages": [
+                  "de/workspaces/overview",
+                  "de/workspaces/members",
+                  "de/workspaces/integrations"
+                ]
+              },
+              {
+                "group": "Genie Cloud",
+                "icon": "cloud",
+                "pages": [
+                  "de/cloud/overview",
+                  "de/cloud/database",
+                  "de/cloud/storage",
+                  "de/cloud/auth"
+                ]
+              },
+              {
+                "group": "Abrechnung & Tarife",
+                "icon": "credit-card",
+                "pages": [
+                  "de/billing/plans",
+                  "de/billing/credits",
+                  "de/billing/topups"
+                ]
+              }
             ]
           }
         ]

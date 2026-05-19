@@ -1,0 +1,73 @@
+---
+title: "Ein Claude-Design als Ausgangspunkt importieren"
+description: "Lade eine HTML-Datei hoch, die du aus einem Claude-Design exportiert hast, und Genie macht daraus ein funktionierendes Projekt, das du mit Folgeprompts verfeinern kannst."
+---
+
+Wenn du bereits eine UI in Claude skizziert hast — zum Beispiel als Design-Artefakt oder einmaligen HTML-Prototyp — musst du sie nicht in Genie neu aufbauen. Der Modus **Aus Claude-Design importieren** verwendet diese HTML-Datei als Quelle der Wahrheit und macht daraus ein echtes Genie-Projekt mit Chat-Verlauf und Live-Vorschau.
+
+Das ist der schnellste Weg, von einem statischen Prototyp zu etwas zu kommen, an dem du iterieren, das du teilen und an ein echtes Backend anbinden kannst.
+
+## Wann du dies verwendest
+
+Nutze den Design-Import, wenn du bereits eine funktionierende HTML-Datei hast und Genie ab dort übernehmen soll. Häufige Fälle:
+
+- Du hast eine Seite in einem Claude-Artefakt entworfen und möchtest darauf aufbauen.
+- Eine Teamkollegin hat dir einen HTML-Prototyp geschickt, und du möchtest daraus eine echte, teilbare App machen.
+- Du möchtest mit einem bestimmten Layout starten, statt es in einem Prompt zu beschreiben.
+
+Wenn du von einer leeren Idee aus startest, ist der reguläre Prompt-Eingang oder eine [Vorlage](/de/templates) meist schneller.
+
+## Ein Design importieren
+
+<Steps>
+  <Step title="Den Prompt-Umschalter öffnen">
+    Klicke auf dem Genie-Startbildschirm auf den Modusumschalter über dem Prompt-Feld, bis dort **Aus Claude-Design importieren** steht. Die Eingabe wird zu einer Drop-Zone.
+  </Step>
+
+  <Step title="Deine HTML-Datei hinzufügen">
+    Ziehe eine `.html`- (oder `.htm`-)Datei auf die Drop-Zone oder klicke darauf, um eine Datei von deinem Computer auszuwählen.
+
+    <Note>
+      Dateien müssen HTML sein und **2 MB oder kleiner**. Wenn eine Datei zu groß oder im falschen Format ist, teilt Genie dir das sofort mit, sodass nichts hochgeladen wird.
+    </Note>
+  </Step>
+
+  <Step title="Das Design importieren">
+    Klicke auf **Design importieren**. Genie lädt die Datei hoch, analysiert ihre Struktur und erstellt ein neues Projekt, das das HTML als Ausgangspunkt verwendet. Sobald es bereit ist, landest du in der Projektansicht mit dem importierten Design in der Live-Vorschau.
+  </Step>
+
+  <Step title="Mit Folgeprompts verfeinern">
+    Ab hier verhält sich das Projekt wie jedes andere Genie-Projekt. Tippe Folgeprompts im Chat-Panel, um Layout anzupassen, Daten anzubinden, Texte zu ändern oder neue Bereiche hinzuzufügen.
+  </Step>
+</Steps>
+
+## Was Genie mit deiner Datei macht
+
+Genie behandelt das importierte HTML als kanonische Version deines Designs — nicht als grobe Beschreibung zum Umschreiben. Das bedeutet:
+
+- Layout, Struktur und visueller Stil bleiben dem entsprechen, was du hochgeladen hast.
+- Bundler-Manifeste, Inline-Skripte, die nur für Claudes Vorschau existierten, und andere Build-Artefakte werden vor der Analyse entfernt.
+- Nur die sinnvolle Template-Nutzlast bleibt erhalten, sodass Folgeprompts gegen einen sauberen Ausgangspunkt arbeiten.
+
+Sobald das Projekt erstellt ist, kannst du jede andere Genie-Funktion darauf anwenden — [Secrets](/de/projects/secrets), eine [Genie-Cloud-Datenbank](/de/cloud/database), [eigene Domains](/de/projects/visibility) und mehr.
+
+<Tip>
+  Möchtest du die importierte App sofort teilen? Sie funktioniert genau wie ein von Grund auf gebautes Projekt. Siehe [App veröffentlichen und teilen](/de/projects/visibility) für die verfügbaren Sichtbarkeitsoptionen.
+</Tip>
+
+## Nächste Schritte
+
+<CardGroup cols={2}>
+  <Card title="Projektübersicht" icon="folder" href="/de/projects/overview">
+    Erfahre, wie das Chat-Panel und die Live-Vorschau zusammenarbeiten.
+  </Card>
+  <Card title="Vorlagen" icon="layout-template" href="/de/templates">
+    Lieber mit einem kuratierten Layout starten? Stöbere durch die Vorlagengalerie.
+  </Card>
+  <Card title="Datenbank anbinden" icon="database" href="/de/cloud/database">
+    Füge deinem importierten Design ein echtes Backend hinzu.
+  </Card>
+  <Card title="App veröffentlichen" icon="globe" href="/de/projects/visibility">
+    Teile dein Projekt mit einem Link oder einer eigenen Domain.
+  </Card>
+</CardGroup>

@@ -1,0 +1,115 @@
+---
+title: "Projekteinstellungen: Name, Beschreibung und Sichtbarkeit"
+description: "Konfiguriere den Anzeigenamen, die Beschreibung, die öffentliche oder private Sichtbarkeit deines Projekts und ob andere Nutzer:innen es remixen können."
+---
+
+Die Projekteinstellungen geben dir Kontrolle darüber, wie deine App identifiziert wird und wer darauf zugreifen kann. Du kannst sie jederzeit aktualisieren, ohne die laufende App zu beeinträchtigen. Um die Einstellungen zu öffnen, klicke in der Projektansicht auf den Button **Einstellungen** — der Einstellungsdialog öffnet sich mit einer Tab-Seitenleiste links und dem Inhalt des aktiven Tabs rechts.
+
+## Projekteinstellungen öffnen
+
+<Steps>
+  <Step title="Öffne dein Projekt">
+    Navigiere zu dem Projekt, das du konfigurieren möchtest.
+  </Step>
+  <Step title="Klicke auf Einstellungen">
+    Klicke in der Projektansicht auf den Button **Einstellungen** (Zahnradsymbol). Der Projekteinstellungs-Dialog öffnet sich.
+  </Step>
+  <Step title="Wähle den Tab Allgemein">
+    Der Dialog öffnet sich standardmäßig im Tab **Allgemein**. Hier findest du die Einstellungen für Name, Beschreibung, Sichtbarkeit und Remixable.
+  </Step>
+</Steps>
+
+## Allgemeine Einstellungen
+
+Der Tab **Allgemein** enthält vier Felder. Klicke nach Änderungen auf **Speichern**, um sie anzuwenden. Klicke auf **Abbrechen**, um Änderungen zu verwerfen.
+
+### Name
+
+Das Feld **Name** legt den Anzeigenamen deines Projekts fest. Dieser Name erscheint in deiner Projektliste, im Browser-Tab, wenn jemand das Projekt öffnet, und im für SEO generierten Seitentitel.
+
+- Wähle einen Namen, der beschreibt, was deine App tut, nicht nur was sie ist (zum Beispiel „Team Task Tracker" statt „Meine App").
+- Du kannst ein Projekt jederzeit umbenennen, ohne die URL oder andere Einstellungen zu beeinträchtigen.
+
+### Beschreibung
+
+Das Feld **Beschreibung** ist ein Freitextbereich, in dem du eine kurze Zusammenfassung deiner App schreiben kannst. Die Beschreibung wird an mehreren Stellen verwendet:
+
+- Sie füllt die **SEO-Beschreibung** im SEO-Einstellungs-Tab vor, die Suchmaschinen zur Indexierung der öffentlichen Projekt-URL nutzen.
+- Sie gibt allen Kontext, die dein Projekt in der öffentlichen Galerie finden (wenn dein Projekt öffentlich ist).
+
+<Tip>
+  Schreibe die Beschreibung aus der Perspektive von jemandem, der deine App zum ersten Mal entdeckt. Ein oder zwei Sätze, die erklären, was die App tut und für wen sie gedacht ist, reichen meist.
+</Tip>
+
+### Sichtbarkeit
+
+Der Schalter **Sichtbarkeit** steuert, ob dein Projekt **öffentlich** oder **privat** ist.
+
+| Zustand | Was er bedeutet |
+|---|---|
+| **Öffentlich** (Schalter an) | Jeder mit dem Link kann deine Live-App ansehen. Das Projekt kann auch in öffentlichen Listings erscheinen. |
+| **Privat** (Schalter aus) | Nur du kannst auf das Projekt zugreifen. Besucher, die den Link öffnen, können es nicht ansehen. |
+
+<Note>
+  Eine Änderung der Sichtbarkeit wird sofort nach dem Speichern wirksam. Wenn du ein zuvor öffentliches Projekt auf privat schaltest, funktionieren bestehende Links für andere Nutzer sofort nicht mehr.
+</Note>
+
+Es gibt keinen separaten „unlisted"-Status — ein Projekt ist entweder vollständig öffentlich oder vollständig privat.
+
+### Remixable
+
+Der Schalter **Remixable** steuert, ob andere angemeldete Nutzer:innen eine eigene Kopie deines Projekts mit dem **Remix**-Button erstellen können.
+
+| Zustand | Was er bedeutet |
+|---|---|
+| **Remixable** (Schalter an) | Auf deinem öffentlichen Projekt erscheint ein **Remix**-Button. Wer darauf klickt, erhält eine Kopie deines Projekts in seinem eigenen Konto. |
+| **Remixable aus** (Standard) | Anderen Nutzer:innen wird keine Remix-Option angezeigt. Dein Projektcode kann nicht von anderen geforkt werden. |
+
+<Warning>
+  Remixen ist nur bei öffentlichen Projekten verfügbar. Wenn du **Remixable** bei einem privaten Projekt aktivierst, hat das keinen sichtbaren Effekt, bis das Projekt auch öffentlich gemacht wird.
+</Warning>
+
+Wenn jemand dein Projekt remixt, ist die Kopie ein vollständig unabhängiges Projekt — Änderungen, die diese Person macht, beeinflussen dein Original nicht. Genie verfolgt die Herkunft, indem die ID des Quellprojekts in der remixten Kopie hinterlegt wird.
+
+## Tabs des Einstellungsdialogs
+
+Der Einstellungsdialog enthält weitere Tabs neben Allgemein. Hier eine Zusammenfassung, was jeder Tab abdeckt:
+
+<AccordionGroup>
+  <Accordion title="Allgemein">
+    Name, Beschreibung, Sichtbarkeit (öffentlich/privat) und Remixable-Schalter. Wird auf dieser Seite behandelt.
+  </Accordion>
+  <Accordion title="SEO">
+    Titel, Beschreibung, kanonische URL, Open-Graph-Bild und noIndex-Flag für Suchmaschinenoptimierung.
+  </Accordion>
+  <Accordion title="Authentifizierung">
+    Aktiviere oder deaktiviere Login-Anbieter (zum Beispiel E-Mail/Passwort, Social Login) für die Nutzer:innen deiner App.
+  </Accordion>
+  <Accordion title="Cloud">
+    Verbinde und verwalte Genie Cloud — das gehostete Backend, das Datenbank, Auth und Storage deiner App liefert.
+  </Accordion>
+  <Accordion title="Daten">
+    Durchsuche und verwalte die Datenbanktabellen deiner verbundenen Genie-Cloud-Instanz.
+  </Accordion>
+  <Accordion title="Storage">
+    Verwalte die Datei-Storage-Buckets, die über Genie Cloud an dein Projekt angebunden sind.
+  </Accordion>
+  <Accordion title="Nutzer">
+    Sieh dir die Endnutzer:innen an, die sich für deine App registriert haben (erfordert Genie Cloud).
+  </Accordion>
+  <Accordion title="Rollen">
+    Definiere und vergebe Rollen, die steuern, worauf die Nutzer:innen deiner App zugreifen können (erfordert Genie Cloud).
+  </Accordion>
+  <Accordion title="Onboarding">
+    Konfiguriere die Onboarding-Abläufe deiner App (erfordert Genie Cloud).
+  </Accordion>
+  <Accordion title="Edge Functions">
+    Sieh dir die mit deinem Projekt über Genie Cloud bereitgestellten Edge Functions an.
+  </Accordion>
+  <Accordion title="Secrets">
+    Füge verschlüsselte Umgebungsvariablen hinzu, bearbeite oder lösche sie, die deiner laufenden App zur Verfügung stehen. Siehe [API-Schlüssel und Secrets speichern](/de/projects/secrets).
+  </Accordion>
+  <Accordion title="Danger">
+    Unwiderrufliche Aktionen wie das Löschen des Projekts.
+  </Accordion>
+</AccordionGroup>

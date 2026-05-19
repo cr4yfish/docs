@@ -1,0 +1,82 @@
+---
+title: "Genie Cloud: eingebautes Backend für jede App"
+description: "Genie Cloud bietet deiner App eine verwaltete Datenbank, Dateispeicher, Nutzer-Authentifizierung und Edge Functions — alles automatisch eingerichtet, wenn du es aktivierst."
+---
+
+Jede App, die du mit Genie baust, braucht einen Ort, um Daten zu speichern, Anmeldungen zu verwalten und serverseitige Logik auszuführen. Genie Cloud ist das gehostete Backend, das all das ohne Einrichtung deinerseits bietet. Wenn du es für ein Projekt aktivierst, stellt Genie eine dedizierte Backend-Instanz für dieses Projekt bereit und verdrahtet sie automatisch mit der App.
+
+## Was Genie Cloud enthält
+
+<CardGroup cols={2}>
+  <Card title="Datenbank" icon="table">
+    Eine vollständig verwaltete relationale Datenbank. Genie AI erstellt und aktualisiert Tabellen, während deine App wächst. Du musst nie eine Abfrage schreiben oder eine Datenbankkonfiguration anfassen.
+  </Card>
+  <Card title="Nutzer-Authentifizierung" icon="users">
+    Sign-up- und Sign-in-Flows für die Besucher:innen deiner App. Unterstützt E-Mail, anonyme Sitzungen und OAuth-Anbieter wie Google.
+  </Card>
+  <Card title="Dateispeicher" icon="hard-drive">
+    Buckets für Bilder, Anhänge und alle anderen Dateien, die deine App speichern muss. Buckets können öffentlich oder privat sein.
+  </Card>
+  <Card title="Edge Functions" icon="workflow">
+    Serverseitige Logik, die nah an deinen Nutzer:innen ausgeführt wird. Genie AI schreibt und stellt diese bereit, wenn deine App Backend-Verarbeitung benötigt.
+  </Card>
+</CardGroup>
+
+Genie Cloud enthält außerdem **automatische Backups** und Nutzungs-Tracking, sodass deine Daten immer geschützt sind und du das Wachstum deiner App beobachten kannst.
+
+## Genie Cloud aktivieren
+
+Genie Cloud ist in allen bezahlten Tarifen verfügbar. Wenn dein Projekt es noch nicht aktiviert hat, siehst du im Cloud-Tab einen **Genie Cloud aktivieren**-Button.
+
+<Steps>
+  <Step title="Projekteinstellungen öffnen">
+    Öffne in deinem Projekt **Einstellungen** und navigiere zum Tab **Cloud**.
+  </Step>
+  <Step title="Genie Cloud aktivieren">
+    Klicke auf **Genie Cloud aktivieren**. Genie beginnt mit dem Bereitstellen deiner Backend-Instanz. Das Status-Badge wechselt während dieses Vorgangs zu **provisioning** — das ist normalerweise in wenigen Minuten erledigt.
+  </Step>
+  <Step title="Auf Aktivierung warten">
+    Sobald die Bereitstellung abgeschlossen ist, wechselt das Status-Badge zu **active** und alle Ressourcen werden im Cloud-Tab sichtbar.
+  </Step>
+</Steps>
+
+<Note>
+  Genie Cloud ist in allen bezahlten Tarifen enthalten. Wenn du im kostenlosen Tarif bist, wird durch ein Upgrade der Button **Genie Cloud aktivieren** freigeschaltet.
+</Note>
+
+## Was der Cloud-Tab zeigt
+
+Sobald Genie Cloud aktiv ist, gibt dir der Tab **Cloud** eine Live-Übersicht über das Backend deines Projekts.
+
+### Status- und Tarif-Zusammenfassung
+
+Oben im Tab siehst du sechs Übersichtskarten:
+
+| Karte | Was sie zeigt |
+|---|---|
+| **Status** | Aktueller Zustand deiner Cloud-Instanz: `active`, `provisioning`, `deprovisioning`, `suspended` oder `deleted` |
+| **Tarif** | Die Tarifstufe, auf der deine Cloud-Instanz läuft |
+| **Tabellen** | Gesamtzahl der Datenbanktabellen, die Genie für dieses Projekt erstellt hat |
+| **Edge Functions** | Gesamtzahl der bereitgestellten Edge Functions |
+| **Auth-Nutzer** | Gesamtzahl registrierter und anonymer Nutzer:innen |
+| **Storage-Buckets** | Gesamtzahl der Datei-Storage-Buckets |
+
+### Instanz-Übersicht
+
+Unter den Übersichtskarten zeigt der Abschnitt **Instanz-Übersicht** die Verbindungsdetails deines Projekts: die Projekt-URL, die Projekt-Referenz-ID, die Region sowie die Zeitstempel, wann die Instanz erstellt und zuletzt aktualisiert wurde.
+
+### Verbindungsschlüssel
+
+Der Abschnitt **Verbindungsschlüssel** zeigt, ob jede Zugangsdaten konfiguriert ist — Anon-Schlüssel, Service-Schlüssel und Datenbankpasswort zeigen jeweils ein Badge **Konfiguriert** oder **Fehlt**. Die tatsächlichen Geheimwerte bleiben aus Sicherheitsgründen maskiert.
+
+### Erkannte Ressourcen
+
+Weiter unten listet der Abschnitt **Erkannte Ressourcen** bis zu acht Einträge aus jeder Kategorie auf: Datenbanktabellen, Edge Functions, Auth-Nutzer und Storage-Buckets. Wenn dein Projekt in einer Kategorie mehr als acht hat, zeigt ein Hinweis am Ende, wie viele weitere existieren.
+
+## Erweiterte Optionen
+
+Am Ende des Cloud-Tabs enthält der Bereich **Erweitert** einen Button **Bootstrap erneut ausführen**. Verwende ihn, um deine Genie-Cloud-Konfiguration nach Änderungen der Onboarding- oder Private-Mode-Einstellungen neu zu synchronisieren oder ein bestehendes Projekt auf die neueste Genie-Cloud-Version zu aktualisieren. Das Bootstrap kann jederzeit gefahrlos ausgeführt werden — es löscht keine Daten.
+
+<Tip>
+  Wenn du deinen Onboarding-Flow oder die Private-Mode-Einstellungen im Tab **Onboarding** änderst, klicke danach auf **Bootstrap erneut ausführen**, um diese Änderungen auf deine Live-Cloud-Instanz anzuwenden.
+</Tip>
