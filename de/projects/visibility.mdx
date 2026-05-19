@@ -1,0 +1,116 @@
+---
+title: "Deine Genie-App veröffentlichen und teilen"
+description: "Steuere, wer auf dein Projekt zugreifen kann, hole dir einen teilbaren Link, erlaube anderen das Remixen deiner Arbeit und verbinde eine eigene Domain mit deiner Live-App."
+---
+
+Wenn du bereit bist, deine App mit der Welt — oder auch nur mit einer Kollegin — zu teilen, gibt Genie dir mehrere Werkzeuge, um Zugriff und Verbreitung zu steuern. Du kannst dein Projekt öffentlich machen, einen teilbaren Link holen, anderen das Forken über die Remix-Funktion erlauben und eine eigene Domain verbinden, sodass deine App unter deiner eigenen URL läuft.
+
+## Öffentlich vs. privat
+
+Jedes Projekt in Genie hat eine **Sichtbarkeits**-Einstellung, die entweder **öffentlich** oder **privat** ist. Du steuerst das mit dem Schalter **Sichtbarkeit** unter **Einstellungen > Allgemein**.
+
+<Tabs>
+  <Tab title="Öffentlich">
+    Ein öffentliches Projekt ist für jeden mit dem Link zugänglich — kein Genie-Konto erforderlich, um die Live-App anzusehen. Öffentliche Projekte können auch in Community-Listings auf Genie erscheinen.
+
+    **Wann verwenden:** wenn du deine App mit Kunden, Mitarbeiter:innen oder der Öffentlichkeit teilen möchtest.
+  </Tab>
+  <Tab title="Privat">
+    Ein privates Projekt ist nur für dich (die Eigentümerin) zugänglich. Andere, die zur Projekt-URL navigieren, können es nicht ansehen.
+
+    **Wann verwenden:** während du baust und testest, oder für interne Tools, die du nicht öffentlich zugänglich haben möchtest.
+  </Tab>
+</Tabs>
+
+<Note>
+  Eine Änderung der Sichtbarkeit wird sofort nach dem Klick auf **Speichern** in den Projekteinstellungen wirksam. Es gibt keine Verzögerung und keinen erneuten Deployment-Schritt.
+</Note>
+
+Es gibt keinen separaten „unlisted"-Status — ein Projekt ist entweder vollständig öffentlich oder vollständig privat. Der Schalter unter **Einstellungen > Allgemein** ist die einzige Steuerung, die du brauchst.
+
+## Einen teilbaren Link holen
+
+Jedes Projekt hat eine dauerhafte URL, die du an jeden senden kannst. Du findest diese URL unter **Einstellungen > Allgemein** oder kannst sie direkt aus der Adressleiste deines Browsers kopieren, wenn du die Live-App ansiehst.
+
+<Steps>
+  <Step title="Mache das Projekt öffentlich">
+    Aktiviere unter **Einstellungen > Allgemein** den Schalter **Sichtbarkeit** und klicke auf **Speichern**.
+  </Step>
+  <Step title="Kopiere die URL">
+    Kopiere die Projekt-URL aus der Adressleiste deines Browsers oder aus der unter **Einstellungen > Allgemein** angezeigten URL.
+  </Step>
+  <Step title="Teile sie">
+    Füge die URL in eine E-Mail, eine Chat-Nachricht oder anderswo ein. Empfänger:innen können die Live-App sofort öffnen.
+  </Step>
+</Steps>
+
+## Remixbare Projekte
+
+Wenn du dein Projekt **remixbar** machst, können andere Genie-Nutzer:innen mit einem einzigen Klick eine eigene unabhängige Kopie deiner App erstellen. Das ähnelt dem „Forken" in der Versionskontrolle — wer remixt, erhält eine vollständige Kopie, die er anpassen kann, ohne dein Original zu beeinflussen.
+
+### Remixen aktivieren
+
+<Steps>
+  <Step title="Einstellungen öffnen">
+    Klicke in der Projektansicht auf **Einstellungen**, um den Projekteinstellungs-Dialog zu öffnen.
+  </Step>
+  <Step title="Zum Tab Allgemein wechseln">
+    Der Tab **Allgemein** ist standardmäßig ausgewählt.
+  </Step>
+  <Step title="Remixable einschalten">
+    Aktiviere den Schalter **Remixable**.
+  </Step>
+  <Step title="Speichern">
+    Klicke auf **Speichern**. Ein **Remix**-Button erscheint nun für andere angemeldete Nutzer:innen auf deinem Projekt.
+  </Step>
+</Steps>
+
+### Was passiert, wenn jemand remixt
+
+Wenn eine angemeldete Person auf **Remix** in deinem Projekt klickt:
+
+1. Genie erstellt ein neues Projekt in ihrem Konto.
+2. Das neue Projekt ist eine vollständige Kopie deiner generierten App zum Zeitpunkt des Remixens.
+3. Genie hinterlegt, dass das neue Projekt aus deinem remixt wurde (intern für die Attribution verfolgt).
+4. Die Person wird zu ihrem neuen Projekt weitergeleitet, wo sie Genie um weitere Änderungen bitten kann.
+
+Änderungen, die diese Person an ihrer remixten Kopie vornimmt, haben keinen Einfluss auf dein Originalprojekt.
+
+<Note>
+  Remixen erfordert, dass die Person bei Genie angemeldet ist. Klickt ein nicht authentifizierter Besucher auf **Remix**, wird er zur Login-Seite weitergeleitet und danach zurückgebracht, um den Remix nach der Anmeldung abzuschließen.
+</Note>
+
+<Warning>
+  Der Schalter **Remixable** hat nur eine sichtbare Wirkung, wenn das Projekt auch **öffentlich** ist. Wenn dein Projekt privat ist, wird der Remix-Button nicht angezeigt, selbst wenn Remixable aktiviert ist.
+</Warning>
+
+## Eigene Domains
+
+Du kannst eine eigene Domain mit deinem Projekt verbinden, sodass deine App unter einer URL erreichbar ist, die dir gehört — zum Beispiel `app.deinunternehmen.de` — statt der Standard-`genie-app.de`-Subdomain.
+
+Die Konfiguration eigener Domains wird über **Genie Cloud** verwaltet. Dein Projekt muss mit Genie Cloud verbunden sein, bevor du eine eigene Domain anhängen kannst.
+
+<Steps>
+  <Step title="Genie Cloud verbinden">
+    Falls noch nicht geschehen, öffne **Einstellungen > Cloud** und verbinde Genie Cloud mit deinem Projekt. Siehe [Genie Cloud Übersicht](/de/cloud/overview) für Anweisungen.
+  </Step>
+  <Step title="Domain hinzufügen">
+    Navigiere in deinem Genie-Cloud-Dashboard zu den Domain-Einstellungen deines Projekts und gib die eigene Domain ein, die du verwenden möchtest.
+  </Step>
+  <Step title="DNS aktualisieren">
+    Folge den DNS-Anweisungen von Genie Cloud. Üblicherweise musst du einen CNAME-Eintrag hinzufügen, der deine Domain auf den von Genie Cloud bereitgestellten Hostnamen zeigt.
+  </Step>
+  <Step title="Auf Propagierung warten">
+    DNS-Änderungen können einige Minuten bis mehrere Stunden brauchen, bis sie weltweit wirksam sind. Sobald propagiert, ist deine App unter deiner eigenen Domain erreichbar.
+  </Step>
+</Steps>
+
+Sobald deine eigene Domain aktiv ist, werden Besucher, die zur Genie-URL gehen, automatisch weitergeleitet, sodass du beide Adressen ohne Probleme teilen kannst.
+
+## Zusammenfassung der Teiloptionen
+
+| Option | Benötigt öffentliches Projekt | Benötigt Genie Cloud | Wer kann zugreifen |
+|---|---|---|---|
+| Standard-Projekt-URL | Ja | Nein | Jeder mit dem Link |
+| Remixen | Ja + Remixable aktiviert | Nein | Angemeldete Genie-Nutzer:innen |
+| Eigene Domain | Ja | Ja | Jeder mit der Domain |

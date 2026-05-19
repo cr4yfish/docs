@@ -1,0 +1,38 @@
+---
+title: "Die Datenbank deiner App in Genie Cloud verwalten"
+description: "Erfahre, wie Genie AI die Datenbanktabellen deiner App automatisch erstellt und aktualisiert und wie du deine Tabellen und Daten im Cloud-Tab inspizierst."
+---
+
+Wenn du beschreibst, was deine App tun soll, ermittelt Genie AI, welche Daten sie speichern muss, und erstellt die passenden Datenbanktabellen automatisch. Du musst kein Schema entwerfen, kein SQL schreiben und keine Datenbankkonzepte verstehen — Genie kümmert sich um all das als Teil des App-Baus.
+
+## Wie Genie deine Tabellen erstellt
+
+Jedes Mal, wenn du Genie bittest, eine Funktion hinzuzufügen — eine Kundenliste, ein Buchungsformular, einen Inventar-Tracker — entscheidet es, ob neue Tabellen erforderlich sind, und erstellt sie in deiner Cloud-Datenbank. Wenn die Funktion in bestehende Tabellen passt, aktualisiert es diese stattdessen. Das geschieht im Hintergrund als Teil derselben Unterhaltung, in der du beschreibst, was du möchtest.
+
+<Note>
+  Tabellen werden von Genie AI erstellt und verwaltet. Du musst sie nicht manuell anlegen, ändern oder löschen. Genie um Änderungen an den Funktionen deiner App zu bitten, ist der richtige Weg, deine Datenstruktur weiterzuentwickeln.
+</Note>
+
+## Tabellen im Cloud-Tab ansehen
+
+Öffne **Einstellungen** und gehe zum Tab **Cloud**. In der Übersichtszeile oben zeigt die Karte **Tabellen** die Gesamtzahl der Tabellen, die Genie für dieses Projekt erstellt hat.
+
+Scrolle nach unten zum Abschnitt **Erkannte Ressourcen**. Das Panel **Tabellen** listet bis zu acht Tabellen deines Projekts nach Namen auf. Hat dein Projekt mehr als acht Tabellen, zeigt ein Hinweis darunter, wie viele weitere existieren.
+
+<Tip>
+  Um die tatsächlichen Zeilen in deinen Tabellen zu inspizieren, wechsle in den Projekteinstellungen zum Tab **Daten**. Er zeigt eine Live-Vorschau von bis zu 25 Datensätzen aus jeder Tabelle, die du auswählst.
+</Tip>
+
+## Wie deine App Daten liest und schreibt
+
+Deine App spricht über die Verbindung von Genie Cloud automatisch mit der Datenbank. Wenn ein Besucher ein Formular ausfüllt, eine Buchung absendet oder eine Aktion in deiner App durchführt, schreibt der generierte App-Code diese Daten in die richtige Tabelle. Wenn die App eine Liste oder ein Dashboard anzeigt, liest sie aus denselben Tabellen.
+
+Du konfigurierst keine Datenbankverbindungen und schreibst keinen Datenzugriffscode. Genie generiert all das beim Bau der App.
+
+## Was mit deinen Daten im Laufe der Zeit passiert
+
+Wenn du an deiner App iterierst und Genie bittest, Funktionen hinzuzufügen oder zu ändern, kann die KI neue Spalten zu bestehenden Tabellen hinzufügen oder zusätzliche Tabellen erstellen. Bestehende Zeilen bleiben erhalten — Genies Schemaänderungen sind additiv und entfernen keine bereits gesammelten Daten.
+
+<Warning>
+  Wenn du Genie bittest, eine Funktion zu entfernen, hört es eventuell auf, in bestimmte Tabellen zu schreiben, aber bestehende Daten in diesen Tabellen werden nicht automatisch gelöscht. Deine historischen Datensätze bleiben unverändert.
+</Warning>

@@ -1,0 +1,63 @@
+---
+title: "Nutzer-Authentifizierung in Genie Cloud"
+description: "Erfahre, wie Genie Cloud die Anmeldung und Registrierung für deine App handhabt, was anonyme Nutzer sind und wie du registrierte Nutzer im Cloud-Tab überprüfst."
+---
+
+Wenn deine App Anmeldungen benötigt — um Daten zu speichern, auf ein persönliches Dashboard zuzugreifen oder Aktionen mit einem Konto zu verknüpfen — stellt Genie Cloud die Authentifizierungsschicht automatisch bereit. Wenn Genie AI feststellt, dass deine App Nutzerkonten benötigt, richtet es Sign-up, Sign-in und Sitzungsverwaltung ein, ohne dass du etwas konfigurieren musst.
+
+## Wie die Authentifizierung bereitgestellt wird
+
+Wenn du eine Funktion beschreibst, die Nutzerkonten betrifft — „lass Kundinnen ihre Bestellungen verfolgen", „füge einen Mitgliederbereich hinzu", „speichere Einstellungen pro Nutzer:in" — aktiviert Genie AI die Authentifizierung für dein Projekt als Teil des App-Baus. Die Sign-in- und Sign-up-Bildschirme, die Sitzungsverwaltung und die Verknüpfung zwischen der Identität einer Nutzerin und ihren Daten werden alle automatisch generiert und verdrahtet.
+
+Du musst keine Auth-Bibliothek auswählen, keine Tokens verwalten und keine Login-Logik schreiben. Genie kümmert sich um all das.
+
+## Wie sich Besucher:innen deiner App anmelden
+
+Sobald die Authentifizierung eingerichtet ist, können Besucher:innen deiner App ein Konto erstellen und sich mit ihrer E-Mail-Adresse anmelden. Abhängig davon, welche OAuth-Anbieter du in den **Authentifizierungs**-Einstellungen deines Projekts aktiviert hast, können Nutzer:innen sich auch mit Google anmelden.
+
+<Steps>
+  <Step title="Besucherin erreicht deine App">
+    Wenn eine Besucherin einen Teil deiner App erreicht, der ein Konto erfordert, wird sie zum Sign-in- oder Sign-up-Bildschirm geleitet, den Genie generiert hat.
+  </Step>
+  <Step title="Sie erstellt ein Konto oder meldet sich an">
+    Neue Besucher:innen registrieren sich mit ihrer E-Mail-Adresse. Wiederkehrende Besucher:innen melden sich genauso an. Wenn du Google-Anmeldung im Tab **Authentifizierung** aktiviert hast, erscheint diese Option ebenfalls.
+  </Step>
+  <Step title="Genie Cloud erstellt eine Sitzung">
+    Nach einer erfolgreichen Anmeldung erstellt Genie Cloud eine sichere Sitzung für die Nutzerin. Deine App verwendet diese Sitzung, um die richtigen Daten für diese Person während ihres Besuchs anzuzeigen.
+  </Step>
+</Steps>
+
+## Anonyme Nutzer
+
+Nicht jede Besucherin, die mit deiner App interagiert, muss ein Konto erstellen. Genie Cloud kann auch **anonyme Nutzer** verfolgen — Besucher:innen, die eine temporäre Sitzung haben, sich aber nicht mit einer E-Mail-Adresse registriert haben.
+
+Ein anonymer Nutzer-Eintrag wird automatisch erstellt, wenn deine App etwas für eine Besucherin über Seiten oder Sitzungen hinweg speichern muss, bevor sie sich registriert. Das ist nützlich für Funktionen wie einen Warenkorb, einen Fortschritts-Tracker oder ein Quiz, das vor der Anmeldung funktioniert.
+
+Im Cloud-Tab werden anonyme Nutzer mit einem **Anonym**-Badge angezeigt, während Nutzer:innen, die sich mit E-Mail oder Telefonnummer registriert haben, ein **Nutzer**-Badge erhalten.
+
+<Note>
+  Anonyme Nutzer sind echte Einträge in deinem Auth-System. Sie verbrauchen Speicher und zählen zu deiner Auth-Nutzer-Gesamtzahl, haben aber keine E-Mail oder Telefonnummer hinterlegt. Wenn eine Besucherin sich später registriert, kann ihre anonyme Sitzung mit ihrem neuen Konto verknüpft werden.
+</Note>
+
+## Auth-Nutzer im Cloud-Tab ansehen
+
+Öffne **Einstellungen** und gehe zum Tab **Cloud**. Die Karte **Auth-Nutzer** in der Übersichtszeile zeigt die Gesamtzahl der Nutzer:innen, die eine Sitzung in deinem Projekt haben — sowohl registriert als auch anonym.
+
+Scrolle nach unten zum Abschnitt **Erkannte Ressourcen**. Das Panel **Auth-Nutzer** listet bis zu acht Nutzer:innen auf, wobei jede:r Folgendes zeigt:
+
+- **E-Mail oder Telefon** — die Kontaktangabe, mit der die Nutzerin sich registriert hat, oder ein Hinweis, dass für anonyme Nutzer:innen keine Kontaktdaten vorliegen
+- **Nutzer-ID** — die eindeutige interne Kennung für das Konto der Nutzerin
+- **Letzte Anmeldung** — wann die Nutzerin sich zuletzt angemeldet hat, oder ein Hinweis, wenn sie sich noch nie vollständig angemeldet hat
+- **Anonym oder Nutzer** — ein Badge, das angibt, ob die Nutzerin anonym ist oder eine verifizierte Identität hat
+
+Hat dein Projekt mehr als acht Nutzer:innen, zeigt ein Hinweis am Ende des Panels, wie viele weitere existieren.
+
+<Tip>
+  Für einen umfassenderen Blick auf deine Nutzer:innen — einschließlich der Möglichkeit, Rollen zuzuweisen, ausstehende Nutzer:innen in Private-Mode-Apps freizugeben und die Gesamtzahlen nach Typ aufzuschlüsseln — öffne den Tab **Nutzer** in den Projekteinstellungen.
+</Tip>
+
+## Nutzerrollen und Zugriffssteuerung
+
+Genie Cloud unterstützt ein Rollen-System, mit dem du steuern kannst, was verschiedene Nutzer:innen in deiner App tun können. Rollen wie **admin**, **moderator** und **member** können einzelnen Nutzer:innen im Tab **Nutzer** zugewiesen werden. Genie AI kann diese Rollen beim Generieren deiner App verwenden, um Funktionen je nach angemeldeter Person ein- oder auszublenden.
+
+Wenn du deine App so einschränken möchtest, dass nur genehmigte Nutzer:innen Zugriff haben, aktiviere den **Private Mode** im Tab **Onboarding**. Im Private Mode wird jede neue Anmeldung in einem ausstehenden Zustand gehalten, bis ein Admin sie im Tab Nutzer genehmigt.

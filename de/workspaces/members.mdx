@@ -1,0 +1,101 @@
+---
+title: "Workspace-Mitglieder einladen und verwalten"
+description: "Füge Teamkolleg:innen über einen Einladungslink oder per E-Mail zu deinem Workspace hinzu, weise ihnen die richtige Rolle zu, ändere Rollen später und entferne Mitglieder bei Bedarf."
+---
+
+Jeder Workspace hat eine Mitgliederliste, die festlegt, wer auf Projekte zugreifen kann und was er tun darf. Eigentümer und Admins steuern die Liste: Sie können neue Personen einladen, Rollen anpassen und Mitglieder jederzeit entfernen. Reguläre Mitglieder und Editoren können den Workspace sehen und in Projekten arbeiten, aber keine anderen Mitglieder oder Workspace-Einstellungen verwalten.
+
+<Note>
+Nur **Eigentümer** und **Admins** können die **Einstellungen** öffnen und Workspace-Mitglieder verwalten. Wenn du den **Einstellungen**-Link in der Seitenleiste nicht siehst, wende dich an die Workspace-Eigentümerin.
+</Note>
+
+## Rollen auf einen Blick
+
+Genie hat vier Workspace-Rollen. Jede Rolle erbt alle Berechtigungen der darunterliegenden Rollen.
+
+<CardGroup cols={2}>
+  <Card title="Eigentümer" icon="crown">
+    Volle Kontrolle über den Workspace. Eigentümer können alle Mitglieder verwalten — einschließlich der Beförderung anderer zu Eigentümern — jede Einstellung ändern und den Workspace löschen. Es gibt immer mindestens einen Eigentümer, und ein Eigentümer kann den Workspace nicht verlassen, ohne zuvor die Eigentümerschaft zu übertragen.
+  </Card>
+  <Card title="Admin" icon="shield">
+    Kann Mitglieder verwalten (außer andere Eigentümer), Workspace-Einstellungen umschalten, das Aktivitätsprotokoll aktivieren oder deaktivieren und MCP-Integrationen verwalten. Admins haben unabhängig von projekteigenen Zugriffsrechten immer Zugriff auf alle Projekte.
+  </Card>
+  <Card title="Mitglied" icon="user">
+    Kann neue Projekte erstellen, alle Projekte bearbeiten, auf die er Zugriff hat, und normal zusammenarbeiten. Wenn Projekt-Zugriffskontrolle aktiviert ist, müssen Mitglieder explizit von einem Admin oder Eigentümer zu einzelnen Projekten eingeladen werden.
+  </Card>
+  <Card title="Editor" icon="pencil">
+    Kann Projekte bearbeiten, zu denen er bereits eingeladen wurde, aber keine neuen Projekte erstellen. Diese Rolle eignet sich für externe Mitarbeitende oder Auftragnehmer, die an bestimmten Projekten arbeiten sollen, ohne weitergehenden Zugriff.
+  </Card>
+</CardGroup>
+
+## Personen in deinen Workspace einladen
+
+Du kannst neue Mitglieder einladen, indem du einen teilbaren Einladungslink generierst. Jeder Einladungslink trägt eine bestimmte Rolle, eine maximale Anzahl an Nutzungen und ein Ablaufdatum.
+
+<Steps>
+  <Step title="Einladungen öffnen">
+    Klicke auf der Workspace-Startseite im Fuß der Seitenleiste auf **Einstellungen** und dann auf **+ Einladen** in der Kopfzeile des Bereichs **Mitglieder & Rollen**. Das öffnet die Seite **Einladungen**.
+  </Step>
+  <Step title="Einladung konfigurieren">
+    Fülle die drei Felder unter **Neue Einladung** aus:
+
+    - **Rolle** — wähle die Rolle, die die eingeladene Person beim Annehmen erhält: Editor, Mitglied, Admin oder Eigentümer.
+    - **Max. Nutzungen** — wie viele Personen den Link nutzen können, bevor er abläuft. Standard ist 1.
+    - **Gültig (Tage)** — wie viele Tage der Link aktiv bleibt. Standard ist 7.
+  </Step>
+  <Step title="Link erstellen und kopieren">
+    Klicke auf **Einladung erstellen**. Die neue Einladung erscheint in der Liste **Bestehende Einladungen** unter dem Formular. Klicke daneben auf **Link kopieren**, um die vollständige Einladungs-URL in die Zwischenablage zu kopieren.
+  </Step>
+  <Step title="Link teilen">
+    Sende den kopierten Link an die Person, die du einladen möchtest — per E-Mail, Slack oder einem anderen Kanal. Wenn sie den Link öffnet und auf **Workspace beitreten** klickt, wird sie sofort mit der gewählten Rolle hinzugefügt.
+  </Step>
+</Steps>
+
+<Tip>
+Erstelle einen Link mit hohem **Max. Nutzungen**-Wert für offenes Team-Onboarding (zum Beispiel zum Teilen eines Workspace-Links in einem firmenweiten Slack-Kanal) und einen Link mit **Max. Nutzungen = 1** für einmalige externe Einladungen.
+</Tip>
+
+## Bestehende Mitglieder verwalten
+
+Um die Rolle eines Mitglieds anzusehen oder zu ändern, gehe in der Seitenleiste zu **Einstellungen** und finde den Bereich **Mitglieder & Rollen**.
+
+### Ein Mitglied finden
+
+Nutze die Suchleiste über der Mitgliedertabelle, um nach Name oder E-Mail-Adresse zu filtern. Du kannst auch über die Tab-Buttons nach Rolle filtern: **Alle**, **Eigentümer**, **Admin**, **Mitglied** oder **Editor**.
+
+### Die Rolle eines Mitglieds ändern
+
+<Steps>
+  <Step title="Mitglieder-Panel öffnen">
+    Klicke irgendwo auf die Zeile eines Mitglieds in der Tabelle oder klicke auf das Stift-Symbol rechts in der Zeile. Ein Seitenpanel öffnet sich und zeigt die aktuelle Rolle und das Beitrittsdatum.
+  </Step>
+  <Step title="Neue Rolle auswählen">
+    Wähle im Dropdown **Rolle ändern** eine neue Rolle. Die verfügbaren Optionen hängen von deiner eigenen Rolle ab: Nur Eigentümer können die Rolle „Eigentümer" an jemand anderen vergeben.
+  </Step>
+  <Step title="Speichern">
+    Klicke auf **Rolle speichern**. Die Änderung wird sofort wirksam.
+  </Step>
+</Steps>
+
+### Ein Mitglied entfernen
+
+<Steps>
+  <Step title="Mitglieder-Panel öffnen">
+    Klicke auf die Zeile des Mitglieds oder auf das Stift-Symbol, um sein Seitenpanel zu öffnen.
+  </Step>
+  <Step title="Entfernen">
+    Scrolle ans Ende des Panels und klicke auf **Mitglied entfernen**. Bestätige die Aktion. Das Mitglied verliert sofort den Zugriff auf den Workspace und alle Projekte.
+  </Step>
+</Steps>
+
+<Warning>
+Das Entfernen eines Mitglieds ist sofortig und kann über die UI nicht rückgängig gemacht werden. Um den Zugriff wiederherzustellen, musst du einen neuen Einladungslink senden.
+</Warning>
+
+### Einen Workspace verlassen
+
+Wenn du Mitglied, Admin oder Editor bist (aber nicht der einzige Eigentümer), kannst du einen Workspace selbst verlassen. Öffne deine eigene Zeile in der Mitgliedertabelle und klicke unten im Seitenpanel auf **Workspace verlassen**.
+
+<Warning>
+Wenn du der einzige Eigentümer eines Workspace bist, kannst du ihn nicht verlassen, bis du die Eigentümerschaft an ein anderes Mitglied überträgst.
+</Warning>

@@ -1,0 +1,123 @@
+---
+title: "MCP-Integrationen mit deinem Workspace verbinden"
+description: "Verbinde Linear, GitHub, Notion, Stripe und mehr per MCP-Server mit deinem Workspace — eine gemeinsame Verbindung, verfügbar für jedes Mitglied und jedes Projekt."
+---
+
+Genie unterstützt das Model Context Protocol (MCP), einen offenen Standard, der KI-Assistenten erlaubt, Tools in externen Diensten aufzurufen. Wenn du einen MCP-Server mit deinem Workspace verbindest, kann jedes Mitglied diese Tools in jedem Projekt nutzen — ohne dass jede Person eigene Zugangsdaten einrichten muss. Eine einzige Verbindung auf Workspace-Ebene deckt dein gesamtes Team ab.
+
+<Note>
+MCP-Integrationen sind im **Teams**-Tarif verfügbar. Wenn dein Workspace in einer niedrigeren Stufe ist, zeigt die **Integrationen**-Seite eine Upgrade-Aufforderung. Nur **Eigentümer** und **Admins** können Server hinzufügen oder entfernen.
+</Note>
+
+## Die Integrationen-Seite öffnen
+
+Klicke in der Workspace-Seitenleiste auf **Einstellungen**, dann auf **Verwalten** im Bereich **Integrationen** — oder gehe direkt zu **Einstellungen → Integrationen** auf der Einstellungsseite.
+
+## Eine Preset-Integration hinzufügen
+
+Genie enthält Ein-Klick-Presets für die beliebtesten Tools. Preset-Verbindungen haben Server-URL, Transport und Authentifizierungstyp vorkonfiguriert — du autorisierst nur und legst los.
+
+<Steps>
+  <Step title="Auf Server hinzufügen klicken">
+    Klicke auf der **Integrationen**-Seite in der Kopfzeile des Bereichs **Verbundene Server** auf den Button **Server hinzufügen**.
+  </Step>
+  <Step title="Dienst auswählen">
+    Ein Dialog (oder unteres Drawer auf dem Mobilgerät) zeigt alle verfügbaren Preset-Integrationen. Klicke auf die Kachel des Dienstes, den du verbinden möchtest.
+  </Step>
+  <Step title="Anzeigenamen festlegen">
+    Das Formular füllt einen Anzeigenamen vor (zum Beispiel „Linear"). Der Name wird zum Tool-Präfix, das die KI verwendet — zum Beispiel `linear__create_issue`. Bearbeite ihn, wenn du mehrere Verbindungen zum selben Dienst unterscheiden musst.
+  </Step>
+  <Step title="Server verbinden">
+    Klicke auf **Server verbinden**. Bei OAuth-basierten Integrationen erscheint in der Server-Zeile ein zweiter **Autorisieren**-Button — klicke darauf, um den OAuth-Flow zu starten und Genie Zugriff auf dein Konto zu geben. Bei Bearer-Token-Integrationen füge dein API-Token ins Feld **Bearer-Token** ein, bevor du auf **Server verbinden** klickst.
+  </Step>
+  <Step title="Verbindung bestätigen">
+    Nach erfolgreicher OAuth-Autorisierung leitet Genie dich mit einem Bestätigungsbanner zurück zur **Integrationen**-Seite. Tools des verbundenen Servers stehen allen Workspace-Mitgliedern beim nächsten Gesprächsdurchgang zur Verfügung.
+  </Step>
+</Steps>
+
+### Verfügbare Preset-Integrationen
+
+| Dienst | Server-URL | Transport | Auth |
+|---|---|---|---|
+| **Linear** | `https://mcp.linear.app/sse` | SSE | OAuth2 |
+| **GitHub** | `https://api.githubcopilot.com/mcp/` | HTTP | OAuth2 |
+| **Notion** | `https://mcp.notion.com/mcp` | HTTP | OAuth2 |
+| **Atlassian** | `https://mcp.atlassian.com/v1/sse` | SSE | OAuth2 |
+| **Asana** | `https://mcp.asana.com/sse` | SSE | OAuth2 |
+| **Sentry** | `https://mcp.sentry.dev/mcp` | HTTP | OAuth2 |
+| **Stripe** | `https://mcp.stripe.com` | HTTP | Bearer-Token |
+| **Cloudflare** | `https://docs.mcp.cloudflare.com/sse` | SSE | OAuth2 |
+
+<Tip>
+Jede Preset-Kachel zeigt eine kurze Beschreibung, was sie abdeckt — zum Beispiel deckt Linear „Issues, Projekte, Cycles" ab und Stripe „Zahlungen & Kunden". Nutze diese Beschreibungen, um zu entscheiden, welche Integrationen dein Team tatsächlich braucht, bevor du sie hinzufügst.
+</Tip>
+
+## Einen benutzerdefinierten Server hinzufügen
+
+Wenn das benötigte Tool nicht in der Preset-Liste ist, kannst du jeden MCP-kompatiblen Server manuell verbinden.
+
+<Steps>
+  <Step title="Auf Server hinzufügen klicken">
+    Öffne den Dialog **Server hinzufügen** von der **Integrationen**-Seite aus.
+  </Step>
+  <Step title="Sonstige auswählen">
+    Scrolle ans Ende des Preset-Rasters und klicke auf die Kachel **Sonstige** mit dem Label „Manuell konfigurieren".
+  </Step>
+  <Step title="Server-Details ausfüllen">
+    Vervollständige das Formular:
+
+    - **Anzeigename** — ein Label für diesen Server. Es wird zum Tool-Präfix (zum Beispiel `mycrm__get_contacts`).
+    - **Server-URL** — die vollständige URL des MCP-Endpunkts.
+    - **Beschreibung** (optional) — eine Notiz für dein Team darüber, was dieser Server tut.
+    - **Transport** — wähle **Streamable HTTP** (empfohlen für alle nach März 2025 gebauten Server) oder **SSE** für ältere Legacy-Server.
+    - **Authentifizierung** — wähle den Auth-Typ, der zu deinem Server passt (siehe unten).
+  </Step>
+  <Step title="Server verbinden">
+    Klicke auf **Server verbinden**. Wenn du OAuth2 gewählt hast, klicke in der erscheinenden Server-Zeile auf **Autorisieren**, um den OAuth-Flow abzuschließen. Wenn du Bearer-Token gewählt hast, hast du das Token bereits im Formular eingegeben.
+  </Step>
+</Steps>
+
+## Authentifizierungstypen
+
+<Tabs>
+  <Tab title="OAuth 2.1">
+    Die meisten Preset-Integrationen verwenden OAuth 2.1. Wenn du auf **Autorisieren** klickst, ermittelt Genie den Autorisierungsserver des Dienstes, registriert dynamisch einen Client und schließt den Flow mit PKCE ab. Das resultierende Token wird verschlüsselt auf Workspace-Ebene gespeichert und automatisch erneuert. Eine manuelle Token-Verwaltung ist nicht erforderlich.
+
+    Wenn eine OAuth-Verbindung abläuft oder widerrufen wird, klicke in der Server-Zeile auf **Erneut autorisieren**, um den Flow neu zu starten, ohne deine Konfiguration zu verlieren.
+  </Tab>
+  <Tab title="Bearer-Token">
+    Einige Dienste (darunter Stripe) verwenden einen statischen API-Schlüssel statt OAuth. Füge das Token beim Erstellen des Servers in das Feld **Bearer-Token** ein. Das Token wird verschlüsselt gespeichert und nach dem Speichern nie an den Browser zurückgegeben. Alle Workspace-Mitglieder teilen sich dieses eine Token.
+
+    Um das Token zu rotieren, klicke in der Server-Zeile auf das Bearbeiten-Symbol, gib das neue Token ein und klicke auf **Änderungen speichern**. Lass das Feld leer, um das bestehende Token zu behalten.
+  </Tab>
+  <Tab title="Keine">
+    Einige selbst gehostete oder interne MCP-Server benötigen keine Authentifizierung. Wähle für diese Server **Keine** als Auth-Typ. Nutze diese Option nur für Server in vertrauenswürdigen privaten Netzwerken.
+  </Tab>
+</Tabs>
+
+## Verbundene Server verwalten
+
+Jeder verbundene Server erscheint als Zeile in der Liste **Verbundene Server**. In der Zeile kannst du:
+
+- **Aktivieren / Deaktivieren** — einen Server vorübergehend ausschalten, ohne ihn zu entfernen. Deaktivierte Server stellen der KI keine Tools bereit.
+- **Autorisieren / Erneut autorisieren** — (nur OAuth-Server) den OAuth-Flow starten oder neu starten.
+- **Bearbeiten** — Anzeigename, Beschreibung oder Bearer-Token ändern.
+- **Entfernen** — den Server dauerhaft trennen und seine Zugangsdaten löschen.
+
+## Sicherheit
+
+<CardGroup cols={1}>
+  <Card title="Verschlüsselt im Ruhezustand" icon="lock">
+    Alle Zugangsdaten — Bearer-Tokens und OAuth-Tokens — werden im Ruhezustand verschlüsselt gespeichert. Sie werden nach dem Speichern nie an den Browser zurückgegeben.
+  </Card>
+  <Card title="Audit-Trail" icon="shield-check">
+    Jedes Hinzufügen, Aktualisieren, Rotieren und Entfernen eines MCP-Servers wird im Workspace-Aktivitätsprotokoll erfasst und gibt Eigentümern und Admins ein vollständiges Protokoll der Zugangsdaten-Änderungen.
+  </Card>
+  <Card title="Rollenbasierter Zugriff" icon="users">
+    Nur Eigentümer und Admins können Server hinzufügen, bearbeiten oder entfernen. Mitglieder und Editoren können die Tools der verbundenen Server nutzen, aber keine Zugangsdaten einsehen oder ändern.
+  </Card>
+</CardGroup>
+
+<Warning>
+Bearer-Tokens werden von allen Workspace-Mitgliedern geteilt. Wenn ein Token kompromittiert wird, rotiere es sofort über die **Bearbeiten**-Aktion in der Server-Zeile und informiere dein Team.
+</Warning>

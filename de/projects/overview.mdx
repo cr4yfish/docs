@@ -1,0 +1,84 @@
+---
+title: "Deine Genie-Projekte verwalten"
+description: "Ein Projekt ist die App, die Genie für dich baut. Erfahre, wie du eines erstellst, durch die Projektansicht navigierst und die Live-Vorschau sowie den Chat-Verlauf nutzt."
+---
+
+Jede App, die du in Genie baust, lebt in einem **Projekt**. Wenn du beschreibst, was du erstellen möchtest, generiert Genie eine voll funktionsfähige App — diese generierte App ist dein Projekt. Jedes Projekt hat seine eigene URL, seinen eigenen Chat-Verlauf, eigene Einstellungen und optional ein verbundenes Cloud-Backend. Du kannst so viele Projekte haben, wie dein Tarif erlaubt, und jedes wird unabhängig verwaltet.
+
+## Ein Projekt erstellen
+
+Du erstellst ein Projekt direkt vom Genie-Startbildschirm, indem du eine Beschreibung der gewünschten App in das Prompt-Feld eingibst und **Enter** drückst (oder auf **Generieren** klickst). Genie liest deine Beschreibung, generiert die App und öffnet sie in der Projektansicht.
+
+<Steps>
+  <Step title="Genie öffnen">
+    Gehe zu [genie.app](https://genie.app) und melde dich in deinem Konto an.
+  </Step>
+  <Step title="Beschreibe deine App">
+    Tippe eine Beschreibung der App, die du bauen möchtest, in das Prompt-Feld. Sei so konkret, wie du möchtest — zum Beispiel: „ein Task-Tracker für ein kleines Team mit Fälligkeitsdaten und Prioritäts-Labels".
+  </Step>
+  <Step title="Generieren">
+    Drücke **Enter** oder klicke auf den Senden-Button. Genie beginnt mit dem Bau deiner App. Sobald sie fertig ist, landest du direkt in der Projektansicht.
+  </Step>
+</Steps>
+
+<Tip>
+  Du kannst auch mit einer vorgefertigten Vorlage starten, statt einen Prompt von Grund auf zu schreiben. Vorlagen geben dir einen funktionierenden Ausgangspunkt, den du mit Folgeprompts anpassen kannst.
+</Tip>
+
+## Die Projektansicht
+
+Sobald dein Projekt erstellt ist, verbringst du in der Projektansicht die meiste Zeit. Sie besteht aus zwei Hauptbereichen nebeneinander: dem **Chat-Panel** links und der **Live-Vorschau** rechts.
+
+<CardGroup cols={2}>
+  <Card title="Chat-Panel" icon="message-square">
+    Im Chat-Panel sprichst du mit Genie. Tippe Folgeanweisungen — „füge eine Suchleiste hinzu", „ändere das Farbschema zu Dunkelblau" — und Genie aktualisiert die App in Echtzeit. Dein vollständiger Gesprächsverlauf wird gespeichert und ist hier sichtbar.
+  </Card>
+  <Card title="Live-Vorschau" icon="monitor">
+    Die Live-Vorschau rendert deine App so, wie sie tatsächlich läuft. Du kannst durchklicken, Formulare ausfüllen und das Verhalten genau wie ein echter Nutzer testen — ohne die Projektansicht zu verlassen.
+  </Card>
+</CardGroup>
+
+### Chat-Verlauf
+
+Jede Nachricht, die du sendest, und jede Antwort von Genie wird im Chat-Verlauf des jeweiligen Projekts gespeichert. Du kannst durch die gesamte Unterhaltung zurückscrollen, um vergangene Änderungen nachzuvollziehen, zu verstehen, warum etwas auf eine bestimmte Weise gebaut wurde, oder dort weiterzumachen, wo du nach einer Pause aufgehört hast.
+
+### Chat-Modus
+
+Manchmal möchtest du eine Frage stellen statt eine Änderung anzufordern — „was macht diese Komponente?", „wie würde ich Authentifizierung hinzufügen?" oder „welche Felder sollte dieses Formular haben?". Aktiviere den **Chat-Modus** (das Chat-Symbol neben dem Prompt-Feld), und Genie antwortet auf deine nächste Nachricht in einfacher Sprache, statt die App neu zu bauen.
+
+<Tip>
+  Der Chat-Modus gilt nur für deine **nächste Nachricht** und schaltet sich danach selbst ab, sodass dein folgender Prompt wieder wie gewohnt baut. Nutze ihn, wenn du eine schnelle zweite Meinung möchtest, ohne Credits für eine Neubau zu verbrauchen.
+</Tip>
+
+### Projekt-URL
+
+Jedes Projekt erhält eine eindeutige URL, mit der du es direkt öffnen kannst. Du findest diese URL in den **Einstellungen** unter dem Tab **Allgemein** oder kopierst sie einfach aus der Adressleiste deines Browsers, wenn du die Live-App ansiehst. Wenn dein Projekt öffentlich ist, funktioniert diese URL für jeden — kein Login erforderlich.
+
+In bezahlten Tarifen kannst du auch eine eigene Domain verbinden, sodass deine App unter einer Adresse läuft, die dir gehört. Siehe [App veröffentlichen und teilen](/de/projects/visibility) für Details.
+
+## Ein Projekt remixen
+
+Wenn du dir ein öffentliches Projekt ansiehst, das die Eigentümerin als remixbar markiert hat, siehst du in der Projektansicht einen **Remix**-Button. Ein Klick darauf erstellt eine Kopie dieses Projekts in deinem eigenen Konto — inklusive des gesamten generierten Codes — sodass du mit eigenen Prompts darauf aufbauen kannst.
+
+Wenn du beim Klicken auf **Remix** nicht angemeldet bist, leitet Genie dich zuerst zur Login-Seite weiter und schließt den Remix dann nach der Authentifizierung ab.
+
+<Tip>
+  Um anderen das Remixen deines eigenen Projekts zu erlauben, aktiviere den **Remixable**-Schalter unter **Einstellungen > Allgemein**. Siehe [Projekteinstellungen](/de/projects/settings) für Details.
+</Tip>
+
+## Nächste Schritte
+
+<CardGroup cols={2}>
+  <Card title="Projekteinstellungen" icon="settings" href="/de/projects/settings">
+    Benenne dein Projekt um, füge eine Beschreibung hinzu und steuere, wer es sehen oder remixen darf.
+  </Card>
+  <Card title="Veröffentlichen und teilen" icon="globe" href="/de/projects/visibility">
+    Mache deine App öffentlich, hole dir einen teilbaren Link oder verbinde eine eigene Domain.
+  </Card>
+  <Card title="Secrets speichern" icon="key-round" href="/de/projects/secrets">
+    Füge API-Schlüssel und Umgebungsvariablen hinzu, die deine App zum Laufen braucht.
+  </Card>
+  <Card title="Genie Cloud" icon="cloud" href="/de/cloud/overview">
+    Verbinde eine Datenbank, Authentifizierung und Dateispeicher mit deinem Projekt.
+  </Card>
+</CardGroup>
