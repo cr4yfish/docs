@@ -1,0 +1,73 @@
+---
+title: "Import a Claude design as your starting point"
+description: "Drop an HTML file you exported from a Claude design and Genie turns it into a working project you can refine with follow-up prompts."
+---
+
+If you've already sketched a UI in Claude — for example, as a design artifact or a one-off HTML prototype — you don't have to rebuild it from scratch in Genie. The **Import from Claude design** mode takes that HTML file as the source of truth and turns it into a real Genie project, complete with chat history and a live preview.
+
+This is the fastest way to move from a static prototype to something you can iterate on, share, and connect to a real backend.
+
+## When to use this
+
+Use design import when you already have a working HTML file and want Genie to take over from there. Common cases:
+
+- You designed a page in a Claude artifact and want to keep building on it.
+- A teammate sent you an HTML prototype and you want to turn it into a real, shareable app.
+- You want to start from a specific layout instead of describing it in a prompt.
+
+If you're starting from a blank idea, the regular prompt input or a [template](/templates) is usually faster.
+
+## Import a design
+
+<Steps>
+  <Step title="Open the prompt switcher">
+    From the Genie home screen, click the mode switcher above the prompt box until it reads **Import from Claude design**. The input changes into a drop zone.
+  </Step>
+
+  <Step title="Add your HTML file">
+    Drag a `.html` (or `.htm`) file onto the drop zone, or click it to pick a file from your computer.
+
+    <Note>
+      Files must be HTML and **2 MB or smaller**. If a file is too big or in the wrong format, Genie tells you immediately so nothing is uploaded.
+    </Note>
+  </Step>
+
+  <Step title="Import the design">
+    Click **Import design**. Genie uploads the file, analyzes its structure, and creates a new project that uses the HTML as the starting point. When it's ready, you land in the project view with the imported design rendered in the live preview.
+  </Step>
+
+  <Step title="Refine with follow-up prompts">
+    From here, the project behaves like any other Genie project. Type follow-up prompts in the chat panel to adjust layout, wire up data, change copy, or add new sections.
+  </Step>
+</Steps>
+
+## What Genie does with your file
+
+Genie treats the imported HTML as the canonical version of your design — not a rough description to paraphrase. That means:
+
+- The layout, structure, and visual style stay faithful to what you uploaded.
+- Bundler manifests, inline scripts that only existed for Claude's preview, and other build artifacts are stripped before analysis.
+- Only the meaningful template payload is kept, so follow-up prompts work against a clean starting point.
+
+Once the project is created, you can use every other Genie feature on top of it — [secrets](/projects/secrets), a [Genie Cloud database](/cloud/database), [custom domains](/projects/visibility), and more.
+
+<Tip>
+  Want to share the imported app right away? It works exactly like a built-from-scratch project. See [Publish and share your app](/projects/visibility) for the available visibility options.
+</Tip>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Project overview" icon="folder" href="/projects/overview">
+    Learn how the chat panel and live preview work together.
+  </Card>
+  <Card title="Templates" icon="layout-template" href="/templates">
+    Prefer to start from a curated layout instead? Browse the template gallery.
+  </Card>
+  <Card title="Connect a database" icon="database" href="/cloud/database">
+    Add a real backend to your imported design.
+  </Card>
+  <Card title="Publish your app" icon="globe" href="/projects/visibility">
+    Share your project with a link or a custom domain.
+  </Card>
+</CardGroup>

@@ -57,6 +57,7 @@
             "icon": "folder",
             "pages": [
               "projects/overview",
+              "projects/import-design",
               "projects/settings",
               "projects/secrets",
               "projects/visibility"
