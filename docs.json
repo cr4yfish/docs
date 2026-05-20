@@ -57,6 +57,13 @@
                 ]
               },
               {
+                "group": "Changelog",
+                "icon": "rss",
+                "pages": [
+                  "changelog/overview"
+                ]
+              },
+              {
                 "group": "Projects",
                 "icon": "folder",
                 "pages": [
