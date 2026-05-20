@@ -172,6 +172,13 @@
                   "de/billing/credits",
                   "de/billing/topups"
                 ]
+              },
+              {
+                "group": "Datenschutz & Compliance",
+                "icon": "shield",
+                "pages": [
+                  "de/compliance/kunden-compliance-paket"
+                ]
               }
             ]
           }

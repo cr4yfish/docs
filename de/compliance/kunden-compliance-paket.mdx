@@ -1,0 +1,349 @@
+---
+title: "Compliance-Paket für Kunden"
+description: "AVV, TOM, Unterauftragsverarbeiter, Löschkonzept und Betroffenenrechte für Kunden, deren Einkauf und Datenschutzbeauftragte."
+sidebarTitle: "Compliance-Paket"
+---
+
+Adressaten: Kunden, deren Einkauf und deren Datenschutzbeauftragte (DSB).
+
+Dieses Paket übergeben wir, wenn ein Kunde den AVV, die dokumentierten technischen und organisatorischen Maßnahmen (TOM), die Liste der Unterauftragsverarbeiter, das Datenschutz- bzw. Löschkonzept und unsere Prozesse zur Erfüllung von Betroffenenrechten anfordert.
+
+Das interne ISO-27001-Evidenzpaket liegt unter `docs/compliance/`. Beide Dokumente werden synchron gehalten: jede Aussage hier ist durch eine Policy-Datei dort und durch eine Codestelle im Repository belegt.
+
+**Gliederung:**
+
+1. Auftragsverarbeitungsvertrag (AVV) — Mustervereinbarung
+2. Unterauftragsverarbeiter — wen wir einsetzen und wofür
+3. Verarbeitete Daten, betroffene Personen, Zwecke
+4. Technische und organisatorische Maßnahmen (TOM nach Art. 32 DSGVO)
+5. Datenschutz- und Löschkonzept
+6. Erfüllung von Betroffenenrechten
+7. Wie wir gewährleisten, dass nicht mehr benötigte Daten tatsächlich gelöscht werden
+8. Kontakte und Änderungsmitteilungen
+
+---
+
+## 1. Auftragsverarbeitungsvertrag (AVV) — Mustervereinbarung
+
+Unseren Standard-AVV stellen wir auf Anfrage an `privacy@genie.example` als gegengezeichnete PDF bereit. Die folgende Vorlage entspricht inhaltlich dieser PDF und kann durch den DSB des Kunden vorab geprüft werden.
+
+<Warning>
+  **Vorlage — kein unterzeichneter Vertrag.** Ein verbindlicher AVV kommt erst durch Gegenzeichnung zustande. Anfragen bitte an `privacy@genie.example` mit Angabe der juristischen Person, Ansprechperson und der vorgesehenen Datenkategorien; wir liefern die gegengezeichnete PDF innerhalb von 5 Werktagen zurück.
+</Warning>
+
+### 1.1 Vertragsparteien
+
+- **Verantwortlicher**: der im Genie-Bestellformular benannte Kunde.
+- **Auftragsverarbeiter**: die im Genie-Bestellformular benannte Genie-Gesellschaft.
+
+### 1.2 Gegenstand und Dauer der Verarbeitung
+
+Verarbeitung personenbezogener Daten zum Zweck der Erbringung des Genie-Dienstes gemäß Bestellformular. Der AVV läuft für die Laufzeit des zugrunde liegenden Hauptvertrags und endet mit der Löschung der Kundendaten gemäß §5.
+
+### 1.3 Art und Zweck der Verarbeitung
+
+Betrieb einer gehosteten Anwendungsentwicklungsplattform: Identität, Abrechnung, Projekthosting, LLM-gestützte Codegenerierung, Deployment in ein kundeneigenes Supabase-Projekt, Observability und Kundensupport.
+
+### 1.4 Art der personenbezogenen Daten und Kategorien betroffener Personen
+
+Siehe §3 dieses Dokuments; dieser Abschnitt ist durch Verweis Bestandteil des AVV.
+
+### 1.5 Pflichten des Auftragsverarbeiters
+
+Der Auftragsverarbeiter:
+
+- verarbeitet personenbezogene Daten nur auf dokumentierte Weisung des Verantwortlichen (Bestellformular, dieser AVV und Tickets über `privacy@genie.example` gelten als dokumentierte Weisungen);
+- verpflichtet alle zur Verarbeitung befugten Personen zur Vertraulichkeit;
+- setzt die TOM nach §4 um und hält sie aktuell;
+- setzt Unterauftragsverarbeiter nur gemäß §2 ein und kündigt das Hinzunehmen oder Ersetzen mindestens **30 Tage vorher** an (Widerspruchsrecht nach Art. 28 Abs. 2 DSGVO);
+- unterstützt den Verantwortlichen bei der Erfüllung von Betroffenenrechten nach §6;
+- unterstützt bei Sicherheitsvorfällen, DSFA und vorheriger Konsultation gemäß Art. 28 Abs. 3 lit. f DSGVO;
+- löscht oder gibt nach Wahl des Verantwortlichen alle personenbezogenen Daten bei Vertragsende zurück (§5 / §7);
+- stellt alle zum Nachweis der Einhaltung erforderlichen Informationen bereit und ermöglicht Audits nach §1.7.
+
+### 1.6 Unterauftragsverarbeiter
+
+Aufgeführt in §2. Die zum Zeitpunkt der Unterzeichnung gültige Liste ist die vereinbarte Ausgangslage; nachfolgende Änderungen erfolgen nach dem 30-Tage-Verfahren oben.
+
+### 1.7 Auditrechte
+
+Der Verantwortliche kann die Einhaltung des AVV prüfen:
+
+- durch Einsicht in dieses Dokument und das verlinkte ISO-27001-Evidenzpaket;
+- durch Anforderung der aktuellen **SOC-2-Type-II-** oder gleichwertigen Auditberichte unserer Unterauftragsverarbeiter;
+- einmal pro Kalenderjahr durch ein Vor-Ort- oder Remote-Audit mit mindestens 30 Tagen Vorlauf, auf Kosten des Verantwortlichen, zu üblichen Geschäftszeiten und vorbehaltlich einer beiderseits akzeptierten Geheimhaltungsvereinbarung.
+
+### 1.8 Internationale Datenübermittlungen
+
+Die primäre Verarbeitung erfolgt in **AWS eu-central-1 (Frankfurt)**. Übermittlungen an Unterauftragsverarbeiter außerhalb EU/EWR (z. B. LLM-Anbieter in den USA) erfolgen auf Grundlage der EU-Standardvertragsklauseln (2021/914) und, soweit anwendbar, des EU–US Data Privacy Framework.
+
+### 1.9 Haftung und Laufzeit
+
+Gemäß zugrunde liegendem Bestellformular. Kündigung, anwendbares Recht und Gerichtsstand folgen ebenfalls dem Bestellformular.
+
+---
+
+## 2. Unterauftragsverarbeiter — wen wir einsetzen und wofür
+
+Für jeden gelisteten Unterauftragsverarbeiter liegt ein unterzeichneter AVV bzw. liegen Standardvertragsklauseln vor. Die Tabelle hier ist die kundenseitige Sicht.
+
+| # | Unterauftragsverarbeiter | Was er für uns tut | Datenkategorien | Region | Compliance |
+| --- | --- | --- | --- | --- | --- |
+| 1 | **Auth0 (Okta)** | Föderierte Identität, OIDC-Anmeldung (Passwort / Social / SSO). Wir sehen und speichern das Passwort nie. | E-Mail, Name, Auth0-Benutzer-ID, IP bei Anmeldung, MFA-Faktoren | EU | SOC 2 Type II, ISO 27001 |
+| 2 | **Stripe** | Abonnementabrechnung, Zahlungsmittel, Rechnungen, Steuer. Der PCI-Scope liegt vollständig bei Stripe; wir sehen die PAN nie. | Name, E-Mail, Rechnungsanschrift, Zahlungsmittel-Token, Rechnungspositionen | EU / US (SCC) | PCI DSS L1, SOC 1/2 |
+| 3 | **AWS** (Aurora Postgres, S3, DynamoDB, Lambda, CloudFront, KMS, Secrets Manager, CodeBuild) | Primäre Anwendungsinfrastruktur: relationale DB, Objektspeicher, Key-Value-Store, CDN, Secret-Storage, Build-Runner. | Alle Anwendungsdaten; verschlüsselte Kundensecrets | eu-central-1 (Frankfurt) | ISO 27001, SOC 1/2/3, C5, FedRAMP |
+| 4 | **Supabase** | Pro-Kunde-Postgres \+ Edge Functions für die eigene App des Kunden. Wir halten ausschließlich Management-API-Credentials. | Alles, was der Kunde in seine App einspeist | Vom Kunden bei Provisionierung gewählte Region | SOC 2 Type II |
+| 5 | **Cloudflare** | CDN, WAF, DNS, Custom-Hostname-Routing, Worker für Tenant-Routing. | TLS-Traffic, Request-Metadaten, IP, Custom-Hostnames | Globales Edge-Netz, primär EU-PoPs | ISO 27001, SOC 2 |
+| 6 | **Vercel** | Hosting der Genie-Webanwendung, OpenTelemetry-Bridge. | Request-Metadaten, Telemetrie, Build-Logs | EU \+ US (SCC) | SOC 2 Type II |
+| 7 | **GitHub** | Source-Hosting, CI für Genie selbst (keine Kunden-PII). | Quellcode, CI-Logs | US (SCC) | SOC 1/2, ISO 27001 |
+| 8 | **Anthropic** | LLM-Inferenz für Genie-Agentenfunktionen und LLM-Proxy. Zero-Retention-Vereinbarung vorhanden. | Prompts und Completions | US (SCC); EU-Endpoint wo verfügbar | SOC 2 Type II |
+| 9 | **OpenAI** | LLM-Inferenz, Default-Proxy-Upstream für Kunden-Edge-Functions. Zero-Data-Retention-Vereinbarung vorhanden. | Prompts und Completions | US (SCC) | SOC 2 Type II |
+| 10 | **Google Vertex AI** | Optionaler LLM-Anbieter (Gemini) und Embeddings. | Prompts und Completions | EU-Region verfügbar | ISO 27001, SOC 1/2/3 |
+| 11 | **AWS Bedrock** | Optionaler LLM-Anbieter, geroutet über unseren AWS-Account. | Prompts und Completions | eu-central-1 | Erbt AWS-Posture |
+| 12 | **Mistral / xAI / Replicate / Voyage / Perplexity** | Optionale LLM- und Embedding-Anbieter, pro Projekt wählbar. | Prompts, Completions, Embeddings | Je Anbieter; SCC bei Drittländern | SOC 2 (jeweils) |
+| 13 | **Braintrust** | LLM-Observability — Traces, Evals, Prompt-Versionen. 30 Tage Retention. | Prompts, Completions, Traces | US (SCC) | SOC 2 Type II |
+| 14 | **Resend** | Transaktionale E-Mails (Proxy für Kunden-Edge-Functions). | Empfängeradresse, Betreff und Inhalt | EU \+ US (SCC) | SOC 2 Type II |
+| 15 | **Hugging Face** | Inferenz-Proxy-Ziel für Kunden-ML-Features. | Prompts / Eingaben aus Kunden-Edge-Functions | US (SCC); EU-Endpoint wo verfügbar | SOC 2 Type II |
+| 16 | **Unsplash** | Bildersuche im In-App-Asset-Picker. | Nur Suchstring — keine Kunden-PII | US (Read-only Public API) | n/a |
+
+---
+
+## 3. Verarbeitete Daten, betroffene Personen, Zwecke
+
+Bestandteil des AVV (§1.4).
+
+### 3.1 Kategorien betroffener Personen
+
+- **Endnutzer** des Kundenaccounts (natürliche Personen, die sich bei Genie anmelden).
+- **Empfänger von E-Mails**, die der Kunde über seine Edge Functions per Resend-Proxy versendet.
+- **Besucher** kundengehosteter Anwendungen (nur insoweit der Kunde deren Daten in seinem eigenen Supabase-Projekt erfasst — diese Daten sind für Genie nicht sichtbar).
+
+### 3.2 Kategorien personenbezogener Daten
+
+| Kategorie | Beispiele | Speicherort |
+| --- | --- | --- |
+| Identität & Profil | E-Mail, Anzeigename, Avatar-URL, Auth0 sub | Postgres `profile`; Auth0 |
+| Authentifizierungs-Metadaten | Anmelde-IP, MFA-Faktoren, letzter Login | Auth0 |
+| Abrechnung | Name, Rechnungsadresse, Zahlungsmittel-Token, Rechnungen, Steuer-ID | Stripe (führendes System); gespiegelt nach Postgres |
+| Vom Nutzer erstellte Inhalte | Chatnachrichten, Prompts, Datei-Uploads, generierter Quellcode, Projektmetadaten | Postgres; S3 |
+| Betriebstelemetrie | Fehlermeldungen, Timings, LLM-Traces, Request-Logs | Postgres; Braintrust (30 Tage); CloudFront-/Cloudflare-Logs |
+| Push & Benachrichtigungen | Web-Push-Endpoints, Subscription-Metadaten | Postgres `push_subscription` |
+| Audit-Trail | Workspace-Activity-Log: wer hat wann was getan | Postgres `workspace_activity_log` (append-only) |
+| Vom Kunden eingebrachte Secrets | MCP-Credentials, API-Keys | Postgres, verschlüsselt mit XSalsa20-Poly1305 — nie geloggt |
+| Empfängerdaten ausgehender E-Mails | Empfängeradresse, Betreff, Inhalt | Resend (transaktional) |
+| LLM-Payloads | Prompts und Completions aus Genie-Funktionen und Kunden-Edge-Functions | Der für das Projekt gewählte LLM-Anbieter (siehe §2) |
+
+Genie selbst verarbeitet keine besonderen Kategorien personenbezogener Daten (Art. 9 DSGVO). Falls der Kunde solche Daten in sein eigenes Supabase-Projekt einspeist, liegt diese Verarbeitung in seiner Verantwortung.
+
+### 3.3 Zwecke
+
+- Erbringung des Genie-Dienstes gemäß Bestellformular.
+- Identität, Authentifizierung und Zugangskontrolle.
+- Abrechnung und steuerliche Pflichten.
+- LLM-gestützte Codegenerierung und Chat.
+- Deployment und Betrieb kundeneigener Anwendungen auf Supabase.
+- Sicherheitsmonitoring, Missbrauchsprävention, Incident Response.
+- Gesetzliche Aufbewahrung (Rechnungen, Audit-Trail).
+
+---
+
+## 4. Technische und organisatorische Maßnahmen (TOM, Art. 32 DSGVO)
+
+Dokumentiert nach Art. 32 DSGVO. Jede Zeile verweist auf die Policy, die die Kontrolle definiert, und auf die Codestelle oder Konfiguration, die sie operationalisiert.
+
+### 4.1 Vertraulichkeit (Art. 32 Abs. 1 lit. b)
+
+| Maßnahme | Umsetzung | Nachweis |
+| --- | --- | --- |
+| **Zutritts-/Zugangskontrolle — Identität** | Föderiert über Auth0 (OIDC, RS256-signierte JWTs). Keine in der Anwendung gespeicherten Passwörter. | `src/lib/auth0/index.ts`, `access-control-policy.md` |
+| **Zugriffskontrolle — Autorisierung** | Row-Level Security in Postgres. Jede Query läuft in einem nutzerskopiertem Transaktionskontext; tabellengebundene Policies entscheiden über Sichtbarkeit. | `src/lib/db/utils/transaction.ts`, `docs/rls.md` |
+| **Least Privilege — Entwickler** | GitHub-Team-Zugehörigkeit eng gefasst. CODEOWNERS schützen sicherheitskritische Verzeichnisse. Quartalsweises Access-Review. | `.github/CODEOWNERS`, `access-control-policy.md` |
+| **Least Privilege — Infrastruktur** | AWS-IAM-Rollen pro Dienst zugeschnitten; Secrets ausschließlich im Secrets Manager. | `cryptography-policy.md` |
+| **Verschlüsselung der Übertragung** | TLS 1.2\+ terminiert an der Cloudflare-/AWS-Edge. HSTS aktiv. | `cryptography-policy.md` |
+| **Verschlüsselung at Rest — Infrastruktur** | Aurora KMS-verschlüsselt; DynamoDB Encryption-at-Rest aktiv; S3 SSE-S3. | Terraform unter `terraform/` |
+| **Verschlüsselung at Rest — Secrets** | Kundensecrets werden vor dem Schreiben nach Postgres mit XSalsa20-Poly1305 (libsodium `secretbox`) verschlüsselt. Versionierte Schlüssel für unterbrechungsfreie Rotation; jährliche Rotation. | `src/lib/security/secret-box.ts`, `cryptography-policy.md` |
+| **Secret-Hygiene in CI** | Gitleaks läuft bei jedem Push und PR. GitHub Secret Scanning \+ Push Protection aktiviert. | `.github/workflows/security.yml` |
+| **Log-Verbot für sensible Felder** | Klartext-Secrets, MCP-Credentials, vollständige Billing-Request-Bodies und PII dürfen nicht geloggt werden. | `logging-and-monitoring-policy.md` |
+
+### 4.2 Integrität (Art. 32 Abs. 1 lit. b)
+
+| Maßnahme | Umsetzung | Nachweis |
+| --- | --- | --- |
+| **Append-only-Audit-Log** | RLS-Policies auf `workspace_activity_log` verbieten UPDATE und DELETE, mit Ausnahme des Account-Löschjobs zur Anonymisierung. | `src/lib/db/schema/workspace-activity-log.ts` |
+| **Signierte JWTs** | Auth0-ausgestellte RS256-Token; Manipulation wird zurückgewiesen. | `src/lib/auth0/index.ts` |
+| **Signierte Webhooks** | Stripe-Webhook-Signaturen werden vor jeder Statusänderung verifiziert. Auth0-Webhooks werden per JWT verifiziert. | Route-Handler unter `src/app/api/billing/webhook/` |
+| **Change Management** | Jede Änderung ist ein PR; CODEOWNERS-Freigabe Pflicht; verpflichtende Status-Checks; signierte Commits; kein Force-Push auf `main`. | `change-management-policy.md` |
+
+### 4.3 Verfügbarkeit und Belastbarkeit (Art. 32 Abs. 1 lit. b)
+
+| Maßnahme | Umsetzung |
+| --- | --- |
+| **Backups** | Aurora Point-in-Time-Recovery, 35 Tage Retention. S3-Versionierung auf den Buckets mit Kundeninhalten. |
+| **Multi-AZ** | Aurora und DynamoDB sind in eu-central-1 standardmäßig Multi-AZ. |
+| **DDoS / WAF** | Cloudflare WAF vor allen kundenseitigen Endpunkten. |
+| **Workflow-Durabilität** | Lang laufende Jobs laufen auf einer durablen Workflow-Runtime, die Host-Restarts und Deploys übersteht. |
+
+### 4.4 Wiederherstellbarkeit (Art. 32 Abs. 1 lit. c)
+
+- Aurora-PITR (35 Tage) wird mindestens quartalsweise in Staging geübt.
+- Disaster-Recovery-Runbook liegt im privaten Ops-Repo; RPO ≤ 5 min, RTO ≤ 4 h für die Genie-Control-Plane. Kundenseitige Supabase-Projekte erben Supabases eigene DR-Posture.
+
+### 4.5 Pseudonymisierung (Art. 32 Abs. 1 lit. a)
+
+- Der Audit-Trail wird bei Account-Löschung in place anonymisiert — der gesetzliche Nachweis bleibt erhalten, ohne PII zu speichern.
+- Der Nachweis der Löschung wird über `sha256(userId)` geführt, nicht über die rohe Subjekt-ID.
+
+### 4.6 Regelmäßige Überprüfung (Art. 32 Abs. 1 lit. d)
+
+| Maßnahme | Frequenz |
+| --- | --- |
+| Unit- und Integrationstests bei jedem PR | pro Commit |
+| Abhängigkeits-Vuln-Scan | pro Commit |
+| Secret-Scan (Gitleaks \+ GitHub-nativ) | pro Commit |
+| Penetrationstest | jährlich (extern) |
+| SEV-1-Tabletop-Übung | jährlich |
+| Access-Review | quartalsweise |
+| Unterauftragsverarbeiter-/AVV-Review | jährlich |
+| Schlüsselrotation | jährlich oder bei Verdacht auf Kompromittierung |
+| Backup-Restore-Übung | quartalsweise |
+
+### 4.7 Vorfall-Reaktion (Art. 33 / 34 DSGVO)
+
+- 24/7-On-Call-Rotation; Triage-SLA 30 Minuten.
+- SEV-1-Kundenmeldung innerhalb von **72 Stunden** nach Bestätigung (Art. 33 DSGVO).
+- Vollständiger Lebenszyklus, Beweissicherung und Post-Mortem-Kadenz in `incident-response-plan.md`.
+
+### 4.8 Auftragskontrolle / Unterauftragsverarbeiter (Art. 28 DSGVO)
+
+Siehe §1.6 / §2 und `supplier-management.md`: SOC-2-Report oder gleichwertig eingeholt, AVV unterzeichnet, Register jährlich überprüft, 30 Tage Vorlauf vor Aufnahme oder Wechsel eines Unterauftragsverarbeiters.
+
+---
+
+## 5. Datenschutz- und Löschkonzept
+
+Wir löschen auf drei Granularitäten. Alle drei halten das DSGVO-Fenster von 30 Tagen ein und sind end-to-end auditierbar.
+
+### 5.1 Inventar — wo liegen personenbezogene Daten
+
+Kurzfassung:
+
+- **Postgres (Aurora)** — `profile`, `wallet`, `credit_batch`, `ledger`, `plans`, `top_up`, `addon_*`, `genie_cloud*`, `project`, `project_member`, `workspace`, `workspace_member`, `workspace_invite`, `workspace_activity_log`, `message`, `message_part`, `error`, `genie_feedback`, `push_subscription`, `mcp_oauth_state`, `deployment`.
+- **DynamoDB** — `GenieDeployStatus`, `GeniePendingFileEdits`, `GeniePlanWorkflows`, `GenieAgentTodo`, `GenieProjectEditState`, `GenieScreenshotFilenames`, `GenieProxyUsage`, `GenieProxyTokens`, `GenieProxyRateLimit`.
+- **S3** — `genie-user-code`, `genie-user-apps`, `genie-s3-bucket` (Uploads), `genie-screenshots`.
+- **Extern** — Auth0-User, Stripe-Customer \+ Subscriptions, das kundenseitige Supabase-Projekt, LLM-Provider-Trace-Storage (Braintrust, 30 Tage).
+
+### 5.2 Aufbewahrungsfristen
+
+| Kategorie | Aufbewahrung | Rechtsgrundlage |
+| --- | --- | --- |
+| Account-Profil | Lebensdauer des Accounts, dann Löschung nach §5.3 | Erforderlich zum Betrieb |
+| Workspace-Activity-Log | Unbefristet, **anonymisiert** bei Account-Löschung | Art. 6 Abs. 1 lit. f — Audit & Missbrauchsprävention |
+| Fehler-Datensätze | 90 Tage | Betriebliches Debugging |
+| Abrechnungsdaten (gespiegelt von Stripe) | 7 Jahre | Steuerliche/gesetzliche Aufbewahrung (HGB / AO) |
+| Anwendungs-Logs / LLM-Traces (Braintrust) | 30 Tage | Observability |
+| Postgres-Backups (Aurora PITR) | 35 Tage | Disaster Recovery |
+| Vom Kunden eingebrachte Secrets | Bis zur Löschung des zugehörigen Projekts | Kundeneigentum |
+| MCP-OAuth-Handshake-Zustand | ca. 10 min TTL | Transient |
+| Pending File Edits (DynamoDB-TTL) | 1 Stunde | Transient |
+| LLM-Proxy-Usage-Datensätze | 90 Tage | Abrechnungsabgleich; anschließend aggregiert |
+
+### 5.3 Account-Löschung (Art. 17 DSGVO)
+
+Wird vom Kunden in `/account/settings` ausgelöst und durch Tippen der E-Mail bestätigt. Die Orchestrierung läuft als durabler Workflow (`deleteAccountWorkflow`) und übersteht Abstürze und Deploys.
+
+1. **Pre-Flight (synchron).** Session prüfen, doppelte Anfragen deduplizieren, Löschjob mit 14-Tage-Vorlauf anlegen.
+2. **Deaktivierung (sofort, reversibel).** Auth0-Anmeldung blockieren, Stripe-Subscriptions auf `cancel_at_period_end` setzen, das kundenseitige Supabase-Projekt pausieren.
+3. **14-Tage-Karenzfrist.** Der Kunde kann in den Settings abbrechen.
+4. **Irreversible Kaskade** (in dieser Reihenfolge):
+   - Alle laufenden Workflows für diesen User abbrechen.
+   - Den Projekt-Löschungs-Orchestrator für jedes Projekt im Eigentum des Users ausführen.
+   - Per-User-S3-Präfixe leeren.
+   - CloudFront-Invalidierung der Upload- und Screenshot-Pfade des Users.
+   - Postgres-Transaktion löscht alles in Abhängigkeitsreihenfolge und anonymisiert `workspace_activity_log` in place.
+   - Externe Kündigungen bei Stripe, Supabase und Auth0.
+5. **Audit.** Löscheintrag mit `sha256(userId)`, `deletedAt`, `requestedAt` schreiben; Job auf `succeeded` setzen.
+
+### 5.4 Projekt-Löschung
+
+Gleiche Workflow-Form, 7-Tage-Karenzfrist, auf ein einzelnes Projekt beschränkt.
+
+### 5.5 Gezielte Datensatz-Löschung
+
+Der Kunde kann die Löschung bestimmter Datensätze verlangen (eine einzelne hochgeladene Datei, ein einzelner Chat-Thread, eine Push-Subscription) ohne Account-weite Löschung. Anfragen über `privacy@genie.example` oder Support-Ticket.
+
+### 5.6 Propagation an Unterauftragsverarbeiter
+
+Jede externe Kündigung hat einen dokumentierten Endpunkt und idempotentes Retry-with-Backoff. Fehler werden in Admin-Tools sichtbar. Etwaige externe Reste werden durch §7 erfasst.
+
+---
+
+## 6. Erfüllung von Betroffenenrechten
+
+| Recht (DSGVO) | Mechanismus | SLA |
+| --- | --- | --- |
+| **Art. 15 — Auskunft** | Self-Service in der App für Profil, Projekte, Abrechnungshistorie. Vollständiger strukturierter Export über `privacy@genie.example`. | 30 Tage |
+| **Art. 16 — Berichtigung** | Profilfelder in der App editierbar. Abrechnungsdaten über das Stripe-Customer-Portal. Sonstige Felder über `privacy@genie.example`. | Profil/Abrechnung sofort; ticketbasierte Felder 30 Tage |
+| **Art. 17 — Löschung** | Self-Service in `/account/settings` (§5.3). Auch per `privacy@genie.example` möglich. | Innerhalb von 14 Tagen ausgelöst |
+| **Art. 18 — Einschränkung** | Account-weite Deaktivierung blockiert Anmeldung und pausiert Verarbeitung ohne Löschung. | Innerhalb von 14 Tagen |
+| **Art. 20 — Datenübertragbarkeit** | Gleiches Paket wie Art. 15, in maschinenlesbarem JSON. | 30 Tage |
+| **Art. 21 — Widerspruch** | `privacy@genie.example`. | 30 Tage |
+| **Art. 22 — Automatisierte Entscheidungen** | Wir treffen keine rechtsverbindlichen Entscheidungen auf automatisierter Basis. LLM-Ausgaben sind Vorschläge und werden erst durch eine menschliche Handlung wirksam. | n/a |
+| **Art. 7 Abs. 3 — Widerruf der Einwilligung** | Einwilligungselemente sind in den Account-Settings schaltbar; Widerruf wird beim Speichern wirksam. | Sofort |
+| **Beschwerde bei einer Aufsichtsbehörde** | Betroffene können ihre lokale Datenschutzaufsicht anrufen. Federführende Behörde für EU-Kunden: **Hessischer Beauftragter für Datenschutz und Informationsfreiheit** (Frankfurt). | n/a |
+
+### 6.1 Identitätsprüfung vor Auskunft
+
+Auskunfts- und Löschungsanfragen außerhalb der App werden erst nach Verifikation der Kontrolle über die hinterlegte E-Mail-Adresse beantwortet (Challenge-Link) oder, bei reinen Abrechnungsanfragen, über eine Stripe-Customer-Portal-Session.
+
+### 6.2 Operator-Runbook
+
+Das interne Runbook zur Bearbeitung von DSAR liegt im privaten Ops-Repo.
+
+---
+
+## 7. Wie wir gewährleisten, dass nicht mehr benötigte Daten tatsächlich gelöscht werden
+
+### 7.1 Durable Orchestrierung
+
+Löschungen laufen als Workflow mit **At-least-once-Ausführung** und Crash-Resume. Die 14-Tage-Karenzfrist ist ein Workflow-`sleep` — eine geplante Löschung kann uns über Deploys hinweg nicht verloren gehen. Jeder externe Aufruf ist in Retry-with-Backoff eingehüllt.
+
+### 7.2 Idempotente Schritte
+
+Jeder Schritt ist so entworfen, dass er gefahrlos erneut ausgeführt werden kann. Eine erneute vollständige Löschung ist ein No-op; eine erneute Teil-Löschung vollendet die fehlenden Teile.
+
+### 7.3 Inventargetrieben, nicht featuregetrieben
+
+Das Dateninventar ist die Quelle der Wahrheit. Neue Tabellen, Buckets oder Unterauftragsverarbeiter müssen im selben PR ins Inventar aufgenommen werden (durch CODEOWNERS durchgesetzt).
+
+### 7.4 Cache- und CDN-Invalidierung
+
+Nach dem S3-Cleanup setzen wir CloudFront-Invalidierungen auf beiden Distributions ab. Die Liste der Screenshot-Schlüssel wird **vor** dem Löschen des DynamoDB-Index erfasst.
+
+### 7.5 Backups bewusst berücksichtigt
+
+Aurora-PITR behält Daten 35 Tage nach der Löschung. Das Runbook verlangt, den Löschjob unmittelbar nach einem Restore erneut auszuführen. Nach 35 Tagen sind die Daten auch aus den Backups verschwunden.
+
+### 7.6 Audit-Beleg
+
+Für jede abgeschlossene Löschung halten wir einen Eintrag mit `sha256(userId)`, `requestedAt` und `deletedAt` vor — beantwortet "habt ihr diesen Betroffenen gelöscht?", ohne den Identifier selbst aufzubewahren (Art. 17 \+ Art. 5 Abs. 2 DSGVO).
+
+### 7.7 Behandlung des Append-only-Audit-Logs
+
+`workspace_activity_log` ist append-only (per RLS erzwungen). Zur Löschungserfüllung wird die Zeile in place anonymisiert: `userId` und `target_user_id` werden auf `__deleted__` gesetzt, `details` auf `{"redacted": true}`. Dieser Pfad wird ausschließlich vom Löschjob genutzt.
+
+### 7.8 TTLs auf transientem State
+
+Kurzlebige Zeilen werden durch die TTL des Stores selbst entfernt, auch wenn ein Löschjob sie übersehen hätte.
+
+### 7.9 Periodische Verifikation
+
+Quartalsweise prüfen wir gelöschte Accounts stichprobenartig auf Rückstände in Postgres, S3, DynamoDB, Auth0 und Stripe. Die Prüfung wird als datiertes Ticket dokumentiert.
+
+---
+
+## 8. Kontakte und Änderungsmitteilungen
+
+- **Datenschutz / DSAR / AVV-Anfragen:** `privacy@genie.example`
+- **Sicherheitsmeldungen:** `security@genie.example`
+- **Mitteilungen über Wechsel von Unterauftragsverarbeitern:** Kunden erhalten mindestens **30 Tage** vor Beginn der Verarbeitung durch einen neuen Unterauftragsverarbeiter eine E-Mail. Widersprüche nach Art. 28 Abs. 2 DSGVO werden über `privacy@genie.example` bearbeitet.
+- **Dokumentenversion:** Dieses Paket wird jährlich und bei jeder wesentlichen Änderung der Liste der Unterauftragsverarbeiter oder der TOM überprüft. Die Commit-Historie auf dieser Datei ist die kanonische Versionshistorie.
