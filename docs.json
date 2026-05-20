@@ -57,6 +57,13 @@
                 ]
               },
               {
+                "group": "Changelog",
+                "icon": "rss",
+                "pages": [
+                  "changelog/overview"
+                ]
+              },
+              {
                 "group": "Projects",
                 "icon": "folder",
                 "pages": [
@@ -132,6 +139,13 @@
                   "de/introduction",
                   "de/quickstart",
                   "de/templates"
+                ]
+              },
+              {
+                "group": "Changelog",
+                "icon": "rss",
+                "pages": [
+                  "de/changelog/overview"
                 ]
               },
               {
