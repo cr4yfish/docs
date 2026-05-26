@@ -25,10 +25,10 @@ Das interne ISO-27001-Evidenzpaket ist auf Anfrage verfügbar. Beide Dokumente w
 
 ## 1. Auftragsverarbeitungsvertrag (AVV) — Mustervereinbarung
 
-Unseren Standard-AVV stellen wir auf Anfrage an `privacy@genie.example` als gegengezeichnete PDF bereit. Die folgende Vorlage entspricht inhaltlich dieser PDF und kann durch den DSB des Kunden vorab geprüft werden.
+Unseren Standard-AVV stellen wir auf Anfrage an `privacy@genie-app.de` als gegengezeichnete PDF bereit. Die folgende Vorlage entspricht inhaltlich dieser PDF und kann durch den DSB des Kunden vorab geprüft werden.
 
 <Warning>
-  **Vorlage — kein unterzeichneter Vertrag.** Ein verbindlicher AVV kommt erst durch Gegenzeichnung zustande. Anfragen bitte an `privacy@genie.example` mit Angabe der juristischen Person, Ansprechperson und der vorgesehenen Datenkategorien; wir liefern die gegengezeichnete PDF innerhalb von 5 Werktagen zurück.
+  **Vorlage — kein unterzeichneter Vertrag.** Ein verbindlicher AVV kommt erst durch Gegenzeichnung zustande. Anfragen bitte an `privacy@genie-app.de` mit Angabe der juristischen Person, Ansprechperson und der vorgesehenen Datenkategorien; wir liefern die gegengezeichnete PDF innerhalb von 5 Werktagen zurück.
 </Warning>
 
 ### 1.1 Vertragsparteien
@@ -52,7 +52,7 @@ Siehe §3 dieses Dokuments; dieser Abschnitt ist durch Verweis Bestandteil des A
 
 Der Auftragsverarbeiter:
 
-- verarbeitet personenbezogene Daten nur auf dokumentierte Weisung des Verantwortlichen (Bestellformular, dieser AVV und Tickets über `privacy@genie.example` gelten als dokumentierte Weisungen);
+- verarbeitet personenbezogene Daten nur auf dokumentierte Weisung des Verantwortlichen (Bestellformular, dieser AVV und Tickets über `privacy@genie-app.de` gelten als dokumentierte Weisungen);
 - verpflichtet alle zur Verarbeitung befugten Personen zur Vertraulichkeit;
 - setzt die TOM nach §4 um und hält sie aktuell;
 - setzt Unterauftragsverarbeiter nur gemäß §2 ein und kündigt das Hinzunehmen oder Ersetzen mindestens **30 Tage vorher** an (Widerspruchsrecht nach Art. 28 Abs. 2 DSGVO);
@@ -102,22 +102,22 @@ Diese Dienste werden ausschließlich intern von Genie genutzt. Es werden keine p
 
 Diese Dienste sind direkt in den Betrieb der Genie-Plattform und der Nutzer-Apps eingebunden. Sie verarbeiten personenbezogene Daten von Endnutzern.
 
-| # | Unterauftragsverarbeiter | Was er für uns tut | Datenkategorien | Region | Compliance |  |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | **Auth0 (Okta)** | Föderierte Identität, OIDC-Anmeldung (Passwort / Social / SSO). Wir sehen und speichern das Passwort nie. | E-Mail, Name, Auth0-Benutzer-ID, IP bei Anmeldung, MFA-Faktoren | EU | SOC 2 Type II, ISO 27001 |  |
-| 2 | **Stripe** | Abonnementabrechnung, Zahlungsmittel, Rechnungen, Steuer. Der PCI-Scope liegt vollständig bei Stripe; wir sehen die PAN nie. | Name, E-Mail, Rechnungsanschrift, Zahlungsmittel-Token, Rechnungspositionen | EU | PCI DSS L1, SOC 1/2 |  |
-| 3 | **Braintrust** | LLM-Observability — Traces, Evals, Prompt-Versionen. 30 Tage Retention. | Prompts, Completions, Traces | EU | SOC 2 Type II |  |
-| 4 | **AWS** (Aurora Postgres, S3, DynamoDB, Lambda, CloudFront, KMS, Secrets Manager, CodeBuild) | Primäre Anwendungsinfrastruktur: relationale DB, Objektspeicher, Key-Value-Store, CDN, Secret-Storage, Build-Runner. | Alle Anwendungsdaten; verschlüsselte Kundensecrets | eu-central-1 (Frankfurt) | ISO 27001, SOC 1/2/3, C5, FedRAMP |  |
-| 5 | **Supabase** | Pro-Kunde-Postgres \+ Edge Functions für die eigene App des Kunden. Wir halten ausschließlich Management-API-Credentials. **Teams-Workspaces werden standardmäßig in der EU (Frankfurt) provisioniert.** | Alles, was der Kunde in seine App einspeist | EU (Frankfurt) für Teams; sonst vom Kunden wählbar | SOC 2 Type II |  |
-| 6 | **Cloudflare** | CDN, WAF, DNS, Custom-Hostname-Routing, Worker für Tenant-Routing. | TLS-Traffic, Request-Metadaten, IP, Custom-Hostnames | Globales Edge-Netz, primär EU-PoPs | ISO 27001, SOC 2 |  |
-| 7 | **Vercel** | Hosting der Genie-Webanwendung, OpenTelemetry-Bridge. Request-Routing erfolgt automatisch zum nächstgelegenen Server; Serverless Functions laufen in Frankfurt (DE). | Request-Metadaten, Telemetrie, Build-Logs | EU (Frankfurt, DE) | SOC 2 Type II |  |
-| 8 | **Anthropic** | LLM-Inferenz für Genie-Agentenfunktionen und LLM-Proxy (Starter/Genie-Pläne). Zero-Retention-Vereinbarung vorhanden. **Teams-Nutzer werden über AWS Bedrock (eu-central-1) geroutet — keine direkte Datenübermittlung an Anthropic.** | Prompts und Completions | US (SCC) für Starter/Genie; eu-central-1 für Teams (via Bedrock) | SOC 2 Type II |  |
-| 9 | **AWS Bedrock** | LLM-Inferenz geroutet über unseren AWS-Account. **Standard-LLM-Anbieter für alle Teams-Nutzer** — stellt sicher, dass keine Prompts oder Completions die EU verlassen. | Prompts und Completions | eu-central-1 (Frankfurt) | Erbt AWS-Posture |  |
-| 10 | **OpenAI** | LLM-Inferenz für Nicht-Teams-Konten. Zero-Data-Retention-Vereinbarung vorhanden. | Prompts und Completions | US (SCC) — nur Starter/Genie-Pläne. Teams-Konten werden automatisch über AWS Bedrock (eu-central-1) geroutet. | SOC 2 Type II |  |
-| 11 | **Google Vertex AI** | Optionaler LLM-Anbieter (Gemini) und Embeddings. | Prompts und Completions | EU-Region verfügbar | ISO 27001, SOC 1/2/3 |  |
-| 12 | **Mistral / xAI / Replicate / Voyage / Perplexity** | Optionale LLM- und Embedding-Anbieter, pro Projekt wählbar. | Prompts, Completions, Embeddings | Je Anbieter; SCC bei Drittländern | SOC 2 (jeweils) |  |
-| 13 | **Resend** | Transaktionale E-Mails (Proxy für Kunden-Edge-Functions). | Empfängeradresse, Betreff und Inhalt | EU | SOC 2 Type II |  |
-| 14 | **Hugging Face** | Inferenz-Proxy-Ziel für Kunden-ML-Features. Nutzung ist optional und wird ausschließlich aktiviert, wenn der Nutzer dies explizit konfiguriert. | Prompts / Eingaben aus Kunden-Edge-Functions | US (SCC); EU-Endpoint wo verfügbar | SOC 2 Type II |  |
+| # | Unterauftragsverarbeiter | Was er für uns tut | Datenkategorien | Region | Compliance |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | **Auth0 (Okta)** | Föderierte Identität, OIDC-Anmeldung (Passwort / Social / SSO). Wir sehen und speichern das Passwort nie. | E-Mail, Name, Auth0-Benutzer-ID, IP bei Anmeldung, MFA-Faktoren | EU | SOC 2 Type II, ISO 27001 |  |  |
+| 2 | **Stripe** | Abonnementabrechnung, Zahlungsmittel, Rechnungen, Steuer. Der PCI-Scope liegt vollständig bei Stripe; wir sehen die PAN nie. | Name, E-Mail, Rechnungsanschrift, Zahlungsmittel-Token, Rechnungspositionen | EU | PCI DSS L1, SOC 1/2 |  |  |
+| 3 | **Braintrust** | LLM-Observability — Traces, Evals, Prompt-Versionen. 30 Tage Retention. | Prompts, Completions, Traces | EU | SOC 2 Type II |  |  |
+| 4 | **AWS** (Aurora Postgres, S3, DynamoDB, Lambda, CloudFront, KMS, Secrets Manager, CodeBuild) | Primäre Anwendungsinfrastruktur: relationale DB, Objektspeicher, Key-Value-Store, CDN, Secret-Storage, Build-Runner. | Alle Anwendungsdaten; verschlüsselte Kundensecrets | eu-central-1 (Frankfurt) | ISO 27001, SOC 1/2/3, C5, FedRAMP |  |  |
+| 5 | **Supabase** | Pro-Kunde-Postgres \+ Edge Functions für die eigene App des Kunden. Wir halten ausschließlich Management-API-Credentials. **Teams-Workspaces werden standardmäßig in der EU (Frankfurt) provisioniert.** | Alles, was der Kunde in seine App einspeist | EU (Frankfurt) für Teams; sonst vom Kunden wählbar | SOC 2 Type II |  |  |
+| 6 | **Cloudflare** | CDN, WAF, DNS, Custom-Hostname-Routing, Worker für Tenant-Routing. | TLS-Traffic, Request-Metadaten, IP, Custom-Hostnames | Globales Edge-Netz, primär EU-PoPs | ISO 27001, SOC 2 |  |  |
+| 7 | **Vercel** | Hosting der Genie-Webanwendung, OpenTelemetry-Bridge. Request-Routing erfolgt automatisch zum nächstgelegenen Server; Serverless Functions laufen in Frankfurt (DE). | Request-Metadaten, Telemetrie, Build-Logs | EU (Frankfurt, DE) | SOC 2 Type II |  |  |
+| 8 | **Anthropic** | LLM-Inferenz für Genie-Agentenfunktionen und LLM-Proxy (Starter/Genie-Pläne). Zero-Retention-Vereinbarung vorhanden. **Teams-Nutzer werden über AWS Bedrock (eu-central-1) geroutet — keine direkte Datenübermittlung an Anthropic.** | Prompts und Completions | US (SCC) — nur Starter/Genie-Pläne. Teams-Konten werden automatisch über AWS Bedrock (eu-central-1) geroutet. | SOC 2 Type II |  |  |
+| 9 | **AWS Bedrock** | LLM-Inferenz geroutet über unseren AWS-Account. **Standard-LLM-Anbieter für alle Teams-Nutzer** — stellt sicher, dass keine Prompts oder Completions die EU verlassen. | Prompts und Completions | eu-central-1 (Frankfurt) | Erbt AWS-Posture |  |  |
+| 10 | **OpenAI** | LLM-Inferenz für Nicht-Teams-Konten. Zero-Data-Retention-Vereinbarung vorhanden. | Prompts und Completions | US (SCC) — nur Starter/Genie-Pläne. Teams-Konten werden automatisch über AWS Bedrock (eu-central-1) geroutet. |  | SOC 2 Type II |  |
+| 11 | **Google Vertex AI** | Optionaler LLM-Anbieter (Gemini) und Embeddings. | Prompts und Completions | EU-Region verfügbar | ISO 27001, SOC 1/2/3 |  |  |
+| 12 | **Mistral / xAI / Replicate / Voyage / Perplexity** | Optionale LLM- und Embedding-Anbieter, pro Projekt wählbar. | Prompts, Completions, Embeddings | Je Anbieter; SCC bei Drittländern | SOC 2 (jeweils) |  |  |
+| 13 | **Resend** | Transaktionale E-Mails (Proxy für Kunden-Edge-Functions). | Empfängeradresse, Betreff und Inhalt | EU | SOC 2 Type II |  |  |
+| 14 | **Hugging Face** | Inferenz-Proxy-Ziel für Kunden-ML-Features. Nutzung ist optional und wird ausschließlich aktiviert, wenn der Nutzer dies explizit konfiguriert. | Prompts / Eingaben aus Kunden-Edge-Functions | US (SCC); EU-Endpoint wo verfügbar. Wird ausschließlich aktiviert, wenn der Nutzer dies explizit konfiguriert. | SOC 2 Type II |  |  |
 
 ---
 
@@ -281,7 +281,7 @@ Gleiche Workflow-Form, 7-Tage-Karenzfrist, auf ein einzelnes Projekt beschränkt
 
 ### 5.5 Gezielte Datensatz-Löschung
 
-Der Kunde kann die Löschung bestimmter Datensätze verlangen (eine einzelne hochgeladene Datei, ein einzelner Chat-Thread, eine Push-Subscription) ohne Account-weite Löschung. Anfragen über `privacy@genie.example` oder Support-Ticket.
+Der Kunde kann die Löschung bestimmter Datensätze verlangen (eine einzelne hochgeladene Datei, ein einzelner Chat-Thread, eine Push-Subscription) ohne Account-weite Löschung. Anfragen über `privacy@genie-app.de` oder Support-Ticket.
 
 ### 5.6 Propagation an Unterauftragsverarbeiter
 
@@ -291,17 +291,17 @@ Jede externe Kündigung hat einen dokumentierten Endpunkt und idempotentes Retry
 
 ## 6. Erfüllung von Betroffenenrechten
 
-| Recht (DSGVO) | Mechanismus | SLA |
-| --- | --- | --- |
-| **Art. 15 — Auskunft** | Self-Service in der App für Profil, Projekte, Abrechnungshistorie. Vollständiger strukturierter Export über `privacy@genie.example`. | 30 Tage |
-| **Art. 16 — Berichtigung** | Profilfelder in der App editierbar. Abrechnungsdaten über das Stripe-Customer-Portal. Sonstige Felder über `privacy@genie.example`. | Profil/Abrechnung sofort; ticketbasierte Felder 30 Tage |
-| **Art. 17 — Löschung** | Self-Service in `/account/settings` (§5.3). Auch per `privacy@genie.example` möglich. | Innerhalb von 14 Tagen ausgelöst |
-| **Art. 18 — Einschränkung** | Account-weite Deaktivierung blockiert Anmeldung und pausiert Verarbeitung ohne Löschung. | Innerhalb von 14 Tagen |
-| **Art. 20 — Datenübertragbarkeit** | Gleiches Paket wie Art. 15, in maschinenlesbarem JSON. | 30 Tage |
-| **Art. 21 — Widerspruch** | `privacy@genie.example`. | 30 Tage |
-| **Art. 22 — Automatisierte Entscheidungen** | Wir treffen keine rechtsverbindlichen Entscheidungen auf automatisierter Basis. LLM-Ausgaben sind Vorschläge und werden erst durch eine menschliche Handlung wirksam. | n/a |
-| **Art. 7 Abs. 3 — Widerruf der Einwilligung** | Einwilligungselemente sind in den Account-Settings schaltbar; Widerruf wird beim Speichern wirksam. | Sofort |
-| **Beschwerde bei einer Aufsichtsbehörde** | Betroffene können ihre lokale Datenschutzaufsicht anrufen. Federführende Behörde für EU-Kunden: **Hessischer Beauftragter für Datenschutz und Informationsfreiheit** (Frankfurt). | n/a |
+| Recht (DSGVO) | Mechanismus | SLA |  |
+| --- | --- | --- | --- |
+| **Art. 15 — Auskunft** | Self-Service in der App für Profil, Projekte, Abrechnungshistorie. Vollständiger strukturierter Export über `privacy@genie-app.de`. | 30 Tage |  |
+| **Art. 16 — Berichtigung** | Profilfelder in der App editierbar. Abrechnungsdaten über das Stripe-Customer-Portal. Sonstige Felder über `privacy@genie-app.de`. | Profil/Abrechnung sofort; ticketbasierte Felder 30 Tage |  |
+| **Art. 17 — Löschung** | Self-Service in `/account/settings` (§5.3). Auch per `privacy@genie-app.de` möglich. | Innerhalb von 14 Tagen ausgelöst |  |
+| **Art. 18 — Einschränkung** | Account-weite Deaktivierung blockiert Anmeldung und pausiert Verarbeitung ohne Löschung. | Innerhalb von 14 Tagen |  |
+| **Art. 20 — Datenübertragbarkeit** | Gleiches Paket wie Art. 15, in maschinenlesbarem JSON. | 30 Tage |  |
+| **Art. 21 — Widerspruch** | `privacy@genie-app.de`. |  | 30 Tage |
+| **Art. 22 — Automatisierte Entscheidungen** | Wir treffen keine rechtsverbindlichen Entscheidungen auf automatisierter Basis. LLM-Ausgaben sind Vorschläge und werden erst durch eine menschliche Handlung wirksam. | n/a |  |
+| **Art. 7 Abs. 3 — Widerruf der Einwilligung** | Einwilligungselemente sind in den Account-Settings schaltbar; Widerruf wird beim Speichern wirksam. | Sofort |  |
+| **Beschwerde bei einer Aufsichtsbehörde** | Betroffene können ihre lokale Datenschutzaufsicht anrufen. Federführende Behörde für EU-Kunden: **Hessischer Beauftragter für Datenschutz und Informationsfreiheit** (Frankfurt). | n/a |  |
 
 ### 6.1 Identitätsprüfung vor Auskunft
 
@@ -355,7 +355,7 @@ Quartalsweise prüfen wir gelöschte Accounts stichprobenartig auf Rückstände 
 
 ## 8. Kontakte und Änderungsmitteilungen
 
-- **Datenschutz / DSAR / AVV-Anfragen:** `privacy@genie.example`
-- **Sicherheitsmeldungen:** `security@genie.example`
-- **Mitteilungen über Wechsel von Unterauftragsverarbeitern:** Kunden erhalten mindestens **30 Tage** vor Beginn der Verarbeitung durch einen neuen Unterauftragsverarbeiter eine E-Mail. Widersprüche nach Art. 28 Abs. 2 DSGVO werden über `privacy@genie.example` bearbeitet.
+- **Datenschutz / DSAR / AVV-Anfragen:** `privacy@genie-app.de`
+- **Sicherheitsmeldungen:** `security@genie-app.de`
+- **Mitteilungen über Wechsel von Unterauftragsverarbeitern:** Kunden erhalten mindestens **30 Tage** vor Beginn der Verarbeitung durch einen neuen Unterauftragsverarbeiter eine E-Mail. Widersprüche nach Art. 28 Abs. 2 DSGVO werden über `privacy@genie-app.de` bearbeitet.
 - **Dokumentenversion:** Dieses Paket wird jährlich und bei jeder wesentlichen Änderung der Liste der Unterauftragsverarbeiter oder der TOM überprüft.
