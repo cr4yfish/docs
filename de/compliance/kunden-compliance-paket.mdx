@@ -49,7 +49,7 @@ Wir führen ein internes Evidenzpaket, das an ISO-27001-Controls (Annex A) ausge
 Genie verarbeitet personenbezogene Daten in zwei klar getrennten Rollen:
 
 - **Auftragsverarbeiter im Sinne von Art. 28 DSGVO** — für Daten, die unmittelbar im Rahmen der Genie-Dienste anfallen (Identitäts- und Profildaten, Abrechnungsdaten, Chat- und Projektinhalte, Betriebs­telemetrie). Verantwortlicher im Sinne von Art. 4 Nr. 7 DSGVO ist der Kunde. Rechtsgrundlage und Pflichten siehe §2 (AVV).
-- **Nicht-Verantwortlicher für Kunden-Supabase-Projekte** — für Daten, die Kunden in ihren eigenen Supabase-Projekten verarbeiten, agiert Genie grundsätzlich **nicht** als Verantwortlicher. Der Kunde bleibt Verantwortlicher im Sinne von Art. 4 Nr. 7 DSGVO. Genie hält ausschließlich Management-API-Credentials und hat keine operative Sichtbarkeit auf den Inhalt dieser Datenbanken.
+- **Kundeneigene Supabase-Projekte — weisungsgebundene Verarbeitung.** Inhalte kundeneigener Supabase-Projekte verarbeitet Genie grundsätzlich nicht zu eigenen Zwecken und agiert insoweit ausschließlich weisungsgebunden. Der Kunde bleibt Verantwortlicher im Sinne von Art. 4 Nr. 7 DSGVO. Genie hält ausschließlich Management-API-Credentials und hat keine operative Sichtbarkeit auf den Inhalt dieser Datenbanken. Soweit technische Administrations- oder Supportzugriffe erforderlich sind, erfolgen diese ausschließlich auf dokumentierte Weisung des Verantwortlichen oder zur Vertragserfüllung; sie sind zugriffsprotokolliert (§6.1, §7.6) und unterliegen dem Vier-Augen-Prinzip nach §7.7.
 
 ---
 
@@ -101,7 +101,8 @@ Der Verantwortliche kann die Einhaltung des AVV prüfen:
 
 - durch Einsicht in dieses Dokument und das verlinkte, an ISO-27001-Controls ausgerichtete Evidenzpaket;
 - durch Anforderung der aktuellen **SOC-2-Type-II-** oder gleichwertigen Auditberichte unserer Unterauftragsverarbeiter;
-- einmal pro Kalenderjahr durch ein Vor-Ort- oder Remote-Audit mit mindestens 30 Tagen Vorlauf, auf Kosten des Verantwortlichen, zu üblichen Geschäftszeiten und vorbehaltlich einer beiderseits akzeptierten Geheimhaltungsvereinbarung.
+- soweit verfügbar, durch Bereitstellung standardisierter Security- und Datenschutz-Questionnaires (z. B. CAIQ, SIG Lite, VSA) und Evidenz­dokumente (Pentest-Zusammen­fassungen, ISO-27001-aligniertes Evidenzpaket, AVVs der Subprozessoren) auf Anfrage über `privacy@genie-app.de`;
+- einmal pro Kalenderjahr durch ein Vor-Ort- oder Remote-Audit mit mindestens 30 Tagen Vorlauf, auf Kosten des Verantwortlichen, zu üblichen Geschäftszeiten und vorbehaltlich einer beiderseits akzeptierten Geheimhaltungsvereinbarung; bei begründetem Anlass (z. B. Sicherheits­vorfall mit Kundenbezug) auch außerplanmäßig.
 
 ### 2.8 Internationale Datenübermittlungen
 
@@ -143,7 +144,7 @@ graph LR
   Vercel -->|Teams Prompts / Completions| Bedrock
   Vercel -.->|Starter / Genie, SCC + DPF| LLM
   Vercel -->|Management API| Supabase
-  Vercel -->|filterAISpans, 30 Tage| Braintrust
+  Vercel -.->|filterAISpans, 30 Tage, kein Teams| Braintrust
   Vercel -->|Billing| Stripe
   Vercel -.->|Outbound E-Mail| Resend
 ```
@@ -170,6 +171,17 @@ Die primäre Datenhaltung erfolgt in **AWS eu-central-1 (Frankfurt)**. Für Team
 
 Für jeden gelisteten Unterauftragsverarbeiter liegt ein unterzeichneter AVV bzw. liegen Standardvertragsklauseln vor. Die Tabelle hier ist die kundenseitige Sicht.
 
+### Standardpfad und Drittlandsstrategie
+
+Genie verarbeitet personenbezogene Daten standardmäßig in der EU. Für DSGVO-sensible Konstellationen — insbesondere für Teams-Workspaces und alle größeren Unternehmens­kunden — gilt:
+
+- **EU-only-Standard (Teams).** LLM-Inferenz für Teams-Konten läuft ausschließlich über AWS Bedrock (`eu-central-1`, Frankfurt). Prompts und Completions verlassen die EU nicht. Die übrigen Kerndienste (AWS Aurora, S3, DynamoDB, KMS, Auth0, Vercel Functions, Resend, Supabase-Provisionierung) sind ebenfalls EU-resident. Wir empfehlen diesen Pfad als Enterprise- und DSGVO-Standardpfad.
+- **Kein Training auf Kundendaten.** Mit allen LLM-Anbietern, die produktive Kundendaten erhalten, bestehen vertragliche Zusagen zu Zero-Data-Retention bzw. No-Training-on-Inputs (Anthropic, OpenAI, AWS Bedrock, Google Vertex). Nachweise (DPA-Auszüge, Provider-Statements) werden auf Anfrage über `privacy@genie-app.de` bereitgestellt.
+- **US-Anbieter — optionaler Opt-in, nicht der Default.** Anthropic und OpenAI (außerhalb von Bedrock), Perplexity, Replicate, Hugging Face, xAI sowie ggf. Voyage werden ausschließlich für Starter- / Genie-Pläne oder nach expliziter Aktivierung durch den Kunden in den Projekt­einstellungen verwendet. Für Teams-Kunden sind sie nicht der Default-Pfad und können vollständig deaktiviert werden (siehe „Provider-Deaktivierung" unten).
+- **Drittlandtransfer-Grundlagen.** Übermittlungen außerhalb EU/EWR erfolgen auf Basis der EU-Standardvertragsklauseln (Modul 2 / 3, Durchführungs­beschluss 2021/914) sowie, soweit anwendbar, des EU–US Data Privacy Framework. Für jeden US-Provider mit Zugriff auf personenbezogene Daten liegt ein internes **Transfer Impact Assessment (TIA)** gemäß EDSA-Empfehlungen 01/2020 vor. TIAs werden mindestens jährlich und anlassbezogen aktualisiert (z. B. bei wesentlichen Änderungen der US-Überwachungs­gesetzgebung). Zusammen­fassungen der TIAs werden auf Anfrage bereitgestellt.
+- **Datenminimierung bei Drittlandtransfer.** Übermittelt werden ausschließlich die für die Inferenz erforderlichen Prompt- und Completion-Daten. Stabile interne Identifier werden, soweit technisch möglich, vor Übermittlung gegen Pseudonyme ersetzt; produktive Nutzeridentitäten (E-Mail, Klarname, Auth0-IDs) sind kein Bestandteil der LLM-Payloads. Klartext-Secrets, MCP-Credentials und Billing-Bodies sind aus den Payloads strukturell ausgeschlossen (§6.1).
+- **Provider-Deaktivierung.** Kunden können in den Workspace-Einstellungen einzelne LLM-Anbieter deaktivieren. Teams-Kunden können den Provider-Scope auf „EU-only / AWS Bedrock" beschränken; in dieser Konfiguration werden Anfragen an US-Anbieter technisch unterbunden. Eine zentrale Übersicht aktiver Provider pro Workspace ist in den Admin-Einstellungen einsehbar.
+
 ### 4a. Interne Infrastruktur (keine produktiven Kundendaten)
 
 Diese Dienste werden ausschließlich intern von Genie genutzt. Es werden grundsätzlich keine produktiven Kundendaten verarbeitet.
@@ -187,7 +199,7 @@ Diese Dienste sind direkt in den Betrieb der Genie-Plattform und der Nutzer-Apps
 | --- | --- | --- | --- | --- | --- |
 | 1 | **Auth0 (Okta)** | Föderierte Identität, OIDC-Anmeldung (Passwort / Social / SSO). Wir sehen und speichern das Passwort nie. | E-Mail, Name, Auth0-Benutzer-ID, IP bei Anmeldung, MFA-Faktoren | EU | SOC 2 Type II, ISO 27001 |
 | 2 | **Stripe** | Abonnementabrechnung, Zahlungsmittel, Rechnungen, Steuer. Der PCI-Scope liegt vollständig bei Stripe; wir sehen die PAN nie. | Name, E-Mail, Rechnungsanschrift, Zahlungsmittel-Token, Rechnungspositionen | EU | PCI DSS L1, SOC 1/2 |
-| 3 | **Braintrust** | LLM-Observability — Traces, Evals, Prompt-Versionen. 30 Tage Retention. Es werden ausschließlich AI-bezogene Spans exportiert (`filterAISpans`). | Prompts, Completions, Traces | EU | SOC 2 Type II |
+| 3 | **Braintrust** | LLM-Observability — Traces, Evals, Prompt-Versionen. 30 Tage Retention. Es werden ausschließlich AI-bezogene Spans exportiert (`filterAISpans`). **Teams-Workspaces werden vom Trace-Export automatisch ausgeschlossen** (siehe §5.4). | Prompts, Completions, Traces | EU | SOC 2 Type II |
 | 4 | **AWS** (Aurora Postgres, S3, DynamoDB, Lambda, CloudFront, KMS, Secrets Manager, CodeBuild) | Primäre Anwendungsinfrastruktur: relationale DB, Objektspeicher, Key-Value-Store, CDN, Secret-Storage, Build-Runner. | Alle Anwendungsdaten; verschlüsselte Kundensecrets | eu-central-1 (Frankfurt) | ISO 27001, SOC 1/2/3, C5, FedRAMP |
 | 5 | **Supabase** | Pro-Kunde-Postgres \+ Edge Functions für die eigene App des Kunden. Wir halten ausschließlich Management-API-Credentials. **Teams-Workspaces werden standardmäßig in der EU (Frankfurt) provisioniert.** | Alles, was der Kunde in seine App einspeist | EU (Frankfurt) für Teams; sonst vom Kunden wählbar | SOC 2 Type II |
 | 6 | **Cloudflare** | CDN, WAF, DNS, Custom-Hostname-Routing, Worker für Tenant-Routing. | TLS-Traffic, Request-Metadaten, IP, Custom-Hostnames | Globales Edge-Netz, primär EU-PoPs | ISO 27001, SOC 2 |
@@ -229,23 +241,62 @@ Bestandteil des AVV (§2.4).
 
 Genie selbst verarbeitet keine besonderen Kategorien personenbezogener Daten (Art. 9 DSGVO). Falls der Kunde solche Daten in sein eigenes Supabase-Projekt einspeist, liegt diese Verarbeitung in seiner Verantwortung (siehe §1).
 
-### 5.3 Zwecke
+### 5.3 Zwecke und Rechtsgrundlagen
 
-- Erbringung des Genie-Dienstes gemäß Bestellformular.
-- Identität, Authentifizierung und Zugangskontrolle.
-- Abrechnung und steuerliche Pflichten.
-- LLM-gestützte Codegenerierung und Chat.
-- Deployment und Betrieb kundeneigener Anwendungen auf Supabase.
-- Sicherheitsmonitoring, Missbrauchsprävention, Incident Response.
-- Gesetzliche Aufbewahrung (Rechnungen, Audit-Trail).
+Die folgenden Verarbeitungs­zwecke und zugehörigen Rechtsgrundlagen nach Art. 6 DSGVO liegen der Verarbeitung zugrunde. Die Interessens­abwägungen zu Verarbeitungen auf Grundlage berechtigter Interessen (Art. 6 Abs. 1 lit. f DSGVO) sind intern dokumentiert und werden im Rahmen des AVV-Onboardings auf Anfrage bereitgestellt.
+
+| Zweck | Rechtsgrundlage |
+| --- | --- |
+| Erbringung des Genie-Dienstes gemäß Bestellformular | Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) |
+| Identität, Authentifizierung und Zugangs­kontrolle | Art. 6 Abs. 1 lit. b DSGVO; ergänzend Art. 6 Abs. 1 lit. f DSGVO (Account-Sicherheit) |
+| LLM-gestützte Codegenerierung und Chat | Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) |
+| Deployment und Betrieb kundeneigener Anwendungen auf Supabase | Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) |
+| Abrechnung | Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) |
+| Steuerliche und handels­rechtliche Aufbewahrung (Rechnungen, Steuerdaten) | Art. 6 Abs. 1 lit. c DSGVO (rechtliche Verpflichtung; §§ 147 AO, 257 HGB) |
+| Betriebs­telemetrie / Fehlerdiagnose | Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an Verfügbarkeit und Qualität des Dienstes) |
+| AI-Traces / LLM-Observability (Braintrust, §5.4) | Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an stabilem Betrieb und Sicherheit der KI-Funktionen) |
+| Sicherheits­monitoring und Missbrauchs­prävention | Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an Integrität und Verfügbarkeit, Erwägungs­grund 49 DSGVO) |
+| Audit-Trail / Workspace-Activity-Log | Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an Nachvollziehbarkeit und Missbrauchs­prävention) |
+| Incident Response, forensische Analyse | Art. 6 Abs. 1 lit. f DSGVO; ergänzend Art. 6 Abs. 1 lit. c DSGVO (Mitwirkungs­pflichten nach Art. 33 / 34 DSGVO) |
+| Erfüllung von Betroffenen­rechten (§9) | Art. 6 Abs. 1 lit. c DSGVO (rechtliche Verpflichtung aus Art. 12 ff. DSGVO) |
+| Optionale Funktionen mit Einwilligungs­anker (z. B. ausdrücklich aktivierte Provider, Marketing-Mailings) | Art. 6 Abs. 1 lit. a DSGVO (Einwilligung; widerrufbar nach Art. 7 Abs. 3 DSGVO) |
 
 ### 5.4 Umgang mit LLM-Daten
 
 - **Modelltraining.** Es werden grundsätzlich keine produktiven Kundendaten für das Training von Modellen verwendet — weder durch uns noch durch unsere LLM-Anbieter. Mit Anthropic, OpenAI und AWS Bedrock bestehen vertragliche Zusagen zu Zero-Data-Retention bzw. No-Training-on-Inputs (Nachweis auf Anfrage). Für Teams-Pläne läuft die Inferenz über AWS Bedrock (`eu-central-1`); ein direkter Datenfluss an Anthropic oder OpenAI findet hier nicht statt.
 - **Prompt-Leakage-Prävention.** Der Prompt-Kontext wird strikt auf den jeweiligen Nutzer und sein Projekt eingegrenzt; eine projekt­übergreifende Verarbeitung in einer gemeinsamen LLM-Session findet nicht statt. Datenbankzugriffe sind durch Row-Level Security und nutzerskopierte Anwendungs­kontexte abgesichert (siehe §6.1).
 - **Embeddings.** In der Genie-Infrastruktur werden derzeit keine Embeddings persistiert. Sofern Kunden über Edge Functions in ihrem eigenen Supabase-Projekt Embeddings erzeugen oder ablegen, liegt deren Speicherung in der Verantwortung des Kunden (siehe §1).
-- **LLM-Traces (Braintrust).** Es werden ausschließlich AI-bezogene Spans exportiert (`filterAISpans`), Retention 30 Tage. **Ein Opt-out auf Kundenebene besteht zum heutigen Stand nicht.** Zugriff auf Traces ist auf benannte Personen mit Produktiv­berechtigung beschränkt, MFA-geschützt und wird protokolliert (siehe §7.6).
+- **LLM-Traces (Braintrust).**
+  - **Zweck.** Qualitäts­überwachung, Regressions­erkennung und Debugging der LLM-gestützten Funktionen. Eine Nutzung zu Profiling-, Marketing- oder Trainings­zwecken erfolgt nicht.
+  - **Teams-Ausschluss.** Workspaces mit Teams-Plan werden vom Trace-Export an Braintrust **automatisch ausgeschlossen**. Spans aus Teams-Workspaces verlassen die Genie-Infrastruktur in `eu-central-1` nicht und werden nicht an Braintrust übermittelt.
+  - **Datenminimierung.** Für die übrigen Pläne werden ausschließlich AI-bezogene Spans exportiert (`filterAISpans`); allgemeine Anwendungs- oder Request-Logs, Klartext-Secrets, MCP-Credentials und Billing-Bodies sind strukturell ausgeschlossen. Stabile interne Identifier werden vor Übermittlung pseudonymisiert.
+  - **Zweckbindung und Retention.** Traces werden ausschließlich für die oben genannten Zwecke verarbeitet; Retention 30 Tage, danach automatisierte Löschung.
+  - **Rechtsgrundlage.** Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an stabilem Betrieb und Sicherheit der KI-Funktionen; Interessens­abwägung dokumentiert, §5.3).
+  - **Zugriffsbeschränkung.** Zugriff auf Traces ist ausschließlich Personen mit dokumentierter Produktiv­berechtigung möglich, MFA-geschützt, rollenbasiert (§7.7) und vollständig protokolliert (§6.1, §7.6).
+  - **Drittland.** Braintrust wird in der EU-Region betrieben; soweit für einzelne Sub-Komponenten anwendbar, liegen Standardvertragsklauseln vor.
 - **Provider-Deaktivierung.** Optionale LLM-Anbieter (Mistral, xAI, Replicate, Voyage, Perplexity, Hugging Face) werden nur dann aktiviert, wenn der Kunde sie in seinen Projekt­einstellungen explizit konfiguriert.
+
+### 5.5 Datenschutzprinzipien (Art. 5 und Art. 25 DSGVO)
+
+Genie setzt die Grundsätze des Art. 5 DSGVO im Design der Plattform um:
+
+- **Datenminimierung (Art. 5 Abs. 1 lit. c DSGVO).** Es werden nur die für den jeweiligen Zweck erforderlichen Datenkategorien erhoben (§5.2). Sensible Felder (Klartext-Secrets, MCP-Credentials, Billing-Bodies, PII) sind aus Logs, Telemetrie und LLM-Traces strukturell ausgeschlossen (§6.1, §5.4). Bei Drittland­transfer werden Identifier pseudonymisiert (§4 Standardpfad).
+- **Zweckbindung (Art. 5 Abs. 1 lit. b DSGVO).** Verarbeitungs­zwecke und zugehörige Rechtsgrundlagen sind in §5.3 dokumentiert. Eine Weiterverarbeitung zu nicht kompatiblen Zwecken findet nicht statt; insbesondere werden produktive Kundendaten nicht zu Trainings-, Profiling- oder Marketing­zwecken verwendet.
+- **Speicher­begrenzung (Art. 5 Abs. 1 lit. e DSGVO).** Pro Kategorie definierte Aufbewahrungs­fristen (§8.2) werden technisch durchgesetzt: TTLs auf transientem State, Workflow-getriebene Löschung (§10.1), zeitlich begrenzte Backup-Retention.
+- **Integrität und Vertraulichkeit (Art. 5 Abs. 1 lit. f DSGVO).** Verschlüsselung in Transit und at Rest, signierte Tokens, signierte Webhooks und Append-only-Audit-Logs (§6.1, §6.2).
+- **Rechenschafts­pflicht (Art. 5 Abs. 2 DSGVO).** Dieses Paket, das Evidenzpaket nach §2.7 sowie das Dateninventar nach §10.3 sind die zentralen Nachweis­instrumente.
+- **Privacy by Design und by Default (Art. 25 DSGVO).** Datenschutz­anforderungen sind in den Standard-Entwicklungs- und Review-Prozessen verankert (§6.2 Change Management). Neue Speicher oder Unterauftrags­verarbeiter werden gemäß §10.3 nur über die Dateninventar-Eingangskontrolle aufgenommen, die u. a. Zweck, Rechtsgrundlage, Aufbewahrung und Drittland­status festlegt. Default-Einstellungen sind datenschutz­freundlich (EU-Routing aktiviert, optionale Provider deaktiviert).
+- **Need-to-know.** Zugriffe auf produktive Kundendaten erfolgen ausschließlich rollenbasiert und anlass­bezogen (§7.6, §7.7).
+- **Minimale Retention.** Im Zweifel gilt die kürzere Frist; ausgenommen sind gesetzliche Aufbewahrungs­pflichten (Steuer, HGB).
+
+### 5.6 Datenschutz-Folgenabschätzung (Art. 35 DSGVO)
+
+Eine generelle Pflicht zur Durchführung einer Datenschutz-Folgenabschätzung (DSFA) durch den Auftrags­verarbeiter besteht nach Art. 35 DSGVO nicht; die DSFA-Pflicht trifft den jeweiligen Verantwortlichen. Genie unterstützt den Verantwortlichen bei der Erstellung und Pflege seiner DSFA durch:
+
+- die in diesem Paket dokumentierten Datenkategorien, Verarbeitungs­zwecke, Rechtsgrundlagen und TOM,
+- Bereitstellung weiterer Detail-Informationen auf Anfrage (z. B. konkrete LLM-Provider-Konfiguration, Drittland­transfer-Mechanismen, Subprozessor-Compliance-Berichte, TIA-Zusammen­fassungen).
+
+Intern erfolgt eine **risiko­basierte Bewertung möglicher DSFA-relevanter Verarbeitungs­vorgänge** anlass­bezogen und mindestens jährlich. Bewertet werden insbesondere LLM-gestützte Funktionen, Subprozessor-Wechsel mit Drittland­bezug sowie wesentliche Änderungen an Verarbeitungs­zwecken oder Datenkategorien. Die Bewertungen werden dokumentiert und sind Bestandteil des internen Evidenzpakets.
 
 ---
 
@@ -309,6 +360,8 @@ Dokumentiert nach Art. 32 DSGVO. Wir haben technische und organisatorische Maßn
 | Unterauftragsverarbeiter- / AVV-Review | jährlich |
 | Schlüsselrotation | jährlich oder bei Verdacht auf Kompromittierung |
 | Backup-Restore-Übung | quartalsweise |
+
+Die Wirksamkeit der technischen und organisatorischen Maßnahmen wird im Rahmen dieser Überprüfungen regelmäßig **bewertet, dokumentiert und evaluiert** (Art. 32 Abs. 1 lit. d DSGVO). Befunde fließen in den jährlichen TOM-Review ein; wesentliche Abweichungen werden in nachverfolgbaren Folgemaßnahmen behoben und im Evidenzpaket dokumentiert.
 
 ### 6.7 Vulnerability- und Patch-Management
 
@@ -374,6 +427,22 @@ Identitätsbasierte Anmeldungen erfolgen über einen zentralen Identity Provider
 
 Zugriffe auf produktive Kundendaten erfolgen ausschließlich nach dem Need-to-know-Prinzip, sind rollenbasiert vergeben, MFA-geschützt und werden protokolliert. Break-Glass-Zugriffe sind technisch möglich, werden vor oder unverzüglich nach dem Zugriff dokumentiert, vom Privacy Lead nachgehalten und im quartalsweisen Access-Review (siehe §6.6) überprüft. Es existiert keine generelle Lese­berechtigung auf Kundendaten ohne dokumentierten Anlass.
 
+### 7.7 Internes Berechtigungs- und Rollenkonzept
+
+Zur Umsetzung der Anforderungen aus Art. 32 DSGVO sowie §6.1 (Least Privilege) ist ein dokumentiertes Rollenmodell etabliert. Die folgenden Rollen verfügen über klar abgegrenzte Berechtigungs­profile; Zuweisungen werden zentral im Identity Provider verwaltet, beim Onboarding / Rollenwechsel / Offboarding (§7.2) angepasst und im quartalsweisen Access-Review (§6.6) überprüft.
+
+| Rolle | Aufgabenbereich | Zugriff auf produktive Kundendaten | Freigabe / Vier-Augen |
+| --- | --- | --- | --- |
+| **Engineering** | Entwicklung, Code-Reviews, Deployments | Kein direkter Lese­zugriff auf produktive Inhalte. Schreibender Zugriff nur über automatisierte Pipelines mit Code-Review-Pflicht. | Verpflichtender Peer-Review für sicherheits­relevante Pfade (§6.2) |
+| **Site Reliability / SRE** | Betrieb, Monitoring, Incident Response | Lese­zugriff auf Betriebs­metriken und anonymisierte Telemetrie. Zugriff auf Klartext-Kundendaten nur über Break-Glass. | Eskalations- und Genehmigungs­prozess für Break-Glass |
+| **Customer Support** | Bearbeitung von Kundenanfragen | Zugriff auf Profil- und Abrechnungs­daten nach ticket­basierter Anlass­dokumentation. Kein generischer Zugriff auf Chatinhalte oder Uploads. | Ticketbezogene Dokumentation; Privacy-Lead-Stichprobe |
+| **Privacy Lead** | DSAR-Bearbeitung, Datenschutz­koordination, Audit-Aufsicht | Lese- und Bearbeitungs­zugriff im Rahmen der DSAR-Bearbeitung (§9). | Vier-Augen-Prinzip bei Account-Löschungen und Massenexporten |
+| **Security Officer** | Vorfall­untersuchung, forensische Analyse | Anlassbezogen, dokumentiert; im Vorfall vollumfänglich nach §6.8. | Dokumentations- und Berichts­pflicht an Geschäftsführung |
+| **Break-Glass** | Notfall-Zugriff bei kritischen Vorfällen | Vollumfänglich für die Dauer des Vorfalls; zeitlich limitiert. | Aktivierung erfordert Zwei-Personen-Freigabe (Incident Commander \+ Privacy/Security Lead); vollständige Sitzungs­aufzeichnung; nachgelagerter Review im quartalsweisen Access-Review |
+| **Audit / Compliance** | Stichproben, Evidenzpaket-Pflege | Lesender Zugriff auf Audit-Logs, keine Bearbeitungs­rechte. | n/a |
+
+Jede Berechtigungs­änderung (Neuvergabe, Anpassung, Entzug) wird im Identity Provider und in den jeweiligen Zielsystemen vollständig protokolliert. Produktive Zugriffe werden durchgehend in einem zentralen Audit-Log erfasst (§6.2). Eine generische „Admin"-Rolle mit ungefiltertem Datenzugriff existiert nicht; produktiver Vollzugriff ist ausschließlich über die zeitlich limitierte Break-Glass-Rolle erreichbar.
+
 ---
 
 ## 8. Datenschutz- und Löschkonzept
@@ -386,7 +455,7 @@ Wir löschen auf drei Granularitäten. Alle drei halten das DSGVO-Fenster von 30
 - **Auth0** — Authentifizierungsdaten (E-Mail, MFA-Faktoren, Anmelde-IP).
 - **Stripe** — Abrechnungsdaten (Name, Adresse, Zahlungsmittel-Token, Rechnungen).
 - **Supabase** — Kundeneigene App-Datenbank (Inhalt liegt in der Verantwortung des Kunden, siehe §1).
-- **Braintrust** — LLM-Traces und Observability-Daten (30 Tage Retention).
+- **Braintrust** — LLM-Traces und Observability-Daten (30 Tage Retention; Teams-Workspaces ausgeschlossen, §5.4).
 - **Resend** — Transaktionale E-Mails (Empfängeradresse, Inhalt).
 
 ### 8.2 Aufbewahrungsfristen
@@ -430,6 +499,20 @@ Der Kunde kann die Löschung bestimmter Datensätze verlangen (eine einzelne hoc
 ### 8.6 Propagation an Unterauftragsverarbeiter
 
 Jede externe Kündigung hat einen dokumentierten Endpunkt und idempotentes Retry-with-Backoff. Fehler werden in Admin-Tools sichtbar. Etwaige externe Reste werden durch §10 erfasst.
+
+### 8.7 Löschung auf dokumentierte Weisung des Verantwortlichen
+
+Über die im Self-Service angebotenen Löschpfade (§8.3 – §8.5) hinaus führen wir Löschungen auch auf dokumentierte Weisung des Verantwortlichen aus. Solche Weisungen sind AVV-Bestandteil (§2.5):
+
+- **Eingang und Identitäts­prüfung.** Schriftliche oder ticket­basierte Anweisung über `privacy@genie-app.de` durch eine im Bestellformular benannte Ansprech­person; Identitäts­prüfung gemäß §9.1.
+- **Scope-Varianten.**
+  - **Tenant-/Workspace-Löschung** — vollständige Entfernung eines Workspaces inklusive aller zugehörigen Projekte, Uploads und Audit-Anonymisierung.
+  - **Teil-Löschung** — gezielte Entfernung einzelner Datenkategorien (z. B. bestimmte Uploads, bestimmte Chat-Threads, bestimmte Push-Subscriptions) auf Verlangen des Verantwortlichen.
+  - **Betroffenen­spezifische Löschung** — Löschung aller einer betroffenen Person zuordenbaren Daten auf Weisung des Verantwortlichen.
+- **Ausführung.** Über denselben durablen Workflow wie die Self-Service-Löschung (§10.1). Idempotente Schritte, Retry-with-Backoff, Propagation an Subprozessoren (§8.6). Vier-Augen-Prinzip durch den Privacy Lead (§7.7).
+- **Support- und Eskalations­prozess.** Der Eingang wird innerhalb von 3 Werktagen bestätigt; die Bearbeitung wird mit Ticket-ID nachverfolgt. Bei Rückfragen erfolgt direkte Abstimmung mit der benannten Ansprech­person des Verantwortlichen.
+- **Nachweis­barkeit.** Der Verantwortliche erhält eine schriftliche Vollzugs­bestätigung mit pseudonymisiertem Löschnachweis (§10.6). Auf Anfrage stellen wir eine Nachweis­zusammen­fassung im Rahmen der AVV-Berichts­pflichten bereit.
+- **SLA.** Ausführung innerhalb der DSGVO-Frist von 30 Tagen; schneller, sofern die Karenzfrist nach §8.3 vom Verantwortlichen verkürzt wird oder es sich um eine Teil-Löschung handelt.
 
 ---
 
