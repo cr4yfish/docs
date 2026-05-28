@@ -95,7 +95,7 @@ Verarbeitung personenbezogener Daten zum Zweck der Erbringung des Genie-Dienstes
 
 ### 2.3 Art und Zweck der Verarbeitung
 
-Betrieb einer gehosteten Anwendungsentwicklungsplattform: Identität, Abrechnung, Projekthosting, LLM-gestützte Codegenerierung, Deployment in ein kundeneigenes Supabase-Projekt, Observability und Kundensupport.
+Betrieb einer gehosteten Anwendungs­entwicklungs­plattform: Identität, Projekthosting, LLM-gestützte Codegenerierung, Deployment in ein kundeneigenes Supabase-Projekt, Observability und Kundensupport. Verarbeitungen in eigener Verantwortlichkeit von Genie (insbesondere Abrechnung, steuer- und handelsrechtliche Aufbewahrung, Sicherheits- und Audit-Logs, Incident Response, Missbrauchs­prävention) sind nicht Gegenstand dieses AVV; siehe §1 und §5.3.
 
 ### 2.4 Art der personenbezogenen Daten und Kategorien betroffener Personen
 
@@ -173,7 +173,7 @@ graph LR
 
 | Komponente | Region | Verschlüsselung in Transit | Verschlüsselung at Rest | Drittland-Mechanismus |
 | --- | --- | --- | --- | --- |
-| Cloudflare (Edge / WAF) | Globales Edge-Netz, primär EU-PoPs | TLS 1.2+ | n/a | n/a (Edge-Termination in der EU) |
+| Cloudflare (Edge / WAF) | Globales Edge-Netz, primär EU-PoPs | TLS 1.2+ | n/a | DPA / SCC / DPF, soweit Drittlandtransfer stattfindet |
 | Vercel Functions | EU (Deutschland) | TLS 1.2+ | Plattform-managed | n/a |
 | Auth0 | EU-Tenant | TLS 1.2+ | Plattformseitig | n/a |
 | AWS Aurora / DynamoDB / S3 / KMS | eu-central-1 (Deutschland) | TLS 1.2+ | AWS KMS / SSE | n/a |
@@ -255,7 +255,9 @@ Genie ist nicht auf die Verarbeitung besonderer Kategorien personenbezogener Dat
 
 ### 5.3 Zwecke und Rechtsgrundlagen
 
-Die folgenden Verarbeitungs­zwecke und zugehörigen Rechtsgrundlagen nach Art. 6 DSGVO liegen der Verarbeitung zugrunde. Die Interessens­abwägungen zu Verarbeitungen auf Grundlage berechtigter Interessen (Art. 6 Abs. 1 lit. f DSGVO) sind intern dokumentiert und werden im Rahmen des AVV-Onboardings auf Anfrage bereitgestellt.
+Soweit Genie als Auftragsverarbeiter tätig ist, bestimmt der Kunde die Rechtsgrundlage. Die folgende Übersicht beschreibt ergänzend typische Zwecke sowie Verarbeitungen, bei denen Genie eigenständig Verantwortlicher ist (vgl. §1).
+
+Die Interessens­abwägungen zu Verarbeitungen auf Grundlage berechtigter Interessen (Art. 6 Abs. 1 lit. f DSGVO) sind intern dokumentiert und werden im Rahmen des AVV-Onboardings auf Anfrage bereitgestellt.
 
 | Zweck | Rechtsgrundlage |
 | --- | --- |
@@ -459,7 +461,7 @@ Jede Berechtigungs­änderung (Neuvergabe, Anpassung, Entzug) wird im Identity P
 
 ## 8. Datenschutz- und Löschkonzept
 
-Wir löschen auf drei Granularitäten. Alle drei halten das DSGVO-Fenster von 30 Tagen ein und sind end-to-end auditierbar.
+Wir löschen auf drei Granularitäten und end-to-end auditierbar. Produktive Löschungen werden innerhalb der DSGVO-Frist von 30 Tagen angestoßen und abgeschlossen, soweit keine gesetzlichen Aufbewahrungs­pflichten oder Backup-Retentionen entgegenstehen (siehe §8.2 und §10.5).
 
 ### 8.1 Inventar — wo liegen personenbezogene Daten
 
@@ -546,9 +548,9 @@ Jede externe Kündigung hat einen dokumentierten Endpunkt und idempotentes Retry
 
 Auskunfts- und Löschungsanfragen außerhalb der App werden erst nach Verifikation der Kontrolle über die hinterlegte E-Mail-Adresse beantwortet (Challenge-Link) oder, bei reinen Abrechnungsanfragen, über eine Stripe-Customer-Portal-Session.
 
-### 9.2 Operator-Runbook
+### 9.2 Dokumentation der DSAR-Bearbeitung
 
-Das interne Runbook zur Bearbeitung von DSAR liegt im privaten Ops-Repo.
+Das interne Runbook zur Bearbeitung von DSAR liegt im privaten Ops-Repo. Jede DSAR-Anfrage wird mit Ticket-ID, Eingangsdatum, Identitäts­prüfung, Bearbeitungs­schritten, beteiligten Systemen und Abschluss­datum dokumentiert. Auf Anfrage erhält der Verantwortliche eine Zusammen­fassung des Bearbeitungs­stands und der durchgeführten Maßnahmen.
 
 ---
 
