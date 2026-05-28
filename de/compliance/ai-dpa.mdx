@@ -1,0 +1,115 @@
+---
+title: "Annex C — AI Data Processing Addendum"
+description: "Spezifisches Addendum zur Verarbeitung personenbezogener Daten in LLM-gestützten Funktionen: Modelltraining, Prompt-Leakage-Prävention, LLM-Provider, Observability, Datenminimierung und Drittlandtransfer. Anhang zum Kunden-Compliance-Paket."
+sidebarTitle: "Annex C — AI DPA"
+---
+
+Adressaten: Kunden, deren Einkauf und deren Datenschutzbeauftragte (DSB).
+
+Dieses Dokument ist **Annex C** zum [Kunden-Compliance-Paket](/de/compliance/kunden-compliance-paket) und kann unabhängig versendet werden. Es bündelt die AI-spezifischen Aussagen aus §1.1, §4 und §5.4 / §5.6 des Hauptdokuments und wird mit diesem synchron gehalten.
+
+<Note>
+  **Hinweis.** Dieses AI DPA ergänzt den Standard-AVV und das Kunden-Compliance-Paket. Es ersetzt diese nicht. Vollständige Firmierung und allgemeine AVV-Regelungen siehe §0 / §2 des Kunden-Compliance-Pakets.
+</Note>
+
+---
+
+## C.0 Geltungsbereich
+
+Dieses Addendum gilt für alle Verarbeitungen personenbezogener Daten in den LLM-gestützten Funktionen der Genie-Plattform — insbesondere:
+
+- LLM-gestützte Codegenerierung und Chat innerhalb von Genie-Projekten,
+- LLM-Aufrufe aus kundeneigenen Edge Functions über den Genie-Proxy,
+- AI-Observability- und Evaluierungs­daten (Traces, Evals, Prompt-Versionen),
+- Embeddings, soweit kundenseitig erzeugt.
+
+## C.1 Shared Responsibility für AI-Verarbeitungen
+
+Genie stellt die LLM-Inferenz-Funktionen, die Provider-Konfiguration und die zugehörige Observability bereit. **Der Kunde bleibt verantwortlich für die Rechtmäßigkeit der in seine Projekte eingebrachten Inhalte, Datenkategorien und Verarbeitungs­zwecke.** Das umfasst insbesondere:
+
+- die Auswahl und Konfiguration optionaler LLM-Anbieter im jeweiligen Workspace (siehe C.3),
+- Inhalte und Datenkategorien, die der Kunde über Prompts, Uploads oder Edge Functions verarbeitet,
+- die Bewertung einer DSFA-Pflicht nach Art. 35 DSGVO (siehe C.6),
+- die Information seiner Endnutzer nach Art. 13 / 14 DSGVO über den Einsatz LLM-gestützter Funktionen,
+- die Prüfung, ob besondere Kategorien nach Art. 9 DSGVO einbezogen sind (siehe C.5).
+
+## C.2 Umgang mit LLM-Daten
+
+### C.2.1 Modelltraining
+
+Wir nutzen produktive Kundendaten nicht zum Modelltraining. Soweit unsere LLM-Anbieter vertragliche Zusagen zu Zero-Data-Retention bzw. No-Training-on-Inputs abgegeben haben (Anthropic, OpenAI, AWS Bedrock, Google Vertex), sind diese Zusagen in den jeweiligen DPAs / Provider-Statements dokumentiert; auditierbare Auszüge stellen wir auf Anfrage über `privacy@genie-app.de` bereit. Für Teams-Pläne ist die Inferenz so konfiguriert, dass sie über AWS Bedrock (`eu-central-1`) läuft; ein direkter Datenfluss an Anthropic oder OpenAI ist in dieser Konfiguration nicht vorgesehen.
+
+### C.2.2 Prompt-Leakage-Prävention
+
+Der Prompt-Kontext wird strikt auf den jeweiligen Nutzer und sein Projekt eingegrenzt; eine projekt­übergreifende Verarbeitung in einer gemeinsamen LLM-Session findet nicht statt. Datenbank­zugriffe sind durch Row-Level Security und nutzerskopierte Anwendungs­kontexte abgesichert.
+
+### C.2.3 Embeddings
+
+In der Genie-Infrastruktur werden derzeit keine Embeddings persistiert. Sofern Kunden über Edge Functions in ihrem eigenen Supabase-Projekt Embeddings erzeugen oder ablegen, liegt deren Speicherung in der Verantwortung des Kunden.
+
+### C.2.4 LLM-Traces (Braintrust)
+
+- **Zweck.** Qualitäts­überwachung, Regressions­erkennung und Debugging der LLM-gestützten Funktionen. Eine Nutzung zu Profiling-, Marketing- oder Trainings­zwecken erfolgt nicht.
+- **Teams-Ausschluss.** Workspaces mit Teams-Plan sind technisch so konfiguriert, dass sie vom Trace-Export an Braintrust ausgeschlossen sind. Spans aus Teams-Workspaces werden im Rahmen dieser Konfiguration nicht an Braintrust übermittelt; die Konfiguration ist im Code dokumentiert und Bestandteil der Code-Review-Pflicht.
+- **Datenminimierung.** Für die übrigen Pläne werden ausschließlich AI-bezogene Spans exportiert (`filterAISpans`); allgemeine Anwendungs- oder Request-Logs, Klartext-Secrets, MCP-Credentials und Billing-Bodies sind durch dokumentierte Filterregeln ausgeschlossen. Stabile interne Identifier werden vor Übermittlung pseudonymisiert.
+- **Zweckbindung und Retention.** Traces werden ausschließlich für die oben genannten Zwecke verarbeitet; Retention 30 Tage, danach automatisierte Löschung.
+- **Rechtsgrundlage.** Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an stabilem Betrieb und Sicherheit der KI-Funktionen; Interessens­abwägung dokumentiert).
+- **Zugriffsbeschränkung.** Zugriff auf Traces ist ausschließlich Personen mit dokumentierter Produktiv­berechtigung möglich, MFA-geschützt, rollenbasiert und vollständig protokolliert.
+- **Drittland.** Braintrust wird in der EU-Region betrieben; soweit für einzelne Sub-Komponenten anwendbar, liegen Standardvertragsklauseln vor.
+
+## C.3 LLM-Provider-Konfiguration
+
+### C.3.1 Standardpfad EU-only (Teams)
+
+LLM-Inferenz für Teams-Konten ist so konfiguriert, dass sie über **AWS Bedrock (`eu-central-1`, Deutschland)** geroutet wird. Im Rahmen dieser Konfiguration werden Prompts und Completions nach unserem Kenntnisstand nicht außerhalb der EU verarbeitet. Wir empfehlen diesen Pfad als Enterprise- und DSGVO-Standardpfad.
+
+### C.3.2 Optionale US-Anbieter (Opt-in)
+
+Anthropic und OpenAI (außerhalb von Bedrock), Perplexity, Replicate, Hugging Face, xAI sowie ggf. Voyage werden ausschließlich für Starter- / Genie-Pläne oder nach expliziter Aktivierung durch den Kunden in den Projekt­einstellungen verwendet. Für Teams-Kunden sind sie nicht der Default-Pfad und können vollständig deaktiviert werden.
+
+### C.3.3 Drittlandtransfer-Grundlagen
+
+Übermittlungen außerhalb EU/EWR erfolgen auf Basis der EU-Standardvertragsklauseln (Modul 2 / 3, Durchführungs­beschluss 2021/914) sowie, soweit anwendbar, des EU–US Data Privacy Framework. Für jeden US-Provider mit Zugriff auf personenbezogene Daten liegt ein internes **Transfer Impact Assessment (TIA)** gemäß EDSA-Empfehlungen 01/2020 vor; TIAs werden mindestens jährlich und anlassbezogen aktualisiert.
+
+### C.3.4 Datenminimierung bei Drittlandtransfer
+
+Übermittelt werden ausschließlich die für die Inferenz erforderlichen Prompt- und Completion-Daten. Stabile interne Identifier werden, soweit technisch möglich, vor Übermittlung gegen Pseudonyme ersetzt; produktive Nutzeridentitäten (E-Mail, Klarname, Auth0-IDs) sollen nach unserer Implementierung kein Bestandteil der LLM-Payloads sein. Klartext-Secrets, MCP-Credentials und Billing-Bodies sind durch dokumentierte Filter- und Logging-Regeln aus den Payloads ausgeschlossen.
+
+### C.3.5 Provider-Deaktivierung
+
+Kunden können in den Workspace-Einstellungen einzelne LLM-Anbieter deaktivieren. Teams-Kunden können den Provider-Scope auf „EU-only / AWS Bedrock" beschränken; in dieser Konfiguration werden Anfragen an US-Anbieter technisch unterbunden.
+
+## C.4 Rechtsgrundlagen für AI-Verarbeitungen
+
+Soweit Genie als Auftragsverarbeiter tätig ist, bestimmt der Kunde die Rechtsgrundlage. Die folgende Übersicht beschreibt ergänzend typische Zwecke sowie Verarbeitungen, bei denen Genie eigenständig Verantwortlicher ist.
+
+| Zweck | Rechtsgrundlage |
+| --- | --- |
+| LLM-gestützte Codegenerierung und Chat | Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung) |
+| AI-Traces / LLM-Observability (Braintrust) | Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an stabilem Betrieb und Sicherheit der KI-Funktionen) |
+| Optionale Funktionen mit Einwilligungs­anker (z. B. ausdrücklich aktivierte Provider) | Art. 6 Abs. 1 lit. a DSGVO (Einwilligung; widerrufbar nach Art. 7 Abs. 3 DSGVO) |
+
+Eine Interessens­abwägung zu den auf Art. 6 Abs. 1 lit. f DSGVO gestützten Verarbeitungen ist intern dokumentiert und kann beim AVV-Onboarding angefordert werden.
+
+## C.5 Besondere Kategorien (Art. 9 DSGVO)
+
+Genie ist nicht auf die Verarbeitung besonderer Kategorien personenbezogener Daten nach Art. 9 DSGVO ausgelegt. Kunden werden angewiesen, solche Daten nur nach eigener rechtlicher Prüfung und nur in hierfür vorgesehenen Konfigurationen zu verarbeiten. Soweit Kunden derartige Daten in ihre Prompts, Uploads oder kundeneigenen Supabase-Projekte einspeisen, liegt diese Verarbeitung in ihrer Verantwortung.
+
+## C.6 Datenschutz-Folgenabschätzung (Art. 35 DSGVO)
+
+Eine generelle Pflicht zur Durchführung einer DSFA durch den Auftrags­verarbeiter besteht nach Art. 35 DSGVO nicht; die DSFA-Pflicht trifft den jeweiligen Verantwortlichen. Genie unterstützt den Verantwortlichen bei der Erstellung und Pflege seiner DSFA durch:
+
+- die in diesem Annex sowie im Kunden-Compliance-Paket dokumentierten Datenkategorien, Verarbeitungs­zwecke, Rechtsgrundlagen und TOM,
+- Bereitstellung weiterer Detail-Informationen auf Anfrage (z. B. konkrete LLM-Provider-Konfiguration, Drittland­transfer-Mechanismen, Subprozessor-Compliance-Berichte, TIA-Zusammen­fassungen).
+
+Intern erfolgt eine **risiko­basierte Bewertung möglicher DSFA-relevanter Verarbeitungs­vorgänge** anlass­bezogen und mindestens jährlich. Bewertet werden insbesondere LLM-gestützte Funktionen, Subprozessor-Wechsel mit Drittland­bezug sowie wesentliche Änderungen an Verarbeitungs­zwecken oder Datenkategorien.
+
+## C.7 Automatisierte Entscheidungen (Art. 22 DSGVO)
+
+Wir treffen keine rechtsverbindlichen Entscheidungen auf automatisierter Basis. LLM-Ausgaben sind Vorschläge und werden erst durch eine menschliche Handlung wirksam.
+
+## C.8 Kontakt und Dokumentenstand
+
+- **Datenschutz / AI-DPA-Anfragen:** `privacy@genie-app.de`
+- **Sicherheitsmeldungen:** `security@genie-app.de`
+- **Versionierung.** Dieses Annex wird jährlich sowie bei wesentlichen Änderungen an LLM-Provider-Konfiguration, Trace-Pipeline oder Trainings-Zusagen überprüft und mit dem [Kunden-Compliance-Paket](/de/compliance/kunden-compliance-paket) synchron gehalten.

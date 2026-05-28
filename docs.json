@@ -191,7 +191,10 @@
                 "group": "Datenschutz & Compliance",
                 "icon": "shield",
                 "pages": [
-                  "de/compliance/kunden-compliance-paket"
+                  "de/compliance/kunden-compliance-paket",
+                  "de/compliance/subprocessors",
+                  "de/compliance/tom",
+                  "de/compliance/ai-dpa"
                 ]
               }
             ]

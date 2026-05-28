@@ -1,0 +1,170 @@
+---
+title: "Annex B — Technische und organisatorische Maßnahmen (TOM)"
+description: "Technische und organisatorische Maßnahmen nach Art. 32 DSGVO inklusive Vertraulichkeit, Integrität, Verfügbarkeit, Wiederherstellbarkeit, Vorfall-Reaktion, BCP und Berechtigungskonzept. Anhang zum Kunden-Compliance-Paket."
+sidebarTitle: "Annex B — TOM"
+---
+
+Adressaten: Kunden, deren Einkauf und deren Datenschutzbeauftragte (DSB).
+
+Dieses Dokument ist **Annex B** zum [Kunden-Compliance-Paket](/de/compliance/kunden-compliance-paket) und kann unabhängig versendet werden. Es entspricht inhaltlich den §6 und §7 des Hauptdokuments und wird mit diesem synchron gehalten.
+
+<Note>
+  **Hinweis zur Firmierung.** Auftragsverarbeiter im Sinne dieses Annex ist die im Bestellformular benannte Genie-Gesellschaft. Vollständige Firmierung siehe §0 des Kunden-Compliance-Pakets.
+</Note>
+
+---
+
+## B.0 Geltungsbereich
+
+Die folgenden technischen und organisatorischen Maßnahmen (TOM) sind nach Art. 32 DSGVO dokumentiert und werden zur Sicherstellung der Vertraulichkeit, Integrität, Verfügbarkeit und Belastbarkeit der Verarbeitungs­systeme und -dienste umgesetzt. Sie sind Bestandteil des Auftragsverarbeitungs­vertrags (AVV) zwischen Genie und dem Kunden.
+
+---
+
+## B.1 Technische Maßnahmen (Art. 32 DSGVO)
+
+### B.1.1 Vertraulichkeit (Art. 32 Abs. 1 lit. b)
+
+| Maßnahme | Umsetzung |
+| --- | --- |
+| **Zutritts- / Zugangskontrolle — Identität** | Föderierte Identität über Auth0 (OIDC). Authentifizierungs­tokens sind kryptographisch signiert; die Signatur wird serverseitig vor jeder Sitzungsentscheidung verifiziert. Es werden keine Passwörter in der Anwendung gespeichert. |
+| **Zugriffskontrolle — Autorisierung** | Row-Level Security auf Datenbankebene. Jede Anfrage läuft in einem nutzerskopierten Kontext; Policies entscheiden über Datensichtbarkeit. |
+| **Least Privilege — Entwickler** | Produktivzugriffe werden rollenbasiert vergeben und mindestens quartalsweise überprüft. Änderungen an sicherheits­relevanten Codepfaden erfordern eine dokumentierte Freigabe durch eine zweite Person. |
+| **Least Privilege — Infrastruktur** | AWS-IAM-Rollen pro Dienst zugeschnitten; Secrets ausschließlich im Secrets Manager. |
+| **Verschlüsselung der Übertragung** | TLS 1.2+ terminiert an der Cloudflare- / AWS-Edge. HSTS aktiv. |
+| **Verschlüsselung at Rest — Infrastruktur** | Alle Datenbanken und Speicher-Dienste sind at-rest-verschlüsselt (AWS KMS). |
+| **Verschlüsselung at Rest — Secrets** | Kundensecrets werden vor dem Speichern Ende-zu-Ende-verschlüsselt. Versionierte Schlüssel für unterbrechungsfreie Rotation; jährliche Rotation. |
+| **Secret-Hygiene in CI** | Automatisierter Secret-Scan bei jedem Code-Push; Push-Protection auf der Source-Hosting-Plattform aktiviert. |
+| **Log-Verbot für sensible Felder** | Klartext-Secrets, MCP-Credentials, vollständige Billing-Request-Bodies und PII dürfen nicht geloggt werden. |
+
+### B.1.2 Integrität (Art. 32 Abs. 1 lit. b)
+
+| Maßnahme | Umsetzung |
+| --- | --- |
+| **Append-only-Audit-Log** | Der Workspace-Activity-Log ist technisch gegen nachträgliche Änderung oder Löschung geschützt; Anonymisierung nur durch den kontrollierten Account-Löschjob. |
+| **Signierte Tokens** | Authentifizierungs­tokens sind kryptographisch signiert; Manipulation wird zurückgewiesen. |
+| **Signierte Webhooks** | Stripe- und Auth0-Webhook-Signaturen werden vor jeder Statusänderung verifiziert. |
+| **Change Management** | Änderungen an produktionsrelevanten Systemen erfordern einen dokumentierten Review- und Freigabeprozess durch eine zweite Person. Verpflichtende automatisierte Checks (Tests, Secret-Scan, Dependency-Scan) müssen vor dem Merge erfolgreich sein. |
+
+### B.1.3 Verfügbarkeit und Belastbarkeit (Art. 32 Abs. 1 lit. b)
+
+| Maßnahme | Umsetzung |
+| --- | --- |
+| **Backups** | Aurora Point-in-Time-Recovery, 35 Tage Retention. S3-Versionierung auf den Buckets mit Kundeninhalten. |
+| **Multi-AZ** | Aurora und DynamoDB sind in eu-central-1 standardmäßig Multi-AZ. |
+| **DDoS / WAF** | Cloudflare WAF vor allen kundenseitigen Endpunkten. |
+| **Workflow-Durabilität** | Lang laufende Jobs laufen auf einer durablen Workflow-Runtime, die Host-Restarts und Deploys übersteht. |
+
+### B.1.4 Wiederherstellbarkeit (Art. 32 Abs. 1 lit. c)
+
+- Aurora-PITR (35 Tage) wird mindestens quartalsweise in Staging geübt.
+- Disaster-Recovery-Runbook liegt im privaten Ops-Repo; RPO ≤ 5 min, RTO ≤ 4 h für die Genie-Control-Plane. Kundenseitige Supabase-Projekte erben Supabases eigene DR-Posture.
+- Über die rein technische Wiederherstellung hinaus ist der Kommunikations- und Eskalationsprozess im Business Continuity Plan (B.1.9) beschrieben.
+
+### B.1.5 Pseudonymisierung (Art. 32 Abs. 1 lit. a)
+
+- Der Audit-Trail wird bei Account-Löschung in place anonymisiert — der gesetzliche Nachweis bleibt erhalten, ohne PII zu speichern.
+- Der Nachweis der Löschung wird pseudonymisiert geführt, ohne den Identifier selbst aufzubewahren.
+
+### B.1.6 Regelmäßige Überprüfung (Art. 32 Abs. 1 lit. d)
+
+| Maßnahme | Frequenz |
+| --- | --- |
+| Automatisierte Tests bei jeder Codeänderung | pro Commit |
+| Abhängigkeits-Vuln-Scan | pro Commit |
+| Secret-Scan | pro Commit |
+| Penetrationstest | jährlich (extern) |
+| SEV-1-Tabletop-Übung | jährlich |
+| Access-Review | quartalsweise |
+| Unterauftragsverarbeiter- / AVV-Review | jährlich |
+| Schlüsselrotation | jährlich oder bei Verdacht auf Kompromittierung |
+| Backup-Restore-Übung | quartalsweise |
+
+Die Wirksamkeit der technischen und organisatorischen Maßnahmen wird im Rahmen dieser Überprüfungen regelmäßig **bewertet, dokumentiert und evaluiert** (Art. 32 Abs. 1 lit. d DSGVO). Befunde fließen in den jährlichen TOM-Review ein; wesentliche Abweichungen werden in nachverfolgbaren Folgemaßnahmen behoben und im Evidenzpaket dokumentiert.
+
+### B.1.7 Vulnerability- und Patch-Management
+
+- Kontinuierliches Dependency-Scanning bei jedem Commit; Befunde werden zentral nachverfolgt.
+- Kritikalitäts­klassifizierung erkannter Schwachstellen nach CVSS v3.1 mit folgenden Ziel-Behebungs­fristen:
+
+| Kritikalität | CVSS-Bereich | Ziel-Behebungsfrist |
+| --- | --- | --- |
+| Critical | ≥ 9.0 | ≤ 7 Tage, priorisiertes Patching |
+| High | 7.0 – 8.9 | ≤ 30 Tage |
+| Medium | 4.0 – 6.9 | ≤ 90 Tage |
+| Low | < 4.0 | bündelweise im regulären Releasezyklus |
+
+- Out-of-Band-Releases für Critical-Findings sind möglich; sie folgen einem verkürzten, jedoch ebenfalls dokumentierten Review-Pfad.
+- Externer Penetrationstest jährlich; identifizierte Findings werden nach derselben Kritikalitäts­matrix bearbeitet.
+
+### B.1.8 Vorfall-Reaktion (Art. 33 / 34 DSGVO)
+
+- 24/7-On-Call-Rotation; Triage-SLA 30 Minuten.
+- Betroffene Kunden werden unverzüglich informiert, sobald hinreichend gesicherte Erkenntnisse über einen meldepflichtigen Vorfall vorliegen. Die 72-Stunden-Frist gegenüber der zuständigen Aufsichts­behörde wird vom Verantwortlichen eingehalten; wir stellen die nach Art. 33 Abs. 3 DSGVO erforderlichen Informationen unverzüglich bereit.
+- Vollständiger Lebenszyklus, Beweissicherung und Post-Mortem-Kadenz sind intern dokumentiert und werden bei Audits auf Anfrage bereitgestellt.
+
+### B.1.9 Business Continuity Plan
+
+Abgrenzung: B.1.3 beschreibt technische Redundanz, B.1.4 die technische Wiederherstellbarkeit. Der Business Continuity Plan ergänzt dies um die organisatorische Ausfall- und Kommunikations­organisation.
+
+- **Ausfallorganisation.** 24/7-On-Call-Rotation mit definiertem Eskalationspfad (On-Call → Incident Commander → Executive Sponsor).
+- **Kommunikationsprozesse.** Status-Updates an betroffene Kunden über `status.genie-app.de` und per E-Mail an den hinterlegten Hauptkontakt. Sicherheits­relevante Meldungen zusätzlich über `security@genie-app.de`.
+- **Verantwortlichkeiten.** Der Incident Commander koordiniert die technische Wiederherstellung; der Privacy Lead bewertet Meldepflichten gemäß Art. 33 / 34 DSGVO; der Executive Sponsor entscheidet über externe Kommunikation.
+- **Übung.** Die jährliche SEV-1-Tabletop-Übung deckt sowohl die DR- als auch die BCP-Kommunikations­prozesse ab.
+
+### B.1.10 Auftragskontrolle / Unterauftragsverarbeiter (Art. 28 DSGVO)
+
+Siehe [Annex A — Subprozessoren](/de/compliance/subprocessors): SOC-2-Report oder gleichwertig eingeholt, AVV unterzeichnet, Register jährlich überprüft, 30 Tage Vorlauf vor Aufnahme oder Wechsel eines Unterauftragsverarbeiters.
+
+---
+
+## B.2 Organisatorische Maßnahmen
+
+Ergänzend zu den technischen Maßnahmen in B.1 sind die folgenden organisatorischen Maßnahmen implementiert.
+
+### B.2.1 Security Awareness und Trainings
+
+Mitarbeitende mit Zugriff auf produktive Systeme oder Kundendaten durchlaufen ein Security- und Datenschutz-Training beim Onboarding sowie regelmäßige Auffrischungen. Spezialisierte Trainings (z. B. sicheres Coding) ergänzen die Basis.
+
+### B.2.2 Vertraulichkeit, NDAs und Joiner-Mover-Leaver
+
+Alle Mitarbeitenden sind vertraglich zur Vertraulichkeit verpflichtet. Onboarding, Rollenwechsel und Offboarding folgen einem dokumentierten Prozess, der das Vergeben, Anpassen und Entziehen von Zugriffsrechten regelt. Berechtigungen werden bei Ausscheiden unverzüglich entzogen.
+
+### B.2.3 Asset- und Endpoint-Management
+
+Unternehmensgeräte werden zentral inventarisiert und verwaltet. Verschlüsselung der Festplatte, Bildschirmsperre, automatische Updates und Endpoint-Schutz sind verpflichtend.
+
+### B.2.4 Lieferanten- und Drittparteienmanagement
+
+Unterauftragsverarbeiter werden vor Einsatz auf datenschutz- und sicherheits­relevante Anforderungen geprüft (SOC-2- bzw. ISO-27001-Berichte, AVV, ggf. SCC). Bestand siehe [Annex A — Subprozessoren](/de/compliance/subprocessors). Jährliches Re-Assessment.
+
+### B.2.5 Zugangs- und Passwort-Policy, MFA
+
+Identitätsbasierte Anmeldungen erfolgen über einen zentralen Identity Provider mit erzwungener Multi-Faktor-Authentifizierung für alle Mitarbeitenden­konten und insbesondere für jeden Produktiv­zugriff. Passwort­anforderungen entsprechen anerkannten Standards (NIST SP 800-63B).
+
+### B.2.6 Mitarbeiterzugriffe auf Kundendaten
+
+Zugriffe auf produktive Kundendaten erfolgen ausschließlich nach dem Need-to-know-Prinzip, sind rollenbasiert vergeben, MFA-geschützt und werden protokolliert. Break-Glass-Zugriffe sind technisch möglich, werden vor oder unverzüglich nach dem Zugriff dokumentiert, vom Privacy Lead nachgehalten und im quartalsweisen Access-Review überprüft. Es existiert keine generelle Lese­berechtigung auf Kundendaten ohne dokumentierten Anlass.
+
+### B.2.7 Internes Berechtigungs- und Rollenkonzept
+
+Zur Umsetzung der Anforderungen aus Art. 32 DSGVO sowie B.1.1 (Least Privilege) ist ein dokumentiertes Rollenmodell etabliert. Die folgenden Rollen verfügen über klar abgegrenzte Berechtigungs­profile; Zuweisungen werden zentral im Identity Provider verwaltet, beim Onboarding / Rollenwechsel / Offboarding angepasst und im quartalsweisen Access-Review überprüft.
+
+| Rolle | Aufgabenbereich | Zugriff auf produktive Kundendaten | Freigabe / Vier-Augen |
+| --- | --- | --- | --- |
+| **Engineering** | Entwicklung, Code-Reviews, Deployments | Kein direkter Lese­zugriff auf produktive Inhalte. Schreibender Zugriff nur über automatisierte Pipelines mit Code-Review-Pflicht. | Verpflichtender Peer-Review für sicherheits­relevante Pfade |
+| **Site Reliability / SRE** | Betrieb, Monitoring, Incident Response | Lese­zugriff auf Betriebs­metriken und anonymisierte Telemetrie. Zugriff auf Klartext-Kundendaten nur über Break-Glass. | Eskalations- und Genehmigungs­prozess für Break-Glass |
+| **Customer Support** | Bearbeitung von Kundenanfragen | Zugriff auf Profil- und Abrechnungs­daten nach ticket­basierter Anlass­dokumentation. Kein generischer Zugriff auf Chatinhalte oder Uploads. | Ticketbezogene Dokumentation; Privacy-Lead-Stichprobe |
+| **Privacy Lead** | DSAR-Bearbeitung, Datenschutz­koordination, Audit-Aufsicht | Lese- und Bearbeitungs­zugriff im Rahmen der DSAR-Bearbeitung. | Vier-Augen-Prinzip bei Account-Löschungen und Massenexporten |
+| **Security Officer** | Vorfall­untersuchung, forensische Analyse | Anlassbezogen, dokumentiert; im Vorfall vollumfänglich nach B.1.8. | Dokumentations- und Berichts­pflicht an Geschäftsführung |
+| **Break-Glass** | Notfall-Zugriff bei kritischen Vorfällen | Vollumfänglich für die Dauer des Vorfalls; zeitlich limitiert. | Aktivierung erfordert Zwei-Personen-Freigabe (Incident Commander + Privacy/Security Lead); vollständige Sitzungs­aufzeichnung; nachgelagerter Review im quartalsweisen Access-Review |
+| **Audit / Compliance** | Stichproben, Evidenzpaket-Pflege | Lesender Zugriff auf Audit-Logs, keine Bearbeitungs­rechte. | n/a |
+
+Jede Berechtigungs­änderung (Neuvergabe, Anpassung, Entzug) wird im Identity Provider und in den jeweiligen Zielsystemen vollständig protokolliert. Produktive Zugriffe werden durchgehend in einem zentralen Audit-Log erfasst. Eine generische „Admin"-Rolle mit ungefiltertem Datenzugriff existiert nicht; produktiver Vollzugriff ist ausschließlich über die zeitlich limitierte Break-Glass-Rolle erreichbar.
+
+---
+
+## B.3 Kontakt und Dokumentenstand
+
+- **Datenschutz / TOM-Anfragen:** `privacy@genie-app.de`
+- **Sicherheitsmeldungen:** `security@genie-app.de`
+- **Versionierung.** Dieses Annex wird jährlich sowie bei jeder wesentlichen Änderung der TOM überprüft und mit dem [Kunden-Compliance-Paket](/de/compliance/kunden-compliance-paket) synchron gehalten.
