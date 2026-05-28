@@ -136,7 +136,6 @@ graph LR
     LLM["Anthropic / OpenAI / Vertex / Mistral …"]
     Braintrust["Braintrust (Tracing, 30 Tage)"]
     Stripe["Stripe (Billing)"]
-    GitHub["GitHub (intern, keine produktiven Kundendaten)"]
   end
   Browser -->|TLS 1.2+| Cloudflare --> Vercel
   Vercel --> Auth0EU
@@ -161,7 +160,6 @@ graph LR
 | Braintrust | EU-Region | TLS 1.2+ | Plattformseitig | SCC, soweit anwendbar |
 | LLM-Anbieter (Anthropic / OpenAI / Vertex / Mistral / xAI / Perplexity / Replicate / Voyage) | EU-Default (über Bedrock und EU-Endpoints); US ausschließlich bei direkter Nutzung von Anthropic oder OpenAI (Starter / Genie-Pläne) | TLS 1.2+ | Plattformseitig | SCC (2021/914), EU–US Data Privacy Framework wo verfügbar |
 | Stripe | EU mit US-Submetadaten | TLS 1.2+ | PCI-Scope bei Stripe | SCC für US-Submetadaten |
-| GitHub | US | TLS 1.2+ | Plattformseitig | SCC; keine produktiven Kundendaten |
 
 Die primäre Datenhaltung erfolgt in **AWS eu-central-1 (Frankfurt)**. Für Teams-Konten wird die LLM-Inferenz über AWS Bedrock (eu-central-1) geroutet; Prompts und Completions verlassen die EU nicht.
 
@@ -188,8 +186,7 @@ Diese Dienste werden ausschließlich intern von Genie genutzt. Es werden grunds�
 
 | # | Unterauftragsverarbeiter | Was er für uns tut | Datenkategorien | Region | Compliance |
 | --- | --- | --- | --- | --- | --- |
-| 1 | **GitHub** | Source-Hosting und CI für Genie selbst. Es werden grundsätzlich keine produktiven Kundendaten verarbeitet; interne CI-Logs können personenbezogene Bezüge enthalten (z. B. Commit-Autoren). | Quellcode, CI-Logs | US (SCC) | SOC 1/2, ISO 27001 |
-| 2 | **Unsplash** | Bildersuche im In-App-Asset-Picker. Read-only; es werden grundsätzlich keine produktiven Kundendaten gespeichert. Suchstrings können personenbezogen sein und werden ausschließlich für die Suchanfrage an Unsplash übergeben. | Suchstring | US (Read-only Public API) | n/a |
+| 1 | **Unsplash** | Bildersuche im In-App-Asset-Picker. Read-only; es werden grundsätzlich keine produktiven Kundendaten gespeichert. Suchstrings können personenbezogen sein und werden ausschließlich für die Suchanfrage an Unsplash übergeben. | Suchstring | US (Read-only Public API) | n/a |
 
 ### 4b. Nutzerinfrastruktur (verarbeitet Nutzerdaten)
 
@@ -315,7 +312,7 @@ Dokumentiert nach Art. 32 DSGVO. Wir haben technische und organisatorische Maßn
 | **Verschlüsselung der Übertragung** | TLS 1.2\+ terminiert an der Cloudflare- / AWS-Edge. HSTS aktiv. |
 | **Verschlüsselung at Rest — Infrastruktur** | Alle Datenbanken und Speicher-Dienste sind at-rest-verschlüsselt (AWS KMS). |
 | **Verschlüsselung at Rest — Secrets** | Kundensecrets werden vor dem Speichern Ende-zu-Ende-verschlüsselt. Versionierte Schlüssel für unterbrechungsfreie Rotation; jährliche Rotation. |
-| **Secret-Hygiene in CI** | Automatisierter Secret-Scan bei jedem Code-Push. GitHub Secret Scanning \+ Push Protection aktiviert. |
+| **Secret-Hygiene in CI** | Automatisierter Secret-Scan bei jedem Code-Push; Push-Protection auf der Source-Hosting-Plattform aktiviert. |
 | **Log-Verbot für sensible Felder** | Klartext-Secrets, MCP-Credentials, vollständige Billing-Request-Bodies und PII dürfen nicht geloggt werden. |
 
 ### 6.2 Integrität (Art. 32 Abs. 1 lit. b)
