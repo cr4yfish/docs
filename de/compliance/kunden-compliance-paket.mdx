@@ -180,17 +180,9 @@ Genie verarbeitet personenbezogene Daten standardmäßig in der EU. Für DSGVO-s
 - **Datenminimierung bei Drittlandtransfer.** Übermittelt werden ausschließlich die für die Inferenz erforderlichen Prompt- und Completion-Daten. Stabile interne Identifier werden, soweit technisch möglich, vor Übermittlung gegen Pseudonyme ersetzt; produktive Nutzeridentitäten (E-Mail, Klarname, Auth0-IDs) sind kein Bestandteil der LLM-Payloads. Klartext-Secrets, MCP-Credentials und Billing-Bodies sind aus den Payloads strukturell ausgeschlossen (§6.1).
 - **Provider-Deaktivierung.** Kunden können in den Workspace-Einstellungen einzelne LLM-Anbieter deaktivieren. Teams-Kunden können den Provider-Scope auf „EU-only / AWS Bedrock" beschränken; in dieser Konfiguration werden Anfragen an US-Anbieter technisch unterbunden. Eine zentrale Übersicht aktiver Provider pro Workspace ist in den Admin-Einstellungen einsehbar.
 
-### 4a. Interne Infrastruktur (keine produktiven Kundendaten)
+### Eingesetzte Unterauftragsverarbeiter
 
-Diese Dienste werden ausschließlich intern von Genie genutzt. Es werden grundsätzlich keine produktiven Kundendaten verarbeitet.
-
-| # | Unterauftragsverarbeiter | Was er für uns tut | Datenkategorien | Region | Compliance |
-| --- | --- | --- | --- | --- | --- |
-| 1 | **Unsplash** | Bildersuche im In-App-Asset-Picker. Read-only; es werden grundsätzlich keine produktiven Kundendaten gespeichert. Suchstrings können personenbezogen sein und werden ausschließlich für die Suchanfrage an Unsplash übergeben. | Suchstring | US (Read-only Public API) | n/a |
-
-### 4b. Nutzerinfrastruktur (verarbeitet Nutzerdaten)
-
-Diese Dienste sind direkt in den Betrieb der Genie-Plattform und der Nutzer-Apps eingebunden. Sie verarbeiten personenbezogene Daten von Endnutzern.
+Die folgenden Dienste sind direkt in den Betrieb der Genie-Plattform und der Nutzer-Apps eingebunden. Sie verarbeiten personenbezogene Daten von Endnutzern.
 
 | # | Unterauftragsverarbeiter | Was er für uns tut | Datenkategorien | Region | Compliance |
 | --- | --- | --- | --- | --- | --- |
