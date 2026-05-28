@@ -159,7 +159,7 @@ graph LR
 | Supabase (kundeneigen) | EU (Frankfurt) für Teams; sonst vom Kunden gewählt | TLS 1.2+ | Plattformseitig | n/a, sofern EU |
 | Resend | EU | TLS 1.2+ | Plattformseitig | n/a |
 | Braintrust | EU-Region | TLS 1.2+ | Plattformseitig | SCC, soweit anwendbar |
-| LLM-Anbieter (Anthropic / OpenAI / Vertex / Mistral / xAI / Perplexity / Replicate / Voyage) | Je Anbieter; US bei Anthropic / OpenAI | TLS 1.2+ | Plattformseitig | SCC (2021/914), EU–US Data Privacy Framework wo verfügbar |
+| LLM-Anbieter (Anthropic / OpenAI / Vertex / Mistral / xAI / Perplexity / Replicate / Voyage) | EU-Default (über Bedrock und EU-Endpoints); US ausschließlich bei direkter Nutzung von Anthropic oder OpenAI (Starter / Genie-Pläne) | TLS 1.2+ | Plattformseitig | SCC (2021/914), EU–US Data Privacy Framework wo verfügbar |
 | Stripe | EU mit US-Submetadaten | TLS 1.2+ | PCI-Scope bei Stripe | SCC für US-Submetadaten |
 | GitHub | US | TLS 1.2+ | Plattformseitig | SCC; keine produktiven Kundendaten |
 
