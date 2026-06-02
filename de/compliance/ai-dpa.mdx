@@ -37,7 +37,7 @@ Genie stellt die LLM-Inferenz-Funktionen, die Provider-Konfiguration und die zug
 
 ### C.2.1 Modelltraining
 
-Wir nutzen produktive Kundendaten nicht zum Modelltraining. Soweit unsere LLM-Anbieter vertragliche Zusagen zu Zero-Data-Retention bzw. No-Training-on-Inputs abgegeben haben (Anthropic, OpenAI, AWS Bedrock, Google Vertex), sind diese Zusagen in den jeweiligen DPAs / Provider-Statements dokumentiert; auditierbare Auszüge stellen wir auf Anfrage über `privacy@genie-app.de` bereit. Für Teams-Pläne ist die Inferenz so konfiguriert, dass sie über AWS Bedrock (`eu-central-1`) läuft; ein direkter Datenfluss an Anthropic oder OpenAI ist in dieser Konfiguration nicht vorgesehen.
+Wir nutzen produktive Kundendaten nicht zum Modelltraining. Soweit unsere LLM-Anbieter vertragliche Zusagen zu Zero-Data-Retention bzw. No-Training-on-Inputs abgegeben haben (Anthropic, OpenAI, AWS Bedrock, Google Vertex), sind diese Zusagen in den jeweiligen DPAs / Provider-Statements dokumentiert; auditierbare Auszüge stellen wir auf Anfrage über `privacy@genie-app.de` bereit. Für Google Vertex ist diese Zusage öffentlich im [Google Cloud Data Processing Addendum (CDPA)](https://cloud.google.com/terms/data-processing-addendum) einsehbar, das Vertex AI umfasst (Stand: Juni 2026). Für Teams-Pläne ist die Inferenz so konfiguriert, dass sie über AWS Bedrock (`eu-central-1`) läuft; ein direkter Datenfluss an Anthropic oder OpenAI ist in dieser Konfiguration nicht vorgesehen.
 
 ### C.2.2 Prompt-Leakage-Prävention
 
