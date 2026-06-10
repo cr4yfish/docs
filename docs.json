@@ -79,8 +79,10 @@
                 "icon": "building-2",
                 "pages": [
                   "workspaces/overview",
+                  "workspaces/chat",
                   "workspaces/members",
-                  "workspaces/integrations"
+                  "workspaces/integrations",
+                  "workspaces/mcp-api"
                 ]
               },
               {
@@ -164,8 +166,10 @@
                 "icon": "building-2",
                 "pages": [
                   "de/workspaces/overview",
+                  "de/workspaces/chat",
                   "de/workspaces/members",
-                  "de/workspaces/integrations"
+                  "de/workspaces/integrations",
+                  "de/workspaces/mcp-api"
                 ]
               },
               {

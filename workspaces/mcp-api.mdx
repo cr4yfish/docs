@@ -1,0 +1,169 @@
+---
+title: "Genie MCP API"
+description: "Connect external AI clients — Claude Desktop, Cursor, custom agents — to your Genie workspace over the Model Context Protocol."
+---
+
+The Genie MCP API is a [Model Context Protocol](https://modelcontextprotocol.io) server that lets external AI clients manage your Genie workspace and projects programmatically. Connect Claude Desktop, Cursor, or any MCP-compatible client once and interact with your Genie workspace through natural language directly inside those tools.
+
+## Endpoint
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+The server uses the **Streamable HTTP** transport (`POST`, `GET`, `DELETE` on the same URL). Sessions are stateless — no persistent connection is required.
+
+## Authentication
+
+The MCP server authenticates via **OAuth 2.0 with PKCE**, scoped to a single Genie workspace. When you first connect a client, it opens a browser window to authorize access to one of your workspaces. After authorization, the client manages tokens automatically — you only need to authorize once per client.
+
+## Available tools
+
+### Workspace
+
+| Tool | What it does |
+|---|---|
+| `get_workspace_info` | Returns workspace name, ID, description, member count, and settings |
+| `list_workspace_members` | Lists all members with their roles and join dates |
+| `list_workspace_invites` | Lists pending invitations |
+| `list_workspace_mcp_servers` | Lists connected MCP servers (credentials are never returned) |
+| `get_recent_workspace_activity` | Returns recent activity log entries (activity log must be enabled) |
+| `update_workspace_settings` | Toggles the activity log or project access control on/off |
+| `invite_workspace_member` | Creates a redeemable invite link for a given role and expiry |
+| `revoke_workspace_invite` | Cancels a pending invite |
+| `update_workspace_member_role` | Changes a member's role |
+| `remove_workspace_member` | Removes a member from the workspace |
+
+<Note>
+Workspace write tools (`invite_workspace_member`, `update_workspace_member_role`, `remove_workspace_member`, `revoke_workspace_invite`, `update_workspace_settings`) require the connected account to be a workspace **owner** or **admin**.
+</Note>
+
+### Projects
+
+| Tool | What it does |
+|---|---|
+| `list_latest_projects` | Lists the 10 most recently updated projects |
+| `search_projects` | Full-text search over project names and descriptions |
+| `get_project` | Returns full details for a project by slug |
+| `create_project` | Creates a new project from a natural-language prompt |
+| `update_project` | Updates a project's name, description, or visibility |
+| `rename_project` | Renames a project |
+| `delete_project` | Permanently deletes a project (`confirm_delete: true` required) |
+| `archive_project` | Hides a project from the default list without deleting it |
+| `unarchive_project` | Restores an archived project |
+| `list_archived_projects` | Lists archived projects |
+| `send_followup_prompt` | Sends a follow-up prompt to an existing project |
+| `get_project_status` | Returns whether a build is currently running |
+| `get_project_messages` | Returns the most recent build history and chat messages |
+| `show_preview` | Returns the deployment URL and per-page screenshots |
+| `list_project_members` | Lists members with explicit project access |
+| `add_project_member` | Grants a workspace member access to a specific project |
+| `remove_project_member` | Revokes a member's explicit project access |
+
+### Workspace Chat
+
+| Tool | What it does |
+|---|---|
+| `send_workspace_chat` | Ask a question about the workspace and receive a direct AI response |
+| `list_workspace_chats` | Lists recent chat conversations |
+| `get_workspace_chat` | Returns the full message history of a conversation |
+| `search_workspace_chats` | Full-text search across past chat messages |
+
+## Usage examples
+
+### Create a project
+
+```json
+{
+  "tool": "create_project",
+  "arguments": {
+    "prompt": "Build a SaaS dashboard with dark mode, auth, and a billing page"
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "projectId": "uuid",
+  "slug": "saas-dashboard-abc123",
+  "deploymentUrl": "https://saas-dashboard-abc123.genie-app.de",
+  "projectUrl": "https://www.genie-app.de/project/uuid"
+}
+```
+
+The project is created and the first build starts in the background. Call `get_project_status` to check when it finishes.
+
+### Send a follow-up prompt
+
+```json
+{
+  "tool": "send_followup_prompt",
+  "arguments": {
+    "project_slug": "saas-dashboard-abc123",
+    "prompt": "Add a settings page with profile photo upload"
+  }
+}
+```
+
+Returns `"ok"` immediately. The build runs in the background — use `get_project_status` to poll for completion.
+
+### Preview a project
+
+```json
+{
+  "tool": "show_preview",
+  "arguments": {
+    "project_slug": "saas-dashboard-abc123"
+  }
+}
+```
+
+Returns the deployment URL, a screenshot of the home page, and individual screenshots for every route in the project's sitemap. Clients that support MCP App UI resources can render the screenshots inline.
+
+### Search projects
+
+```json
+{
+  "tool": "search_projects",
+  "arguments": {
+    "query": "onboarding flow",
+    "sort_order": "bestMatch",
+    "limit": 5
+  }
+}
+```
+
+Omit `query` to list all projects. Use `sort_order: "recentlyEdited"` (default) for a recency list, or `"bestMatch"` alongside a query to rank by relevance.
+
+## Connecting a client
+
+### Claude Desktop
+
+Add the following to your Claude Desktop configuration (`claude_desktop_config.json`):
+
+```json
+{
+  "mcpServers": {
+    "genie": {
+      "url": "https://www.genie-app.de/api/mcp",
+      "transport": "http"
+    }
+  }
+}
+```
+
+Restart Claude Desktop. The first time you use a Genie tool, Claude Desktop will prompt you to authorize access to a workspace in your browser.
+
+### Cursor
+
+In Cursor's MCP settings, add a new server:
+
+- **URL:** `https://www.genie-app.de/api/mcp`
+- **Transport:** Streamable HTTP
+
+Save and restart. Cursor will prompt you to authorize on first use.
+
+### Any MCP-compatible client
+
+Point the client at `https://www.genie-app.de/api/mcp` using the **Streamable HTTP** transport. The server exposes OAuth 2.0 discovery metadata so compatible clients handle authentication automatically.
