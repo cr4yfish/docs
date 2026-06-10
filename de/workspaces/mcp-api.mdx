@@ -1,0 +1,169 @@
+---
+title: "Genie MCP-API"
+description: "Verbinde externe KI-Clients — Claude Desktop, Cursor, benutzerdefinierte Agenten — über das Model Context Protocol mit deinem Genie-Workspace."
+---
+
+Die Genie MCP-API ist ein [Model Context Protocol](https://modelcontextprotocol.io)-Server, mit dem externe KI-Clients deinen Genie-Workspace und deine Projekte programmatisch verwalten können. Verbinde Claude Desktop, Cursor oder einen beliebigen MCP-kompatiblen Client einmalig und interagiere mit deinem Genie-Workspace über natürliche Sprache direkt in diesen Tools.
+
+## Endpunkt
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+Der Server verwendet den **Streamable HTTP**-Transport (`POST`, `GET`, `DELETE` auf derselben URL). Sitzungen sind zustandslos — keine persistente Verbindung erforderlich.
+
+## Authentifizierung
+
+Der MCP-Server authentifiziert über **OAuth 2.0 mit PKCE**, begrenzt auf einen einzelnen Genie-Workspace. Bei der ersten Verbindung eines Clients öffnet sich ein Browserfenster zur Autorisierung des Zugriffs auf einen deiner Workspaces. Nach der Autorisierung verwaltet der Client die Tokens automatisch — du musst nur einmal pro Client autorisieren.
+
+## Verfügbare Tools
+
+### Workspace
+
+| Tool | Funktion |
+|---|---|
+| `get_workspace_info` | Gibt Workspace-Name, ID, Beschreibung, Mitgliederanzahl und Einstellungen zurück |
+| `list_workspace_members` | Listet alle Mitglieder mit Rollen und Beitrittsdaten auf |
+| `list_workspace_invites` | Listet ausstehende Einladungen auf |
+| `list_workspace_mcp_servers` | Listet verbundene MCP-Server auf (Zugangsdaten werden nie zurückgegeben) |
+| `get_recent_workspace_activity` | Gibt aktuelle Aktivitätsprotokoll-Einträge zurück (Protokoll muss aktiviert sein) |
+| `update_workspace_settings` | Schaltet Aktivitätsprotokoll oder Projektzugriffskontrolle ein/aus |
+| `invite_workspace_member` | Erstellt einen einlösbaren Einladungslink für eine Rolle und Ablaufzeit |
+| `revoke_workspace_invite` | Widerruft eine ausstehende Einladung |
+| `update_workspace_member_role` | Ändert die Rolle eines Mitglieds |
+| `remove_workspace_member` | Entfernt ein Mitglied aus dem Workspace |
+
+<Note>
+Workspace-Schreib-Tools (`invite_workspace_member`, `update_workspace_member_role`, `remove_workspace_member`, `revoke_workspace_invite`, `update_workspace_settings`) erfordern, dass das verbundene Konto ein Workspace-**Eigentümer** oder **Administrator** ist.
+</Note>
+
+### Projekte
+
+| Tool | Funktion |
+|---|---|
+| `list_latest_projects` | Listet die 10 zuletzt aktualisierten Projekte auf |
+| `search_projects` | Volltextsuche über Projektnamen und -beschreibungen |
+| `get_project` | Gibt vollständige Details für ein Projekt nach Slug zurück |
+| `create_project` | Erstellt ein neues Projekt aus einem natürlichsprachlichen Prompt |
+| `update_project` | Aktualisiert Name, Beschreibung oder Sichtbarkeit eines Projekts |
+| `rename_project` | Benennt ein Projekt um |
+| `delete_project` | Löscht ein Projekt dauerhaft (`confirm_delete: true` erforderlich) |
+| `archive_project` | Blendet ein Projekt aus der Standardliste aus, ohne es zu löschen |
+| `unarchive_project` | Stellt ein archiviertes Projekt wieder her |
+| `list_archived_projects` | Listet archivierte Projekte auf |
+| `send_followup_prompt` | Sendet einen Folge-Prompt an ein bestehendes Projekt |
+| `get_project_status` | Gibt zurück, ob ein Build gerade läuft |
+| `get_project_messages` | Gibt den aktuellen Build-Verlauf und Chat-Nachrichten zurück |
+| `show_preview` | Gibt die Deployment-URL und seitenweise Screenshots zurück |
+| `list_project_members` | Listet Mitglieder mit explizitem Projektzugriff auf |
+| `add_project_member` | Gewährt einem Workspace-Mitglied Zugriff auf ein bestimmtes Projekt |
+| `remove_project_member` | Widerruft den expliziten Projektzugriff eines Mitglieds |
+
+### Workspace-Chat
+
+| Tool | Funktion |
+|---|---|
+| `send_workspace_chat` | Stellt eine Frage zum Workspace und erhält eine direkte KI-Antwort |
+| `list_workspace_chats` | Listet aktuelle Chat-Gespräche auf |
+| `get_workspace_chat` | Gibt den vollständigen Nachrichtenverlauf eines Gesprächs zurück |
+| `search_workspace_chats` | Volltextsuche über vergangene Chat-Nachrichten |
+
+## Nutzungsbeispiele
+
+### Projekt erstellen
+
+```json
+{
+  "tool": "create_project",
+  "arguments": {
+    "prompt": "Baue ein SaaS-Dashboard mit Dark Mode, Auth und einer Abrechnungsseite"
+  }
+}
+```
+
+**Antwort:**
+```json
+{
+  "projectId": "uuid",
+  "slug": "saas-dashboard-abc123",
+  "deploymentUrl": "https://saas-dashboard-abc123.genie-app.de",
+  "projectUrl": "https://www.genie-app.de/project/uuid"
+}
+```
+
+Das Projekt wird erstellt und der erste Build startet im Hintergrund. Rufe `get_project_status` auf, um zu prüfen, wann er abgeschlossen ist.
+
+### Folge-Prompt senden
+
+```json
+{
+  "tool": "send_followup_prompt",
+  "arguments": {
+    "project_slug": "saas-dashboard-abc123",
+    "prompt": "Füge eine Einstellungsseite mit Profilbild-Upload hinzu"
+  }
+}
+```
+
+Gibt sofort `"ok"` zurück. Der Build läuft im Hintergrund — nutze `get_project_status` zum Abfragen des Abschlusses.
+
+### Projekt-Vorschau
+
+```json
+{
+  "tool": "show_preview",
+  "arguments": {
+    "project_slug": "saas-dashboard-abc123"
+  }
+}
+```
+
+Gibt die Deployment-URL, einen Screenshot der Startseite und individuelle Screenshots für jede Route in der Sitemap des Projekts zurück.
+
+### Projekte suchen
+
+```json
+{
+  "tool": "search_projects",
+  "arguments": {
+    "query": "Onboarding-Flow",
+    "sort_order": "bestMatch",
+    "limit": 5
+  }
+}
+```
+
+Lasse `query` weg, um alle Projekte aufzulisten. Nutze `sort_order: "recentlyEdited"` (Standard) für eine Liste nach Aktualität, oder `"bestMatch"` zusammen mit einer Suchanfrage für Relevanz-Ranking.
+
+## Client verbinden
+
+### Claude Desktop
+
+Füge folgendes zu deiner Claude Desktop-Konfiguration (`claude_desktop_config.json`) hinzu:
+
+```json
+{
+  "mcpServers": {
+    "genie": {
+      "url": "https://www.genie-app.de/api/mcp",
+      "transport": "http"
+    }
+  }
+}
+```
+
+Starte Claude Desktop neu. Beim ersten Verwenden eines Genie-Tools wirst du aufgefordert, den Zugriff auf einen Workspace in deinem Browser zu autorisieren.
+
+### Cursor
+
+In den MCP-Einstellungen von Cursor füge einen neuen Server hinzu:
+
+- **URL:** `https://www.genie-app.de/api/mcp`
+- **Transport:** Streamable HTTP
+
+Speichere und starte neu. Cursor fordert dich beim ersten Verwenden zur Autorisierung auf.
+
+### Beliebiger MCP-kompatibler Client
+
+Verweise den Client auf `https://www.genie-app.de/api/mcp` mit dem **Streamable HTTP**-Transport. Der Server stellt OAuth 2.0-Discovery-Metadaten bereit, sodass kompatible Clients die Authentifizierung automatisch verarbeiten.

@@ -1,0 +1,64 @@
+---
+title: "Workspace Chat"
+description: "Ask questions about your workspace, get answers grounded in your projects and team, and let the AI act on your behalf — all inside a shared chat that every workspace member can access."
+---
+
+Workspace Chat is an AI assistant that knows your workspace. It has access to your projects, members, and settings, so instead of navigating manually you can just ask — and for many tasks it can act directly on your behalf.
+
+<Note>
+Workspace Chat is available on all plans. No setup is required.
+</Note>
+
+## Open Workspace Chat
+
+There are two ways to start a chat:
+
+- **Command palette** — press `Cmd K` (Mac) or `Ctrl K` (Windows / Linux) from anywhere in the workspace. The palette opens. Type a question or click **Ask Genie** to enter chat mode.
+- **Sidebar** — click the chat icon in the left sidebar to open the dedicated chat view.
+
+## What you can ask
+
+Workspace Chat is grounded in your current workspace. Some examples:
+
+- *"Which project was updated most recently?"*
+- *"List the members of this workspace and their roles."*
+- *"Create a new project — a CRM with contact management."*
+- *"Add a dashboard page to my SaaS project."*
+
+For questions the AI can answer from workspace state, you get a direct reply. For build tasks (creating or changing a project), the AI queues the work and it runs in the background.
+
+## Interactive controls
+
+When the AI needs input from you — a choice, a confirmation, or a value — it renders an interactive control inline in the conversation rather than asking you to type a reply.
+
+| Control | When you see it |
+|---|---|
+| **Button** | Single confirmation or one-shot trigger ("Connect GitHub", "Run the test") |
+| **Text input** | A short single-line value (name, URL, number) |
+| **Text area** | A longer multi-line value (description, prompt, message) |
+| **Select** | Pick one option from a known set (environment, region, plan tier) |
+| **Checkbox list** | Pick multiple options at once (features to enable, members to notify) |
+| **Navigation link** | A one-click button that takes you to another page in the app |
+
+You interact with the control directly in the chat. Once you submit, the AI receives your input and continues the conversation.
+
+<Warning>
+Never enter API keys or passwords into a plain text input. The AI always uses a dedicated **Save secret** control for sensitive values — that control sends the value straight to secure storage and it never appears in the chat.
+</Warning>
+
+## Workspace Chat vs. Project Chat
+
+Both surfaces let you talk to the AI, but they serve different purposes.
+
+| | Workspace Chat | Project Chat |
+|---|---|---|
+| **Scope** | The whole workspace | A single project |
+| **Use case** | Questions, navigation, managing workspace state | Writing code, building features, debugging |
+| **Response** | Direct AI reply | Build turn runs in the background |
+| **Interactive controls** | Yes | No |
+
+Use Workspace Chat to navigate and understand your workspace. Open a project and use Project Chat to build and iterate on code.
+
+## Saved conversations
+
+Conversations are saved server-side. If you close the command palette while a chat is in progress, a prompt will ask you to confirm — the conversation is preserved and reappears under **Recent chats** at the bottom of the command palette list so you can pick it back up at any time.

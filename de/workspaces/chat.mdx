@@ -1,0 +1,64 @@
+---
+title: "Workspace-Chat"
+description: "Stelle Fragen zu deinem Workspace, erhalte Antworten auf Basis deiner Projekte und deines Teams, und lass die KI in deinem Auftrag handeln — alles in einem gemeinsamen Chat, den alle Workspace-Mitglieder nutzen können."
+---
+
+Der Workspace-Chat ist ein KI-Assistent, der deinen Workspace kennt. Er hat Zugriff auf deine Projekte, Mitglieder und Einstellungen — statt manuell zu navigieren, kannst du einfach fragen, und bei vielen Aufgaben kann die KI direkt für dich handeln.
+
+<Note>
+Der Workspace-Chat ist in allen Tarifen verfügbar. Es ist keine Einrichtung erforderlich.
+</Note>
+
+## Workspace-Chat öffnen
+
+Es gibt zwei Wege, um einen Chat zu starten:
+
+- **Befehlspalette** — Drücke `Cmd K` (Mac) oder `Ctrl K` (Windows / Linux) von überall im Workspace. Die Palette öffnet sich. Tippe eine Frage oder klicke auf **Genie fragen**, um in den Chat-Modus zu wechseln.
+- **Sidebar** — Klicke auf das Chat-Symbol in der linken Sidebar, um die dedizierte Chat-Ansicht zu öffnen.
+
+## Was du fragen kannst
+
+Der Workspace-Chat kennt deinen aktuellen Workspace. Einige Beispiele:
+
+- *"Welches Projekt wurde zuletzt aktualisiert?"*
+- *"Liste die Mitglieder dieses Workspaces mit ihren Rollen auf."*
+- *"Erstelle ein neues Projekt — ein CRM mit Kontaktverwaltung."*
+- *"Füge meinem SaaS-Projekt eine Dashboard-Seite hinzu."*
+
+Fragen, die die KI aus dem Workspace-Zustand beantworten kann, werden direkt beantwortet. Bei Build-Aufgaben (Erstellen oder Ändern eines Projekts) stellt die KI die Arbeit in die Warteschlange und sie läuft im Hintergrund.
+
+## Interaktive Steuerelemente
+
+Wenn die KI eine Eingabe von dir benötigt — eine Auswahl, eine Bestätigung oder einen Wert — rendert sie ein interaktives Steuerelement direkt im Gespräch, anstatt dich um eine Textantwort zu bitten.
+
+| Steuerelement | Wann du es siehst |
+|---|---|
+| **Schaltfläche** | Einzelne Bestätigung oder einmalige Auslösung ("GitHub verbinden", "Test ausführen") |
+| **Texteingabe** | Ein kurzer einzeiliger Wert (Name, URL, Zahl) |
+| **Textbereich** | Ein längerer mehrzeiliger Wert (Beschreibung, Prompt, Nachricht) |
+| **Auswahlliste** | Eine Option aus einer bekannten Menge wählen (Umgebung, Region, Tarif) |
+| **Checkbox-Liste** | Mehrere Optionen gleichzeitig auswählen (zu aktivierende Funktionen, zu benachrichtigende Mitglieder) |
+| **Navigationslink** | Eine Ein-Klick-Schaltfläche, die dich zu einer anderen Seite in der App führt |
+
+Du interagierst direkt mit dem Steuerelement im Chat. Sobald du absendest, erhält die KI deine Eingabe und setzt das Gespräch fort.
+
+<Warning>
+Gib niemals API-Schlüssel oder Passwörter in eine einfache Texteingabe ein. Die KI verwendet für sensible Werte immer ein spezielles **Secret speichern**-Steuerelement — dieses sendet den Wert direkt in sicheren Speicher und er erscheint nie im Chat.
+</Warning>
+
+## Workspace-Chat vs. Projekt-Chat
+
+Beide Oberflächen ermöglichen die Kommunikation mit der KI, dienen jedoch unterschiedlichen Zwecken.
+
+| | Workspace-Chat | Projekt-Chat |
+|---|---|---|
+| **Umfang** | Der gesamte Workspace | Ein einzelnes Projekt |
+| **Anwendungsfall** | Fragen, Navigation, Workspace-Verwaltung | Code schreiben, Funktionen bauen, Debuggen |
+| **Antwort** | Direkte KI-Antwort | Build läuft im Hintergrund |
+| **Interaktive Steuerelemente** | Ja | Nein |
+
+Nutze den Workspace-Chat zum Navigieren und Verstehen deines Workspaces. Öffne ein Projekt und nutze den Projekt-Chat zum Bauen und Iterieren an Code.
+
+## Gespeicherte Gespräche
+
+Gespräche werden serverseitig gespeichert. Wenn du die Befehlspalette schließt, während ein Chat läuft, wirst du zur Bestätigung aufgefordert — das Gespräch bleibt erhalten und erscheint unter **Letzte Chats** am Ende der Befehlspaletten-Liste, damit du jederzeit weitermachen kannst.
