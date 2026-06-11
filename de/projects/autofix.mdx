@@ -1,0 +1,48 @@
+---
+title: "Automatische Fehlererkennung und -behebung"
+description: "Genie beobachtet die Live-Vorschau deiner App und behebt automatisch erkannte Fehler — abgestürzte Seiten, unbehandelte Fehler und fehlerhafte Datenbankaufrufe."
+---
+
+Nach jedem Build beobachtet Genie die Live-Vorschau deiner App auf Fehler. Wenn etwas schiefläuft — eine Seite abstürzt, ein JavaScript-Fehler auftritt oder ein Datenbankaufruf fehlschlägt — erkennt Genie das automatisch und startet einen neuen Chat-Zug, um es zu beheben. Du musst nicht beschreiben, was schiefgelaufen ist.
+
+## Was Genie erkennt
+
+Genie überwacht drei Arten von Fehlern in der Live-Vorschau:
+
+<CardGroup cols={1}>
+  <Card title="Abgestürzte Seite" icon="triangle-alert">
+    Eine Seite in deiner App stürzt ab und zeigt einen leeren oder fehlerhaften Bildschirm. Genie erkennt dies und startet automatisch einen Fix.
+  </Card>
+  <Card title="Unbehandelter Fehler" icon="bug">
+    Ein JavaScript-Fehler tritt in deiner App auf, der nicht abgefangen wird — zum Beispiel der Versuch, eine Eigenschaft von etwas zu lesen, das undefined ist, oder eine fehlgeschlagene Netzwerkanfrage.
+  </Card>
+  <Card title="Datenbank- oder Authentifizierungsfehler" icon="lock-open">
+    Ein Aufruf an dein Genie Cloud-Backend schlägt mit einem Authentifizierungs- oder Berechtigungsfehler fehl, z. B. eine abgelaufene Sitzung oder eine Ablehnung durch den Datenbankzugriff.
+  </Card>
+</CardGroup>
+
+## Was passiert, wenn ein Fehler erkannt wird
+
+<Steps>
+  <Step title="Genie zeigt eine Benachrichtigung">
+    Ein Banner erscheint oben im Chat-Panel, das dich wissen lässt, dass Genie einen Fehler erkannt hat und an einer Lösung arbeitet.
+  </Step>
+  <Step title="Ein Fix-Zug startet automatisch">
+    Genie startet einen neuen Zug im Chat, liest die Fehlerdetails, identifiziert die Ursache und schreibt einen Fix.
+  </Step>
+  <Step title="Deine App wird mit dem Fix neu gebaut">
+    Genie deployt den Fix und die Live-Vorschau aktualisiert sich. Der Fix-Zug erscheint in deiner Chat-Historie, damit du genau sehen kannst, was geändert wurde.
+  </Step>
+</Steps>
+
+## Autofix in deiner Chat-Historie
+
+Jeder Autofix-Zug wird in deiner Chat-Historie mit einem **Autofix**-Label anstelle eines Nutzer-Prompts angezeigt. Tippe auf das Info-Symbol beim Label, um den Fehlertyp zu sehen, der ihn ausgelöst hat, und auf welcher Seite er aufgetreten ist. Das Gespräch geht danach normal weiter — du kannst auf dem behobenen Zustand weiterarbeiten.
+
+<Note>
+  Genie versucht einen automatischen Fix einmal pro Deployment. Wenn nach der Behebung ein neuer Fehler auftritt, erkennt Genie ihn und versucht, ihn als Teil des nächsten Deployments zu beheben.
+</Note>
+
+## Wann Autofix nicht auslöst
+
+Autofix startet nur, wenn der Chat nicht bereits beschäftigt ist. Wenn du gerade einen Prompt sendest oder Genie gerade etwas baut, wird der Fehler aufgezeichnet, aber kein automatischer Fix gestartet. Du kannst das Problem bei Bedarf selbst in deiner nächsten Nachricht beschreiben.

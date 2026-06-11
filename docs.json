@@ -71,7 +71,8 @@
                   "projects/import-design",
                   "projects/settings",
                   "projects/secrets",
-                  "projects/visibility"
+                  "projects/visibility",
+                  "projects/autofix"
                 ]
               },
               {
@@ -90,7 +91,8 @@
                   "cloud/overview",
                   "cloud/database",
                   "cloud/storage",
-                  "cloud/auth"
+                  "cloud/auth",
+                  "cloud/onboarding"
                 ]
               },
               {
@@ -156,7 +158,8 @@
                   "de/projects/import-design",
                   "de/projects/settings",
                   "de/projects/secrets",
-                  "de/projects/visibility"
+                  "de/projects/visibility",
+                  "de/projects/autofix"
                 ]
               },
               {
@@ -175,7 +178,8 @@
                   "de/cloud/overview",
                   "de/cloud/database",
                   "de/cloud/storage",
-                  "de/cloud/auth"
+                  "de/cloud/auth",
+                  "de/cloud/onboarding"
                 ]
               },
               {

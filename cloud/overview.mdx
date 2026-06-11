@@ -20,6 +20,9 @@ Every app you build with Genie needs somewhere to store data, handle sign-ins, a
   <Card title="Edge functions" icon="workflow">
     Server-side logic deployed close to your users. Genie AI writes and deploys these when your app requires backend processing.
   </Card>
+  <Card title="Onboarding & access control" icon="shield-check">
+    A welcome screen for new sign-ups and an optional private mode that restricts your app to approved users only. Configured from the Onboarding tab in project settings. See [App onboarding and access control](/cloud/onboarding).
+  </Card>
 </CardGroup>
 
 Genie Cloud also includes **automatic backups** and usage tracking, so your data is always protected and you can monitor how your app is growing.
@@ -75,8 +78,8 @@ Further down, the **Detected resources** section lists up to eight items from ea
 
 ## Advanced options
 
-At the bottom of the Cloud tab, the **Advanced** section contains a **Re-run bootstrap** button. Use this to re-sync your Genie Cloud configuration after changing onboarding or private mode settings, or to upgrade an existing project to the latest Genie Cloud version. The bootstrap is fully safe to run at any time — it does not delete any data.
+At the bottom of the Cloud tab, the **Advanced** section contains a **Re-run bootstrap** button. Use this to upgrade an existing project to the latest Genie Cloud version, or to force a full re-sync of your Cloud configuration. The bootstrap is fully safe to run at any time — it does not delete any data.
 
 <Tip>
-  If you change your onboarding flow or private mode settings in the **Onboarding** tab, click **Re-run bootstrap** afterwards to apply those changes to your live Cloud instance.
+  Onboarding and private mode settings saved in the **Onboarding** tab are applied to your Cloud instance automatically — no manual bootstrap needed. See [App onboarding and access control](/cloud/onboarding) to learn about these features.
 </Tip>
