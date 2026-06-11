@@ -1,0 +1,48 @@
+---
+title: "Automatic error detection and fixes"
+description: "Genie watches your app's live preview and automatically fixes errors it detects — broken pages, uncaught errors, and failed database calls."
+---
+
+After every build, Genie keeps watching the live preview of your app for errors. If something goes wrong — a page crashes, a JavaScript error fires, or a database call fails — Genie detects it automatically and starts a new chat turn to fix it. You do not have to describe what went wrong.
+
+## What Genie detects
+
+Genie watches for three types of errors in the live preview:
+
+<CardGroup cols={1}>
+  <Card title="Broken page" icon="triangle-alert">
+    A page in your app crashes and shows a blank or error screen. Genie detects this and starts a fix automatically.
+  </Card>
+  <Card title="Uncaught error" icon="bug">
+    A JavaScript error fires in your app that is not caught — for example, trying to read a property of something that is undefined, or a failed network request.
+  </Card>
+  <Card title="Database or authentication error" icon="lock-open">
+    A call to your Genie Cloud backend fails with an authentication or permission error, such as an expired session or a database access rejection.
+  </Card>
+</CardGroup>
+
+## What happens when an error is detected
+
+<Steps>
+  <Step title="Genie shows a notification">
+    A banner appears at the top of the chat panel to let you know Genie has detected an error and is working on a fix.
+  </Step>
+  <Step title="A fix turn starts automatically">
+    Genie starts a new turn in the chat, reads the error details, identifies the cause, and writes a fix.
+  </Step>
+  <Step title="Your app is rebuilt with the fix">
+    Genie deploys the fix and the live preview updates. The fix turn appears in your chat history so you can see exactly what changed.
+  </Step>
+</Steps>
+
+## Autofix in your chat history
+
+Each autofix turn is shown in your chat history with an **Autofix** label instead of a user prompt. Tap the info icon on the label to see the type of error that triggered it and the page it occurred on. The conversation continues normally after the fix — you can keep building on top of the fixed state as usual.
+
+<Note>
+  Genie attempts an automatic fix once per deployment. If a new error appears after the fix is applied, Genie will detect it and attempt to fix it as part of the next deployment.
+</Note>
+
+## When autofix does not trigger
+
+Autofix only runs when the chat is not already busy. If you are in the middle of sending a prompt or Genie is currently building something, the error is recorded but no automatic fix starts. You can describe the problem yourself in your next message if needed.

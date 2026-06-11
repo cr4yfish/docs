@@ -1,0 +1,73 @@
+---
+title: "App-Onboarding und Zugriffssteuerung"
+description: "Füge einen Willkommens-Onboarding-Flow für neue Anmeldungen hinzu und beschränke deine App optional auf genehmigte Nutzer:innen."
+---
+
+Genie Cloud bietet zwei Funktionen, um zu steuern, wer auf deine App zugreifen kann und was neue Nutzer:innen beim ersten Besuch sehen: **Nutzer-Onboarding** und **Private Mode**. Beide werden im Tab **Onboarding** deiner Projekteinstellungen konfiguriert und können auch über ein Gespräch mit Genie AI in deinem Workspace-Chat verwaltet werden.
+
+## Nutzer-Onboarding
+
+Wenn Onboarding aktiviert ist, sieht jede neue Person, die sich für deine App registriert, einen Willkommensbildschirm, bevor sie fortfahren kann. Der Bildschirm erfasst den Anzeigenamen und etwaige zusätzliche Fragen, die du eingerichtet hast, und lässt sie dann rein. Sobald eine Nutzerin das Onboarding abgeschlossen hat, wird es ihr nie wieder angezeigt.
+
+Das ist nützlich, wenn deine App von Anfang an etwas über neue Nutzer:innen wissen muss — ihre Rolle, ihr Teamname, ihre Präferenzen —, bevor sie beginnen.
+
+### Onboarding aktivieren
+
+<Steps>
+  <Step title="Tab Onboarding öffnen">
+    Klicke in deinen Projekteinstellungen auf den Tab **Onboarding**.
+  </Step>
+  <Step title="Onboarding einschalten">
+    Schalte **Onboarding** ein. Genie installiert den Onboarding-Flow beim nächsten Build automatisch in deine App.
+  </Step>
+  <Step title="Benutzerdefinierte Fragen hinzufügen (optional)">
+    Um über den Anzeigenamen hinaus zusätzliche Informationen von neuen Nutzer:innen zu erfassen, bitte Genie, der Onboarding-Seite Fragen hinzuzufügen — zum Beispiel: „Füge eine Frage hinzu, in welcher Branche die Nutzer:innen arbeiten."
+  </Step>
+</Steps>
+
+<Note>
+  Neue Nutzer:innen sehen den Onboarding-Bildschirm genau einmal, direkt nach der Registrierung. Bestehende Nutzer:innen, die das Onboarding bereits abgeschlossen haben, sehen ihn nicht erneut.
+</Note>
+
+## Private Mode
+
+Der Private Mode schränkt den Zugang zu deiner App ein, sodass nur genehmigte Nutzer:innen hereinkommen. Besucher:innen, die nicht genehmigt sind, sehen die Meldung „Diese App ist privat". Nutzer:innen, die sich registriert haben, aber noch nicht genehmigt wurden, sehen einen Wartebildschirm, bis ein Admin ihnen Zugang gewährt.
+
+Das ist nützlich für Beta-Programme, interne Tools oder jede App, bei der du kontrollieren möchtest, wer sie nutzen kann.
+
+### Private Mode aktivieren
+
+<Steps>
+  <Step title="Tab Onboarding öffnen">
+    Klicke in deinen Projekteinstellungen auf den Tab **Onboarding**.
+  </Step>
+  <Step title="Private Mode einschalten">
+    Schalte **Private Mode** ein. Genie installiert das Zugangs-Gate beim nächsten Build automatisch in deine App.
+  </Step>
+  <Step title="Ausstehende Nutzer:innen genehmigen">
+    Neue Anmeldungen erscheinen im Tab **Nutzer** mit dem Status **Ausstehend**. Klicke auf **Genehmigen** neben einer Nutzerin, um ihr Zugang zu gewähren.
+  </Step>
+</Steps>
+
+### E-Mail-Adressen vorab genehmigen
+
+Wenn du bereits weißt, welche Adressen Zugang haben sollen, füge sie zur Liste **Automatisch genehmigte E-Mails** im Tab **Onboarding** hinzu. Jede Person, die sich mit einer aufgelisteten Adresse registriert, wird automatisch genehmigt — ohne manuellen Schritt.
+
+## Über Genie AI verwalten
+
+Du kannst Onboarding-Einstellungen anpassen und ausstehende Nutzer:innen bearbeiten, indem du mit Genie AI in deinem Workspace-Chat sprichst:
+
+- „Aktiviere den Private Mode für mein Projekt [Projektname]"
+- „Genehmige alle ausstehenden Nutzer:innen für [Projektname]"
+- „Lade nutzer@beispiel.de zum Projekt [Projektname] ein" — genehmigt die Adresse vorab und sendet ihr eine Einladungs-E-Mail mit einem Link zu deiner App
+- „Zeige mir, wer für [Projektname] auf Genehmigung wartet"
+
+Genie zeigt eine Bestätigungskarte, bevor Änderungen vorgenommen werden.
+
+<Tip>
+  Die Einladungsaktion genehmigt eine E-Mail-Adresse vorab **und** sendet in einem Schritt eine Einladungs-E-Mail — praktisch, wenn du jemanden sofort onboarden möchtest, ohne darauf zu warten, dass er die App selbst findet.
+</Tip>
+
+## Beide Funktionen zusammen nutzen
+
+Onboarding und Private Mode können gleichzeitig aktiv sein. Wenn beide aktiviert sind, ist der Ablauf für neue Nutzer:innen: Registrieren → Private-Mode-Genehmigung → Onboarding-Bildschirm (nur beim ersten Besuch) → App.
