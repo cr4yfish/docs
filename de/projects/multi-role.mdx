@@ -1,0 +1,55 @@
+---
+title: "Apps mit mehreren Rollen"
+description: "Erstelle Apps, in denen verschiedene Nutzertypen nur das sehen, was für sie bestimmt ist — Admin-Bereiche, Kundenportale, Auftragnehmer-Ansichten — mit automatisch erstellten Zugriffskontrollen."
+---
+
+Genie kann Apps erstellen, in denen verschiedene Nutzertypen nur das sehen, was für sie vorgesehen ist. Beschreibe die Nutzertypen, die dein Business benötigt, und Genie baut die zugriffskontrollierten Bereiche, richtet die Rollen ein und nennt sie in der Build-Zusammenfassung, damit du weißt, was du zuweisen musst.
+
+## Rollen im Prompt beschreiben
+
+Nenne die Nutzertypen, die deine App braucht, und was jeder davon tun können soll:
+
+```
+Erstelle ein Kundenportal mit drei Nutzertypen:
+- Einen Admin-Bereich zum Verwalten aller Buchungen und Nutzer
+- Eine Auftragnehmer-Ansicht, die nur die eigenen zugewiesenen Jobs zeigt
+- Einen Kundenbereich, in dem Kunden ihre eigenen Bestellungen einsehen können
+```
+
+Genie baut jeden Bereich mit den passenden Zugriffskontrollen und erstellt die entsprechenden Rollen automatisch.
+
+## Was Genie in der Build-Zusammenfassung anzeigt
+
+Nach dem Erstellen einer App mit mehreren Rollen nennt die "Was ich gebaut habe"-Zusammenfassung die genauen Rollennamen deiner App:
+
+> 🛡️ **Zugriffsrollen** — `admin`, `contractor` und `client`, jede sieht nur ihren eigenen Bereich
+
+Verwende genau diese Namen, wenn du Rollen an deine Nutzer vergibst.
+
+## Standardrollen
+
+Jede Genie-Cloud-App enthält vier eingebaute Rollen, die immer verfügbar sind:
+
+| Rolle | Typische Verwendung |
+|-------|---------------------|
+| `admin` | Vollzugriff, gesamte Site-Verwaltung |
+| `moderator` | Inhalts- und Moderationsverwaltung |
+| `member` | Standardmäßig authentifizierter Nutzer |
+| `guest` | Eingeschränkter oder Nur-Lese-Zugriff |
+
+## Benutzerdefinierte Rollen
+
+Jeder Rollenname, der nicht in der obigen Tabelle steht, wird automatisch beim Erstellen der App angelegt. Wenn du zum Beispiel eine `contractor`- oder `client`-Rolle beschreibst, wird sie im Rollensystem eingerichtet — `has_role`-Prüfungen funktionieren ab dem ersten Laden, ohne manuelle Einrichtung.
+
+## Rollen an Nutzer zuweisen
+
+Sobald deine App live ist, gehe zu **Projekteinstellungen → Nutzer**, um einzelnen Nutzern Rollen zuzuweisen. Die genauen Rollennamen sind in der "Was ich gebaut habe"-Build-Zusammenfassung aufgelistet.
+
+<Tip>
+  Du weißt nicht, welche Rollen deine App verwendet? Öffne den Projekt-Chat und schau dir die neueste "Was ich gebaut habe"-Karte an — dort sind alle von Genie erstellten Rollen aufgelistet.
+</Tip>
+
+## Verwandte Themen
+
+- [Benutzerauthentifizierung in Genie Cloud](/de/cloud/auth) — Anmeldung, Nutzerkonten und der Nutzer-Tab
+- [Projekteinstellungen](/de/projects/settings) — dein Projekt verwalten
