@@ -25,21 +25,9 @@
         "default": true,
         "global": {
           "anchors": [
-            {
-              "anchor": "Home",
-              "icon": "house",
-              "href": "/"
-            },
-            {
-              "anchor": "Community",
-              "icon": "users",
-              "href": "https://genie-app.de/community"
-            },
-            {
-              "anchor": "Pricing",
-              "icon": "credit-card",
-              "href": "https://genie-app.de/pricing"
-            }
+            { "anchor": "Home", "icon": "house", "href": "/" },
+            { "anchor": "Community", "icon": "users", "href": "https://genie-app.de/community" },
+            { "anchor": "Pricing", "icon": "credit-card", "href": "https://genie-app.de/pricing" }
           ]
         },
         "tabs": [
@@ -50,18 +38,12 @@
                 "group": "Get Started",
                 "icon": "rocket",
                 "expanded": true,
-                "pages": [
-                  "introduction",
-                  "quickstart",
-                  "templates"
-                ]
+                "pages": ["introduction", "quickstart", "templates"]
               },
               {
                 "group": "Changelog",
                 "icon": "rss",
-                "pages": [
-                  "changelog/overview"
-                ]
+                "pages": ["changelog/overview"]
               },
               {
                 "group": "Projects",
@@ -71,7 +53,8 @@
                   "projects/import-design",
                   "projects/settings",
                   "projects/secrets",
-                  "projects/visibility"
+                  "projects/visibility",
+                  "projects/multi-role"
                 ]
               },
               {
@@ -101,6 +84,11 @@
                   "billing/credits",
                   "billing/topups"
                 ]
+              },
+              {
+                "group": "Developer API",
+                "icon": "code",
+                "pages": ["mcp"]
               }
             ]
           }
@@ -110,21 +98,9 @@
         "language": "de",
         "global": {
           "anchors": [
-            {
-              "anchor": "Startseite",
-              "icon": "house",
-              "href": "/de"
-            },
-            {
-              "anchor": "Community",
-              "icon": "users",
-              "href": "https://genie-app.de/community"
-            },
-            {
-              "anchor": "Preise",
-              "icon": "credit-card",
-              "href": "https://genie-app.de/pricing"
-            }
+            { "anchor": "Startseite", "icon": "house", "href": "/de" },
+            { "anchor": "Community", "icon": "users", "href": "https://genie-app.de/community" },
+            { "anchor": "Preise", "icon": "credit-card", "href": "https://genie-app.de/pricing" }
           ]
         },
         "tabs": [
@@ -135,18 +111,12 @@
                 "group": "Loslegen",
                 "icon": "rocket",
                 "expanded": true,
-                "pages": [
-                  "de/introduction",
-                  "de/quickstart",
-                  "de/templates"
-                ]
+                "pages": ["de/introduction", "de/quickstart", "de/templates"]
               },
               {
                 "group": "Changelog",
                 "icon": "rss",
-                "pages": [
-                  "de/changelog/overview"
-                ]
+                "pages": ["de/changelog/overview"]
               },
               {
                 "group": "Projekte",
@@ -156,7 +126,8 @@
                   "de/projects/import-design",
                   "de/projects/settings",
                   "de/projects/secrets",
-                  "de/projects/visibility"
+                  "de/projects/visibility",
+                  "de/projects/multi-role"
                 ]
               },
               {
@@ -196,6 +167,11 @@
                   "de/compliance/tom",
                   "de/compliance/ai-dpa"
                 ]
+              },
+              {
+                "group": "Entwickler-API",
+                "icon": "code",
+                "pages": ["de/mcp"]
               }
             ]
           }
