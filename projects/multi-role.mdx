@@ -1,0 +1,55 @@
+---
+title: "Multi-role apps"
+description: "Build apps where different users see different things — admin dashboards, client portals, contractor views — with access controls and roles created automatically."
+---
+
+Genie can build apps where different types of users see only what they're meant to see. Describe the user types your business needs and Genie builds the access-controlled areas, creates the roles, and names them in the build summary so you know what to assign.
+
+## Describe your roles in the prompt
+
+Name the user types your app needs and what each one should be able to do:
+
+```
+Build a client portal with three user types:
+- An admin area to manage all bookings and users
+- A contractor view showing only their assigned jobs
+- A client section where customers can view their own orders
+```
+
+Genie builds each area with the appropriate access controls and creates the corresponding roles automatically.
+
+## What Genie shows in the build summary
+
+After building a multi-role app, the "What I built" summary names the exact role strings your app uses:
+
+> 🛡️ **Access roles** — `admin`, `contractor` and `client`, each seeing only their own area
+
+Use these exact names when assigning roles to your users.
+
+## Default roles
+
+Every Genie Cloud app includes four built-in roles that are always available:
+
+| Role | Typical use |
+|------|-------------|
+| `admin` | Full access, site-wide management |
+| `moderator` | Content and moderation management |
+| `member` | Standard authenticated user |
+| `guest` | Limited or read-only access |
+
+## Custom roles
+
+Any role name not in the table above is created automatically when the app is built. For example, describing a `contractor` or `client` role provisions it in the role system — `has_role` checks work from the first load, no manual setup needed.
+
+## Assigning roles to users
+
+Once your app is live, go to **Project Settings → Users** to assign roles to individual users. The exact role names are listed in the "What I built" build summary.
+
+<Tip>
+  Not sure what roles your app uses? Open the project chat and look at the most recent "What I built" card — it lists every role Genie created.
+</Tip>
+
+## Related
+
+- [User authentication in Genie Cloud](/cloud/auth) — sign-in, user accounts, and the Users tab
+- [Project settings](/projects/settings) — manage your project
