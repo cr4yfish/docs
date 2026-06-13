@@ -80,7 +80,8 @@
                 "pages": [
                   "workspaces/overview",
                   "workspaces/members",
-                  "workspaces/integrations"
+                  "workspaces/integrations",
+                  "workspaces/mcp-api"
                 ]
               },
               {
@@ -165,7 +166,8 @@
                 "pages": [
                   "de/workspaces/overview",
                   "de/workspaces/members",
-                  "de/workspaces/integrations"
+                  "de/workspaces/integrations",
+                  "workspaces/mcp-api"
                 ]
               },
               {
