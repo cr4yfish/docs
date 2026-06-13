@@ -1,0 +1,162 @@
+---
+title: "Use Genie from AI clients (MCP API)"
+description: "Connect Claude Desktop, Cursor, or any MCP-compatible AI client to your Genie workspace and manage projects, chat, and members without opening a browser."
+---
+
+Genie exposes its own [Model Context Protocol (MCP)](https://modelcontextprotocol.io) server. Any MCP-compatible AI client — Claude Desktop, Cursor, custom agents — can connect to it and manage your workspace and projects programmatically.
+
+<Note>
+The Genie MCP server uses OAuth 2.0 with PKCE. Each connection is scoped to a single workspace. You authorize the connection in the browser once, and the client handles token refresh automatically.
+</Note>
+
+## Endpoint
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+The server uses the **Streamable HTTP** MCP transport (`POST`, `GET`, and `DELETE` on the same URL). Sessions are stateless — no persistent connection is required.
+
+## Connect from Claude Desktop
+
+<Steps>
+  <Step title="Open Claude Desktop settings">
+    In Claude Desktop, go to **Settings → Developer** and click **Edit Config** to open `claude_desktop_config.json`.
+  </Step>
+  <Step title="Add the Genie server">
+    Add a `mcpServers` entry:
+
+    ```json
+    {
+      "mcpServers": {
+        "genie": {
+          "command": "npx",
+          "args": [
+            "mcp-remote",
+            "https://www.genie-app.de/api/mcp"
+          ]
+        }
+      }
+    }
+    ```
+  </Step>
+  <Step title="Restart Claude Desktop">
+    Save the file and restart Claude Desktop. On the next start, Claude will open a browser tab asking you to authorize Genie. Sign in and select the workspace you want to connect.
+  </Step>
+</Steps>
+
+## Connect from Cursor
+
+In Cursor's MCP settings, add a new server with:
+
+- **Type:** Streamable HTTP
+- **URL:** `https://www.genie-app.de/api/mcp`
+
+Cursor will prompt you to authorize via the browser on first use.
+
+## Authentication
+
+The server uses **OAuth 2.0 with PKCE** scoped to a single Genie workspace. After you authorize, the client receives a short-lived JWT that is refreshed automatically. You can re-authorize at any time by reconnecting the server.
+
+To authorize for a different workspace, disconnect and reconnect — the OAuth flow lets you choose which workspace to authorize during sign-in.
+
+## Available tools
+
+### Workspace
+
+| Tool | What it does |
+|------|-------------|
+| `list_workspaces` | Lists all workspaces you belong to with your role in each. |
+| `list_user_workspaces` | Lists all workspaces you belong to and shows which one is currently connected. |
+| `get_workspace_info` | Returns the connected workspace's name, ID, description, member count, and settings. |
+| `update_workspace` | Renames the workspace or updates its description. Owners and admins only. |
+| `update_workspace_settings` | Toggles the activity log or project access control. Owners and admins only. |
+| `get_workspace_credits` | Returns the current credit balance for the workspace. |
+| `get_workspace_billing` | Returns the current subscription plan, status, and period dates. |
+| `get_credit_usage` | Queries credit consumption by project, user, or time window. |
+| `get_recent_workspace_activity` | Returns recent workspace activity log entries with optional filters. |
+
+### Members & Invites
+
+| Tool | What it does |
+|------|-------------|
+| `list_workspace_members` | Lists all members with their roles and join dates. |
+| `invite_workspace_member` | Creates a redeemable invite link for a given role and expiry. |
+| `revoke_workspace_invite` | Permanently deletes a pending invite. |
+| `list_workspace_invites` | Lists pending invitations with their expiry and remaining uses. |
+| `update_workspace_member_role` | Changes a member's role. Role hierarchy is enforced. |
+| `remove_workspace_member` | Removes a member from the workspace. |
+
+### MCP Integrations
+
+| Tool | What it does |
+|------|-------------|
+| `list_workspace_mcp_servers` | Lists connected MCP server integrations (credentials never returned). |
+| `add_workspace_mcp_server` | Adds a new MCP server integration with bearer or OAuth auth. |
+| `update_workspace_mcp_server` | Updates the name, URL, or transport of an existing server. |
+| `toggle_workspace_mcp_server` | Enables or disables an integration without removing it. |
+| `delete_workspace_mcp_server` | Permanently removes a server and its credentials. |
+| `test_workspace_mcp_server_connection` | Opens the server transport, lists its tools, and closes — confirming connectivity. |
+
+### Projects
+
+| Tool | What it does |
+|------|-------------|
+| `list_latest_projects` | Lists the 10 most recently updated projects. |
+| `search_projects` | Full-text search over project names and descriptions. |
+| `get_project` | Returns full details for a project by slug. |
+| `create_project` | Creates a new project from a prompt and returns its URL. The build runs in the background. |
+| `send_followup_prompt` | Sends a follow-up prompt to an existing project. Returns immediately while the build runs. |
+| `get_project_status` | Lightweight check — returns `loading` while a build is running, otherwise `idle`. |
+| `get_project_deployment_status` | Full per-phase deployment breakdown: submitted, thinking, coding, deploying, finished, error, and more. |
+| `get_project_messages` | Returns the most recent chat messages (prompts and responses) for a project. |
+| `show_preview` | Returns the deployment URL and per-page screenshot URLs. |
+| `suggest_project_prompts` | Returns AI-generated follow-up prompt ideas based on the project's build history. |
+| `rename_project` | Renames a project by slug. |
+| `update_project` | Updates a project's name, description, visibility, or remixable flag. |
+| `archive_project` | Hides a project from the default list without deleting it. |
+| `unarchive_project` | Restores an archived project. |
+| `list_archived_projects` | Lists archived projects (up to 60). |
+| `delete_project` | Permanently deletes a project. Requires `confirm_delete: true`. |
+| `list_project_members` | Lists members with explicit access to a project (when access control is enabled). |
+| `add_project_member` | Grants a workspace member access to a specific project. |
+| `remove_project_member` | Revokes a member's explicit access to a project. |
+
+### Workspace Chat
+
+| Tool | What it does |
+|------|-------------|
+| `send_workspace_chat` | Asks a question about the workspace and returns an AI response. Not persisted. |
+| `create_workspace_chat` | Sends a message in a persistent chat thread saved to workspace history. |
+| `list_workspace_chats` | Lists recent workspace chat conversations. |
+| `get_workspace_chat` | Fetches the full message history of a conversation. |
+| `search_workspace_chats` | Full-text search across workspace chat messages. |
+
+### PII Rules
+
+| Tool | What it does |
+|------|-------------|
+| `list_workspace_pii_rules` | Lists built-in and custom PII detectors for the workspace. |
+| `set_workspace_pii_rule` | Enables, disables, or changes the action of a PII rule. |
+| `create_workspace_pii_rule` | Creates a custom regex-based PII rule. |
+| `delete_workspace_pii_rule` | Permanently deletes a custom PII rule. |
+| `list_workspace_pii_detections` | Returns recent PII detection log entries (owners and admins only). |
+| `reset_workspace_pii_rules` | Resets all built-in detectors to their defaults. |
+
+## Example: create and monitor a project
+
+Here is a short example of what you can ask an MCP client to do once connected:
+
+```
+Create a project with the prompt "Build a kanban board with drag-and-drop cards and a color-coded priority system", then poll until the build finishes and show me the preview URL.
+```
+
+The client calls `create_project`, then polls `get_project_deployment_status` until `latestPhase` is `finished`, and finally calls `show_preview` to return the URL.
+
+## Role permissions
+
+Most read tools are available to all workspace members. Write operations (updating settings, managing members, adding MCP servers) require the **owner** or **admin** role. The permission model mirrors the Genie web app exactly — what you can do in the UI is what you can do via MCP.
+
+<Tip>
+  Call `get_workspace_info` first to confirm which workspace is connected and your role before running write operations.
+</Tip>

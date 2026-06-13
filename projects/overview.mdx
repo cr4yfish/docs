@@ -56,6 +56,32 @@ Each project gets a unique URL that you can use to open it directly. You can fin
 
 On paid plans you can also connect a custom domain, so your app lives at an address you own. See [Publish and share your app](/projects/visibility) for details.
 
+## Rolling back to a previous version
+
+Every time Genie builds your app it creates a snapshot. If a change doesn't work out, you can revert to any previous version with one click.
+
+To roll back:
+
+1. Open the **pipeline card** for the version you want to restore (visible in the chat history).
+2. Click **Rollback to this state**.
+3. Confirm in the dialog that appears.
+
+Genie restores the code from that snapshot, rebuilds the app, and publishes the rolled-back version at your project's URL. The rollback runs as a background task — a progress indicator shows you when it is complete. You can refresh the page at any point and the status will still be there.
+
+<Note>
+  Rolling back creates a new deployment in the history — it does not delete any of the changes you made after the version you rolled back to. Your full history is always preserved.
+</Note>
+
+## What's next suggestions
+
+After each build, Genie analyses what has been built so far and suggests what you are likely to want to add next. These suggestions appear as cards in the **Brain** panel (accessible from the sidebar) and as prompt chips in the composer when it is empty.
+
+Each suggestion includes a short label, a ready-to-send prompt, and a brief rationale. Click **Use this prompt** to fill the composer — Genie never sends a suggestion automatically. You can dismiss any suggestion you are not interested in.
+
+<Tip>
+  Suggestions are most useful after the first version of your app is live. They reflect the gap between what you described and what was actually built, so the more you have already built, the more targeted the suggestions become.
+</Tip>
+
 ## Remixing a project
 
 If you are viewing a public project that the owner has made remixable, you will see a **Remix** button in the project view. Clicking it creates a copy of that project in your own account — including all of its generated code — so you can build on top of it with your own prompts.

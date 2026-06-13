@@ -4,6 +4,25 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="June 12, 2026" description="Weekly release">
+
+This release ships rollback, real-time collaboration locking, "What's next" prompt suggestions, and the Genie MCP API for AI clients.
+
+## New features
+
+- **Roll back to any previous version.** Every build creates a snapshot. Click **Rollback to this state** on any pipeline card to restore that snapshot, rebuild, and publish — without losing your history. See [Managing your projects](/projects/overview#rolling-back-to-a-previous-version).
+- **Multi-user edit locking.** When a teammate is actively prompting a project, other workspace members see a banner showing who holds the edit lock. The lock releases automatically when the active editor leaves, letting others take over without coordination overhead. See [Workspaces overview](/workspaces/overview#collaborating-on-a-project).
+- **"What's next" prompt suggestions.** After each build, Genie analyses what has been built and surfaces up to five suggested next prompts — features, changes, or fixes — ranked by relevance. Suggestions appear in the Brain panel and as chips in the empty composer. Click to pre-fill; Genie never sends one automatically. See [Managing your projects](/projects/overview#whats-next-suggestions).
+- **Genie MCP API.** Genie now exposes its own MCP server at `https://www.genie-app.de/api/mcp`. Connect Claude Desktop, Cursor, or any MCP-compatible AI client to create projects, send follow-up prompts, manage workspace members, and more — without opening a browser. See [Use Genie from AI clients](/workspaces/mcp-api).
+
+## Updates
+
+- **Faster follow-up responses.** Genie now starts streaming its greeting message during the classification step, so follow-up builds feel more responsive even before the first line of code is written.
+- **Deploy status accuracy.** Fixed an edge case where a build could appear stuck in "deploying" indefinitely if the build log write was lost. Builds in that state are now resolved correctly.
+- **Pipeline step timers.** Each step in the pipeline card now shows the actual execution time from the build log rather than a derived estimate.
+
+</Update>
+
 <Update label="May 22, 2026" description="Weekly release">
 
 A short follow-up week focused on refining what shipped on Monday.
