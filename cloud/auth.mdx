@@ -60,4 +60,39 @@ If your project has more than eight users, a note at the bottom of the panel sho
 
 Genie Cloud supports a roles system that lets you control what different users can do in your app. Roles such as **admin**, **moderator**, and **member** can be assigned to individual users from the **Users** tab. Genie AI can use these roles when generating your app to show or hide features based on who is signed in.
 
-If you want to restrict your app so that only approved users can access it, enable **Private mode** from the **Onboarding** tab. In private mode, every new sign-up is held in a pending state until an admin approves them from the Users tab.
+When you build an app with multiple user types — for example, an admin area and a separate contractor area — Genie creates each role automatically and lists the exact role names in the build summary. You can then go to **Project Settings → Users** and assign those roles to the right people by name.
+
+## Onboarding flows
+
+You can add a guided onboarding screen that appears once for every new user after their first sign-in. The screen collects a display name and any custom fields you want, and the user proceeds into your app only after they submit it. Completion is tracked per user in your Genie Cloud database, so the screen never appears again after the first time.
+
+To set up an onboarding flow:
+
+- **Ask Genie** — tell Genie in the project chat what information you want to collect on first login ("add a welcome screen that asks for the user's name and company"). Genie installs the onboarding screen for you automatically.
+- **Settings toggle** — open **Project Settings → Onboarding** and switch on **Onboarding**. Once enabled, Genie adds the onboarding screen to your app on the next build.
+
+## Private mode
+
+Private mode restricts access to your app so that only users you have explicitly approved can sign in. When private mode is on:
+
+- Visitors who are not signed in see a locked page with a sign-in link.
+- New sign-ups land in a **pending** state and see a waiting screen until an admin approves them.
+- Users you have approved can sign in and use your app normally.
+
+Enable private mode from **Project Settings → Onboarding**.
+
+### Approving and inviting users
+
+Once private mode is active you can manage access in two ways:
+
+**From Project Settings → Users** — the Users tab shows all pending sign-ups. Click **Approve** next to any user to grant them access immediately.
+
+**Through the workspace chat** — ask Genie to handle access management on your behalf:
+
+- *"Approve [email address]"* — Genie approves a specific pending user.
+- *"Invite [email address]"* — Genie pre-approves the address and sends them an email with a link to your app. If they are already in the pending queue, they are approved immediately.
+- *"Turn off private mode"* or *"change the default role to member"* — Genie updates your access settings and syncs them to your live app automatically.
+
+<Tip>
+  Sending invites through the workspace chat is the fastest way to onboard specific people — Genie pre-approves them and sends the email in one step, so they can access your app as soon as they sign up.
+</Tip>

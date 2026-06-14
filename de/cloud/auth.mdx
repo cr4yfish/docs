@@ -60,4 +60,39 @@ Hat dein Projekt mehr als acht Nutzer:innen, zeigt ein Hinweis am Ende des Panel
 
 Genie Cloud unterstützt ein Rollen-System, mit dem du steuern kannst, was verschiedene Nutzer:innen in deiner App tun können. Rollen wie **admin**, **moderator** und **member** können einzelnen Nutzer:innen im Tab **Nutzer** zugewiesen werden. Genie AI kann diese Rollen beim Generieren deiner App verwenden, um Funktionen je nach angemeldeter Person ein- oder auszublenden.
 
-Wenn du deine App so einschränken möchtest, dass nur genehmigte Nutzer:innen Zugriff haben, aktiviere den **Private Mode** im Tab **Onboarding**. Im Private Mode wird jede neue Anmeldung in einem ausstehenden Zustand gehalten, bis ein Admin sie im Tab Nutzer genehmigt.
+Wenn du eine App mit mehreren Nutzertypen baust — zum Beispiel einen Admin-Bereich und einen separaten Auftragnehmer-Bereich — erstellt Genie jede Rolle automatisch und listet die genauen Rollennamen in der Build-Zusammenfassung auf. Du kannst dann unter **Projekteinstellungen → Benutzer** diesen Personen die richtigen Rollen nach Namen zuweisen.
+
+## Onboarding-Flows
+
+Du kannst einen geführten Onboarding-Screen hinzufügen, der einmalig für jeden neuen Benutzer nach seiner ersten Anmeldung erscheint. Der Screen sammelt einen Anzeigenamen und beliebige benutzerdefinierte Felder, und der Benutzer gelangt erst in deine App, wenn er ihn abgeschlossen hat. Der Abschluss wird pro Benutzer in deiner Genie Cloud-Datenbank gespeichert, sodass der Screen danach nie wieder erscheint.
+
+So richtest du einen Onboarding-Flow ein:
+
+- **Genie fragen** — sage Genie im Projekt-Chat, welche Informationen du bei der ersten Anmeldung sammeln möchtest („füge einen Willkommensscreen hinzu, der nach Name und Unternehmen fragt"). Genie richtet den Onboarding-Screen automatisch ein.
+- **Einstellungs-Toggle** — öffne **Projekteinstellungen → Onboarding** und aktiviere **Onboarding**. Nach der Aktivierung fügt Genie beim nächsten Build den Onboarding-Screen zu deiner App hinzu.
+
+## Privat-Modus
+
+Der Privat-Modus schränkt den Zugang zu deiner App ein, sodass sich nur Nutzer:innen anmelden können, die du explizit genehmigt hast. Wenn der Privat-Modus aktiv ist:
+
+- Nicht angemeldete Besucher sehen eine gesperrte Seite mit einem Anmeldelink.
+- Neue Registrierungen landen in einem **ausstehend**-Zustand und sehen einen Wartebildschirm, bis ein Admin sie genehmigt.
+- Von dir genehmigte Nutzer:innen können sich anmelden und deine App normal nutzen.
+
+Aktiviere den Privat-Modus unter **Projekteinstellungen → Onboarding**.
+
+### Benutzer genehmigen und einladen
+
+Sobald der Privat-Modus aktiv ist, kannst du den Zugang auf zwei Arten verwalten:
+
+**Über Projekteinstellungen → Benutzer** — der Tab Benutzer zeigt alle ausstehenden Registrierungen. Klicke auf **Genehmigen** neben einem Benutzer, um ihm sofort Zugang zu gewähren.
+
+**Über den Workspace-Chat** — bitte Genie, die Zugriffsverwaltung für dich zu übernehmen:
+
+- *„Genehmige [E-Mail-Adresse]"* — Genie genehmigt einen bestimmten ausstehenden Benutzer.
+- *„Lade [E-Mail-Adresse] ein"* — Genie genehmigt die Adresse vorab und sendet ihr eine E-Mail mit einem Link zu deiner App. Wenn die Person bereits in der Warteschlange ist, wird sie sofort genehmigt.
+- *„Deaktiviere den Privat-Modus"* oder *„ändere die Standardrolle zu member"* — Genie aktualisiert deine Zugriffseinstellungen und synchronisiert sie automatisch mit deiner Live-App.
+
+<Tip>
+  Einladungen über den Workspace-Chat zu versenden ist der schnellste Weg, bestimmte Personen einzubinden — Genie genehmigt sie vorab und sendet die E-Mail in einem Schritt, sodass sie auf deine App zugreifen können, sobald sie sich registrieren.
+</Tip>
