@@ -4,6 +4,34 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="June 14, 2026" description="Weekly release">
+
+This week brings multi-role apps, app onboarding flows, private mode for apps, AI-powered "What's next" suggestions, and a handful of quality-of-life improvements.
+
+## New features
+
+- **Multi-role apps — roles created automatically and named in your summary.** When you build an app with multiple access tiers (admin, contractor, client, and similar), Genie now creates each custom role automatically and lists the exact role names in the build summary. You can then assign those roles to your users straight from **Project Settings → Users** without guessing what to type. See [User roles and access control](/cloud/auth#user-roles-and-access-control).
+
+- **App user onboarding flows.** Ask Genie to add a first-login onboarding screen to your app, or toggle it on from **Project Settings → Onboarding**. New users are held on a guided page after signing up until they complete it — collecting a display name and any custom fields you configure. The flow runs exactly once per user and is tracked in your Genie Cloud database.
+
+- **Private mode for apps.** Enable private mode to require admin approval before a new sign-up can access your app. Unauthenticated visitors see a locked page; new sign-ups wait for approval. Approve individual users from **Project Settings → Users**, or ask Genie in the workspace chat to approve them or send pre-approved invites by email. Enable from **Project Settings → Onboarding**. See [User authentication](/cloud/auth#user-roles-and-access-control).
+
+- **"Ask Genie AI" on the post-build checklist.** After a build, the to-do checklist now has an **Ask Genie AI** button. Clicking it opens a chat pre-filled with a prompt based on your remaining unchecked tasks — no retyping required.
+
+- **"What's next" — AI suggestions in the Brain panel.** After each build, Genie predicts the features, changes, or fixes you are most likely to want next and shows them as clickable cards in the **Brain** panel. Clicking a card pre-fills the prompt with ready-to-send text; you stay in full control of what gets built.
+
+- **Build completion sound.** A soft two-note chime now plays when a build finishes, so you know your result is ready without watching the screen.
+
+## Updates
+
+- **Build progress shows each phase.** The loading indicator during a build now lists every phase in order — optimizing your prompt, coding, deploying, saving summary — with a live elapsed timer on the active phase and a checkmark on each completed one.
+
+- **Project list refreshes automatically.** The project grid on your home page and workspace home now updates every 60 seconds in the background and whenever you return to the tab. Previously the list could show stale data until you hard-refreshed the page.
+
+- **Autofix responses in your language.** When Genie automatically fixes a broken page or runtime error, the status message now appears in your browser's language instead of always in English.
+
+</Update>
+
 <Update label="May 22, 2026" description="Weekly release">
 
 A short follow-up week focused on refining what shipped on Monday.
