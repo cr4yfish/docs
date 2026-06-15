@@ -80,7 +80,8 @@
                 "pages": [
                   "workspaces/overview",
                   "workspaces/members",
-                  "workspaces/integrations"
+                  "workspaces/integrations",
+                  "workspaces/genie-api"
                 ]
               },
               {

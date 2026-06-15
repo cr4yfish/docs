@@ -13,19 +13,23 @@ You do not need to choose an authentication library, manage tokens, or write any
 
 ## How your app's visitors sign in
 
-Once authentication is set up, visitors to your app can create an account and sign in using their email address. Depending on the OAuth providers you have enabled in your project's **Authentication** settings, users may also be able to sign in with Google.
+Genie Cloud uses **passwordless authentication**. Visitors sign in with a magic link sent to their email address, or with Google if you have enabled Google sign-in in your project's **Authentication** settings. There are no passwords to create, remember, or reset.
 
 <Steps>
   <Step title="Visitor arrives at your app">
     When a visitor reaches a part of your app that requires an account, they are directed to the sign-in or sign-up screen that Genie generated.
   </Step>
   <Step title="They create an account or sign in">
-    New visitors sign up with their email address. Returning visitors sign in the same way. If you have enabled Google sign-in from the **Authentication** tab, that option also appears.
+    New visitors sign up with their email address — Genie Cloud sends a secure magic link that verifies ownership and creates their session in one step. Returning visitors sign in the same way. If you have enabled Google sign-in from the **Authentication** tab, that option also appears.
   </Step>
   <Step title="Genie Cloud creates a session">
     After a successful sign-in, Genie Cloud creates a secure session for the user. Your app uses this session to show the right data for that person throughout their visit.
   </Step>
 </Steps>
+
+<Note>
+  Genie Cloud does not support email-and-password login. All sign-in is passwordless: a magic link sent to the user's email, or Google OAuth if you have enabled it. This is intentional — passwordless authentication eliminates the risk of weak or reused passwords without any extra effort for you or your users.
+</Note>
 
 ## Anonymous users
 
@@ -58,6 +62,31 @@ If your project has more than eight users, a note at the bottom of the panel sho
 
 ## User roles and access control
 
-Genie Cloud supports a roles system that lets you control what different users can do in your app. Roles such as **admin**, **moderator**, and **member** can be assigned to individual users from the **Users** tab. Genie AI can use these roles when generating your app to show or hide features based on who is signed in.
+Genie Cloud includes a role system for controlling what different users can do in your app.
+
+### Default roles
+
+Every Genie Cloud project starts with four built-in roles:
+
+| Role | Typical use |
+|------|-------------|
+| `admin` | Full access — usually the app owner or a super-user |
+| `moderator` | Elevated access for content or community management |
+| `member` | Standard authenticated user |
+| `guest` | Limited access, often for read-only or trial users |
+
+Assign these roles to individual users from the **Users** tab in project settings. Genie AI can use them when generating your app to show or hide features based on who is signed in.
+
+### Custom roles for multi-role apps
+
+When you describe an app with distinct user types — for example, "admins and contractors each see only their own area" — Genie AI creates the custom roles your app needs and names them in the **What I built** summary card so you know exactly what to call them when assigning people in Project Settings → Users.
+
+For example, if your app uses `admin` and `contractor` roles, the summary might say:
+
+> 🛡️ **Access roles** — `admin`, `contractor`, each seeing only their own area
+
+Role management — assigning which user gets which role — always happens in **Project Settings → Users**. If you also want an in-app admin panel to manage roles without leaving your app, ask Genie to build one.
+
+### Private mode
 
 If you want to restrict your app so that only approved users can access it, enable **Private mode** from the **Onboarding** tab. In private mode, every new sign-up is held in a pending state until an admin approves them from the Users tab.

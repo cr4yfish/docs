@@ -4,6 +4,26 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="June 10, 2026" description="Weekly release">
+
+Build progress is now visible step by step, the AI assistant anticipates your next move, and workspace collaboration gets near-instant updates.
+
+## New features
+
+- **Real-time build phase tracker.** A step-by-step progress checklist now appears in the chat footer while your build runs — Setting up → Optimizing → Coding → Deploying → Saving — with live elapsed time for each phase. No more guessing whether Genie is still working.
+- **"Ask Genie AI" from your build summary.** The finish-response checklist now has an **Ask Genie AI** button. Click it and a first-person prompt is automatically composed from your open to-dos and sent into the Genie AI chat, so you can ask for help with anything remaining without typing it out.
+- **"What's next" predictions in Brain.** The Brain panel now shows a ranked list of predicted next steps — features, changes, and bugfixes — based on your open goals, recent build history, and project context. Click **Use this prompt** to pre-fill the composer with the suggestion.
+- **Genie API (MCP server).** Genie now exposes its own MCP server so AI clients like Claude Desktop and Cursor can manage your workspace and projects programmatically — create apps, send prompts, check build status, manage team members, and more. See [Genie API](/workspaces/genie-api).
+
+## Updates
+
+- **Role names in multi-role app summaries.** When Genie builds an app with multiple user types (admin + contractor, member + client, and so on), the exact role names now appear in the **What I built** summary card so you know what to type when assigning users in Project Settings → Users. See [Authentication](/cloud/auth).
+- **Near-instant collaboration lock updates.** In shared workspace projects, the edit-lock state now updates within about two seconds when a teammate releases the lock — down from up to 15 seconds. The lock banner is also larger and easier to spot.
+- **Workspace PII detection rules.** Workspace owners and admins can now configure PII detection rules in workspace settings. Built-in detectors cover emails, credit cards, IBANs, and API keys; custom regex patterns can be added for business-specific sensitive data. Rules can also be managed via the [Genie API](/workspaces/genie-api).
+- **Autofix responses in your language.** When Genie detects and fixes an error in your app automatically, the status update is now delivered in your interface language instead of always English.
+
+</Update>
+
 <Update label="May 22, 2026" description="Weekly release">
 
 A short follow-up week focused on refining what shipped on Monday.

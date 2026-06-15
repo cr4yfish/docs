@@ -1,0 +1,172 @@
+---
+title: "Genie API"
+description: "Control Genie programmatically from Claude Desktop, Cursor, or any MCP-compatible AI client. Create projects, send follow-up prompts, check build status, and manage your workspace through the Genie MCP server."
+---
+
+Genie provides a **Model Context Protocol (MCP) server** that lets external AI clients — Claude Desktop, Cursor, custom agents — manage your workspace and projects programmatically. Connect once and your AI assistant can create apps, send follow-up prompts, check build status, and manage your team on your behalf.
+
+## Server endpoint
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+The server uses the **Streamable HTTP** MCP transport. Sessions are stateless — no persistent connection is required between calls.
+
+## Authentication
+
+The Genie API uses **OAuth 2.0 with PKCE** scoped to a single workspace. When you add the server URL to your AI client, it discovers Genie's OAuth configuration automatically and guides you through authorizing a specific workspace. No manual token management is required.
+
+<Note>
+Each authorization is scoped to one workspace. Use `list_user_workspaces` to see all workspaces you belong to and which one is currently connected to this session.
+</Note>
+
+## Connecting your AI client
+
+Add `https://www.genie-app.de/api/mcp` as an MCP server in your AI client's settings. The exact steps vary by client:
+
+- **Claude Desktop** — Settings → Developer → Edit Config → add a new `mcpServers` entry with the Genie URL, then restart and complete the OAuth flow.
+- **Cursor** — Settings → MCP → Add Server → paste the URL, then authorize when prompted.
+- **Custom agents** — Use any MCP client library that supports the Streamable HTTP transport and OAuth 2.0 PKCE.
+
+After authorization the AI assistant has access to all Genie API tools for the connected workspace.
+
+## Available tools
+
+### Workspace
+
+| Tool | Description |
+|------|-------------|
+| `get_workspace_info` | Workspace name, ID, member count, settings, and creation date. |
+| `list_workspace_members` | All members with their roles and join dates. |
+| `list_workspace_invites` | Pending invitations: ID, role, expiry, and remaining uses. |
+| `list_workspaces` | All workspaces the authenticated user belongs to. |
+| `list_user_workspaces` | Same, plus which workspace is currently connected. |
+| `get_workspace_credits` | Current credit balance. |
+| `get_workspace_billing` | Subscription status: plan, seats, billing interval, period dates. |
+| `get_credit_usage` | Credit consumption. Scope to your own usage or the whole workspace (owners/admins). Group by project, user, or day. |
+| `get_recent_workspace_activity` | Activity log entries with pagination. Requires activity logging to be enabled on the workspace. |
+| `update_workspace` | Update workspace name and/or description. Owners and admins only. |
+| `update_workspace_settings` | Toggle `activity_log_enabled` or `project_access_control`. Owners and admins only. |
+| `invite_workspace_member` | Create a redeemable invite link for a given role. |
+| `revoke_workspace_invite` | Permanently delete a pending invite. |
+| `update_workspace_member_role` | Change a member's role (owner / admin / member / editor). |
+| `remove_workspace_member` | Remove a member from the workspace. |
+
+### MCP integration management
+
+Manage the MCP integrations configured for your workspace — the same servers visible on the [Integrations](/workspaces/integrations) page:
+
+| Tool | Description |
+|------|-------------|
+| `list_workspace_mcp_servers` | Lists configured MCP servers. Credentials are never returned. |
+| `test_workspace_mcp_server_connection` | Tests connectivity and returns the tool count and a sample of tool names. |
+| `add_workspace_mcp_server` | Adds a new MCP server (Bearer token, OAuth 2.1, or no auth). |
+| `update_workspace_mcp_server` | Updates a server's name, description, URL, or transport. |
+| `toggle_workspace_mcp_server` | Enables or disables a server without removing it. |
+| `delete_workspace_mcp_server` | Permanently removes a server and its credentials. Requires `confirm_delete: true`. |
+
+### Projects
+
+| Tool | Description |
+|------|-------------|
+| `list_latest_projects` | The 10 most recently updated projects with credit usage. |
+| `search_projects` | Full-text search over project names and descriptions, with sort and limit options. |
+| `get_project` | Full details for a project by slug: name, description, visibility, deployment URL, credit usage. |
+| `create_project` | Create a project from a natural-language prompt. Returns the deployment URL immediately; the build runs in the background. |
+| `send_followup_prompt` | Send a follow-up prompt to an existing project. Returns `"ok"` immediately; the build runs in the background. |
+| `get_project_status` | Lightweight poll — `loading` while a turn is running, `idle` otherwise. |
+| `get_project_deployment_status` | Full per-phase breakdown: submitted → optimizing → running → coding → deploying → finished. |
+| `get_project_messages` | Recent build-turn messages (user prompts and AI responses). |
+| `show_preview` | Deployment URL, a CDN screenshot, and per-page screenshots from the project sitemap. |
+| `suggest_project_prompts` | AI-generated follow-up prompt suggestions based on recent build history. |
+| `update_project` | Update name, description, visibility (`private` / `public` / `hidden`), or `remixable` flag. |
+| `rename_project` | Rename a project by slug. |
+| `archive_project` | Hide a project from the default list without deleting it. |
+| `unarchive_project` | Restore an archived project. |
+| `list_archived_projects` | List archived projects (up to 60). |
+| `delete_project` | Permanently delete a project and all its data. Requires `confirm_delete: true`. |
+| `list_project_members` | Members with explicit access grants. Relevant when `project_access_control` is enabled on the workspace. |
+| `add_project_member` | Grant a workspace member access to a project. |
+| `remove_project_member` | Revoke a member's project access. |
+
+### Workspace chat
+
+Ask questions about your workspace or continue a conversation thread. Messages are persisted to workspace chat history and visible in the Genie web app.
+
+| Tool | Description |
+|------|-------------|
+| `send_workspace_chat` | Send a message and get an AI response. Pass `conversation_id` to continue an existing thread. |
+| `create_workspace_chat` | Send a message in a persistent named thread. Pass `conversation_id` to continue. |
+| `list_workspace_chats` | Recent workspace chat conversations. |
+| `get_workspace_chat` | Full message history for a conversation. |
+| `search_workspace_chats` | Full-text search across workspace chat messages. |
+
+### PII detection rules
+
+Workspace owners and admins can read and manage the PII detection rules that screen prompts and chat messages for sensitive data:
+
+| Tool | Description |
+|------|-------------|
+| `list_workspace_pii_rules` | Built-in and custom PII detectors with their current settings. Always call this first to resolve rule identifiers. |
+| `list_workspace_pii_detections` | Recent detection log entries. Detected values are always redacted. Owners and admins only. |
+| `set_workspace_pii_rule` | Change a rule's action (`ignore` / `log` / `block`) or enabled state. |
+| `create_workspace_pii_rule` | Add a custom regex-based PII rule. The pattern is validated server-side. |
+| `delete_workspace_pii_rule` | Remove a custom rule. Built-in detectors cannot be deleted; disable them with `set_workspace_pii_rule` instead. |
+| `reset_workspace_pii_rules` | Reset all built-in detectors to their shipped defaults. Custom rules are kept. |
+
+## Common workflows
+
+### Build a new app
+
+```
+create_project
+  prompt: "Build a customer support dashboard with ticket tracking and a status board"
+  → returns: { slug, deploymentUrl, projectUrl }
+
+get_project_status  (poll until "idle")
+  — or use get_project_deployment_status for a phase-by-phase view —
+
+show_preview
+  → returns: { deploymentUrl, screenshotUrl, pages: [...] }
+```
+
+### Iterate on an existing project
+
+```
+search_projects
+  query: "support dashboard"
+  → returns: [{ slug, name, ... }]
+
+send_followup_prompt
+  project_slug: "support-dashboard-abc123"
+  prompt: "Add a dark mode toggle and an export-to-CSV button"
+  → returns: "ok"
+
+get_project_deployment_status
+  → watch phases until latestPhase = "finished"
+```
+
+### Manage your team
+
+```
+list_workspace_members
+  → see current roster and user IDs
+
+invite_workspace_member
+  role: "editor", max_uses: 5, expires_in_days: 7
+  → returns: { inviteUrl }
+
+update_workspace_member_role
+  target_user_id: "auth0|...", new_role: "admin"
+```
+
+## Workspace chat vs. project builds
+
+|  | Workspace chat | Project build |
+|---|---|---|
+| **Use for** | Questions, planning, research | Writing and deploying app code |
+| **Tools** | `send_workspace_chat`, `create_workspace_chat` | `create_project`, `send_followup_prompt` |
+| **Response** | Synchronous AI text | `"ok"` — build runs in background |
+| **Poll for completion** | — | `get_project_status` or `get_project_deployment_status` |
+| **Persisted** | Yes, in workspace chat history | Yes, in project message history |
