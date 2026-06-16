@@ -1,0 +1,106 @@
+---
+title: "Use Genie from external AI clients via MCP"
+description: "Connect Claude Desktop, Cursor, or any MCP-compatible AI client to your Genie workspace. Create projects, send prompts, check build status, and chat with Genie AI — all from your preferred client."
+---
+
+Genie exposes its own **MCP server** so external AI clients — Claude Desktop, Cursor, custom agents, and anything else that speaks the Model Context Protocol — can control Genie directly. You can create projects, send follow-up prompts, monitor build status, manage workspace members, and chat with Genie AI without opening the Genie web app.
+
+## Endpoint
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+The server uses the **Streamable HTTP** transport, which is supported by all modern MCP clients. Sessions are stateless — no persistent connection is required.
+
+## Authentication
+
+The Genie MCP server uses **OAuth 2.0 with PKCE** and is scoped to a single workspace. When you connect a client, you complete a standard browser-based OAuth flow that grants the client access to the workspace you select. The resulting credentials are stored by your MCP client and refreshed automatically.
+
+<Note>
+Each OAuth session is tied to one workspace. To switch workspaces, start a new authorization flow from your client's settings. You can use the `list_user_workspaces` tool to see all workspaces available to your account.
+</Note>
+
+## What you can do
+
+The Genie MCP server exposes tools across five areas:
+
+<CardGroup cols={2}>
+  <Card title="Workspace management" icon="building-2">
+    Read workspace info, list and invite members, manage roles, update settings, track credit usage, and view the activity log.
+  </Card>
+  <Card title="Projects" icon="folder">
+    Create projects from a prompt, send follow-up messages, check build and deployment status, search projects, view screenshots, and get AI-generated prompt suggestions.
+  </Card>
+  <Card title="Workspace chat" icon="message-circle">
+    Start or continue a workspace AI chat conversation — the same Genie AI thread visible in the web app. Useful for context-aware questions about your workspace and projects.
+  </Card>
+  <Card title="MCP server management" icon="plug">
+    List, add, update, enable/disable, and remove the MCP servers connected to your workspace — the same integrations managed under **Settings → Integrations**.
+  </Card>
+  <Card title="PII rules" icon="shield">
+    List and configure the workspace PII detection rules that scan messages before they reach Genie AI.
+  </Card>
+</CardGroup>
+
+<Tip>
+The `suggest_project_prompts` tool generates AI-powered follow-up ideas based on a project's build history — useful when you want inspiration for what to build next without opening the web app.
+</Tip>
+
+## Connect a client
+
+The steps below use **Claude Desktop** as an example, but the same approach works for Cursor and any other MCP-compatible client.
+
+<Steps>
+  <Step title="Open your client's MCP settings">
+    In Claude Desktop, go to **Settings → Developer → MCP Servers** and click **Add server**.
+  </Step>
+  <Step title="Enter the Genie MCP endpoint">
+    Set the server URL to:
+    ```
+    https://www.genie-app.de/api/mcp
+    ```
+    Choose **Streamable HTTP** (or **HTTP**) as the transport.
+  </Step>
+  <Step title="Authenticate with your Genie account">
+    Click **Authorize** (or the equivalent in your client). A browser window opens with the Genie OAuth flow. Sign in with your Genie account and choose the workspace you want to connect.
+  </Step>
+  <Step title="Start using Genie tools">
+    Once connected, Genie tools are available in your AI client. Ask the AI to list your projects, create a new one from a prompt, send a follow-up message, or check build status — all from your preferred client.
+  </Step>
+</Steps>
+
+## Example interactions
+
+Once connected, you can ask your AI client things like:
+
+- *"Show me my most recently updated Genie projects."*
+- *"Create a new Genie project: a customer feedback tracker with email notifications."*
+- *"What is the current build status of my 'invoice-portal' project?"*
+- *"Send this follow-up to the project: 'Add a dark mode toggle to the settings page'."*
+- *"Show me a screenshot of the current app."*
+- *"Which workspace members joined in the last 30 days?"*
+
+## Role requirements
+
+Some tools require elevated workspace roles:
+
+| Action | Minimum role |
+|---|---|
+| Read workspace info, list projects, use workspace chat | Member |
+| Create, update, or archive projects | Member |
+| Invite members, add or manage MCP servers | Admin or Owner |
+| Update workspace settings, view activity log | Admin or Owner |
+| Remove members, delete MCP servers | Admin or Owner |
+
+## Security
+
+All Genie MCP sessions are:
+
+- **Workspace-scoped** — a single OAuth session can only access the workspace you authorized. Connecting to a different workspace requires a separate authorization.
+- **Encrypted in transit** — all MCP communication is over HTTPS.
+- **Audited** — workspace-level actions taken through the MCP server are recorded in the workspace activity log, visible to owners and admins under **Settings → Activity**.
+
+<Warning>
+Never share your MCP OAuth credentials with third parties. If you believe your session has been compromised, re-authorize from your MCP client's settings to issue a fresh token.
+</Warning>
