@@ -1,0 +1,106 @@
+---
+title: "Genie aus externen KI-Clients über MCP nutzen"
+description: "Verbinde Claude Desktop, Cursor oder jeden anderen MCP-kompatiblen KI-Client mit deinem Genie-Workspace. Erstelle Projekte, sende Prompts, prüfe den Build-Status und chatte mit Genie AI — alles aus deinem bevorzugten Client."
+---
+
+Genie stellt einen eigenen **MCP-Server** bereit, damit externe KI-Clients — Claude Desktop, Cursor, eigene Agenten und alles, was das Model Context Protocol unterstützt — Genie direkt steuern können. Du kannst Projekte erstellen, Follow-up-Prompts senden, den Build-Status überwachen, Workspace-Mitglieder verwalten und mit Genie AI chatten, ohne die Genie-Webanwendung zu öffnen.
+
+## Endpunkt
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+Der Server nutzt den **Streamable HTTP**-Transport, der von allen modernen MCP-Clients unterstützt wird. Sitzungen sind zustandslos — es ist keine dauerhafte Verbindung erforderlich.
+
+## Authentifizierung
+
+Der Genie-MCP-Server verwendet **OAuth 2.0 mit PKCE** und ist auf einen einzelnen Workspace beschränkt. Wenn du einen Client verbindest, durchläufst du einen standardmäßigen browser-basierten OAuth-Flow, der dem Client Zugriff auf den von dir gewählten Workspace gewährt. Die resultierenden Zugangsdaten werden von deinem MCP-Client gespeichert und automatisch erneuert.
+
+<Note>
+Jede OAuth-Sitzung ist an einen Workspace gebunden. Um den Workspace zu wechseln, starte einen neuen Autorisierungs-Flow aus den Einstellungen deines Clients. Du kannst das Tool `list_user_workspaces` verwenden, um alle für dein Konto verfügbaren Workspaces einzusehen.
+</Note>
+
+## Was du tun kannst
+
+Der Genie-MCP-Server stellt Tools in fünf Bereichen bereit:
+
+<CardGroup cols={2}>
+  <Card title="Workspace-Verwaltung" icon="building-2">
+    Workspace-Informationen abrufen, Mitglieder auflisten und einladen, Rollen verwalten, Einstellungen aktualisieren, Kreditnutzung verfolgen und das Aktivitätsprotokoll einsehen.
+  </Card>
+  <Card title="Projekte" icon="folder">
+    Projekte aus einem Prompt erstellen, Follow-up-Nachrichten senden, Build- und Deployment-Status prüfen, Projekte suchen, Screenshots ansehen und KI-generierte Prompt-Vorschläge erhalten.
+  </Card>
+  <Card title="Workspace-Chat" icon="message-circle">
+    Eine Workspace-KI-Chat-Unterhaltung starten oder fortsetzen — denselben Genie-AI-Thread, der auch in der Webanwendung sichtbar ist. Nützlich für kontextbezogene Fragen zu deinem Workspace und deinen Projekten.
+  </Card>
+  <Card title="MCP-Server-Verwaltung" icon="plug">
+    Die mit deinem Workspace verbundenen MCP-Server auflisten, hinzufügen, aktualisieren, aktivieren/deaktivieren und entfernen — dieselben Integrationen, die unter **Einstellungen → Integrationen** verwaltet werden.
+  </Card>
+  <Card title="PII-Regeln" icon="shield">
+    Die PII-Erkennungsregeln des Workspace auflisten und konfigurieren, die Nachrichten prüfen, bevor sie Genie AI erreichen.
+  </Card>
+</CardGroup>
+
+<Tip>
+Das Tool `suggest_project_prompts` generiert KI-gestützte Follow-up-Ideen basierend auf der Build-Historie eines Projekts — nützlich, wenn du ohne Öffnen der Webanwendung Inspiration für dein nächstes Feature suchst.
+</Tip>
+
+## Client verbinden
+
+Die folgenden Schritte verwenden **Claude Desktop** als Beispiel, aber das gleiche Vorgehen funktioniert für Cursor und jeden anderen MCP-kompatiblen Client.
+
+<Steps>
+  <Step title="MCP-Einstellungen deines Clients öffnen">
+    Gehe in Claude Desktop zu **Einstellungen → Entwickler → MCP-Server** und klicke auf **Server hinzufügen**.
+  </Step>
+  <Step title="Genie-MCP-Endpunkt eingeben">
+    Setze die Server-URL auf:
+    ```
+    https://www.genie-app.de/api/mcp
+    ```
+    Wähle **Streamable HTTP** (oder **HTTP**) als Transport.
+  </Step>
+  <Step title="Mit Genie-Konto authentifizieren">
+    Klicke auf **Autorisieren** (oder die entsprechende Schaltfläche in deinem Client). Ein Browserfenster öffnet sich mit dem Genie-OAuth-Flow. Melde dich mit deinem Genie-Konto an und wähle den Workspace, den du verbinden möchtest.
+  </Step>
+  <Step title="Genie-Tools verwenden">
+    Sobald verbunden, stehen Genie-Tools in deinem KI-Client zur Verfügung. Bitte die KI, deine Projekte aufzulisten, ein neues aus einem Prompt zu erstellen, eine Follow-up-Nachricht zu senden oder den Build-Status zu prüfen — alles aus deinem bevorzugten Client.
+  </Step>
+</Steps>
+
+## Beispiel-Interaktionen
+
+Nach der Verbindung kannst du deinen KI-Client folgendes fragen:
+
+- *"Zeige mir meine zuletzt aktualisierten Genie-Projekte."*
+- *"Erstelle ein neues Genie-Projekt: einen Kunden-Feedback-Tracker mit E-Mail-Benachrichtigungen."*
+- *"Was ist der aktuelle Build-Status meines Projekts 'rechnungsportal'?"*
+- *"Sende dieses Follow-up an das Projekt: 'Füge einen Dark-Mode-Umschalter zur Einstellungsseite hinzu'."*
+- *"Zeige mir einen Screenshot der aktuellen App."*
+- *"Welche Workspace-Mitglieder sind in den letzten 30 Tagen beigetreten?"*
+
+## Rollenanforderungen
+
+Einige Tools erfordern erhöhte Workspace-Rollen:
+
+| Aktion | Mindestrolle |
+|---|---|
+| Workspace-Informationen lesen, Projekte auflisten, Workspace-Chat nutzen | Mitglied |
+| Projekte erstellen, aktualisieren oder archivieren | Mitglied |
+| Mitglieder einladen, MCP-Server hinzufügen oder verwalten | Admin oder Eigentümer |
+| Workspace-Einstellungen aktualisieren, Aktivitätsprotokoll einsehen | Admin oder Eigentümer |
+| Mitglieder entfernen, MCP-Server löschen | Admin oder Eigentümer |
+
+## Sicherheit
+
+Alle Genie-MCP-Sitzungen sind:
+
+- **Workspace-beschränkt** — eine einzelne OAuth-Sitzung kann nur auf den von dir autorisierten Workspace zugreifen. Die Verbindung zu einem anderen Workspace erfordert eine separate Autorisierung.
+- **Verschlüsselt in der Übertragung** — die gesamte MCP-Kommunikation erfolgt über HTTPS.
+- **Protokolliert** — Aktionen auf Workspace-Ebene, die über den MCP-Server durchgeführt werden, werden im Workspace-Aktivitätsprotokoll aufgezeichnet, das Eigentümer und Admins unter **Einstellungen → Aktivität** einsehen können.
+
+<Warning>
+Teile deine MCP-OAuth-Zugangsdaten niemals mit Dritten. Wenn du glaubst, dass deine Sitzung kompromittiert wurde, autorisiere erneut aus den Einstellungen deines MCP-Clients, um ein neues Token zu erhalten.
+</Warning>
