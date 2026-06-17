@@ -90,7 +90,8 @@
                   "cloud/overview",
                   "cloud/database",
                   "cloud/storage",
-                  "cloud/auth"
+                  "cloud/auth",
+                  "cloud/onboarding"
                 ]
               },
               {
@@ -175,7 +176,8 @@
                   "de/cloud/overview",
                   "de/cloud/database",
                   "de/cloud/storage",
-                  "de/cloud/auth"
+                  "de/cloud/auth",
+                  "de/cloud/onboarding"
                 ]
               },
               {

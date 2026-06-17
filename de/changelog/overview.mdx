@@ -4,6 +4,38 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="17. Juni 2026" description="Wöchentliches Release">
+
+Eine vollgepackte Woche mit Verbesserungen für den Build-Prozess, Genie Cloud und die Chat-Oberfläche.
+
+## Neue Funktionen
+
+- **"Geänderte Seiten" nach jedem Build.** Nach Abschluss eines Builds zeigt die Antwort eine Reihe von Buttons — einen für jede bearbeitete Seite. Klicke auf einen Button, um direkt zu dieser Seite in deiner Live-App-Vorschau zu navigieren, ohne suchen zu müssen, was sich geändert hat.
+
+- **App-Onboarding und privater Modus.** Konfiguriere ein Onboarding-Erlebnis für neue Nutzer beim ersten Login und schränke den Zugang mit dem privaten Modus ein — ohne Code schreiben zu müssen. Aktiviere beides im Tab **Onboarding** in den Projekteinstellungen oder bitte Genie AI im Workspace-Chat, beides einzuschalten, Nutzer einzuladen oder ausstehende Anmeldungen zu genehmigen. Siehe [App-Onboarding und Zugriffskontrolle](/de/cloud/onboarding).
+
+- **Asset-Uploads per Drag & Drop.** Ziehe Bilder oder Videos direkt in das Projekt-Chat-Eingabefeld, um sie in deiner App zu verwenden (Hero-Bilder, Logos, Produktfotos). Du kannst auch über die Befehlspalette (**Cmd/Strg+K → "Bilder & Videos hochladen"**) Assets in jedes Projekt hochladen — ohne einen vollständigen Build auszulösen.
+
+- **Datei-Uploads mit echtem Fortschrittsbalken.** Wenn du Genie bittest, eine Datei-Upload-Funktion mit sichtbarem Fortschrittsbalken hinzuzufügen, verwendet der generierte Code jetzt einen echten Upload-Fortschrittsindikator, der an den tatsächlichen Übertragungsfortschritt gekoppelt ist — keine Timer-Animation.
+
+## Updates
+
+- **Intelligentere, ehrlichere Build-ETA.** Die Build-Zeitschätzung passt sich jetzt in Echtzeit an das beobachtete Tempo an. Wenn ein Schritt länger dauert als erwartet, wird die Schätzung nach oben korrigiert, anstatt in einer statischen "dauert länger als erwartet"-Meldung zu verharren. Eine steigende ETA ist nützlicher als eine, die einfriert.
+
+- **Browser-Tab zeigt Build-Status.** Wenn du während eines Genie-Builds zu einem anderen Tab wechselst, zeigt der Projekt-Tab jetzt ⏳ während der Arbeit läuft und ✅ wenn er abgeschlossen ist. Das Zurückwechseln zum Tab löscht das Symbol automatisch.
+
+- **"Weiter mit Genie AI" im Chat-Modus.** Wenn Genie eine Folgefrage beantwortet, ohne zu bauen (Chat-Modus), erscheint unterhalb der Antwort ein Button **Weiter mit Genie AI**. Ein Klick öffnet den Workspace-Chat, vorausgefüllt mit deiner Frage und Genies Antwort, damit du das Gespräch mit vollem Kontext fortführen kannst.
+
+- **Umfangreichere Schemaentwicklung.** Genie kann jetzt den Datentyp einer Spalte ändern (z. B. eine Textspalte in ein echtes Datumsfeld konvertieren) und Spalten-Standardwerte für bestehende Tabellen setzen oder entfernen — nicht mehr auf das Hinzufügen neuer Spalten beschränkt. Deine vorhandenen Daten bleiben erhalten. Siehe [Datenbank](/de/cloud/database).
+
+- **Zuverlässigere Lösch- und Aktualisierungsoperationen.** Der generierte App-Code prüft jetzt, ob eine Löschung oder Aktualisierung tatsächlich eine Zeile in der Datenbank geändert hat. Wenn die Operation still blockiert wurde, zeigt die App dem Nutzer eine Fehlermeldung, anstatt fälschlicherweise Erfolg zu melden.
+
+- **E-Mail funktioniert für jeden Anwendungsfall.** Das Bitten von Genie, eine ausgehende E-Mail zu senden — Buchungsbestätigungen, Bestellbelege, Passwort-Reset-Links, Willkommensnachrichten, Erinnerungen — löst jetzt zuverlässig die E-Mail-Integration aus. Bisher waren nur Anfragen, die explizit "transaktionale E-Mail" oder den Anbieternamen erwähnten, garantiert abgedeckt.
+
+- **Multi-Rollen-Apps zeigen dir, was als nächstes zu tun ist.** Wenn Genie eine App mit unterschiedlichen Benutzerrollen erstellt (Admin, Auftragnehmer, Kunde usw.), listet es jetzt die genauen Rollennamen in der Build-Zusammenfassung auf und fügt ein handlungsorientiertes Checklisten-Element hinzu, das dich daran erinnert, diese Rollen deinen Nutzern in **Projekteinstellungen → Nutzer** zuzuweisen — oder Genie AI darum zu bitten.
+
+</Update>
+
 <Update label="22. Mai 2026" description="Wöchentliches Release">
 
 Eine kurze Folgewoche mit Feinschliff an dem, was am Montag erschienen ist.

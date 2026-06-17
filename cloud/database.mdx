@@ -29,6 +29,22 @@ Your app talks to the database through Genie Cloud's connection automatically. W
 
 You do not configure database connections or write any data access code. Genie generates all of that when it builds the app.
 
+## Evolving your database schema
+
+As your app grows, Genie can do more than add new tables and columns. It can also modify the structure of columns that already exist.
+
+### Changing a column's data type
+
+If a column was originally created to store free-form text but your app now needs structured dates, numbers, or another data type, Genie can convert it. Describe the change in the project chat — for example, "Change the due date column to use a proper date field instead of text" — and Genie handles the conversion, including any logic needed to preserve existing values.
+
+### Setting or removing a column default
+
+Genie can also add a default value to an existing column (so new rows automatically receive that value) or remove a default that is no longer needed. Ask in the project chat: "Set the status column default to 'pending'" or "Remove the default from the updated_at column".
+
+<Warning>
+  Changing a column's type may alter how existing values are stored. Genie handles common conversions automatically, but review your data after any type change to confirm existing records look correct.
+</Warning>
+
 ## What happens to your data over time
 
 As you iterate on your app and ask Genie to add or change features, the AI may add new columns to existing tables or create additional tables. Existing rows are preserved — Genie's schema changes are additive and do not remove data you have already collected.
