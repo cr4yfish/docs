@@ -4,6 +4,38 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="June 17, 2026" description="Weekly release">
+
+A packed week with improvements to the building experience, Genie Cloud, and the chat interface.
+
+## New features
+
+- **"Pages I updated" after every build.** After Genie finishes a build, the response now shows a row of buttons — one for each page that was touched. Click any button to navigate your live app preview directly to that page, without having to search for what changed.
+
+- **App onboarding flows and private mode.** Configure a first-login onboarding experience for your app's users and restrict access with private mode — without writing any code. Enable both from the **Onboarding** tab in project settings, or ask Genie AI in workspace chat to turn them on, invite users, or approve pending signups. See [App onboarding and access control](/cloud/onboarding).
+
+- **Asset uploads via drag and drop.** Drag images or videos directly into the project chat prompt to include them in your app (hero images, logos, product photos). You can also upload assets to any project from the command palette (**Cmd/Ctrl+K → "Upload images & videos"**) without triggering a full build.
+
+- **File uploads with a real progress bar.** When you ask Genie to add a file upload feature with a visible progress bar, the generated code now uses a genuine upload progress indicator tied to actual transfer progress — not a timer animation.
+
+## Updates
+
+- **Smarter, honest build ETA.** The build time estimate now adjusts in real time based on the observed pace. If a step takes longer than expected, the estimate revises upward instead of expiring into a static "taking longer than expected" message. A rising ETA is more useful than one that freezes.
+
+- **Browser tab shows build status.** When you switch to another tab while Genie is building, the project tab now shows ⏳ while work is in progress and ✅ once it finishes. Switching back to the tab clears the badge automatically.
+
+- **"Continue with Genie AI" in chat mode.** When Genie answers a follow-up question without building (chat mode), a **Continue with Genie AI** button appears below the answer. Clicking it opens workspace chat pre-loaded with your question and Genie's answer so you can keep the conversation going with full context.
+
+- **Richer schema evolution.** Genie can now change a column's data type (for example, converting a text column to a proper date field) and set or remove column defaults on existing tables — no longer limited to adding new columns. Your existing data is preserved. See [Database](/cloud/database).
+
+- **More reliable delete and update operations.** Generated app code now verifies that a delete or update actually changed a row in the database. If the operation was silently blocked, the app shows the user an error message instead of falsely reporting success.
+
+- **Email works for any use case.** Asking Genie to send any outbound email — booking confirmations, order receipts, password-reset links, welcome messages, reminders — now reliably triggers the email integration. Previously, only requests that explicitly mentioned "transactional email" or the provider name were guaranteed to pick it up.
+
+- **Multi-role apps tell you what to do next.** When Genie builds an app with distinct user roles (admin, contractor, client, and so on), it now lists the exact role names in the build summary and adds an actionable checklist item reminding you to assign those roles to your users in **Project Settings → Users**, or to ask Genie AI to handle it.
+
+</Update>
+
 <Update label="May 22, 2026" description="Weekly release">
 
 A short follow-up week focused on refining what shipped on Monday.
