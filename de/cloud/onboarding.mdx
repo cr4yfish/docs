@@ -1,0 +1,100 @@
+---
+title: "App-Onboarding und Zugriffskontrolle"
+description: "Konfiguriere einen Onboarding-Flow für neue Nutzer deiner App beim ersten Login und schränke den Zugang mit dem privaten Modus ein — ohne Code zu schreiben."
+---
+
+Genie Cloud bietet dir zwei Werkzeuge, um zu steuern, wie neue Nutzer deine App erleben: einen **Onboarding-Flow**, der nach dem ersten Login Informationen von Nutzern sammelt, und einen **privaten Modus**, der deine App auf Einladung beschränkt, bis du jede Anmeldung genehmigst. Beides lässt sich über die Projekteinstellungen oder durch eine Anfrage an Genie AI im Workspace-Chat konfigurieren.
+
+## Onboarding-Flows
+
+Ein Onboarding-Flow ist eine Seite, die einmalig erscheint — unmittelbar nach dem ersten Login eines neuen Nutzers. Nutze sie, um einen Anzeigenamen abzufragen, Einrichtungsfragen zu stellen oder alle Informationen zu sammeln, die deine App benötigt, bevor der Hauptinhalt angezeigt wird. Nachdem der Nutzer das Formular ausgefüllt hat, erscheint die Seite nie wieder.
+
+### Onboarding aktivieren
+
+<Steps>
+  <Step title="Tab „Onboarding“ öffnen">
+    Öffne in deinem Projekt **Einstellungen** und navigiere zum Tab **Onboarding**.
+  </Step>
+  <Step title="Onboarding einschalten">
+    Aktiviere den Schalter **Onboarding aktivieren**. Beim nächsten Build fügt Genie den Onboarding-Flow automatisch zu deiner App hinzu.
+  </Step>
+  <Step title="Fragen anpassen (optional)">
+    Um beim Onboarding zusätzliche Informationen zu sammeln, beschreibe es im Projekt-Chat — zum Beispiel: „Frage neue Nutzer beim Onboarding nach ihrem Firmennamen und ihrer Berufsbezeichnung.“ Genie aktualisiert die Onboarding-Seite als Teil des Builds.
+  </Step>
+</Steps>
+
+<Note>
+  Die Onboarding-Seite wird genau einmal pro Nutzer angezeigt. Nach dem Ausfüllen wird ein Flag im Profil des Nutzers gesetzt, sodass er sie nie wieder sieht — auch nicht nach einem erneuten Login.
+</Note>
+
+Standardmäßig fragt die Onboarding-Seite jeden neuen Nutzer nach einem Anzeigenamen. Alle weiteren Fragen, die du Genie beschreibst, werden auf derselben Seite ergänzt, und die Antworten werden im Nutzerprofil in deiner Genie-Cloud-Datenbank gespeichert.
+
+## Privater Modus
+
+Der private Modus macht deine App einladungsbasiert. Wenn der private Modus aktiv ist:
+
+- Neue Nutzer können sich weiterhin registrieren, landen aber auf einer **Warteseite** statt auf der App.
+- Du musst jede Registrierung genehmigen, bevor der Nutzer auf Inhalte zugreifen kann.
+- Nutzer, die du vorab genehmigst oder direkt einlädst, überspringen die Warteseite vollständig.
+
+Dies ist nützlich für Early-Access-Launches, interne Tools, Kundenportale oder jede App, bei der du genau kontrollieren möchtest, wer Zugang erhält.
+
+### Privaten Modus aktivieren
+
+<Steps>
+  <Step title="Tab „Onboarding“ öffnen">
+    Öffne in deinem Projekt **Einstellungen** und navigiere zum Tab **Onboarding**.
+  </Step>
+  <Step title="Privaten Modus aktivieren">
+    Aktiviere den Schalter **Privater Modus**. Beim nächsten Build aktualisiert Genie deine App, sodass nicht genehmigte Registrierungen die Warteseite sehen.
+  </Step>
+  <Step title="Genehmigungseinstellungen konfigurieren (optional)">
+    Du kannst eine Liste von **automatisch genehmigten E-Mail-Adressen** eingeben — Nutzer, die sich mit diesen Adressen registrieren, werden automatisch genehmigt, ohne manuelle Überprüfung. Du kannst auch festlegen, welche Rolle genehmigte Nutzer erhalten.
+  </Step>
+</Steps>
+
+### Nutzer genehmigen
+
+Sobald der private Modus aktiv ist, erscheinen neue Registrierungen in **Projekteinstellungen → Nutzer** mit dem Badge **Ausstehend**.
+
+1. Öffne **Einstellungen** und gehe zum Tab **Nutzer**.
+2. Suche den Nutzer in der Ausstehend-Liste.
+3. Klicke auf **Genehmigen**. Der Status des Nutzers ändert sich sofort und er kann die App beim nächsten Seitenladen aufrufen.
+
+### Nutzer direkt einladen
+
+Um Personen vorab zu genehmigen und sie per E-Mail zu benachrichtigen:
+
+1. Bitte Genie AI im Workspace-Chat: *„Einlade alice@beispiel.de und bob@beispiel.de zu meinem Projekt ein“*
+2. Genie sendet an jede Adresse eine Einladungs-E-Mail mit einem Link zu deiner App und markiert sie als vorab genehmigt. Sie können sich registrieren und die App sofort aufrufen — kein Genehmigungsschritt erforderlich.
+
+<Note>
+  Die eingeladene Person muss sich mit derselben E-Mail-Adresse registrieren, an die die Einladung gesendet wurde, damit die Vorabgenehmigung wirksam ist.
+</Note>
+
+## Verwaltung über Genie AI
+
+Du kannst Genie AI im Workspace-Chat bitten, jede Zugangsverwaltungsaufgabe zu übernehmen, anstatt die Einstellungen manuell zu öffnen:
+
+| Was du möchtest | Was du sagen kannst |
+|---|---|
+| Onboarding einschalten | „Aktiviere Onboarding für mein Projekt [Projektname]“ |
+| Eine Onboarding-Frage hinzufügen | „Frage neue Nutzer beim Onboarding nach ihrem Firmennamen“ |
+| Privaten Modus aktivieren | „Mach meine App einladungsbasiert“ |
+| Einen ausstehenden Nutzer genehmigen | „Genehmige die ausstehende Registrierung von nutzer@beispiel.de“ |
+| Nutzer einladen | „Einlade alice@beispiel.de und bob@beispiel.de zu meinem Projekt ein“ |
+| Eine Domain automatisch genehmigen | „Genehmige automatisch alle Registrierungen von @meinefirma.de“ |
+
+## Wenn beide Funktionen aktiv sind
+
+Wenn Onboarding und privater Modus beide aktiv sind, durchläuft ein neuer Nutzer beide Schritte in dieser Reihenfolge:
+
+1. **Warteseite** — er wartet, bis du ihn genehmigst.
+2. **Onboarding-Seite** — nach der Genehmigung füllt er das Einrichtungsformular einmalig aus.
+3. **Haupt-App** — er greift auf die App zu und sieht keine der beiden Seiten mehr.
+
+Nutzer, die du direkt einlädst, überspringen die Warteseite und gelangen beim ersten Login direkt zum Onboarding.
+
+<Tip>
+  Änderungen an Onboarding- und Privatmodus-Einstellungen werden automatisch auf deine Live-App angewendet — nach dem Speichern ist kein Rebuild erforderlich.
+</Tip>

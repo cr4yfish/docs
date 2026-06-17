@@ -29,6 +29,22 @@ Deine App spricht über die Verbindung von Genie Cloud automatisch mit der Daten
 
 Du konfigurierst keine Datenbankverbindungen und schreibst keinen Datenzugriffscode. Genie generiert all das beim Bau der App.
 
+## Datenbankschema weiterentwickeln
+
+Wenn deine App wächst, kann Genie mehr tun als nur neue Tabellen und Spalten hinzufügen. Es kann auch die Struktur bereits vorhandener Spalten ändern.
+
+### Den Datentyp einer Spalte ändern
+
+Wenn eine Spalte ursprünglich für freien Text erstellt wurde, deine App nun aber strukturierte Datumsangaben, Zahlen oder einen anderen Datentyp benötigt, kann Genie sie konvertieren. Beschreibe die Änderung im Projekt-Chat — zum Beispiel: „Ändere die Fälligkeitsdatum-Spalte von Text auf ein richtiges Datumsfeld“ — und Genie übernimmt die Konvertierung, einschließlich der Logik, die zum Erhalten bestehender Werte nötig ist.
+
+### Einen Spalten-Standardwert setzen oder entfernen
+
+Genie kann auch einer bestehenden Spalte einen Standardwert hinzufügen (sodass neue Zeilen diesen Wert automatisch erhalten) oder einen nicht mehr benötigten Standardwert entfernen. Bitte darum im Projekt-Chat: „Setze den Standardwert der Statusspalte auf ‘ausstehend’“ oder „Entferne den Standardwert der Spalte updated_at“.
+
+<Warning>
+  Das Ändern des Datentyps einer Spalte kann die Speicherung bestehender Werte beeinflussen. Genie übernimmt gängige Konvertierungen automatisch, aber überprüfe deine Daten nach jeder Typänderung, um sicherzustellen, dass bestehende Datensätze korrekt aussehen.
+</Warning>
+
 ## Was mit deinen Daten im Laufe der Zeit passiert
 
 Wenn du an deiner App iterierst und Genie bittest, Funktionen hinzuzufügen oder zu ändern, kann die KI neue Spalten zu bestehenden Tabellen hinzufügen oder zusätzliche Tabellen erstellen. Bestehende Zeilen bleiben erhalten — Genies Schemaänderungen sind additiv und entfernen keine bereits gesammelten Daten.
