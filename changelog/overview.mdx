@@ -4,6 +4,30 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="June 18, 2026" description="Weekly release">
+
+This week brings improvements to build visibility, quality-of-life feedback while Genie works, and a more reliable Genie Cloud backend.
+
+## New features
+
+- **"Pages I updated" after each build.** When Genie finishes a build, it now shows which pages it changed — with a button for each one that jumps the app preview directly to that page. No more hunting for the affected area of your app after a prompt.
+- **Live tab title while Genie builds.** The browser tab now shows ⏳ while a build is running and ✅ once it finishes, so you can track progress without keeping that tab in focus.
+- **"Continue with Genie AI" in chat responses.** When Genie answers a question (chat mode), a new button lets you hand off the conversation to the workspace chat agent with the full question and answer already loaded. Useful for follow-up research or deeper questions.
+- **Genie MCP Server.** You can now connect Claude Desktop, Cursor, or any MCP-compatible AI client directly to your Genie workspace. Create projects, send prompts, manage members, and check your credit balance — all from your external AI tool. See [Genie MCP Server](/workspaces/genie-mcp).
+
+## Genie Cloud
+
+- **Upload progress bar.** When you ask Genie to add a file upload feature, it now generates a real progress bar. The upload uses XMLHttpRequest rather than the standard Fetch API, which means live progress events and a working cancel button — no fake timers. See [Storage](/cloud/storage).
+- **Safer database writes.** Genie-generated app code now checks whether a delete or update actually changed any rows. If an operation is silently blocked — for example by a security policy — the app shows an error to the user instead of reporting success.
+
+## Improvements
+
+- **Dynamic build ETA.** The time estimate on the build card adjusts upward based on observed pace instead of counting down to zero and showing "takes longer than expected."
+- **Better preview error messages.** When your app preview cannot load, the notice now shows a plain-language explanation with a "Try again" button instead of a raw technical toast.
+- **App preview auto-refreshes on click.** Clicking the orange refresh button now immediately reloads the preview.
+
+</Update>
+
 <Update label="May 22, 2026" description="Weekly release">
 
 A short follow-up week focused on refining what shipped on Monday.

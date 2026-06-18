@@ -45,6 +45,12 @@ The most important property of a bucket is whether it is **public** or **private
   Do not store sensitive documents or user-specific files in a public bucket. Anyone with the URL can access them without signing in.
 </Warning>
 
+## Upload progress
+
+When you ask Genie to add a file upload feature, Genie generates code that shows a real upload progress bar. Standard browser uploads use the Fetch API, which does not expose progress events, so Genie uses a built-in upload helper backed by XMLHttpRequest. This gives your app access to live progress updates as the file transfers and lets users cancel an upload in progress.
+
+The progress bar, cancel button, and error handling are all generated automatically. If you ask for a file upload feature that should include a progress indicator, Genie will use this approach by default.
+
 ## Viewing your buckets in the Cloud tab
 
 Open **Settings** and go to the **Cloud** tab. The **Storage buckets** card in the summary row shows the total count of buckets in your project.

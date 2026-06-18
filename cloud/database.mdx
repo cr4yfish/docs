@@ -29,6 +29,12 @@ Your app talks to the database through Genie Cloud's connection automatically. W
 
 You do not configure database connections or write any data access code. Genie generates all of that when it builds the app.
 
+## Reliable delete and update operations
+
+When your app deletes or updates a record, the generated code checks whether the operation actually changed any rows before treating it as a success. If nothing was affected — for example, because the record no longer exists or because a security policy silently blocked the change — your app shows an informative error to the user instead of falsely reporting success.
+
+This verification is built into Genie Cloud's generated code automatically. You do not need to add any checks yourself.
+
 ## What happens to your data over time
 
 As you iterate on your app and ask Genie to add or change features, the AI may add new columns to existing tables or create additional tables. Existing rows are preserved — Genie's schema changes are additive and do not remove data you have already collected.

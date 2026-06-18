@@ -1,0 +1,108 @@
+---
+title: "Genie aus jedem AI-Client mit dem MCP Server steuern"
+description: "Verbinde Claude Desktop, Cursor oder einen anderen MCP-kompatiblen AI-Client mit deinem Genie-Workspace, um Projekte zu erstellen und zu verwalten, Prompts zu senden und Einstellungen programmatisch zu steuern."
+---
+
+Genie stellt einen Model Context Protocol (MCP) Server bereit, damit du deinen Workspace von jedem MCP-kompatiblen AI-Client aus steuern kannst — einschließlich Claude Desktop, Cursor und eigenen AI-Agenten. Nach der Verbindung kannst du Projekte erstellen, Folge-Prompts senden, Projekthistorie durchsuchen, Mitglieder verwalten und die Abrechnung prüfen — alles ohne die Genie-Weboberfläche zu öffnen.
+
+## AI-Client verbinden
+
+### Endpunkt
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+Der Server verwendet den **Streamable-HTTP**-Transport (POST, GET, DELETE auf derselben URL). Sitzungen sind zustandslos — keine dauerhafte Verbindung erforderlich.
+
+### Authentifizierung
+
+Der Genie-MCP-Server verwendet **OAuth 2.0 mit PKCE**. Wenn du den Server zu deinem AI-Client hinzufügst und die Verbindung initiierst, wirst du aufgefordert, dich über dein Genie-Konto zu autorisieren. Der OAuth-Ablauf stellt ein Token aus, das auf einen Workspace beschränkt ist, und dein AI-Client speichert und erneuert es automatisch.
+
+### Verbindung von Claude Desktop
+
+<Steps>
+  <Step title="Claude-Desktop-Einstellungen öffnen">
+    Öffne in Claude Desktop die **Einstellungen** und navigiere zum Abschnitt **Entwickler** oder **Integrationen**, dann klicke auf **MCP-Server hinzufügen**.
+  </Step>
+  <Step title="Server-URL eingeben">
+    Füge `https://www.genie-app.de/api/mcp` als Server-URL ein. Wähle **Streamable HTTP** als Transport und **OAuth 2.0** als Authentifizierungsmethode.
+  </Step>
+  <Step title="Genie-Konto autorisieren">
+    Klicke auf **Verbinden** oder **Autorisieren**. Claude Desktop öffnet ein Browserfenster, in dem du dich bei Genie anmeldest und den Zugriff auf den gewünschten Workspace erteilst.
+  </Step>
+  <Step title="Genie-Tools verwenden">
+    Nach der Autorisierung erscheinen Genie-Tools in Claude Desktop. Du kannst Claude bitten, ein neues Genie-Projekt zu erstellen, einen Prompt zu senden oder dein Guthaben abzufragen — und Claude ruft automatisch das passende Tool auf.
+  </Step>
+</Steps>
+
+<Note>
+  Das OAuth-Token ist auf einen einzelnen Workspace beschränkt. Wenn du mehreren Workspaces angehörst, verbinde dich einmal pro Workspace, den du von deinem AI-Client aus steuern möchtest. Verwende das Tool `list_workspaces`, um zu sehen, welcher Workspace aktuell aktiv ist.
+</Note>
+
+## Verfügbare Tools
+
+### Workspace
+
+| Tool | Funktion |
+|------|----------|
+| `list_workspaces` | Listet alle Workspaces auf, denen du angehörst, mit deiner Rolle in jedem. |
+| `get_workspace_info` | Gibt Name, Mitgliederzahl und Einstellungen des verbundenen Workspaces zurück. |
+| `get_workspace_credits` | Gibt das aktuelle Guthaben deines Workspaces zurück. |
+| `get_credit_usage` | Credit-Verbrauch nach Projekt, Benutzer oder Zeitraum abfragen. |
+| `update_workspace` | Workspace-Name oder -Beschreibung aktualisieren. |
+| `update_workspace_settings` | Workspace-Einstellungen wie Aktivitätsprotokollierung umschalten. |
+| `get_recent_workspace_activity` | Gibt aktuelle Aktivitätsprotokolleinträge für den Workspace zurück. |
+| `get_workspace_billing` | Gibt Abonnementstatus, Tarif und Abrechnungsintervall zurück. |
+
+### Mitglieder
+
+| Tool | Funktion |
+|------|----------|
+| `list_workspace_members` | Listet alle Mitglieder mit Rollen und Beitrittsdatum auf. |
+| `list_workspace_invites` | Listet ausstehende Einladungen auf. |
+| `invite_workspace_member` | Erstellt einen einlösbaren Einladungslink für eine bestimmte Rolle. |
+| `revoke_workspace_invite` | Bricht eine ausstehende Einladung ab. |
+| `update_workspace_member_role` | Ändert die Rolle eines Mitglieds. |
+| `remove_workspace_member` | Entfernt ein Mitglied aus dem Workspace. |
+
+### Projekte
+
+| Tool | Funktion |
+|------|----------|
+| `list_latest_projects` | Listet die 10 zuletzt aktualisierten Projekte mit Credit-Verbrauch auf. |
+| `search_projects` | Projekte nach Name oder Beschreibung suchen. |
+| `get_project` | Gibt vollständige Details eines Projekts einschließlich der Deployment-URL zurück. |
+| `create_project` | Erstellt ein neues Projekt aus einem Prompt und startet den ersten Build. |
+| `send_followup_prompt` | Sendet einen Folge-Prompt an ein bestehendes Projekt. |
+| `rename_project` | Benennt ein Projekt um. |
+| `update_project` | Aktualisiert Name, Beschreibung oder Sichtbarkeit eines Projekts. |
+| `delete_project` | Löscht ein Projekt und alle seine Daten dauerhaft. |
+| `abort_project_build` | Bricht den aktuell laufenden Build eines Projekts ab. |
+
+### MCP-Server-Verwaltung
+
+| Tool | Funktion |
+|------|----------|
+| `list_workspace_mcp_servers` | Listet für den Workspace konfigurierte MCP-Server auf. |
+| `add_workspace_mcp_server` | Fügt eine neue MCP-Server-Integration hinzu. |
+| `update_workspace_mcp_server` | Aktualisiert Name, URL oder Token eines vorhandenen MCP-Servers. |
+| `toggle_workspace_mcp_server` | Aktiviert oder deaktiviert einen Workspace-MCP-Server. |
+| `delete_workspace_mcp_server` | Entfernt einen Workspace-MCP-Server dauerhaft. |
+| `test_workspace_mcp_server_connection` | Testet die Verbindung zu einem Workspace-MCP-Server. |
+
+## Beispiel-Prompts
+
+Nach der Verbindung kannst du deinen AI-Client Dinge fragen wie:
+
+- *„Erstelle ein neues Genie-Projekt für eine Rezept-Tracking-App"*
+- *„Wie viel Guthaben habe ich noch in meinem Genie-Workspace?"*
+- *„Sende einen Folge-Prompt an mein Genie-Projekt 'Dashboard' — füge einen Dunkelmodus-Schalter hinzu"*
+- *„Liste meine letzten Genie-Projekte und ihre Deployment-URLs auf"*
+- *„Lade alice@example.com als Mitglied zu meinem Genie-Workspace ein"*
+
+Dein AI-Client wählt und ruft automatisch die richtigen Genie-Tools auf, um jede Anfrage zu erfüllen.
+
+## Sicherheit
+
+Der MCP-Server erzwingt dieselben rollenbasierten Berechtigungen wie die Genie-Weboberfläche. Aktionen, die Eigentümer- oder Administratorrechte erfordern (wie das Einladen von Mitgliedern oder das Ändern von Workspace-Einstellungen), werden abgelehnt, wenn dein Konto nicht die erforderliche Rolle hat. Anmeldedaten werden von keinem Tool zurückgegeben — es werden nur Statusanzeigen angezeigt.
