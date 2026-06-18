@@ -9,7 +9,9 @@ Genie exposes a Model Context Protocol (MCP) server so you can control your work
 
 ### Endpoint
 
-The server endpoint is: https://www.genie-app.de/api/mcp
+```
+https://www.genie-app.de/api/mcp
+```
 
 The server uses the **Streamable HTTP** transport (POST, GET, DELETE on the same URL). Sessions are stateless — no persistent connection is required.
 
@@ -24,7 +26,7 @@ The Genie MCP server uses **OAuth 2.0 with PKCE**. When you add the server to yo
     In Claude Desktop, open **Settings** and navigate to the **Developer** or **Integrations** section, then click **Add MCP Server**.
   </Step>
   <Step title="Enter the server URL">
-    Paste the server URL above. Choose **Streamable HTTP** as the transport and **OAuth 2.0** as the authentication method.
+    Paste `https://www.genie-app.de/api/mcp` as the server URL. Choose **Streamable HTTP** as the transport and **OAuth 2.0** as the authentication method.
   </Step>
   <Step title="Authorise your Genie account">
     Click **Connect** or **Authorise**. Claude Desktop will open a browser window where you sign in to Genie and grant access to the workspace you want to connect.
@@ -35,7 +37,7 @@ The Genie MCP server uses **OAuth 2.0 with PKCE**. When you add the server to yo
 </Steps>
 
 <Note>
-  The OAuth token is scoped to a single workspace. If you belong to multiple workspaces, connect once per workspace you want to control from your AI client. Use the list_workspaces tool to see which workspace is currently active.
+  The OAuth token is scoped to a single workspace. If you belong to multiple workspaces, connect once per workspace you want to control from your AI client. Use the `list_workspaces` tool to see which workspace is currently active.
 </Note>
 
 ## Available tools
@@ -44,63 +46,63 @@ The Genie MCP server uses **OAuth 2.0 with PKCE**. When you add the server to yo
 
 | Tool | What it does |
 |------|-------------|
-| list_workspaces | Lists all workspaces you belong to, with your role in each. |
-| get_workspace_info | Returns the connected workspace's name, member count, and settings. |
-| get_workspace_credits | Returns the current credit balance for your workspace. |
-| get_credit_usage | Query credit consumption by project, user, or time period. |
-| update_workspace | Update the workspace name or description. |
-| update_workspace_settings | Toggle workspace settings such as activity logging. |
-| get_recent_workspace_activity | Returns recent activity log entries for the workspace. |
-| get_workspace_billing | Returns subscription status, plan, and billing interval. |
+| `list_workspaces` | Lists all workspaces you belong to, with your role in each. |
+| `get_workspace_info` | Returns the connected workspace's name, member count, and settings. |
+| `get_workspace_credits` | Returns the current credit balance for your workspace. |
+| `get_credit_usage` | Query credit consumption by project, user, or time period. |
+| `update_workspace` | Update the workspace name or description. |
+| `update_workspace_settings` | Toggle workspace settings such as activity logging. |
+| `get_recent_workspace_activity` | Returns recent activity log entries for the workspace. |
+| `get_workspace_billing` | Returns subscription status, plan, and billing interval. |
 
 ### Members
 
 | Tool | What it does |
 |------|-------------|
-| list_workspace_members | Lists all members with their roles and join dates. |
-| list_workspace_invites | Lists pending invitations. |
-| invite_workspace_member | Creates a redeemable invite link for a given role. |
-| revoke_workspace_invite | Cancels a pending invitation. |
-| update_workspace_member_role | Changes a member's role. |
-| remove_workspace_member | Removes a member from the workspace. |
+| `list_workspace_members` | Lists all members with their roles and join dates. |
+| `list_workspace_invites` | Lists pending invitations. |
+| `invite_workspace_member` | Creates a redeemable invite link for a given role. |
+| `revoke_workspace_invite` | Cancels a pending invitation. |
+| `update_workspace_member_role` | Changes a member's role. |
+| `remove_workspace_member` | Removes a member from the workspace. |
 
 ### Projects
 
 | Tool | What it does |
 |------|-------------|
-| list_latest_projects | Lists the 10 most recently updated projects with credit usage. |
-| search_projects | Search projects by name or description. |
-| get_project | Returns full details for a project including deployment URL. |
-| create_project | Creates a new project from a natural-language prompt and starts the first build. |
-| send_followup_prompt | Sends a follow-up prompt to an existing project. |
-| rename_project | Renames a project. |
-| update_project | Updates a project's name, description, or visibility. |
-| delete_project | Permanently deletes a project and all its data. |
-| abort_project_build | Aborts the currently running build for a project. |
+| `list_latest_projects` | Lists the 10 most recently updated projects with credit usage. |
+| `search_projects` | Search projects by name or description. |
+| `get_project` | Returns full details for a project including deployment URL. |
+| `create_project` | Creates a new project from a natural-language prompt and starts the first build. |
+| `send_followup_prompt` | Sends a follow-up prompt to an existing project. |
+| `rename_project` | Renames a project. |
+| `update_project` | Updates a project's name, description, or visibility. |
+| `delete_project` | Permanently deletes a project and all its data. |
+| `abort_project_build` | Aborts the currently running build for a project. |
 
 ### MCP server management
 
 | Tool | What it does |
 |------|-------------|
-| list_workspace_mcp_servers | Lists MCP servers configured for the workspace. |
-| add_workspace_mcp_server | Adds a new MCP server integration. |
-| update_workspace_mcp_server | Updates an existing MCP server's name, URL, or token. |
-| toggle_workspace_mcp_server | Enables or disables a workspace MCP server. |
-| delete_workspace_mcp_server | Permanently removes a workspace MCP server. |
-| test_workspace_mcp_server_connection | Tests connectivity to a workspace MCP server. |
+| `list_workspace_mcp_servers` | Lists MCP servers configured for the workspace. |
+| `add_workspace_mcp_server` | Adds a new MCP server integration. |
+| `update_workspace_mcp_server` | Updates an existing MCP server's name, URL, or token. |
+| `toggle_workspace_mcp_server` | Enables or disables a workspace MCP server. |
+| `delete_workspace_mcp_server` | Permanently removes a workspace MCP server. |
+| `test_workspace_mcp_server_connection` | Tests connectivity to a workspace MCP server. |
 
 ## Example prompts
 
 Once connected, you can ask your AI client things like:
 
-- "Create a new Genie project for a recipe tracking app"
-- "How many credits do I have left in my Genie workspace?"
-- "Send a follow-up to my Genie project called Dashboard — add a dark mode toggle"
-- "List my recent Genie projects and their deployment URLs"
-- "Invite alice@example.com to my Genie workspace as a member"
+- *"Create a new Genie project for a recipe tracking app"*
+- *"How many credits do I have left in my Genie workspace?"*
+- *"Send a follow-up to my Genie project called 'Dashboard' — add a dark mode toggle"*
+- *"List my recent Genie projects and their deployment URLs"*
+- *"Invite alice@example.com to my Genie workspace as a member"*
 
 Your AI client will choose and call the right Genie tools automatically to fulfil each request.
 
 ## Security
 
-The MCP server enforces the same role-based permissions as the Genie web interface. Actions that require owner or admin privileges — such as inviting members or changing workspace settings — are rejected if your account does not hold the required role. Credentials are never returned by any tool.
+The MCP server enforces the same role-based permissions as the Genie web interface. Actions that require owner or admin privileges (such as inviting members or changing workspace settings) are rejected if your account does not hold the required role. Credentials are never returned by any tool — only status indicators are shown.
