@@ -4,6 +4,24 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="June 19, 2026" description="Weekly release">
+
+A packed week: credit rollover on paid plans, image and video uploads, a new Genie MCP server for developers, AI-powered next-step suggestions, and faster collaboration locking.
+
+## New features
+
+- **Credit rollover on paid plans.** Unused monthly credits on all paid Genie plans (Genie, Genie Plus, Genie Pro, Genie Ultra) now carry over into the next billing cycle automatically. Rolled-over credits are spent first and remain valid for one additional cycle — so you never lose credits just because you had a quiet month. The Starter plan is unchanged: credits still expire at the end of each period. See [Credits](/billing/credits).
+- **Upload images and videos to your project.** Drag an image into the chat prompt, or open the command palette (**Cmd+K → Upload images and videos**) to upload files directly into your project's public folder. Genie copies them and references them in your app's code automatically. Supported: PNG, JPEG, WebP, GIF, AVIF (up to 15 MB each) and MP4, WebM, QuickTime (up to 100 MB each), up to 10 files per batch. See [Upload images and videos](/projects/upload-assets).
+- **Genie MCP server.** Genie now acts as an MCP server at `https://www.genie-app.de/api/mcp`. Connect Claude Desktop, Cursor, or any MCP-compatible client to manage your workspace through natural language: create projects, send follow-up prompts, check build status, invite members, query credit usage, and more. See [Genie MCP server](/workspaces/mcp-server).
+- **“What’s next” AI suggestions.** After each build, Genie analyses your project’s goals, build history, and your building patterns to suggest the most likely next features, changes, or fixes. Suggestions appear in the project Brain panel — clicking one pre-fills the prompt input, ready to send or edit.
+
+## Updates
+
+- **Instant collaboration lock updates.** When multiple workspace members have the same project open, the edit-lock state now propagates in real time (previously up to 15 seconds). A clearer lock banner shows the name of whoever is currently editing, and the lock is automatically reclaimed as soon as the previous editor releases it.
+- **Completion sound.** A short chime plays when a build finishes — audible even if Genie is running in a background tab — so you know your result is ready without watching the screen.
+
+</Update>
+
 <Update label="May 22, 2026" description="Weekly release">
 
 A short follow-up week focused on refining what shipped on Monday.
@@ -30,12 +48,12 @@ This week brings the first wave of public-facing improvements across projects, G
 
 - **New plans: Starter, Genie, Teams, and Enterprise.** Every plan now includes the same features — pick one based on credits, custom domain, and team workspace needs. See [Plans](/billing/plans).
 - **Top-ups for paid plans.** Buy additional credits on demand. Top-ups stack on top of your monthly allowance and never expire. See [Top-ups](/billing/topups).
-- **Clearer credit usage.** Credits now show how they're counted, per-plan limits, what happens when you run out, and how to check your balance. See [Credits](/billing/credits).
+- **Clearer credit usage.** Credits now show how they’re counted, per-plan limits, what happens when you run out, and how to check your balance. See [Credits](/billing/credits).
 - **Publishing and sharing controls.** Choose who can access your project, grab a shareable link, allow remixing, and connect a custom domain to your live app. See [Publish and share](/projects/visibility).
 - **Workspace member management.** Invite teammates by link or email, assign roles, change roles later, and remove members when needed. See [Members](/workspaces/members).
 - **Anonymous users in Genie Cloud Auth.** Review registered users and understand how sign-in, sign-up, and anonymous sessions work. See [Authentication](/cloud/auth).
-- **Automatic database management.** Genie creates and updates your app's tables automatically. Inspect tables and data from the Cloud tab. See [Database](/cloud/database).
-- **Public and private storage buckets.** Genie Cloud organizes file storage into buckets so you can choose what's shared and what stays private. See [Storage](/cloud/storage).
+- **Automatic database management.** Genie creates and updates your app’s tables automatically. Inspect tables and data from the Cloud tab. See [Database](/cloud/database).
+- **Public and private storage buckets.** Genie Cloud organizes file storage into buckets so you can choose what’s shared and what stays private. See [Storage](/cloud/storage).
 - **German-language documentation.** The full docs are now available in German for all of the above.
 - **Customer compliance package (DE).** German customers can request the AVV, TOM, sub-processor list, deletion concept, and data-subject-rights processes in one bundle. See [Compliance-Paket](/de/compliance/kunden-compliance-paket).
 

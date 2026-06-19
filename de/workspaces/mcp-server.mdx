@@ -1,0 +1,91 @@
+---
+title: "Genie MCP-Server"
+description: "Steuere deinen Genie-Workspace und deine Projekte von jedem MCP-kompatiblen KI-Client aus — Claude Desktop, Cursor, eigene Agenten und mehr."
+---
+
+Genie stellt einen eigenen MCP-Server (Model Context Protocol) bereit, über den du Workspaces und Projekte programmatisch von jedem MCP-kompatiblen Client aus verwalten kannst. Lass deinen KI-Assistenten ein Projekt erstellen, einen Folge-Prompt senden, den Build-Status prüfen, Teammitglieder verwalten oder den Credit-Verbrauch abfragen — alles ohne die Genie-Web-App zu öffnen.
+
+<Note>
+  Diese Seite beschreibt den **Genie MCP-Server** — also Genie, das anderen KI-Clients als MCP-Server dient. Wenn du einen externen Dienst wie Linear oder GitHub *in* Genie einbinden möchtest, siehe [Workspace-Integrationen](/de/workspaces/integrations).
+</Note>
+
+## Endpunkt
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+Der Server verwendet den **Streamable HTTP** MCP-Transport. Sitzungen sind zustandslos — keine dauerhafte Verbindung erforderlich.
+
+## Authentifizierung
+
+Der Genie MCP-Server verwendet **OAuth 2.0 mit PKCE** und ist auf einen einzelnen Workspace beschränkt. Nach Abschluss des OAuth-Flows präsentiert dein Client das resultierende Token bei jeder Anfrage als `Bearer`-Header. Die meisten MCP-Clients (Claude Desktop, Cursor usw.) führen den OAuth-Flow automatisch durch, wenn du die Server-URL hinzufügst.
+
+## Mit Claude Desktop verbinden
+
+Füge folgendes zu deiner Claude-Desktop-Konfigurationsdatei (`claude_desktop_config.json`) hinzu:
+
+```json
+{
+  "mcpServers": {
+    "genie": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/mcp-remote", "https://www.genie-app.de/api/mcp"]
+    }
+  }
+}
+```
+
+Starte Claude Desktop neu. Beim nächsten Gespräch wirst du aufgefordert, Genie im Browser zu autorisieren und den gewünschten Workspace auszuwählen.
+
+## Was du tun kannst
+
+Nach der Verbindung kann dein KI-Client alle Aktionen durchführen, die auch in der Genie-Web-App verfügbar sind. Die Tools sind in vier Bereiche unterteilt:
+
+### Projekte
+
+- **Erstellen** eines Projekts aus einem Prompt in natürlicher Sprache
+- **Folge-Prompts senden**, um jedes Projekt weiterzuentwickeln
+- **Build-Status prüfen** — sieh genau, in welcher Phase ein Build steckt (Nachdenken, Coding, Deployment usw.)
+- **Vorschau** eines bereitgestellten Projekts, einschließlich seitenweiser Screenshots
+- **Umbenennen, aktualisieren, archivieren** von Projekten und Sichtbarkeit ändern
+- **Build abbrechen**
+- **KI-generierte Prompt-Vorschläge** basierend auf der Build-Historie eines Projekts
+- **Projektzugriff verwalten**, wenn die Projektzugriffskontrolle im Workspace aktiviert ist
+
+### Workspace
+
+- **Projekte auflisten und suchen**
+- **Mitglieder einladen**, Rollen ändern und Mitglieder entfernen
+- **MCP-Server-Integrationen verwalten** — verbundene Server hinzufügen, aktivieren, deaktivieren oder entfernen
+- **Workspace-Aktivitätsprotokoll einsehen**
+- **Credit-Guthaben und -Verbrauch prüfen** — aufgeschlüsselt nach Projekt, Mitglied oder Tag
+- **Abrechnungs- und Abonnementstatus abrufen**
+
+### Workspace-Chat
+
+- **Fragen** über deinen Workspace stellen und KI-Antworten erhalten
+- **Dauerhafte Konversationen erstellen**, die in der Genie-Web-App erscheinen
+- **Vergangene Workspace-Chat-Verläufe durchsuchen**
+
+### PII-Regeln
+
+- **Integrierte PII-Erkennungsregeln anzeigen und konfigurieren** (E-Mail, Kreditkarte, IBAN, API-Schlüssel usw.)
+- **Benutzerdefinierte Regex-Regeln erstellen**, um eigene sensible Muster zu erkennen
+- **Erkennungsprotokoll einsehen**
+
+## Beispielinteraktion
+
+> **Du:** Erstelle ein Projekt für ein Kunden-Support-Ticket-System mit einem Dashboard und E-Mail-Benachrichtigungen.
+>
+> **KI-Client:** Ich erstelle das jetzt… Dein Projekt wird unter `ticket-tracker-abc123.genie-app.de` gebaut. Ich prüfe den Status gleich.
+>
+> *(einige Minuten später)*
+>
+> **KI-Client:** Der Build wurde erfolgreich abgeschlossen. Hier ist ein Screenshot des Dashboards. Möchtest du, dass ich einen Eskalations-Workflow hinzufüge?
+
+## Verwandte Seiten
+
+- [Workspace-Integrationen](/de/workspaces/integrations) — externe Tools in Genie einbinden
+- [Workspaces im Überblick](/de/workspaces/overview)
+- [Mitglieder](/de/workspaces/members)
