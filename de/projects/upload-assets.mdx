@@ -1,0 +1,68 @@
+---
+title: "Bilder und Videos in dein Projekt hochladen"
+description: "Lade Bilder und Videos direkt in dein Projekt hoch, damit Genie sie in deiner App verwenden kann — als Hero-Bilder, Logos, Produktfotos und mehr."
+---
+
+Du kannst eigene Bilder und Videos in jedes Projekt hochladen und Genie diese direkt in deiner App verwenden lassen. Hochgeladene Dateien werden aus dem öffentlichen Ordner deines Projekts bereitgestellt und sind sofort nach dem Hochladen verfügbar.
+
+## Zwei Möglichkeiten zum Hochladen
+
+<Tabs>
+  <Tab title="In den Chat ziehen">
+    Der schnellste Weg, ein Bild in deine App zu bringen, ist es direkt in die Chat-Eingabe zu ziehen.
+
+    <Steps>
+      <Step title="Projekt-Chat öffnen">
+        Navigiere zu dem Projekt, das du aktualisieren möchtest.
+      </Step>
+      <Step title="Bild in die Eingabe ziehen">
+        Ziehe eine Bilddatei von deinem Computer und lege sie im Nachrichteneingabefeld am unteren Rand des Chats ab. Sie erscheint als Anhang.
+      </Step>
+      <Step title="Beschreibe, wie es verwendet werden soll">
+        Schreibe, was Genie mit dem Bild machen soll — zum Beispiel: *„Dieses Bild als Hero-Hintergrund verwenden“* oder *„Dieses Logo oben auf jede Seite setzen.“* Genie kopiert die Datei in dein Projekt und referenziert sie automatisch im Code.
+      </Step>
+    </Steps>
+
+    <Note>
+      Drag-and-Drop-Uploads eignen sich am besten für Bilder, die Genie als Design-Element einbetten soll. Wenn du einen Screenshot teilst, um Genie einen Stil oder einen Fehler zu zeigen, wird er nicht in deinem Projekt gespeichert — Genie behandelt ihn nur als visuelle Referenz.
+    </Note>
+  </Tab>
+  <Tab title="Befehlspalette">
+    Über die Befehlspalette kannst du mehrere Bilder oder Videos auf einmal hochladen, ohne zuerst einen Prompt zu schreiben.
+
+    <Steps>
+      <Step title="Befehlspalette öffnen">
+        Drücke **Cmd+K** (Mac) oder **Ctrl+K** (Windows / Linux) von überall im Workspace oder auf einer Projektseite.
+      </Step>
+      <Step title="Bilder und Videos hochladen auswählen">
+        Tippe „hochladen“ oder scrolle zur Aktion **Bilder und Videos hochladen** und drücke Enter. Die Palette wechselt in den Upload-Modus.
+      </Step>
+      <Step title="Dateien ablegen oder auswählen">
+        Ziehe Dateien in den Upload-Bereich oder klicke, um den Datei-Picker zu öffnen. Du kannst bis zu 10 Dateien gleichzeitig hochladen.
+      </Step>
+      <Step title="Upload bestätigen">
+        Jede Datei zeigt ihren Fortschritt. Sobald alle Dateien hochgeladen sind, listet Genie die Dateipfade auf (z. B. `/logo.png`) und schlägt vor, wie sie in deinem Projekt verwendet werden können.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Unterstützte Dateitypen und Limits
+
+| Typ | Formate | Maximale Größe |
+|-----|---------|----------------|
+| Bilder | PNG, JPEG, WebP, GIF, AVIF | 15 MB pro Datei |
+| Videos | MP4, WebM, QuickTime | 100 MB pro Datei |
+
+<Warning>
+  SVG-Dateien werden nicht unterstützt. Pro Upload-Batch können maximal 10 Dateien hochgeladen werden.
+</Warning>
+
+## Wie Genie hochgeladene Dateien verwendet
+
+Hochgeladene Dateien werden im Ordner `public/` deines Projekts abgelegt und über Root-relative Pfade bereitgestellt. Eine Datei namens `hero.png` wird im Code deiner App zu `/hero.png`. Du musst den Pfad nicht selbst kennen — wenn du beschreibst, was Genie mit einer Datei tun soll, verwendet Genie automatisch die korrekte Referenz.
+
+## Verwandte Seiten
+
+- [Übersicht über Projekte](/de/projects/overview)
+- [Projekteinstellungen](/de/projects/settings)

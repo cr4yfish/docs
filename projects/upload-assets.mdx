@@ -1,0 +1,68 @@
+---
+title: "Upload images and videos to your project"
+description: "Drop images and videos directly into your project so Genie can use them in your app — as hero images, logos, product photos, and more."
+---
+
+You can upload your own images and videos to any project and have Genie use them directly in your app. Uploaded files are served from your project's public folder and are available instantly after upload.
+
+## Two ways to upload
+
+<Tabs>
+  <Tab title="Drag into chat">
+    The fastest way to get an image into your app is to drag it straight into the chat prompt input.
+
+    <Steps>
+      <Step title="Open the project chat">
+        Navigate to the project you want to update.
+      </Step>
+      <Step title="Drag your image into the prompt">
+        Drag an image file from your computer and drop it onto the message input at the bottom of the chat. It will appear as an attachment.
+      </Step>
+      <Step title="Describe how to use it">
+        Type what you want Genie to do with the image — for example, *"Use this as the hero background"* or *"Add this logo to the top of every page."* Genie copies the file into your project and references it in the code automatically.
+      </Step>
+    </Steps>
+
+    <Note>
+      Drag-and-drop uploads work best for images you want Genie to incorporate as a design element. If you share a screenshot to show Genie a style or a bug, it will not be saved to your project — Genie treats it as a visual reference only.
+    </Note>
+  </Tab>
+  <Tab title="Command palette">
+    Use the command palette to upload multiple images or videos at once, without writing a prompt first.
+
+    <Steps>
+      <Step title="Open the command palette">
+        Press **Cmd+K** (Mac) or **Ctrl+K** (Windows / Linux) from anywhere in the workspace or on a project page.
+      </Step>
+      <Step title="Select Upload images and videos">
+        Type "upload" or scroll to the **Upload images and videos** action and press Enter. The palette switches into upload mode.
+      </Step>
+      <Step title="Drop or pick files">
+        Drag files onto the upload area, or click to open the file picker. You can upload up to 10 files at a time.
+      </Step>
+      <Step title="Confirm the upload">
+        Each file shows its progress. Once all files are uploaded, Genie lists the file paths (for example `/logo.png`) and suggests how to use them in your project.
+      </Step>
+    </Steps>
+  </Tab>
+</Tabs>
+
+## Supported file types and limits
+
+| Type | Formats | Maximum size |
+|------|---------|--------------|
+| Images | PNG, JPEG, WebP, GIF, AVIF | 15 MB per file |
+| Videos | MP4, WebM, QuickTime | 100 MB per file |
+
+<Warning>
+  SVG files are not supported for upload. You can upload a maximum of 10 files per batch.
+</Warning>
+
+## How Genie uses uploaded files
+
+Uploaded files are placed in your project's `public/` folder and served at root-relative paths. A file called `hero.png` becomes `/hero.png` in your app's code. You don't need to know the path yourself — when you describe what you want Genie to do with a file, Genie uses the correct reference automatically.
+
+## Related pages
+
+- [Projects overview](/projects/overview)
+- [Project settings](/projects/settings)

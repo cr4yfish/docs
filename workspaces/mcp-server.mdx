@@ -1,0 +1,91 @@
+---
+title: "Genie MCP server"
+description: "Control your Genie workspace and projects from any MCP-compatible AI client — Claude Desktop, Cursor, custom agents, and more."
+---
+
+Genie exposes its own MCP (Model Context Protocol) server, so you can manage workspaces and projects programmatically from any MCP-compatible client. Ask your AI assistant to create a project, send a follow-up prompt, check build status, manage team members, or query credit usage — all without opening the Genie web app.
+
+<Note>
+  This page describes the **Genie MCP server** — Genie acting as an MCP server for other AI clients to call. If you want to connect an external service such as Linear or GitHub *into* Genie, see [Workspace integrations](/workspaces/integrations).
+</Note>
+
+## Endpoint
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+The server uses the **Streamable HTTP** MCP transport. Sessions are stateless — no persistent connection is required.
+
+## Authentication
+
+The Genie MCP server uses **OAuth 2.0 with PKCE** and is scoped to a single workspace. After completing the OAuth flow, your client presents the resulting token as a `Bearer` header on every request. Most MCP clients (Claude Desktop, Cursor, etc.) handle the OAuth flow automatically when you add the server URL.
+
+## Connect from Claude Desktop
+
+Add the following to your Claude Desktop configuration file (`claude_desktop_config.json`):
+
+```json
+{
+  "mcpServers": {
+    "genie": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/mcp-remote", "https://www.genie-app.de/api/mcp"]
+    }
+  }
+}
+```
+
+Restart Claude Desktop. On the next conversation, Claude will prompt you to authorise Genie in your browser, where you pick which workspace to connect.
+
+## What you can do
+
+Once connected, your AI client can perform all the same actions available in the Genie web app. The tools are grouped into four areas:
+
+### Projects
+
+- **Create** a project from a natural-language prompt
+- **Send follow-up prompts** to iterate on any project
+- **Check build status** — see exactly which phase a build is in (thinking, coding, deploying, etc.)
+- **Preview** a deployed project, including per-page screenshots
+- **Rename, update, archive** projects and change visibility
+- **Abort** a running build
+- **Get AI-suggested next prompts** based on a project's build history
+- **Manage project access** when workspace project access control is enabled
+
+### Workspace
+
+- **List and search** all projects in your workspace
+- **Invite members**, change roles, and remove members
+- **Manage MCP server integrations** — add, enable, disable, or remove connected servers
+- **View the workspace activity log**
+- **Check credit balance and consumption** — broken down by project, member, or day
+- **View billing and subscription status**
+
+### Workspace chat
+
+- **Ask questions** about your workspace and get AI responses
+- **Create persistent conversations** that appear in the Genie web app
+- **Search** past workspace chat history
+
+### PII rules
+
+- **View and configure** built-in PII detectors (email, credit card, IBAN, API keys, etc.)
+- **Create custom regex rules** to detect your own sensitive patterns
+- **View the detection log**
+
+## Example interaction
+
+> **You:** Create a project for a customer support ticket tracker with a dashboard and email notifications.
+>
+> **Your AI client:** Creating that now… Your project is building at `ticket-tracker-abc123.genie-app.de`. I'll check the status in a moment.
+>
+> *(a few minutes later)*
+>
+> **Your AI client:** The build finished successfully. Here's a screenshot of the dashboard. Would you like me to add an escalation workflow?
+
+## Related pages
+
+- [Workspace integrations](/workspaces/integrations) — connect external tools into Genie
+- [Workspaces overview](/workspaces/overview)
+- [Members](/workspaces/members)
