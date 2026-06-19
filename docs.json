@@ -69,6 +69,7 @@
                 "pages": [
                   "projects/overview",
                   "projects/import-design",
+                  "projects/upload-assets",
                   "projects/settings",
                   "projects/secrets",
                   "projects/visibility"
@@ -80,7 +81,8 @@
                 "pages": [
                   "workspaces/overview",
                   "workspaces/members",
-                  "workspaces/integrations"
+                  "workspaces/integrations",
+                  "workspaces/mcp-server"
                 ]
               },
               {
@@ -154,6 +156,7 @@
                 "pages": [
                   "de/projects/overview",
                   "de/projects/import-design",
+                  "de/projects/upload-assets",
                   "de/projects/settings",
                   "de/projects/secrets",
                   "de/projects/visibility"
@@ -165,7 +168,8 @@
                 "pages": [
                   "de/workspaces/overview",
                   "de/workspaces/members",
-                  "de/workspaces/integrations"
+                  "de/workspaces/integrations",
+                  "de/workspaces/mcp-server"
                 ]
               },
               {
