@@ -66,6 +66,30 @@ If you are not signed in when you click **Remix**, Genie will redirect you to th
   To allow others to remix your own project, enable the **Remixable** toggle in **Settings > General**. See [Project settings](/projects/settings) for details.
 </Tip>
 
+## Rolling back to a previous version
+
+If a recent change didn't go the way you wanted, you can roll back your project to any previously deployed state with one click — no manual recovery needed.
+
+<Steps>
+  <Step title="Find the version you want">
+    Open the **Build history** panel in your project. Each build appears as a card with a timestamp. Find the version you want to restore.
+  </Step>
+  <Step title="Click Rollback to this state">
+    At the bottom of the pipeline card for that version, click **Rollback to this state**. A confirmation dialog appears so you don't trigger a rollback accidentally.
+  </Step>
+  <Step title="Confirm the rollback">
+    Read the confirmation and click **Rollback**. Genie restores the selected version's code, rebuilds your app, and updates the live URL automatically. Progress is shown in real time — you can watch each step complete.
+  </Step>
+</Steps>
+
+<Note>
+  Rolling back creates a new deployment entry in your build history — it doesn't erase the versions in between. You can always roll forward again by sending a new prompt or rolling back to a more recent version.
+</Note>
+
+<Warning>
+  Rolling back replaces the live code your app serves. Your users will see the rolled-back version as soon as the build finishes.
+</Warning>
+
 ## Next steps
 
 <CardGroup cols={2}>

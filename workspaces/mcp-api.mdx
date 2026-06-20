@@ -1,0 +1,175 @@
+---
+title: "Genie MCP Server: control Genie from Claude Desktop and Cursor"
+description: "Use the Genie MCP Server to create projects, send prompts, and manage your workspace programmatically from Claude Desktop, Cursor, or any MCP-compatible AI client."
+---
+
+The Genie MCP Server exposes your Genie workspace as a set of tools for any AI client that supports the Model Context Protocol — including Claude Desktop, Cursor, and custom agents. Once connected, you can create projects, send follow-up prompts, check build status, manage members, and chat with your workspace AI without opening the Genie web app.
+
+<Note>
+The Genie MCP Server is available on all plans. Workspace-scoped tools such as member management and MCP integrations require the **Teams** plan or higher.
+</Note>
+
+## Connect to the Genie MCP Server
+
+### Endpoint
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+The server uses the **Streamable HTTP** transport. Sessions are stateless — no persistent connection is required.
+
+### Authentication
+
+The Genie MCP Server uses **OAuth 2.0 with PKCE**, scoped to a single Genie workspace. When you add the server to your MCP client, it opens a browser window where you pick which workspace to authorize. The resulting token covers all subsequent tool calls for that session.
+
+### Add to Claude Desktop
+
+Add the following to your Claude Desktop configuration file (`claude_desktop_config.json`):
+
+```json
+{
+  "mcpServers": {
+    "genie": {
+      "type": "http",
+      "url": "https://www.genie-app.de/api/mcp"
+    }
+  }
+}
+```
+
+Restart Claude Desktop. On your next conversation, Claude will prompt you to authorize Genie and pick a workspace. After authorizing, Genie tools are available immediately.
+
+### Add to Cursor
+
+In Cursor, open **Settings → MCP** and add a new server:
+
+- **Transport:** Streamable HTTP
+- **URL:** `https://www.genie-app.de/api/mcp`
+
+Authorize when prompted to complete setup.
+
+---
+
+## Available tools
+
+### Workspace
+
+| Tool | What it does |
+|---|---|
+| `get_workspace_info` | Returns the workspace name, member count, and settings |
+| `list_workspace_members` | Lists all members with their roles and join dates |
+| `get_workspace_billing` | Returns the current subscription plan and status |
+| `get_workspace_credits` | Returns the current credit balance |
+| `get_credit_usage` | Query credit consumption by project, member, or time window |
+| `update_workspace` | Rename the workspace or update its description |
+| `update_workspace_settings` | Toggle activity logging or project access control |
+| `invite_workspace_member` | Create a redeemable invite link for a given role |
+| `revoke_workspace_invite` | Cancel a pending invite |
+| `update_workspace_member_role` | Change a member's role |
+| `remove_workspace_member` | Remove a member from the workspace |
+| `get_recent_workspace_activity` | Fetch the workspace activity log (requires activity logging to be enabled) |
+| `list_workspaces` | List all workspaces the connected user belongs to |
+| `list_user_workspaces` | List all workspaces across accounts, with the active one marked |
+
+### Projects
+
+| Tool | What it does |
+|---|---|
+| `list_latest_projects` | Lists the 10 most recently updated projects |
+| `search_projects` | Full-text search across projects |
+| `get_project` | Returns details for a project: name, URL, visibility, credits used |
+| `create_project` | Creates a new project from a natural-language prompt and starts the build |
+| `send_followup_prompt` | Sends a follow-up prompt to an existing project |
+| `abort_project_build` | Cancels a running build |
+| `get_project_status` | Lightweight check: is a build currently running? |
+| `get_project_deployment_status` | Full breakdown of build phases and any errors |
+| `get_project_deployment_plan` | Files the AI planned to create or modify in the latest build |
+| `get_project_messages` | Recent build-turn messages (user prompts and assistant responses) |
+| `show_preview` | Returns the deployment URL and screenshot URLs |
+| `suggest_project_prompts` | AI-generated follow-up prompt suggestions based on build history |
+| `rename_project` | Rename a project |
+| `update_project` | Update name, description, visibility, or remix permission |
+| `delete_project` | Permanently delete a project |
+| `archive_project` | Archive a project (hide without deleting) |
+| `unarchive_project` | Restore an archived project |
+| `list_archived_projects` | List all archived projects |
+| `list_project_members` | List members who have been granted access to a specific project |
+| `add_project_member` | Grant a workspace member access to a project |
+| `remove_project_member` | Revoke a member's access to a project |
+
+### Workspace chat
+
+| Tool | What it does |
+|---|---|
+| `send_workspace_chat` | Ask a question and get an AI response (auto-resumes the most recent thread) |
+| `create_workspace_chat` | Start or continue an explicit conversation thread |
+| `list_workspace_chats` | Browse recent workspace chat conversations |
+| `get_workspace_chat` | Read the full message history of a conversation |
+| `search_workspace_chats` | Full-text search across workspace chat messages |
+
+### MCP integration management
+
+| Tool | What it does |
+|---|---|
+| `list_workspace_mcp_servers` | List connected MCP server integrations |
+| `add_workspace_mcp_server` | Add a new MCP server integration |
+| `update_workspace_mcp_server` | Update an integration's name, URL, or bearer token |
+| `toggle_workspace_mcp_server` | Enable or disable an integration |
+| `delete_workspace_mcp_server` | Permanently remove an integration |
+| `test_workspace_mcp_server_connection` | Test a connection and list its available tools |
+
+---
+
+## Example usage
+
+### Create a project and check its status
+
+> **You:** Create a project called "Invoice tracker" with a table of invoices, amounts, and due dates.
+>
+> **Claude:** *(calls `create_project`)*  
+> Project created. Build started — your app will be live at `https://invoice-tracker-abc123.genie-app.de`.
+>
+> **You:** Is it done yet?
+>
+> **Claude:** *(calls `get_project_status`)*  
+> Still building — currently in the coding phase. Check back in a moment.
+
+### Send a follow-up prompt
+
+> **You:** Add a filter to show only overdue invoices.
+>
+> **Claude:** *(calls `send_followup_prompt`)*  
+> Prompt sent. The build is running in the background — use `get_project_status` to check when it's done.
+
+### Check credit usage this month
+
+> **You:** How many credits have I used this month?
+>
+> **Claude:** *(calls `get_credit_usage` with `range: "30d"`)*  
+> You've used 142 credits in the last 30 days across 4 projects.
+
+---
+
+<Tip>
+Use `suggest_project_prompts` after building a project to get AI-generated ideas for what to add next — useful for brainstorming without having to come up with a prompt yourself.
+</Tip>
+
+## Workspace chat vs. project chat
+
+There are two ways to interact with AI through the Genie MCP Server:
+
+| | Workspace chat | Project prompts |
+|---|---|---|
+| **Scope** | Entire workspace | A single project |
+| **What it does** | Answers questions, looks up info, manages settings | Builds or updates your app's code |
+| **Credits** | Uses a small amount (lightweight model) | Uses standard build credits |
+| **Response** | Returns an answer immediately | Fires off a build; check status separately |
+| **Use for** | "Which project was updated most recently?", "How many credits do I have left?" | "Add a dark mode toggle", "Create a settings page" |
+
+---
+
+## Related pages
+
+- [Connect external tools to your workspace via MCP](/workspaces/integrations)
+- [Workspace overview](/workspaces/overview)

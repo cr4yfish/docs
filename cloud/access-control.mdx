@@ -1,0 +1,114 @@
+---
+title: "Control who can access your app"
+description: "Private mode restricts your app to approved users. Onboarding flows collect information from new users at first login. Manage both from the Onboarding tab or Genie AI."
+---
+
+By default, anyone who visits your app's URL can use it. Genie Cloud gives you two tools to change that: **private mode**, which restricts access to users you approve, and **onboarding flows**, which collect information from new users the first time they log in.
+
+## Private mode
+
+Private mode puts your app behind an approval gate. When a new user signs up, they land on a waiting screen instead of accessing your app. An admin must approve them before they can proceed.
+
+Private mode is designed for internal tools, client portals, and any app where you need to control exactly who gets in — not just that users are authenticated.
+
+### Enable private mode
+
+<Steps>
+  <Step title="Open project settings">
+    Go to your project and open **Settings**, then click the **Onboarding** tab.
+  </Step>
+  <Step title="Turn on private mode">
+    Toggle **Private mode** on. You can also configure a **verified role** (the role assigned to approved users) and add **auto-approved email addresses** — anyone signing up from those addresses is approved instantly, with no manual action required.
+  </Step>
+  <Step title="Save">
+    Click **Save**. Genie syncs the change to your live app automatically — no rebuild needed.
+  </Step>
+</Steps>
+
+### Approve pending users
+
+When private mode is on, new sign-ups appear in the **Users** tab of your project settings with a **Pending** badge. Click **Approve** to grant them access.
+
+You can also manage approvals through **Genie AI** (the workspace chat). Ask Genie to approve a user or show who is waiting, and it handles it without you leaving the conversation.
+
+> "Show me who's waiting for access to my Invoice Tracker app."
+>
+> "Approve Jane Smith."
+
+### Invite specific users
+
+To pre-approve users before they sign up, ask Genie AI to invite them:
+
+> "Invite alice@example.com and bob@example.com to my Invoice Tracker app."
+
+Genie pre-approves the email addresses and sends each person an invite email with a link to your app. When they sign up using that email, they are approved automatically and go straight into the app. If someone is already in the pending list when you invite them, Genie approves them immediately and sends the email.
+
+<Note>
+  The invite feature requires your app to have a live URL. If your project has not been deployed yet, Genie will let you know before sending any emails.
+</Note>
+
+---
+
+## Onboarding flows
+
+An onboarding flow is a screen shown to new users the first time they log in to your app. Use it to collect a display name, ask setup questions, or walk new users through what the app does before they see it.
+
+Genie builds and installs the onboarding screen automatically when you enable it. Once a user completes onboarding, the screen never appears again — completion is tracked per user in your Genie Cloud database.
+
+### Enable an onboarding flow
+
+<Steps>
+  <Step title="Open the Onboarding tab">
+    In project settings, go to **Settings → Onboarding**.
+  </Step>
+  <Step title="Toggle onboarding on">
+    Enable the **Onboarding flow** toggle. Genie adds the onboarding screen to your app on the next build.
+  </Step>
+  <Step title="Customize with prompts">
+    To add questions or change the layout, describe what you want to Genie in the chat:
+
+    > "Add a question asking for the user's company name and job title on the onboarding screen."
+
+    Genie edits the onboarding page directly.
+  </Step>
+</Steps>
+
+<Tip>
+  The onboarding screen always collects a display name by default. Add extra questions for anything else you need at signup — role, company, preferences, or anything specific to your app. Answers are saved per user in your Genie Cloud database.
+</Tip>
+
+---
+
+## Combining private mode and onboarding
+
+You can use both features at the same time. The order of events looks like this:
+
+1. User signs up → held in **pending** state (private mode gate)
+2. Admin approves them (from Users tab or Genie AI)
+3. User logs in → **onboarding screen** (shown once, if enabled)
+4. User completes onboarding → enters the app
+
+When both are on, private mode is checked first. Unapproved users never reach the onboarding screen.
+
+---
+
+## Manage via Genie AI
+
+You can configure access control and respond to new sign-ups through the workspace chat without leaving the conversation. Examples of what you can ask:
+
+- *"Enable private mode on my Customer Portal project."*
+- *"Show me who's waiting for access to Invoice Tracker."*
+- *"Approve jane@example.com."*
+- *"Invite the whole team: alice@co.com, bob@co.com, carol@co.com."*
+- *"Turn off the onboarding flow for my demo project."*
+- *"Add berlin@partners.com to the auto-approved list for my app."*
+
+Genie confirms before making any changes that affect who can access your app.
+
+---
+
+## Related pages
+
+- [User authentication in Genie Cloud](/cloud/auth)
+- [Genie Cloud overview](/cloud/overview)
+- [Project settings](/projects/settings)

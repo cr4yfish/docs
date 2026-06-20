@@ -80,7 +80,8 @@
                 "pages": [
                   "workspaces/overview",
                   "workspaces/members",
-                  "workspaces/integrations"
+                  "workspaces/integrations",
+                  "workspaces/mcp-api"
                 ]
               },
               {
@@ -90,7 +91,8 @@
                   "cloud/overview",
                   "cloud/database",
                   "cloud/storage",
-                  "cloud/auth"
+                  "cloud/auth",
+                  "cloud/access-control"
                 ]
               },
               {
