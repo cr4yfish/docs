@@ -69,6 +69,7 @@
                 "pages": [
                   "projects/overview",
                   "projects/import-design",
+                  "projects/editing",
                   "projects/settings",
                   "projects/secrets",
                   "projects/visibility"
@@ -154,6 +155,7 @@
                 "pages": [
                   "de/projects/overview",
                   "de/projects/import-design",
+                  "de/projects/editing",
                   "de/projects/settings",
                   "de/projects/secrets",
                   "de/projects/visibility"

@@ -1,0 +1,87 @@
+---
+title: "Edit text directly in the preview"
+description: "Click on any text in your app preview, change it, and submit multiple edits at once — no prompt needed. Literal text changes apply in seconds without a full rebuild."
+---
+
+Genie's inline editing mode lets you point at text in your running app preview, change it right there, and apply all your edits in one shot. Literal text changes — headings, labels, button copy, placeholders — apply in around 15 seconds without a full rebuild.
+
+## How to edit text inline
+
+<Steps>
+  <Step title="Open a project">
+    Navigate to any project you've built. The live preview panel shows your app on the right.
+  </Step>
+  <Step title="Enable select mode">
+    Click the **dashed-cursor icon** (□…) in the prompt bar below the preview. The cursor changes inside the preview pane to indicate selection is active.
+  </Step>
+  <Step title="Click on text in your app">
+    Hover over a heading, button label, paragraph, or any other text element. Click it to start editing. A small inline field opens with the current text pre-filled and a **Confirm** / **Cancel** pill appears.
+  </Step>
+  <Step title="Make your change and confirm">
+    Type the new text, then click **Confirm** (or press Enter). The edit is added to your queue — the edit tray appears below the preview showing a count of pending changes.
+  </Step>
+  <Step title="Queue as many edits as you like">
+    Continue clicking and editing other text elements on the same page. Each confirmed edit appears in the tray with an **old → new** summary.
+  </Step>
+  <Step title="Submit all changes at once">
+    Click **Submit N changes** in the edit tray. Genie applies every queued edit, rebuilds the affected parts, and your live app updates.
+  </Step>
+</Steps>
+
+## The edit tray
+
+While you have pending edits, the normal prompt input is replaced by the **edit tray**. It shows:
+
+- The total number of queued changes
+- Each change listed as **before → after** (long values are trimmed in the display, but the full text is always applied)
+- A remove button (×) next to each entry so you can drop a single edit before submitting
+
+Two buttons sit at the bottom of the tray:
+
+- **Submit N changes** — sends all queued edits to Genie for applying
+- **Discard all** — cancels the session and returns you to the normal chat prompt
+
+## How fast are changes applied?
+
+Speed depends on whether the text is a static value in your source code or something fetched from a database or API.
+
+| Text type | How it's applied | Typical time |
+|---|---|---|
+| Literal (hardcoded in source) | Applied directly — no AI needed | ~15–20 seconds |
+| Dynamic (from database or API) | Genie's code agent traces and updates the source | Normal build time |
+
+Most static text — page headings, button labels, placeholder copy, marketing text — is literal and applies instantly. If you edit something whose value comes from a database record or an external API call, Genie uses the full code agent to make the right change.
+
+<Note>
+  When a batch contains a mix of literal and dynamic edits, the literal ones apply immediately alongside the dynamic ones in a single submission. You never need to split them up yourself.
+</Note>
+
+## Navigating between pages mid-session
+
+Inline editing is scoped to one page at a time. If you follow a link inside the preview while you have pending edits, Genie asks what to do:
+
+- **Submit** — apply your edits on the current page, then navigate
+- **Discard** — throw away the pending edits and move on
+- **Stay** — go back and keep editing on the current page
+
+## Tips
+
+<AccordionGroup>
+  <Accordion title="Only visible text is editable inline">
+    The inline editor works on text rendered in the preview — headings, labels, paragraphs, and button text. It does not edit images, icons, colors, or layout. Use a follow-up prompt for those changes.
+  </Accordion>
+  <Accordion title="You can remove an edit before submitting">
+    Changed your mind about one entry? Click the × next to it in the tray to remove just that edit. The rest stay queued.
+  </Accordion>
+  <Accordion title="Prompts are blocked while edits are pending">
+    While the edit tray is open, the normal prompt input is hidden. Discard or submit first to return to the regular prompt.
+  </Accordion>
+  <Accordion title="Edits are per-page">
+    The session collects edits for the page currently shown in the preview. Navigate away (after submitting or discarding) to edit a different page in the same session.
+  </Accordion>
+</AccordionGroup>
+
+## Related pages
+
+- [Projects overview](/projects/overview)
+- [Get started with Genie](/quickstart)
