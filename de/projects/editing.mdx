@@ -1,0 +1,87 @@
+---
+title: "Text direkt in der Vorschau bearbeiten"
+description: "Klicke auf beliebigen Text in deiner App-Vorschau, ändere ihn direkt und reiche mehrere Bearbeitungen auf einmal ein — kein Prompt erforderlich. Texte aus dem Quellcode werden in Sekunden übernommen."
+---
+
+Mit dem Inline-Bearbeitungsmodus von Genie kannst du auf Text in deiner laufenden App-Vorschau zeigen, ihn direkt dort ändern und alle Bearbeitungen in einem Schritt einreichen. Texte, die direkt im Quellcode stehen — Überschriften, Beschriftungen, Button-Text, Platzhalter — werden in ca. 15 Sekunden übernommen, ohne einen vollständigen Neu-Build.
+
+## So bearbeitest du Text inline
+
+<Steps>
+  <Step title="Projekt öffnen">
+    Navigiere zu einem beliebigen Projekt. Die Live-Vorschau zeigt deine App auf der rechten Seite.
+  </Step>
+  <Step title="Auswahlmodus aktivieren">
+    Klicke auf das **gestrichelte Cursor-Symbol** (□…) in der Eingabeleiste unterhalb der Vorschau. Der Cursor ändert sich im Vorschaubereich, um anzuzeigen, dass die Auswahl aktiv ist.
+  </Step>
+  <Step title="Auf Text in deiner App klicken">
+    Bewege die Maus über eine Überschrift, eine Button-Beschriftung, einen Absatz oder ein anderes Textelement. Klicke darauf, um mit der Bearbeitung zu beginnen. Ein kleines Inline-Feld öffnet sich mit dem aktuellen Text und einer **Bestätigen** / **Abbrechen**-Schaltfläche.
+  </Step>
+  <Step title="Änderung vornehmen und bestätigen">
+    Tippe den neuen Text, klicke dann auf **Bestätigen** (oder drücke Enter). Die Bearbeitung wird zur Warteschlange hinzugefügt — das Bearbeitungs-Tray erscheint unterhalb der Vorschau mit der Anzahl ausstehender Änderungen.
+  </Step>
+  <Step title="Beliebig viele Bearbeitungen in die Warteschlange stellen">
+    Klicke und bearbeite weitere Textelemente auf derselben Seite. Jede bestätigte Bearbeitung erscheint im Tray mit einer Zusammenfassung **alt → neu**.
+  </Step>
+  <Step title="Alle Änderungen auf einmal einreichen">
+    Klicke im Bearbeitungs-Tray auf **N Änderungen einreichen**. Genie wendet alle Bearbeitungen in der Warteschlange an, baut die betroffenen Teile neu und deine Live-App wird aktualisiert.
+  </Step>
+</Steps>
+
+## Das Bearbeitungs-Tray
+
+Solange du ausstehende Bearbeitungen hast, wird die normale Prompt-Eingabe durch das **Bearbeitungs-Tray** ersetzt. Es zeigt:
+
+- Die Gesamtzahl der Änderungen in der Warteschlange
+- Jede Änderung als **vorher → nachher** (lange Werte werden in der Anzeige gekürzt, aber der vollständige Text wird immer übernommen)
+- Eine Entfernen-Schaltfläche (×) neben jedem Eintrag, um einzelne Bearbeitungen vor dem Einreichen zu löschen
+
+Zwei Schaltflächen befinden sich unten im Tray:
+
+- **N Änderungen einreichen** — sendet alle Bearbeitungen an Genie zur Verarbeitung
+- **Alle verwerfen** — bricht die Sitzung ab und kehrt zur normalen Chat-Eingabe zurück
+
+## Wie schnell werden Änderungen übernommen?
+
+Die Geschwindigkeit hängt davon ab, ob der Text ein statischer Wert im Quellcode oder etwas ist, das aus einer Datenbank oder API abgerufen wird.
+
+| Texttyp | Verarbeitung | Typische Zeit |
+|---|---|---|
+| Literal (im Quellcode fest hinterlegt) | Direkt übernommen — keine KI erforderlich | ~15–20 Sekunden |
+| Dynamisch (aus Datenbank oder API) | Genies Code-Agent verfolgt und aktualisiert die Quelle | Normale Build-Zeit |
+
+Der meiste statische Text — Seitenüberschriften, Button-Beschriftungen, Platzhaltertext, Marketing-Copy — ist literal und wird sofort übernommen. Wenn du etwas bearbeitest, dessen Wert aus einem Datenbankdatensatz oder einem externen API-Aufruf stammt, verwendet Genie den vollständigen Code-Agent, um die richtige Änderung vorzunehmen.
+
+<Note>
+  Wenn ein Stapel aus einem Mix aus literalen und dynamischen Bearbeitungen besteht, werden die literalen sofort zusammen mit den dynamischen in einer einzigen Einreichung übernommen. Du musst sie nicht selbst aufteilen.
+</Note>
+
+## Zwischen Seiten navigieren während einer Sitzung
+
+Das Inline-Bearbeiten bezieht sich jeweils auf eine Seite. Wenn du einem Link innerhalb der Vorschau folgst, während du ausstehende Bearbeitungen hast, fragt Genie, was du tun möchtest:
+
+- **Einreichen** — Bearbeitungen auf der aktuellen Seite übernehmen, dann navigieren
+- **Verwerfen** — ausstehende Bearbeitungen verwerfen und fortfahren
+- **Bleiben** — zurückgehen und auf der aktuellen Seite weiterbearbeiten
+
+## Tipps
+
+<AccordionGroup>
+  <Accordion title="Nur sichtbarer Text ist inline bearbeitbar">
+    Der Inline-Editor funktioniert mit Text, der in der Vorschau gerendert wird — Überschriften, Beschriftungen, Absätze und Button-Text. Bilder, Symbole, Farben oder Layouts werden damit nicht bearbeitet. Verwende einen Folge-Prompt für diese Änderungen.
+  </Accordion>
+  <Accordion title="Du kannst eine Bearbeitung vor dem Einreichen entfernen">
+    Hast du es dir anders überlegt? Klicke auf das × neben dem Eintrag im Tray, um nur diese Bearbeitung zu entfernen. Der Rest bleibt in der Warteschlange.
+  </Accordion>
+  <Accordion title="Prompts sind gesperrt, solange Bearbeitungen ausstehen">
+    Solange das Bearbeitungs-Tray geöffnet ist, ist die normale Prompt-Eingabe ausgeblendet. Verwerfe oder reiche zuerst ein, um zur normalen Eingabe zurückzukehren.
+  </Accordion>
+  <Accordion title="Bearbeitungen sind seitenspezifisch">
+    Die Sitzung sammelt Bearbeitungen für die aktuell in der Vorschau angezeigte Seite. Navigiere weg (nach dem Einreichen oder Verwerfen), um eine andere Seite in derselben Sitzung zu bearbeiten.
+  </Accordion>
+</AccordionGroup>
+
+## Verwandte Seiten
+
+- [Projekte — Übersicht](/de/projects/overview)
+- [Erste Schritte mit Genie](/de/quickstart)
