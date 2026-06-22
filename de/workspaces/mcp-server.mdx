@@ -1,0 +1,113 @@
+---
+title: "Genie aus jedem KI-Assistenten steuern"
+description: "Verbinde Claude Desktop, Cursor oder jeden MCP-kompatiblen KI-Client mit deinem Genie-Workspace und verwalte Projekte, Builds und Einstellungen, ohne die Web-App zu öffnen."
+---
+
+Genie hat seinen eigenen **MCP-Server** — einen Endpunkt, über den jeder MCP-kompatible KI-Assistent deinen Workspace programmatisch verwalten kann. Anstatt die Genie-Web-App zu öffnen, kannst du deinen KI-Assistenten bitten, ein Projekt zu erstellen, einen Folge-Prompt zu senden, den Build-Status zu prüfen, Teammitglieder zu verwalten oder die Code-Struktur eines Projekts abzufragen.
+
+## Endpunkt
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+Der Server verwendet den **Streamable HTTP**-Transport — zustandslos, keine persistente Verbindung erforderlich.
+
+## Claude Desktop verbinden
+
+<Steps>
+  <Step title="Claude Desktop Einstellungen öffnen">
+    Öffne in Claude Desktop **Einstellungen → Entwickler** und klicke auf **Config bearbeiten**, um `claude_desktop_config.json` zu öffnen.
+  </Step>
+  <Step title="Genie-Server hinzufügen">
+    Füge den folgenden Eintrag zum `mcpServers`-Objekt hinzu:
+
+    ```json
+    {
+      "mcpServers": {
+        "genie": {
+          "command": "npx",
+          "args": [
+            "-y",
+            "mcp-remote",
+            "https://www.genie-app.de/api/mcp"
+          ]
+        }
+      }
+    }
+    ```
+  </Step>
+  <Step title="Claude Desktop neu starten">
+    Speichere die Datei und starte Claude Desktop neu. Beim ersten Tool-Aufruf öffnet sich ein Browser-Fenster, in dem du dich anmeldest und einen Workspace autorisierst.
+  </Step>
+  <Step title="Workspace autorisieren">
+    Melde dich bei Genie an und wähle den Workspace, den du verbinden möchtest. Genie verwendet OAuth 2.0 — deine Zugangsdaten werden nicht an Claude Desktop weitergegeben.
+  </Step>
+</Steps>
+
+## Cursor verbinden
+
+Gehe in Cursor zu **Einstellungen → MCP → Server hinzufügen** und gib folgendes ein:
+
+- **Name**: Genie
+- **Typ**: Streamable HTTP
+- **URL**: `https://www.genie-app.de/api/mcp`
+
+Cursor fordert dich beim ersten Tool-Aufruf auf, den OAuth-Flow abzuschließen.
+
+## Was du tun kannst
+
+Sobald die Verbindung besteht, hat dein KI-Assistent Zugriff auf folgende Funktionen. Alle Tools arbeiten innerhalb des Workspace, den du beim Anmelden autorisiert hast.
+
+### Workspace-Verwaltung
+
+Lese und aktualisiere deinen Workspace: sieh Name, Mitgliederzahl, Einstellungen und Credit-Guthaben ein. Lade neue Mitglieder per teilbarem Link ein, ändere Rollen, widerrufe ausstehende Einladungen und entferne Mitglieder. Schalte Aktivitätsprotokollierung und Projektzugangskontrolle um.
+
+### Projektverwaltung
+
+Erstelle Projekte aus einem Text-Prompt, sende Folge-Prompts an bestehende Projekte, prüfe den Build-Status, sieh den Deployment-Plan ein, brich einen laufenden Build ab und zeige eine Vorschau des Live-Projekts mit Screenshots an. Archiviere, stelle wieder her, benenne um und lösche Projekte. Aktualisiere Beschreibung, Sichtbarkeit (`private`, `public` oder `hidden`) und Remix-Einstellungen.
+
+### Workspace-Chat
+
+Stelle Fragen zu deinem Workspace in einem dauerhaften Gespräch, das auch in der Genie-Web-App sichtbar ist. Führe bestehende Threads fort, indem du eine Konversations-ID übergibst. Durchsuche und benenne vergangene Gespräche um.
+
+### Genie Cloud (Projekt-Backend)
+
+Sieh die registrierten Endnutzer, definierten Rollen, aktivierten Auth-Provider und Zugriffseinstellungen eines Projekts ein. Weise Rollen zu und entferne sie, genehmige ausstehende Nutzer in Apps mit privatem Modus und genehmige E-Mail-Adressen vorab. Aktiviere oder deaktiviere soziale Anmeldung. Liste und verwalte Projekt-Secrets (API-Schlüssel und Umgebungsvariablen für Edge Functions).
+
+### MCP-Server-Integrationen
+
+Liste, füge hinzu, aktualisiere, aktiviere, deaktiviere und lösche die MCP-Integrationen deines Workspace — dieselben Verbindungen, die du auf der **Integrationen**-Einstellungsseite verwaltest. Teste eine Serververbindung, ohne deinen KI-Assistenten zu verlassen.
+
+### Workspace-PII-Regeln
+
+Liste, aktiviere, deaktiviere und konfiguriere PII-Erkennungsregeln. Erstelle eigene Regex-basierte Regeln. Sieh aktuelle Erkennungen im PII-Erkennungsprotokoll ein.
+
+### Projekt-Code-Graph
+
+Abfrage den Code-Graph eines Projekts, um Fragen zu Funktionsaufrufen, Importen, Klassenmitgliedern, Symbolhistorie und aktuellen Änderungen zu beantworten — nützlich, um zu verstehen, wie ein Projekt aufgebaut ist oder was sich zwischen Builds verändert hat.
+
+## Authentifizierung
+
+Genie verwendet **OAuth 2.0 mit PKCE**. Beim ersten Verbinden wirst du auf Genies Autorisierungsseite weitergeleitet, meldest dich an und wählst einen Workspace. Genie stellt ein auf diesen Workspace beschränktes Sitzungstoken aus — dein KI-Client speichert es und übergibt es automatisch bei jedem Tool-Aufruf. Wenn das Token abläuft oder widerrufen wird, fordert dein Client dich zur erneuten Autorisierung auf.
+
+<Note>
+  Jede Sitzung ist an den Workspace gebunden, den du bei der Anmeldung ausgewählt hast. Um über mehrere Workspaces zu arbeiten, autorisiere jeden einmal. Dein KI-Client verwaltet die Sitzungen separat.
+</Note>
+
+## Tipps
+
+<AccordionGroup>
+  <Accordion title="Den Slug eines Projekts finden">
+    Die meisten Projekt-Tools erwarten einen `project_slug` — die kurze ID in der Projekt-URL (z.B. `/project/mein-crm-abc123`). Nutze `list_latest_projects` oder `search_projects`, um ihn zu finden.
+  </Accordion>
+  <Accordion title="Build-Status vor dem Senden eines Prompts prüfen">
+    Nutze `get_project_status`, um sicherzustellen, dass kein Build läuft, bevor du `send_followup_prompt` aufrufst. Ein Prompt während eines laufenden Builds wird abgelehnt — das Tool gibt eine klare Meldung zurück.
+  </Accordion>
+  <Accordion title="Workspace-Chat vs. Projekt-Prompts">
+    Workspace-Chat-Tools (`send_workspace_chat`) sind für Fragen und Recherchen rund um deinen Workspace. `send_followup_prompt` sendet einen Build-Prompt an ein bestimmtes Projekt und löst eine echte Code-Änderung aus. Nutze das richtige Tool für die jeweilige Aufgabe.
+  </Accordion>
+  <Accordion title="Genehmigungen im privaten Modus">
+    Wenn dein Projekt den privaten Modus nutzt (Nutzer müssen vor dem App-Zugriff genehmigt werden), kannst du ausstehende Nutzer und E-Mail-Adressen direkt über deinen KI-Assistenten mit den Genie-Cloud-Tools genehmigen — kein Öffnen des Nutzer-Tabs nötig.
+  </Accordion>
+</AccordionGroup>
