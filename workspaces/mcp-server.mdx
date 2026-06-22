@@ -1,0 +1,113 @@
+---
+title: "Control Genie from any AI assistant"
+description: "Connect Claude Desktop, Cursor, or any MCP-compatible AI client to your Genie workspace and manage projects, builds, and settings without opening the web app."
+---
+
+Genie has its own **MCP server** — an endpoint that lets any MCP-compatible AI assistant manage your workspace programmatically. Instead of opening the Genie web app, you can ask your AI assistant to create a project, send a follow-up prompt, check build status, manage team members, or query your project's code structure.
+
+## Endpoint
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+The server uses the **Streamable HTTP** transport — stateless, no persistent connection required.
+
+## Connect Claude Desktop
+
+<Steps>
+  <Step title="Open Claude Desktop settings">
+    In Claude Desktop, open **Settings → Developer** and click **Edit config** to open `claude_desktop_config.json`.
+  </Step>
+  <Step title="Add the Genie server">
+    Add the following entry to the `mcpServers` object:
+
+    ```json
+    {
+      "mcpServers": {
+        "genie": {
+          "command": "npx",
+          "args": [
+            "-y",
+            "mcp-remote",
+            "https://www.genie-app.de/api/mcp"
+          ]
+        }
+      }
+    }
+    ```
+  </Step>
+  <Step title="Restart Claude Desktop">
+    Save the file and restart Claude Desktop. On the first tool call, a browser window opens for you to sign in and authorize a workspace.
+  </Step>
+  <Step title="Authorize a workspace">
+    Sign in to Genie and choose the workspace you want to connect. Genie uses OAuth 2.0 — your credentials are never passed to Claude Desktop directly.
+  </Step>
+</Steps>
+
+## Connect Cursor
+
+In Cursor, go to **Settings → MCP → Add server** and enter:
+
+- **Name**: Genie
+- **Type**: Streamable HTTP
+- **URL**: `https://www.genie-app.de/api/mcp`
+
+Cursor will prompt you to complete the OAuth flow on the first tool call.
+
+## What you can do
+
+Once connected, your AI assistant has access to the following capabilities. All tools operate within the workspace you authorized during sign-in.
+
+### Workspace management
+
+Read and update your workspace: view its name, member count, settings, and credit balance. Invite new members by generating a shareable link, change member roles, revoke pending invitations, and remove members. Toggle activity logging and project access control.
+
+### Project management
+
+Create projects from a natural-language prompt, send follow-up prompts to existing projects, check build status, view the deployment plan, abort a running build, and preview a deployed project with screenshots. Archive, restore, rename, and delete projects. Update a project's description, visibility (`private`, `public`, or `hidden`), and remix settings.
+
+### Workspace chat
+
+Ask questions about your workspace in a persistent conversation that also appears in the Genie web app. Continue existing threads by passing a conversation ID. Browse, search, and rename past conversations.
+
+### Genie Cloud (project backend)
+
+View a project's registered end-users, defined roles, enabled auth providers, and access settings. Assign and remove roles, approve pending users in private-mode apps, and pre-approve email addresses. Enable or disable social sign-in. List and manage project secrets (API keys and environment variables for edge functions).
+
+### MCP server integrations
+
+List, add, update, enable, disable, and delete the MCP integrations configured for your workspace — the same connections you manage on the **Integrations** settings page. Test a server connection without leaving your AI assistant.
+
+### Workspace PII rules
+
+List, enable, disable, and reconfigure PII detection rules. Create custom regex-based rules. View recent detections in the PII detection log.
+
+### Project code graph
+
+Query a project's code graph to answer questions about function calls, imports, class members, symbol history, and recent edits — useful for understanding how a project is structured or what changed between builds.
+
+## Authentication
+
+Genie uses **OAuth 2.0 with PKCE**. When you first connect, you are redirected to Genie's authorization page where you sign in and choose a workspace. Genie issues a session token scoped to that workspace — your AI client stores it and presents it automatically on every tool call. If the token expires or is revoked, your client will prompt you to re-authorize.
+
+<Note>
+  Each session is tied to the workspace you selected during sign-in. To work across multiple workspaces, authorize once per workspace. Your AI client manages the sessions separately.
+</Note>
+
+## Tips
+
+<AccordionGroup>
+  <Accordion title="Find a project's slug">
+    Most project tools take a `project_slug` — the short ID shown in the project URL (e.g. `/project/my-crm-abc123`). Use `list_latest_projects` or `search_projects` to find it.
+  </Accordion>
+  <Accordion title="Check build status before sending a prompt">
+    Use `get_project_status` to confirm no build is already running before calling `send_followup_prompt`. Sending a prompt while a build is in progress is rejected — the tool returns a clear message when it happens.
+  </Accordion>
+  <Accordion title="Workspace chat vs. project prompts">
+    Workspace chat tools (`send_workspace_chat`) are for questions and research about your workspace. `send_followup_prompt` sends a build prompt to a specific project and triggers a real code change. Use the right one for the task.
+  </Accordion>
+  <Accordion title="Private mode approvals">
+    If your project uses private mode (users must be approved before accessing the app), you can approve pending users and pre-approve email addresses directly from your AI assistant using the Genie Cloud tools — no need to open the Users tab.
+  </Accordion>
+</AccordionGroup>
