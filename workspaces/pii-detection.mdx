@@ -1,0 +1,90 @@
+---
+title: "PII detection"
+description: "Configure built-in and custom rules to detect, log, or block personally identifiable information in your workspace's AI conversations."
+---
+
+Workspace PII detection scans content that members send to the AI before it is processed. When a rule matches, Genie can log the detection, block the message entirely, or let it through silently — depending on how you configure each rule. This helps workspace owners and admins keep sensitive data out of AI conversations.
+
+<Note>
+PII detection settings are only accessible to **owners** and **admins**. Detection applies to all members in the workspace, including conversations in the project chat and the workspace Genie AI chat.
+</Note>
+
+## Open PII detection settings
+
+In the workspace sidebar, click **Settings**, then navigate to **PII Detection**.
+
+## Built-in detectors
+
+Genie includes detectors for the most common types of sensitive data, all enabled by default:
+
+- Email addresses
+- Phone numbers
+- Credit card numbers
+- Social security and national ID numbers
+- IBAN and bank account numbers
+- IP addresses
+- Passwords in plain text
+
+Each built-in detector starts with a **Log** action. You can change the action or disable individual detectors independently without affecting the others.
+
+## Custom rules
+
+You can add your own detection rules using regular expressions — useful for data patterns specific to your organisation, such as internal employee IDs, contract reference numbers, or proprietary identifiers.
+
+<Steps>
+  <Step title="Open PII Detection settings">
+    Go to **Settings → PII Detection** in your workspace.
+  </Step>
+  <Step title="Click Add rule">
+    Click the **Add rule** button in the **Custom rules** section.
+  </Step>
+  <Step title="Fill in the rule details">
+    - **Label** — a short name for the rule (for example, "Employee ID").
+    - **Pattern** — a regular expression that matches the sensitive data.
+    - **Action** — what to do when the pattern matches (see below).
+  </Step>
+  <Step title="Save">
+    Click **Save**. The rule becomes active immediately for all workspace members.
+  </Step>
+</Steps>
+
+## Actions
+
+Each rule — built-in or custom — has an **action** that controls what happens when content matches:
+
+| Action | What happens |
+|---|---|
+| **Ignore** | Detects the match but takes no action. Use this to monitor how often a pattern appears before enforcing anything. |
+| **Log** | Records the detection in the audit log with the matched value redacted. The message is still sent to the AI. |
+| **Block** | Rejects the message before it reaches the AI. The sender sees a clear explanation listing which categories were matched. The content is not processed. |
+
+<Warning>
+Block rules take effect immediately for all workspace members. Test a rule with the **Log** action first to confirm it matches what you expect before switching to **Block**.
+</Warning>
+
+## Detection log
+
+The PII Detection settings page includes a log of recent detections. Each entry shows:
+
+- The detection timestamp
+- The member whose message triggered it
+- The chat surface (workspace Genie AI or project chat)
+- The matched category
+- The redacted value — for example, `jo*****@e*****.com`
+
+The raw matched value is never stored — only the redacted form appears in the log.
+
+## Managing rules via Genie AI
+
+Owners and admins can also read and manage PII rules directly from the workspace Genie AI chat:
+
+- "Show me the current PII detection rules."
+- "Create a rule that blocks content matching employee ID format EMP-123456."
+- "Turn off the IP address detector."
+- "Show me the recent PII detections."
+
+Genie confirms before making any changes that disable or weaken detection.
+
+## Reset to defaults
+
+To restore all built-in detectors to their default settings — enabled, with a Log action — click **Reset to defaults** at the top of the PII Detection settings page. Custom rules are not affected by a reset.

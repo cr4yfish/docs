@@ -80,7 +80,9 @@
                 "pages": [
                   "workspaces/overview",
                   "workspaces/members",
-                  "workspaces/integrations"
+                  "workspaces/integrations",
+                  "workspaces/genie-ai",
+                  "workspaces/pii-detection"
                 ]
               },
               {
@@ -165,7 +167,9 @@
                 "pages": [
                   "de/workspaces/overview",
                   "de/workspaces/members",
-                  "de/workspaces/integrations"
+                  "de/workspaces/integrations",
+                  "de/workspaces/genie-ai",
+                  "de/workspaces/pii-detection"
                 ]
               },
               {

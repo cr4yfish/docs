@@ -6,14 +6,14 @@ description: "A workspace is a shared environment where your team's projects, me
 A workspace is the top-level container in Genie that brings your projects and people together in one place. Instead of working in isolation, your team shares a single environment where every project is visible, activity is tracked, and everyone works from the same context. You can belong to multiple workspaces — for example, one for your company and another for a side project — and switch between them instantly from the sidebar.
 
 <Note>
-Full team features — including member management and MCP integrations — require the **Teams** plan. You can create a workspace on any plan, but collaboration features are unlocked when you upgrade.
+Full team features — including member management, MCP integrations, Genie AI, and PII detection — require the **Teams** plan. You can create a workspace on any plan, but collaboration features are unlocked when you upgrade.
 </Note>
 
 ## Create a workspace
 
 <Steps>
   <Step title="Open the workspace list">
-    From anywhere in Genie, click the workspace switcher at the top of the left sidebar. Select **New Workspace** at the bottom of the dropdown.
+    From anywhere in Genie, click the workspace switcher at the top of the left sidebar. Select **New Workspace** at the bottom of the list.
   </Step>
   <Step title="Name your workspace">
     Enter a clear name for your workspace. The name appears in the sidebar, in invite links, and throughout the UI, so pick something your team will recognise immediately. You can change it later from **Settings**.
@@ -28,30 +28,30 @@ Full team features — including member management and MCP integrations — requ
 
 ## The workspace home
 
-When you open a workspace you land on the workspace home — your team's dashboard. It has three main areas:
+When you open a workspace you land on the workspace home — your team's dashboard. Signed-in users who visit the main Genie page are taken here automatically.
 
 ### Sidebar
 
-The left sidebar is the primary navigation hub for your workspace.
+The left sidebar is the primary navigation hub for your workspace. On desktop it starts collapsed — click your workspace logo to expand it.
 
 <CardGroup cols={2}>
   <Card title="Workspace switcher" icon="arrow-left-right">
-    The workspace name and plan appear at the top of the sidebar. Click it to switch to another workspace or create a new one.
+    The workspace name and plan appear at the top of the sidebar. Click it to see every workspace you belong to, paginated in groups of 10. A search box appears automatically when you have more than 10 workspaces.
   </Card>
   <Card title="Overview" icon="house">
     Returns you to the workspace home from anywhere inside the workspace.
   </Card>
+  <Card title="Genie AI" icon="sparkles">
+    Opens the workspace Genie AI assistant. Ask it to build a new project, update an existing one, or answer questions about your workspace.
+  </Card>
   <Card title="Activities" icon="activity">
-    Opens the workspace-wide activity log. This item is only visible to admins and owners when the activity log is enabled.
+    Opens the workspace-wide activity log. Only visible to admins and owners when the activity log is enabled.
   </Card>
-  <Card title="All Projects" icon="folder-open">
-    Lists every project in the workspace that you have access to.
-  </Card>
-  <Card title="Members & Roles" icon="users">
-    A shortcut to the members section of **Settings**. Visible to admins and owners only.
+  <Card title="Archive" icon="archive">
+    Shows all archived projects in this workspace.
   </Card>
   <Card title="Settings" icon="settings">
-    Opens workspace settings: members, access control, activity logging, and integrations.
+    Opens workspace settings: members, access control, activity logging, integrations, and PII detection. Only visible to admins and owners.
   </Card>
 </CardGroup>
 
@@ -70,12 +70,45 @@ Below the greeting, the home page shows four at-a-glance stat cards:
 
 ### Project list
 
-Beneath the stats, the home page shows all projects you have access to in a card grid. Each project card links directly to the project. If no projects exist yet, you will see an empty state with a **New Project** button.
+Beneath the stats, the home page shows all projects you have access to in a card grid. You can search by project name, or sort by **Recently edited**, **Newest**, or **Oldest**. The list refreshes automatically every 60 seconds and whenever you return to the browser tab, so it always reflects the latest state.
+
+Each project card links directly to the project. If no projects exist yet, you will see an empty state with a **New Project** button.
 
 ### Activity log
 
-If the activity log is enabled by an admin or owner, a recent-activity panel appears between the stats and the project list. It shows a live feed of workspace-wide events — new projects, member changes, setting updates — with relative timestamps. Click **View all** to open the full activity log page.
+If the activity log is enabled by an admin or owner, a recent-activity panel appears below the project list. It shows a live feed of workspace-wide events — new projects, member changes, setting updates — with relative timestamps. Click **View all** to open the full activity log page.
 
 <Note>
 The activity log must be turned on from **Settings → Audit & Logging** before it appears. Only admins and owners can enable or disable it.
 </Note>
+
+## Collaboration
+
+When your team works on workspace projects together, Genie ensures that changes don't collide.
+
+### Project editing lock
+
+Only one person can send prompts to a workspace project at a time. When a team member is actively editing, other team members who open the same project see a banner above the prompt box showing who is currently editing. The prompt input is disabled until the lock becomes available.
+
+The lock clears automatically within a few seconds after the active editor stops typing or leaves the project. At that point, the next person who wants to edit can take over immediately.
+
+<Tip>
+If you are viewing a project while someone else is editing, the banner updates in real time — you don't need to refresh the page to see when the lock is available.
+</Tip>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Invite teammates" icon="user-plus" href="/workspaces/members">
+    Add people to your workspace, assign roles, and manage access.
+  </Card>
+  <Card title="Connect integrations" icon="plug" href="/workspaces/integrations">
+    Link Linear, GitHub, Stripe, and more to your workspace via MCP.
+  </Card>
+  <Card title="Genie AI" icon="sparkles" href="/workspaces/genie-ai">
+    Use the workspace AI assistant to build and update projects by conversation.
+  </Card>
+  <Card title="PII detection" icon="shield" href="/workspaces/pii-detection">
+    Configure rules to protect sensitive data in AI conversations.
+  </Card>
+</CardGroup>
