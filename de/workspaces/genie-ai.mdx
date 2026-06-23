@@ -1,0 +1,102 @@
+---
+title: "Genie KI in deinem Workspace"
+description: "Sprich mit Genie aus deinem Workspace, um Projekte freihändig zu erstellen und zu aktualisieren, Fragen zu deinem Workspace zu beantworten und Einstellungen zu verwalten."
+---
+
+Der Workspace-Genie-KI-Assistent ist ein Gesprächs-Assistent, der auf Workspace-Ebene lebt. Statt einzelne Projekte zu öffnen, kannst du Genie von einem Ort aus beschreiben, was du möchtest, und es kümmert sich um den Rest — neue Projekte erstellen, Prompts an bestehende senden oder Fragen zu deinem Workspace beantworten. Verfügbar für alle Workspace-Mitglieder im **Teams**-Tarif.
+
+## Genie KI öffnen
+
+Klicke in der Workspace-Seitenleiste auf **Genie KI**, um das Assistenten-Panel neben deiner Workspace-Startseite zu öffnen. Auf dem Desktop gleitet das Panel von der Seite herein; auf dem Mobilgerät öffnet es sich als Vollbild.
+
+Du kannst Genie KI auch über die Befehlspalette (⌘K / Strg+K) mit der Option **Genie fragen** öffnen.
+
+## Was Genie KI kann
+
+### Ein neues Projekt erstellen
+
+Beschreibe die App, die du bauen möchtest, und Genie erstellt das Projekt und startet den ersten Build automatisch:
+
+```
+Erstelle ein Projekt namens "Kundenverfolgung" — eine Tabelle mit Name, Unternehmen, Status und letztem Kontaktdatum, mit einer Suchleiste und einem Zeilen-Detailbereich.
+```
+
+Genie startet den Build im Hintergrund. Öffne das Projekt danach, um die Live-Build-Ausgabe zu sehen und das Ergebnis in der Vorschau zu überprüfen.
+
+### Einen Prompt an ein bestehendes Projekt senden
+
+Bitte Genie, eine Änderung an einem deiner bestehenden Projekte nach Name vorzunehmen:
+
+```
+Füge dem Dashboard-App einen Dark-Mode-Schalter hinzu.
+Füge dem Rechnungs-Tracker E-Mail-Benachrichtigungen hinzu, wenn eine neue Rechnung erstellt wird.
+```
+
+Genie findet das Projekt, zeigt dir eine Bestätigungskarte mit einer Beschreibung der geplanten Aktion — und stellt nach deiner Bestätigung den Prompt als Folge-Build-Turn in die Warteschlange. Öffne das Projekt danach, um das Ergebnis zu sehen.
+
+<Note>
+Wenn ein Projekt bereits baut, wenn du bestätigst, wird Genie dich informieren und bitten, es erneut zu versuchen, sobald der aktuelle Run abgeschlossen ist.
+</Note>
+
+### Fragen zum Workspace beantworten
+
+Frage Genie nach deinem Workspace und es schlägt die Antwort in Echtzeit nach:
+
+- "Wie viele Projekte haben wir?"
+- "Wer sind die Mitglieder dieses Workspace und welche Rollen haben sie?"
+- "Welche MCP-Integrationen sind verbunden?"
+- "Zeige mir das aktuelle Aktivitätsprotokoll."
+- "Was sind unsere aktuellen PII-Erkennungsregeln?"
+
+### Workspace-Einstellungen verwalten
+
+Eigentümer und Admins können Genie bitten, Workspace-Einstellungen direkt aus dem Chat heraus zu aktualisieren:
+
+- "Schalte das Aktivitätsprotokoll ein."
+- "Lade alex@example.com als Mitglied ein."
+- "Ändere die Projektzugriffskontrolle auf nur Admins."
+- "Aktualisiere die Workspace-Beschreibung."
+
+Genie bestätigt, bevor es Änderungen vornimmt, die Mitglieder oder Einstellungen betreffen.
+
+## Gedächtnis
+
+Genie KI merkt sich, was du ihm über Sitzungen hinweg mitteilst. Wenn du erwähnst, dass dein Team einen bestimmten Code-Stil bevorzugt, einen bestimmten Tech-Stack verwendet oder einem bestimmten Workflow folgt, speichert Genie das und nutzt es in zukünftigen Gesprächen — sodass du dich nicht jedes Mal wiederholen musst.
+
+Erinnerungen sind persönlich für dich. Sie werden nur in deinen Gesprächen mit Genie KI verwendet, nicht mit anderen Workspace-Mitgliedern geteilt.
+
+## Verbundene Integrationen nutzen
+
+Wenn dein Workspace MCP-Integrationen verbunden hat (siehe [Integrationen](/de/workspaces/integrations)), kann Genie KI diese Tools beim Bauen oder Aktualisieren von Projekten nutzen. Zum Beispiel:
+
+- Bitte Genie, "einen Pro-Plan in Stripe zu erstellen" für ein Zahlungsprojekt, und es ruft die Stripe-Integration auf, um das Produkt bereitzustellen, und schreibt dann die resultierende Preis-ID in den Projektcode.
+- Frage "Welche Issues sind mir in Linear zugewiesen?" und Genie fragt Linear direkt ab und fasst die Ergebnisse zusammen.
+
+<Tip>
+MCP-Tools stehen Genie KI während Folge-Build-Turns und in direkten Fragen zur Verfügung. Sie werden nicht beim allerersten Build eines brandneuen Projekts verwendet, der sich auf das schnelle Gerüst des ersten Codes konzentriert.
+</Tip>
+
+## Tipps für gute Ergebnisse
+
+<AccordionGroup>
+  <Accordion title="Nenne das Projekt klar, wenn du nach Änderungen fragst">
+    Genie findet deine Projekte nach Name. Verwende denselben Namen, den du auf der Projektkarte siehst — "Füge dem Inventar-Lite-App eine Suchleiste hinzu" funktioniert besser als "Füge meiner App eine Suchleiste hinzu."
+  </Accordion>
+  <Accordion title="Eine Aufgabe nach der anderen für bestehende Projekte">
+    Genie stellt einen Build-Turn pro Anfrage in die Warteschlange. Wenn du mehrere Änderungen möchtest, sende sie nacheinander, damit du jedes Ergebnis überprüfen kannst, bevor das nächste startet.
+  </Accordion>
+  <Accordion title="Erkunde zuerst, bevor du baust">
+    Stelle Fragen wie "Welche Projekte haben wir?" oder "Zeige mir die letzten Aktivitätsprotokoll-Einträge", um dich zu orientieren, bevor du einen Build startest.
+  </Accordion>
+</AccordionGroup>
+
+## Nächste Schritte
+
+<CardGroup cols={2}>
+  <Card title="Integrationen verbinden" icon="plug" href="/de/workspaces/integrations">
+    Füge Linear, Stripe, GitHub und mehr hinzu, um MCP-Tools in Genie KI freizuschalten.
+  </Card>
+  <Card title="Workspace-Übersicht" icon="building-2" href="/de/workspaces/overview">
+    Erfahre mehr über die Workspace-Seitenleiste, Projektliste und Kollaborationsfunktionen.
+  </Card>
+</CardGroup>

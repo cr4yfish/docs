@@ -1,0 +1,102 @@
+---
+title: "Genie AI in your workspace"
+description: "Talk to Genie from your workspace to create and update projects hands-free, get answers about your workspace, and manage settings — all without opening a project."
+---
+
+Workspace Genie AI is a conversational assistant that lives at the workspace level. Instead of opening individual projects, you can describe what you want to Genie from one place and it takes care of the rest — creating new projects, sending prompts to existing ones, or answering questions about your workspace. It is available to all workspace members on the **Teams** plan.
+
+## Open Genie AI
+
+Click **Genie AI** in the workspace sidebar to open the assistant panel alongside your workspace home. On desktop, the panel slides in from the side; on mobile, it opens as a full-screen view.
+
+You can also open Genie AI from the command palette (⌘K / Ctrl+K) using the **Ask Genie** option.
+
+## What Genie AI can do
+
+### Create a new project
+
+Describe the app you want to build and Genie creates the project and starts the first build automatically:
+
+```
+Create a project called "Customer Tracker" — a table with name, company, status, and last contact date, with a search bar and a row detail panel.
+```
+
+Genie starts the build in the background. Open the project afterwards to watch the live build output and preview the result.
+
+### Send a prompt to an existing project
+
+Tell Genie to make a change to one of your existing projects by name:
+
+```
+Add a dark mode toggle to the Dashboard app.
+Add email notifications to the Invoice Tracker when a new invoice is created.
+```
+
+Genie finds the project, shows you a confirmation card describing what it is about to do, and — after you confirm — queues the prompt as a follow-up build turn. Open the project afterwards to see the result.
+
+<Note>
+If a project is already building when you confirm, Genie will let you know and ask you to try again once the current run finishes.
+</Note>
+
+### Answer questions about your workspace
+
+Ask Genie about your workspace and it looks up the answer in real time:
+
+- "How many projects do we have?"
+- "Who are the members of this workspace and what are their roles?"
+- "What MCP integrations are connected?"
+- "Show me the recent activity log."
+- "What are our current PII detection rules?"
+
+### Manage workspace settings
+
+Owners and admins can ask Genie to update workspace settings directly from the chat:
+
+- "Turn on the activity log."
+- "Invite alex@example.com as a member."
+- "Change the project access control to admins only."
+- "Update the workspace description."
+
+Genie confirms before making any changes that affect members or settings.
+
+## Memory
+
+Genie AI remembers things you share with it across sessions. If you mention that your team prefers a certain code style, uses a specific tech stack, or follows a particular workflow, Genie stores that and uses it in future conversations — so you do not have to repeat yourself each time.
+
+Memories are personal to you. They are used only in your conversations with Genie AI, not shared with other workspace members.
+
+## Using connected integrations
+
+If your workspace has MCP integrations connected (see [Integrations](/workspaces/integrations)), Genie AI can use those tools when building or updating projects. For example:
+
+- Ask Genie to "create a Pro plan in Stripe" on a payment project and it calls the Stripe integration to provision the product, then writes the resulting price ID into the project code.
+- Ask "what issues are assigned to me in Linear?" and Genie queries Linear directly and summarises the results.
+
+<Tip>
+MCP tools are available to Genie AI during follow-up build turns and in direct Q&A. They are not used during the very first build of a brand-new project, which focuses on scaffolding the initial code quickly.
+</Tip>
+
+## Tips for getting good results
+
+<AccordionGroup>
+  <Accordion title="Name the project clearly when asking for changes">
+    Genie finds your projects by name. Use the same name you see on the project card — "add a search bar to the Inventory Lite app" works better than "add a search bar to my app."
+  </Accordion>
+  <Accordion title="One task at a time for existing projects">
+    Genie queues one build turn per request. If you want several changes, send them in sequence so you can review each result before the next one starts.
+  </Accordion>
+  <Accordion title="Use it to explore before you build">
+    Ask questions like "what projects do we have?" or "show me the last few activity log entries" to orient yourself before starting a build.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Connect integrations" icon="plug" href="/workspaces/integrations">
+    Add Linear, Stripe, GitHub, and more to unlock MCP tools in Genie AI.
+  </Card>
+  <Card title="Workspace overview" icon="building-2" href="/workspaces/overview">
+    Learn about the workspace sidebar, project list, and collaboration features.
+  </Card>
+</CardGroup>

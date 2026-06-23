@@ -1,0 +1,90 @@
+---
+title: "PII-Erkennung"
+description: "Konfiguriere eingebaute und eigene Regeln, um personenbezogene Daten in den KI-Gesprächen deines Workspaces zu erkennen, zu protokollieren oder zu blockieren."
+---
+
+Die Workspace-PII-Erkennung scannt Inhalte, die Mitglieder vor der KI-Verarbeitung senden. Wenn eine Regel übereinstimmt, kann Genie die Erkennung protokollieren, die Nachricht vollständig blockieren oder sie stillschweigend durchlassen — je nachdem, wie du jede Regel konfigurierst. Dies hilft Workspace-Eigentümern und Admins, sensible Daten aus KI-Gesprächen herauszuhalten.
+
+<Note>
+PII-Erkennungseinstellungen sind nur für **Eigentümer** und **Admins** zugänglich. Die Erkennung gilt für alle Mitglieder im Workspace, einschließlich Gesprächen im Projekt-Chat und im Workspace-Genie-KI-Chat.
+</Note>
+
+## PII-Erkennungseinstellungen öffnen
+
+Klicke in der Workspace-Seitenleiste auf **Einstellungen** und navigiere dann zu **PII-Erkennung**.
+
+## Eingebaute Detektoren
+
+Genie enthält Detektoren für die häufigsten Arten sensibler Daten, alle standardmäßig aktiviert:
+
+- E-Mail-Adressen
+- Telefonnummern
+- Kreditkartennummern
+- Sozialversicherungs- und nationale ID-Nummern
+- IBAN und Kontonummern
+- IP-Adressen
+- Passwörter im Klartext
+
+Jeder eingebaute Detektor startet mit der Aktion **Protokollieren**. Du kannst die Aktion ändern oder einzelne Detektoren unabhängig deaktivieren, ohne die anderen zu beeinflussen.
+
+## Eigene Regeln
+
+Du kannst eigene Erkennungsregeln mit regulären Ausdrücken hinzufügen — nützlich für Datenmuster, die spezifisch für deine Organisation sind, wie interne Mitarbeiter-IDs, Vertragsnummern oder proprietäre Kennungen.
+
+<Steps>
+  <Step title="PII-Erkennungseinstellungen öffnen">
+    Gehe zu **Einstellungen → PII-Erkennung** in deinem Workspace.
+  </Step>
+  <Step title="Regel hinzufügen klicken">
+    Klicke auf den Button **Regel hinzufügen** im Bereich **Eigene Regeln**.
+  </Step>
+  <Step title="Regeldetails ausfüllen">
+    - **Bezeichnung** — ein kurzer Name für die Regel (zum Beispiel "Mitarbeiter-ID").
+    - **Muster** — ein regulärer Ausdruck, der auf die sensiblen Daten passt.
+    - **Aktion** — was zu tun ist, wenn das Muster übereinstimmt (siehe unten).
+  </Step>
+  <Step title="Speichern">
+    Klicke auf **Speichern**. Die Regel wird sofort für alle Workspace-Mitglieder aktiv.
+  </Step>
+</Steps>
+
+## Aktionen
+
+Jede Regel — eingebaut oder benutzerdefiniert — hat eine **Aktion**, die steuert, was passiert, wenn Inhalte übereinstimmen:
+
+| Aktion | Was passiert |
+|---|---|
+| **Ignorieren** | Erkennt die Übereinstimmung, ergreift aber keine Maßnahmen. Nutze dies, um zu überwachen, wie oft ein Muster auftritt, bevor du etwas erzwingst. |
+| **Protokollieren** | Zeichnet die Erkennung im Prüfprotokoll auf, mit dem übereinstimmenden Wert redigiert. Die Nachricht wird trotzdem an die KI gesendet. |
+| **Blockieren** | Lehnt die Nachricht ab, bevor sie die KI erreicht. Die absendende Person sieht eine klare Erklärung, die die übereinstimmenden Kategorien auflistet. Der Inhalt wird nicht verarbeitet. |
+
+<Warning>
+Blockierungsregeln treten sofort für alle Workspace-Mitglieder in Kraft. Teste eine Regel zuerst mit der Aktion **Protokollieren**, um zu bestätigen, dass sie das Erwartete erkennt, bevor du auf **Blockieren** wechselst.
+</Warning>
+
+## Erkennungsprotokoll
+
+Die Seite PII-Erkennungseinstellungen enthält ein Protokoll der letzten Erkennungen. Jeder Eintrag zeigt:
+
+- Den Erkennungszeitstempel
+- Das Mitglied, dessen Nachricht die Erkennung ausgelöst hat
+- Die Chat-Oberfläche (Workspace-Genie-KI oder Projekt-Chat)
+- Die erkannte Kategorie
+- Den redigierten Wert — zum Beispiel `jo*****@b*****.de`
+
+Der rohe übereinstimmende Wert wird nie gespeichert — nur die redigierte Form erscheint im Protokoll.
+
+## Regeln über Genie KI verwalten
+
+Eigentümer und Admins können PII-Regeln auch direkt aus dem Workspace-Genie-KI-Chat lesen und verwalten:
+
+- "Zeige mir die aktuellen PII-Erkennungsregeln."
+- "Erstelle eine Regel, die Inhalte blockiert, die dem Mitarbeiter-ID-Format EMP-123456 entsprechen."
+- "Deaktiviere den IP-Adressen-Detektor."
+- "Zeige mir die letzten PII-Erkennungen."
+
+Genie bestätigt, bevor es Änderungen vornimmt, die die Erkennung deaktivieren oder abschwächen.
+
+## Auf Standardeinstellungen zurücksetzen
+
+Um alle eingebauten Detektoren auf ihre Standardeinstellungen zurückzusetzen — aktiviert, mit der Aktion Protokollieren — klicke oben auf der Seite PII-Erkennungseinstellungen auf **Auf Standardeinstellungen zurücksetzen**. Eigene Regeln sind von einem Zurücksetzen nicht betroffen.
