@@ -1,0 +1,85 @@
+---
+title: "Workspace PII-Regeln: sensible Daten erkennen und blockieren"
+description: "Konfiguriere integrierte und benutzerdefinierte PII-Detektoren für deinen Workspace. Protokolliere oder blockiere sensible Muster in Genie AI- und Projekt-Chats."
+---
+
+Workspace PII-Regeln ermöglichen es Workspace-Eigentümern und Admins zu steuern, wie Genie mit möglicherweise sensiblen Daten im KI-Chat umgeht. Du kannst integrierte Detektoren aktivieren oder deaktivieren (E-Mail-Adressen, Kreditkartennummern, IBANs und mehr), benutzerdefinierte Regex-Regeln für unternehmensspezifische Muster erstellen, und wählen, ob übereinstimmende Inhalte stillschweigend protokolliert oder aktiv blockiert werden.
+
+<Note>
+PII-Regeln sind eine Workspace-Funktion, die nur für Eigentümer und Admins verfügbar ist. Mitglieder können die Regeln einsehen, aber nicht ändern.
+</Note>
+
+## Wo du es findest
+
+Gehe zu **Workspace-Einstellungen → PII-Erkennung**. Die Seite listet alle integrierten Detektoren und alle von dir erstellten benutzerdefinierten Regeln auf, zusammen mit dem aktuellen Erkennungsprotokoll am unteren Rand.
+
+## Integrierte Detektoren
+
+Genie wird mit Detektoren für die häufigsten sensiblen Datenkategorien geliefert:
+
+- E-Mail-Adressen
+- Kreditkartennummern
+- IBANs (Bankkontonummern)
+- API-Schlüssel und Tokens
+- Und weitere
+
+Alle integrierten Detektoren sind standardmäßig mit der Aktion **Protokollieren** aktiviert. Du kannst jeden Detektor, den du nicht benötigst, deaktivieren oder auf **Blockieren** umstellen.
+
+## Aktionen
+
+Jede Regel hat eine Aktion, die bestimmt, was passiert, wenn eine Übereinstimmung gefunden wird:
+
+| Aktion | Was sie tut |
+|--------|-------------|
+| **Ignorieren** | Erkennt das Muster, tut aber nichts weiter. |
+| **Protokollieren** | Schreibt einen zensierten Eintrag ins Erkennungsprotokoll. Der Originalwert wird nie gespeichert — nur ein unkenntlich gemachter Platzhalter. |
+| **Blockieren** | Weist die Nachricht ab und teilt dem Nutzer mit, welche Datenkategorie den Block ausgelöst hat. Schreibt ebenfalls einen Protokolleintrag. |
+
+Bei einer blockierten Nachricht teilt Genie dem Nutzer mit, welche Datenkategorie den Block ausgelöst hat (z. B. *"Diese Nachricht enthält eine Kreditkartennummer"*) — ohne den Wert zu wiederholen.
+
+## Benutzerdefinierte Regeln
+
+Du kannst eigene Regex-basierte Regeln für unternehmensspezifische Muster hinzufügen — interne IDs, vertrauliche Projektnummern oder andere Formate, die du erkennen möchtest.
+
+<Steps>
+  <Step title="PII-Erkennungseinstellungen öffnen">
+    Gehe zu **Workspace-Einstellungen → PII-Erkennung** und klicke auf **Regel hinzufügen**.
+  </Step>
+  <Step title="Regel benennen">
+    Gib der Regel eine Bezeichnung, die beschreibt, was sie erkennt (z. B. *Mitarbeiter-ID*).
+  </Step>
+  <Step title="Muster schreiben">
+    Gib einen regulären Ausdruck ein. Genie validiert das Muster vor dem Speichern — ein ungültiger Ausdruck gibt einen Fehler zurück.
+  </Step>
+  <Step title="Aktion wählen">
+    Wähle **Ignorieren**, **Protokollieren** oder **Blockieren**, je nachdem wie sensibel die erkannten Daten sind.
+  </Step>
+  <Step title="Speichern">
+    Die Regel wird sofort aktiv. Teste sie, indem du im Genie AI-Tab eine Nachricht mit einem übereinstimmenden Muster sendest.
+  </Step>
+</Steps>
+
+## Erkennungsprotokoll
+
+Das Erkennungsprotokoll zeigt aktuelle Übereinstimmungen von Regeln mit der Aktion **Protokollieren** oder **Blockieren**. Jeder Eintrag zeigt:
+
+- Welche Regel übereinstimmte
+- Welche Aktion durchgeführt wurde
+- Eine unkenntlich gemachte Version des übereinstimmenden Werts (das Original wird nie gespeichert)
+- Von welcher Chat-Oberfläche es ausgelöst wurde (Genie AI oder ein Projekt)
+- Wer die Nachricht gesendet hat
+
+Das Protokoll ist nur für Workspace-Eigentümer und Admins sichtbar.
+
+## Auf Standard zurücksetzen
+
+Du kannst alle integrierten Detektoren jederzeit von der PII-Erkennungsseite auf ihre Standardwerte zurücksetzen. Dadurch werden alle deaktivierten integrierten Detektoren wieder aktiviert und alle Aktionen auf **Protokollieren** zurückgesetzt. Benutzerdefinierte Regeln sind nicht betroffen.
+
+## PII-Regeln über MCP verwalten
+
+Wenn du den Genie MCP-Server verwendest, kannst du Regeln auflisten, Erkennungen einsehen und Regeleinstellungen aus Claude Desktop oder Cursor heraus ändern, ohne den Browser zu öffnen. Siehe [Genie MCP-Server](/de/workspaces/mcp-server).
+
+## Verwandte Seiten
+
+- [Workspace-Integrationen](/de/workspaces/integrations)
+- [Genie MCP-Server](/de/workspaces/mcp-server)

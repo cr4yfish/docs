@@ -1,0 +1,85 @@
+---
+title: "Workspace PII rules: detect and block sensitive data"
+description: "Configure built-in and custom PII detectors to protect your workspace. Log or block sensitive patterns in Genie AI and project chats."
+---
+
+Workspace PII rules let workspace owners and admins control how Genie handles potentially sensitive data that appears in AI chat. You can enable or disable built-in detectors (email addresses, credit card numbers, IBANs, and more), create custom regex rules for patterns specific to your business, and choose whether matching content is silently logged or actively blocked.
+
+<Note>
+PII rules are a workspace-level feature available to owners and admins. Members can view the rules but cannot change them.
+</Note>
+
+## Where to find it
+
+Go to **Workspace Settings → PII Detection**. The page lists all built-in detectors and any custom rules you have created, along with the recent detection log at the bottom.
+
+## Built-in detectors
+
+Genie ships with detectors for the most common sensitive data categories:
+
+- Email addresses
+- Credit card numbers
+- IBANs (bank account numbers)
+- API keys and tokens
+- And others
+
+All built-in detectors are enabled by default with the **Log** action. You can disable any detector you don't need or change it to **Block** for stricter enforcement.
+
+## Actions
+
+Each rule has an action that determines what happens when a match is found:
+
+| Action | What it does |
+|--------|-------------|
+| **Ignore** | Detects the pattern but takes no further action. |
+| **Log** | Records a censored entry in the detection log. The original value is never stored — only a redacted placeholder is kept. |
+| **Block** | Rejects the message and tells the user which data category triggered the block. Also adds a log entry. |
+
+When a message is blocked, Genie tells the user which category of data triggered it (for example, *"This message contains a credit card number"*) without repeating the value back.
+
+## Custom rules
+
+You can add your own regex-based rules for patterns specific to your business — internal IDs, confidential project codes, or any other format you want to detect.
+
+<Steps>
+  <Step title="Open PII Detection settings">
+    Go to **Workspace Settings → PII Detection** and click **Add rule**.
+  </Step>
+  <Step title="Name your rule">
+    Give the rule a label that describes what it detects (for example, *Employee ID*).
+  </Step>
+  <Step title="Write the pattern">
+    Enter a regular expression. Genie validates the pattern before saving — an invalid regex returns an error. Keep patterns focused to avoid false positives.
+  </Step>
+  <Step title="Choose an action">
+    Pick **Ignore**, **Log**, or **Block** based on how sensitive the matched data is.
+  </Step>
+  <Step title="Save">
+    The rule activates immediately. Test it by sending a message containing a matching pattern in the Genie AI tab.
+  </Step>
+</Steps>
+
+## Detection log
+
+The detection log shows recent matches from rules with the **Log** or **Block** action. Each entry shows:
+
+- Which rule matched
+- The action that was taken
+- A redacted version of the matched value (the original is never stored)
+- Which chat surface triggered it (Genie AI or a project)
+- Who sent the message
+
+The log is visible to workspace owners and admins only.
+
+## Resetting to defaults
+
+You can reset all built-in detectors to their shipped defaults at any time from the PII Detection settings page. This re-enables any disabled built-in detectors and resets all actions back to **Log**. Custom rules are not affected by a reset.
+
+## Managing PII rules via MCP
+
+If you use the Genie MCP server, you can list rules, view detections, and change rule settings from Claude Desktop or Cursor without opening the browser. See [Genie MCP server](/workspaces/mcp-server) for details.
+
+## Related pages
+
+- [Workspace integrations](/workspaces/integrations)
+- [Genie MCP server](/workspaces/mcp-server)

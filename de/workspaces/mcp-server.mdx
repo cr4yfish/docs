@@ -1,0 +1,82 @@
+---
+title: "Genie MCP-Server: KI-Clients mit deinem Workspace verbinden"
+description: "Nutze den Genie MCP-Server, um deinen Workspace zu verwalten, Projekte zu bauen und mit Genie aus Claude Desktop, Cursor oder einem anderen MCP-kompatiblen KI-Client zu chatten."
+---
+
+Der Genie MCP-Server ermöglicht es jedem MCP-kompatiblen KI-Client — Claude Desktop, Cursor oder deinem eigenen Agenten — deinen Genie Workspace programmatisch zu verwalten. Aus einem einzigen Gespräch heraus kannst du Projekte erstellen, Follow-up-Prompts senden, Mitglieder verwalten, dein Aktivitätsprotokoll lesen und mit Genie chatten, ohne den Browser zu öffnen.
+
+## Endpunkt
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+Der Server nutzt den Streamable HTTP-Transport. Eine dauerhafte Verbindung ist nicht erforderlich.
+
+## Authentifizierung
+
+Der MCP-Server nutzt **OAuth 2.0 mit PKCE**, begrenzt auf einen einzelnen Workspace. Beim ersten Verbinden öffnet dein KI-Client ein Browserfenster, um den OAuth-Ablauf abzuschließen. Nach der Autorisierung speichert der Client ein kurzlebiges Token und sendet es automatisch mit jeder Anfrage.
+
+<Note>
+Jedes OAuth-Token ist auf einen Workspace beschränkt. Um einen anderen Workspace zu verbinden, starte einen neuen OAuth-Ablauf für diesen Workspace.
+</Note>
+
+## Claude Desktop verbinden
+
+<Steps>
+  <Step title="Claude Desktop-Einstellungen öffnen">
+    Gehe in Claude Desktop zu **Einstellungen → Integrationen** (oder **Entwickler → MCP-Server**, je nach Version).
+  </Step>
+  <Step title="Den Genie MCP-Server hinzufügen">
+    Füge die Genie MCP-Endpunkt-URL ein: `https://www.genie-app.de/api/mcp`
+  </Step>
+  <Step title="Verbindung autorisieren">
+    Claude Desktop öffnet ein Browserfenster. Melde dich bei Genie an und wähle den Workspace, den du verbinden möchtest. Klicke auf **Autorisieren**.
+  </Step>
+  <Step title="Loslegen">
+    In einem neuen Claude-Gespräch sind Genie Workspace-Tools verfügbar. Probiere: *"Liste meine letzten Projekte auf"* oder *"Erstelle ein neues Projekt namens Kundenportal"*.
+  </Step>
+</Steps>
+
+## Was du tun kannst
+
+### Workspace-Verwaltung
+
+Zeige deine Workspace-Details, Mitgliederliste, ausstehende Einladungen und das Aktivitätsprotokoll an. Aktualisiere den Workspace-Namen und die Beschreibung, verwalte Mitglieder und ihre Rollen, und schalte Workspace-Einstellungen wie das Aktivitätsprotokoll und die Projektzugangskontrolle um.
+
+### Projekte
+
+Durchsuche deine Projekte, zeige ihren Deployment-Status an, erstelle neue Projekte aus einem Prompt, sende Follow-up-Prompts, archiviere und lösche Projekte, und steuere den Projektzugang. Du kannst auch eine Vorschau eines bereitgestellten Projekts anzeigen und KI-generierte Vorschläge für deinen nächsten Prompt erhalten.
+
+### Workspace-Chat
+
+Starte oder setze ein mehrstufiges KI-Gespräch über deinen Workspace fort — stelle Fragen, erhalte Zusammenfassungen oder erkunde deine Projekthistorie. Gespräche werden gespeichert und sind in der Genie-Web-App sichtbar.
+
+### MCP-Integrationen
+
+Liste auf, füge hinzu, aktualisiere, aktiviere, deaktiviere und lösche die MCP-Server-Integrationen, die für deinen Workspace konfiguriert sind.
+
+### PII-Regeln
+
+Zeige und verwalte die PII-Erkennungsregeln deines Workspaces — schalte integrierte Detektoren um, füge benutzerdefinierte Regex-Regeln hinzu und prüfe das Erkennungsprotokoll.
+
+### Credits und Abrechnung
+
+Prüfe dein Workspace-Guthaben, frage die Credit-Nutzung nach Projekt oder Mitglied ab, und lese deinen aktuellen Abonnementstatus.
+
+## Verfügbare Tools auf einen Blick
+
+| Kategorie | Was abgedeckt wird |
+|----------|-------------------|
+| Workspace | Details, Einstellungen, Mitglieder, Einladungen, Aktivitätsprotokoll, Abrechnung |
+| Projekte | Erstellen, auflisten, suchen, Status, Vorschau, Prompt, archivieren, löschen, Zugangskontrolle |
+| Workspace-Chat | KI-Gespräche über deinen Workspace starten und fortsetzen |
+| MCP-Integrationen | MCP-Server-Verbindungen hinzufügen, verwalten, testen und entfernen |
+| PII-Regeln | Datenschutzregeln konfigurieren und Erkennungsprotokoll anzeigen |
+| Credits | Guthaben, Nutzungsaufschlüsselung, Abonnementstatus |
+
+## Verwandte Seiten
+
+- [Workspace-Integrationen](/de/workspaces/integrations)
+- [Workspace PII-Regeln](/de/workspaces/pii-rules)
+- [Workspace-Übersicht](/de/workspaces/overview)

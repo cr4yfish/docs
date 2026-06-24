@@ -1,0 +1,82 @@
+---
+title: "Genie MCP server: connect AI clients to your workspace"
+description: "Use the Genie MCP server to manage your workspace, build projects, and chat with Genie from Claude Desktop, Cursor, or any MCP-compatible AI client."
+---
+
+The Genie MCP server lets any MCP-compatible AI client — Claude Desktop, Cursor, or your own agent — manage your Genie workspace programmatically. From a single conversation you can create projects, send follow-up prompts, manage members, read your activity log, and chat with Genie, all without opening the browser.
+
+## Endpoint
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+The server uses the Streamable HTTP transport. No persistent connection is required.
+
+## Authentication
+
+The MCP server uses **OAuth 2.0 with PKCE** scoped to a single workspace. The first time you connect, your AI client opens a browser window to complete the OAuth flow. After authorization, the client stores a short-lived token and presents it automatically with every request.
+
+<Note>
+Each OAuth token is scoped to one workspace. To connect to a different workspace, start a new OAuth flow for that workspace.
+</Note>
+
+## Connecting Claude Desktop
+
+<Steps>
+  <Step title="Open Claude Desktop settings">
+    In Claude Desktop, go to **Settings → Integrations** (or **Developer → MCP Servers** depending on your version).
+  </Step>
+  <Step title="Add the Genie MCP server">
+    Paste the Genie MCP endpoint URL: `https://www.genie-app.de/api/mcp`
+  </Step>
+  <Step title="Authorize the connection">
+    Claude Desktop opens a browser window. Log in to Genie and choose the workspace you want to connect. Click **Authorize**.
+  </Step>
+  <Step title="Start building">
+    In a new Claude conversation, Genie workspace tools are now available. Try: *"List my recent projects"* or *"Create a new project called Customer Portal"*.
+  </Step>
+</Steps>
+
+## What you can do
+
+### Workspace management
+
+View your workspace details, member list, pending invitations, and activity log. Update the workspace name and description, manage members and their roles, and toggle workspace settings such as the activity log and project access control.
+
+### Projects
+
+Browse and search your projects, view their deployment status, create new projects from a prompt, send follow-up prompts to existing projects, archive and delete projects, and control who has access to each project. You can also preview a deployed project and get AI-generated suggestions for your next prompt.
+
+### Workspace chat
+
+Start or continue a multi-turn AI conversation about your workspace — ask questions, get summaries, or explore your project history. Conversations are saved and visible in the Genie web app.
+
+### MCP integrations
+
+List, add, update, enable, disable, and delete the MCP server integrations configured for your workspace.
+
+### PII rules
+
+View and manage your workspace's PII detection rules — toggle built-in detectors, add custom regex rules, and inspect the detection log.
+
+### Credit and billing
+
+Check your workspace credit balance, query credit usage by project or member, and read your current subscription status.
+
+## Available tools at a glance
+
+| Category | What it covers |
+|----------|---------------|
+| Workspace | Details, settings, members, invitations, activity log, billing |
+| Projects | Create, list, search, status, preview, prompt, archive, delete, access control |
+| Workspace chat | Start and continue AI conversations about your workspace |
+| MCP integrations | Add, manage, test, and remove MCP server connections |
+| PII rules | Configure data-protection rules and view the detection log |
+| Credits | Balance, usage breakdown, subscription status |
+
+## Related pages
+
+- [Workspace integrations](/workspaces/integrations)
+- [Workspace PII rules](/workspaces/pii-rules)
+- [Workspace overview](/workspaces/overview)
