@@ -1,0 +1,44 @@
+---
+title: "Workspace settings overview"
+description: "Manage members, billing, integrations, PII detection, and the activity log from the workspace Settings area."
+---
+
+The workspace **Settings** area is the control centre for your workspace. Owners and admins can manage everyone and everything from here. Open it by clicking **Settings** in the left sidebar footer.
+
+<Note>
+All settings pages are restricted to workspace **owners** and **admins**. Members and editors who navigate to Settings see a permission message.
+</Note>
+
+## Settings sections
+
+<CardGroup cols={2}>
+  <Card title="Members & Roles" icon="users" href="/workspaces/members">
+    Invite people via a shareable link, assign roles, promote or demote members, and remove people from the workspace.
+  </Card>
+  <Card title="Billing" icon="credit-card" href="/billing/plans">
+    View your current plan, track credit usage by member and by project, and manage your subscription. The plan section is restricted to the workspace **owner** only.
+  </Card>
+  <Card title="Integrations" icon="plug" href="/workspaces/integrations">
+    Connect MCP servers — Linear, GitHub, Notion, Stripe, and more — so every member can use those tools inside any project without individual credential setup.
+  </Card>
+  <Card title="PII Detection" icon="shield" href="/workspaces/pii">
+    Enable built-in detectors for common sensitive-data categories (credit cards, email addresses, etc.) or write custom regex rules to log or block PII in member messages.
+  </Card>
+  <Card title="Activity Log" icon="activity">
+    A paginated audit trail of all workspace events — project creation, member changes, setting updates. Must be enabled from the **Audit & Logging** toggle on the main settings page first.
+  </Card>
+</CardGroup>
+
+## Inline toggles
+
+Two settings live directly on the settings overview page and don't require opening a sub-page.
+
+### Access & Permissions
+
+When **project-level access control** is on, workspace members must be explicitly added to individual projects before they can access them. Admins and owners always have access to all projects regardless of this setting.
+
+When it is off, all workspace members can access all projects automatically.
+
+### Audit & Logging
+
+Enables or disables the workspace activity log. When enabled, every significant action is recorded with a timestamp and the actor's name. The log appears in the sidebar under **Activities** and in **Settings → Activity Log**.
