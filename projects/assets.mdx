@@ -1,0 +1,74 @@
+---
+title: "Upload images and videos to your project"
+description: "Add your own images and videos to a project so Genie can use them in your app — as a logo, hero image, product photo, or any other visual asset."
+---
+
+You can add your own images and videos to any project so Genie can use them directly in your app. Files you upload are placed in your project's public folder and served at a root-relative path like `/logo.png`, which your app can reference as a standard image source.
+
+There are two ways to upload assets: **dragging a file into the project chat** for a single image mid-conversation, or using the **Upload tool in the workspace AI chat** for multiple files at once.
+
+## Drag an image into the project chat
+
+The simplest way to get an image into your app is to drop it into the project chat while you are building.
+
+<Steps>
+  <Step title="Open your project">
+    Navigate to the project where you want to add the image.
+  </Step>
+  <Step title="Drag the file into the chat input">
+    Drag an image from your computer and drop it into the prompt input at the bottom of the chat. A preview thumbnail appears.
+  </Step>
+  <Step title="Tell Genie how to use it">
+    Type a message describing where the image should appear — for example, *"Use this as the hero background"* or *"Replace the logo with this file"*. Press **Send**.
+  </Step>
+  <Step title="Genie adds it to your project">
+    Genie saves the file to your project's public folder and updates the relevant part of your app to reference it. The image is immediately available at a path like `/hero.jpg`.
+  </Step>
+</Steps>
+
+<Tip>
+Use this when you want Genie to **place** the image for you. If you want to drag in a screenshot as a *design reference* only (without adding it to the app), say so — for example, *"Make the layout look like this screenshot"* — and Genie will use it as reference without saving it as an asset.
+</Tip>
+
+## Upload multiple files via the workspace AI chat
+
+To upload several images or videos at once, use the **Upload images & videos** action in the workspace AI chat.
+
+<Steps>
+  <Step title="Open the workspace AI chat">
+    Press **Cmd K** (Mac) or **Ctrl K** (Windows / Linux) from anywhere in your workspace to open the command palette, then search for **Upload images & videos**. Alternatively, open the AI chat from the workspace sidebar.
+  </Step>
+  <Step title="Select Upload images & videos">
+    Choose the action. Genie asks which project to upload to — select the project you want to add files to.
+  </Step>
+  <Step title="Drop or pick your files">
+    Drag files onto the upload card, or click to open a file picker. You can upload up to **10 files** per batch.
+  </Step>
+  <Step title="Wait for uploads to finish">
+    Each file shows its progress individually. Files that are the wrong type or too large are rejected with an explanation; valid files upload and are moved into your project's public folder automatically.
+  </Step>
+  <Step title="Use the paths in your project">
+    Once complete, Genie lists the uploaded file paths (for example `/logo.png`). Ask Genie to use those paths in your project chat, or reference them in a follow-up prompt.
+  </Step>
+</Steps>
+
+## Supported file types and size limits
+
+<CardGroup cols={2}>
+  <Card title="Images" icon="image">
+    PNG, JPEG, WebP, GIF, AVIF — up to **15 MB** per file.
+  </Card>
+  <Card title="Videos" icon="video">
+    MP4, WebM, QuickTime — up to **100 MB** per file.
+  </Card>
+</CardGroup>
+
+<Note>
+SVG files are not supported for direct upload. To use an SVG icon or illustration in your app, describe it to Genie and it will generate or inline it in code.
+</Note>
+
+You can upload up to **10 files** in a single batch via the workspace AI chat. There is no batch limit when adding files one at a time through the project chat.
+
+## How uploaded files appear in your app
+
+All uploaded files land in your project's public folder and are served at their root-relative URL. A file named `hero.jpg` becomes available at `/hero.jpg` and can be referenced as a standard image URL anywhere in your app. Files persist across builds and redeployments.

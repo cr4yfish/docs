@@ -1,0 +1,81 @@
+---
+title: "PII detection and data protection"
+description: "Configure automatic scanning for sensitive information. Enable built-in detectors or write custom rules to log or block PII before it reaches the AI."
+---
+
+Genie can automatically scan messages for personally identifiable information (PII) — such as credit card numbers, email addresses, or any pattern you define — and either log or block the content before it reaches the AI model.
+
+Rules are configured per workspace by owners and admins, and apply to all members across all projects in that workspace.
+
+<Note>
+**Settings → PII Detection** is accessible to workspace **owners** and **admins** only.
+</Note>
+
+## How detection works
+
+When a member sends a message in a project chat or the workspace AI chat, it is checked against all enabled rules before the AI processes it. Depending on the rule's **action**, Genie either:
+
+- **Logs** the match — the message goes through, but a censored entry is written to the detection log for admin review.
+- **Blocks** the message — the sender sees an error listing the matched categories, and the message is not sent to the AI. They must remove the flagged content before re-sending.
+- **Ignores** — the rule detects the pattern but takes no action; useful for monitoring without enforcement while you tune a new rule.
+
+The detection log stores only a censored version of the match (for example `jo********om`) — never the original value.
+
+## Built-in detectors
+
+Genie ships with built-in detectors for the most common PII categories. Each can be independently enabled or disabled, and its action changed. Common built-in categories include:
+
+- Credit card numbers
+- Email addresses
+- Phone numbers
+- Social security and national ID numbers
+- IBAN / bank account numbers
+- IP addresses
+
+All built-in detectors are **enabled** with the **Log** action by default. To upgrade a detector to **Block**, click the action dropdown on that row and choose **Block**. Clicking **Reset to defaults** restores all built-in detectors to their original state — custom rules are not affected.
+
+## Custom rules
+
+If you need to detect patterns specific to your business — internal project codes, employee IDs, or a proprietary data format — you can write your own rules using regular expressions.
+
+<Steps>
+  <Step title="Open PII Detection settings">
+    In the workspace sidebar, click **Settings**, then open **PII Detection**.
+  </Step>
+  <Step title="Create a new rule">
+    Click **New rule**. A dialog opens for configuring the rule.
+  </Step>
+  <Step title="Configure the rule">
+    - **Label** — a readable name shown in the detection log and in the error message the sender sees.
+    - **Pattern** — a regular expression that matches the sensitive data.
+    - **Action** — what to do on a match: **Ignore**, **Log**, or **Block**.
+  </Step>
+  <Step title="Save">
+    Click **Save**. The rule activates immediately and applies to all new messages in the workspace.
+  </Step>
+</Steps>
+
+<Warning>
+Patterns are validated before saving — an invalid regular expression returns an error rather than being stored. Keep patterns specific enough to minimise false positives, especially when using **Block**.
+</Warning>
+
+## Detection log
+
+The detection log records every message that triggered a **Log** or **Block** rule. Each entry shows:
+
+- Which rule matched and a censored version of the matched value
+- Which member sent the message and from which project
+- The timestamp
+
+The 50 most recent entries are shown on the **PII Detection** page below the rule list. Only owners and admins can read the log.
+
+## Managing rules via the AI assistant
+
+Owners and admins can also manage PII rules by talking to Genie in the workspace AI chat. You can ask Genie to:
+
+- List all current rules and their status
+- Enable, disable, or change the action on a specific rule
+- Create a new custom rule
+- Show recent detections
+
+Genie will ask for confirmation before weakening a rule (for example, downgrading a **Block** to **Log**) or disabling a built-in detector.

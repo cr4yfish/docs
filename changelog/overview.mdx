@@ -4,6 +4,29 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="June 24, 2026" description="Weekly release">
+
+This week brings PII protection, dark mode, media uploads, workspace billing for all tiers, and a handful of polish improvements.
+
+## New features
+
+- **PII detection.** Workspace owners and admins can now configure automatic scanning for sensitive data in member messages. Enable built-in detectors (credit cards, email addresses, phone numbers, and more) or write custom regex rules. Each rule can log, block, or silently ignore matches. The detection log records censored matches for audit review — never the original value. See [PII Detection](/workspaces/pii).
+- **Dark mode.** Toggle the full Genie interface into dark mode from Account Settings. Your preference is saved to your account and follows you across all devices and browsers. See [Account Settings](/account/settings).
+- **Upload images and videos to your project.** Drag an image into the project chat and tell Genie where to use it — as a hero photo, logo, or product image — and Genie saves it to your project's public folder. For batch uploads, use the **Upload images & videos** action in the workspace AI chat (up to 10 files at once). Supported formats: PNG, JPEG, WebP, GIF, AVIF (up to 15 MB) and MP4, WebM, QuickTime (up to 100 MB). See [Upload images and videos](/projects/assets).
+- **Workspace settings overview.** A new Settings home page links out to Members, Billing, Integrations, PII Detection, and the Activity Log from a single card grid. See [Workspace Settings](/workspaces/settings).
+- **Workspace AI chat pricing tool.** Ask Genie in the workspace chat about current plan pricing and it will look up live Stripe data rather than relying on a fixed answer.
+- **Genie AI assist for form controls.** Radio buttons, checkboxes, and dropdowns can now surface a Genie AI button. Clicking it opens a one-line chat; submitting applies the AI-suggested selection to the field.
+
+## Updates
+
+- **Workspace billing available to all tiers.** Free workspaces now see the Billing page with a plan overview and upgrade prompt. Previously, billing was only shown after a paid plan was active.
+- **Members & Roles link fixed.** The sidebar entry and command palette actions for Members & Roles now point to `/settings/members` (the dedicated full page) rather than an anchor that didn't render.
+- **Command palette confirm-on-close.** Closing the command palette while an in-palette AI chat is in progress now shows a brief confirmation — the conversation is saved and reachable from Recent chats — instead of silently discarding the chat view. Choose **Don't show again** to skip future prompts.
+- **Workspace chat conversation URL sync.** The conversation ID is reflected in the URL as soon as a new chat starts, so the browser history and share link are accurate from the first message.
+- **Language-switching footer.** A language toggle now appears in the footer on workspace sub-pages, making it easier to switch between English and German from anywhere in the workspace.
+
+</Update>
+
 <Update label="May 22, 2026" description="Weekly release">
 
 A short follow-up week focused on refining what shipped on Monday.

@@ -69,6 +69,7 @@
                 "pages": [
                   "projects/overview",
                   "projects/import-design",
+                  "projects/assets",
                   "projects/settings",
                   "projects/secrets",
                   "projects/visibility"
@@ -79,8 +80,10 @@
                 "icon": "building-2",
                 "pages": [
                   "workspaces/overview",
+                  "workspaces/settings",
                   "workspaces/members",
-                  "workspaces/integrations"
+                  "workspaces/integrations",
+                  "workspaces/pii"
                 ]
               },
               {
@@ -100,6 +103,13 @@
                   "billing/plans",
                   "billing/credits",
                   "billing/topups"
+                ]
+              },
+              {
+                "group": "Account",
+                "icon": "user",
+                "pages": [
+                  "account/settings"
                 ]
               }
             ]
