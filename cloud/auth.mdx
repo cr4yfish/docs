@@ -58,6 +58,37 @@ If your project has more than eight users, a note at the bottom of the panel sho
 
 ## User roles and access control
 
-Genie Cloud supports a roles system that lets you control what different users can do in your app. Roles such as **admin**, **moderator**, and **member** can be assigned to individual users from the **Users** tab. Genie AI can use these roles when generating your app to show or hide features based on who is signed in.
+Genie Cloud includes a roles system that lets you control what different users can do in your app. Four roles are available by default:
 
-If you want to restrict your app so that only approved users can access it, enable **Private mode** from the **Onboarding** tab. In private mode, every new sign-up is held in a pending state until an admin approves them from the Users tab.
+| Role | What they can do |
+|------|-----------------|
+| **admin** | Full access — can manage other users and all app content |
+| **moderator** | Elevated access — typically can manage content but not users |
+| **member** | Standard signed-in user |
+| **guest** | Limited access — useful for trial or preview states |
+
+You assign roles to individual users from the **Users** tab in project settings. Genie AI also uses roles automatically when generating your app — for example, if you ask for an admin panel, it generates a section only accessible to users with the **admin** role.
+
+To see and manage roles in your app, open **Settings → Roles** in your project.
+
+## User onboarding flows
+
+If you want new users to complete a short onboarding step after their first sign-in — for example, to collect a display name, set preferences, or agree to terms — ask Genie to add an onboarding flow:
+
+> "Add an onboarding page that collects the user's name and company on first login."
+
+Genie builds a guided first-login experience that shows once per user and saves their answers to their profile. After completion, users land on your app's main interface as normal.
+
+You can view and manage the onboarding configuration from **Settings → Onboarding** in your project.
+
+## Private mode
+
+Private mode restricts access to your app so that only approved users can sign in. When private mode is on, new sign-ups are held in a **pending** state — they can create an account but cannot access the app until an admin approves them.
+
+**To enable private mode:**
+
+1. Open your project's **Settings** and go to the **Onboarding** tab.
+2. Toggle **Private mode** to on.
+3. Click **Re-run bootstrap** in **Settings → Cloud** to apply the change to your live app.
+
+Once private mode is active, go to **Settings → Users** to approve or reject pending sign-ups. Approved users are promoted to the **member** role and can access the app immediately.

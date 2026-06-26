@@ -4,6 +4,28 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="June 26, 2026" description="Weekly release">
+
+Several quality-of-life improvements across projects, workspaces, and billing.
+
+## New features
+
+- **Workspace AI assistant.** Ask Genie AI anything about your workspace — credits, members, projects, billing — directly from the command palette or the dedicated Chat page. Genie can also take actions (archive a project, invite a member) with a confirmation step. See [Workspace chat](/workspaces/chat).
+- **Genie MCP Server.** Genie now exposes its own MCP endpoint so external AI clients like Claude Desktop and Cursor can manage your workspace and projects programmatically. See [Genie MCP Server](/workspaces/mcp-server).
+- **Collaboration locking for workspace projects.** When two teammates open the same workspace project, one edits while the other watches in spectator mode. The lock releases automatically after 2 minutes of inactivity. See [Collaborating on workspace projects](/workspaces/collaboration).
+- **Upload images and files to your project.** Drag an image onto the chat prompt and tell Genie where to use it, or use the upload card (Cmd/Ctrl+K → "Upload assets") to batch-upload files to your app's public folder. See [Add images and files to your project](/projects/assets).
+
+## Updates
+
+- **Credit rollover on paid plans.** Unused monthly credits on Genie, Genie Plus, Genie Pro, and Genie Ultra now carry over to the next billing period instead of expiring. Rolled-over credits are valid for one additional cycle. See [How credits work](/billing/credits).
+- **Private mode for apps.** Restrict access to your app so new sign-ups require admin approval before they can enter. Enable it from **Settings → Onboarding** in your project. See [User authentication](/cloud/auth).
+- **User onboarding flows.** Ask Genie to add a first-login onboarding step to any app that collects user information once, then never shows again. See [User authentication](/cloud/auth).
+- **Project archiving.** Archive inactive projects to hide them from your list without deleting any data. Ask the workspace chat to archive or unarchive a project by name. See [Managing projects](/projects/overview).
+- **Delete project secret, add/remove project from workspace, cancel project deletion** — four new workspace chat actions for managing project lifecycle. All require confirmation before executing.
+- **German-language documentation updated** to reflect all of the above.
+
+</Update>
+
 <Update label="May 22, 2026" description="Weekly release">
 
 A short follow-up week focused on refining what shipped on Monday.

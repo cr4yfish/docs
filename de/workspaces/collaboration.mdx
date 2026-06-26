@@ -1,0 +1,37 @@
+---
+title: "Zusammenarbeiten in Workspace-Projekten"
+description: "Wenn mehrere Teammitglieder dasselbe Workspace-Projekt öffnen, verwendet Genie eine Bearbeitungssperre, damit nur eine Person gleichzeitig baut, während andere im Zuschauermodus zuschauen."
+---
+
+Wenn du an einem Workspace-Projekt gemeinsam mit Teammitgliedern arbeitest, verwendet Genie eine **Bearbeitungssperre**, um sicherzustellen, dass nur eine Person gleichzeitig Prompts sendet und Builds auslöst. Das verhindert widersprüchliche Änderungen und hält dein Projekt in einem konsistenten Zustand.
+
+<Note>
+  Die Bearbeitungssperre gilt für Projekte innerhalb eines Workspace. Projekte außerhalb eines Workspace können jederzeit vom Eigentümer bearbeitet werden — ohne Sperre.
+</Note>
+
+## So funktioniert die Bearbeitungssperre
+
+Wenn du ein Workspace-Projekt öffnest, prüft Genie, ob jemand anderes es gerade bearbeitet:
+
+<CardGroup cols={2}>
+  <Card title="Sperre frei" icon="pencil">
+    Du erhältst die Bearbeitungssperre automatisch und kannst Prompts senden und bauen wie gewohnt.
+  </Card>
+  <Card title="Sperre belegt" icon="eye">
+    Du wechselst in den **Zuschauermodus**. Das Prompt-Eingabefeld ist deaktiviert. Ein Badge zeigt Name und Avatar der Person, die gerade bearbeitet.
+  </Card>
+</CardGroup>
+
+Im Zuschauermodus kannst du weiterhin den vollständigen Chat-Verlauf lesen und die Live-Vorschau in Echtzeit aktualisieren sehen, während dein Teammitglied baut. Du bist nur am Senden neuer Prompts gehindert — nicht vom Anschauen.
+
+## Die Bearbeitungssperre übernehmen
+
+Die Sperre ist an eine aktive Sitzung gebunden. Wenn die bearbeitende Person den Arbeitsplatz verlässt oder den Tab schließt, wird die Sperre nach **2 Minuten Inaktivität** veraltet. Sobald sie veraltet ist, übernimmt die nächste Person, die das Projekt aufruft, automatisch die Sperre und kann mit dem Bearbeiten beginnen.
+
+<Tip>
+  Wenn du auf das Bearbeiten wartest und die andere Person fertig ist, aber den Tab nicht geschlossen hat, warte zwei Minuten — die Sperre gibt sich automatisch frei.
+</Tip>
+
+## Für wen die Sperre gilt
+
+Die Bearbeitungssperre gilt für alle Workspace-Mitglieder gleichermaßen. Admins und Owner unterliegen denselben Regeln wie normale Mitglieder — es gibt keine Möglichkeit, eine von einem anderen Nutzer gehaltene frische Sperre zu erzwingen.

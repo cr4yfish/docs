@@ -1,0 +1,37 @@
+---
+title: "Collaborating on workspace projects"
+description: "When multiple teammates open the same workspace project, Genie uses an edit lock so only one person builds at a time while others watch in spectator mode."
+---
+
+When you work on a workspace project with teammates, Genie uses an **edit lock** to make sure only one person sends prompts and triggers builds at a time. This prevents conflicting changes and keeps your project in a consistent state.
+
+<Note>
+  The edit lock applies to projects inside a workspace. Projects outside a workspace are always editable by the owner with no locking.
+</Note>
+
+## How the edit lock works
+
+When you open a workspace project, Genie checks whether anyone else is editing it:
+
+<CardGroup cols={2}>
+  <Card title="Lock is free" icon="pencil">
+    You claim the edit lock automatically and can send prompts and build as normal.
+  </Card>
+  <Card title="Lock is held" icon="eye">
+    You enter **spectator mode**. The prompt input is disabled. A badge shows the name and avatar of whoever is currently editing.
+  </Card>
+</CardGroup>
+
+In spectator mode you can still read the full chat history and watch the live preview update in real time as your teammate builds. You are not blocked from viewing anything — only from sending new prompts.
+
+## Taking over the edit lock
+
+The lock is tied to an active session. If the person editing walks away or closes their tab, the lock becomes stale after **2 minutes of inactivity**. Once stale, the next person to view the project claims the lock and can start editing.
+
+<Tip>
+  If you are waiting to edit and the current editor is done but has not closed the tab, give it two minutes — the lock releases automatically and you can start building.
+</Tip>
+
+## Who the lock applies to
+
+The edit lock applies to all workspace members equally. Admins and owners follow the same rules as regular members — there is no option to force-override a lock held by another user.

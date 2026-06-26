@@ -58,6 +58,37 @@ Hat dein Projekt mehr als acht Nutzer:innen, zeigt ein Hinweis am Ende des Panel
 
 ## Nutzerrollen und Zugriffssteuerung
 
-Genie Cloud unterstützt ein Rollen-System, mit dem du steuern kannst, was verschiedene Nutzer:innen in deiner App tun können. Rollen wie **admin**, **moderator** und **member** können einzelnen Nutzer:innen im Tab **Nutzer** zugewiesen werden. Genie AI kann diese Rollen beim Generieren deiner App verwenden, um Funktionen je nach angemeldeter Person ein- oder auszublenden.
+Genie Cloud enthält ein Rollen-System, mit dem du steuern kannst, was verschiedene Nutzer:innen in deiner App tun können. Vier Rollen sind standardmäßig verfügbar:
 
-Wenn du deine App so einschränken möchtest, dass nur genehmigte Nutzer:innen Zugriff haben, aktiviere den **Private Mode** im Tab **Onboarding**. Im Private Mode wird jede neue Anmeldung in einem ausstehenden Zustand gehalten, bis ein Admin sie im Tab Nutzer genehmigt.
+| Rolle | Was sie können |
+|-------|----------------|
+| **admin** | Vollzugriff — kann andere Nutzer:innen und alle App-Inhalte verwalten |
+| **moderator** | Erhöhter Zugriff — kann typischerweise Inhalte, aber keine Nutzer:innen verwalten |
+| **member** | Standardmäßige angemeldete Person |
+| **guest** | Eingeschränkter Zugriff — nützlich für Test- oder Vorschauzustände |
+
+Du weist Rollen einzelnen Nutzer:innen im Tab **Nutzer** der Projekteinstellungen zu. Genie AI verwendet Rollen auch automatisch beim Generieren deiner App — wenn du zum Beispiel ein Admin-Panel anforderst, generiert es einen Bereich, der nur für Nutzer:innen mit der Rolle **admin** zugänglich ist.
+
+Um Rollen in deiner App anzuzeigen und zu verwalten, öffne **Einstellungen → Rollen** in deinem Projekt.
+
+## Nutzer-Onboarding-Flows
+
+Wenn neue Nutzer:innen nach ihrer ersten Anmeldung einen kurzen Onboarding-Schritt durchführen sollen — zum Beispiel um einen Anzeigenamen einzugeben, Einstellungen festzulegen oder Bedingungen zuzustimmen — bitte Genie, einen Onboarding-Flow hinzuzufügen:
+
+> „Füge eine Onboarding-Seite hinzu, die bei der ersten Anmeldung Name und Unternehmen der Nutzerin abfragt."
+
+Genie baut ein geführtes Erstanmeldeerlebnis, das einmal pro Nutzer:in angezeigt wird und die Antworten im Profil speichert. Nach dem Abschluss landen Nutzer:innen wie gewohnt auf der Hauptoberfläche deiner App.
+
+Die Onboarding-Konfiguration kannst du unter **Einstellungen → Onboarding** in deinem Projekt ansehen und verwalten.
+
+## Private Mode
+
+Der Private Mode schränkt den Zugang zu deiner App ein, sodass nur genehmigte Nutzer:innen sich anmelden können. Wenn der Private Mode aktiv ist, werden neue Anmeldungen in einem **ausstehenden** Zustand gehalten — sie können ein Konto erstellen, aber nicht auf die App zugreifen, bis ein Admin sie genehmigt.
+
+**So aktivierst du den Private Mode:**
+
+1. Öffne die **Einstellungen** deines Projekts und gehe zum Tab **Onboarding**.
+2. Schalte **Private Mode** ein.
+3. Klicke in **Einstellungen → Cloud** auf **Re-run bootstrap**, um die Änderung auf deine Live-App anzuwenden.
+
+Sobald der Private Mode aktiv ist, gehe zu **Einstellungen → Nutzer**, um ausstehende Anmeldungen zu genehmigen oder abzulehnen. Genehmigte Nutzer:innen erhalten sofort die Rolle **member** und können auf die App zugreifen.

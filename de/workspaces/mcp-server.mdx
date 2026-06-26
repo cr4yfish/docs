@@ -1,0 +1,63 @@
+---
+title: "Externe KI-Tools über MCP mit Genie verbinden"
+description: "Genie stellt einen eigenen MCP-Server bereit, damit externe KI-Clients — Claude Desktop, Cursor und andere — deine Workspaces und Projekte lesen und verwalten können."
+---
+
+Genie enthält einen integrierten Model Context Protocol (MCP)-Server. Das erlaubt es externen KI-Assistenten — Claude Desktop, Cursor oder jedem MCP-kompatiblen Client — sich mit deinem Genie-Workspace zu verbinden, sodass du ihn verwalten kannst, ohne einen Browser zu öffnen.
+
+## Der MCP-Endpunkt
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+Der Server verwendet den **Streamable HTTP**-Transport.
+
+## Authentifizierung
+
+Der Genie-MCP-Server verwendet **OAuth 2.0 mit PKCE**. Die Autorisierung ist auf einen einzelnen Workspace beschränkt — du wählst beim ersten Verbinden, auf welchen Workspace du Zugriff gewähren möchtest. Genie stellt nach deiner Genehmigung ein kurzlebiges Token aus; der Client erneuert es automatisch.
+
+## Was du tun kannst
+
+Nach der Verbindung kann der externe KI-Client:
+
+- Deine Workspaces, Mitglieder, Einladungen und Rollen auflisten
+- Abrechnungsstatus, Credit-Guthaben und Nutzungsaufschlüsselungen lesen
+- Projekte auflisten und prüfen (einschließlich Deployment-Status)
+- Workspace-Einstellungen verwalten und Funktionen umschalten
+- Mitglieder einladen und ihre Rollen aktualisieren
+- Projekte archivieren und dearchivieren
+- Workspace-Aktivitäten und Audit-Logs lesen
+- Mit dem Workspace verbundene MCP-Server auflisten und testen
+
+Aktionen, die Daten ändern, beschreiben immer zuerst, was sie tun werden — der Client bestätigt, bevor irgendetwas geändert wird.
+
+## Claude Desktop verbinden
+
+Füge das Folgende zu deiner Claude Desktop-Konfigurationsdatei (`claude_desktop_config.json`) hinzu:
+
+```json
+{
+  "mcpServers": {
+    "genie": {
+      "type": "http",
+      "url": "https://www.genie-app.de/api/mcp"
+    }
+  }
+}
+```
+
+Starte Claude Desktop neu. Beim ersten Mal, wenn du ein Genie-Tool verwendest, öffnet Claude Desktop den Genie-OAuth-Bildschirm, damit du den Zugriff auf deinen Workspace autorisieren kannst.
+
+## Cursor verbinden
+
+Füge in den MCP-Einstellungen von Cursor einen neuen Server hinzu mit:
+
+- **Transport:** HTTP
+- **URL:** `https://www.genie-app.de/api/mcp`
+
+Folge der Autorisierungsaufforderung, die beim ersten Ausführen eines Genie-Befehls erscheint.
+
+<Tip>
+  Das ist das Gegenteil der Workspace-MCP-Integrationen. **Workspace-Integrationen** bringen andere Dienste (Linear, Stripe, GitHub) *in* Genie. Der **Genie-MCP-Server** lässt externe KI-Clients *in* Genie hineinschauen. Beide verwenden denselben offenen MCP-Standard.
+</Tip>

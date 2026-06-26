@@ -1,0 +1,63 @@
+---
+title: "Connect external AI tools to Genie via MCP"
+description: "Genie exposes its own MCP server so external AI clients — Claude Desktop, Cursor, and others — can read and manage your workspaces and projects."
+---
+
+Genie includes a built-in Model Context Protocol (MCP) server. This lets you connect external AI assistants — Claude Desktop, Cursor, or any MCP-compatible client — to your Genie workspace so you can manage it without opening a browser.
+
+## The MCP endpoint
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+The server uses the **Streamable HTTP** transport.
+
+## Authentication
+
+The Genie MCP server uses **OAuth 2.0 with PKCE**. Authorization is scoped to a single workspace — you choose which workspace to grant access to when you first connect. Genie issues a short-lived token after you approve the request; the client refreshes it automatically.
+
+## What you can do
+
+Once connected, the external AI client can:
+
+- List your workspaces, members, invitations, and roles
+- Read workspace billing status, credit balance, and usage breakdowns
+- List and inspect projects (including deployment status)
+- Manage workspace settings and toggle features
+- Invite members and update their roles
+- Archive and unarchive projects
+- Read workspace activity and audit logs
+- List and test MCP servers connected to the workspace
+
+Actions that change data always describe what they are about to do before acting — the client will confirm before anything is modified.
+
+## Connect Claude Desktop
+
+Add the following to your Claude Desktop configuration file (`claude_desktop_config.json`):
+
+```json
+{
+  "mcpServers": {
+    "genie": {
+      "type": "http",
+      "url": "https://www.genie-app.de/api/mcp"
+    }
+  }
+}
+```
+
+Restart Claude Desktop. The first time you use a Genie tool, Claude Desktop opens the Genie OAuth screen so you can authorize access to your workspace.
+
+## Connect Cursor
+
+In Cursor's MCP settings, add a new server with:
+
+- **Transport:** HTTP
+- **URL:** `https://www.genie-app.de/api/mcp`
+
+Follow the authorization prompt that appears when you first run a Genie command.
+
+<Tip>
+  This is the reverse of the workspace MCP integrations feature. **Workspace integrations** bring other services (Linear, Stripe, GitHub) *into* Genie. The **Genie MCP server** lets external AI clients reach *into* Genie. Both use the same open MCP standard.
+</Tip>
