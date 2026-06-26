@@ -1,0 +1,114 @@
+---
+title: "Workspace PII rules: detect and block sensitive data"
+description: "Configure built-in PII detectors and custom regex rules to log or block sensitive data in workspace and project chat. Owners and admins control which data types are caught and what happens when they appear."
+---
+
+Genie scans every message sent in workspace chat and project chat against a set of PII detection rules before it is processed. Workspace owners and admins can configure which types of sensitive data to detect, choose what happens when a rule matches, and create custom rules for data that is specific to their organisation.
+
+<Note>
+PII rules are available on the **Teams** plan. Only **owners** and **admins** can configure rules. All workspace members can trigger detections.
+</Note>
+
+## Open PII settings
+
+In the workspace sidebar, click **Settings**, then click **PII Detection** — or navigate to **Settings → PII Detection** from the settings page.
+
+The page has two sections:
+
+- **Detection rules** — built-in detectors and any custom rules you have created, each with a toggle and an action dropdown.
+- **Detection log** — a read-only history of recent matches. Matched values are always shown censored; the raw content is never stored.
+
+## Built-in detectors
+
+Genie ships with detectors for common categories of sensitive data. All are enabled by default with the `log` action.
+
+| Detector | What it catches |
+|---|---|
+| Email address | Email addresses in any format |
+| Credit card number | Major card formats (Visa, Mastercard, Amex, and more) |
+| IBAN | International bank account numbers |
+| API key | Generic API key and secret patterns (Bearer tokens, hex secrets) |
+| Phone number | International and local phone formats |
+| Social security number | US SSN formats |
+| Passport number | Common international passport formats |
+| IP address | IPv4 and IPv6 addresses |
+
+You can change the action on any built-in detector or disable it. You cannot delete a built-in detector — disable it instead, or use **Reset to defaults** to restore every built-in to its shipped enabled state and `log` action.
+
+## Custom rules
+
+Create custom rules for data patterns specific to your organisation — for example, employee IDs, contract numbers, or proprietary reference codes.
+
+<Steps>
+  <Step title="Click Add rule">
+    On the **PII Detection** page, click **Add rule**.
+  </Step>
+  <Step title="Name the rule">
+    Give it a clear display name (for example, "Employee ID"). This name appears in the detection log when the rule matches.
+  </Step>
+  <Step title="Enter a regex pattern">
+    Write a regular expression that matches the data you want to detect. The pattern is validated before saving — an invalid regex returns a clear error message. Example: `\bEMP-\d{6}\b` catches employee IDs like `EMP-123456`.
+  </Step>
+  <Step title="Set the confidence level">
+    Choose **Definite** (the pattern unambiguously identifies sensitive data) or **Possible** (the pattern may contain sensitive data). This label appears in the detection log.
+  </Step>
+  <Step title="Choose an action">
+    Select what happens when the rule matches. See [Actions](#actions) below.
+  </Step>
+  <Step title="Save">
+    Click **Save rule**. The rule becomes active immediately for all workspace members.
+  </Step>
+</Steps>
+
+To edit or delete a custom rule, use the action menu on the rule row.
+
+## Actions
+
+Each rule has an action that controls what happens when it matches a message.
+
+<Tabs>
+  <Tab title="Log">
+    The message is allowed through. A censored entry is written to the detection log — the matched value is stored as `[REDACTED]` and the raw content is never recorded.
+
+    **Use this for:** data you want to monitor without disrupting users.
+  </Tab>
+  <Tab title="Block">
+    The message is rejected before it reaches the AI. The user sees an error explaining which category of data triggered the block (for example, "Your message contained a credit card number"). They cannot retry with the same content.
+
+    Blocked messages are also logged (censored) so admins can review them.
+
+    **Use this for:** data that must never be sent to an AI — payment details, credentials, government IDs.
+  </Tab>
+  <Tab title="Ignore">
+    The detector runs but takes no action and writes nothing to the log. Useful for temporarily suppressing a rule without disabling it entirely.
+  </Tab>
+</Tabs>
+
+## Detection log
+
+The **Detection log** section shows the 50 most recent rule matches. Each entry includes:
+
+- The rule that matched (e.g. "Credit card number")
+- The action taken (`log` or `block`)
+- The chat surface where the match occurred (workspace chat or a project)
+- The workspace member who sent the message
+- The date and time
+
+Matched values are always shown as `[REDACTED]`. Only owners and admins can view the log.
+
+## Manage rules from workspace chat
+
+You can read and update PII rules by asking the Genie workspace AI in plain language:
+
+- *"List all my PII rules"* — shows you the full rule list with their current actions.
+- *"Block credit card numbers instead of just logging them"* — the AI updates the rule's action to `block`.
+- *"Add a rule that catches employee IDs matching EMP-123456"* — the AI creates a custom rule on your behalf.
+- *"Show me the most recent PII detections"* — the AI reads the detection log and summarises what was caught.
+
+Mutations made via workspace chat require the same owner or admin role as the settings UI, and the AI will ask for confirmation before weakening a `block` action or disabling a detector.
+
+## Related pages
+
+- [Genie MCP Server](/workspaces/mcp-api) — manage PII rules programmatically
+- [Workspace integrations](/workspaces/integrations)
+- [Workspace members and roles](/workspaces/members)
