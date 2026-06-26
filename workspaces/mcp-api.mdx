@@ -1,0 +1,197 @@
+---
+title: "Genie MCP Server: programmatic workspace access"
+description: "Connect Claude Desktop, Cursor, or any MCP-compatible AI client to your Genie workspace. Create projects, send prompts, manage members, and query usage — all programmatically via OAuth 2.0."
+---
+
+The Genie MCP Server lets external AI clients — Claude Desktop, Cursor, custom agents — connect to your Genie workspace and manage it programmatically. Once connected, the AI can create projects from prompts, send follow-up instructions, browse build history, manage members, query credit usage, and more, all through the same tools the Genie web app uses.
+
+<Note>
+The Genie MCP Server is available on all paid Genie plans. Each connection is scoped to a single workspace via OAuth 2.0. Only the tools allowed by your role within that workspace are accessible.
+</Note>
+
+## Connect your client
+
+### Endpoint
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+The server uses the **Streamable HTTP** MCP transport (`POST`, `GET`, and `DELETE` on the same URL).
+
+### Authentication
+
+The Genie MCP Server uses **OAuth 2.0 with PKCE**. Each authorisation is scoped to a single workspace — you choose which workspace to authorise during the OAuth flow, and every tool call is restricted to that workspace.
+
+Most MCP clients (Claude Desktop, Cursor) handle the OAuth flow automatically when you paste the endpoint URL into their settings and start a conversation. The client receives a short-lived token that Genie refreshes automatically.
+
+### Example: Claude Desktop
+
+Add the following entry to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "genie": {
+      "url": "https://www.genie-app.de/api/mcp",
+      "transport": "streamable-http"
+    }
+  }
+}
+```
+
+Restart Claude Desktop and open any conversation. Claude will prompt you to authorise the Genie connection the first time a Genie tool is invoked.
+
+---
+
+## Available tools
+
+The Genie MCP Server provides tools across five categories.
+
+### Workspace management
+
+Read and update your workspace, members, invitations, settings, and billing.
+
+| Tool | What it does |
+|---|---|
+| `get_workspace_info` | Name, member count, settings, and creation date |
+| `list_workspace_members` | Members with roles and join dates |
+| `list_workspace_invites` | Pending invite links with expiry and remaining uses |
+| `invite_workspace_member` | Create a shareable invite link for a given role |
+| `revoke_workspace_invite` | Cancel a pending invite |
+| `update_workspace_member_role` | Change a member's role |
+| `remove_workspace_member` | Remove a member immediately |
+| `update_workspace` | Rename the workspace or update its description |
+| `update_workspace_settings` | Toggle activity log or project access control |
+| `get_workspace_billing` | Subscription plan, status, and billing period |
+| `get_workspace_credits` | Current credit balance |
+| `get_credit_usage` | Credit consumption, optionally broken down by project, member, or day |
+| `get_recent_workspace_activity` | Activity log with filters and pagination |
+| `list_workspaces` | All workspaces the authenticated user belongs to |
+| `list_user_workspaces` | Same list, with the currently-connected workspace marked |
+
+### Projects
+
+Browse projects, create new ones from prompts, and manage the full project lifecycle.
+
+| Tool | What it does |
+|---|---|
+| `list_latest_projects` | 10 most recently updated projects |
+| `search_projects` | Full-text search with sort options (`recentlyEdited`, `bestMatch`, etc.) |
+| `get_project` | Full details: name, description, visibility, deployment URL, credit usage |
+| `create_project` | Create a project from a natural-language prompt and start the first build |
+| `send_followup_prompt` | Send a follow-up instruction to an existing project |
+| `get_project_status` | Lightweight check: is a build currently running? |
+| `get_project_deployment_status` | Full phase-by-phase build breakdown |
+| `get_project_deployment_plan` | Files the AI planned to create or modify |
+| `get_project_messages` | Build history and chat turns |
+| `show_preview` | Deployment URL and per-page screenshots |
+| `suggest_project_prompts` | AI-generated next-step ideas based on build history |
+| `abort_project_build` | Cancel the currently running build |
+| `archive_project` / `unarchive_project` | Hide or restore a project |
+| `list_archived_projects` | All archived projects in the workspace |
+| `delete_project` | Permanently delete a project |
+| `update_project` | Rename, update description, change visibility, or toggle remixing |
+| `list_project_members` | Members explicitly granted access (when project access control is on) |
+| `add_project_member` / `remove_project_member` | Grant or revoke a member's access to a specific project |
+
+### Workspace chat
+
+Send questions to the Genie workspace AI and browse past conversations.
+
+| Tool | What it does |
+|---|---|
+| `send_workspace_chat` | Ask a question about your workspace and get an AI response |
+| `create_workspace_chat` | Start or continue a persistent chat thread (saved to chat history) |
+| `list_workspace_chats` | Recent conversations with title and preview |
+| `get_workspace_chat` | Full message history of a conversation |
+| `search_workspace_chats` | Search across all past messages |
+
+### Workspace MCP integrations
+
+Manage the MCP server integrations (Linear, GitHub, Notion, Stripe, etc.) that power your workspace's connected tools. Only workspace owners and admins can use these tools.
+
+| Tool | What it does |
+|---|---|
+| `list_workspace_mcp_servers` | All configured integrations — name, URL, status, auth type (no credentials returned) |
+| `add_workspace_mcp_server` | Add a new MCP server integration |
+| `update_workspace_mcp_server` | Edit name, URL, transport, or rotate a bearer token |
+| `toggle_workspace_mcp_server` | Enable or disable a server without removing it |
+| `delete_workspace_mcp_server` | Permanently remove a server and its stored credentials |
+| `test_workspace_mcp_server_connection` | Open a test connection and list the tools it exposes |
+
+### PII rules
+
+Inspect and manage the workspace PII detection rules. Only workspace owners and admins can make changes. See [Workspace PII rules](/workspaces/pii-rules) for a full guide.
+
+| Tool | What it does |
+|---|---|
+| `list_workspace_pii_rules` | Built-in detectors and custom regex rules |
+| `list_workspace_pii_detections` | Recent censored detection log entries |
+| `set_workspace_pii_rule` | Change a rule's action (`log`, `block`, `ignore`) or toggle it on/off |
+| `create_workspace_pii_rule` | Add a custom regex rule |
+| `delete_workspace_pii_rule` | Remove a custom rule |
+| `reset_workspace_pii_rules` | Reset all built-in detectors to their defaults |
+
+---
+
+## Quick examples
+
+### Create a project and follow up
+
+```
+Tool: create_project
+{ "prompt": "A SaaS dashboard with auth, dark mode, and a billing page" }
+
+→ Returns: deploymentUrl, slug
+
+Tool: send_followup_prompt
+{ "project_slug": "my-app-abc123", "prompt": "Add a CSV export button to the reports page" }
+```
+
+The `create_project` call starts the build immediately and returns the deployment URL. Use `get_project_status` to poll for completion, or `get_project_deployment_status` for a full phase breakdown.
+
+### Check credit usage this month
+
+```
+Tool: get_credit_usage
+{ "range": "30d", "group_by": "project" }
+
+→ Returns: { totalCredits: 142, byProject: [...] }
+```
+
+Admins can pass `scope: "workspace"` to see total consumption across all members. Members can only query their own usage.
+
+### Invite a new team member
+
+```
+Tool: invite_workspace_member
+{ "role": "member", "max_uses": 1, "expires_in_days": 7 }
+
+→ Returns: { inviteUrl: "https://www.genie-app.de/workspace/invite/abc123", role: "member" }
+```
+
+---
+
+## Permissions
+
+Role-based access is enforced on every tool call.
+
+| Action | Required role |
+|---|---|
+| Read workspace info, members, projects, chat | Any member |
+| Read workspace-wide credit usage | Owner or admin |
+| Invite or remove members, change roles | Owner or admin |
+| Update workspace name or settings | Owner or admin |
+| Manage MCP integrations | Owner or admin |
+| Manage PII rules | Owner or admin |
+| Create, update, archive, or delete projects | Any member |
+| Send follow-up prompts and trigger builds | Any member |
+
+---
+
+## Related pages
+
+- [Connect MCP integrations to your workspace](/workspaces/integrations)
+- [Workspace PII rules](/workspaces/pii-rules)
+- [Workspace members and roles](/workspaces/members)
