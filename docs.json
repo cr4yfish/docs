@@ -96,6 +96,13 @@
                 ]
               },
               {
+                "group": "Account",
+                "icon": "user",
+                "pages": [
+                  "account/settings"
+                ]
+              },
+              {
                 "group": "Billing & Plans",
                 "icon": "credit-card",
                 "pages": [
@@ -178,6 +185,13 @@
                   "de/cloud/database",
                   "de/cloud/storage",
                   "de/cloud/auth"
+                ]
+              },
+              {
+                "group": "Konto",
+                "icon": "user",
+                "pages": [
+                  "de/account/settings"
                 ]
               },
               {
