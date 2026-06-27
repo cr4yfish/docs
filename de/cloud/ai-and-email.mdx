@@ -57,11 +57,15 @@ Deine App hält niemals einen echten OpenAI- oder Resend-Schlüssel. Stattdessen
 
 Durch dieses Design bleiben die echten Anbieter-Schlüssel auf Genies Seite — sie werden nie in deinem Projekt abgelegt, wo sie gelesen oder geleakt werden könnten — während trotzdem jede Anfrage deinem Projekt zugeordnet wird, sodass die Nutzung fair gemessen werden kann.
 
-## Nutzung und Abrechnung
+## Nutzung und Limits
 
-Anfragen über die eingebauten Zugangsdaten werden deinem Projekt zugerechnet und sind Teil deiner Genie-Nutzung. Unter [Credits](/de/billing/credits) und [Tarife](/de/billing/plans) findest du, wie die Nutzung auf deinen Tarif abgebildet wird. Wenn du deinen eigenen Schlüssel verwendest (siehe unten), werden diese Anfragen direkt vom Anbieter an dich abgerechnet und zählen nicht zu deiner Genie-Nutzung.
+Die eingebauten Zugangsdaten sind heute ohne zusätzliche Gebühr pro Anfrage in Genie Cloud enthalten. Jede Anfrage, die deine App darüber stellt, wird **erfasst** — Anbieter, Endpunkt, Status und Zeitverhalten — damit Genie den Dienst überwachen kann und die Nutzung deinem Projekt zugeordnet werden kann. Diese erfasste Nutzung wird derzeit **nicht pro Anfrage gemessen oder dir in Rechnung gestellt**: Sie verringert nicht deine [Credits](/de/billing/credits) und erscheint nicht als Posten auf deiner Rechnung.
 
-Damit es für alle fair bleibt, wendet der eingebaute Relay-Dienst ein **Limit pro Projekt** an (eine Obergrenze an Anfragen pro Minute). Normaler App-Verkehr bleibt deutlich darunter; wenn du mit dauerhaft hohem Volumen rechnest, verwende deinen eigenen Schlüssel oder kontaktiere den Support, um das Limit anzuheben.
+Die praktische Grenze der eingebauten Zugangsdaten ist ein **Limit pro Projekt** (eine Obergrenze an Anfragen pro Minute), keine Nutzungsgebühr. Normaler App-Verkehr bleibt deutlich darunter; wenn du mit dauerhaft hohem Volumen rechnest, verwende deinen eigenen Schlüssel oder kontaktiere den Support, um das Limit anzuheben.
+
+<Note>
+  Eine Abrechnung pro Anfrage für die Nutzung der eingebauten KI und E-Mail könnte in Zukunft eingeführt werden. Sollte sich das ändern, wird es hier sowie auf den Seiten [Credits](/de/billing/credits) und [Tarife](/de/billing/plans) abgebildet. Damit deine Kosten vollständig planbar und unter deiner eigenen Kontrolle bleiben, [verwende deinen eigenen Schlüssel](#eigene-schl%C3%BCssel-verwenden) — diese Anfragen werden direkt vom Anbieter an dich abgerechnet.
+</Note>
 
 ## Grenzen der eingebauten Zugangsdaten
 

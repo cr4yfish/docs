@@ -57,11 +57,15 @@ Your app never holds a real OpenAI or Resend key. Instead, the credentials Genie
 
 This design keeps the real provider keys on Genie's side — they are never placed in your project where they could be read or leaked — while still attributing every request to your project so usage can be measured fairly.
 
-## Usage and billing
+## Usage and limits
 
-Requests made through the built-in credentials are counted against your project and included in your Genie usage. See [Credits](/billing/credits) and [Plans](/billing/plans) for how usage maps to your plan. If you bring your own key (below), those requests are billed by the provider directly to you and do not count against your Genie usage.
+The built-in credentials are included with Genie Cloud at no extra, per-request charge today. Each request your app makes through them is **recorded** — provider, endpoint, status, and timing — so Genie can monitor the service and so usage can be attributed to your project. That recorded usage is **not currently metered or billed back to you per request**: it does not draw down your [credits](/billing/credits) and does not appear as a line item on your invoice.
 
-To keep things fair for everyone, the built-in relay applies a **per-project rate limit** (a cap on requests per minute). Normal app traffic stays well under it; if you expect heavy, sustained volume, bring your own key or contact support to raise the limit.
+The practical limit on the built-in credentials is a **per-project rate limit** (a cap on requests per minute), not a usage charge. Normal app traffic stays well under it; if you expect heavy, sustained volume, bring your own key or contact support to raise the limit.
+
+<Note>
+  Per-request metering and billing for built-in AI and email usage may be introduced in the future. If that changes, it will be reflected here and on the [Credits](/billing/credits) and [Plans](/billing/plans) pages. To keep your costs fully predictable and under your own control, [bring your own key](#bringing-your-own-key) — those requests are billed by the provider directly to you.
+</Note>
 
 ## Limits of the built-in credentials
 
