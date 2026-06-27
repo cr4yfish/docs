@@ -1,6 +1,6 @@
 ---
 title: "Nutzer-Authentifizierung in Genie Cloud"
-description: "Erfahre, wie Genie Cloud die Anmeldung und Registrierung für deine App handhabt, was anonyme Nutzer sind und wie du registrierte Nutzer im Cloud-Tab überprüfst."
+description: "Erfahre, wie Genie Cloud die Anmeldung und Registrierung für deine App handhabt, was anonyme Nutzer sind, wie du Private Mode und Onboarding-Flows nutzt und wie du registrierte Nutzer überprüfst."
 ---
 
 Wenn deine App Anmeldungen benötigt — um Daten zu speichern, auf ein persönliches Dashboard zuzugreifen oder Aktionen mit einem Konto zu verknüpfen — stellt Genie Cloud die Authentifizierungsschicht automatisch bereit. Wenn Genie AI feststellt, dass deine App Nutzerkonten benötigt, richtet es Sign-up, Sign-in und Sitzungsverwaltung ein, ohne dass du etwas konfigurieren musst.
@@ -58,6 +58,21 @@ Hat dein Projekt mehr als acht Nutzer:innen, zeigt ein Hinweis am Ende des Panel
 
 ## Nutzerrollen und Zugriffssteuerung
 
-Genie Cloud unterstützt ein Rollen-System, mit dem du steuern kannst, was verschiedene Nutzer:innen in deiner App tun können. Rollen wie **admin**, **moderator** und **member** können einzelnen Nutzer:innen im Tab **Nutzer** zugewiesen werden. Genie AI kann diese Rollen beim Generieren deiner App verwenden, um Funktionen je nach angemeldeter Person ein- oder auszublenden.
+Genie Cloud unterstützt ein Rollen-System, mit dem du steuern kannst, was verschiedene Nutzer:innen in deiner App tun können. Rollen wie **admin**, **moderator**, **member** und **guest** können einzelnen Nutzer:innen im Tab **Nutzer** in den Projekteinstellungen zugewiesen werden. Genie AI kann diese Rollen beim Generieren deiner App verwenden, um Funktionen je nach angemeldeter Person ein- oder auszublenden.
 
-Wenn du deine App so einschränken möchtest, dass nur genehmigte Nutzer:innen Zugriff haben, aktiviere den **Private Mode** im Tab **Onboarding**. Im Private Mode wird jede neue Anmeldung in einem ausstehenden Zustand gehalten, bis ein Admin sie im Tab Nutzer genehmigt.
+### Private Mode
+
+Der Private Mode schränkt deine App ein, sodass nur genehmigte Nutzer:innen Zugriff haben. Wenn der Private Mode aktiviert ist, werden Besucher:innen, die sich registrieren, in einem ausstehenden Zustand gehalten, bis du sie genehmigst — sie sehen einen Wartebildschirm statt der App.
+
+Aktiviere den Private Mode im Tab **Onboarding** in den Projekteinstellungen. Du kannst Nutzer:innen genehmigen über:
+
+- Den Tab **Nutzer** in den Projekteinstellungen — klicke auf **Genehmigen** neben einer ausstehenden Person.
+- Die **Genie-Workspace-KI** — frage *„Genehmige [E-Mail] für mein Projekt"* oder *„Lade diese E-Mail-Adressen zu meiner App ein"*. Eingeladene Nutzer:innen werden vorab genehmigt und erhalten automatisch einen Anmelde-Link.
+
+Wenn du die Private-Mode-Einstellungen speicherst, synchronisiert Genie Cloud die Änderung sofort mit deiner Live-App — kein manueller Bootstrap-Schritt erforderlich.
+
+### Onboarding-Flows
+
+Um neuen Nutzer:innen beim ersten Login einen angepassten Willkommens- oder Einrichtungsbildschirm zu zeigen, aktiviere **Onboarding** im Tab **Onboarding**. Neue Nutzer:innen sehen die Onboarding-Seite nach ihrer ersten Anmeldung und werden danach nicht mehr darauf weitergeleitet.
+
+Du kannst Genie bitten, anzupassen, was das Onboarding erfasst — Anzeigename, Unternehmen, Rolle oder andere Felder — mit einem Folge-Prompt im Projekt-Chat. Onboarding-Einstellungen werden beim Speichern ebenfalls sofort mit deiner Live-Cloud-Instanz synchronisiert.
