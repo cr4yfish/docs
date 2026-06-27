@@ -1,6 +1,6 @@
 ---
 title: "Managing your Genie projects"
-description: "A project is the app Genie builds for you. Learn how to create one, navigate the project view, and use the live preview and chat history."
+description: "A project is the app Genie builds for you. Learn how to create one, navigate the project view, use the live preview, upload assets, and review chat history."
 ---
 
 Every app you build in Genie lives inside a **project**. When you describe what you want to create, Genie generates a fully working app — that generated app is your project. Each project has its own URL, chat history, settings, and optionally a connected cloud backend. You can have as many projects as your plan allows, and each one is managed independently.
@@ -49,6 +49,22 @@ Sometimes you want to ask a question instead of asking for a change — "what do
 <Tip>
   Chat mode applies to your **next message only**, then turns itself off, so your following prompt builds again as usual. Use it whenever you want a quick second opinion without spending credits on a rebuild.
 </Tip>
+
+### Adding images and videos to your app
+
+You can include an image or video in your project by dropping it directly into the project chat. Drag a file — a logo, a hero image, a product photo, or a background video — into the prompt input field and describe what you want Genie to do with it. For example:
+
+- *"Use this as the hero background image"*
+- *"Add this logo to the navigation bar"*
+- *"Use this video as the landing page background"*
+
+Genie saves the file into your project's public folder and references it in the generated code. You don't need to host the file separately or copy a URL — the asset deploys with your app automatically.
+
+<Tip>
+  If you share an image as a design reference without asking Genie to embed it — for example, *"make my app look like this screenshot"* — Genie uses it as context only and won't add the file to your project. Be explicit when you want it included: *"use this image as the hero background"*.
+</Tip>
+
+You can also upload images and videos in bulk through the workspace chat. Open the command palette with ⌘K (Mac) or Ctrl+K (Windows), choose **Upload images & videos**, or ask the Genie workspace AI directly. A drag-and-drop card lets you publish multiple files into a chosen project at once.
 
 ### Project URL
 

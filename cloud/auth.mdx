@@ -1,6 +1,6 @@
 ---
 title: "User authentication in Genie Cloud"
-description: "Learn how Genie Cloud handles sign-in and sign-up for your app, what anonymous users are, and how to review registered users in the Cloud tab."
+description: "Learn how Genie Cloud handles sign-in and sign-up for your app, what anonymous users are, how to use private mode and onboarding flows, and how to review registered users."
 ---
 
 If your app needs people to sign in — to save their data, access a personal dashboard, or take actions tied to their account — Genie Cloud provides the authentication layer automatically. When Genie AI determines that your app requires user accounts, it sets up sign-up, sign-in, and session management without you having to configure anything.
@@ -58,6 +58,21 @@ If your project has more than eight users, a note at the bottom of the panel sho
 
 ## User roles and access control
 
-Genie Cloud supports a roles system that lets you control what different users can do in your app. Roles such as **admin**, **moderator**, and **member** can be assigned to individual users from the **Users** tab. Genie AI can use these roles when generating your app to show or hide features based on who is signed in.
+Genie Cloud supports a roles system that lets you control what different users can do in your app. Roles such as **admin**, **moderator**, **member**, and **guest** can be assigned to individual users from the **Users** tab in project settings. Genie AI can use these roles when generating your app to show or hide features based on who is signed in.
 
-If you want to restrict your app so that only approved users can access it, enable **Private mode** from the **Onboarding** tab. In private mode, every new sign-up is held in a pending state until an admin approves them from the Users tab.
+### Private mode
+
+Private mode restricts your app so that only approved users can access it. When private mode is on, visitors who sign up are held in a pending state until you approve them — they see a waiting screen instead of the app.
+
+Enable private mode from the **Onboarding** tab in project settings. You can approve users from:
+
+- The **Users** tab in project settings — click **Approve** next to a pending user.
+- The **Genie workspace AI** — ask *"Approve [email] for my project"* or *"Invite these email addresses to my app"*. Invited users are pre-approved and receive a sign-in link automatically.
+
+When you save private-mode settings, Genie Cloud syncs the change to your live app immediately — no manual bootstrap step required.
+
+### Onboarding flows
+
+To show a customised welcome or setup screen to new users the first time they sign in, enable **Onboarding** from the **Onboarding** tab. New users see the onboarding page after their first login and are not shown it again.
+
+You can ask Genie to customise what the onboarding collects — display name, company, role, or any other field — with a follow-up prompt in the project chat. Onboarding settings also sync instantly to your live Cloud instance when saved.
