@@ -1,0 +1,114 @@
+---
+title: "Workspace-PII-Regeln: Sensible Daten erkennen und blockieren"
+description: "Konfiguriere integrierte PII-Detektoren und benutzerdefinierte Regex-Regeln, um sensible Daten im Workspace- und Projekt-Chat zu protokollieren oder zu blockieren. Eigentümer:innen und Admins steuern, welche Datentypen erkannt werden und was beim Auftreffen einer Regel passiert."
+---
+
+Genie scannt jede Nachricht, die im Workspace-Chat und Projekt-Chat gesendet wird, gegen eine Reihe von PII-Erkennungsregeln, bevor sie verarbeitet wird. Workspace-Eigentümer:innen und Admins können konfigurieren, welche Arten sensibler Daten erkannt werden sollen, entscheiden, was bei einem Regelverstoß passiert, und benutzerdefinierte Regeln für organisationsspezifische Daten erstellen.
+
+<Note>
+PII-Regeln sind im **Teams**-Tarif verfügbar. Nur **Eigentümer:innen** und **Admins** können Regeln konfigurieren. Alle Workspace-Mitglieder können Erkennungen auslösen.
+</Note>
+
+## PII-Einstellungen öffnen
+
+Klicke in der Workspace-Seitenleiste auf **Einstellungen** und dann auf **PII-Erkennung** — oder navigiere über die Einstellungsseite zu **Einstellungen → PII-Erkennung**.
+
+Die Seite hat zwei Abschnitte:
+
+- **Erkennungsregeln** — integrierte Detektoren und alle benutzerdefinierten Regeln, die du erstellt hast, jeweils mit einem Schalter und einem Dropdown für die Aktion.
+- **Erkennungsprotokoll** — eine schreibgeschützte Historie der letzten Treffer. Erkannte Werte werden immer geschwärzt angezeigt; der ursprüngliche Inhalt wird niemals gespeichert.
+
+## Integrierte Detektoren
+
+Genie wird mit Detektoren für gängige Kategorien sensibler Daten geliefert. Alle sind standardmäßig mit der Aktion `log` aktiviert.
+
+| Detektor | Was er erkennt |
+|---|---|
+| E-Mail-Adresse | E-Mail-Adressen in beliebigem Format |
+| Kreditkartennummer | Gängige Kartenformate (Visa, Mastercard, Amex und mehr) |
+| IBAN | Internationale Bankkontonummern |
+| API-Schlüssel | Generische API-Schlüssel- und Secret-Muster (Bearer-Tokens, Hex-Secrets) |
+| Telefonnummer | Internationale und lokale Telefonformate |
+| Sozialversicherungsnummer | US-SSN-Formate |
+| Reisepassnummer | Gängige internationale Reisepassformate |
+| IP-Adresse | IPv4- und IPv6-Adressen |
+
+Du kannst die Aktion für jeden integrierten Detektor ändern oder ihn deaktivieren. Integrierte Detektoren können nicht gelöscht werden — deaktiviere sie stattdessen, oder nutze **Auf Standardeinstellungen zurücksetzen**, um alle integrierten Detektoren auf ihren Ausgangszustand mit der Aktion `log` zurückzusetzen.
+
+## Benutzerdefinierte Regeln
+
+Erstelle benutzerdefinierte Regeln für Datenmuster, die für deine Organisation spezifisch sind — zum Beispiel Mitarbeiter-IDs, Vertragsnummern oder proprietäre Referenzcodes.
+
+<Steps>
+  <Step title="Auf „Regel hinzufügen" klicken">
+    Klicke auf der Seite **PII-Erkennung** auf **Regel hinzufügen**.
+  </Step>
+  <Step title="Regel benennen">
+    Gib einen aussagekräftigen Anzeigenamen an (zum Beispiel „Mitarbeiter-ID"). Dieser Name erscheint im Erkennungsprotokoll, wenn die Regel zutrifft.
+  </Step>
+  <Step title="Regex-Muster eingeben">
+    Schreibe einen regulären Ausdruck, der die Daten erkennt, die du erfassen möchtest. Das Muster wird vor dem Speichern validiert — ein ungültiger Regex gibt eine klare Fehlermeldung zurück. Beispiel: `\bEMP-\d{6}\b` erkennt Mitarbeiter-IDs wie `EMP-123456`.
+  </Step>
+  <Step title="Konfidenzniveau festlegen">
+    Wähle **Definitiv** (das Muster identifiziert eindeutig sensible Daten) oder **Möglich** (das Muster könnte sensible Daten enthalten). Dieses Label erscheint im Erkennungsprotokoll.
+  </Step>
+  <Step title="Aktion wählen">
+    Wähle aus, was passiert, wenn die Regel zutrifft. Siehe [Aktionen](#aktionen) weiter unten.
+  </Step>
+  <Step title="Speichern">
+    Klicke auf **Regel speichern**. Die Regel wird sofort für alle Workspace-Mitglieder aktiv.
+  </Step>
+</Steps>
+
+Um eine benutzerdefinierte Regel zu bearbeiten oder zu löschen, nutze das Aktionsmenü in der Regelzeile.
+
+## Aktionen
+
+Jede Regel hat eine Aktion, die steuert, was passiert, wenn sie auf eine Nachricht zutrifft.
+
+<Tabs>
+  <Tab title="Protokollieren">
+    Die Nachricht wird durchgelassen. Ein geschwärzter Eintrag wird in das Erkennungsprotokoll geschrieben — der erkannte Wert wird als `[REDACTED]` gespeichert, der ursprüngliche Inhalt wird niemals aufgezeichnet.
+
+    **Verwende dies für:** Daten, die du überwachen möchtest, ohne Nutzer:innen zu stören.
+  </Tab>
+  <Tab title="Blockieren">
+    Die Nachricht wird abgelehnt, bevor sie die KI erreicht. Die Nutzerin sieht eine Fehlermeldung, die erklärt, welche Datenkategorie die Blockierung ausgelöst hat (zum Beispiel „Deine Nachricht enthielt eine Kreditkartennummer"). Sie können nicht erneut versuchen, denselben Inhalt zu senden.
+
+    Blockierte Nachrichten werden ebenfalls (geschwärzt) protokolliert, damit Admins sie prüfen können.
+
+    **Verwende dies für:** Daten, die niemals an eine KI gesendet werden dürfen — Zahlungsdetails, Zugangsdaten, Ausweisdokumente.
+  </Tab>
+  <Tab title="Ignorieren">
+    Der Detektor läuft, ergreift aber keine Maßnahmen und schreibt nichts ins Protokoll. Nützlich, um eine Regel vorübergehend zu unterdrücken, ohne sie vollständig zu deaktivieren.
+  </Tab>
+</Tabs>
+
+## Erkennungsprotokoll
+
+Der Abschnitt **Erkennungsprotokoll** zeigt die 50 aktuellsten Regelübereinstimmungen. Jeder Eintrag enthält:
+
+- Die Regel, die zutraf (z. B. „Kreditkartennummer")
+- Die ergriffene Aktion (`log` oder `block`)
+- Die Chat-Oberfläche, auf der die Übereinstimmung auftrat (Workspace-Chat oder ein Projekt)
+- Das Workspace-Mitglied, das die Nachricht gesendet hat
+- Datum und Uhrzeit
+
+Erkannte Werte werden immer als `[REDACTED]` angezeigt. Nur Eigentümer:innen und Admins können das Protokoll einsehen.
+
+## Regeln über den Workspace-Chat verwalten
+
+Du kannst PII-Regeln lesen und aktualisieren, indem du die Genie-Workspace-KI in natürlicher Sprache fragst:
+
+- *„Liste alle meine PII-Regeln auf"* — zeigt dir die vollständige Regelliste mit ihren aktuellen Aktionen.
+- *„Blockiere Kreditkartennummern statt sie nur zu protokollieren"* — die KI aktualisiert die Aktion der Regel auf `block`.
+- *„Füge eine Regel hinzu, die Mitarbeiter-IDs wie EMP-123456 erkennt"* — die KI erstellt für dich eine benutzerdefinierte Regel.
+- *„Zeig mir die neuesten PII-Erkennungen"* — die KI liest das Erkennungsprotokoll und fasst zusammen, was gefunden wurde.
+
+Änderungen über den Workspace-Chat erfordern dieselbe Eigentümer:in- oder Admin-Rolle wie die Einstellungsoberfläche. Die KI bittet vor dem Abschwächen einer `block`-Aktion oder dem Deaktivieren eines Detektors um Bestätigung.
+
+## Verwandte Seiten
+
+- [Genie MCP Server](/de/workspaces/mcp-api) — PII-Regeln programmgesteuert verwalten
+- [Workspace-Integrationen](/de/workspaces/integrations)
+- [Workspace-Mitglieder und Rollen](/de/workspaces/members)
