@@ -175,7 +175,9 @@
                 "pages": [
                   "de/workspaces/overview",
                   "de/workspaces/members",
-                  "de/workspaces/integrations"
+                  "de/workspaces/integrations",
+                  "de/workspaces/pii-rules",
+                  "de/workspaces/mcp-api"
                 ]
               },
               {

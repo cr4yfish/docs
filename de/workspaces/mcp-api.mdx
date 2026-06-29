@@ -1,0 +1,197 @@
+---
+title: "Genie MCP Server: programmatischer Workspace-Zugriff"
+description: "Verbinde Claude Desktop, Cursor oder einen beliebigen MCP-kompatiblen KI-Client mit deinem Genie-Workspace. Erstelle Projekte, sende Prompts, verwalte Mitglieder und frage den Verbrauch ab — alles programmgesteuert über OAuth 2.0."
+---
+
+Der Genie MCP Server ermöglicht es externen KI-Clients — Claude Desktop, Cursor, eigenen Agenten — sich mit deinem Genie-Workspace zu verbinden und ihn programmgesteuert zu verwalten. Einmal verbunden, kann die KI Projekte aus Prompts erstellen, Folgeanweisungen senden, den Build-Verlauf durchsuchen, Mitglieder verwalten, den Credit-Verbrauch abfragen und mehr — alles über dieselben Tools, die die Genie-Web-App verwendet.
+
+<Note>
+Der Genie MCP Server ist in allen bezahlten Genie-Tarifen verfügbar. Jede Verbindung ist über OAuth 2.0 auf einen einzelnen Workspace beschränkt. Nur die Tools, die deiner Rolle in diesem Workspace entsprechen, sind zugänglich.
+</Note>
+
+## Client verbinden
+
+### Endpunkt
+
+```
+https://www.genie-app.de/api/mcp
+```
+
+Der Server verwendet den **Streamable HTTP** MCP-Transport (`POST`, `GET` und `DELETE` auf derselben URL).
+
+### Authentifizierung
+
+Der Genie MCP Server verwendet **OAuth 2.0 mit PKCE**. Jede Autorisierung ist auf einen einzelnen Workspace beschränkt — du wählst, welchen Workspace du während des OAuth-Flows autorisierst, und jeder Tool-Aufruf ist auf diesen Workspace beschränkt.
+
+Die meisten MCP-Clients (Claude Desktop, Cursor) verwalten den OAuth-Flow automatisch, wenn du die Endpunkt-URL in ihre Einstellungen einfügst und ein Gespräch startest. Der Client erhält ein kurzlebiges Token, das Genie automatisch erneuert.
+
+### Beispiel: Claude Desktop
+
+Füge den folgenden Eintrag zu deiner `claude_desktop_config.json` hinzu:
+
+```json
+{
+  "mcpServers": {
+    "genie": {
+      "url": "https://www.genie-app.de/api/mcp",
+      "transport": "streamable-http"
+    }
+  }
+}
+```
+
+Starte Claude Desktop neu und öffne ein beliebiges Gespräch. Claude wird dich beim ersten Aufruf eines Genie-Tools auffordern, die Genie-Verbindung zu autorisieren.
+
+---
+
+## Verfügbare Tools
+
+Der Genie MCP Server bietet Tools in fünf Kategorien.
+
+### Workspace-Verwaltung
+
+Lese und aktualisiere deinen Workspace, Mitglieder, Einladungen, Einstellungen und Abrechnung.
+
+| Tool | Was es tut |
+|---|---|
+| `get_workspace_info` | Name, Mitgliederzahl, Einstellungen und Erstellungsdatum |
+| `list_workspace_members` | Mitglieder mit Rollen und Beitrittsdaten |
+| `list_workspace_invites` | Ausstehende Einlade-Links mit Ablaufdatum und verbleibenden Nutzungen |
+| `invite_workspace_member` | Erstelle einen teilbaren Einlade-Link für eine bestimmte Rolle |
+| `revoke_workspace_invite` | Breche eine ausstehende Einladung ab |
+| `update_workspace_member_role` | Ändere die Rolle eines Mitglieds |
+| `remove_workspace_member` | Entferne ein Mitglied sofort |
+| `update_workspace` | Benenne den Workspace um oder aktualisiere seine Beschreibung |
+| `update_workspace_settings` | Schalte das Aktivitätsprotokoll oder die Projektzugangskontrolle um |
+| `get_workspace_billing` | Abonnement-Tarif, Status und Abrechnungszeitraum |
+| `get_workspace_credits` | Aktuelles Credit-Guthaben |
+| `get_credit_usage` | Credit-Verbrauch, optional aufgeschlüsselt nach Projekt, Mitglied oder Tag |
+| `get_recent_workspace_activity` | Aktivitätsprotokoll mit Filtern und Paginierung |
+| `list_workspaces` | Alle Workspaces, denen der authentifizierte Nutzer angehört |
+| `list_user_workspaces` | Dieselbe Liste, mit dem aktuell verbundenen Workspace markiert |
+
+### Projekte
+
+Durchsuche Projekte, erstelle neue aus Prompts und verwalte den vollständigen Projektlebenszyklus.
+
+| Tool | Was es tut |
+|---|---|
+| `list_latest_projects` | Die 10 zuletzt aktualisierten Projekte |
+| `search_projects` | Volltextsuche mit Sortieroptionen (`recentlyEdited`, `bestMatch` usw.) |
+| `get_project` | Vollständige Details: Name, Beschreibung, Sichtbarkeit, Deployment-URL, Credit-Verbrauch |
+| `create_project` | Erstelle ein Projekt aus einem natürlichsprachigen Prompt und starte den ersten Build |
+| `send_followup_prompt` | Sende eine Folgeanweisung an ein bestehendes Projekt |
+| `get_project_status` | Leichtgewichtige Prüfung: Läuft gerade ein Build? |
+| `get_project_deployment_status` | Vollständige phasenweise Build-Aufschlüsselung |
+| `get_project_deployment_plan` | Dateien, die die KI geplant hat zu erstellen oder zu ändern |
+| `get_project_messages` | Build-Verlauf und Chat-Turns |
+| `show_preview` | Deployment-URL und seitenweise Screenshots |
+| `suggest_project_prompts` | KI-generierte Ideen für nächste Schritte basierend auf dem Build-Verlauf |
+| `abort_project_build` | Brich den aktuell laufenden Build ab |
+| `archive_project` / `unarchive_project` | Verstecke oder stelle ein Projekt wieder her |
+| `list_archived_projects` | Alle archivierten Projekte im Workspace |
+| `delete_project` | Lösche ein Projekt dauerhaft |
+| `update_project` | Umbenennen, Beschreibung aktualisieren, Sichtbarkeit ändern oder Remixing umschalten |
+| `list_project_members` | Mitglieder, denen explizit Zugriff gewährt wurde (wenn die Projektzugangskontrolle aktiviert ist) |
+| `add_project_member` / `remove_project_member` | Gewähre oder entziehe einem Mitglied den Zugriff auf ein bestimmtes Projekt |
+
+### Workspace-Chat
+
+Stelle Fragen an die Genie-Workspace-KI und durchsuche vergangene Gespräche.
+
+| Tool | Was es tut |
+|---|---|
+| `send_workspace_chat` | Stelle eine Frage zu deinem Workspace und erhalte eine KI-Antwort |
+| `create_workspace_chat` | Starte oder setze einen dauerhaften Chat-Thread fort (in der Chat-Historie gespeichert) |
+| `list_workspace_chats` | Letzte Gespräche mit Titel und Vorschau |
+| `get_workspace_chat` | Vollständige Nachrichtenhistorie eines Gesprächs |
+| `search_workspace_chats` | Suche in allen vergangenen Nachrichten |
+
+### Workspace-MCP-Integrationen
+
+Verwalte die MCP-Server-Integrationen (Linear, GitHub, Notion, Stripe usw.), die die verbundenen Tools deines Workspace antreiben. Nur Workspace-Eigentümer:innen und Admins können diese Tools verwenden.
+
+| Tool | Was es tut |
+|---|---|
+| `list_workspace_mcp_servers` | Alle konfigurierten Integrationen — Name, URL, Status, Auth-Typ (keine Zugangsdaten zurückgegeben) |
+| `add_workspace_mcp_server` | Füge eine neue MCP-Server-Integration hinzu |
+| `update_workspace_mcp_server` | Bearbeite Name, URL, Transport oder rotiere einen Bearer-Token |
+| `toggle_workspace_mcp_server` | Aktiviere oder deaktiviere einen Server, ohne ihn zu entfernen |
+| `delete_workspace_mcp_server` | Entferne dauerhaft einen Server und seine gespeicherten Zugangsdaten |
+| `test_workspace_mcp_server_connection` | Öffne eine Testverbindung und liste die bereitgestellten Tools auf |
+
+### PII-Regeln
+
+Überprüfe und verwalte die Workspace-PII-Erkennungsregeln. Nur Workspace-Eigentümer:innen und Admins können Änderungen vornehmen. Siehe [Workspace-PII-Regeln](/de/workspaces/pii-rules) für eine vollständige Anleitung.
+
+| Tool | Was es tut |
+|---|---|
+| `list_workspace_pii_rules` | Integrierte Detektoren und benutzerdefinierte Regex-Regeln |
+| `list_workspace_pii_detections` | Aktuelle geschwärzte Einträge im Erkennungsprotokoll |
+| `set_workspace_pii_rule` | Ändere die Aktion einer Regel (`log`, `block`, `ignore`) oder schalte sie ein/aus |
+| `create_workspace_pii_rule` | Füge eine benutzerdefinierte Regex-Regel hinzu |
+| `delete_workspace_pii_rule` | Entferne eine benutzerdefinierte Regel |
+| `reset_workspace_pii_rules` | Setze alle integrierten Detektoren auf ihre Standardwerte zurück |
+
+---
+
+## Schnellbeispiele
+
+### Projekt erstellen und nachfassen
+
+```
+Tool: create_project
+{ "prompt": "A SaaS dashboard with auth, dark mode, and a billing page" }
+
+→ Returns: deploymentUrl, slug
+
+Tool: send_followup_prompt
+{ "project_slug": "my-app-abc123", "prompt": "Add a CSV export button to the reports page" }
+```
+
+Der `create_project`-Aufruf startet den Build sofort und gibt die Deployment-URL zurück. Verwende `get_project_status` zum Abfragen des Abschlusses oder `get_project_deployment_status` für eine vollständige Phasenaufschlüsselung.
+
+### Credit-Verbrauch diesen Monat prüfen
+
+```
+Tool: get_credit_usage
+{ "range": "30d", "group_by": "project" }
+
+→ Returns: { totalCredits: 142, byProject: [...] }
+```
+
+Admins können `scope: "workspace"` übergeben, um den Gesamtverbrauch aller Mitglieder einzusehen. Mitglieder können nur ihren eigenen Verbrauch abfragen.
+
+### Neues Teammitglied einladen
+
+```
+Tool: invite_workspace_member
+{ "role": "member", "max_uses": 1, "expires_in_days": 7 }
+
+→ Returns: { inviteUrl: "https://www.genie-app.de/workspace/invite/abc123", role: "member" }
+```
+
+---
+
+## Berechtigungen
+
+Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
+
+| Aktion | Erforderliche Rolle |
+|---|---|
+| Workspace-Info, Mitglieder, Projekte, Chat lesen | Jedes Mitglied |
+| Workspace-weiten Credit-Verbrauch lesen | Eigentümer:in oder Admin |
+| Mitglieder einladen oder entfernen, Rollen ändern | Eigentümer:in oder Admin |
+| Workspace-Name oder -Einstellungen aktualisieren | Eigentümer:in oder Admin |
+| MCP-Integrationen verwalten | Eigentümer:in oder Admin |
+| PII-Regeln verwalten | Eigentümer:in oder Admin |
+| Projekte erstellen, aktualisieren, archivieren oder löschen | Jedes Mitglied |
+| Folgeanweisungen senden und Builds auslösen | Jedes Mitglied |
+
+---
+
+## Verwandte Seiten
+
+- [MCP-Integrationen mit deinem Workspace verbinden](/de/workspaces/integrations)
+- [Workspace-PII-Regeln](/de/workspaces/pii-rules)
+- [Workspace-Mitglieder und Rollen](/de/workspaces/members)
