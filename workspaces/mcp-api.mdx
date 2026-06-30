@@ -46,7 +46,7 @@ Restart Claude Desktop and open any conversation. Claude will prompt you to auth
 
 ## Available tools
 
-The Genie MCP Server provides tools across five categories.
+The Genie MCP Server provides tools across eight categories.
 
 ### Workspace management
 
@@ -55,20 +55,22 @@ Read and update your workspace, members, invitations, settings, and billing.
 | Tool | What it does |
 |---|---|
 | `get_workspace_info` | Name, member count, settings, and creation date |
-| `list_workspace_members` | Members with roles and join dates |
+| `list_workspaces` | All workspaces the authenticated user belongs to |
+| `list_user_workspaces` | Same list, with the currently-connected workspace marked |
+| `create_workspace` | Create a new Genie workspace; the caller becomes the owner |
+| `update_workspace` | Rename the workspace or update its description |
+| `update_workspace_settings` | Toggle activity log or project access control |
+| `list_workspace_members` | Members with roles, email addresses, and join dates |
 | `list_workspace_invites` | Pending invite links with expiry and remaining uses |
 | `invite_workspace_member` | Create a shareable invite link for a given role |
+| `invite_workspace_member_by_email` | Send a single-use invite directly to a specific email address |
 | `revoke_workspace_invite` | Cancel a pending invite |
 | `update_workspace_member_role` | Change a member's role |
 | `remove_workspace_member` | Remove a member immediately |
-| `update_workspace` | Rename the workspace or update its description |
-| `update_workspace_settings` | Toggle activity log or project access control |
 | `get_workspace_billing` | Subscription plan, status, and billing period |
 | `get_workspace_credits` | Current credit balance |
 | `get_credit_usage` | Credit consumption, optionally broken down by project, member, or day |
 | `get_recent_workspace_activity` | Activity log with filters and pagination |
-| `list_workspaces` | All workspaces the authenticated user belongs to |
-| `list_user_workspaces` | Same list, with the currently-connected workspace marked |
 
 ### Projects
 
@@ -80,6 +82,8 @@ Browse projects, create new ones from prompts, and manage the full project lifec
 | `search_projects` | Full-text search with sort options (`recentlyEdited`, `bestMatch`, etc.) |
 | `get_project` | Full details: name, description, visibility, deployment URL, credit usage |
 | `create_project` | Create a project from a natural-language prompt and start the first build |
+| `rename_project` | Rename a project by slug |
+| `update_project` | Update name, description, visibility, or the remixable flag |
 | `send_followup_prompt` | Send a follow-up instruction to an existing project |
 | `get_project_status` | Lightweight check: is a build currently running? |
 | `get_project_deployment_status` | Full phase-by-phase build breakdown |
@@ -90,8 +94,11 @@ Browse projects, create new ones from prompts, and manage the full project lifec
 | `abort_project_build` | Cancel the currently running build |
 | `archive_project` / `unarchive_project` | Hide or restore a project |
 | `list_archived_projects` | All archived projects in the workspace |
-| `delete_project` | Permanently delete a project |
-| `update_project` | Rename, update description, change visibility, or toggle remixing |
+| `delete_project` | Schedule a project for deletion (with a short grace window to cancel) |
+| `get_project_deletion_status` | Check deletion progress and whether cancellation is still possible |
+| `cancel_project_deletion` | Cancel a scheduled deletion while within the grace window |
+| `add_project_to_workspace` | Move a personal project into the connected workspace |
+| `remove_project_from_workspace` | Remove a project from the workspace without deleting it |
 | `list_project_members` | Members explicitly granted access (when project access control is on) |
 | `add_project_member` / `remove_project_member` | Grant or revoke a member's access to a specific project |
 
@@ -106,6 +113,7 @@ Send questions to the Genie workspace AI and browse past conversations.
 | `list_workspace_chats` | Recent conversations with title and preview |
 | `get_workspace_chat` | Full message history of a conversation |
 | `search_workspace_chats` | Search across all past messages |
+| `rename_workspace_chat` | Rename a chat conversation |
 
 ### Workspace MCP integrations
 
@@ -130,8 +138,43 @@ Inspect and manage the workspace PII detection rules. Only workspace owners and 
 | `list_workspace_pii_detections` | Recent censored detection log entries |
 | `set_workspace_pii_rule` | Change a rule's action (`log`, `block`, `ignore`) or toggle it on/off |
 | `create_workspace_pii_rule` | Add a custom regex rule |
+| `update_workspace_pii_rule` | Edit an existing custom rule's label, pattern, confidence, or action |
 | `delete_workspace_pii_rule` | Remove a custom rule |
 | `reset_workspace_pii_rules` | Reset all built-in detectors to their defaults |
+
+### Code graph
+
+Query the structure of your project's code — call graphs, imports, symbol history, and semantic search.
+
+| Tool | What it does |
+|---|---|
+| `query_project_code_graph` | Ask questions about callers/callees, imports, class members, symbol history, version diffs, or run a free-text semantic search over code. Results include file paths and exact line spans. |
+
+### Genie Cloud (project backend)
+
+Read and manage the Supabase backend provisioned for a project — end-users, roles, auth providers, and access settings.
+
+| Tool | What it does |
+|---|---|
+| `get_project_cloud_settings` | Cloud status, region, end-users, roles, auth providers, and access settings |
+| `add_project_role` | Add a custom role to the project's backend |
+| `delete_project_role` | Remove a custom role (must not be assigned to any users first) |
+| `assign_project_role` | Assign an existing role to a specific end-user |
+| `remove_project_role_from_user` | Revoke a role assignment without deleting the role |
+| `toggle_project_auth_provider` | Enable or disable a social auth provider (e.g. Google) |
+| `update_project_access_settings` | Update private mode, default role, onboarding flow, and auto-verified email list |
+| `approve_project_user` | Approve a pending end-user (when private mode is on) and assign a role |
+| `invite_project_users` | Pre-approve a list of email addresses so they can sign up without waiting for approval |
+
+### Project secrets
+
+List, create, and delete secrets stored in the project's Supabase Edge Function vault.
+
+| Tool | What it does |
+|---|---|
+| `list_project_secrets` | Secret names in the vault (values are never returned) |
+| `set_project_secret` | Create or overwrite a named secret |
+| `delete_project_secret` | Delete one or more secrets (up to 20 per call; Genie defaults cannot be deleted) |
 
 ---
 
@@ -165,10 +208,28 @@ Admins can pass `scope: "workspace"` to see total consumption across all members
 ### Invite a new team member
 
 ```
+Tool: invite_workspace_member_by_email
+{ "email": "colleague@example.com", "role": "member" }
+
+→ Returns: { inviteUrl: "...", email: "colleague@example.com", emailSent: true }
+```
+
+Or create a shareable link (no email sent):
+
+```
 Tool: invite_workspace_member
-{ "role": "member", "max_uses": 1, "expires_in_days": 7 }
+{ "role": "member", "max_uses": 5, "expires_in_days": 14 }
 
 → Returns: { inviteUrl: "https://www.genie-app.de/workspace/invite/abc123", role: "member" }
+```
+
+### Query a project's code structure
+
+```
+Tool: query_project_code_graph
+{ "project_slug": "my-saas-dashboard-abc123", "query": "What calls the authenticateUser function?" }
+
+→ Returns: file paths, line spans, and caller context
 ```
 
 ---
@@ -186,7 +247,10 @@ Role-based access is enforced on every tool call.
 | Manage MCP integrations | Owner or admin |
 | Manage PII rules | Owner or admin |
 | Create, update, archive, or delete projects | Any member |
+| Add or remove a project from the workspace | Owner, admin, or member |
 | Send follow-up prompts and trigger builds | Any member |
+| Read and write Genie Cloud settings and roles | Project owner |
+| Read and write project secrets | Project owner |
 
 ---
 

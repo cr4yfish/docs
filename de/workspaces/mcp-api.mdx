@@ -46,7 +46,7 @@ Starte Claude Desktop neu und öffne ein beliebiges Gespräch. Claude wird dich 
 
 ## Verfügbare Tools
 
-Der Genie MCP Server bietet Tools in fünf Kategorien.
+Der Genie MCP Server bietet Tools in acht Kategorien.
 
 ### Workspace-Verwaltung
 
@@ -55,20 +55,22 @@ Lese und aktualisiere deinen Workspace, Mitglieder, Einladungen, Einstellungen u
 | Tool | Was es tut |
 |---|---|
 | `get_workspace_info` | Name, Mitgliederzahl, Einstellungen und Erstellungsdatum |
-| `list_workspace_members` | Mitglieder mit Rollen und Beitrittsdaten |
+| `list_workspaces` | Alle Workspaces, denen der authentifizierte Nutzer angehört |
+| `list_user_workspaces` | Dieselbe Liste, mit dem aktuell verbundenen Workspace markiert |
+| `create_workspace` | Erstelle einen neuen Genie-Workspace; der Aufrufer wird Eigentümer:in |
+| `update_workspace` | Benenne den Workspace um oder aktualisiere seine Beschreibung |
+| `update_workspace_settings` | Schalte das Aktivitätsprotokoll oder die Projektzugangskontrolle um |
+| `list_workspace_members` | Mitglieder mit Rollen, E-Mail-Adressen und Beitrittsdaten |
 | `list_workspace_invites` | Ausstehende Einlade-Links mit Ablaufdatum und verbleibenden Nutzungen |
 | `invite_workspace_member` | Erstelle einen teilbaren Einlade-Link für eine bestimmte Rolle |
+| `invite_workspace_member_by_email` | Sende eine Einzelnutzungs-Einladung direkt an eine bestimmte E-Mail-Adresse |
 | `revoke_workspace_invite` | Breche eine ausstehende Einladung ab |
 | `update_workspace_member_role` | Ändere die Rolle eines Mitglieds |
 | `remove_workspace_member` | Entferne ein Mitglied sofort |
-| `update_workspace` | Benenne den Workspace um oder aktualisiere seine Beschreibung |
-| `update_workspace_settings` | Schalte das Aktivitätsprotokoll oder die Projektzugangskontrolle um |
 | `get_workspace_billing` | Abonnement-Tarif, Status und Abrechnungszeitraum |
 | `get_workspace_credits` | Aktuelles Credit-Guthaben |
 | `get_credit_usage` | Credit-Verbrauch, optional aufgeschlüsselt nach Projekt, Mitglied oder Tag |
 | `get_recent_workspace_activity` | Aktivitätsprotokoll mit Filtern und Paginierung |
-| `list_workspaces` | Alle Workspaces, denen der authentifizierte Nutzer angehört |
-| `list_user_workspaces` | Dieselbe Liste, mit dem aktuell verbundenen Workspace markiert |
 
 ### Projekte
 
@@ -80,6 +82,8 @@ Durchsuche Projekte, erstelle neue aus Prompts und verwalte den vollständigen P
 | `search_projects` | Volltextsuche mit Sortieroptionen (`recentlyEdited`, `bestMatch` usw.) |
 | `get_project` | Vollständige Details: Name, Beschreibung, Sichtbarkeit, Deployment-URL, Credit-Verbrauch |
 | `create_project` | Erstelle ein Projekt aus einem natürlichsprachigen Prompt und starte den ersten Build |
+| `rename_project` | Benenne ein Projekt per Slug um |
+| `update_project` | Name, Beschreibung, Sichtbarkeit oder Remixable-Flag aktualisieren |
 | `send_followup_prompt` | Sende eine Folgeanweisung an ein bestehendes Projekt |
 | `get_project_status` | Leichtgewichtige Prüfung: Läuft gerade ein Build? |
 | `get_project_deployment_status` | Vollständige phasenweise Build-Aufschlüsselung |
@@ -90,8 +94,11 @@ Durchsuche Projekte, erstelle neue aus Prompts und verwalte den vollständigen P
 | `abort_project_build` | Brich den aktuell laufenden Build ab |
 | `archive_project` / `unarchive_project` | Verstecke oder stelle ein Projekt wieder her |
 | `list_archived_projects` | Alle archivierten Projekte im Workspace |
-| `delete_project` | Lösche ein Projekt dauerhaft |
-| `update_project` | Umbenennen, Beschreibung aktualisieren, Sichtbarkeit ändern oder Remixing umschalten |
+| `delete_project` | Plane die Löschung eines Projekts (mit kurzem Zeitfenster zum Abbrechen) |
+| `get_project_deletion_status` | Löschfortschritt prüfen und ob ein Abbruch noch möglich ist |
+| `cancel_project_deletion` | Geplante Löschung innerhalb des Zeitfensters abbrechen |
+| `add_project_to_workspace` | Persönliches Projekt in den verbundenen Workspace verschieben |
+| `remove_project_from_workspace` | Projekt aus dem Workspace entfernen, ohne es zu löschen |
 | `list_project_members` | Mitglieder, denen explizit Zugriff gewährt wurde (wenn die Projektzugangskontrolle aktiviert ist) |
 | `add_project_member` / `remove_project_member` | Gewähre oder entziehe einem Mitglied den Zugriff auf ein bestimmtes Projekt |
 
@@ -106,6 +113,7 @@ Stelle Fragen an die Genie-Workspace-KI und durchsuche vergangene Gespräche.
 | `list_workspace_chats` | Letzte Gespräche mit Titel und Vorschau |
 | `get_workspace_chat` | Vollständige Nachrichtenhistorie eines Gesprächs |
 | `search_workspace_chats` | Suche in allen vergangenen Nachrichten |
+| `rename_workspace_chat` | Benenne ein Chat-Gespräch um |
 
 ### Workspace-MCP-Integrationen
 
@@ -130,8 +138,43 @@ Verwalte die MCP-Server-Integrationen (Linear, GitHub, Notion, Stripe usw.), die
 | `list_workspace_pii_detections` | Aktuelle geschwärzte Einträge im Erkennungsprotokoll |
 | `set_workspace_pii_rule` | Ändere die Aktion einer Regel (`log`, `block`, `ignore`) oder schalte sie ein/aus |
 | `create_workspace_pii_rule` | Füge eine benutzerdefinierte Regex-Regel hinzu |
+| `update_workspace_pii_rule` | Bearbeite Label, Muster, Konfidenz oder Aktion einer bestehenden benutzerdefinierten Regel |
 | `delete_workspace_pii_rule` | Entferne eine benutzerdefinierte Regel |
 | `reset_workspace_pii_rules` | Setze alle integrierten Detektoren auf ihre Standardwerte zurück |
+
+### Code-Graph
+
+Frage die Struktur des Codes deines Projekts ab — Aufrufgraphen, Importe, Symbol-Historie und semantische Suche.
+
+| Tool | Was es tut |
+|---|---|
+| `query_project_code_graph` | Stelle Fragen zu Aufrufern/Aufgerufenen, Importen, Klassenmitgliedern, Symbol-Historie, Versions-Diffs oder führe eine semantische Freitextsuche im Code durch. Ergebnisse enthalten Dateipfade und genaue Zeilenbereiche. |
+
+### Genie Cloud (Projekt-Backend)
+
+Lese und verwalte das für ein Projekt bereitgestellte Supabase-Backend — Endnutzer:innen, Rollen, Auth-Anbieter und Zugriffseinstellungen.
+
+| Tool | Was es tut |
+|---|---|
+| `get_project_cloud_settings` | Cloud-Status, Region, Endnutzer:innen, Rollen, Auth-Anbieter und Zugriffseinstellungen |
+| `add_project_role` | Füge eine benutzerdefinierte Rolle zum Backend des Projekts hinzu |
+| `delete_project_role` | Entferne eine benutzerdefinierte Rolle (darf keinen Nutzer:innen zugewiesen sein) |
+| `assign_project_role` | Weise eine bestehende Rolle einer bestimmten Endnutzer:in zu |
+| `remove_project_role_from_user` | Entferne eine Rollenzuweisung, ohne die Rolle zu löschen |
+| `toggle_project_auth_provider` | Aktiviere oder deaktiviere einen Social-Auth-Anbieter (z.B. Google) |
+| `update_project_access_settings` | Privaten Modus, Standardrolle, Onboarding-Flow und automatisch verifizierte E-Mail-Liste aktualisieren |
+| `approve_project_user` | Ausstehende Endnutzer:in genehmigen (wenn privater Modus aktiv ist) und Rolle zuweisen |
+| `invite_project_users` | Liste von E-Mail-Adressen vorab genehmigen, damit sie sich ohne Wartezeit registrieren können |
+
+### Projekt-Secrets
+
+Secrets im Supabase Edge Function Vault des Projekts auflisten, erstellen und löschen.
+
+| Tool | Was es tut |
+|---|---|
+| `list_project_secrets` | Secret-Namen im Vault (Werte werden nie zurückgegeben) |
+| `set_project_secret` | Ein benanntes Secret erstellen oder überschreiben |
+| `delete_project_secret` | Ein oder mehrere Secrets löschen (max. 20 pro Aufruf; Genie-Standards können nicht gelöscht werden) |
 
 ---
 
@@ -165,10 +208,28 @@ Admins können `scope: "workspace"` übergeben, um den Gesamtverbrauch aller Mit
 ### Neues Teammitglied einladen
 
 ```
+Tool: invite_workspace_member_by_email
+{ "email": "colleague@example.com", "role": "member" }
+
+→ Returns: { inviteUrl: "...", email: "colleague@example.com", emailSent: true }
+```
+
+Oder teilbaren Link erstellen (ohne E-Mail-Versand):
+
+```
 Tool: invite_workspace_member
-{ "role": "member", "max_uses": 1, "expires_in_days": 7 }
+{ "role": "member", "max_uses": 5, "expires_in_days": 14 }
 
 → Returns: { inviteUrl: "https://www.genie-app.de/workspace/invite/abc123", role: "member" }
+```
+
+### Codestruktur eines Projekts abfragen
+
+```
+Tool: query_project_code_graph
+{ "project_slug": "my-saas-dashboard-abc123", "query": "What calls the authenticateUser function?" }
+
+→ Returns: Dateipfade, Zeilenbereiche und Aufrufer-Kontext
 ```
 
 ---
@@ -186,7 +247,10 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | MCP-Integrationen verwalten | Eigentümer:in oder Admin |
 | PII-Regeln verwalten | Eigentümer:in oder Admin |
 | Projekte erstellen, aktualisieren, archivieren oder löschen | Jedes Mitglied |
+| Projekt zum Workspace hinzufügen oder entfernen | Eigentümer:in, Admin oder Mitglied |
 | Folgeanweisungen senden und Builds auslösen | Jedes Mitglied |
+| Genie Cloud-Einstellungen und Rollen lesen und schreiben | Projekteigentümer:in |
+| Projekt-Secrets lesen und schreiben | Projekteigentümer:in |
 
 ---
 

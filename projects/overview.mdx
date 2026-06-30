@@ -95,6 +95,43 @@ Each project gets a unique URL that you can use to open it directly. You can fin
 
 On paid plans you can also connect a custom domain, so your app lives at an address you own. See [Publish and share your app](/projects/visibility) for details.
 
+## Auto mode
+
+Auto mode lets Genie keep building on its own, without you staying at the keyboard. When you enable it from the chat prompt input, Genie enters its own follow-up prompts round after round — each time picking up where the last build left off — until it runs out of natural next steps or you turn it off.
+
+The loop runs entirely server-side, so it keeps going even if you close the tab. You receive a notification when it finishes or stops.
+
+<Note>
+Auto mode consumes credits for every build round it runs, just like a prompt you type yourself. Make sure you have enough credits before enabling it for a long session.
+</Note>
+
+### Enabling Auto mode
+
+Click the **Auto** toggle in the chat prompt input. The first time you enable it, Genie explains what it will do and asks you to confirm before the loop starts. You can dismiss this explanation permanently.
+
+### How Genie decides what to build next
+
+After each build, Genie produces a suggested follow-up — the natural "next step" based on what was just built. Auto mode enters that suggestion automatically as the next prompt. If no sensible next step exists, the loop ends naturally.
+
+### When Auto mode stops
+
+Auto mode stops on its own when any of these conditions are met:
+
+| Reason | Detail |
+|---|---|
+| You turn it off | Toggle off from the prompt input at any time |
+| Low credits | Balance drops to 10 credits or below |
+| Time limit reached | 60 minutes have passed since the session started |
+| Prompt limit reached | 10 prompts have been entered automatically |
+| No next step | The last build produced no sensible follow-up |
+| Error | A build turn failed to start |
+
+The first three are interruptions; the others are natural stopping points. The notification you receive tells you which kind.
+
+<Tip>
+Turning off the Auto mode toggle does not stop a build already in progress — Genie finishes the current round, then stops before the next one.
+</Tip>
+
 ## Remixing a project
 
 If you are viewing a public project that the owner has made remixable, you will see a **Remix** button in the project view. Clicking it creates a copy of that project in your own account — including all of its generated code — so you can build on top of it with your own prompts.
