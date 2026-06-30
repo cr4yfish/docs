@@ -97,6 +97,43 @@ In bezahlten Tarifen kannst du auch eine eigene Domain verbinden, sodass deine A
 
 ## Ein Projekt remixen
 
+## Auto-Modus
+
+Der Auto-Modus lässt Genie selbstständig weiterarbeiten, ohne dass du an der Tastatur bleiben musst. Wenn du ihn über den Chat-Prompt aktivierst, gibt Genie Runde für Runde eigene Folgeprompts ein — jedes Mal dort anknüpfend, wo der letzte Build aufgehört hat — bis keine sinnvollen nächsten Schritte mehr vorhanden sind oder du ihn deaktivierst.
+
+Der Loop läuft vollständig serverseitig, sodass er weiterläuft, auch wenn du den Tab schließt. Du erhältst eine Benachrichtigung, wenn er endet oder stoppt.
+
+<Note>
+Der Auto-Modus verbraucht für jede Build-Runde Credits, genau wie ein selbst eingegebener Prompt. Stelle sicher, dass du vor einer langen Sitzung genügend Credits hast.
+</Note>
+
+### Auto-Modus aktivieren
+
+Klicke auf den **Auto**-Schalter im Chat-Prompt-Eingabefeld. Beim ersten Aktivieren erklärt Genie, was es tun wird, und bittet dich um Bestätigung, bevor der Loop startet. Du kannst diese Erklärung dauerhaft ausblenden.
+
+### Wie Genie entscheidet, was als nächstes gebaut wird
+
+Nach jedem Build schlägt Genie einen sinnvollen nächsten Schritt vor — basierend auf dem, was gerade gebaut wurde. Der Auto-Modus gibt diesen Vorschlag automatisch als nächsten Prompt ein. Wenn kein sinnvoller nächster Schritt existiert, endet der Loop auf natürliche Weise.
+
+### Wann der Auto-Modus stoppt
+
+Der Auto-Modus stoppt selbstständig, wenn eine dieser Bedingungen eintritt:
+
+| Grund | Detail |
+|---|---|
+| Du deaktivierst ihn | Schalter jederzeit im Prompt-Eingabefeld ausschalten |
+| Zu wenig Credits | Guthaben sinkt auf 10 Credits oder darunter |
+| Zeitlimit erreicht | 60 Minuten seit Sitzungsstart vergangen |
+| Prompt-Limit erreicht | 10 Prompts wurden automatisch eingegeben |
+| Kein nächster Schritt | Der letzte Build ergab keinen sinnvollen Folgevorschlag |
+| Fehler | Ein Build-Durchgang konnte nicht gestartet werden |
+
+Die ersten drei sind Unterbrechungen; die anderen sind natürliche Stoppunkte. Die Benachrichtigung, die du erhältst, sagt dir, welche Art es ist.
+
+<Tip>
+Das Deaktivieren des Auto-Modus-Schalters stoppt einen bereits laufenden Build nicht — Genie schließt die aktuelle Runde ab und stoppt dann vor der nächsten.
+</Tip>
+
 Wenn du dir ein öffentliches Projekt ansiehst, das die Eigentümerin als remixbar markiert hat, siehst du in der Projektansicht einen **Remix**-Button. Ein Klick darauf erstellt eine Kopie dieses Projekts in deinem eigenen Konto — inklusive des gesamten generierten Codes — sodass du mit eigenen Prompts darauf aufbauen kannst.
 
 Wenn du beim Klicken auf **Remix** nicht angemeldet bist, leitet Genie dich zuerst zur Login-Seite weiter und schließt den Remix dann nach der Authentifizierung ab.
