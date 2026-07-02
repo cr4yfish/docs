@@ -4,6 +4,22 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="July 1, 2026" description="Weekly release">
+
+This release brings Auto mode for hands-free builds, scheduled jobs for Genie Cloud, and a set of reliability improvements.
+
+## New features
+
+- **Auto mode.** Turn on Auto mode from the prompt input and Genie keeps applying its own suggested next steps automatically, round after round, until it hits a limit, runs low on credits, or you turn it off — and it keeps going even if you close the tab. You get a notification the moment it stops. See [Auto mode](/projects/auto-mode).
+- **Scheduled jobs for Genie Cloud.** Ask Genie to run any deployed edge function on a recurring timer — "run my crawler every night at 2am Berlin time" — and it sets up the schedule, no cron syntax required. List, reschedule, test, or remove a schedule any time by asking Genie in plain language. See [Scheduled jobs](/cloud/scheduling).
+
+## Updates
+
+- **Genie MCP Server: manage scheduled jobs remotely.** External AI clients connected via the Genie MCP Server can now list, create, update, test, and remove a project's scheduled jobs. See [Genie MCP Server](/workspaces/mcp-api).
+- **More reliable custom user roles.** When Genie builds an app with multiple access levels (admin, member, and custom roles like "contractor" or "client"), role names are now applied consistently, and the build summary and your to-do list clearly name each role so you know exactly who to assign where.
+
+</Update>
+
 <Update label="June 29, 2026" description="Weekly release">
 
 This release brings direct text editing in the live preview and a smarter prompt experience while Genie is busy.

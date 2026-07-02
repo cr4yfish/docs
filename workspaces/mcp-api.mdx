@@ -46,7 +46,7 @@ Restart Claude Desktop and open any conversation. Claude will prompt you to auth
 
 ## Available tools
 
-The Genie MCP Server provides tools across five categories.
+The Genie MCP Server provides tools across six categories.
 
 ### Workspace management
 
@@ -94,6 +94,17 @@ Browse projects, create new ones from prompts, and manage the full project lifec
 | `update_project` | Rename, update description, change visibility, or toggle remixing |
 | `list_project_members` | Members explicitly granted access (when project access control is on) |
 | `add_project_member` / `remove_project_member` | Grant or revoke a member's access to a specific project |
+
+### Genie Cloud scheduled jobs
+
+Manage recurring schedules for a project's deployed edge functions. See [Scheduled jobs](/cloud/scheduling) for a full guide. Only the project owner can use these tools.
+
+| Tool | What it does |
+|---|---|
+| `list_scheduled_jobs` | List a project's scheduled jobs, including schedule, last run time, and the real outcome of that run |
+| `schedule_job` | Schedule a deployed edge function to run on a timer, or update an existing schedule (idempotent by job name) |
+| `unschedule_job` | Remove a scheduled job from a project |
+| `run_scheduled_job_now` | Fire a scheduled job's function immediately to verify it, without changing the schedule |
 
 ### Workspace chat
 
@@ -187,6 +198,7 @@ Role-based access is enforced on every tool call.
 | Manage PII rules | Owner or admin |
 | Create, update, archive, or delete projects | Any member |
 | Send follow-up prompts and trigger builds | Any member |
+| Manage a project's scheduled jobs | Project owner |
 
 ---
 
@@ -194,4 +206,5 @@ Role-based access is enforced on every tool call.
 
 - [Connect MCP integrations to your workspace](/workspaces/integrations)
 - [Workspace PII rules](/workspaces/pii-rules)
+- [Scheduled jobs](/cloud/scheduling)
 - [Workspace members and roles](/workspaces/members)

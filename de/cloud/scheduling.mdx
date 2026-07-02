@@ -1,0 +1,55 @@
+---
+title: "Geplante Jobs: Edge Functions automatisch ausführen"
+description: "Plane jede bereitgestellte Genie-Cloud-Edge-Function so, dass sie automatisch nach einem wiederkehrenden Zeitplan läuft — nächtliche Synchronisierungen, Digest-E-Mails, Aufräumaufgaben — ganz ohne Cron-Syntax."
+---
+
+Manche Backend-Aufgaben müssen von selbst passieren, nach einem Zeitplan, ohne dass eine Nutzerin oder ein Nutzer sie auslöst — eine nächtliche Datensynchronisierung, eine wöchentliche Digest-E-Mail, ein Aufräum-Job, der jede Stunde läuft. Mit Genie Cloud kannst du jede **bereitgestellte Edge Function** so einrichten, dass sie automatisch nach einem wiederkehrenden Zeitplan läuft.
+
+<Note>
+  Geplante Jobs erfordern, dass **Genie Cloud** mit deinem Projekt verbunden ist und die gewünschte Funktion bereits bereitgestellt wurde. Siehe [Genie Cloud Übersicht](/de/cloud/overview).
+</Note>
+
+## Einen Zeitplan einrichten
+
+Du schreibst keine Cron-Syntax und nimmst keine Konfiguration vor — beschreibe einfach in normaler Sprache, was du möchtest, entweder im Projekt-Chat oder gegenüber der Genie-Workspace-KI:
+
+- „Führe meine Funktion `crawl-data` jede Nacht um 2 Uhr Berliner Zeit aus"
+- „Sende die wöchentliche Digest-E-Mail jeden Montagmorgen"
+- „Plane die Cleanup-Funktion so, dass sie jede Stunde läuft"
+
+Genie übersetzt das in einen Zeitplan, verknüpft ihn mit der bereitgestellten Funktion und bestätigt, sobald er aktiv ist. Wenn du eine bestimmte Uhrzeit nennst (wie „2 Uhr Berliner Zeit"), behält Genie diese lokale Zeit auch über Zeitumstellungen hinweg bei — du musst dich nicht um UTC-Verschiebungen kümmern.
+
+<Tip>
+  Eine Funktion muss bereitgestellt sein, bevor sie geplant werden kann. Falls Genie die Funktion noch nicht gebaut hat, beschreibe zuerst, was sie tun soll, und bitte Genie dann, sie zu planen, sobald sie live ist.
+</Tip>
+
+## Geplante Jobs verwalten
+
+Bitte Genie jederzeit, einen Zeitplan zu verwalten, im selben Projekt-Chat oder Workspace-Chat:
+
+| Was du möchtest | Was du fragen kannst |
+|---|---|
+| Sehen, was geplant ist | „Welche Jobs sind für dieses Projekt geplant?" |
+| Den letzten Lauf prüfen | „Ist die nächtliche Synchronisierung letzte Nacht gelaufen? Was ist passiert?" |
+| Den Zeitpunkt ändern | „Verschiebe den Crawl auf 3 Uhr" |
+| Jetzt testen | „Führe den geplanten Cleanup-Job jetzt aus, damit ich prüfen kann, ob er funktioniert" |
+| Entfernen | „Stoppe die wöchentliche Digest-E-Mail" |
+
+Ein Job, der auf Zuruf ausgeführt wird, löst genau dieselbe Anfrage aus, die der Zeitplan senden würde — so kannst du prüfen, ob ein neuer Job korrekt funktioniert, bevor du auf seinen ersten geplanten Lauf wartest.
+
+## Grenzen
+
+- Bis zu **25 geplante Jobs** pro Projekt.
+- Nur der **Projektinhaber bzw. die Projektinhaberin** kann geplante Jobs erstellen, ändern oder entfernen.
+- Ein Zeitplan kann nur eine Funktion ansteuern, die bereits in diesem Projekt bereitgestellt ist.
+
+## Verwandte Seiten
+
+<CardGroup cols={2}>
+  <Card title="Genie Cloud Übersicht" icon="cloud" href="/de/cloud/overview">
+    Erfahre, was Genie Cloud für deine App bereitstellt und wie du es aktivierst.
+  </Card>
+  <Card title="Genie MCP Server" icon="plug" href="/de/workspaces/mcp-api">
+    Verwalte geplante Jobs programmgesteuert von einem externen KI-Client aus.
+  </Card>
+</CardGroup>
