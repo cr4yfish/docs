@@ -1,0 +1,68 @@
+---
+title: "Auto-Modus: Genie selbstständig weiterbauen lassen"
+description: "Aktiviere den Auto-Modus und Genie wendet automatisch immer wieder seine eigenen Vorschläge für den nächsten Schritt an — auch wenn du den Tab schließt."
+---
+
+Normalerweise steuerst du jeden Build selbst — du sendest einen Prompt, prüfst das Ergebnis und entscheidest dann, was als Nächstes kommt. Der **Auto-Modus** überspringt dieses Hin und Her: Sobald du ihn aktivierst, übernimmt Genie seinen eigenen vorgeschlagenen nächsten Schritt, baut ihn und wiederholt das, ohne dass du eine weitere Nachricht senden musst.
+
+<Note>
+  Der Auto-Modus läuft auf Genies Servern, nicht in deinem Browser. Einmal aktiviert, läuft er weiter, selbst wenn du den Tab schließt oder deinen Computer ausschaltest.
+</Note>
+
+## Aktivieren
+
+Der Auto-Modus-Schalter befindet sich in der Symbolleiste des Prompt-Eingabefelds, neben dem Senden-Button.
+
+<Steps>
+  <Step title="Projekt öffnen">
+    Der Auto-Modus arbeitet jeweils an einem einzelnen Projekt — öffne das Projekt, an dem Genie selbstständig weiterbauen soll.
+  </Step>
+  <Step title="Schalter aktivieren">
+    Klicke auf den Auto-Modus-Schalter im Prompt-Eingabefeld. Beim ersten Mal erklärt Genie, wie der Modus funktioniert und was er weiter verbrauchen wird — lies dir das durch, bevor du fortfährst.
+  </Step>
+  <Step title="Bestätigen">
+    Wähle **Fortfahren**, um den Auto-Modus für diese Sitzung zu aktivieren, oder **Nicht mehr anzeigen**, um diese Erklärung bei zukünftigen Projekten zu überspringen. Genie beginnt danach, selbstständig weiterzubauen.
+  </Step>
+</Steps>
+
+Du kannst den Auto-Modus jederzeit wieder ausschalten — dafür gibt es keinen Bestätigungsschritt, und die Änderung wirkt, sobald der gerade laufende Build abgeschlossen ist.
+
+## Was in jeder Runde passiert
+
+Jede Antwort von Genie endet mit einem vorgeschlagenen nächsten Schritt. Der Auto-Modus übernimmt diesen Vorschlag, sendet ihn automatisch als nächsten Prompt und wartet dann das Ergebnis ab, bevor er entscheidet, ob er fortfährt. Prompts, die der Auto-Modus in deinem Namen eingegeben hat, werden in deiner Chat-Historie mit einer eigenen Markierung angezeigt, damit du jederzeit erkennst, welche Nachrichten du selbst gesendet hast und welche Genie für dich eingegeben hat.
+
+Da der Auto-Modus viele Runden hintereinander durchlaufen kann, wird die Antwort jeder Runde standardmäßig eingeklappt angezeigt, damit deine Chat-Historie übersichtlich bleibt — klicke auf eine Runde, um sie auszuklappen.
+
+## Credits
+
+Jede Runde, die der Auto-Modus durchläuft, kostet Credits genau wie ein normaler Prompt — für die Nutzung des Auto-Modus selbst fallen keine zusätzlichen Kosten an. Vor jeder Runde prüft Genie, ob dein Guthaben dafür ausreicht; ist es zu niedrig, stoppt der Auto-Modus.
+
+## Wann er stoppt
+
+Der Auto-Modus stoppt von selbst, sobald einer der folgenden Fälle eintritt:
+
+| Grund | Was passiert |
+|---|---|
+| Du schaltest ihn aus | Stoppt, sobald die aktuelle Runde abgeschlossen ist |
+| Das Prompt-Limit ist erreicht | Stoppt nach einer festgelegten Anzahl automatischer Runden (standardmäßig 10) |
+| Das Zeitlimit ist erreicht | Stoppt nach einer festgelegten Laufzeit (standardmäßig 1 Stunde) |
+| Die Credits werden knapp | Stoppt, bevor eine Runde gestartet wird, die du dir nicht mehr leisten kannst |
+| Genie hat keinen weiteren Vorschlag | Stoppt auf natürliche Weise, sobald es keinen offensichtlichen nächsten Schritt mehr gibt |
+| Eine Runde konnte nicht gestartet werden | Stoppt und zeigt den Fehler an |
+
+Unabhängig vom Grund erhältst du eine Benachrichtigung, wenn der Auto-Modus stoppt — selbst wenn du den Tab geschlossen hast —, damit du immer weißt, dass dein Projekt nicht unbemerkt weiterläuft (oder dass es deine Aufmerksamkeit braucht).
+
+<Tip>
+  Der Auto-Modus eignet sich am besten für gut abgegrenzte, iterative Arbeit — ein Design verfeinern, offensichtliche Lücken schließen, eine Checkliste kleiner Verbesserungen abarbeiten. Für alles, was eine konkrete Entscheidung von dir braucht, schalte ihn aus und sende stattdessen einen gezielten Prompt.
+</Tip>
+
+## Verwandte Seiten
+
+<CardGroup cols={2}>
+  <Card title="Deine Projekte verwalten" icon="folder" href="/de/projects/overview">
+    Erfahre mehr über die Projektansicht, die Chat-Historie und den Chat-Modus.
+  </Card>
+  <Card title="Credits" icon="credit-card" href="/de/billing/credits">
+    Erfahre, wie Credits gezählt werden und was passiert, wenn sie aufgebraucht sind.
+  </Card>
+</CardGroup>

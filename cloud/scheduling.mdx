@@ -1,0 +1,55 @@
+---
+title: "Scheduled jobs: run edge functions automatically"
+description: "Schedule any deployed Genie Cloud edge function to run automatically on a recurring timer — nightly syncs, digest emails, cleanup tasks — no cron syntax required."
+---
+
+Some backend work needs to happen on its own, on a schedule, without a user triggering it — a nightly data sync, a weekly digest email, a cleanup job that runs every hour. Genie Cloud lets you schedule any **deployed edge function** to run automatically on a recurring timer.
+
+<Note>
+  Scheduled jobs require **Genie Cloud** to be connected to your project, with the function you want to run already deployed. See [Genie Cloud overview](/cloud/overview).
+</Note>
+
+## Setting up a schedule
+
+You don't write cron syntax or touch any configuration — just describe what you want in plain language, either in your project chat or to the Genie workspace AI:
+
+- *"Run my `crawl-data` function every night at 2am Berlin time"*
+- *"Send the weekly digest email every Monday morning"*
+- *"Schedule the cleanup function to run every hour"*
+
+Genie translates this into a schedule, attaches it to the deployed function, and confirms once it's active. If you mention a specific wall-clock time (like "2am Berlin time"), Genie preserves that local time across daylight-saving changes — you don't need to think about UTC offsets.
+
+<Tip>
+  A function has to be deployed before it can be scheduled. If Genie hasn't built the function yet, describe what you want it to do first, then ask Genie to schedule it once it's live.
+</Tip>
+
+## Managing your scheduled jobs
+
+Ask Genie to manage a schedule at any point, in the same project chat or workspace chat:
+
+| What you want | What to ask |
+|---|---|
+| See what's scheduled | *"What jobs are scheduled for this project?"* |
+| Check the last run | *"Did the nightly sync run last night? What happened?"* |
+| Change the timing | *"Move the crawl to run at 3am instead"* |
+| Test it right now | *"Run the scheduled cleanup job now so I can check it works"* |
+| Remove it | *"Stop running the weekly digest email"* |
+
+Running a job on demand fires the exact same request the schedule would send, so you can verify a new job works correctly before waiting for its first scheduled run.
+
+## Limits
+
+- Up to **25 scheduled jobs** per project.
+- Only the **project owner** can create, change, or remove scheduled jobs.
+- A schedule can only target a function that is already deployed to that project.
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Genie Cloud overview" icon="cloud" href="/cloud/overview">
+    Learn what Genie Cloud provisions for your app and how to enable it.
+  </Card>
+  <Card title="Genie MCP Server" icon="plug" href="/workspaces/mcp-api">
+    Manage scheduled jobs programmatically from an external AI client.
+  </Card>
+</CardGroup>

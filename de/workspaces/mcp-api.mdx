@@ -46,7 +46,7 @@ Starte Claude Desktop neu und öffne ein beliebiges Gespräch. Claude wird dich 
 
 ## Verfügbare Tools
 
-Der Genie MCP Server bietet Tools in fünf Kategorien.
+Der Genie MCP Server bietet Tools in sechs Kategorien.
 
 ### Workspace-Verwaltung
 
@@ -94,6 +94,17 @@ Durchsuche Projekte, erstelle neue aus Prompts und verwalte den vollständigen P
 | `update_project` | Umbenennen, Beschreibung aktualisieren, Sichtbarkeit ändern oder Remixing umschalten |
 | `list_project_members` | Mitglieder, denen explizit Zugriff gewährt wurde (wenn die Projektzugangskontrolle aktiviert ist) |
 | `add_project_member` / `remove_project_member` | Gewähre oder entziehe einem Mitglied den Zugriff auf ein bestimmtes Projekt |
+
+### Genie Cloud: geplante Jobs
+
+Verwalte wiederkehrende Zeitpläne für die bereitgestellten Edge Functions eines Projekts. Siehe [Geplante Jobs](/de/cloud/scheduling) für eine vollständige Anleitung. Nur der Projektinhaber bzw. die Projektinhaberin kann diese Tools verwenden.
+
+| Tool | Was es tut |
+|---|---|
+| `list_scheduled_jobs` | Liste die geplanten Jobs eines Projekts auf, inklusive Zeitplan, letztem Lauf und dem tatsächlichen Ergebnis dieses Laufs |
+| `schedule_job` | Plane eine bereitgestellte Edge Function so, dass sie nach einem Zeitplan läuft, oder aktualisiere einen bestehenden Zeitplan (idempotent nach Job-Name) |
+| `unschedule_job` | Entferne einen geplanten Job aus einem Projekt |
+| `run_scheduled_job_now` | Führe die Funktion eines geplanten Jobs sofort aus, um sie zu überprüfen, ohne den Zeitplan zu ändern |
 
 ### Workspace-Chat
 
@@ -187,6 +198,7 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | PII-Regeln verwalten | Eigentümer:in oder Admin |
 | Projekte erstellen, aktualisieren, archivieren oder löschen | Jedes Mitglied |
 | Folgeanweisungen senden und Builds auslösen | Jedes Mitglied |
+| Geplante Jobs eines Projekts verwalten | Projektinhaber:in |
 
 ---
 
@@ -194,4 +206,5 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 
 - [MCP-Integrationen mit deinem Workspace verbinden](/de/workspaces/integrations)
 - [Workspace-PII-Regeln](/de/workspaces/pii-rules)
+- [Geplante Jobs](/de/cloud/scheduling)
 - [Workspace-Mitglieder und Rollen](/de/workspaces/members)

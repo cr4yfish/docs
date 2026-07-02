@@ -1,0 +1,68 @@
+---
+title: "Auto mode: let Genie keep building on its own"
+description: "Turn on Auto mode and Genie keeps applying its own next-step suggestions automatically, round after round, even if you close the tab."
+---
+
+Normally you drive each build yourself — you send a prompt, review the result, then decide what to ask for next. **Auto mode** lets Genie skip that back-and-forth: once you turn it on, Genie takes its own suggested next step, builds it, and repeats, without you having to send another message.
+
+<Note>
+  Auto mode runs on Genie's servers, not in your browser. Once it's on, it keeps going even if you close the tab or turn off your computer.
+</Note>
+
+## Turning it on
+
+The Auto mode toggle lives in the prompt input toolbar, next to the send button.
+
+<Steps>
+  <Step title="Open a project">
+    Auto mode works on a single project at a time — open the project you want Genie to keep building on.
+  </Step>
+  <Step title="Turn on the toggle">
+    Click the Auto mode toggle in the prompt input. The first time you do this, Genie explains how it works and what it will keep spending — read it before continuing.
+  </Step>
+  <Step title="Confirm">
+    Choose **Continue** to enable Auto mode for this session, or **Don't show again** to skip this explanation on future projects. Genie then starts building on its own.
+  </Step>
+</Steps>
+
+You can turn Auto mode off at any time — there's no confirmation step for turning it off, and the change takes effect as soon as the build currently in progress finishes.
+
+## What it does each round
+
+Every response Genie gives ends with a suggested next step. Auto mode takes that suggestion and sends it as the next prompt automatically, then waits for the result before deciding whether to continue. Prompts that Auto mode enters on your behalf are shown in your chat history with a distinct marker, so you can always tell which messages you sent yourself and which ones Genie entered for you.
+
+Because Auto mode can run many rounds back-to-back, each round's response is shown collapsed by default to keep your chat history easy to scan — click any round to expand it.
+
+## Credits
+
+Each round Auto mode runs costs credits exactly like a normal prompt — there is no separate charge for using Auto mode itself. Before starting each round, Genie checks that you have enough credits left; if your balance runs too low, Auto mode stops.
+
+## When it stops
+
+Auto mode stops on its own when any of the following happens:
+
+| Reason | What happens |
+|---|---|
+| You turn it off | Stops after the current round finishes |
+| It reaches its prompt limit | Stops after a set number of automatic rounds (10 by default) |
+| It reaches its time limit | Stops after running for a set amount of time (1 hour by default) |
+| Credits run low | Stops before starting a round it can't afford |
+| Genie has nothing left to suggest | Stops naturally once there's no obvious next step |
+| A round fails to start | Stops and surfaces the error |
+
+Whichever reason applies, you get a notification when Auto mode stops — even if you've closed the tab — so you always know your project isn't quietly still running (or that it needs your attention).
+
+<Tip>
+  Auto mode is best for well-scoped, iterative work — polishing a design, filling in obvious gaps, working through a checklist of small improvements. For anything that needs a specific decision from you, turn it off and send a targeted prompt instead.
+</Tip>
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Managing your projects" icon="folder" href="/projects/overview">
+    Learn about the project view, chat history, and chat mode.
+  </Card>
+  <Card title="Credits" icon="credit-card" href="/billing/credits">
+    See how credits are counted and what happens when you run out.
+  </Card>
+</CardGroup>
