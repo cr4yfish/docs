@@ -105,6 +105,34 @@ If you are not signed in when you click **Remix**, Genie will redirect you to th
   To allow others to remix your own project, enable the **Remixable** toggle in **Settings > General**. See [Project settings](/projects/settings) for details.
 </Tip>
 
+## Rolling back to a previous version
+
+Every change Genie deploys is saved as a version you can return to. If a recent update didn't go the way you wanted, you can restore your live app to exactly how it looked at an earlier point.
+
+<Steps>
+  <Step title="Find the version">
+    Scroll back through your chat history to the turn whose result you want to restore.
+  </Step>
+  <Step title="Roll back">
+    Click **Rollback to this state** on that turn's card. A confirmation dialog explains that this replaces your app's current live code with the selected version.
+  </Step>
+  <Step title="Watch it deploy">
+    Genie restores the code and redeploys your app. A status indicator tracks progress until your live app is serving the restored version.
+  </Step>
+</Steps>
+
+<Tip>
+  Rolling back doesn't delete anything — it adds a new entry to your chat history, so you can always move forward again later by rolling back to a more recent version. The button is disabled on your latest version once it's already live, since there'd be nothing to restore.
+</Tip>
+
+## Browser AI agents
+
+If you use a browser with a built-in AI assistant — such as Gemini in Chrome or Copilot in Edge — that assistant can work with your open project directly. It can send a prompt to Genie on your behalf and check whether Genie is still busy, without you needing to type into the chat yourself.
+
+<Note>
+  This works automatically on browsers that support the emerging WebMCP standard. On any other browser, the project page behaves exactly as normal.
+</Note>
+
 ## Next steps
 
 <CardGroup cols={2}>
