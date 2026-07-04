@@ -46,7 +46,7 @@ Starte Claude Desktop neu und öffne ein beliebiges Gespräch. Claude wird dich 
 
 ## Verfügbare Tools
 
-Der Genie MCP Server bietet Tools in sechs Kategorien.
+Der Genie MCP Server bietet Tools in zehn Kategorien.
 
 ### Workspace-Verwaltung
 
@@ -69,6 +69,8 @@ Lese und aktualisiere deinen Workspace, Mitglieder, Einladungen, Einstellungen u
 | `get_recent_workspace_activity` | Aktivitätsprotokoll mit Filtern und Paginierung |
 | `list_workspaces` | Alle Workspaces, denen der authentifizierte Nutzer angehört |
 | `list_user_workspaces` | Dieselbe Liste, mit dem aktuell verbundenen Workspace markiert |
+| `create_workspace` | Erstelle einen neuen Workspace, den du besitzt. Unabhängig vom aktuell verbundenen Workspace — er erscheint sofort in deiner Workspace-Liste |
+| `invite_workspace_member_by_email` | Sende eine einmalig nutzbare Einladung direkt an eine E-Mail-Adresse. Die eingeladene Person benötigt kein bestehendes Genie-Konto — sie wird nach Annahme Mitglied |
 
 ### Projekte
 
@@ -94,6 +96,45 @@ Durchsuche Projekte, erstelle neue aus Prompts und verwalte den vollständigen P
 | `update_project` | Umbenennen, Beschreibung aktualisieren, Sichtbarkeit ändern oder Remixing umschalten |
 | `list_project_members` | Mitglieder, denen explizit Zugriff gewährt wurde (wenn die Projektzugangskontrolle aktiviert ist) |
 | `add_project_member` / `remove_project_member` | Gewähre oder entziehe einem Mitglied den Zugriff auf ein bestimmtes Projekt |
+| `rename_project` | Benenne ein Projekt um (eine fokussierte Alternative zu `update_project`) |
+| `add_project_to_workspace` | Verschiebe eines deiner persönlichen Projekte in den verbundenen Workspace |
+| `remove_project_from_workspace` | Entferne ein Projekt aus dem Workspace, ohne es zu löschen — es wird wieder zu einem persönlichen Projekt |
+| `get_project_deletion_status` | Prüfe, ob für ein Projekt eine Löschung aus dem Danger-Zone-Bereich der Web-App läuft und ob sie noch innerhalb der stornierbaren Karenzzeit ist |
+| `cancel_project_deletion` | Storniere eine laufende, über die Web-App gestartete Projektlöschung, solange die Karenzzeit noch läuft |
+| `get_auto_mode_state` | Prüfe, ob der [Auto-Modus](/de/projects/auto-mode) für ein Projekt läuft: Aktiv-Status, bisher verwendete Prompts und Sitzungslimits |
+| `set_auto_mode` | Schalte den Auto-Modus für ein Projekt ein oder aus |
+
+### Projekt-Code-Graph
+
+Stelle Fragen zum eigenen Code eines Projekts — nützlich für einen externen KI-Client, der ein Projekt verstehen muss, bevor er es ändert oder Fragen dazu beantwortet.
+
+| Tool | Was es tut |
+|---|---|
+| `query_project_code_graph` | Stelle eine natürlichsprachige Frage zum Code eines Projekts — Aufrufer/Aufgerufene, Imports, Symbolverlauf, letzte Änderungen oder eine Volltextsuche — und erhalte Dateipfade und exakte Zeilennummern zurück |
+
+### Genie-Cloud-Backend-Verwaltung
+
+Verwalte das verbundene [Genie-Cloud](/de/cloud/overview)-Backend eines Projekts: Endnutzer-Rollen, Anmeldeanbieter und Zugriffseinstellungen. Nur der Projektinhaber bzw. die Projektinhaberin kann diese Tools verwenden.
+
+| Tool | Was es tut |
+|---|---|
+| `get_project_cloud_settings` | Backend-Status, Region, registrierte Endnutzer, Rollen und Rollenzuweisungen, aktivierte Anmeldeanbieter und Zugriffseinstellungen |
+| `add_project_role` / `delete_project_role` | Füge eine benutzerdefinierte Endnutzer-Rolle hinzu oder entferne sie |
+| `assign_project_role` / `remove_project_role_from_user` | Weise einem bestimmten Endnutzer eine Rolle zu oder entziehe sie |
+| `toggle_project_auth_provider` | Aktiviere oder deaktiviere einen Social-Login-Anbieter (derzeit Google) für die Endnutzer des Projekts |
+| `update_project_access_settings` | Aktualisiere den privaten Modus, die Standardrolle für neue Nutzer und die Liste automatisch genehmigter E-Mail-Adressen |
+| `approve_project_user` | Genehmige eine:n Endnutzer:in, der/die im privaten Modus auf Zugriff wartet |
+| `invite_project_users` | Genehmige eine Liste von E-Mail-Adressen im Voraus, damit sie den Wartestatus überspringen |
+
+### Projekt-Secrets
+
+Verwalte die Secrets, die den Genie-Cloud-Edge-Functions eines Projekts zur Verfügung stehen. Nur der Projektinhaber bzw. die Projektinhaberin kann diese Tools verwenden.
+
+| Tool | Was es tut |
+|---|---|
+| `list_project_secrets` | Liste die für ein Projekt konfigurierten Secret-Namen auf (Werte werden nie zurückgegeben) |
+| `set_project_secret` | Erstelle oder aktualisiere ein benanntes Secret |
+| `delete_project_secret` | Lösche ein oder mehrere benannte Secrets |
 
 ### Genie Cloud: geplante Jobs
 
@@ -117,6 +158,8 @@ Stelle Fragen an die Genie-Workspace-KI und durchsuche vergangene Gespräche.
 | `list_workspace_chats` | Letzte Gespräche mit Titel und Vorschau |
 | `get_workspace_chat` | Vollständige Nachrichtenhistorie eines Gesprächs |
 | `search_workspace_chats` | Suche in allen vergangenen Nachrichten |
+| `rename_workspace_chat` | Benenne ein Gespräch um |
+| `delete_workspace_chat` | Lösche ein Gespräch und alle seine Nachrichten dauerhaft |
 
 ### Workspace-MCP-Integrationen
 
@@ -141,8 +184,15 @@ Verwalte die MCP-Server-Integrationen (Linear, GitHub, Notion, Stripe usw.), die
 | `list_workspace_pii_detections` | Aktuelle geschwärzte Einträge im Erkennungsprotokoll |
 | `set_workspace_pii_rule` | Ändere die Aktion einer Regel (`log`, `block`, `ignore`) oder schalte sie ein/aus |
 | `create_workspace_pii_rule` | Füge eine benutzerdefinierte Regex-Regel hinzu |
+| `update_workspace_pii_rule` | Bearbeite Bezeichnung, Muster, Konfidenz oder Aktion einer bestehenden benutzerdefinierten Regel |
 | `delete_workspace_pii_rule` | Entferne eine benutzerdefinierte Regel |
 | `reset_workspace_pii_rules` | Setze alle integrierten Detektoren auf ihre Standardwerte zurück |
+
+### Preise
+
+| Tool | Was es tut |
+|---|---|
+| `get_genie_pricing` | Aktuelle, aus Stripe stammende Preise für alle Genie-Tarife, Sitzplätze, Credit-Top-ups und Zusatzoptionen |
 
 ---
 
@@ -173,6 +223,15 @@ Tool: get_credit_usage
 
 Admins können `scope: "workspace"` übergeben, um den Gesamtverbrauch aller Mitglieder einzusehen. Mitglieder können nur ihren eigenen Verbrauch abfragen.
 
+### Eine Frage zum Code eines Projekts stellen
+
+```
+Tool: query_project_code_graph
+{ "project_slug": "my-app-abc123", "question": "who calls createCheckoutSession" }
+
+→ Returns: matching symbols with file paths and exact line spans
+```
+
 ### Neues Teammitglied einladen
 
 ```
@@ -196,9 +255,16 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Workspace-Name oder -Einstellungen aktualisieren | Eigentümer:in oder Admin |
 | MCP-Integrationen verwalten | Eigentümer:in oder Admin |
 | PII-Regeln verwalten | Eigentümer:in oder Admin |
-| Projekte erstellen, aktualisieren, archivieren oder löschen | Jedes Mitglied |
+| Projekte erstellen, aktualisieren, umbenennen, archivieren oder löschen | Jedes Mitglied |
+| Ein Projekt in den Workspace verschieben oder daraus entfernen | Eigentümer:in, Admin oder Mitglied (nicht Editor) |
+| Eine geplante Projektlöschung prüfen oder stornieren | Projektinhaber:in |
 | Folgeanweisungen senden und Builds auslösen | Jedes Mitglied |
+| Auto-Modus für ein Projekt ein- oder ausschalten | Jedes Mitglied |
+| Den Code-Graph eines Projekts abfragen | Jedes Mitglied |
 | Geplante Jobs eines Projekts verwalten | Projektinhaber:in |
+| Genie-Cloud-Rollen, Anmeldeanbieter und Zugriffseinstellungen eines Projekts verwalten | Projektinhaber:in |
+| Secrets eines Projekts verwalten | Projektinhaber:in |
+| Genie-Preise lesen | Jedes Mitglied |
 
 ---
 

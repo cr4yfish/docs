@@ -46,7 +46,7 @@ Restart Claude Desktop and open any conversation. Claude will prompt you to auth
 
 ## Available tools
 
-The Genie MCP Server provides tools across six categories.
+The Genie MCP Server provides tools across ten categories.
 
 ### Workspace management
 
@@ -69,6 +69,8 @@ Read and update your workspace, members, invitations, settings, and billing.
 | `get_recent_workspace_activity` | Activity log with filters and pagination |
 | `list_workspaces` | All workspaces the authenticated user belongs to |
 | `list_user_workspaces` | Same list, with the currently-connected workspace marked |
+| `create_workspace` | Create a new workspace, owned by you. Independent of the currently connected workspace — it appears in your workspace list right away |
+| `invite_workspace_member_by_email` | Send a single-use invite directly to an email address. The invitee doesn't need an existing Genie account — they become a member once they accept |
 
 ### Projects
 
@@ -94,6 +96,45 @@ Browse projects, create new ones from prompts, and manage the full project lifec
 | `update_project` | Rename, update description, change visibility, or toggle remixing |
 | `list_project_members` | Members explicitly granted access (when project access control is on) |
 | `add_project_member` / `remove_project_member` | Grant or revoke a member's access to a specific project |
+| `rename_project` | Rename a project (a focused alternative to `update_project`) |
+| `add_project_to_workspace` | Move one of your personal projects into the connected workspace |
+| `remove_project_from_workspace` | Remove a project from the workspace without deleting it — it becomes a personal project again |
+| `get_project_deletion_status` | Check whether a project has a deletion in progress from the web app's Danger Zone, and whether it's still inside the cancellable grace window |
+| `cancel_project_deletion` | Cancel an in-progress project deletion started from the web app, while still inside the grace window |
+| `get_auto_mode_state` | Check whether [Auto mode](/projects/auto-mode) is running for a project: enabled flag, prompts used so far, and session limits |
+| `set_auto_mode` | Turn Auto mode on or off for a project |
+
+### Project code graph
+
+Ask questions about a project's own code — useful for an external AI client that needs to understand a project before changing it or answering questions about it.
+
+| Tool | What it does |
+|---|---|
+| `query_project_code_graph` | Ask a natural-language question about a project's code — callers/callees, imports, symbol history, recent changes, or a free-text search — and get back file paths and exact line numbers |
+
+### Genie Cloud backend management
+
+Manage a project's connected [Genie Cloud](/cloud/overview) backend: end-user roles, sign-in providers, and access settings. Only the project owner can use these tools.
+
+| Tool | What it does |
+|---|---|
+| `get_project_cloud_settings` | Backend status, region, registered end-users, roles and role assignments, enabled sign-in providers, and access settings |
+| `add_project_role` / `delete_project_role` | Add or remove a custom end-user role |
+| `assign_project_role` / `remove_project_role_from_user` | Assign or remove a role for a specific end-user |
+| `toggle_project_auth_provider` | Enable or disable a social sign-in provider (currently Google) for the project's end-users |
+| `update_project_access_settings` | Update private mode, the default role for new users, and the auto-approved email list |
+| `approve_project_user` | Approve an end-user waiting for access while private mode is on |
+| `invite_project_users` | Pre-approve a list of emails so they skip the pending-approval state |
+
+### Project secrets
+
+Manage the secrets available to a project's Genie Cloud Edge Functions. Only the project owner can use these tools.
+
+| Tool | What it does |
+|---|---|
+| `list_project_secrets` | List secret names configured for a project (values are never returned) |
+| `set_project_secret` | Create or update a named secret |
+| `delete_project_secret` | Delete one or more named secrets |
 
 ### Genie Cloud scheduled jobs
 
@@ -117,6 +158,8 @@ Send questions to the Genie workspace AI and browse past conversations.
 | `list_workspace_chats` | Recent conversations with title and preview |
 | `get_workspace_chat` | Full message history of a conversation |
 | `search_workspace_chats` | Search across all past messages |
+| `rename_workspace_chat` | Rename a conversation |
+| `delete_workspace_chat` | Permanently delete a conversation and all its messages |
 
 ### Workspace MCP integrations
 
@@ -141,8 +184,15 @@ Inspect and manage the workspace PII detection rules. Only workspace owners and 
 | `list_workspace_pii_detections` | Recent censored detection log entries |
 | `set_workspace_pii_rule` | Change a rule's action (`log`, `block`, `ignore`) or toggle it on/off |
 | `create_workspace_pii_rule` | Add a custom regex rule |
+| `update_workspace_pii_rule` | Edit an existing custom rule's label, pattern, confidence, or action |
 | `delete_workspace_pii_rule` | Remove a custom rule |
 | `reset_workspace_pii_rules` | Reset all built-in detectors to their defaults |
+
+### Pricing
+
+| Tool | What it does |
+|---|---|
+| `get_genie_pricing` | Current, Stripe-sourced pricing for all Genie plans, seats, credit top-ups, and add-ons |
 
 ---
 
@@ -173,6 +223,15 @@ Tool: get_credit_usage
 
 Admins can pass `scope: "workspace"` to see total consumption across all members. Members can only query their own usage.
 
+### Ask a question about a project's code
+
+```
+Tool: query_project_code_graph
+{ "project_slug": "my-app-abc123", "question": "who calls createCheckoutSession" }
+
+→ Returns: matching symbols with file paths and exact line spans
+```
+
 ### Invite a new team member
 
 ```
@@ -196,9 +255,16 @@ Role-based access is enforced on every tool call.
 | Update workspace name or settings | Owner or admin |
 | Manage MCP integrations | Owner or admin |
 | Manage PII rules | Owner or admin |
-| Create, update, archive, or delete projects | Any member |
+| Create, update, rename, archive, or delete projects | Any member |
+| Move a project in or out of the workspace | Owner, admin, or member (not editor) |
+| Check or cancel a scheduled project deletion | Project owner |
 | Send follow-up prompts and trigger builds | Any member |
+| Turn Auto mode on or off for a project | Any member |
+| Query a project's code graph | Any member |
 | Manage a project's scheduled jobs | Project owner |
+| Manage a project's Genie Cloud roles, sign-in providers, and access settings | Project owner |
+| Manage a project's secrets | Project owner |
+| Read Genie pricing | Any member |
 
 ---
 
