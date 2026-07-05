@@ -110,6 +110,44 @@ The settings dialog contains additional tabs beyond General. Here is a summary o
     Add, edit, and delete encrypted environment variables available to your running app. See [Store API keys and secrets](/projects/secrets).
   </Accordion>
   <Accordion title="Danger">
-    Irreversible actions such as deleting the project.
+    Delete the project permanently. See [Deleting a project](#deleting-a-project) below.
   </Accordion>
 </AccordionGroup>
+
+## Deleting a project
+
+Genie gives you two distinct ways to remove a project, with different levels of finality.
+
+### Archiving vs. deleting permanently
+
+| Action | What it does | Reversible? |
+|---|---|---|
+| **Archive** | Hides the project from your dashboard. No files, database rows, or deployments are touched. | Yes — restore it anytime from your project card menu. |
+| **Delete permanently** | Schedules the project for full destruction: source files, database rows, the deployed app, and any connected Genie Cloud resources. | Yes, but only during a 7-day grace window — after that it's gone for good. |
+
+You can archive or restore a project directly from its card menu on your dashboard. **Delete permanently** is available both from the card menu and from the **Danger** tab in project settings.
+
+### How permanent deletion works
+
+<Steps>
+  <Step title="Start the deletion">
+    From the project's card menu or the **Danger** tab in project settings, click **Delete**. A dialog explains what will be removed.
+  </Step>
+  <Step title="Type the project's slug to confirm">
+    To prevent accidental deletion, you must type the project's exact slug into the confirmation field before the **Delete permanently** button becomes active.
+  </Step>
+  <Step title="Deletion is scheduled, not immediate">
+    Confirming doesn't delete anything right away. The project is archived immediately, so it disappears from your dashboard, and permanent deletion is scheduled to run after a 7-day grace period.
+  </Step>
+  <Step title="Cancel anytime during the grace period">
+    Ask Genie in your workspace chat to cancel the deletion, or to check its status, at any point before the grace period ends. Once the grace period elapses, the project's files, database rows, and deployments are permanently removed and cannot be recovered.
+  </Step>
+</Steps>
+
+<Warning>
+  While a deletion is pending, the project is locked — it won't accept new chat messages or deploys. Cancelling restores full access immediately.
+</Warning>
+
+<Tip>
+  You can also ask Genie things like *"Delete this project"* or *"Cancel the deletion for \[project name]"* directly in workspace chat — Genie shows a confirmation card before taking either action. See [Genie MCP Server](/workspaces/mcp-api) for the full set of tools available to AI agents.
+</Tip>

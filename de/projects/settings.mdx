@@ -110,6 +110,44 @@ Der Einstellungsdialog enthält weitere Tabs neben Allgemein. Hier eine Zusammen
     Füge verschlüsselte Umgebungsvariablen hinzu, bearbeite oder lösche sie, die deiner laufenden App zur Verfügung stehen. Siehe [API-Schlüssel und Secrets speichern](/de/projects/secrets).
   </Accordion>
   <Accordion title="Danger">
-    Unwiderrufliche Aktionen wie das Löschen des Projekts.
+    Lösche das Projekt endgültig. Siehe [Ein Projekt löschen](#ein-projekt-löschen) weiter unten.
   </Accordion>
 </AccordionGroup>
+
+## Ein Projekt löschen
+
+Genie bietet dir zwei unterschiedliche Wege, ein Projekt zu entfernen — mit unterschiedlicher Endgültigkeit.
+
+### Archivieren vs. endgültig löschen
+
+| Aktion | Was passiert | Rückgängig zu machen? |
+|---|---|---|
+| **Archivieren** | Blendet das Projekt in deiner Projektliste aus. Dateien, Datenbankeinträge und Deployments bleiben unangetastet. | Ja — stelle es jederzeit über das Kartenmenü des Projekts wieder her. |
+| **Endgültig löschen** | Plant die vollständige Zerstörung des Projekts: Quelldateien, Datenbankeinträge, die deployte App und alle verbundenen Genie-Cloud-Ressourcen. | Ja, aber nur innerhalb einer 7-tägigen Frist — danach ist es unwiderruflich weg. |
+
+Du kannst ein Projekt direkt über sein Kartenmenü in deiner Projektliste archivieren oder wiederherstellen. **Endgültig löschen** ist sowohl über das Kartenmenü als auch über den Tab **Danger** in den Projekteinstellungen verfügbar.
+
+### So funktioniert die endgültige Löschung
+
+<Steps>
+  <Step title="Löschung starten">
+    Klicke im Kartenmenü des Projekts oder im Tab **Danger** der Projekteinstellungen auf **Löschen**. Ein Dialog erklärt, was entfernt wird.
+  </Step>
+  <Step title="Slug des Projekts zur Bestätigung eingeben">
+    Um versehentliches Löschen zu verhindern, musst du den exakten Slug des Projekts in das Bestätigungsfeld eingeben, bevor der Button **Endgültig löschen** aktiv wird.
+  </Step>
+  <Step title="Löschung wird geplant, nicht sofort ausgeführt">
+    Die Bestätigung löscht nichts sofort. Das Projekt wird sofort archiviert und verschwindet dadurch aus deiner Projektliste; die endgültige Löschung wird für den Ablauf einer 7-tägigen Frist geplant.
+  </Step>
+  <Step title="Jederzeit während der Frist abbrechen">
+    Bitte Genie im Workspace-Chat, die Löschung abzubrechen oder ihren Status zu prüfen — jederzeit, bevor die Frist abläuft. Nach Ablauf der Frist werden die Dateien, Datenbankeinträge und Deployments des Projekts unwiderruflich entfernt und können nicht wiederhergestellt werden.
+  </Step>
+</Steps>
+
+<Warning>
+  Solange eine Löschung aussteht, ist das Projekt gesperrt — es nimmt keine neuen Chat-Nachrichten oder Deployments an. Ein Abbruch stellt den vollen Zugriff sofort wieder her.
+</Warning>
+
+<Tip>
+  Du kannst Genie auch direkt im Workspace-Chat Dinge wie *„Lösche dieses Projekt"* oder *„Breche die Löschung von \[Projektname] ab"* fragen — Genie zeigt vor der Ausführung eine Bestätigungskarte an. Siehe [Genie MCP-Server](/de/workspaces/mcp-api) für die vollständige Liste der Tools, die KI-Agenten zur Verfügung stehen.
+</Tip>
