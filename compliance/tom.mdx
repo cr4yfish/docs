@@ -1,0 +1,170 @@
+---
+title: "Annex B — Technical and organizational measures (TOMs)"
+description: "Technical and organizational measures under Art. 32 GDPR, covering confidentiality, integrity, availability, recoverability, incident response, BCP, and the authorization model. Annex to the customer compliance package."
+sidebarTitle: "Annex B — TOMs"
+---
+
+Audience: customers, their procurement teams, and their data protection officers (DPOs).
+
+This document is **Annex B** to the [customer compliance package](/compliance/kunden-compliance-paket) and can be sent independently. It corresponds in substance to §6 and §7 of the main document and is kept in sync with it.
+
+<Note>
+  **Note on legal entity.** The processor within the meaning of this annex is the Genie entity named in the order form. See §0 of the customer compliance package for the full legal entity name.
+</Note>
+
+---
+
+## B.0 Scope
+
+The following technical and organizational measures (TOMs) are documented under Art. 32 GDPR and are implemented to ensure the confidentiality, integrity, availability, and resilience of the processing systems and services. They form part of the Data Processing Agreement (DPA) between Genie and the customer.
+
+---
+
+## B.1 Technical measures (Art. 32 GDPR)
+
+### B.1.1 Confidentiality (Art. 32(1)(b))
+
+| Measure | Implementation |
+| --- | --- |
+| **Access control — identity** | Federated identity via Auth0 (OIDC). Authentication tokens are cryptographically signed; the signature is verified server-side before every session decision. No passwords are stored in the application. |
+| **Access control — authorization** | Row-level security at the database level. Every request runs in a user-scoped context; policies determine data visibility. |
+| **Least privilege — engineers** | Production access is granted on a role basis and reviewed at least quarterly. Changes to security-relevant code paths require documented sign-off from a second person. |
+| **Least privilege — infrastructure** | AWS IAM roles scoped per service; secrets held exclusively in Secrets Manager. |
+| **Encryption in transit** | TLS 1.2+ terminated at the Cloudflare / AWS edge. HSTS enabled. |
+| **Encryption at rest — infrastructure** | All databases and storage services are encrypted at rest (AWS KMS). |
+| **Encryption at rest — secrets** | Customer secrets are end-to-end encrypted before storage. Versioned keys enable rotation without downtime; rotated annually. |
+| **Secret hygiene in CI** | Automated secret scanning on every code push; push protection enabled on the source-hosting platform. |
+| **Logging ban for sensitive fields** | Plaintext secrets, MCP credentials, full billing request bodies, and PII must not be logged. |
+
+### B.1.2 Integrity (Art. 32(1)(b))
+
+| Measure | Implementation |
+| --- | --- |
+| **Append-only audit log** | The workspace activity log is technically protected against subsequent modification or deletion; anonymization only happens via the controlled account-deletion job. |
+| **Signed tokens** | Authentication tokens are cryptographically signed; tampering is rejected. |
+| **Signed webhooks** | Stripe and Auth0 webhook signatures are verified before every status change. |
+| **Change management** | Changes to production-relevant systems require a documented review and sign-off process by a second person. Mandatory automated checks (tests, secret scan, dependency scan) must pass before merge. |
+
+### B.1.3 Availability and resilience (Art. 32(1)(b))
+
+| Measure | Implementation |
+| --- | --- |
+| **Backups** | Aurora point-in-time recovery, 35-day retention. S3 versioning on buckets holding customer content. |
+| **Multi-AZ** | Aurora and DynamoDB are Multi-AZ by default in eu-central-1. |
+| **DDoS / WAF** | Cloudflare WAF in front of all customer-facing endpoints. |
+| **Workflow durability** | Long-running jobs run on a durable workflow runtime that survives host restarts and deploys. |
+
+### B.1.4 Recoverability (Art. 32(1)(c))
+
+- Aurora PITR (35 days) is exercised in staging at least quarterly.
+- The disaster-recovery runbook lives in the private ops repo; RPO ≤ 5 min, RTO ≤ 4 h for the Genie control plane. Customer-side Supabase projects inherit Supabase's own DR posture.
+- Beyond purely technical recovery, the communication and escalation process is described in the Business Continuity Plan (B.1.9).
+
+### B.1.5 Pseudonymization (Art. 32(1)(a))
+
+- The audit trail is anonymized in place on account deletion — the statutory evidence is retained without storing PII.
+- Proof of deletion is kept in pseudonymized form, without retaining the identifier itself.
+
+### B.1.6 Regular review (Art. 32(1)(d))
+
+| Measure | Frequency |
+| --- | --- |
+| Automated tests on every code change | Per commit |
+| Dependency vulnerability scan | Per commit |
+| Secret scan | Per commit |
+| Penetration test | Annually (external) |
+| SEV-1 tabletop exercise | Annually |
+| Access review | Quarterly |
+| Subprocessor / DPA review | Annually |
+| Key rotation | Annually or upon suspected compromise |
+| Backup-restore exercise | Quarterly |
+
+The effectiveness of the technical and organizational measures is regularly **assessed, documented, and evaluated** as part of these reviews (Art. 32(1)(d) GDPR). Findings feed into the annual TOM review; material deviations are remediated in tracked follow-up actions and documented in the evidence package.
+
+### B.1.7 Vulnerability and patch management
+
+- Continuous dependency scanning on every commit; findings are tracked centrally.
+- Detected vulnerabilities are classified by criticality using CVSS v3.1, with the following target remediation timeframes:
+
+| Criticality | CVSS range | Target remediation timeframe |
+| --- | --- | --- |
+| Critical | ≥ 9.0 | ≤ 7 days, prioritized patching |
+| High | 7.0 – 8.9 | ≤ 30 days |
+| Medium | 4.0 – 6.9 | ≤ 90 days |
+| Low | < 4.0 | Bundled into the regular release cycle |
+
+- Out-of-band releases are possible for critical findings; they follow a shortened but still documented review path.
+- External penetration test annually; identified findings are handled per the same criticality matrix.
+
+### B.1.8 Incident response (Art. 33 / 34 GDPR)
+
+- 24/7 on-call rotation; 30-minute triage SLA.
+- Affected customers are notified without undue delay once sufficiently confirmed findings about a reportable incident are available. The controller is responsible for the 72-hour notification deadline to the competent supervisory authority; we provide the information required under Art. 33(3) GDPR without delay.
+- The full lifecycle, evidence preservation, and post-mortem cadence are documented internally and made available for audits on request.
+
+### B.1.9 Business Continuity Plan
+
+Scope: B.1.3 describes technical redundancy, B.1.4 technical recoverability. The Business Continuity Plan adds the organizational incident and communication structure.
+
+- **Incident organization.** 24/7 on-call rotation with a defined escalation path (on-call → incident commander → executive sponsor).
+- **Communication processes.** Status updates to affected customers via `status.genie-app.de` and email to the registered primary contact. Security-relevant notices additionally via `security@genie-app.de`.
+- **Responsibilities.** The incident commander coordinates technical recovery; the privacy lead assesses notification obligations under Art. 33 / 34 GDPR; the executive sponsor decides on external communication.
+- **Exercise.** The annual SEV-1 tabletop exercise covers both DR and BCP communication processes.
+
+### B.1.10 Subprocessor control (Art. 28 GDPR)
+
+See [Annex A — Subprocessors](/compliance/subprocessors): SOC 2 report or equivalent obtained, DPA signed, register reviewed annually, 30 days' notice before adding or replacing a subprocessor.
+
+---
+
+## B.2 Organizational measures
+
+In addition to the technical measures in B.1, the following organizational measures are implemented.
+
+### B.2.1 Security awareness and training
+
+Employees with access to production systems or customer data complete security and privacy training during onboarding, plus regular refreshers. Specialized training (e.g. secure coding) supplements the baseline.
+
+### B.2.2 Confidentiality, NDAs, and joiner-mover-leaver
+
+All employees are contractually bound to confidentiality. Onboarding, role changes, and offboarding follow a documented process that governs granting, adjusting, and revoking access rights. Permissions are revoked immediately upon departure.
+
+### B.2.3 Asset and endpoint management
+
+Company devices are centrally inventoried and managed. Disk encryption, screen lock, automatic updates, and endpoint protection are mandatory.
+
+### B.2.4 Vendor and third-party management
+
+Subprocessors are vetted for privacy and security requirements before use (SOC 2 or ISO 27001 reports, DPA, SCCs where applicable). See [Annex A — Subprocessors](/compliance/subprocessors) for the current list. Annual re-assessment.
+
+### B.2.5 Access and password policy, MFA
+
+Identity-based sign-ins go through a central identity provider with enforced multi-factor authentication for all employee accounts and, in particular, for every production access. Password requirements follow recognized standards (NIST SP 800-63B).
+
+### B.2.6 Employee access to customer data
+
+Access to live customer data is strictly need-to-know, role-based, MFA-protected, and logged. Break-glass access is technically possible, is documented before or immediately after use, is tracked by the privacy lead, and is reviewed in the quarterly access review. There is no blanket read access to customer data without a documented reason.
+
+### B.2.7 Internal authorization and role model
+
+To implement the requirements of Art. 32 GDPR and B.1.1 (least privilege), a documented role model is in place. The following roles have clearly delineated permission profiles; assignments are managed centrally in the identity provider, adjusted during onboarding / role changes / offboarding, and reviewed in the quarterly access review.
+
+| Role | Area of responsibility | Access to live customer data | Approval / four-eyes |
+| --- | --- | --- | --- |
+| **Engineering** | Development, code reviews, deployments | No direct read access to live content. Write access only through automated pipelines with mandatory code review. | Mandatory peer review for security-relevant paths |
+| **Site reliability / SRE** | Operations, monitoring, incident response | Read access to operational metrics and anonymized telemetry. Access to plaintext customer data only via break-glass. | Escalation and approval process for break-glass |
+| **Customer support** | Handling customer requests | Access to profile and billing data based on ticket-documented reasons. No generic access to chat content or uploads. | Ticket-based documentation; privacy-lead spot checks |
+| **Privacy lead** | DSAR handling, privacy coordination, audit oversight | Read and edit access as part of DSAR handling. | Four-eyes principle for account deletions and bulk exports |
+| **Security officer** | Incident investigation, forensic analysis | Case-by-case, documented; full access during an incident per B.1.8. | Documentation and reporting duty to management |
+| **Break-glass** | Emergency access during critical incidents | Full access for the duration of the incident; time-limited. | Activation requires two-person sign-off (incident commander + privacy/security lead); full session recording; follow-up review in the quarterly access review |
+| **Audit / compliance** | Spot checks, evidence-package maintenance | Read access to audit logs, no edit rights. | n/a |
+
+Every permission change (grant, adjustment, revocation) is fully logged in the identity provider and the respective target systems. Production access is continuously captured in a central audit log. There is no generic "admin" role with unfiltered data access; full production access is reachable only through the time-limited break-glass role.
+
+---
+
+## B.3 Contact and document status
+
+- **Privacy / TOM requests:** `privacy@genie-app.de`
+- **Security reports:** `security@genie-app.de`
+- **Versioning.** This annex is reviewed annually and whenever the TOMs change materially, and is kept in sync with the [customer compliance package](/compliance/kunden-compliance-paket).
