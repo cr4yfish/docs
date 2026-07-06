@@ -113,6 +113,16 @@
                   "billing/credits",
                   "billing/topups"
                 ]
+              },
+              {
+                "group": "Compliance & Privacy",
+                "icon": "shield",
+                "pages": [
+                  "compliance/kunden-compliance-paket",
+                  "compliance/subprocessors",
+                  "compliance/tom",
+                  "compliance/ai-dpa"
+                ]
               }
             ]
           }
