@@ -42,6 +42,14 @@ Once your project is created, the project view is where you spend most of your t
 
 Every message you send and every response Genie gives is stored in the chat history for that project. You can scroll back through the entire conversation to review past changes, understand why something was built a certain way, or pick up where you left off after a break.
 
+### Watching a build in progress
+
+While Genie is building or updating your app, the chat panel shows a live progress card listing every step of the build — planning, coding, and publishing. Click any step to open its details: what it did, which files changed, and — if it failed — why, along with an **Ask Genie to fix this** button that retries with the failure reason already filled in.
+
+<Tip>
+  A step that never actually ran (for example, because an earlier step in the same build failed) is shown as **Skipped** rather than a false success, so you can always tell at a glance which parts of a build really completed.
+</Tip>
+
 ### Chat mode
 
 Sometimes you want to ask a question instead of asking for a change — "what does this component do?", "how would I add authentication?", or "which fields should this form have?". Toggle **Chat mode** (the chat icon next to the prompt input) and Genie will answer your next message in plain language instead of rebuilding the app.
