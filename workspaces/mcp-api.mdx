@@ -46,7 +46,7 @@ Restart Claude Desktop and open any conversation. Claude will prompt you to auth
 
 ## Available tools
 
-The Genie MCP Server provides tools across ten categories.
+The Genie MCP Server provides tools across thirteen categories.
 
 ### Workspace management
 
@@ -103,6 +103,10 @@ Browse projects, create new ones from prompts, and manage the full project lifec
 | `cancel_project_deletion` | Cancel an in-progress project deletion started from the web app, while still inside the grace window |
 | `get_auto_mode_state` | Check whether [Auto mode](/projects/auto-mode) is running for a project: enabled flag, prompts used so far, and session limits |
 | `set_auto_mode` | Turn Auto mode on or off for a project |
+| `list_project_deployment_versions` | List a project's past deployed versions, newest first, so you can pick one to restore |
+| `rollback_project_deployment` | Restore a project to a previous version's code and trigger a fresh deploy. Overwrites the project's current code — requires `confirm_rollback: true` |
+| `get_project_seo_settings` | Read a project's current page title, meta description, canonical URL, Open Graph image, and noindex flag |
+| `update_project_seo_settings` | Update a project's page title and/or meta description. Canonical URL, Open Graph image, and noindex stay read-only via MCP for now — set those from the web app's SEO settings tab |
 
 ### Project code graph
 
@@ -111,6 +115,18 @@ Ask questions about a project's own code — useful for an external AI client th
 | Tool | What it does |
 |---|---|
 | `query_project_code_graph` | Ask a natural-language question about a project's code — callers/callees, imports, symbol history, recent changes, or a free-text search — and get back file paths and exact line numbers |
+
+### Project feature tree
+
+Genie tracks every feature, area, and capability it builds into a project as a tree — visible in the project's **Brain** tab in the web app. These tools let an external AI client read and maintain that tree. Reading is available to anyone who can view the project; adding or editing a goal requires project ownership.
+
+| Tool | What it does |
+|---|---|
+| `list_project_goals` | List the full feature tree — every tracked feature area, feature, and task, with its status (`todo`, `in_progress`, `implemented`, `failed`, `blocked`, `abandoned`) |
+| `get_project_goal_details` | Deep-dive one feature: its status-change history, the code files that implement it, and (for a feature area) how much of it is done |
+| `create_project_goal` | Add a feature to the tree to track it — this only records intent, it does not start a build |
+| `update_project_goal` | Rename a feature, change its acceptance criteria, or update its status |
+| `suggest_next_prompts` | Get ready-to-send prompt suggestions for what to build next, based on the project's open features |
 
 ### Genie Cloud backend management
 
@@ -126,6 +142,15 @@ Manage a project's connected [Genie Cloud](/cloud/overview) backend: end-user ro
 | `approve_project_user` | Approve an end-user waiting for access while private mode is on |
 | `invite_project_users` | Pre-approve a list of emails so they skip the pending-approval state |
 
+### Genie Cloud database
+
+Browse the tables in a project's connected [Genie Cloud](/cloud/overview) database. Read-only. Only the project owner can use these tools, since table data may include the project's own end-users' data.
+
+| Tool | What it does |
+|---|---|
+| `list_project_database_tables` | List a project's database tables and views, with column and approximate row counts |
+| `get_project_database_table_preview` | Column definitions and up to 25 sample rows for one table |
+
 ### Project secrets
 
 Manage the secrets available to a project's Genie Cloud Edge Functions. Only the project owner can use these tools.
@@ -136,12 +161,28 @@ Manage the secrets available to a project's Genie Cloud Edge Functions. Only the
 | `set_project_secret` | Create or update a named secret |
 | `delete_project_secret` | Delete one or more named secrets |
 
+### Project storage
+
+Browse and manage the files in a project's Genie Cloud storage buckets. Only the project owner can use these tools.
+
+| Tool | What it does |
+|---|---|
+| `list_project_storage_files` | List the files and folders in a storage bucket, optionally scoped to a subfolder |
+| `create_project_storage_folder` | Create a folder in a storage bucket |
+| `delete_project_storage_items` | Permanently delete one or more files or folders (deleting a folder deletes everything inside it) — requires `confirm_delete: true` |
+| `move_project_storage_item` | Move or rename a single file — overwrites any file already at the destination, so it requires `confirm_move: true` |
+
+<Note>
+Uploading new file content isn't available via MCP — an MCP tool call only carries JSON, not file bytes. Upload images and videos from the project's storage tab in the web app, or ask the Genie workspace AI to do it for you.
+</Note>
+
 ### Genie Cloud scheduled jobs
 
 Manage recurring schedules for a project's deployed edge functions. See [Scheduled jobs](/cloud/scheduling) for a full guide. Only the project owner can use these tools.
 
 | Tool | What it does |
 |---|---|
+| `list_project_cloud_functions` | List a project's deployed edge functions, with status and last-updated time — useful to find a function's slug before scheduling it |
 | `list_scheduled_jobs` | List a project's scheduled jobs, including schedule, last run time, and the real outcome of that run |
 | `schedule_job` | Schedule a deployed edge function to run on a timer, or update an existing schedule (idempotent by job name) |
 | `unschedule_job` | Remove a scheduled job from a project |
@@ -212,6 +253,20 @@ Tool: send_followup_prompt
 
 The `create_project` call starts the build immediately and returns the deployment URL. Use `get_project_status` to poll for completion, or `get_project_deployment_status` for a full phase breakdown.
 
+### Roll back to a previous version
+
+```
+Tool: list_project_deployment_versions
+{ "project_slug": "my-app-abc123" }
+
+→ Returns: version ids, newest first
+
+Tool: rollback_project_deployment
+{ "project_slug": "my-app-abc123", "version": "42", "confirm_rollback": true }
+```
+
+Omit `version` to roll back to the most recent previous version. The rollback runs in the background — poll `get_project_deployment_status` for progress.
+
 ### Check credit usage this month
 
 ```
@@ -261,9 +316,16 @@ Role-based access is enforced on every tool call.
 | Send follow-up prompts and trigger builds | Any member |
 | Turn Auto mode on or off for a project | Any member |
 | Query a project's code graph | Any member |
+| Read a project's feature tree | Any member (who can view the project) |
+| Add or edit a feature in the tree | Project owner |
+| Roll back a project or view its version history | Project owner |
+| Read or update a project's SEO settings | Project owner |
+| Browse a project's Genie Cloud database tables | Project owner |
+| List a project's deployed edge functions | Project owner |
 | Manage a project's scheduled jobs | Project owner |
 | Manage a project's Genie Cloud roles, sign-in providers, and access settings | Project owner |
 | Manage a project's secrets | Project owner |
+| Manage a project's storage files | Project owner |
 | Read Genie pricing | Any member |
 
 ---
