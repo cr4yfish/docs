@@ -46,7 +46,7 @@ Starte Claude Desktop neu und öffne ein beliebiges Gespräch. Claude wird dich 
 
 ## Verfügbare Tools
 
-Der Genie MCP Server bietet Tools in zehn Kategorien.
+Der Genie MCP Server bietet Tools in dreizehn Kategorien.
 
 ### Workspace-Verwaltung
 
@@ -103,6 +103,10 @@ Durchsuche Projekte, erstelle neue aus Prompts und verwalte den vollständigen P
 | `cancel_project_deletion` | Storniere eine laufende, über die Web-App gestartete Projektlöschung, solange die Karenzzeit noch läuft |
 | `get_auto_mode_state` | Prüfe, ob der [Auto-Modus](/de/projects/auto-mode) für ein Projekt läuft: Aktiv-Status, bisher verwendete Prompts und Sitzungslimits |
 | `set_auto_mode` | Schalte den Auto-Modus für ein Projekt ein oder aus |
+| `list_project_deployment_versions` | Liste die früheren bereitgestellten Versionen eines Projekts, neueste zuerst, um eine zum Wiederherstellen auszuwählen |
+| `rollback_project_deployment` | Stelle den Code eines Projekts auf eine frühere Version zurück und löse ein neues Deployment aus. Überschreibt den aktuellen Code des Projekts — erfordert `confirm_rollback: true` |
+| `get_project_seo_settings` | Lies den aktuellen Seitentitel, die Meta-Beschreibung, die kanonische URL, das Open-Graph-Bild und das Noindex-Flag eines Projekts |
+| `update_project_seo_settings` | Aktualisiere den Seitentitel und/oder die Meta-Beschreibung eines Projekts. Kanonische URL, Open-Graph-Bild und Noindex bleiben über MCP vorerst nur lesbar — setze diese im SEO-Einstellungstab der Web-App |
 
 ### Projekt-Code-Graph
 
@@ -111,6 +115,18 @@ Stelle Fragen zum eigenen Code eines Projekts — nützlich für einen externen 
 | Tool | Was es tut |
 |---|---|
 | `query_project_code_graph` | Stelle eine natürlichsprachige Frage zum Code eines Projekts — Aufrufer/Aufgerufene, Imports, Symbolverlauf, letzte Änderungen oder eine Volltextsuche — und erhalte Dateipfade und exakte Zeilennummern zurück |
+
+### Projekt-Feature-Baum
+
+Genie verfolgt jedes Feature, jeden Bereich und jede Fähigkeit, die es in einem Projekt baut, als Baum — sichtbar im **Brain**-Tab des Projekts in der Web-App. Diese Tools erlauben einem externen KI-Client, diesen Baum zu lesen und zu pflegen. Lesen steht jedem offen, der das Projekt einsehen kann; ein Feature hinzuzufügen oder zu bearbeiten erfordert Projekt-Eigentümerschaft.
+
+| Tool | Was es tut |
+|---|---|
+| `list_project_goals` | Liste den vollständigen Feature-Baum — jeden erfassten Feature-Bereich, jedes Feature und jede Aufgabe mit Status (`todo`, `in_progress`, `implemented`, `failed`, `blocked`, `abandoned`) |
+| `get_project_goal_details` | Vertiefe ein Feature: seinen Status-Verlauf, die Code-Dateien, die es umsetzen, und (bei einem Feature-Bereich) wie weit es fertig ist |
+| `create_project_goal` | Füge dem Baum ein Feature hinzu, um es zu erfassen — dies zeichnet nur die Absicht auf und startet keinen Build |
+| `update_project_goal` | Benenne ein Feature um, ändere seine Abnahmekriterien oder aktualisiere seinen Status |
+| `suggest_next_prompts` | Erhalte sofort nutzbare Prompt-Vorschläge dafür, was als Nächstes gebaut werden soll, basierend auf den offenen Features des Projekts |
 
 ### Genie-Cloud-Backend-Verwaltung
 
@@ -126,6 +142,15 @@ Verwalte das verbundene [Genie-Cloud](/de/cloud/overview)-Backend eines Projekts
 | `approve_project_user` | Genehmige eine:n Endnutzer:in, der/die im privaten Modus auf Zugriff wartet |
 | `invite_project_users` | Genehmige eine Liste von E-Mail-Adressen im Voraus, damit sie den Wartestatus überspringen |
 
+### Genie-Cloud-Datenbank
+
+Durchsuche die Tabellen der verbundenen [Genie-Cloud](/de/cloud/overview)-Datenbank eines Projekts. Nur lesend. Nur der Projektinhaber bzw. die Projektinhaberin kann diese Tools verwenden, da Tabellendaten die eigenen Endnutzerdaten des Projekts enthalten können.
+
+| Tool | Was es tut |
+|---|---|
+| `list_project_database_tables` | Liste die Tabellen und Views der Datenbank eines Projekts mit Spalten- und ungefährer Zeilenanzahl |
+| `get_project_database_table_preview` | Spaltendefinitionen und bis zu 25 Beispielzeilen für eine Tabelle |
+
 ### Projekt-Secrets
 
 Verwalte die Secrets, die den Genie-Cloud-Edge-Functions eines Projekts zur Verfügung stehen. Nur der Projektinhaber bzw. die Projektinhaberin kann diese Tools verwenden.
@@ -136,12 +161,28 @@ Verwalte die Secrets, die den Genie-Cloud-Edge-Functions eines Projekts zur Verf
 | `set_project_secret` | Erstelle oder aktualisiere ein benanntes Secret |
 | `delete_project_secret` | Lösche ein oder mehrere benannte Secrets |
 
+### Projekt-Speicher
+
+Durchsuche und verwalte die Dateien in den Genie-Cloud-Speicher-Buckets eines Projekts. Nur der Projektinhaber bzw. die Projektinhaberin kann diese Tools verwenden.
+
+| Tool | Was es tut |
+|---|---|
+| `list_project_storage_files` | Liste die Dateien und Ordner in einem Speicher-Bucket, optional eingegrenzt auf einen Unterordner |
+| `create_project_storage_folder` | Erstelle einen Ordner in einem Speicher-Bucket |
+| `delete_project_storage_items` | Lösche eine oder mehrere Dateien oder Ordner dauerhaft (das Löschen eines Ordners löscht alles darin) — erfordert `confirm_delete: true` |
+| `move_project_storage_item` | Verschiebe oder benenne eine einzelne Datei um — überschreibt eine bereits am Zielort vorhandene Datei, daher erforderlich: `confirm_move: true` |
+
+<Note>
+Das Hochladen neuer Dateiinhalte ist über MCP nicht möglich — ein MCP-Tool-Aufruf transportiert nur JSON, keine Datei-Bytes. Lade Bilder und Videos über den Speicher-Tab des Projekts in der Web-App hoch, oder bitte die Genie-Workspace-KI darum.
+</Note>
+
 ### Genie Cloud: geplante Jobs
 
 Verwalte wiederkehrende Zeitpläne für die bereitgestellten Edge Functions eines Projekts. Siehe [Geplante Jobs](/de/cloud/scheduling) für eine vollständige Anleitung. Nur der Projektinhaber bzw. die Projektinhaberin kann diese Tools verwenden.
 
 | Tool | Was es tut |
 |---|---|
+| `list_project_cloud_functions` | Liste die bereitgestellten Edge Functions eines Projekts mit Status und letzter Aktualisierung — nützlich, um den Slug einer Function vor dem Planen zu finden |
 | `list_scheduled_jobs` | Liste die geplanten Jobs eines Projekts auf, inklusive Zeitplan, letztem Lauf und dem tatsächlichen Ergebnis dieses Laufs |
 | `schedule_job` | Plane eine bereitgestellte Edge Function so, dass sie nach einem Zeitplan läuft, oder aktualisiere einen bestehenden Zeitplan (idempotent nach Job-Name) |
 | `unschedule_job` | Entferne einen geplanten Job aus einem Projekt |
@@ -212,6 +253,20 @@ Tool: send_followup_prompt
 
 Der `create_project`-Aufruf startet den Build sofort und gibt die Deployment-URL zurück. Verwende `get_project_status` zum Abfragen des Abschlusses oder `get_project_deployment_status` für eine vollständige Phasenaufschlüsselung.
 
+### Auf eine frühere Version zurücksetzen
+
+```
+Tool: list_project_deployment_versions
+{ "project_slug": "my-app-abc123" }
+
+→ Returns: version ids, newest first
+
+Tool: rollback_project_deployment
+{ "project_slug": "my-app-abc123", "version": "42", "confirm_rollback": true }
+```
+
+Lasse `version` weg, um auf die zuletzt bereitgestellte vorherige Version zurückzusetzen. Der Rollback läuft im Hintergrund — frage `get_project_deployment_status` ab, um den Fortschritt zu sehen.
+
 ### Credit-Verbrauch diesen Monat prüfen
 
 ```
@@ -261,9 +316,16 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Folgeanweisungen senden und Builds auslösen | Jedes Mitglied |
 | Auto-Modus für ein Projekt ein- oder ausschalten | Jedes Mitglied |
 | Den Code-Graph eines Projekts abfragen | Jedes Mitglied |
+| Den Feature-Baum eines Projekts lesen | Jedes Mitglied (das das Projekt einsehen kann) |
+| Ein Feature im Baum hinzufügen oder bearbeiten | Projektinhaber:in |
+| Ein Projekt zurücksetzen oder seinen Versionsverlauf einsehen | Projektinhaber:in |
+| SEO-Einstellungen eines Projekts lesen oder aktualisieren | Projektinhaber:in |
+| Datenbanktabellen der Genie Cloud eines Projekts durchsuchen | Projektinhaber:in |
+| Bereitgestellte Edge Functions eines Projekts auflisten | Projektinhaber:in |
 | Geplante Jobs eines Projekts verwalten | Projektinhaber:in |
 | Genie-Cloud-Rollen, Anmeldeanbieter und Zugriffseinstellungen eines Projekts verwalten | Projektinhaber:in |
 | Secrets eines Projekts verwalten | Projektinhaber:in |
+| Speicherdateien eines Projekts verwalten | Projektinhaber:in |
 | Genie-Preise lesen | Jedes Mitglied |
 
 ---
