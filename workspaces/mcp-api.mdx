@@ -46,7 +46,7 @@ Restart Claude Desktop and open any conversation. Claude will prompt you to auth
 
 ## Available tools
 
-The Genie MCP Server provides tools across thirteen categories.
+The Genie MCP Server provides tools across fourteen categories.
 
 ### Workspace management
 
@@ -127,6 +127,15 @@ Genie tracks every feature, area, and capability it builds into a project as a t
 | `create_project_goal` | Add a feature to the tree to track it — this only records intent, it does not start a build |
 | `update_project_goal` | Rename a feature, change its acceptance criteria, or update its status |
 | `suggest_next_prompts` | Get ready-to-send prompt suggestions for what to build next, based on the project's open features |
+
+### Bug tracking
+
+Genie de-duplicates bugs across your projects: when the same class of bug shows up again, it reuses the fix that worked last time instead of investigating from scratch. These tools let an external AI client read and file into that system. Reading is available to anyone who can view the project; filing a bug requires project ownership.
+
+| Tool | What it does |
+|---|---|
+| `get_known_issues` | List a project's tracked bug sightings — each one's source, status, a summary, and the cross-project bug pattern it was matched to (if any) |
+| `report_known_issue` | File a bug into the knowledge base so it's de-duplicated against known patterns and its eventual fix can be reused across projects. Advisory tracking only — it never starts a build. Only the project owner can call this |
 
 ### Genie Cloud backend management
 
@@ -318,6 +327,8 @@ Role-based access is enforced on every tool call.
 | Query a project's code graph | Any member |
 | Read a project's feature tree | Any member (who can view the project) |
 | Add or edit a feature in the tree | Project owner |
+| Read a project's known issues | Any member (who can view the project) |
+| Report a known issue | Project owner |
 | Roll back a project or view its version history | Project owner |
 | Read or update a project's SEO settings | Project owner |
 | Browse a project's Genie Cloud database tables | Project owner |

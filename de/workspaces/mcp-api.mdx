@@ -46,7 +46,7 @@ Starte Claude Desktop neu und öffne ein beliebiges Gespräch. Claude wird dich 
 
 ## Verfügbare Tools
 
-Der Genie MCP Server bietet Tools in dreizehn Kategorien.
+Der Genie MCP Server bietet Tools in vierzehn Kategorien.
 
 ### Workspace-Verwaltung
 
@@ -127,6 +127,15 @@ Genie verfolgt jedes Feature, jeden Bereich und jede Fähigkeit, die es in einem
 | `create_project_goal` | Füge dem Baum ein Feature hinzu, um es zu erfassen — dies zeichnet nur die Absicht auf und startet keinen Build |
 | `update_project_goal` | Benenne ein Feature um, ändere seine Abnahmekriterien oder aktualisiere seinen Status |
 | `suggest_next_prompts` | Erhalte sofort nutzbare Prompt-Vorschläge dafür, was als Nächstes gebaut werden soll, basierend auf den offenen Features des Projekts |
+
+### Bug-Tracking
+
+Genie dedupliziert Bugs projektübergreifend: Taucht dieselbe Art von Bug erneut auf, wird die zuvor funktionierende Lösung wiederverwendet, statt erneut von vorn zu untersuchen. Mit diesen Tools kann ein externer KI-Client dieses System lesen und dort Bugs melden. Lesen steht jedem offen, der das Projekt einsehen kann; einen Bug zu melden erfordert Projekt-Eigentümerschaft.
+
+| Tool | Was es tut |
+|---|---|
+| `get_known_issues` | Liste die erfassten Bug-Sichtungen eines Projekts — jeweils mit Quelle, Status, einer Zusammenfassung und dem projektübergreifenden Bug-Muster, dem sie zugeordnet wurden (falls vorhanden) |
+| `report_known_issue` | Melde einen Bug in der Wissensdatenbank, damit er mit bekannten Mustern dedupliziert wird und seine spätere Lösung projektübergreifend wiederverwendet werden kann. Nur zur Nachverfolgung — startet nie einen Build. Nur der Projektinhaber kann dies aufrufen |
 
 ### Genie-Cloud-Backend-Verwaltung
 
@@ -318,6 +327,8 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Den Code-Graph eines Projekts abfragen | Jedes Mitglied |
 | Den Feature-Baum eines Projekts lesen | Jedes Mitglied (das das Projekt einsehen kann) |
 | Ein Feature im Baum hinzufügen oder bearbeiten | Projektinhaber:in |
+| Bekannte Bugs eines Projekts lesen | Jedes Mitglied (das das Projekt einsehen kann) |
+| Einen bekannten Bug melden | Projektinhaber:in |
 | Ein Projekt zurücksetzen oder seinen Versionsverlauf einsehen | Projektinhaber:in |
 | SEO-Einstellungen eines Projekts lesen oder aktualisieren | Projektinhaber:in |
 | Datenbanktabellen der Genie Cloud eines Projekts durchsuchen | Projektinhaber:in |

@@ -4,6 +4,20 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="July 12, 2026" description="Weekly release">
+
+This update documents new Genie MCP Server tools for bug tracking, and fixes a confusing preview error notice.
+
+## Updates
+
+- **Genie MCP Server: bug tracking now documented.** Genie de-duplicates bugs across your projects, reusing a fix that already worked instead of re-investigating from scratch. External AI clients connected via the [Genie MCP Server](/workspaces/mcp-api) can now read a project's tracked bug sightings and file new ones with `get_known_issues` and `report_known_issue`.
+
+## Fixes
+
+- **Clearer preview health-check errors.** If Genie can't confirm your live preview is reachable right after a deploy, you'll now see a clear, translated notice instead of a raw, German-only error message. The check also no longer fires a false alarm on your very first prompt, when a fresh deployment can briefly take a few seconds to become reachable.
+
+</Update>
+
 <Update label="July 11, 2026" description="Weekly release">
 
 This update documents two account pages that were live but missing from the docs, catches up the **Brain** tab description, and corrects an error in the top-up credits documentation.
