@@ -1,21 +1,24 @@
 ---
-title: "Eingebaute KI und E-Mail"
-description: "Apps, die du mit Genie baust, können KI-Texterstellung nutzen und E-Mails versenden — sofort und ohne eigenes OpenAI- oder Resend-Konto. Bringe jederzeit deine eigenen Schlüssel mit, wenn du mehr Kontrolle möchtest."
+title: "Eingebaute KI, Bilder und E-Mail"
+description: "Apps, die du mit Genie baust, können KI-Texterstellung nutzen, Bilder erzeugen und bearbeiten und E-Mails versenden — sofort und ohne eigenes OpenAI-, Replicate- oder Resend-Konto. Bringe jederzeit deine eigenen Schlüssel mit, wenn du mehr Kontrolle möchtest."
 ---
 
-Wenn deine App Texte mit KI erzeugen oder eine E-Mail versenden muss, spricht sie normalerweise mit einem externen Dienst wie OpenAI oder Resend — und bei jedem dieser Dienste musst du dich erst registrieren, deine Angaben verifizieren und einen API-Schlüssel erstellen, bevor irgendetwas funktioniert. Genie nimmt dir diesen Schritt ab. Jedes Projekt mit aktivierter **Genie Cloud** kommt mit bereits eingerichteten, funktionierenden Zugangsdaten für diese Dienste, sodass KI-Funktionen und transaktionale E-Mails schon beim ersten Mal funktionieren — ohne dass du dich irgendwo anmeldest.
+Wenn deine App Texte mit KI erzeugen, ein Bild erstellen oder bearbeiten oder eine E-Mail versenden muss, spricht sie normalerweise mit einem externen Dienst wie OpenAI, Replicate oder Resend — und bei jedem dieser Dienste musst du dich erst registrieren, deine Angaben verifizieren und einen API-Schlüssel erstellen, bevor irgendetwas funktioniert. Genie nimmt dir diesen Schritt ab. Jedes Projekt mit aktivierter **Genie Cloud** kommt mit bereits eingerichteten, funktionierenden Zugangsdaten für diese Dienste, sodass KI-Funktionen, Bilderzeugung und transaktionale E-Mails schon beim ersten Mal funktionieren — ohne dass du dich irgendwo anmeldest.
 
 <Note>
-  Eingebaute KI und E-Mail erfordern, dass **Genie Cloud** mit deinem Projekt verbunden ist. Falls noch nicht aktiviert, richte sie zuerst über [Genie Cloud](/de/cloud/overview) ein.
+  Eingebaute KI, Bilderzeugung und E-Mail erfordern, dass **Genie Cloud** mit deinem Projekt verbunden ist. Falls noch nicht aktiviert, richte sie zuerst über [Genie Cloud](/de/cloud/overview) ein.
 </Note>
 
 ## Was du sofort bekommst
 
 Wenn Genie Cloud für dein Projekt bereitgestellt wird, fügt Genie deinem Projekt automatisch eine Reihe einsatzbereiter Zugangsdaten als [Secrets](/de/projects/secrets) hinzu. Du musst sie nicht erstellen und nirgends einfügen — der von Genie generierte Code liest sie von selbst.
 
-<CardGroup cols={3}>
+<CardGroup cols={2}>
   <Card title="KI-Text (OpenAI)" icon="sparkles">
     Erzeuge Texte, Zusammenfassungen, Chat-Antworten und andere KI-Inhalte. Bereitgestellt über OpenAI via Genie.
+  </Card>
+  <Card title="Bilderzeugung (Replicate)" icon="image">
+    Erzeuge ein Bild aus einem Prompt oder bearbeite ein vorhandenes Bild — zum Beispiel den Hintergrund oder Stil eines Fotos ändern. Bereitgestellt über Googles Bildmodell via Replicate.
   </Card>
   <Card title="E-Mail (Resend)" icon="mail">
     Versende transaktionale E-Mails — Bestätigungen, Benachrichtigungen, Nachrichten aus Kontaktformularen — über Resend.
@@ -30,22 +33,23 @@ In deinem **Secrets**-Tab erscheinen die folgenden Einträge, bereits ausgefüll
 | Secret | Wofür es dient |
 |---|---|
 | `OPENAI_API_KEY` | KI-Texterstellung |
+| `REPLICATE_API_TOKEN` | Bilderzeugung und -bearbeitung |
 | `RESEND_API_KEY` | E-Mail-Versand |
 | `HF_TOKEN` | Hugging-Face-Modellinferenz |
 
-Außerdem siehst du passende Einträge `OPENAI_BASE_URL`, `RESEND_BASE_URL` und `HF_ENDPOINT`. Diese weisen deine App an, Anfragen über Genie zu leiten. Lass sie unverändert, es sei denn, du wechselst zu deinem eigenen Schlüssel (siehe [Eigene Schlüssel verwenden](#eigene-schl%C3%BCssel-verwenden) weiter unten).
+Außerdem siehst du passende Einträge `OPENAI_BASE_URL`, `REPLICATE_BASE_URL`, `RESEND_BASE_URL` und `HF_ENDPOINT`. Diese weisen deine App an, Anfragen über Genie zu leiten. Lass sie unverändert, es sei denn, du wechselst zu deinem eigenen Schlüssel (siehe [Eigene Schlüssel verwenden](#eigene-schl%C3%BCssel-verwenden) weiter unten).
 
 <Tip>
-  Beschreibe einfach, was du möchtest — „fasse jedes Support-Ticket zusammen", „schick mir eine E-Mail, wenn jemand das Formular absendet", „kennzeichne hochgeladene Fotos" — und Genie baut die Funktion mit diesen eingebauten Zugangsdaten. API-Schlüssel musst du gar nicht erwähnen.
+  Beschreibe einfach, was du möchtest — „fasse jedes Support-Ticket zusammen", „erzeuge ein Hero-Bild von einem Sonnenuntergang über Bergen", „ändere den Hintergrund dieses Fotos zu einem Strand", „schick mir eine E-Mail, wenn jemand das Formular absendet" — und Genie baut die Funktion mit diesen eingebauten Zugangsdaten. API-Schlüssel musst du gar nicht erwähnen.
 </Tip>
 
 ## Wie es funktioniert
 
-Deine App hält niemals einen echten OpenAI- oder Resend-Schlüssel. Stattdessen sind die von Genie eingesetzten Zugangsdaten **projektspezifische Zugriffstoken**, die auf Genies sicheren Relay-Dienst zeigen. Wenn deine App eine Anfrage stellt:
+Deine App hält niemals einen echten OpenAI-, Replicate- oder Resend-Schlüssel. Stattdessen sind die von Genie eingesetzten Zugangsdaten **projektspezifische Zugriffstoken**, die auf Genies sicheren Relay-Dienst zeigen. Wenn deine App eine Anfrage stellt:
 
 <Steps>
   <Step title="Deine App ruft den Dienst auf">
-    Dein generierter Code ruft OpenAI, Resend oder Hugging Face ganz normal auf und verwendet dabei die eingesetzten Zugangsdaten.
+    Dein generierter Code ruft OpenAI, Replicate, Resend oder Hugging Face ganz normal auf und verwendet dabei die eingesetzten Zugangsdaten.
   </Step>
   <Step title="Genie authentifiziert und leitet weiter">
     Die Anfrage erreicht Genie, das prüft, ob sie zu deinem Projekt gehört, und leitet sie dann mit Genies eigenem Anbieter-Schlüssel an den echten Anbieter weiter.
@@ -75,6 +79,10 @@ Die enthaltenen Zugangsdaten sind auf den Normalfall ausgelegt — Funktionen so
 
 Die eingebauten OpenAI-Zugangsdaten sind auf Genies Standardmodell beschränkt, das so gewählt ist, dass es schnell und kostengünstig für typische App-Funktionen ist. Wenn deine App ein anderes Modell anfordert, wird die Anfrage abgelehnt. Um ein bestimmtes oder leistungsfähigeres Modell zu nutzen, [verwende deinen eigenen OpenAI-Schlüssel](#eigene-schl%C3%BCssel-verwenden).
 
+### Bildmodell
+
+Die eingebauten Replicate-Zugangsdaten sind auf eine kleine Auswahl von Genie-ausgewählten Bildmodellen beschränkt (Googles nano-banana-Familie, sowohl für die Erzeugung neuer Bilder als auch für die Bearbeitung vorhandener Bilder). Wenn deine App ein Modell außerhalb dieser Auswahl anfordert, wird die Anfrage abgelehnt. Um ein anderes Bildmodell zu nutzen, [verwende deinen eigenen Replicate-Schlüssel](#eigene-schl%C3%BCssel-verwenden).
+
 ### E-Mail-Absenderadresse
 
 E-Mails, die über die eingebauten Resend-Zugangsdaten versendet werden, müssen Genies verifizierte Absenderadresse verwenden:
@@ -95,13 +103,13 @@ Du kannst jede der eingebauten Zugangsdaten jederzeit durch deine eigenen ersetz
 
 <Steps>
   <Step title="Erstelle einen Schlüssel beim Anbieter">
-    Registriere dich bei [OpenAI](https://platform.openai.com), [Resend](https://resend.com) oder [Hugging Face](https://huggingface.co) und erstelle einen API-Schlüssel. Verifiziere bei Resend zuerst deine Absender-Domain in deren Dashboard.
+    Registriere dich bei [OpenAI](https://platform.openai.com), [Replicate](https://replicate.com), [Resend](https://resend.com) oder [Hugging Face](https://huggingface.co) und erstelle einen API-Schlüssel. Verifiziere bei Resend zuerst deine Absender-Domain in deren Dashboard.
   </Step>
   <Step title="Öffne die Secrets deines Projekts">
     Öffne in deinem Projekt **Einstellungen → Secrets**. Details findest du unter [Secrets](/de/projects/secrets).
   </Step>
   <Step title="Ersetze den Wert">
-    Bearbeite das jeweilige Secret — `OPENAI_API_KEY`, `RESEND_API_KEY` oder `HF_TOKEN` — und füge deinen eigenen Schlüssel anstelle des eingebauten ein.
+    Bearbeite das jeweilige Secret — `OPENAI_API_KEY`, `REPLICATE_API_TOKEN`, `RESEND_API_KEY` oder `HF_TOKEN` — und füge deinen eigenen Schlüssel anstelle des eingebauten ein.
   </Step>
   <Step title="Speichern">
     Speichere das Secret. Genie aktualisiert automatisch den passenden Base-URL-Eintrag, sodass er direkt auf den Anbieter zeigt und deine App mit deinem Schlüssel direkt mit dem Anbieter spricht, statt über Genies Relay zu laufen. Codeänderungen sind nicht nötig.
@@ -119,10 +127,11 @@ Nach dem Wechsel gehen die Anfragen für diesen Anbieter direkt von deiner App z
 | Was du siehst | Wahrscheinliche Ursache | Was zu tun ist |
 |---|---|---|
 | KI-Anfragen scheitern mit einem Fehler „ungültiges Modell" | Deine App hat ein Modell angefragt, das die eingebauten Zugangsdaten nicht erlauben | Stelle die Funktion auf Genies Standardmodell um oder [verwende deinen eigenen OpenAI-Schlüssel](#eigene-schl%C3%BCssel-verwenden) |
+| Bilderzeugung oder -bearbeitung scheitert mit einem Modell-Fehler | Deine App hat ein Bildmodell außerhalb der eingebauten Replicate-Allowlist angefragt | Stelle die Funktion auf ein unterstütztes Modell um oder [verwende deinen eigenen Replicate-Schlüssel](#eigene-schl%C3%BCssel-verwenden) |
 | E-Mail wird mit einem Absender-/Domain-Fehler abgelehnt | Die App sendet von einer anderen Adresse als `noreply@email.genie-app.de` | Verwende die eingebaute Absenderadresse oder deinen eigenen Resend-Schlüssel mit verifizierter Domain |
 | Ein Dienst funktioniert nach dem Bearbeiten eines Secrets nicht mehr | Die eingebauten Zugangsdaten wurden versehentlich geändert oder gelöscht | Führe im **Cloud**-Tab „Bootstrap erneut ausführen" aus, um die eingebauten Werte wiederherzustellen, oder füge einen gültigen eigenen Schlüssel ein |
 | Anfragen scheitern bei hoher Last | Du hast das Limit pro Projekt erreicht | Reduziere das Anfragevolumen, verwende deinen eigenen Schlüssel oder kontaktiere den Support, um das Limit anzuheben |
 
 <Tip>
-  Frag Genie im Projekt-Chat — „warum scheitert meine E-Mail?" oder „stelle meine App auf meinen eigenen OpenAI-Schlüssel um" — und Genie kann deine Secrets und den relevanten Code prüfen und dich durch die Lösung führen.
+  Frag Genie im Projekt-Chat — „warum scheitert meine E-Mail?", „warum wurde meine Bilderzeugungs-Anfrage abgelehnt?" oder „stelle meine App auf meinen eigenen OpenAI-Schlüssel um" — und Genie kann deine Secrets und den relevanten Code prüfen und dich durch die Lösung führen.
 </Tip>

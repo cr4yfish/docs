@@ -1,21 +1,24 @@
 ---
-title: "Built-in AI and email"
-description: "Apps you build with Genie can use AI text generation and send email out of the box — no separate OpenAI or Resend account required. Bring your own keys whenever you want more control."
+title: "Built-in AI, images, and email"
+description: "Apps you build with Genie can use AI text generation, generate and edit images, and send email out of the box — no separate OpenAI, Replicate, or Resend account required. Bring your own keys whenever you want more control."
 ---
 
-When your app needs to generate text with AI or send an email, it normally has to talk to an outside service like OpenAI or Resend, and each of those services requires you to sign up, verify your details, and create an API key before anything works. Genie removes that step. Every project with **Genie Cloud** enabled comes with working credentials for these services already wired in, so AI features and transactional email work the first time Genie builds them — without you registering anywhere.
+When your app needs to generate text with AI, create or edit an image, or send an email, it normally has to talk to an outside service like OpenAI, Replicate, or Resend, and each of those services requires you to sign up, verify your details, and create an API key before anything works. Genie removes that step. Every project with **Genie Cloud** enabled comes with working credentials for these services already wired in, so AI features, image generation, and transactional email work the first time Genie builds them — without you registering anywhere.
 
 <Note>
-  Built-in AI and email require **Genie Cloud** to be connected to your project. If it is not enabled yet, see [Genie Cloud](/cloud/overview) to set it up first.
+  Built-in AI, image generation, and email require **Genie Cloud** to be connected to your project. If it is not enabled yet, see [Genie Cloud](/cloud/overview) to set it up first.
 </Note>
 
 ## What you get out of the box
 
 When Genie Cloud is provisioned for your project, Genie automatically adds a set of ready-to-use credentials to your project [secrets](/projects/secrets). You do not have to create them, and you do not have to paste them anywhere — Genie's generated code reads them on its own.
 
-<CardGroup cols={3}>
+<CardGroup cols={2}>
   <Card title="AI text (OpenAI)" icon="sparkles">
     Generate text, summaries, chat replies, and other AI content. Backed by OpenAI through Genie.
+  </Card>
+  <Card title="Image generation (Replicate)" icon="image">
+    Generate an image from a prompt, or edit an existing image — for example, changing a photo's background or style. Backed by Google's image model through Replicate.
   </Card>
   <Card title="Email (Resend)" icon="mail">
     Send transactional email — confirmations, notifications, contact-form messages — through Resend.
@@ -30,22 +33,23 @@ These show up in your **Secrets** tab as the following entries, already filled i
 | Secret | What it powers |
 |---|---|
 | `OPENAI_API_KEY` | AI text generation |
+| `REPLICATE_API_TOKEN` | Image generation and editing |
 | `RESEND_API_KEY` | Sending email |
 | `HF_TOKEN` | Hugging Face model inference |
 
-You will also see matching `OPENAI_BASE_URL`, `RESEND_BASE_URL`, and `HF_ENDPOINT` entries. These tell your app to route requests through Genie. Leave them as they are unless you are switching to your own key (see [Bringing your own key](#bringing-your-own-key) below).
+You will also see matching `OPENAI_BASE_URL`, `REPLICATE_BASE_URL`, `RESEND_BASE_URL`, and `HF_ENDPOINT` entries. These tell your app to route requests through Genie. Leave them as they are unless you are switching to your own key (see [Bringing your own key](#bringing-your-own-key) below).
 
 <Tip>
-  Just describe what you want — "summarise each support ticket", "email me when someone submits the form", "tag uploaded photos" — and Genie builds the feature using these built-in credentials. You do not need to mention API keys at all.
+  Just describe what you want — "summarise each support ticket", "generate a hero image of a sunset over mountains", "change the background of this photo to a beach", "email me when someone submits the form" — and Genie builds the feature using these built-in credentials. You do not need to mention API keys at all.
 </Tip>
 
 ## How it works
 
-Your app never holds a real OpenAI or Resend key. Instead, the credentials Genie seeds are **project-specific access tokens** that point at Genie's secure relay. When your app makes a request:
+Your app never holds a real OpenAI, Replicate, or Resend key. Instead, the credentials Genie seeds are **project-specific access tokens** that point at Genie's secure relay. When your app makes a request:
 
 <Steps>
   <Step title="Your app calls the service">
-    Your generated code calls OpenAI, Resend, or Hugging Face as normal, using the seeded credentials.
+    Your generated code calls OpenAI, Replicate, Resend, or Hugging Face as normal, using the seeded credentials.
   </Step>
   <Step title="Genie authenticates and forwards it">
     The request reaches Genie, which verifies it belongs to your project and then forwards it to the real provider using Genie's own provider key.
@@ -75,6 +79,10 @@ The included credentials are tuned for the common case — getting features work
 
 The built-in OpenAI credential is limited to Genie's default model, which is selected to be fast and cost-effective for typical app features. If your app requests a different model, the request is rejected. To use a specific or more powerful model, [bring your own OpenAI key](#bringing-your-own-key).
 
+### Image model
+
+The built-in Replicate credential is limited to a small set of Genie-selected image models (Google's nano-banana family, used for both generating a new image and editing an existing one). If your app requests a model outside that set, the request is rejected. To use a different image model, [bring your own Replicate key](#bringing-your-own-key).
+
 ### Email sender address
 
 Email sent through the built-in Resend credential must use Genie's verified sending address:
@@ -95,13 +103,13 @@ You can replace any of the built-in credentials with your own at any time. This 
 
 <Steps>
   <Step title="Create a key with the provider">
-    Sign up with [OpenAI](https://platform.openai.com), [Resend](https://resend.com), or [Hugging Face](https://huggingface.co) and create an API key. For Resend, verify your sending domain in their dashboard first.
+    Sign up with [OpenAI](https://platform.openai.com), [Replicate](https://replicate.com), [Resend](https://resend.com), or [Hugging Face](https://huggingface.co) and create an API key. For Resend, verify your sending domain in their dashboard first.
   </Step>
   <Step title="Open your project Secrets">
     In your project, open **Settings → Secrets**. See [Secrets](/projects/secrets) for details.
   </Step>
   <Step title="Replace the value">
-    Edit the relevant secret — `OPENAI_API_KEY`, `RESEND_API_KEY`, or `HF_TOKEN` — and paste your own key in place of the built-in one.
+    Edit the relevant secret — `OPENAI_API_KEY`, `REPLICATE_API_TOKEN`, `RESEND_API_KEY`, or `HF_TOKEN` — and paste your own key in place of the built-in one.
   </Step>
   <Step title="Save">
     Save the secret. Genie automatically updates the matching base-URL entry to point at the provider directly, so your app talks to the provider with your key instead of going through Genie's relay. No code changes are needed.
@@ -119,10 +127,11 @@ Once you have switched, requests for that provider go straight from your app to 
 | What you see | Likely cause | What to do |
 |---|---|---|
 | AI requests fail with an "invalid model" error | Your app asked for a model the built-in credential does not allow | Switch the feature to Genie's default model, or [bring your own OpenAI key](#bringing-your-own-key) |
+| Image generation or editing fails with a model error | Your app asked for an image model outside the built-in Replicate allowlist | Switch the feature to a supported model, or [bring your own Replicate key](#bringing-your-own-key) |
 | Email is rejected with a sender/domain error | The app is sending from an address other than `noreply@email.genie-app.de` | Use the built-in sender address, or bring your own Resend key with a verified domain |
 | A service stops working after you edited a secret | The built-in credential was changed or cleared by mistake | Re-run bootstrap from the **Cloud** tab to restore the built-in values, or paste a valid key of your own |
 | Requests start failing under heavy load | You hit the per-project rate limit | Reduce request volume, bring your own key, or contact support to raise the limit |
 
 <Tip>
-  Ask Genie in the project chat — "why is my email failing?" or "switch my app to my own OpenAI key" — and it can inspect your secrets and the relevant code and walk you through the fix.
+  Ask Genie in the project chat — "why is my email failing?", "why did image generation reject my request?", or "switch my app to my own OpenAI key" — and it can inspect your secrets and the relevant code and walk you through the fix.
 </Tip>
