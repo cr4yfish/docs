@@ -4,6 +4,21 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="July 17, 2026" description="Weekly release">
+
+This update lets you ask Genie AI what it remembers about you (and have it forget things on request), gives the workspace AI access to known bug fixes when you describe a problem, and fixes a rare case where a failed reply could keep retrying in a loop.
+
+## New features
+
+- **Ask Genie AI what it remembers — or to forget something.** Genie already picks up context about you as you chat. Now you can ask directly — "what do you remember about me?" — and it searches everything it's picked up, not just the most recent items. If something's wrong, ask it to forget and the memory is deleted. See [Workspace AI](/workspaces/overview#genie-remembers-your-preferences).
+- **Workspace AI can check for a known fix.** Describe a bug you're running into and the workspace AI checks whether the same issue has already been solved on another project, surfacing a fix that's known to work instead of guessing. See [Workspace AI](/workspaces/overview#workspace-ai).
+
+## Fixes
+
+- **Fixed a rare case where a failed AI reply could keep retrying in a loop.** A specific kind of build failure could cause Genie to silently retry the same failed turn over and over. It now stops after two attempts and shows a clear error instead.
+
+</Update>
+
 <Update label="July 16, 2026" description="Weekly release">
 
 This update makes Genie's chat answers more interactive, adds a live status card when Genie AI updates a project for you, and makes the "Continue with Genie AI" hand-off carry over the full conversation.
