@@ -46,7 +46,7 @@ Starte Claude Desktop neu und öffne ein beliebiges Gespräch. Claude wird dich 
 
 ## Verfügbare Tools
 
-Der Genie MCP Server bietet Tools in vierzehn Kategorien.
+Der Genie MCP Server bietet Tools in fünfzehn Kategorien.
 
 ### Workspace-Verwaltung
 
@@ -136,6 +136,16 @@ Genie dedupliziert Bugs projektübergreifend: Taucht dieselbe Art von Bug erneut
 |---|---|
 | `get_known_issues` | Liste die erfassten Bug-Sichtungen eines Projekts — jeweils mit Quelle, Status, einer Zusammenfassung und dem projektübergreifenden Bug-Muster, dem sie zugeordnet wurden (falls vorhanden) |
 | `report_known_issue` | Melde einen Bug in der Wissensdatenbank, damit er mit bekannten Mustern dedupliziert wird und seine spätere Lösung projektübergreifend wiederverwendet werden kann. Nur zur Nachverfolgung — startet nie einen Build. Nur der Projektinhaber kann dies aufrufen |
+| `find_bug_solutions` | Durchsuche die gemeinsame Bug-Wissensdatenbank nach einer bewährten Lösung, indem du das Symptom in natürlicher Sprache beschreibst — projektübergreifend über alle Genie-Projekte, nicht nur die dieses Workspace. Nur lesend und weder auf ein Projekt noch einen Workspace beschränkt, da die Ergebnisse verallgemeinert und um projektspezifische Details bereinigt sind |
+
+### Nutzer-Gedächtnis
+
+Genies Workspace-KI merkt sich Dinge, die du im Chat über dich selbst erwähnt hast — deine Vorlieben, Tools, dein Team, deine Ziele — und bringt diesen Kontext automatisch in spätere Gespräche ein. Mit diesen Tools kann ein externer KI-Client dieses Gedächtnis durchsuchen oder löschen. Beschränkt auf den verbundenen Nutzer über alle seine Workspaces hinweg, nicht auf den aktuell verbundenen Workspace, da Erinnerungen ein nutzerbezogenes Konzept sind.
+
+| Tool | Was es tut |
+|---|---|
+| `search_user_memory` | Durchsuche alles, was Genie sich über den verbundenen Nutzer gemerkt hat, sortiert nach Relevanz zu einer Anfrage, oder liste die zuletzt bekräftigten Erinnerungen, wenn keine Anfrage angegeben ist. Nur lesend |
+| `forget_user_memory` | Lösche dauerhaft eine bestimmte gemerkte Tatsache über den verbundenen Nutzer anhand ihrer ID (ermittelt über `search_user_memory`) |
 
 ### Genie-Cloud-Backend-Verwaltung
 
@@ -329,6 +339,8 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Ein Feature im Baum hinzufügen oder bearbeiten | Projektinhaber:in |
 | Bekannte Bugs eines Projekts lesen | Jedes Mitglied (das das Projekt einsehen kann) |
 | Einen bekannten Bug melden | Projektinhaber:in |
+| Die gemeinsame Bug-Lösungs-Wissensdatenbank durchsuchen | Jeder verbundene Nutzer |
+| Das Gedächtnis des verbundenen Nutzers durchsuchen oder löschen | Jeder verbundene Nutzer |
 | Ein Projekt zurücksetzen oder seinen Versionsverlauf einsehen | Projektinhaber:in |
 | SEO-Einstellungen eines Projekts lesen oder aktualisieren | Projektinhaber:in |
 | Datenbanktabellen der Genie Cloud eines Projekts durchsuchen | Projektinhaber:in |
