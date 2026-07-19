@@ -4,6 +4,21 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="19. Juli 2026" description="Wöchentliches Release">
+
+Dieses Update bringt eine öffentliche Status-Seite zur Prüfung von Genies Betriebszustand, zeigt einen schwebenden Aktualisieren-Hinweis direkt über der Live-Vorschau, sobald ein Build fertig ist, und holt die Dokumentation des Genie MCP Servers bei einem Status-Tool nach.
+
+## Neue Funktionen
+
+- **Genies Status jederzeit prüfen.** Eine öffentliche [Status-Seite](https://genie-app.de/status) zeigt, ob Genie aktuell betriebsbereit, eingeschränkt oder ausgefallen ist, mit laufend aktualisierter Verfügbarkeit für jedes Kernsystem und aktuellen Vorfallsmeldungen — abgesichert durch echte, stündliche End-to-End-Prüfungen statt eines einfachen Pings. Keine Anmeldung nötig.
+
+## Updates
+
+- **Ein Aktualisieren-Hinweis schwebt direkt über der Live-Vorschau.** Sobald ein Build fertig ist, erscheint jetzt ein kleiner Button **„Aktuelle Version ansehen"** über der Live-Vorschau selbst — und auch auf ihrem Lade-Platzhalter — sodass du das neue Ergebnis übernehmen kannst, ohne im Chat-Panel danach zu suchen. Er verschwindet von selbst, sobald die Vorschau aktuell ist, und erscheint beim nächsten Build erneut. Siehe [Vorschau aktualisieren](/de/projects/overview#vorschau-aktualisieren).
+- **Genie MCP Server: Status jetzt dokumentiert.** Externe KI-Clients, die über den [Genie MCP Server](/de/workspaces/mcp-api) verbunden sind, können jetzt mit `get_status_page` Genies Status prüfen — derselbe Datenabruf, den auch die öffentliche Status-Seite nutzt — ohne dafür einen Chat-Zug zu verbrauchen.
+
+</Update>
+
 <Update label="18. Juli 2026" description="Wöchentliches Release">
 
 Dieses Update lässt dich einen Prompt diktieren statt ihn zu tippen, und holt die Dokumentation des Genie MCP Servers bei drei Tools nach, die zusammen mit den Gedächtnis- und Bug-Lösungs-Funktionen der letzten Woche live gegangen sind.

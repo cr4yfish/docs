@@ -39,6 +39,11 @@
               "anchor": "Pricing",
               "icon": "credit-card",
               "href": "https://genie-app.de/pricing"
+            },
+            {
+              "anchor": "Status",
+              "icon": "activity",
+              "href": "https://genie-app.de/status"
             }
           ]
         },
@@ -147,6 +152,11 @@
               "anchor": "Preise",
               "icon": "credit-card",
               "href": "https://genie-app.de/pricing"
+            },
+            {
+              "anchor": "Status",
+              "icon": "activity",
+              "href": "https://genie-app.de/status"
             }
           ]
         },

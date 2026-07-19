@@ -46,7 +46,7 @@ Restart Claude Desktop and open any conversation. Claude will prompt you to auth
 
 ## Available tools
 
-The Genie MCP Server provides tools across fifteen categories.
+The Genie MCP Server provides tools across sixteen categories.
 
 ### Workspace management
 
@@ -254,6 +254,12 @@ Inspect and manage the workspace PII detection rules. Only workspace owners and 
 |---|---|
 | `get_genie_pricing` | Current, Stripe-sourced pricing for all Genie plans, seats, credit top-ups, and add-ons |
 
+### Status
+
+| Tool | What it does |
+|---|---|
+| `get_status_page` | The same read the public [status page](https://genie-app.de/status) uses: overall state (operational, degraded, down, or maintenance), each component's current state and uptime, and any active incidents |
+
 ---
 
 ## Quick examples
@@ -350,6 +356,7 @@ Role-based access is enforced on every tool call.
 | Manage a project's secrets | Project owner |
 | Manage a project's storage files | Project owner |
 | Read Genie pricing | Any member |
+| Read Genie's status page | Any connected user |
 
 ---
 
