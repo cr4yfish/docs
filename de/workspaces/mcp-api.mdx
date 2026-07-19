@@ -46,7 +46,7 @@ Starte Claude Desktop neu und öffne ein beliebiges Gespräch. Claude wird dich 
 
 ## Verfügbare Tools
 
-Der Genie MCP Server bietet Tools in fünfzehn Kategorien.
+Der Genie MCP Server bietet Tools in sechzehn Kategorien.
 
 ### Workspace-Verwaltung
 
@@ -254,6 +254,12 @@ Verwalte die MCP-Server-Integrationen (Linear, GitHub, Notion, Stripe usw.), die
 |---|---|
 | `get_genie_pricing` | Aktuelle, aus Stripe stammende Preise für alle Genie-Tarife, Sitzplätze, Credit-Top-ups und Zusatzoptionen |
 
+### Status
+
+| Tool | Was es tut |
+|---|---|
+| `get_status_page` | Derselbe Datenabruf, den auch die öffentliche [Status-Seite](https://genie-app.de/status) nutzt: Gesamtzustand (betriebsbereit, eingeschränkt, ausgefallen oder Wartung), der aktuelle Zustand und die Verfügbarkeit jeder Komponente sowie alle aktiven Vorfälle |
+
 ---
 
 ## Schnellbeispiele
@@ -350,6 +356,7 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Secrets eines Projekts verwalten | Projektinhaber:in |
 | Speicherdateien eines Projekts verwalten | Projektinhaber:in |
 | Genie-Preise lesen | Jedes Mitglied |
+| Genies Status-Seite lesen | Jeder verbundene Nutzer |
 
 ---
 

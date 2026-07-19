@@ -4,6 +4,21 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="July 19, 2026" description="Weekly release">
+
+This update adds a public status page for checking Genie's health, puts a floating refresh prompt right over the live preview when a build finishes, and catches the Genie MCP Server docs up with a status-check tool.
+
+## New features
+
+- **Check Genie's status anytime.** A public [status page](https://genie-app.de/status) shows whether Genie is currently operational, degraded, or down, with live uptime for each core system and any active incident notices — backed by real, hourly end-to-end health checks rather than a simple ping. No sign-in required.
+
+## Updates
+
+- **A refresh prompt floats right over the live preview.** When a build finishes, a small **See current version** button now appears over the live preview itself — and on its loading placeholder too — so you can pull in the fresh result without looking for a button elsewhere. It disappears on its own once the preview is current, and reappears for your next build. See [Refreshing the preview](/projects/overview#refreshing-the-preview).
+- **Genie MCP Server: status now documented.** External AI clients connected via the [Genie MCP Server](/workspaces/mcp-api) can now check Genie's status with `get_status_page` — the same read the public status page uses — without spending a chat turn.
+
+</Update>
+
 <Update label="July 18, 2026" description="Weekly release">
 
 This update lets you dictate a prompt instead of typing it, and catches up the Genie MCP Server docs with three tools that shipped alongside last week's memory and bug-solution features.
