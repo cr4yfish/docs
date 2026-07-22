@@ -260,6 +260,12 @@ Inspect and manage the workspace PII detection rules. Only workspace owners and 
 |---|---|
 | `get_status_page` | The same read the public [status page](https://genie-app.de/status) uses: overall state (operational, degraded, down, or maintenance), each component's current state and uptime, and any active incidents |
 
+### Design
+
+| Tool | What it does |
+|---|---|
+| `get_design_principles` | Genie's current house design direction — the look-and-feel guidance the project build agent follows. Call it before writing a design brief for `create_project` or `send_followup_prompt` so your instructions stay consistent with how Genie actually builds |
+
 ---
 
 ## Quick examples

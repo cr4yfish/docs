@@ -4,6 +4,19 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="July 22, 2026" description="Weekly release">
+
+This update adds a chat switcher to the in-project Genie AI panel, personalizes first builds with your name, lets external MCP clients read Genie's design direction, and pauses the Remix feature while it's reworked.
+
+## Updates
+
+- **Switch between Genie AI conversations without leaving your project.** The Genie AI panel next to your live preview now has a chat switcher, so you can jump to a recent conversation instead of losing it to start another. To begin a new one, just start typing in the composer — there's no separate "New chat" button anymore. See [The Genie AI panel](/projects/overview#the-genie-ai-panel).
+- **First builds use your real name where a site would.** When your first prompt implies a personal site — a portfolio, an author byline, a dashboard greeting — Genie now fills in your account name instead of generic placeholder copy. Guests and signed-out visitors still get neutral placeholder text.
+- **Genie MCP Server: read Genie's design direction.** External AI clients connected via the [Genie MCP Server](/workspaces/mcp-api) can now call `get_design_principles` to see the look-and-feel guidance Genie's build agent follows, so a design brief you write for `create_project` or `send_followup_prompt` stays consistent with how Genie actually builds.
+- **Remix is temporarily unavailable.** The **Remix** button, "Remix from here," and the **Remixable** toggle in project settings are paused site-wide while we rework the feature. No remix settings or history are lost in the meantime. See [Remixable projects](/projects/visibility#remixable-projects).
+
+</Update>
+
 <Update label="July 21, 2026" description="Weekly release">
 
 This update gives the build progress card a clearer status while Genie writes its closing summary.

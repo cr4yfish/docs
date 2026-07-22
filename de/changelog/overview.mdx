@@ -4,6 +4,19 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="22. Juli 2026" description="Wöchentliches Release">
+
+Dieses Update fügt dem projektinternen Genie-AI-Panel einen Chat-Umschalter hinzu, personalisiert erste Builds mit deinem Namen, lässt externe MCP-Clients Genies Design-Richtung auslesen und pausiert die Remix-Funktion, während sie überarbeitet wird.
+
+## Updates
+
+- **Wechsle zwischen Genie-AI-Unterhaltungen, ohne dein Projekt zu verlassen.** Das Genie-AI-Panel neben deiner Live-Vorschau hat jetzt einen Chat-Umschalter, mit dem du zu einer letzten Unterhaltung springen kannst, statt sie zu verlieren, um eine neue zu beginnen. Um eine neue zu starten, tippe einfach im Composer los — einen separaten „Neuer Chat"-Button gibt es nicht mehr. Siehe [Das Genie-AI-Panel](/de/projects/overview#das-genie-ai-panel).
+- **Erste Builds nutzen deinen echten Namen, wo eine Seite ihn nutzen würde.** Wenn dein erster Prompt eine persönliche Seite andeutet — ein Portfolio, ein Autor-Byline, eine Dashboard-Begrüßung —, trägt Genie jetzt deinen Kontonamen ein statt generischem Platzhaltertext. Gäste und nicht angemeldete Besucher:innen erhalten weiterhin neutralen Platzhaltertext.
+- **Genie MCP Server: Genies Design-Richtung auslesen.** Externe KI-Clients, die über den [Genie MCP Server](/de/workspaces/mcp-api) verbunden sind, können jetzt `get_design_principles` aufrufen, um die Look-and-Feel-Vorgaben zu sehen, denen Genies Build-Agent folgt — so bleibt ein Design-Briefing, das du für `create_project` oder `send_followup_prompt` schreibst, konsistent mit Genies tatsächlicher Bauweise.
+- **Remix ist vorübergehend nicht verfügbar.** Der **Remix**-Button, „Remix ab hier" und der Schalter **Remixable** in den Projekteinstellungen sind site-weit pausiert, während wir die Funktion überarbeiten. Es gehen dabei keine Remix-Einstellungen oder -Historie verloren. Siehe [Remixbare Projekte](/de/projects/visibility#remixbare-projekte).
+
+</Update>
+
 <Update label="21. Juli 2026" description="Wöchentliches Release">
 
 Dieses Update sorgt für einen klareren Status in der Build-Fortschrittskarte, während Genie seine abschließende Zusammenfassung schreibt.

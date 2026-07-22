@@ -260,6 +260,12 @@ Verwalte die MCP-Server-Integrationen (Linear, GitHub, Notion, Stripe usw.), die
 |---|---|
 | `get_status_page` | Derselbe Datenabruf, den auch die öffentliche [Status-Seite](https://genie-app.de/status) nutzt: Gesamtzustand (betriebsbereit, eingeschränkt, ausgefallen oder Wartung), der aktuelle Zustand und die Verfügbarkeit jeder Komponente sowie alle aktiven Vorfälle |
 
+### Design
+
+| Tool | Was es tut |
+|---|---|
+| `get_design_principles` | Genies aktuelle Design-Richtlinie — die Look-and-Feel-Vorgaben, denen der Build-Agent für Projekte folgt. Ruf es auf, bevor du ein Design-Briefing für `create_project` oder `send_followup_prompt` schreibst, damit deine Anweisungen konsistent mit Genies tatsächlicher Bauweise bleiben |
+
 ---
 
 ## Schnellbeispiele
