@@ -163,6 +163,10 @@ Every change Genie deploys is saved as a version you can return to. If a recent 
   Rolling back doesn't delete anything — it adds a new entry to your chat history, so you can always move forward again later by rolling back to a more recent version. The button is disabled on your latest version once it's already live, since there'd be nothing to restore.
 </Tip>
 
+<Note>
+  Rollback isn't available while your project runs on [Genie Cloud](/cloud/overview). Restoring an earlier version would only revert your app's frontend code, not the database and edge functions your live Cloud backend has since moved on to — so the **Rollback to this state** button stays disabled, with a tooltip explaining why, for as long as Genie Cloud is active.
+</Note>
+
 ## Browser AI agents
 
 If you use a browser with a built-in AI assistant — such as Gemini in Chrome or Copilot in Edge — that assistant can work with your open project directly. It can send a prompt to Genie on your behalf and check whether Genie is still busy, without you needing to type into the chat yourself.

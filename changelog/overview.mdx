@@ -4,6 +4,16 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="July 23, 2026" description="Weekly release">
+
+This update disables rollback for projects running on Genie Cloud, since restoring an earlier version can't undo changes already made to your live database, edge functions, or storage.
+
+## Updates
+
+- **Rollback is now unavailable while Genie Cloud is active.** Restoring a previous version only replaces your app's frontend code — it doesn't touch the database, edge functions, or storage buckets your live Genie Cloud backend has since moved on to. To avoid leaving the two out of sync, **Rollback to this state** now stays disabled, with a tooltip explaining why, for the whole time Genie Cloud is active on a project. See [Rolling back to a previous version](/projects/overview#rolling-back-to-a-previous-version) and [Rollback and Genie Cloud](/cloud/overview#rollback-and-genie-cloud).
+
+</Update>
+
 <Update label="July 22, 2026" description="Weekly release">
 
 This update adds a chat switcher to the in-project Genie AI panel, personalizes first builds with your name, lets external MCP clients read Genie's design direction, and pauses the Remix feature while it's reworked.

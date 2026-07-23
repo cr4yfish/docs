@@ -80,3 +80,7 @@ At the bottom of the Cloud tab, the **Advanced** section contains a **Re-run boo
 <Note>
   Onboarding and private mode settings now sync to your live Cloud instance automatically when you save them in the **Onboarding** tab. You no longer need to click **Re-run bootstrap** after changing these settings.
 </Note>
+
+## Rollback and Genie Cloud
+
+While Genie Cloud is active for a project, you can't roll back to a previous version. A rollback only restores your app's frontend code — it has no way to undo changes already made to your live database, edge functions, or storage buckets, so restoring an older frontend on top of a newer backend could leave the two out of sync. See [Rolling back to a previous version](/projects/overview#rolling-back-to-a-previous-version) for how rollback works otherwise.

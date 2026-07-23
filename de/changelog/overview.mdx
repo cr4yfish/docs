@@ -4,6 +4,16 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="23. Juli 2026" description="Wöchentliches Release">
+
+Dieses Update deaktiviert das Zurücksetzen für Projekte, die auf Genie Cloud laufen, da eine frühere Version wiederherzustellen Änderungen an deiner Live-Datenbank, deinen Edge Functions oder deinem Storage nicht rückgängig machen kann.
+
+## Updates
+
+- **Zurücksetzen ist jetzt nicht mehr verfügbar, solange Genie Cloud aktiv ist.** Das Wiederherstellen einer früheren Version ersetzt nur den Frontend-Code deiner App — sie berührt nicht die Datenbank, Edge Functions oder Storage-Buckets, zu denen sich dein Live-Genie-Cloud-Backend inzwischen weiterentwickelt hat. Um zu verhindern, dass beide aus dem Gleichgewicht geraten, bleibt **Auf diesen Stand zurücksetzen** jetzt mit einem erklärenden Tooltip deaktiviert, solange Genie Cloud für ein Projekt aktiv ist. Siehe [Zu einer früheren Version zurückkehren](/de/projects/overview#zu-einer-früheren-version-zurückkehren) und [Zurücksetzen und Genie Cloud](/de/cloud/overview#zurücksetzen-und-genie-cloud).
+
+</Update>
+
 <Update label="22. Juli 2026" description="Wöchentliches Release">
 
 Dieses Update fügt dem projektinternen Genie-AI-Panel einen Chat-Umschalter hinzu, personalisiert erste Builds mit deinem Namen, lässt externe MCP-Clients Genies Design-Richtung auslesen und pausiert die Remix-Funktion, während sie überarbeitet wird.

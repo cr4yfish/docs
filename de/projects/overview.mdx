@@ -163,6 +163,10 @@ Jede Änderung, die Genie ausliefert, wird als Version gespeichert, zu der du zu
   Das Zurücksetzen löscht nichts — es fügt einen neuen Eintrag zu deinem Chat-Verlauf hinzu, sodass du später jederzeit wieder nach vorne wechseln kannst, indem du auf eine neuere Version zurücksetzt. Der Button ist bei deiner neuesten Version deaktiviert, sobald sie bereits live ist, da es dann nichts wiederherzustellen gäbe.
 </Tip>
 
+<Note>
+  Das Zurücksetzen ist nicht verfügbar, solange dein Projekt auf [Genie Cloud](/de/cloud/overview) läuft. Eine frühere Version wiederherzustellen würde nur den Frontend-Code deiner App zurücksetzen, nicht die Datenbank und Edge Functions, zu denen sich dein Live-Cloud-Backend inzwischen weiterentwickelt hat — deshalb bleibt der Button **Auf diesen Stand zurücksetzen** mit einem erklärenden Tooltip deaktiviert, solange Genie Cloud aktiv ist.
+</Note>
+
 ## KI-Assistenten im Browser
 
 Wenn du einen Browser mit eingebautem KI-Assistenten nutzt — etwa Gemini in Chrome oder Copilot in Edge —, kann dieser Assistent direkt mit deinem geöffneten Projekt arbeiten. Er kann in deinem Namen einen Prompt an Genie senden und prüfen, ob Genie noch beschäftigt ist, ohne dass du selbst in den Chat tippen musst.
