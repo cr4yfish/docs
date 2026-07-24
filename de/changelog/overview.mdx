@@ -4,6 +4,22 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="24. Juli 2026" description="Wöchentliches Release">
+
+Dieses Update bringt die Live-Build-Status-Verfolgung auch zu neuen, aus dem Chat erstellten Projekten und behebt einige Zuverlässigkeitsprobleme beim Bauen und im Chat.
+
+## Updates
+
+- **Sieh einem brandneuen Projekt live beim Bauen zu.** Bitte die Workspace-KI, ein neues Projekt mit einem Eröffnungs-Prompt zu erstellen — „erstelle ein Kundensupport-Ticketing-Tool mit einem Kanban-Board" — und du siehst jetzt live mit, wie es gebaut wird, in derselben Status-Karte, die auch für Folge-Prompts verwendet wird (In der Warteschlange → Wird gebaut → Fertig), statt einer statischen „Erstellt"-Meldung. Siehe [Workspace-KI](/de/workspaces/overview#workspace-ki).
+
+## Fixes
+
+- **Eine Genie-KI-Unterhaltung erneut zu öffnen, birgt kein Fehlerrisiko mehr.** Kehrtest du kurz nach dem Start eines Builds zu einer Unterhaltung zurück, oder direkt nachdem du auf einen Link in einer ihrer interaktiven Karten geklickt hast, konnte gelegentlich ein Fehler erscheinen oder der Chat reaktionslos bleiben. Beim erneuten Öffnen wird die Unterhaltung jetzt immer sauber fortgesetzt.
+- **Der allererste Build eines brandneuen Projekts schlägt in seltenen Fällen nicht mehr komplett fehl.** Eine ungewöhnliche Pause mitten im Bauprozess konnte zuvor dazu führen, dass der gesamte Build sofort als fehlgeschlagen markiert wurde; Genie versucht es jetzt erneut, bevor es aufgibt.
+- **Ein leerer Bereich bei bestimmten Diagramm-Komponenten wurde behoben.** Beim Bauen einer App mit manchen Diagramm-Bibliotheken von Drittanbietern, wie recharts, konnte ein leerer Bereich statt eines funktionierenden Diagramms entstehen. Betroffene Komponenten werden jetzt erkannt und korrekt behandelt.
+
+</Update>
+
 <Update label="23. Juli 2026" description="Wöchentliches Release">
 
 Dieses Update deaktiviert das Zurücksetzen für Projekte, die auf Genie Cloud laufen, da eine frühere Version wiederherzustellen Änderungen an deiner Live-Datenbank, deinen Edge Functions oder deinem Storage nicht rückgängig machen kann.

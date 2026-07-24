@@ -4,6 +4,22 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="July 24, 2026" description="Weekly release">
+
+This update brings live build-status tracking to new projects created from chat, and fixes a few build and chat reliability issues.
+
+## Updates
+
+- **Watch a brand-new project build live from chat.** Ask the workspace AI to create a new project with an opening prompt — *"create a customer support ticketing tool with a Kanban board"* — and you now watch it build live in the same status card used for follow-up prompts (queued → building → complete), instead of seeing a static "created" message. See [Workspace AI](/workspaces/overview#workspace-ai).
+
+## Fixes
+
+- **Reopening a Genie AI conversation no longer risks an error.** Coming back to a conversation shortly after starting a build, or right after clicking a link inside one of its interactive cards, could sometimes show an error or leave the chat unresponsive. Reopening now always picks the conversation back up cleanly.
+- **A brand-new project's very first build no longer fails outright in rare cases.** An unusual pause partway through building could previously get the whole build marked as failed immediately; Genie now gives it another try before giving up.
+- **Fixed a blank area with certain chart components.** Building an app that used some third-party chart libraries, like recharts, could leave a blank area instead of a working chart. Affected components are now caught and handled correctly.
+
+</Update>
+
 <Update label="July 23, 2026" description="Weekly release">
 
 This update disables rollback for projects running on Genie Cloud, since restoring an earlier version can't undo changes already made to your live database, edge functions, or storage.
