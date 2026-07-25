@@ -63,13 +63,21 @@ Durch dieses Design bleiben die echten Anbieter-Schlüssel auf Genies Seite — 
 
 ## Nutzung und Limits
 
-Die eingebauten Zugangsdaten sind heute ohne zusätzliche Gebühr pro Anfrage in Genie Cloud enthalten. Jede Anfrage, die deine App darüber stellt, wird **erfasst** — Anbieter, Endpunkt, Status und Zeitverhalten — damit Genie den Dienst überwachen kann und die Nutzung deinem Projekt zugeordnet werden kann. Diese erfasste Nutzung wird derzeit **nicht pro Anfrage gemessen oder dir in Rechnung gestellt**: Sie verringert nicht deine [Credits](/de/billing/credits) und erscheint nicht als Posten auf deiner Rechnung.
+Jede Anfrage, die deine App über die eingebauten Zugangsdaten stellt, wird **erfasst** — Anbieter, Endpunkt, Status und Zeitverhalten — damit Genie den Dienst überwachen und die Nutzung deinem Projekt zuordnen kann.
 
-Die praktische Grenze der eingebauten Zugangsdaten ist ein **Limit pro Projekt** (eine Obergrenze an Anfragen pro Minute), keine Nutzungsgebühr. Normaler App-Verkehr bleibt deutlich darunter; wenn du mit dauerhaft hohem Volumen rechnest, verwende deinen eigenen Schlüssel oder kontaktiere den Support, um das Limit anzuheben.
+**KI-Text (OpenAI) sowie Bild-, Video- oder Audioerzeugung (Replicate) verringern deine [Credits](/de/billing/credits).** Eine erfolgreiche Anfrage wird zum gleichen Satz pro Modell abgerechnet, mit dem auch dein Projekt-Chat abgerechnet wird, und erscheint in deinem Kontoauszug als `Genie proxy · <Anbieter> · <Modell>`. Die Nutzung deiner laufenden App findest du unter **Projekteinstellungen → Nutzung** — eine tagesgenaue Aufschlüsselung mit einem 7/30/90-Tage-Umschalter — oder in deinem [Kontoverlauf](/de/billing/credits#deine-aktuelle-nutzung-prüfen).
+
+E-Mail (Resend) und Hugging-Face-Inferenz werden noch nicht gemessen und verringern derzeit keine Credits.
 
 <Note>
-  Eine Abrechnung pro Anfrage für die Nutzung der eingebauten KI und E-Mail könnte in Zukunft eingeführt werden. Sollte sich das ändern, wird es hier sowie auf den Seiten [Credits](/de/billing/credits) und [Tarife](/de/billing/plans) abgebildet. Damit deine Kosten vollständig planbar und unter deiner eigenen Kontrolle bleiben, [verwende deinen eigenen Schlüssel](#eigene-schl%C3%BCssel-verwenden) — diese Anfragen werden direkt vom Anbieter an dich abgerechnet.
+  Eine Abrechnung greift erst, sobald Genie ein Modell bepreist hat — eine Anfrage an ein unbepreistes Modell wird mit null Credits berechnet. Sobald die Bepreisung auf weitere Modelle ausgeweitet wird, beginnt die Nutzung darüber automatisch, Credits zu verringern, ohne dass du etwas ändern musst.
 </Note>
+
+Die praktische Grenze der eingebauten Zugangsdaten ist außerdem ein **Limit pro Projekt** (eine Obergrenze an Anfragen pro Minute), unabhängig von der Credit-Abrechnung. Normaler App-Verkehr bleibt deutlich darunter; wenn du mit dauerhaft hohem Volumen rechnest, verwende deinen eigenen Schlüssel oder kontaktiere den Support, um das Limit anzuheben.
+
+<Tip>
+  Dein eigener Schlüssel hält die Kosten vollständig unter deiner eigenen Kontrolle und außerhalb von Genies Credit-System — siehe [Eigene Schlüssel verwenden](#eigene-schl%C3%BCssel-verwenden) weiter unten. Diese Anfragen werden stattdessen direkt vom Anbieter an dich abgerechnet.
+</Tip>
 
 ## Grenzen der eingebauten Zugangsdaten
 

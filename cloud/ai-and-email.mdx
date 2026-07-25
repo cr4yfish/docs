@@ -63,13 +63,21 @@ This design keeps the real provider keys on Genie's side — they are never plac
 
 ## Usage and limits
 
-The built-in credentials are included with Genie Cloud at no extra, per-request charge today. Each request your app makes through them is **recorded** — provider, endpoint, status, and timing — so Genie can monitor the service and so usage can be attributed to your project. That recorded usage is **not currently metered or billed back to you per request**: it does not draw down your [credits](/billing/credits) and does not appear as a line item on your invoice.
+Each request your app makes through the built-in credentials is **recorded** — provider, endpoint, status, and timing — so Genie can monitor the service and attribute usage to your project.
 
-The practical limit on the built-in credentials is a **per-project rate limit** (a cap on requests per minute), not a usage charge. Normal app traffic stays well under it; if you expect heavy, sustained volume, bring your own key or contact support to raise the limit.
+**AI text (OpenAI) and image, video, or audio generation (Replicate) draw down your [credits](/billing/credits).** A successful request is billed using the same per-model rate your project chat is billed with, and appears in your ledger as `Genie proxy · <provider> · <model>`. Track your live app's usage under **Project Settings → Usage** — a day-by-day breakdown with a 7/30/90-day range toggle — or in your [account transaction history](/billing/credits#checking-your-current-usage).
+
+Email (Resend) and Hugging Face inference are not metered yet and do not currently draw credits.
 
 <Note>
-  Per-request metering and billing for built-in AI and email usage may be introduced in the future. If that changes, it will be reflected here and on the [Credits](/billing/credits) and [Plans](/billing/plans) pages. To keep your costs fully predictable and under your own control, [bring your own key](#bringing-your-own-key) — those requests are billed by the provider directly to you.
+  Billing only applies once Genie has priced a given model — a request to an unpriced model is charged nothing. As pricing rolls out to more models, usage through them starts drawing credits automatically, with no change needed on your end.
 </Note>
+
+The practical limit on the built-in credentials is also a **per-project rate limit** (a cap on requests per minute), separate from credit billing. Normal app traffic stays well under it; if you expect heavy, sustained volume, bring your own key or contact support to raise the limit.
+
+<Tip>
+  Bringing your own key keeps costs fully under your own control and outside Genie's credit system — see [Bringing your own key](#bringing-your-own-key) below. Those requests are billed by the provider directly to you instead.
+</Tip>
 
 ## Limits of the built-in credentials
 
