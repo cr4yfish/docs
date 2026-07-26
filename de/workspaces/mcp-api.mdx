@@ -65,7 +65,7 @@ Lese und aktualisiere deinen Workspace, Mitglieder, Einladungen, Einstellungen u
 | `update_workspace_settings` | Schalte das Aktivitätsprotokoll oder die Projektzugangskontrolle um |
 | `get_workspace_billing` | Abonnement-Tarif, Status und Abrechnungszeitraum |
 | `get_workspace_credits` | Aktuelles Credit-Guthaben |
-| `get_credit_usage` | Credit-Verbrauch, optional aufgeschlüsselt nach Projekt, Mitglied oder Tag |
+| `get_credit_usage` | Credit-Verbrauch, optional aufgeschlüsselt nach Projekt, Mitglied oder Tag, sortierbar nach Verbrauch oder Datum |
 | `get_recent_workspace_activity` | Aktivitätsprotokoll mit Filtern und Paginierung |
 | `list_workspaces` | Alle Workspaces, denen der authentifizierte Nutzer angehört |
 | `list_user_workspaces` | Dieselbe Liste, mit dem aktuell verbundenen Workspace markiert |
@@ -307,7 +307,7 @@ Tool: get_credit_usage
 → Returns: { totalCredits: 142, byProject: [...] }
 ```
 
-Admins können `scope: "workspace"` übergeben, um den Gesamtverbrauch aller Mitglieder einzusehen. Mitglieder können nur ihren eigenen Verbrauch abfragen.
+Admins können `scope: "workspace"` übergeben, um den Gesamtverbrauch aller Mitglieder einzusehen. Mitglieder können nur ihren eigenen Verbrauch abfragen. Mit `"sort": "credits_desc"` (oder `credits_asc`) wird die Aufschlüsselung nach Verbrauch sortiert, höchster Wert zuerst — oder `date_desc`/`date_asc`, wenn nach Tag gruppiert wird.
 
 ### Eine Frage zum Code eines Projekts stellen
 
