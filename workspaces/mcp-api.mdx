@@ -65,7 +65,7 @@ Read and update your workspace, members, invitations, settings, and billing.
 | `update_workspace_settings` | Toggle activity log or project access control |
 | `get_workspace_billing` | Subscription plan, status, and billing period |
 | `get_workspace_credits` | Current credit balance |
-| `get_credit_usage` | Credit consumption, optionally broken down by project, member, or day |
+| `get_credit_usage` | Credit consumption, optionally broken down by project, member, or day, and sortable by spend or date |
 | `get_recent_workspace_activity` | Activity log with filters and pagination |
 | `list_workspaces` | All workspaces the authenticated user belongs to |
 | `list_user_workspaces` | Same list, with the currently-connected workspace marked |
@@ -307,7 +307,7 @@ Tool: get_credit_usage
 → Returns: { totalCredits: 142, byProject: [...] }
 ```
 
-Admins can pass `scope: "workspace"` to see total consumption across all members. Members can only query their own usage.
+Admins can pass `scope: "workspace"` to see total consumption across all members. Members can only query their own usage. Add `"sort": "credits_desc"` (or `credits_asc`) to sort the breakdown by spend, highest first — or `date_desc`/`date_asc` when grouping by day.
 
 ### Ask a question about a project's code
 
