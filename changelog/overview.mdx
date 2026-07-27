@@ -4,6 +4,22 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="July 26, 2026" description="Weekly release">
+
+This update has Genie ask a couple of quick clarifying questions before an ambitious build, makes sure Genie AI always replies in your language, and lets your app's built-in AI read images and PDFs.
+
+## New features
+
+- **Genie can now build features that read images and PDFs.** Ask Genie for something like "describe what's in this photo" or "answer questions about this uploaded PDF" and it wires the request through the built-in AI credential your Genie Cloud app already has — no separate vision or document-parsing service needed. See [Built-in AI, images, and email](/cloud/ai-and-email).
+
+## Updates
+
+- **Genie asks before it builds.** For a broad or ambitious idea, the workspace AI now asks a couple of quick clarifying questions — batched into one short card exchange — before it starts building, instead of guessing at what you meant. A clear, specific ask still starts building right away. See [Workspace AI](/workspaces/overview#genie-asks-before-it-builds).
+- **Genie AI always replies in your language.** Genie AI now reliably answers in whichever language you write to it in, independent of your account's interface language, and keeps writing in that language for the rest of the conversation. See [Workspace AI](/workspaces/overview#always-replies-in-your-language).
+- **Genie MCP Server: sort credit usage by spend or date.** The `get_credit_usage` tool now takes a `sort` parameter (`credits_desc`, `credits_asc`, `date_desc`, `date_asc`) to order the breakdown. See [Genie MCP Server](/workspaces/mcp-api).
+
+</Update>
+
 <Update label="July 25, 2026" description="Weekly release">
 
 This update lets AI image features ship in your very first prompt, makes live-app AI usage count against your credits with a new per-project usage view, and fixes several chat and build-language issues.

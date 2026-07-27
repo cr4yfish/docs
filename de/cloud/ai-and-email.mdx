@@ -15,7 +15,7 @@ Wenn Genie Cloud für dein Projekt bereitgestellt wird, fügt Genie deinem Proje
 
 <CardGroup cols={2}>
   <Card title="KI-Text (OpenAI)" icon="sparkles">
-    Erzeuge Texte, Zusammenfassungen, Chat-Antworten und andere KI-Inhalte. Bereitgestellt über OpenAI via Genie.
+    Erzeuge Texte, Zusammenfassungen, Chat-Antworten und andere KI-Inhalte — und lies Bilder oder PDFs, die du ihr gibst. Bereitgestellt über OpenAI via Genie.
   </Card>
   <Card title="Bilderzeugung (Replicate)" icon="image">
     Erzeuge ein Bild aus einem Prompt oder bearbeite ein vorhandenes Bild — zum Beispiel den Hintergrund oder Stil eines Fotos ändern. Bereitgestellt über Googles Bildmodell via Replicate.
@@ -40,7 +40,7 @@ In deinem **Secrets**-Tab erscheinen die folgenden Einträge, bereits ausgefüll
 Außerdem siehst du passende Einträge `OPENAI_BASE_URL`, `REPLICATE_BASE_URL`, `RESEND_BASE_URL` und `HF_ENDPOINT`. Diese weisen deine App an, Anfragen über Genie zu leiten. Lass sie unverändert, es sei denn, du wechselst zu deinem eigenen Schlüssel (siehe [Eigene Schlüssel verwenden](#eigene-schl%C3%BCssel-verwenden) weiter unten).
 
 <Tip>
-  Beschreibe einfach, was du möchtest — „fasse jedes Support-Ticket zusammen", „erzeuge ein Hero-Bild von einem Sonnenuntergang über Bergen", „ändere den Hintergrund dieses Fotos zu einem Strand", „schick mir eine E-Mail, wenn jemand das Formular absendet" — und Genie baut die Funktion mit diesen eingebauten Zugangsdaten. API-Schlüssel musst du gar nicht erwähnen.
+  Beschreibe einfach, was du möchtest — „fasse jedes Support-Ticket zusammen", „erzeuge ein Hero-Bild von einem Sonnenuntergang über Bergen", „ändere den Hintergrund dieses Fotos zu einem Strand", „beantworte Fragen zu diesem hochgeladenen PDF", „schick mir eine E-Mail, wenn jemand das Formular absendet" — und Genie baut die Funktion mit diesen eingebauten Zugangsdaten. API-Schlüssel musst du gar nicht erwähnen.
 </Tip>
 
 ## Wie es funktioniert
@@ -135,6 +135,7 @@ Nach dem Wechsel gehen die Anfragen für diesen Anbieter direkt von deiner App z
 | Was du siehst | Wahrscheinliche Ursache | Was zu tun ist |
 |---|---|---|
 | KI-Anfragen scheitern mit einem Fehler „ungültiges Modell" | Deine App hat ein Modell angefragt, das die eingebauten Zugangsdaten nicht erlauben | Stelle die Funktion auf Genies Standardmodell um oder [verwende deinen eigenen OpenAI-Schlüssel](#eigene-schl%C3%BCssel-verwenden) |
+| Eine Bild- oder PDF-Anfrage wird mit einem Fehler zu nicht unterstützter Eingabe abgelehnt | Das von deiner App angefragte Modell ist nicht dafür konfiguriert, diese Art von Eingabe zu akzeptieren | Stelle die Funktion auf Genies Standardmodell um, das beides liest, oder [verwende deinen eigenen OpenAI-Schlüssel](#eigene-schl%C3%BCssel-verwenden) |
 | Bilderzeugung oder -bearbeitung scheitert mit einem Modell-Fehler | Deine App hat ein Bildmodell außerhalb der eingebauten Replicate-Allowlist angefragt | Stelle die Funktion auf ein unterstütztes Modell um oder [verwende deinen eigenen Replicate-Schlüssel](#eigene-schl%C3%BCssel-verwenden) |
 | E-Mail wird mit einem Absender-/Domain-Fehler abgelehnt | Die App sendet von einer anderen Adresse als `noreply@email.genie-app.de` | Verwende die eingebaute Absenderadresse oder deinen eigenen Resend-Schlüssel mit verifizierter Domain |
 | Ein Dienst funktioniert nach dem Bearbeiten eines Secrets nicht mehr | Die eingebauten Zugangsdaten wurden versehentlich geändert oder gelöscht | Führe im **Cloud**-Tab „Bootstrap erneut ausführen" aus, um die eingebauten Werte wiederherzustellen, oder füge einen gültigen eigenen Schlüssel ein |
