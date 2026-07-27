@@ -15,7 +15,7 @@ When Genie Cloud is provisioned for your project, Genie automatically adds a set
 
 <CardGroup cols={2}>
   <Card title="AI text (OpenAI)" icon="sparkles">
-    Generate text, summaries, chat replies, and other AI content. Backed by OpenAI through Genie.
+    Generate text, summaries, chat replies, and other AI content — and read images or PDFs you give it. Backed by OpenAI through Genie.
   </Card>
   <Card title="Image generation (Replicate)" icon="image">
     Generate an image from a prompt, or edit an existing image — for example, changing a photo's background or style. Backed by Google's image model through Replicate.
@@ -40,7 +40,7 @@ These show up in your **Secrets** tab as the following entries, already filled i
 You will also see matching `OPENAI_BASE_URL`, `REPLICATE_BASE_URL`, `RESEND_BASE_URL`, and `HF_ENDPOINT` entries. These tell your app to route requests through Genie. Leave them as they are unless you are switching to your own key (see [Bringing your own key](#bringing-your-own-key) below).
 
 <Tip>
-  Just describe what you want — "summarise each support ticket", "generate a hero image of a sunset over mountains", "change the background of this photo to a beach", "email me when someone submits the form" — and Genie builds the feature using these built-in credentials. You do not need to mention API keys at all.
+  Just describe what you want — "summarise each support ticket", "generate a hero image of a sunset over mountains", "change the background of this photo to a beach", "answer questions about this uploaded PDF", "email me when someone submits the form" — and Genie builds the feature using these built-in credentials. You do not need to mention API keys at all.
 </Tip>
 
 ## How it works
@@ -135,6 +135,7 @@ Once you have switched, requests for that provider go straight from your app to 
 | What you see | Likely cause | What to do |
 |---|---|---|
 | AI requests fail with an "invalid model" error | Your app asked for a model the built-in credential does not allow | Switch the feature to Genie's default model, or [bring your own OpenAI key](#bringing-your-own-key) |
+| An image or PDF request is rejected with an unsupported-input error | The model your app requested isn't configured to accept that kind of input | Switch the feature to Genie's default model, which reads both, or [bring your own OpenAI key](#bringing-your-own-key) |
 | Image generation or editing fails with a model error | Your app asked for an image model outside the built-in Replicate allowlist | Switch the feature to a supported model, or [bring your own Replicate key](#bringing-your-own-key) |
 | Email is rejected with a sender/domain error | The app is sending from an address other than `noreply@email.genie-app.de` | Use the built-in sender address, or bring your own Resend key with a verified domain |
 | A service stops working after you edited a secret | The built-in credential was changed or cleared by mistake | Re-run bootstrap from the **Cloud** tab to restore the built-in values, or paste a valid key of your own |
