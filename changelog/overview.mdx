@@ -4,6 +4,20 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="July 27, 2026" description="Weekly release">
+
+This update lets PDF and document AI Q&A ship in your very first prompt, and fixes long-running AI requests that could silently drop instead of returning an error.
+
+## Updates
+
+- **PDF and document AI Q&A can now ship in your very first prompt.** If your opening prompt describes an app that reads an uploaded PDF or document — answering questions about a contract, summarizing a report — Genie now wires the feature in directly from the browser on the first build, the same way it already does for AI images. No Genie Cloud, login, or backend needed yet. See [Built-in AI, images, and email](/cloud/ai-and-email).
+
+## Fixes
+
+- **Long-running built-in AI requests no longer fail silently.** Calls that took longer than usual to answer (for example, more involved reasoning requests) could previously drop without any response. These now return a clear error instead of hanging indefinitely.
+
+</Update>
+
 <Update label="July 26, 2026" description="Weekly release">
 
 This update has Genie ask a couple of quick clarifying questions before an ambitious build, makes sure Genie AI always replies in your language, and lets your app's built-in AI read images and PDFs.
