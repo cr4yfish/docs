@@ -244,6 +244,7 @@ Part of the DPA (§2.4).
 | Authentication metadata | Sign-in IP, MFA factors, last login | Auth0 |
 | Billing | Name, billing address, payment-method token, invoices, tax ID | Stripe; AWS |
 | User-generated content | Chat messages, prompts, file uploads, generated source code, project metadata | AWS |
+| Personalization data (Workspace AI) | Per-user preferences and remembered facts inferred from chat activity, used to tailor Workspace AI suggestions within the customer's own workspace (see [User memory](/workspaces/mcp-api#user-memory)) | AWS |
 | Operational telemetry | Error messages, timings, LLM traces, request logs | AWS; Braintrust (30 days) |
 | Push & notifications | Web push endpoints, subscription metadata | AWS |
 | Audit trail | Workspace activity log: who did what, when | AWS (append-only) |
@@ -274,12 +275,13 @@ The legitimate-interest balancing assessments for processing based on Art. 6(1)(
 | Incident response, forensic analysis | Art. 6(1)(f) GDPR; additionally Art. 6(1)(c) GDPR (cooperation duties under Art. 33 / 34 GDPR) |
 | Fulfillment of data subject rights (§9) | Art. 6(1)(c) GDPR (legal obligation under Art. 12 ff. GDPR) |
 | Optional features anchored in consent (e.g. explicitly activated providers, marketing emails) | Art. 6(1)(a) GDPR (consent; revocable under Art. 7(3) GDPR) |
+| Workspace AI personalization (remembered preferences, per-user embeddings) | Art. 6(1)(b) GDPR (contract performance — providing the personalized Workspace AI feature as part of the Genie service) |
 
 ### 5.4 Handling of LLM data
 
 - **Model training.** We do not use live customer data for model training. Where our LLM providers have made contractual zero-data-retention / no-training-on-inputs commitments (Anthropic, OpenAI, AWS Bedrock, Google Vertex), these commitments are documented in the respective DPAs / provider statements; auditable excerpts are available on request. For Google Vertex, this commitment is publicly available in the [Google Cloud Data Processing Addendum (CDPA)](https://cloud.google.com/terms/data-processing-addendum), which covers Vertex AI (as of June 2026). For Teams plans, inference is configured to run via AWS Bedrock (`eu-central-1`); direct data flow to Anthropic or OpenAI is not intended under this configuration.
 - **Prompt leakage prevention.** Prompt context is strictly scoped to the respective user and their project; there is no cross-project processing in a shared LLM session. Database access is secured through row-level security and user-scoped application contexts (see §6.1).
-- **Embeddings.** Genie's infrastructure does not currently persist embeddings. Where customers generate or store embeddings via edge functions in their own Supabase project, that storage is the customer's responsibility (see §1).
+- **Embeddings.** Genie's own infrastructure persists embeddings for one disclosed purpose: Workspace AI's per-user personalization features (remembered preferences and free-form memories, see [User memory](/workspaces/mcp-api#user-memory)) store an embedding per record to support similarity search and de-duplication, scoped to that user via row-level security. Customers can view or delete this data via the `search_user_memory` / `forget_user_memory` tools, or as part of account deletion (§8.3). Where customers separately generate or store embeddings via edge functions in their own Supabase project, that storage is the customer's responsibility (see §1).
 - **LLM traces (Braintrust).**
   - **Purpose.** Quality monitoring, regression detection, and debugging of LLM-assisted features. Not used for profiling, marketing, or training purposes.
   - **Teams exclusion.** Workspaces on a Teams plan are technically configured to be excluded from trace export to Braintrust. Spans from Teams workspaces are not transmitted to Braintrust under this configuration; the configuration is documented in code and subject to mandatory code review (§6.2).
