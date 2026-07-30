@@ -21,7 +21,7 @@ Dieses Addendum gilt für alle Verarbeitungen personenbezogener Daten in den LLM
 - LLM-gestützte Codegenerierung und Chat innerhalb von Genie-Projekten,
 - LLM-Aufrufe aus kundeneigenen Edge Functions über den Genie-Proxy,
 - AI-Observability- und Evaluierungs­daten (Traces, Evals, Prompt-Versionen),
-- Embeddings, soweit kundenseitig erzeugt.
+- Embeddings, sowohl für die eigenen Personalisierungs­funktionen der Workspace AI als auch, soweit kundenseitig erzeugt.
 
 ## C.1 Shared Responsibility für AI-Verarbeitungen
 
@@ -45,7 +45,7 @@ Der Prompt-Kontext wird strikt auf den jeweiligen Nutzer und sein Projekt eingeg
 
 ### C.2.3 Embeddings
 
-In der Genie-Infrastruktur werden derzeit keine Embeddings persistiert. Sofern Kunden über Edge Functions in ihrem eigenen Supabase-Projekt Embeddings erzeugen oder ablegen, liegt deren Speicherung in der Verantwortung des Kunden.
+Die eigene Infrastruktur von Genie persistiert Embeddings für einen dokumentierten Zweck: Die Personalisierungs­funktionen der Workspace AI (gespeicherte Präferenzen und frei formulierte Erinnerungen, siehe [Nutzer-Gedächtnis](/de/workspaces/mcp-api#nutzer-gedächtnis)) legen pro Eintrag ein Embedding an, um Ähnlichkeitssuche und Duplikaterkennung zu ermöglichen; der Zugriff ist über Row-Level Security auf den jeweiligen Nutzer beschränkt. Dies ist unter dem Personalisierungs­zweck in §5.3 / §5.4 des [Kunden-Compliance-Pakets](/de/compliance/kunden-compliance-paket) dokumentiert. Sofern Kunden darüber hinaus über Edge Functions in ihrem eigenen Supabase-Projekt Embeddings erzeugen oder ablegen, liegt deren Speicherung in der Verantwortung des Kunden.
 
 ### C.2.4 LLM-Traces (Braintrust)
 

@@ -244,6 +244,7 @@ Bestandteil des AVV (§2.4).
 | Authentifizierungs-Metadaten | Anmelde-IP, MFA-Faktoren, letzter Login | Auth0 |
 | Abrechnung | Name, Rechnungsadresse, Zahlungsmittel-Token, Rechnungen, Steuer-ID | Stripe; AWS |
 | Vom Nutzer erstellte Inhalte | Chatnachrichten, Prompts, Datei-Uploads, generierter Quellcode, Projektmetadaten | AWS |
+| Personalisierungsdaten (Workspace AI) | Aus dem Chatverhalten abgeleitete, nutzerbezogene Präferenzen und gespeicherte Fakten zur Personalisierung der Workspace-AI-Vorschläge innerhalb des eigenen Workspace des Kunden (siehe [Nutzer-Gedächtnis](/de/workspaces/mcp-api#nutzer-gedächtnis)) | AWS |
 | Betriebstelemetrie | Fehlermeldungen, Timings, LLM-Traces, Request-Logs | AWS; Braintrust (30 Tage) |
 | Push & Benachrichtigungen | Web-Push-Endpoints, Subscription-Metadaten | AWS |
 | Audit-Trail | Workspace-Activity-Log: wer hat wann was getan | AWS (append-only) |
@@ -274,12 +275,13 @@ Die Interessens­abwägungen zu Verarbeitungen auf Grundlage berechtigter Intere
 | Incident Response, forensische Analyse | Art. 6 Abs. 1 lit. f DSGVO; ergänzend Art. 6 Abs. 1 lit. c DSGVO (Mitwirkungs­pflichten nach Art. 33 / 34 DSGVO) |
 | Erfüllung von Betroffenen­rechten (§9) | Art. 6 Abs. 1 lit. c DSGVO (rechtliche Verpflichtung aus Art. 12 ff. DSGVO) |
 | Optionale Funktionen mit Einwilligungs­anker (z. B. ausdrücklich aktivierte Provider, Marketing-Mailings) | Art. 6 Abs. 1 lit. a DSGVO (Einwilligung; widerrufbar nach Art. 7 Abs. 3 DSGVO) |
+| Workspace-AI-Personalisierung (gespeicherte Präferenzen, nutzerbezogene Embeddings) | Art. 6 Abs. 1 lit. b DSGVO (Vertragserfüllung — Bereitstellung der personalisierten Workspace-AI-Funktion als Teil des Genie-Dienstes) |
 
 ### 5.4 Umgang mit LLM-Daten
 
 - **Modelltraining.** Wir nutzen produktive Kundendaten nicht zum Modelltraining. Soweit unsere LLM-Anbieter vertragliche Zusagen zu Zero-Data-Retention bzw. No-Training-on-Inputs abgegeben haben (Anthropic, OpenAI, AWS Bedrock, Google Vertex), sind diese Zusagen in den jeweiligen DPAs / Provider-Statements dokumentiert; auditierbare Auszüge stellen wir auf Anfrage bereit. Für Google Vertex ist diese Zusage öffentlich im [Google Cloud Data Processing Addendum (CDPA)](https://cloud.google.com/terms/data-processing-addendum) einsehbar, das Vertex AI umfasst (Stand: Juni 2026). Für Teams-Pläne ist die Inferenz so konfiguriert, dass sie über AWS Bedrock (`eu-central-1`) läuft; ein direkter Datenfluss an Anthropic oder OpenAI ist in dieser Konfiguration nicht vorgesehen.
 - **Prompt-Leakage-Prävention.** Der Prompt-Kontext wird strikt auf den jeweiligen Nutzer und sein Projekt eingegrenzt; eine projekt­übergreifende Verarbeitung in einer gemeinsamen LLM-Session findet nicht statt. Datenbankzugriffe sind durch Row-Level Security und nutzerskopierte Anwendungs­kontexte abgesichert (siehe §6.1).
-- **Embeddings.** In der Genie-Infrastruktur werden derzeit keine Embeddings persistiert. Sofern Kunden über Edge Functions in ihrem eigenen Supabase-Projekt Embeddings erzeugen oder ablegen, liegt deren Speicherung in der Verantwortung des Kunden (siehe §1).
+- **Embeddings.** Die eigene Infrastruktur von Genie persistiert Embeddings für einen dokumentierten Zweck: Die Personalisierungs­funktionen der Workspace AI (gespeicherte Präferenzen und frei formulierte Erinnerungen, siehe [Nutzer-Gedächtnis](/de/workspaces/mcp-api#nutzer-gedächtnis)) legen pro Eintrag ein Embedding an, um Ähnlichkeitssuche und Duplikaterkennung zu ermöglichen; der Zugriff ist über Row-Level Security auf den jeweiligen Nutzer beschränkt. Kunden können diese Daten über die Tools `search_user_memory` / `forget_user_memory` einsehen oder löschen, oder im Rahmen der Account-Löschung (§8.3). Sofern Kunden darüber hinaus über Edge Functions in ihrem eigenen Supabase-Projekt Embeddings erzeugen oder ablegen, liegt deren Speicherung in der Verantwortung des Kunden (siehe §1).
 - **LLM-Traces (Braintrust).**
   - **Zweck.** Qualitäts­überwachung, Regressions­erkennung und Debugging der LLM-gestützten Funktionen. Eine Nutzung zu Profiling-, Marketing- oder Trainings­zwecken erfolgt nicht.
   - **Teams-Ausschluss.** Workspaces mit Teams-Plan sind technisch so konfiguriert, dass sie vom Trace-Export an Braintrust ausgeschlossen sind. Spans aus Teams-Workspaces werden im Rahmen dieser Konfiguration nicht an Braintrust übermittelt; die Konfiguration ist im Code dokumentiert und Bestandteil der Code-Review-Pflicht (§6.2).

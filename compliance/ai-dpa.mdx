@@ -21,7 +21,7 @@ This addendum applies to all processing of personal data in the LLM-assisted fea
 - LLM-assisted code generation and chat within Genie projects,
 - LLM calls from customer-owned edge functions via the Genie proxy,
 - AI observability and evaluation data (traces, evals, prompt versions),
-- embeddings, where generated on the customer side.
+- embeddings, both for Genie's own Workspace AI personalization features and where generated on the customer side.
 
 ## C.1 Shared responsibility for AI processing
 
@@ -45,7 +45,7 @@ Prompt context is strictly scoped to the respective user and their project; ther
 
 ### C.2.3 Embeddings
 
-Genie's infrastructure does not currently persist embeddings. Where customers generate or store embeddings via edge functions in their own Supabase project, that storage is the customer's responsibility.
+Genie's own infrastructure persists embeddings for one disclosed purpose: Workspace AI's per-user personalization features (remembered preferences and free-form memories, see [User memory](/workspaces/mcp-api#user-memory)) store an embedding per record to support similarity search and de-duplication, scoped to that user via row-level security. This is covered under the personalization purpose documented in §5.3 / §5.4 of the [customer compliance package](/compliance/kunden-compliance-paket). Where customers separately generate or store embeddings via edge functions in their own Supabase project, that storage is the customer's responsibility.
 
 ### C.2.4 LLM traces (Braintrust)
 
