@@ -79,6 +79,21 @@ Die praktische Grenze der eingebauten Zugangsdaten ist außerdem ein **Limit pro
   Dein eigener Schlüssel hält die Kosten vollständig unter deiner eigenen Kontrolle und außerhalb von Genies Credit-System — siehe [Eigene Schlüssel verwenden](#eigene-schl%C3%BCssel-verwenden) weiter unten. Diese Anfragen werden stattdessen direkt vom Anbieter an dich abgerechnet.
 </Tip>
 
+## Retrieval (RAG) mit Embeddings
+
+Wenn deine App semantische Suche oder Retrieval-Augmented Generation (RAG) braucht — eine Nutzerfrage nach Bedeutung statt nach exakten Schlagwörtern mit deinen eigenen Inhalten abzugleichen —, kann Genie Text sofort in Embeddings (Vektor-Darstellungen) umwandeln, ganz ohne separaten OpenAI-Schlüssel.
+
+Bitte Genie um etwas wie „lass Nutzer:innen unsere FAQ nach Bedeutung durchsuchen" oder „beantworte Fragen anhand unserer hochgeladenen Dokumente", und Genie richtet beide Hälften des Ablaufs ein:
+
+- Jeden Abschnitt deiner Inhalte beim Einlesen in einen Vektor umwandeln und das Ergebnis in deiner Genie-Cloud-Datenbank speichern (die dafür `pgvector` unterstützt).
+- Die Frage einer Nutzerin oder eines Nutzers zum Suchzeitpunkt in einen Vektor umwandeln und mit deinen gespeicherten Inhalten vergleichen, um die passendsten Treffer zu finden.
+
+Genie wählt automatisch das passende Embedding-Modell — du musst keins selbst auswählen. Die Embeddings-Nutzung wird genauso erfasst wie andere eingebaute KI-Anfragen, sodass Aufrufe zusammen mit deiner übrigen Aktivität unter **Projekteinstellungen → Nutzung** erscheinen.
+
+<Tip>
+  Beschreibe einfach, was du suchen oder abrufen möchtest, und Genie baut den Einlese- und Suchablauf mit den eingebauten Embeddings — du musst weder Vektordatenbanken noch Embedding-Modelle namentlich erwähnen.
+</Tip>
+
 ## Grenzen der eingebauten Zugangsdaten
 
 Die enthaltenen Zugangsdaten sind auf den Normalfall ausgelegt — Funktionen sofort und günstig zum Laufen zu bringen. Damit gehen einige Einschränkungen einher:

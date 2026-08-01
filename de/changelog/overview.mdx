@@ -4,6 +4,29 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="31. Juli 2026" description="Wöchentliches Release">
+
+Dieses Update bringt eingebaute Embeddings für Retrieval und semantische Suche, gibt der Build-Status-Karte der Workspace-KI eine Live-Restzeit mit Fortschrittsanzeige und behebt mehrere Störungen bei Build-Fortschritt und Credit-Anzeige.
+
+## Neue Funktionen
+
+- **Genie-Cloud-Apps können jetzt Embeddings für Retrieval und semantische Suche erzeugen.** Bitte um etwas wie „lass Nutzer:innen unsere FAQ nach Bedeutung durchsuchen" oder „beantworte Fragen anhand unserer hochgeladenen Dokumente", und Genie richtet sowohl das Einlesen als auch die Suche mit eingebauten Embedding-Zugangsdaten ein — kein separater OpenAI-Schlüssel nötig. Siehe [Retrieval (RAG) mit Embeddings](/de/cloud/ai-and-email#retrieval-rag-mit-embeddings).
+
+## Updates
+
+- **Die Live-Build-Status-Karte der Workspace-KI zeigt jetzt eine herunterzählende Restzeit, den Fortschritt und wie viele Agents parallel arbeiten** — die gleichen Details wie in der Build-Ansicht des Projekts selbst. Siehe [Workspace-KI](/de/workspaces/overview#workspace-ki).
+- **Ein Folge-Prompt aus dem Chat des Projekts selbst startet den Build jetzt automatisch**, sobald du bestätigst, statt dass du noch einmal auf Senden tippen musst.
+- **Die öffentliche Status-Seite überwacht jetzt auch Genies eingebaute KI-API** (Text- und Bilderzeugung), zusätzlich zur Kern-Build-Pipeline, die bereits erfasst wurde.
+
+## Fixes
+
+- **Build-Fortschrittsbalken und Restzeiten aktualisieren sich jetzt gleichmäßig und zählen korrekt herunter**, statt zwischen Updates einzufrieren oder gelegentlich aufwärts zu zählen.
+- **Eine Build-/Commit-Karte, die auch nach abgeschlossenem Deployment noch wie ladend aussehen konnte, wurde behoben.**
+- **Die angezeigten Credit-Zahlen stimmen jetzt durchgängig mit dem tatsächlich Abgerechneten überein.** Die Credit-Anzeige pro Nachricht und dein Kontoverlauf zeigen keine veraltete oder überhöhte Zahl mehr an.
+- **Das Öffnen eines bestehenden Projekts nutzt jetzt dieselbe flüssige, gebrandete Lade-Animation wie das Erstellen eines neuen** — statt eines einfachen Spinners.
+
+</Update>
+
 <Update label="30. Juli 2026" description="Wöchentliches Release">
 
 Dieses Update lässt die Genie-KI den gesamten Chat-Verlauf eines Projekts durchsuchen, statt nur die letzten Nachrichten.
