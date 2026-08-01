@@ -79,6 +79,21 @@ The practical limit on the built-in credentials is also a **per-project rate lim
   Bringing your own key keeps costs fully under your own control and outside Genie's credit system — see [Bringing your own key](#bringing-your-own-key) below. Those requests are billed by the provider directly to you instead.
 </Tip>
 
+## Retrieval (RAG) with embeddings
+
+If your app needs semantic search or retrieval-augmented generation (RAG) — matching a user's question against your own content by meaning rather than exact keywords — Genie can turn text into embeddings (vector representations) out of the box, with no separate OpenAI key required.
+
+Ask Genie for something like *"let users search our FAQ by meaning"* or *"answer questions using our uploaded documents"*, and it wires up both halves of the flow:
+
+- Turning each chunk of your content into a vector when it is ingested, and storing the result in your Genie Cloud database (which supports `pgvector` for this).
+- Turning a user's question into a vector at search time, then comparing it against your stored content to find the closest matches.
+
+Genie picks the right embedding model automatically, so you don't need to choose one yourself. Embeddings usage is recorded the same way other built-in AI requests are, so calls show up alongside your other activity under **Project Settings → Usage**.
+
+<Tip>
+  Just describe what you want to search or retrieve, and Genie builds the ingestion and search flow using the built-in embeddings — you don't need to mention vector databases or embedding models by name.
+</Tip>
+
 ## Limits of the built-in credentials
 
 The included credentials are tuned for the common case — getting features working instantly and affordably. A few constraints come with that:

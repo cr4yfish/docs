@@ -4,6 +4,29 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="July 31, 2026" description="Weekly release">
+
+This update adds built-in embeddings for retrieval and semantic search, gives the workspace AI's build-status card a live ETA and progress view, and fixes several build-progress and credit-display glitches.
+
+## New features
+
+- **Genie Cloud apps can now generate embeddings for retrieval and semantic search.** Ask for something like "let users search our FAQ by meaning" or "answer questions using our uploaded documents", and Genie wires up both ingestion and search using a built-in embeddings credential — no separate OpenAI key required. See [Retrieval (RAG) with embeddings](/cloud/ai-and-email#retrieval-rag-with-embeddings).
+
+## Updates
+
+- **The workspace AI's live build-status card now shows a counting-down ETA, progress, and how many parallel agents are working** — the same detail you'd see on the project's own build view. See [Workspace AI](/workspaces/overview#workspace-ai).
+- **Sending a follow-up prompt from inside that project's own chat now starts the build automatically** once you confirm, instead of requiring you to press send again.
+- **The public status page now also monitors Genie's built-in AI API** (text and image generation), alongside the core build pipeline it already tracked.
+
+## Fixes
+
+- **Build progress bars and ETAs now update smoothly and count down accurately**, instead of freezing between updates or occasionally counting upward.
+- **Fixed a build/commit card that could look stuck loading** even after its deployment had already finished.
+- **Credit numbers you see now consistently match what was actually billed.** The per-message credit indicator and your transaction history no longer show a stale or inflated number.
+- **Opening an existing project now uses the same smooth branded loading animation as creating a new one**, instead of a plain spinner.
+
+</Update>
+
 <Update label="July 30, 2026" description="Weekly release">
 
 This update lets Genie AI search a project's entire chat history instead of just the most recent messages.
