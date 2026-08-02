@@ -84,6 +84,7 @@ Browse projects, create new ones from prompts, and manage the full project lifec
 | `create_project` | Create a project from a natural-language prompt and start the first build |
 | `send_followup_prompt` | Send a follow-up instruction to an existing project |
 | `get_project_status` | Lightweight check: is a build currently running? |
+| `get_project_build_status` | The richest live-status call — phase, countdown ETA, progress, active agents, preview link, changed pages, closing summary, and suggested follow-ups, matching the web app's build-status card |
 | `get_project_deployment_status` | Full phase-by-phase build breakdown |
 | `get_project_deployment_plan` | Files the AI planned to create or modify |
 | `get_project_messages` | Build history and chat turns |
@@ -282,7 +283,7 @@ Tool: send_followup_prompt
 { "project_slug": "my-app-abc123", "prompt": "Add a CSV export button to the reports page" }
 ```
 
-The `create_project` call starts the build immediately and returns the deployment URL. Use `get_project_status` to poll for completion, or `get_project_deployment_status` for a full phase breakdown.
+The `create_project` call starts the build immediately and returns the deployment URL. Use `get_project_build_status` to poll for everything at once — phase, ETA, progress, and the closing summary once it's done — or `get_project_status` for a lightweight running/not-running check.
 
 ### Roll back to a previous version
 
