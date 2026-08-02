@@ -84,6 +84,7 @@ Durchsuche Projekte, erstelle neue aus Prompts und verwalte den vollständigen P
 | `create_project` | Erstelle ein Projekt aus einem natürlichsprachigen Prompt und starte den ersten Build |
 | `send_followup_prompt` | Sende eine Folgeanweisung an ein bestehendes Projekt |
 | `get_project_status` | Leichtgewichtige Prüfung: Läuft gerade ein Build? |
+| `get_project_build_status` | Der umfassendste Live-Status-Aufruf — Phase, Restzeit-Countdown, Fortschritt, aktive Agents, Vorschau-Link, geänderte Seiten, Abschlusszusammenfassung und Vorschläge für Folge-Prompts, entsprechend der Live-Status-Karte der Web-App |
 | `get_project_deployment_status` | Vollständige phasenweise Build-Aufschlüsselung |
 | `get_project_deployment_plan` | Dateien, die die KI geplant hat zu erstellen oder zu ändern |
 | `get_project_messages` | Build-Verlauf und Chat-Turns |
@@ -282,7 +283,7 @@ Tool: send_followup_prompt
 { "project_slug": "my-app-abc123", "prompt": "Add a CSV export button to the reports page" }
 ```
 
-Der `create_project`-Aufruf startet den Build sofort und gibt die Deployment-URL zurück. Verwende `get_project_status` zum Abfragen des Abschlusses oder `get_project_deployment_status` für eine vollständige Phasenaufschlüsselung.
+Der `create_project`-Aufruf startet den Build sofort und gibt die Deployment-URL zurück. Verwende `get_project_build_status`, um alles auf einmal abzufragen — Phase, Restzeit, Fortschritt und die Abschlusszusammenfassung, sobald sie fertig ist — oder `get_project_status` für eine leichtgewichtige Läuft/läuft-nicht-Prüfung.
 
 ### Auf eine frühere Version zurücksetzen
 

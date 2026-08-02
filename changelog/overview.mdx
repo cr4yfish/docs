@@ -4,6 +4,20 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="August 1, 2026" description="Weekly release">
+
+This update adds a richer live build-status tool to the Genie MCP Server and fixes the Genie AI tab failing right after you resolved a tool card.
+
+## Updates
+
+- **Genie MCP Server: one-call live build status.** The new `get_project_build_status` tool returns the same live status the web app's build card shows — phase, countdown ETA, progress, how many agents are working in parallel, the preview link, changed pages, and the closing summary — in a single call. See [Genie MCP Server](/workspaces/mcp-api).
+
+## Fixes
+
+- **Fixed the Genie AI tab failing on the turn right after you resolved a tool card.** Reopening a chat, switching to the Genie AI tab, or resuming the last conversation from the command palette could carry the tool result over incorrectly, causing the very next turn to error out instead of continuing.
+
+</Update>
+
 <Update label="July 31, 2026" description="Weekly release">
 
 This update adds built-in embeddings for retrieval and semantic search, gives the workspace AI's build-status card a live ETA and progress view, and fixes several build-progress and credit-display glitches.

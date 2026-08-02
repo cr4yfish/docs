@@ -4,6 +4,20 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="1. August 2026" description="Wöchentliches Release">
+
+Dieses Update bringt ein umfassenderes Live-Build-Status-Tool für den Genie MCP Server und behebt einen Fehler, bei dem der Genie-KI-Tab direkt nach dem Auflösen einer Tool-Karte fehlschlug.
+
+## Updates
+
+- **Genie MCP Server: Live-Build-Status mit einem Aufruf.** Das neue Tool `get_project_build_status` liefert denselben Live-Status, den auch die Build-Karte der Web-App anzeigt — Phase, Restzeit-Countdown, Fortschritt, wie viele Agents parallel arbeiten, den Vorschau-Link, geänderte Seiten und die Abschlusszusammenfassung — in einem einzigen Aufruf. Siehe [Genie MCP Server](/de/workspaces/mcp-api).
+
+## Fixes
+
+- **Der Genie-KI-Tab, der direkt nach dem Auflösen einer Tool-Karte fehlschlug, wurde behoben.** Das erneute Öffnen eines Chats, der Wechsel zum Genie-KI-Tab oder das Fortsetzen der letzten Unterhaltung über die Befehlspalette konnte das Tool-Ergebnis fehlerhaft übernehmen, wodurch genau der nächste Turn mit einem Fehler abbrach, statt fortzufahren.
+
+</Update>
+
 <Update label="31. Juli 2026" description="Wöchentliches Release">
 
 Dieses Update bringt eingebaute Embeddings für Retrieval und semantische Suche, gibt der Build-Status-Karte der Workspace-KI eine Live-Restzeit mit Fortschrittsanzeige und behebt mehrere Störungen bei Build-Fortschritt und Credit-Anzeige.
