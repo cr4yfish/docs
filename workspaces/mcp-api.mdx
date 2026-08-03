@@ -46,7 +46,7 @@ Restart Claude Desktop and open any conversation. Claude will prompt you to auth
 
 ## Available tools
 
-The Genie MCP Server provides tools across sixteen categories.
+The Genie MCP Server provides tools across seventeen categories.
 
 ### Workspace management
 
@@ -164,12 +164,13 @@ Manage a project's connected [Genie Cloud](/cloud/overview) backend: end-user ro
 
 ### Genie Cloud database
 
-Browse the tables in a project's connected [Genie Cloud](/cloud/overview) database. Read-only. Only the project owner can use these tools, since table data may include the project's own end-users' data.
+Browse the tables and migration history in a project's connected [Genie Cloud](/cloud/overview) database. Read-only. Only the project owner can use these tools, since table data may include the project's own end-users' data.
 
 | Tool | What it does |
 |---|---|
 | `list_project_database_tables` | List a project's database tables and views, with column and approximate row counts |
 | `get_project_database_table_preview` | Column definitions and up to 25 sample rows for one table |
+| `list_project_cloud_migrations` | List the tracked database migrations for a project, newest first — each with the deployment it shipped with, how many changes it holds, how many of those a rollback could undo, and its status (applied, reverted, or partly reverted). Also surfaces changes already applied in the database but not yet shipped with a deployment. Excludes SQL text — only the shape of the history. Use `rollback_project_deployment` to actually undo a change |
 
 ### Project secrets
 
@@ -356,7 +357,7 @@ Role-based access is enforced on every tool call.
 | Search or forget the connected user's memory | Any connected user |
 | Roll back a project or view its version history | Project owner |
 | Read or update a project's SEO settings | Project owner |
-| Browse a project's Genie Cloud database tables | Project owner |
+| Browse a project's Genie Cloud database tables and migration history | Project owner |
 | List a project's deployed edge functions | Project owner |
 | Manage a project's scheduled jobs | Project owner |
 | Manage a project's Genie Cloud roles, sign-in providers, and access settings | Project owner |
