@@ -4,6 +4,23 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="August 2, 2026" description="Weekly release">
+
+This update lets the Genie MCP Server list a project's database migration history, and fixes several build-reliability issues along with a dark-mode contrast bug on the account profile page.
+
+## New features
+
+- **Genie MCP Server: list a project's database migration history.** The new `list_project_cloud_migrations` tool returns every tracked Genie Cloud database migration for a project, newest first — the deployment it shipped with, how many changes it holds, how many of those a rollback could undo, and its status. It also surfaces changes already applied to the database but not yet shipped with a deployment. See [Genie MCP Server](/workspaces/mcp-api).
+
+## Fixes
+
+- **Fixed builds that could fail entirely, or stall without making progress, when a single step ran into trouble.** Genie now repairs just the blocked step instead of discarding the whole turn's work.
+- **Genie AI no longer occasionally refuses to start or continue a build, replying that it doesn't have a tool for that.**
+- **Fixed a rare case where a generated page's interactive components could freeze the browser.**
+- **Fixed dark-mode contrast on the account profile page.** Cards, hero banners, and status badges no longer wash out in dark mode.
+
+</Update>
+
 <Update label="August 1, 2026" description="Weekly release">
 
 This update adds a richer live build-status tool to the Genie MCP Server and fixes the Genie AI tab failing right after you resolved a tool card.

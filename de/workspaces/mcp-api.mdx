@@ -46,7 +46,7 @@ Starte Claude Desktop neu und öffne ein beliebiges Gespräch. Claude wird dich 
 
 ## Verfügbare Tools
 
-Der Genie MCP Server bietet Tools in sechzehn Kategorien.
+Der Genie MCP Server bietet Tools in siebzehn Kategorien.
 
 ### Workspace-Verwaltung
 
@@ -164,12 +164,13 @@ Verwalte das verbundene [Genie-Cloud](/de/cloud/overview)-Backend eines Projekts
 
 ### Genie-Cloud-Datenbank
 
-Durchsuche die Tabellen der verbundenen [Genie-Cloud](/de/cloud/overview)-Datenbank eines Projekts. Nur lesend. Nur der Projektinhaber bzw. die Projektinhaberin kann diese Tools verwenden, da Tabellendaten die eigenen Endnutzerdaten des Projekts enthalten können.
+Durchsuche die Tabellen und den Migrationsverlauf der verbundenen [Genie-Cloud](/de/cloud/overview)-Datenbank eines Projekts. Nur lesend. Nur der Projektinhaber bzw. die Projektinhaberin kann diese Tools verwenden, da Tabellendaten die eigenen Endnutzerdaten des Projekts enthalten können.
 
 | Tool | Was es tut |
 |---|---|
 | `list_project_database_tables` | Liste die Tabellen und Views der Datenbank eines Projekts mit Spalten- und ungefährer Zeilenanzahl |
 | `get_project_database_table_preview` | Spaltendefinitionen und bis zu 25 Beispielzeilen für eine Tabelle |
+| `list_project_cloud_migrations` | Liste die erfassten Datenbankmigrationen eines Projekts, neueste zuerst — jeweils mit dem Deployment, mit dem sie ausgeliefert wurde, wie viele Änderungen sie enthält, wie viele davon ein Rollback rückgängig machen könnte, und ihrem Status (angewendet, rückgängig gemacht oder teilweise rückgängig gemacht). Zeigt auch Änderungen, die bereits in der Datenbank angewendet, aber noch nicht mit einem Deployment ausgeliefert wurden. SQL-Text wird ausgeklammert — nur die Form des Verlaufs. Nutze `rollback_project_deployment`, um eine Änderung tatsächlich rückgängig zu machen |
 
 ### Projekt-Secrets
 
@@ -356,7 +357,7 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Das Gedächtnis des verbundenen Nutzers durchsuchen oder löschen | Jeder verbundene Nutzer |
 | Ein Projekt zurücksetzen oder seinen Versionsverlauf einsehen | Projektinhaber:in |
 | SEO-Einstellungen eines Projekts lesen oder aktualisieren | Projektinhaber:in |
-| Datenbanktabellen der Genie Cloud eines Projekts durchsuchen | Projektinhaber:in |
+| Datenbanktabellen und Migrationsverlauf der Genie Cloud eines Projekts durchsuchen | Projektinhaber:in |
 | Bereitgestellte Edge Functions eines Projekts auflisten | Projektinhaber:in |
 | Geplante Jobs eines Projekts verwalten | Projektinhaber:in |
 | Genie-Cloud-Rollen, Anmeldeanbieter und Zugriffseinstellungen eines Projekts verwalten | Projektinhaber:in |
