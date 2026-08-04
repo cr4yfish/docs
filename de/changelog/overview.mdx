@@ -4,6 +4,24 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="4. August 2026" description="Wöchentliches Release">
+
+Dieses Update lässt dich Genies Chat-Antworten bewerten, bringt ein neues Genie-MCP-Server-Tool zum Durchsuchen deiner eigenen KI-Ausführungsspuren und korrigiert eine Tool-Angabe aus dem letzten Update.
+
+## Neue Funktionen
+
+- **Genies Antworten bewerten.** Bewerte jede abgeschlossene Antwort im Projekt-Chat mit einem Daumen hoch oder runter und sag optional, warum. Ändere oder lösche deine Bewertung jederzeit. Siehe [Chat-Verlauf](/de/projects/overview#eine-antwort-bewerten).
+
+## Updates
+
+- **Genie MCP Server: eigene KI-Ausführungsspuren durchsuchen.** Das neue Tool `search_agent_run_traces` durchsucht per Volltextsuche die Ausführungsspur hinter deinen Genie-KI-Gesprächen — die Begründung, jeden Tool-Aufruf und die endgültige Antwort — nicht nur den sichtbaren Chat-Text. Nützlich für Fragen wie „warum ist das vorhin fehlgeschlagen" oder „welcher Turn hat das Deploy-Tool aufgerufen". Siehe [Genie MCP Server](/de/workspaces/mcp-api).
+
+## Fixes
+
+- **Eine Genie-MCP-Server-Tool-Angabe korrigiert.** Das letzte Update dokumentierte `list_project_cloud_migrations` fälschlicherweise als Genie-MCP-Server-Tool. Es ist tatsächlich nur über die Genie-Workspace-KI im Chat verfügbar, nicht für externe MCP-Clients, und wurde aus der [Genie-MCP-Server](/de/workspaces/mcp-api)-Referenz entfernt. Bitte stattdessen direkt die Workspace-KI, den Migrationsverlauf eines Projekts durchzusehen.
+
+</Update>
+
 <Update label="2. August 2026" description="Wöchentliches Release">
 
 Dieses Update lässt den Genie MCP Server den Migrationsverlauf der Datenbank eines Projekts auflisten und behebt mehrere Zuverlässigkeitsprobleme beim Build sowie einen Kontrastfehler im Dark Mode auf der Profilseite.
