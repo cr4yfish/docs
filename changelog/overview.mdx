@@ -4,6 +4,24 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="August 4, 2026" description="Weekly release">
+
+This update lets you rate Genie's chat responses, adds a Genie MCP Server tool for searching your own AI run traces, and corrects an MCP Server tool listing from the last update.
+
+## New features
+
+- **Rate Genie's responses.** Give any finished response in your project chat a thumbs-up or thumbs-down, and optionally say why. Change or clear your rating anytime. See [Chat history](/projects/overview#rating-a-response).
+
+## Updates
+
+- **Genie MCP Server: search your own AI run traces.** The new `search_agent_run_traces` tool fulltext-searches the execution trace behind your Genie AI conversations — the reasoning, every tool call, and the final answer — not just the visible chat text. Useful for questions like "why did that fail earlier" or "which turn called the deploy tool." See [Genie MCP Server](/workspaces/mcp-api).
+
+## Fixes
+
+- **Corrected a Genie MCP Server tool listing.** The last update incorrectly documented `list_project_cloud_migrations` as a Genie MCP Server tool. It's actually only available through the Genie workspace AI in chat, not to external MCP clients, and has been removed from the [Genie MCP Server](/workspaces/mcp-api) reference. Ask the workspace AI directly to review a project's migration history instead.
+
+</Update>
+
 <Update label="August 2, 2026" description="Weekly release">
 
 This update lets the Genie MCP Server list a project's database migration history, and fixes several build-reliability issues along with a dark-mode contrast bug on the account profile page.

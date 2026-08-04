@@ -164,13 +164,16 @@ Verwalte das verbundene [Genie-Cloud](/de/cloud/overview)-Backend eines Projekts
 
 ### Genie-Cloud-Datenbank
 
-Durchsuche die Tabellen und den Migrationsverlauf der verbundenen [Genie-Cloud](/de/cloud/overview)-Datenbank eines Projekts. Nur lesend. Nur der Projektinhaber bzw. die Projektinhaberin kann diese Tools verwenden, da Tabellendaten die eigenen Endnutzerdaten des Projekts enthalten können.
+Durchsuche die Tabellen der verbundenen [Genie-Cloud](/de/cloud/overview)-Datenbank eines Projekts. Nur lesend. Nur der Projektinhaber bzw. die Projektinhaberin kann diese Tools verwenden, da Tabellendaten die eigenen Endnutzerdaten des Projekts enthalten können.
 
 | Tool | Was es tut |
 |---|---|
 | `list_project_database_tables` | Liste die Tabellen und Views der Datenbank eines Projekts mit Spalten- und ungefährer Zeilenanzahl |
 | `get_project_database_table_preview` | Spaltendefinitionen und bis zu 25 Beispielzeilen für eine Tabelle |
-| `list_project_cloud_migrations` | Liste die erfassten Datenbankmigrationen eines Projekts, neueste zuerst — jeweils mit dem Deployment, mit dem sie ausgeliefert wurde, wie viele Änderungen sie enthält, wie viele davon ein Rollback rückgängig machen könnte, und ihrem Status (angewendet, rückgängig gemacht oder teilweise rückgängig gemacht). Zeigt auch Änderungen, die bereits in der Datenbank angewendet, aber noch nicht mit einem Deployment ausgeliefert wurden. SQL-Text wird ausgeklammert — nur die Form des Verlaufs. Nutze `rollback_project_deployment`, um eine Änderung tatsächlich rückgängig zu machen |
+
+<Note>
+Der Migrationsverlauf ist über MCP nicht verfügbar. Bitte die Genie-Workspace-KI direkt darum, den Migrationsverlauf eines Projekts durchzusehen.
+</Note>
 
 ### Projekt-Secrets
 
@@ -220,6 +223,7 @@ Stelle Fragen an die Genie-Workspace-KI und durchsuche vergangene Gespräche.
 | `list_workspace_chats` | Letzte Gespräche mit Titel und Vorschau |
 | `get_workspace_chat` | Vollständige Nachrichtenhistorie eines Gesprächs |
 | `search_workspace_chats` | Suche in allen vergangenen Nachrichten |
+| `search_agent_run_traces` | Durchsuche per Volltextsuche die Ausführungsspur hinter den eigenen Genie-KI-Gesprächen des verbundenen Nutzers — die Begründung, jeden Tool-Aufruf und die endgültige Antwort, nicht nur den sichtbaren Chat-Text. Nützlich für Fragen wie „warum ist das vorhin fehlgeschlagen" oder „welcher Turn hat das Deploy-Tool aufgerufen" |
 | `rename_workspace_chat` | Benenne ein Gespräch um |
 | `delete_workspace_chat` | Lösche ein Gespräch und alle seine Nachrichten dauerhaft |
 
@@ -355,9 +359,10 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Einen bekannten Bug melden | Projektinhaber:in |
 | Die gemeinsame Bug-Lösungs-Wissensdatenbank durchsuchen | Jeder verbundene Nutzer |
 | Das Gedächtnis des verbundenen Nutzers durchsuchen oder löschen | Jeder verbundene Nutzer |
+| Die eigenen Genie-KI-Ausführungsspuren des verbundenen Nutzers durchsuchen | Jeder verbundene Nutzer |
 | Ein Projekt zurücksetzen oder seinen Versionsverlauf einsehen | Projektinhaber:in |
 | SEO-Einstellungen eines Projekts lesen oder aktualisieren | Projektinhaber:in |
-| Datenbanktabellen und Migrationsverlauf der Genie Cloud eines Projekts durchsuchen | Projektinhaber:in |
+| Datenbanktabellen der Genie Cloud eines Projekts durchsuchen | Projektinhaber:in |
 | Bereitgestellte Edge Functions eines Projekts auflisten | Projektinhaber:in |
 | Geplante Jobs eines Projekts verwalten | Projektinhaber:in |
 | Genie-Cloud-Rollen, Anmeldeanbieter und Zugriffseinstellungen eines Projekts verwalten | Projektinhaber:in |

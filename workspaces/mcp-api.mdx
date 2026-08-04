@@ -164,13 +164,16 @@ Manage a project's connected [Genie Cloud](/cloud/overview) backend: end-user ro
 
 ### Genie Cloud database
 
-Browse the tables and migration history in a project's connected [Genie Cloud](/cloud/overview) database. Read-only. Only the project owner can use these tools, since table data may include the project's own end-users' data.
+Browse the tables in a project's connected [Genie Cloud](/cloud/overview) database. Read-only. Only the project owner can use these tools, since table data may include the project's own end-users' data.
 
 | Tool | What it does |
 |---|---|
 | `list_project_database_tables` | List a project's database tables and views, with column and approximate row counts |
 | `get_project_database_table_preview` | Column definitions and up to 25 sample rows for one table |
-| `list_project_cloud_migrations` | List the tracked database migrations for a project, newest first — each with the deployment it shipped with, how many changes it holds, how many of those a rollback could undo, and its status (applied, reverted, or partly reverted). Also surfaces changes already applied in the database but not yet shipped with a deployment. Excludes SQL text — only the shape of the history. Use `rollback_project_deployment` to actually undo a change |
+
+<Note>
+Migration history isn't available via MCP. Ask the Genie workspace AI directly to review a project's migration history.
+</Note>
 
 ### Project secrets
 
@@ -220,6 +223,7 @@ Send questions to the Genie workspace AI and browse past conversations.
 | `list_workspace_chats` | Recent conversations with title and preview |
 | `get_workspace_chat` | Full message history of a conversation |
 | `search_workspace_chats` | Search across all past messages |
+| `search_agent_run_traces` | Fulltext-search the execution trace behind the connected user's own Genie AI conversations — the reasoning, every tool call, and the final answer, not just the visible chat text. Useful for questions like "why did that fail earlier" or "which turn called the deploy tool" |
 | `rename_workspace_chat` | Rename a conversation |
 | `delete_workspace_chat` | Permanently delete a conversation and all its messages |
 
@@ -355,9 +359,10 @@ Role-based access is enforced on every tool call.
 | Report a known issue | Project owner |
 | Search the shared bug-solution knowledge base | Any connected user |
 | Search or forget the connected user's memory | Any connected user |
+| Search the connected user's own Genie AI run traces | Any connected user |
 | Roll back a project or view its version history | Project owner |
 | Read or update a project's SEO settings | Project owner |
-| Browse a project's Genie Cloud database tables and migration history | Project owner |
+| Browse a project's Genie Cloud database tables | Project owner |
 | List a project's deployed edge functions | Project owner |
 | Manage a project's scheduled jobs | Project owner |
 | Manage a project's Genie Cloud roles, sign-in providers, and access settings | Project owner |
