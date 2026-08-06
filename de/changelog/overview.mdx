@@ -4,6 +4,24 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="6. August 2026" description="Wöchentliches Release">
+
+Dieses Update lässt Genie AI die Screenshots deines Projekts sehen und seine Live-Konsolenprotokolle durchsuchen, überträgt Chat-Anhänge in die Builds, um die du bittest, und reduziert jedes Projekt auf eine einzige, fortlaufende Genie-AI-Unterhaltung.
+
+## Neue Funktionen
+
+- **Genie AI sieht und debuggt dein Projekt.** Frag „sieht das richtig aus?" oder „warum hat meine App gerade einen Fehler geworfen?", und Genie AI kann selbst nachsehen — sie ruft die Live-Screenshots deines Projekts auf (die Standardansicht der veröffentlichten App oder genau das, was du auf dem Bildschirm hattest) und durchsucht seine Live-Konsolenausgaben, Fehler und Abstürze. Siehe [Workspace-KI](/de/workspaces/overview#genie-ai-sieht-und-debuggt-dein-projekt).
+- **Genie MCP Server: Screenshots, Konsolenprotokoll-Suche und Chat-Verbindungen.** Externe KI-Clients, die über den Genie MCP Server verbunden sind, können jetzt die Screenshots eines Projekts abrufen (`get_project_screenshots`), seine Live-Konsolenprotokolle durchsuchen (`search_project_console_logs`) und lesen oder festlegen, welcher Workspace-Chat der Hauptchat eines Projekts ist (`get_project_chat_connection`, `list_projects_sharing_chat`, `connect_project_chat`). Siehe [Genie MCP Server](/de/workspaces/mcp-api).
+
+## Updates
+
+- **Chat-Anhänge fließen jetzt in den Build ein, um den du bittest.** Hänge beim Bitten von Genie AI, ein Projekt zu erstellen oder zu aktualisieren, ein Bild oder PDF an deine Nachricht an — einen Entwurf, ein Referenzfoto — und die Datei selbst geht in diesen Build ein, nicht nur eine Textbeschreibung davon. Siehe [Workspace-KI](/de/workspaces/overview#anhänge-fließen-in-deinen-build-ein).
+- **Mehr Dateitypen überall dort akzeptiert, wo du etwas anhängst.** Reiner Text, Markdown, CSV, JSON und Word-Dokumente werden jetzt neben Bildern und PDFs akzeptiert — im Dashboard, auf der Landingpage, im Projekt-Chat und im Workspace-Chat gleichermaßen — und ein iPhone-HEIC-Foto wird automatisch umgewandelt, damit seine Vorschau korrekt angezeigt wird.
+- **Eine fortlaufende Genie-AI-Unterhaltung pro Projekt.** Das Genie-AI-Panel neben deiner Live-Vorschau enthält jetzt eine einzige Unterhaltung für dieses Projekt, statt zwischen mehreren zu wechseln — jede Übergabe, ob über **Mit Genie AI fortfahren**, einen **Genie fragen**-Button oder die Befehlspalette, setzt genau diese Unterhaltung fort. Durchsuche andere Unterhaltungen oder starte eine neue stattdessen über die Workspace-KI. Siehe [Das Genie-AI-Panel](/de/projects/overview#das-genie-ai-panel).
+- **Klareres Feedback bei der Spracheingabe.** Ein dezenter Ton spielt jetzt, wenn der Sprachmodus aktiviert wird, und der Composer zeigt eine Live-Wellenform und einen laufenden Zähler, während du sprichst.
+
+</Update>
+
 <Update label="4. August 2026" description="Wöchentliches Release">
 
 Dieses Update lässt dich Genies Chat-Antworten bewerten, bringt ein neues Genie-MCP-Server-Tool zum Durchsuchen deiner eigenen KI-Ausführungsspuren und korrigiert eine Tool-Angabe aus dem letzten Update.

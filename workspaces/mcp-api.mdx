@@ -89,6 +89,8 @@ Browse projects, create new ones from prompts, and manage the full project lifec
 | `get_project_deployment_plan` | Files the AI planned to create or modify |
 | `get_project_messages` | Build history and chat turns |
 | `show_preview` | Deployment URL and per-page screenshots |
+| `get_project_screenshots` | Fetch actual screenshot images of a project — not just a URL — attached directly to the tool result: the deployed app's default view, and, when available, exactly what the connected user had open in their own live preview |
+| `search_project_console_logs` | Search a deployed project's live runtime telemetry — console output, errors, unhandled crashes, clicks, and page views — filtered by keyword, severity, or event type, over a configurable time window |
 | `suggest_project_prompts` | AI-generated next-step ideas based on build history |
 | `abort_project_build` | Cancel the currently running build |
 | `archive_project` / `unarchive_project` | Hide or restore a project |
@@ -226,6 +228,9 @@ Send questions to the Genie workspace AI and browse past conversations.
 | `search_agent_run_traces` | Fulltext-search the execution trace behind the connected user's own Genie AI conversations — the reasoning, every tool call, and the final answer, not just the visible chat text. Useful for questions like "why did that fail earlier" or "which turn called the deploy tool" |
 | `rename_workspace_chat` | Rename a conversation |
 | `delete_workspace_chat` | Permanently delete a conversation and all its messages |
+| `get_project_chat_connection` | Show which workspace chat is a project's main conversation — the one where all the work on that project happens — how that was resolved, and which other projects share it |
+| `list_projects_sharing_chat` | List every project that uses a given workspace chat as its main conversation |
+| `connect_project_chat` | Make a workspace chat a project's main conversation. Keeps an existing connection by default — pass `replace: true` to switch it |
 
 ### Workspace MCP integrations
 
@@ -360,6 +365,8 @@ Role-based access is enforced on every tool call.
 | Search the shared bug-solution knowledge base | Any connected user |
 | Search or forget the connected user's memory | Any connected user |
 | Search the connected user's own Genie AI run traces | Any connected user |
+| View a project's screenshots or search its live console logs | Any member (who can view the project) |
+| Read or set a project's main workspace chat | Any member |
 | Roll back a project or view its version history | Project owner |
 | Read or update a project's SEO settings | Project owner |
 | Browse a project's Genie Cloud database tables | Project owner |

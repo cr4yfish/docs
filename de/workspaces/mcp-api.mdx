@@ -89,6 +89,8 @@ Durchsuche Projekte, erstelle neue aus Prompts und verwalte den vollständigen P
 | `get_project_deployment_plan` | Dateien, die die KI geplant hat zu erstellen oder zu ändern |
 | `get_project_messages` | Build-Verlauf und Chat-Turns |
 | `show_preview` | Deployment-URL und seitenweise Screenshots |
+| `get_project_screenshots` | Ruft echte Screenshot-Bilder eines Projekts ab — nicht nur eine URL — direkt am Tool-Ergebnis angehängt: die Standardansicht der veröffentlichten App und, falls verfügbar, genau das, was der verbundene Nutzer gerade in seiner eigenen Live-Vorschau geöffnet hatte |
+| `search_project_console_logs` | Durchsuche die Live-Laufzeit-Telemetrie eines veröffentlichten Projekts — Konsolenausgaben, Fehler, unbehandelte Abstürze, Klicks und Seitenaufrufe — gefiltert nach Stichwort, Schweregrad oder Ereignistyp, über ein konfigurierbares Zeitfenster |
 | `suggest_project_prompts` | KI-generierte Ideen für nächste Schritte basierend auf dem Build-Verlauf |
 | `abort_project_build` | Brich den aktuell laufenden Build ab |
 | `archive_project` / `unarchive_project` | Verstecke oder stelle ein Projekt wieder her |
@@ -226,6 +228,9 @@ Stelle Fragen an die Genie-Workspace-KI und durchsuche vergangene Gespräche.
 | `search_agent_run_traces` | Durchsuche per Volltextsuche die Ausführungsspur hinter den eigenen Genie-KI-Gesprächen des verbundenen Nutzers — die Begründung, jeden Tool-Aufruf und die endgültige Antwort, nicht nur den sichtbaren Chat-Text. Nützlich für Fragen wie „warum ist das vorhin fehlgeschlagen" oder „welcher Turn hat das Deploy-Tool aufgerufen" |
 | `rename_workspace_chat` | Benenne ein Gespräch um |
 | `delete_workspace_chat` | Lösche ein Gespräch und alle seine Nachrichten dauerhaft |
+| `get_project_chat_connection` | Zeigt, welcher Workspace-Chat der Hauptchat eines Projekts ist — derjenige, in dem die gesamte Arbeit an diesem Projekt stattfindet —, wie das aufgelöst wurde und welche anderen Projekte ihn sich teilen |
+| `list_projects_sharing_chat` | Listet jedes Projekt auf, das einen bestimmten Workspace-Chat als Hauptchat nutzt |
+| `connect_project_chat` | Macht einen Workspace-Chat zum Hauptchat eines Projekts. Behält eine bestehende Verbindung standardmäßig bei — übergib `replace: true`, um sie zu wechseln |
 
 ### Workspace-MCP-Integrationen
 
@@ -360,6 +365,8 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Die gemeinsame Bug-Lösungs-Wissensdatenbank durchsuchen | Jeder verbundene Nutzer |
 | Das Gedächtnis des verbundenen Nutzers durchsuchen oder löschen | Jeder verbundene Nutzer |
 | Die eigenen Genie-KI-Ausführungsspuren des verbundenen Nutzers durchsuchen | Jeder verbundene Nutzer |
+| Die Screenshots eines Projekts einsehen oder seine Live-Konsolenprotokolle durchsuchen | Jedes Mitglied (das das Projekt einsehen kann) |
+| Den Hauptchat eines Projekts lesen oder festlegen | Jedes Mitglied |
 | Ein Projekt zurücksetzen oder seinen Versionsverlauf einsehen | Projektinhaber:in |
 | SEO-Einstellungen eines Projekts lesen oder aktualisieren | Projektinhaber:in |
 | Datenbanktabellen der Genie Cloud eines Projekts durchsuchen | Projektinhaber:in |
