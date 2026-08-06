@@ -4,6 +4,24 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="August 6, 2026" description="Weekly release">
+
+This update lets Genie AI see your project's screenshots and search its live console logs, carries chat attachments into the builds you ask for, and simplifies each project down to one ongoing Genie AI conversation.
+
+## New features
+
+- **Genie AI can see and debug your project.** Ask "does this look right?" or "why did my app just throw an error?" and Genie AI can check for itself — pulling up your project's live screenshots (the deployed app's default view, or exactly what you had on screen) and searching its live console output, errors, and crashes. See [Workspace AI](/workspaces/overview#genie-ai-can-see-and-debug-your-project).
+- **Genie MCP Server: screenshots, console-log search, and chat connections.** External AI clients connected via the Genie MCP Server can now fetch a project's screenshots (`get_project_screenshots`), search its live console logs (`search_project_console_logs`), and read or set which workspace chat is a project's main conversation (`get_project_chat_connection`, `list_projects_sharing_chat`, `connect_project_chat`). See [Genie MCP Server](/workspaces/mcp-api).
+
+## Updates
+
+- **Chat attachments now carry into the build you ask for.** Attach an image or PDF to your message when asking Genie AI to create or update a project — a mockup, a reference photo — and the file itself goes into that build, not just a text description of it. See [Workspace AI](/workspaces/overview#attachments-carry-into-your-build).
+- **More file types accepted wherever you attach one.** Plain text, Markdown, CSV, JSON, and Word documents are now accepted alongside images and PDFs, from the dashboard, landing page, project chat, and workspace chat alike — and an iPhone HEIC photo is converted automatically so its preview displays correctly.
+- **One ongoing Genie AI conversation per project.** The Genie AI panel next to your live preview now holds a single conversation for that project instead of switching between several — every hand-off, whether from **Continue with Genie AI**, an **Ask Genie** button, or the command palette, continues that same conversation. Browse or start other conversations from the workspace AI instead. See [The Genie AI panel](/projects/overview#the-genie-ai-panel).
+- **Clearer voice input feedback.** A subtle sound now plays when voice mode engages, and the composer shows a live waveform and a running counter while you talk.
+
+</Update>
+
 <Update label="August 4, 2026" description="Weekly release">
 
 This update lets you rate Genie's chat responses, adds a Genie MCP Server tool for searching your own AI run traces, and corrects an MCP Server tool listing from the last update.
