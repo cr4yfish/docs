@@ -85,6 +85,7 @@ Browse projects, create new ones from prompts, and manage the full project lifec
 | `send_followup_prompt` | Send a follow-up instruction to an existing project |
 | `get_project_status` | Lightweight check: is a build currently running? |
 | `get_project_build_status` | The richest live-status call — phase, countdown ETA, progress, active agents, preview link, changed pages, closing summary, and suggested follow-ups, matching the web app's build-status card |
+| `list_connected_project_activity` | What a project (or every project connected to a given workspace chat) is doing right now — building, running autofix, or has prompts waiting in its queue — the same snapshot the status badge on every workspace-chat surface shows. Pass a `conversation_id` and/or a `project_slug` |
 | `get_project_deployment_status` | Full phase-by-phase build breakdown |
 | `get_project_deployment_plan` | Files the AI planned to create or modify |
 | `get_project_messages` | Build history and chat turns |
@@ -213,6 +214,21 @@ Manage recurring schedules for a project's deployed edge functions. See [Schedul
 | `schedule_job` | Schedule a deployed edge function to run on a timer, or update an existing schedule (idempotent by job name) |
 | `unschedule_job` | Remove a scheduled job from a project |
 | `run_scheduled_job_now` | Fire a scheduled job's function immediately to verify it, without changing the schedule |
+
+### Project Prompt Queue
+
+When a follow-up prompt arrives for a project that's already building, Genie queues it instead of refusing it — see [Genie AI queues a busy project's prompt](/workspaces/overview#genie-ai-queues-a-busy-projects-prompt). These tools let an external AI client inspect and manage that queue directly.
+
+| Tool | What it does |
+|---|---|
+| `list_prompt_queue` | Show a project's prompt queue: active/paused state (and why), pending items, when the next one goes out, and recent history |
+| `pause_prompt_queue` | Pause the queue — nothing new is sent until resumed. Never stops a build already running |
+| `resume_prompt_queue` | Resume a paused queue. Restarts the cooldown from now, so resuming never fires a burst |
+| `remove_prompt_queue_item` | Cancel one still-waiting queued prompt |
+| `reorder_prompt_queue_item` | Move a waiting prompt to a different position in the queue |
+| `clear_prompt_queue` | Cancel every still-waiting prompt in a project's queue — requires `confirm_clear: true` |
+| `set_prompt_queue_delay` | Change the cooldown between a run completing and the next queued prompt going out |
+| `send_next_queued_prompt_now` | Skip the remaining wait and send the next queued prompt as soon as the project is free. Also resumes a paused queue |
 
 ### Workspace chat
 
@@ -367,6 +383,8 @@ Role-based access is enforced on every tool call.
 | Search the connected user's own Genie AI run traces | Any connected user |
 | View a project's screenshots or search its live console logs | Any member (who can view the project) |
 | Read or set a project's main workspace chat | Any member |
+| Check what a project is doing right now (build, autofix, queue) | Any member (who can view the project) |
+| View or manage a project's prompt queue | Any member |
 | Roll back a project or view its version history | Project owner |
 | Read or update a project's SEO settings | Project owner |
 | Browse a project's Genie Cloud database tables | Project owner |
