@@ -105,6 +105,14 @@ The workspace AI can create and update projects, manage members, query credit us
 
 If you send that follow-up prompt from inside the project's own chat, Genie starts the build automatically as soon as you confirm — you don't need to press send again once you've reviewed the card.
 
+### Genie AI queues a busy project's prompt
+
+If you ask the workspace AI to update a project that's already building, your prompt no longer just fails and asks you to try again — Genie lines it up in a queue and sends it automatically once the current build settles, spacing sends out by a short cooldown so a project isn't hit with back-to-back builds. Before Genie sends anything, the confirmation card tells you plainly whether your prompt is starting a build right now or joining the queue — and, if it's queuing, roughly when it will go out. Ask the workspace AI anytime to check, pause, reorder, or clear a project's queue.
+
+### Is it still building?
+
+Every place you talk to Genie AI — the in-project Genie AI tab, the standalone chat page, and the command palette — shows a small status badge for any project connected to that conversation, so you can tell at a glance whether it's currently building, running an automatic fix, or has prompts waiting in its queue. Nothing shows once a project is idle.
+
 ### Genie AI can see and debug your project
 
 Ask "does this look right?" or "why did my app just throw an error?" and the workspace AI can check for itself instead of guessing from your description. It can pull up your project's live screenshots — the deployed app's default view, or exactly what was on your own screen if you were the one looking at it — and it can search your live app's own console output, errors, and crashes to check whether a bug you're describing really happened, or whether a fix landed.
@@ -133,6 +141,8 @@ When you ask the workspace AI to create a project or shape a prompt, it steers y
 
 Genie doesn't always reply with plain text. When it makes more sense to offer you a choice than to write a paragraph, it renders a clickable card right in the chat: a button to confirm a single action, a list to pick exactly one option from, or a checklist where you can tick as many choices as apply and add your own note underneath. Tap a card to answer — if you send a new message instead without answering, the card is cleared automatically so it never lingers out of date.
 
+If a card needs an answer before Genie AI can continue — confirming an action, or reviewing a project it's about to create — you can minimize it instead of answering right away or canceling it outright. Tap it again anytime to bring it back; nothing about the request is lost while it's collapsed.
+
 ### Always replies in your language
 
 Genie AI answers in whatever language you write to it in — regardless of your account's interface language — and keeps writing in that language for the rest of the conversation, including any cards it shows you and the project briefs it authors on your behalf. If you switch languages mid-conversation, Genie follows along from your very next message.
@@ -145,7 +155,7 @@ You can also ask it directly — try *"what do you remember about me?"* — and 
 
 ### Talk instead of type
 
-Don't want to type your prompt? Tap the microphone icon in any Genie chat composer — it replaces the send button whenever the input is empty — to dictate instead. Tap again to stop recording, or it stops on its own after two minutes. Genie transcribes what you said into the composer so you can review or edit it before sending — nothing is submitted automatically. Voice input is available in the workspace chat, a project's chat panel, and the command palette's **Ask Genie**, on any browser that supports microphone recording.
+Don't want to type your prompt? Tap the microphone icon in any Genie chat composer, or next to the **Get started** button on the workspace dashboard, to dictate instead. Your words appear in the composer as you speak, rather than arriving all at once when you stop, and dictation recognizes Genie- and product-specific terms — like "Genie Cloud" or "MCP" — instead of mishearing them. The microphone stays available even after you've started typing, so you can dictate a correction or an addition onto a draft without clearing the box first; tap it again to stop recording, or it stops on its own after two minutes. Genie transcribes what you said so you can review or edit it before sending — nothing is submitted automatically. Voice input is available in the workspace chat, a project's chat panel, the workspace dashboard, and the command palette's **Ask Genie**, on any browser that supports microphone recording.
 
 ### The command palette
 

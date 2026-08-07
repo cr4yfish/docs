@@ -85,6 +85,7 @@ Durchsuche Projekte, erstelle neue aus Prompts und verwalte den vollständigen P
 | `send_followup_prompt` | Sende eine Folgeanweisung an ein bestehendes Projekt |
 | `get_project_status` | Leichtgewichtige Prüfung: Läuft gerade ein Build? |
 | `get_project_build_status` | Der umfassendste Live-Status-Aufruf — Phase, Restzeit-Countdown, Fortschritt, aktive Agents, Vorschau-Link, geänderte Seiten, Abschlusszusammenfassung und Vorschläge für Folge-Prompts, entsprechend der Live-Status-Karte der Web-App |
+| `list_connected_project_activity` | Was ein Projekt (oder jedes mit einem bestimmten Workspace-Chat verbundene Projekt) gerade tut — baut, führt eine automatische Korrektur aus oder hat Prompts in seiner Warteschlange wartend — derselbe Schnappschuss, den das Status-Abzeichen auf jeder Workspace-Chat-Oberfläche zeigt. Übergib eine `conversation_id` und/oder einen `project_slug` |
 | `get_project_deployment_status` | Vollständige phasenweise Build-Aufschlüsselung |
 | `get_project_deployment_plan` | Dateien, die die KI geplant hat zu erstellen oder zu ändern |
 | `get_project_messages` | Build-Verlauf und Chat-Turns |
@@ -213,6 +214,21 @@ Verwalte wiederkehrende Zeitpläne für die bereitgestellten Edge Functions eine
 | `schedule_job` | Plane eine bereitgestellte Edge Function so, dass sie nach einem Zeitplan läuft, oder aktualisiere einen bestehenden Zeitplan (idempotent nach Job-Name) |
 | `unschedule_job` | Entferne einen geplanten Job aus einem Projekt |
 | `run_scheduled_job_now` | Führe die Funktion eines geplanten Jobs sofort aus, um sie zu überprüfen, ohne den Zeitplan zu ändern |
+
+### Projekt-Prompt-Warteschlange
+
+Trifft ein Folge-Prompt für ein Projekt ein, das bereits baut, reiht Genie ihn ein, statt ihn abzulehnen — siehe [Genie AI reiht den Prompt eines beschäftigten Projekts ein](/de/workspaces/overview#genie-ai-reiht-den-prompt-eines-beschäftigten-projekts-ein). Diese Tools lassen einen externen KI-Client diese Warteschlange direkt einsehen und verwalten.
+
+| Tool | Was es tut |
+|---|---|
+| `list_prompt_queue` | Zeige die Prompt-Warteschlange eines Projekts: aktiv/pausiert (und warum), wartende Einträge, wann der nächste gesendet wird, und die letzte Historie |
+| `pause_prompt_queue` | Pausiere die Warteschlange — es wird nichts Neues gesendet, bis sie fortgesetzt wird. Stoppt nie einen bereits laufenden Build |
+| `resume_prompt_queue` | Setze eine pausierte Warteschlange fort. Startet die Abklingzeit ab jetzt neu, sodass ein Fortsetzen nie einen Schwall auslöst |
+| `remove_prompt_queue_item` | Storniere einen noch wartenden, eingereihten Prompt |
+| `reorder_prompt_queue_item` | Verschiebe einen wartenden Prompt an eine andere Position in der Warteschlange |
+| `clear_prompt_queue` | Storniere jeden noch wartenden Prompt in der Warteschlange eines Projekts — erfordert `confirm_clear: true` |
+| `set_prompt_queue_delay` | Ändere die Abklingzeit zwischen dem Abschluss eines Laufs und dem Senden des nächsten eingereihten Prompts |
+| `send_next_queued_prompt_now` | Überspringe die verbleibende Wartezeit und sende den nächsten eingereihten Prompt, sobald das Projekt frei ist. Setzt auch eine pausierte Warteschlange fort |
 
 ### Workspace-Chat
 
@@ -367,6 +383,8 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Die eigenen Genie-KI-Ausführungsspuren des verbundenen Nutzers durchsuchen | Jeder verbundene Nutzer |
 | Die Screenshots eines Projekts einsehen oder seine Live-Konsolenprotokolle durchsuchen | Jedes Mitglied (das das Projekt einsehen kann) |
 | Den Hauptchat eines Projekts lesen oder festlegen | Jedes Mitglied |
+| Prüfen, was ein Projekt gerade tut (Build, automatische Korrektur, Warteschlange) | Jedes Mitglied (das das Projekt einsehen kann) |
+| Die Prompt-Warteschlange eines Projekts einsehen oder verwalten | Jedes Mitglied |
 | Ein Projekt zurücksetzen oder seinen Versionsverlauf einsehen | Projektinhaber:in |
 | SEO-Einstellungen eines Projekts lesen oder aktualisieren | Projektinhaber:in |
 | Datenbanktabellen der Genie Cloud eines Projekts durchsuchen | Projektinhaber:in |

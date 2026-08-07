@@ -4,6 +4,34 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="7. August 2026" description="Wöchentliches Release">
+
+Dieses Update lässt Genie AI einen Prompt in eine Warteschlange einreihen, statt bei einem beschäftigten Projekt ins Leere zu laufen, fügt ein Live-Status-Abzeichen hinzu, damit du immer siehst, was deine verbundenen Projekte gerade tun, überarbeitet die Spracheingabe, sodass sie streamt, während du sprichst, und behebt mehrere Build- und Chat-Zuverlässigkeitsprobleme.
+
+## Neue Funktionen
+
+- **Genie AI reiht den Prompt eines beschäftigten Projekts jetzt in eine Warteschlange ein, statt ins Leere zu laufen.** Bitte die Workspace-KI, ein bereits im Build befindliches Projekt zu aktualisieren, und sie reiht deinen Prompt ein, statt dich zu bitten, es erneut zu versuchen — er wird automatisch gesendet, ein Prompt nach dem anderen, mit einer kurzen Abklingzeit nach Abschluss des laufenden Builds. Die Bestätigungskarte sagt dir vorab, ob dein Prompt sofort einen Build startet oder sich einreiht, und ungefähr, wann er gesendet wird. Siehe [Workspace-KI](/de/workspaces/overview#genie-ai-reiht-den-prompt-eines-beschäftigten-projekts-ein).
+- **„Läuft der Build noch?" — ein Status-Abzeichen, überall wo du mit Genie AI chattest.** Ein Abzeichen erscheint jetzt auf jeder Oberfläche, auf der du mit Genie AI chattest — dem projektinternen Genie-AI-Tab, der eigenständigen Chat-Seite und der Befehlspalette — und zeigt, ob ein verbundenes Projekt gerade baut, eine automatische Korrektur ausführt oder Prompts in seiner Warteschlange wartet. Sobald es untätig ist, wird nichts angezeigt. Siehe [Workspace-KI](/de/workspaces/overview#läuft-der-build-noch).
+- **Genie MCP Server: die Prompt-Warteschlange eines Projekts verwalten und sehen, was gerade passiert.** Externe KI-Clients können die wartenden Prompts eines Projekts auflisten, pausieren, fortsetzen, neu ordnen, entfernen oder leeren und die Verzögerung zwischen den Sendungen anpassen — mit acht neuen Tools. Ein neues `list_connected_project_activity`-Tool spiegelt denselben „was passiert gerade"-Status wider, den das Abzeichen zeigt. Siehe [Genie MCP Server](/de/workspaces/mcp-api).
+
+## Updates
+
+- **Spracheingabe wurde schneller und genauer.** Deine Worte erscheinen jetzt im Composer, während du sprichst, statt erst auf einmal, wenn du aufhörst; die Diktierfunktion erkennt Genie- und produktspezifische Begriffe wie „Genie Cloud" und „MCP", statt sie misszuverstehen, und das Mikrofon verschwindet nicht mehr in dem Moment, in dem du zu tippen beginnst — diktiere eine Korrektur oder Ergänzung zu einem Entwurf, ohne das Feld vorher zu leeren. Spracheingabe ist jetzt außerdem beim Prompt des Workspace-Dashboards verfügbar, nicht nur im Chat. Siehe [Sprechen statt tippen](/de/workspaces/overview#sprechen-statt-tippen).
+- **Eine Karte, die auf deine Eingabe wartet, minimieren, statt sie zu verlieren.** Braucht Genie AI eine Antwort, bevor sie fortfahren kann — beim Bestätigen einer Aktion oder beim Prüfen eines Projekts, das sie gerade erstellen will —, kannst du diese Karte jetzt minimieren und weiterchatten oder später zurückkehren, statt sofort antworten oder sie ganz abbrechen zu müssen. Siehe [Interaktive Antworten](/de/workspaces/overview#interaktive-antworten).
+- **Genie AI beschreibt genau, was sie gerade tut — Tool für Tool.** Während sie arbeitet, nennt die Aktivitätszeile im Chat jetzt die konkrete Sache, die Genie AI gerade tut, statt für das meiste, was im Hintergrund passiert, einen generischen „Wird ausgeführt"-Status zu zeigen.
+- **Mobile Projektseiten sind jetzt um den Genie-AI-Tab herum aufgebaut.** Auf dem Handy ist Genie AI der primäre Weg, an einem Projekt zu arbeiten; der eigene Build-Chat des Projekts ist jetzt eine sekundäre Ansicht, nur für Admins. Siehe [Das Genie-AI-Panel](/de/projects/overview#das-genie-ai-panel).
+
+## Fixes
+
+- **Das Löschen eines Projekts, das bei Projekten mit umfangreicher Build- oder Datenbankhistorie fehlschlagen konnte, wurde behoben.**
+- **Ein Absturz im Genie-AI-Chat direkt nachdem ein neues Projekt erstellt wurde, wurde behoben.**
+- **Ein seltener Fall, in dem ein Gespräch dauerhaft mit einem Fehler bei jedem Turn hängen bleiben konnte, wurde behoben.**
+- **Eine Build-Fortschrittskarte, die auch nach tatsächlichem Abschluss des Builds weiterdrehen konnte, wurde behoben.**
+- **Eine reine Farb- oder Theme-Anfrage, die manchmal überhaupt keine Änderung anwenden konnte, wurde behoben.**
+- **Die „Externen Link öffnen?"-Warnung von Genie AI erscheint nicht mehr bei den Vorschau-Links deines eigenen Projekts.**
+
+</Update>
+
 <Update label="6. August 2026" description="Wöchentliches Release">
 
 Dieses Update lässt Genie AI die Screenshots deines Projekts sehen und seine Live-Konsolenprotokolle durchsuchen, überträgt Chat-Anhänge in die Builds, um die du bittest, und reduziert jedes Projekt auf eine einzige, fortlaufende Genie-AI-Unterhaltung.

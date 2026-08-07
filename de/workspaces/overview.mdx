@@ -105,6 +105,14 @@ Die Workspace-KI kann Projekte erstellen und aktualisieren, Mitglieder verwalten
 
 Sendest du diesen Folge-Prompt aus dem Chat des Projekts selbst, startet Genie den Build automatisch, sobald du bestätigst — du musst nach dem Prüfen der Karte nicht noch einmal auf Senden tippen.
 
+### Genie AI reiht den Prompt eines beschäftigten Projekts ein
+
+Bittest du die Workspace-KI, ein bereits im Build befindliches Projekt zu aktualisieren, schlägt dein Prompt nicht mehr einfach fehl und bittet dich, es erneut zu versuchen — Genie reiht ihn in eine Warteschlange ein und sendet ihn automatisch, sobald sich der laufende Build beruhigt hat, mit einer kurzen Abklingzeit zwischen den Sendungen, damit ein Projekt nicht mit Builds direkt hintereinander getroffen wird. Bevor Genie etwas sendet, sagt dir die Bestätigungskarte klar, ob dein Prompt sofort einen Build startet oder sich einreiht — und, falls er sich einreiht, ungefähr, wann er gesendet wird. Bitte die Workspace-KI jederzeit, die Warteschlange eines Projekts zu prüfen, zu pausieren, neu zu ordnen oder zu leeren.
+
+### Läuft der Build noch?
+
+Überall, wo du mit Genie AI sprichst — dem projektinternen Genie-AI-Tab, der eigenständigen Chat-Seite und der Befehlspalette — zeigt ein kleines Status-Abzeichen jedes mit dieser Unterhaltung verbundene Projekt an, sodass du auf einen Blick siehst, ob es gerade baut, eine automatische Korrektur ausführt oder Prompts in seiner Warteschlange wartet. Sobald ein Projekt untätig ist, wird nichts angezeigt.
+
 ### Genie AI sieht und debuggt dein Projekt
 
 Frag „sieht das richtig aus?" oder „warum hat meine App gerade einen Fehler geworfen?", und die Workspace-KI kann selbst nachsehen, statt aus deiner Beschreibung zu raten. Sie kann die Live-Screenshots deines Projekts aufrufen — die Standardansicht der veröffentlichten App, oder genau das, was auf deinem eigenen Bildschirm zu sehen war, falls du es warst, der gerade hinsah — und sie kann die eigenen Konsolenausgaben, Fehler und Abstürze deiner Live-App durchsuchen, um zu prüfen, ob ein von dir beschriebener Fehler wirklich aufgetreten ist oder ob eine Behebung angekommen ist.
@@ -133,6 +141,8 @@ Wenn du die Workspace-KI bittest, ein Projekt zu erstellen oder einen Prompt zu 
 
 Genie antwortet nicht immer mit reinem Text. Wenn es sinnvoller ist, dir eine Auswahl anzubieten, als einen Absatz zu schreiben, zeigt Genie eine anklickbare Karte direkt im Chat: einen Button zum Bestätigen einer einzelnen Aktion, eine Liste zur Auswahl genau einer Option, oder eine Checkliste, in der du beliebig viele Punkte ankreuzen und darunter eine eigene Anmerkung hinzufügen kannst. Tippe auf eine Karte, um zu antworten — sendest du stattdessen eine neue Nachricht, ohne zu antworten, wird die Karte automatisch geleert, damit sie nie veraltet stehen bleibt.
 
+Braucht eine Karte eine Antwort, bevor Genie AI fortfahren kann — beim Bestätigen einer Aktion oder beim Prüfen eines Projekts, das sie gerade erstellen will —, kannst du sie minimieren, statt sofort zu antworten oder sie ganz abzubrechen. Tippe jederzeit erneut darauf, um sie zurückzuholen — solange sie eingeklappt ist, geht an der Anfrage nichts verloren.
+
 ### Antwortet immer in deiner Sprache
 
 Genie-KI antwortet in der Sprache, in der du ihr schreibst — unabhängig von der Oberflächensprache deines Kontos — und bleibt für den Rest des Gesprächs bei dieser Sprache, einschließlich aller angezeigten Karten und der Projekt-Briefings, die sie in deinem Namen verfasst. Wechselst du mitten im Gespräch die Sprache, folgt Genie ab deiner nächsten Nachricht.
@@ -145,7 +155,7 @@ Du kannst auch direkt nachfragen — probier *„was merkst du dir über mich?"*
 
 ### Sprechen statt tippen
 
-Willst du deinen Prompt nicht tippen? Tippe auf das Mikrofon-Symbol in einem beliebigen Genie-Chat-Composer — es ersetzt den Senden-Button, sobald das Eingabefeld leer ist — um stattdessen zu diktieren. Tippe erneut, um die Aufnahme zu beenden, oder sie stoppt nach zwei Minuten automatisch. Genie transkribiert das Gesagte in den Composer, sodass du es vor dem Senden prüfen oder bearbeiten kannst — nichts wird automatisch abgeschickt. Spracheingabe ist im Workspace-Chat, im Chat-Panel eines Projekts und in der Befehlspalette unter **Genie fragen** verfügbar, auf jedem Browser, der Mikrofon-Aufnahmen unterstützt.
+Willst du deinen Prompt nicht tippen? Tippe auf das Mikrofon-Symbol in einem beliebigen Genie-Chat-Composer, oder neben dem **Loslegen**-Button auf dem Workspace-Dashboard, um stattdessen zu diktieren. Deine Worte erscheinen im Composer, während du sprichst, statt erst auf einmal, wenn du aufhörst, und die Diktierfunktion erkennt Genie- und produktspezifische Begriffe — wie „Genie Cloud" oder „MCP" — statt sie misszuverstehen. Das Mikrofon bleibt auch verfügbar, nachdem du zu tippen begonnen hast, sodass du eine Korrektur oder Ergänzung zu einem Entwurf diktieren kannst, ohne das Feld vorher zu leeren; tippe erneut darauf, um die Aufnahme zu beenden, oder sie stoppt nach zwei Minuten automatisch. Genie transkribiert das Gesagte, sodass du es vor dem Senden prüfen oder bearbeiten kannst — nichts wird automatisch abgeschickt. Spracheingabe ist im Workspace-Chat, im Chat-Panel eines Projekts, auf dem Workspace-Dashboard und in der Befehlspalette unter **Genie fragen** verfügbar, auf jedem Browser, der Mikrofon-Aufnahmen unterstützt.
 
 ### Die Befehlspalette
 

@@ -4,6 +4,34 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="August 7, 2026" description="Weekly release">
+
+This update lets Genie AI queue a prompt instead of hitting a dead end when a project is already busy, adds a live status badge so you can always tell what your connected projects are doing right now, reworks voice input to stream as you talk, and fixes several build and chat reliability issues.
+
+## New features
+
+- **Genie AI now queues a busy project's prompt instead of a dead end.** Ask the workspace AI to update a project that's already building and it lines your prompt up instead of asking you to try again — it sends automatically, one prompt at a time, a short cooldown after the current build finishes. The confirmation card tells you upfront whether your prompt starts a build right now or joins the queue, and roughly when it will go out. See [Workspace AI](/workspaces/overview#genie-ai-queues-a-busy-projects-prompt).
+- **"Is it still building?" — one status badge, everywhere you talk to Genie AI.** A badge now appears on every surface where you chat with Genie AI — the in-project Genie AI tab, the standalone chat page, and the command palette — showing whether a connected project is currently building, running an automatic fix, or has prompts waiting in its queue. Nothing shows once it's idle. See [Workspace AI](/workspaces/overview#is-it-still-building).
+- **Genie MCP Server: manage a project's prompt queue, and check what's happening right now.** External AI clients can list, pause, resume, reorder, remove, or clear a project's queued prompts, and adjust the delay between sends, with eight new tools. A new `list_connected_project_activity` tool mirrors the same "what's happening right now" status the badge shows. See [Genie MCP Server](/workspaces/mcp-api).
+
+## Updates
+
+- **Voice input got faster and more accurate.** Your words now appear in the composer as you speak, instead of arriving all at once when you stop, dictation recognizes Genie- and product-specific terms like "Genie Cloud" and "MCP" instead of mishearing them, and the microphone no longer disappears the moment you start typing — dictate a correction or addition onto a draft without clearing the box first. Voice input is also now available on the workspace dashboard's prompt, not just in chat. See [Talk instead of type](/workspaces/overview#talk-instead-of-type).
+- **Minimize a card asking for your input, instead of losing it.** When Genie AI needs an answer before it can continue — confirming an action, or reviewing a project it's about to create — you can now minimize that card and keep chatting or come back to it later, instead of having to answer immediately or cancel it outright. See [Interactive answers](/workspaces/overview#interactive-answers).
+- **Genie AI describes exactly what it's doing, tool by tool.** While it works, the chat's activity line now names the specific thing Genie AI is doing, instead of a generic "Working" status for most of what happens behind the scenes.
+- **Mobile project pages are now built around the Genie AI tab.** On mobile, Genie AI is the primary way to work on a project; the project's own build chat is now a secondary, admin-only view. See [The Genie AI panel](/projects/overview#the-genie-ai-panel).
+
+## Fixes
+
+- **Fixed deleting a project that could fail for projects with substantial build or database history.**
+- **Fixed a crash in Genie AI chat right after it finished creating a new project.**
+- **Fixed a rare case where a chat conversation could get permanently stuck failing on every turn.**
+- **Fixed a build-progress card that could keep spinning after the build had actually finished.**
+- **Fixed a color- or theme-only request that could sometimes apply no changes at all.**
+- **Genie AI's "open external link?" warning no longer appears for your own project's preview links.**
+
+</Update>
+
 <Update label="August 6, 2026" description="Weekly release">
 
 This update lets Genie AI see your project's screenshots and search its live console logs, carries chat attachments into the builds you ask for, and simplifies each project down to one ongoing Genie AI conversation.
