@@ -4,6 +4,31 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="August 8, 2026" description="Weekly release">
+
+This update makes a project's Genie AI conversation and workspace chats shared with your whole team instead of per-person, adds a badge showing who else has a project open, and lets you inspect any attachment before you send it.
+
+## New features
+
+- **A project's Genie AI conversation is now one shared thread for your whole team.** Previously, each teammate who opened a project's Genie AI panel got their own separate conversation — now everyone lands in the same thread, so nobody has to catch up before they can help. See [The Genie AI panel](/projects/overview#the-genie-ai-panel).
+- **Workspace chats are shared with your team too.** A link to a teammate's Genie AI conversation now opens for you instead of failing with "not found," and workspace admins can open, rename, or delete any conversation in the workspace for support. Browsing your own **Recent chats** is unchanged. See [Workspace AI](/workspaces/overview#workspace-chats-are-shared-with-your-team).
+- **"Who else is here" — a badge for who's currently viewing a project.** The project's Genie AI tab now shows who else in your workspace has the project open right now, alongside the existing build-status badge. See [The Genie AI panel](/projects/overview#who-else-is-here).
+- **Genie MCP Server: see who's viewing a project, and read/rename/delete any workspace chat.** The new `list_project_viewers` tool mirrors the viewer badge. `get_workspace_chat`, `rename_workspace_chat`, and `delete_workspace_chat` now work on any chat in the connected workspace, not just ones the caller started, matching the shared-chat change above. See [Genie MCP Server](/workspaces/mcp-api).
+
+## Updates
+
+- **Every attachment is inspectable before you send it.** Click an image, PDF, or document chip in any Genie composer — the workspace chat, a project's chat panel, the dashboard, or the command palette — to check exactly what Genie will see: an image opens in a lightbox, an uploaded PDF opens in a new tab, and a document shows the exact text that will be sent and whether it was clipped.
+- **Voice input: dictate for up to 5 minutes, and the microphone no longer disappears while you wait.** The recording cap goes from 2 minutes to 5, and the microphone now stays available while a response is still streaming in or an earlier conversation is still loading, not just after you've started typing. See [Talk instead of type](/workspaces/overview#talk-instead-of-type).
+- **Desktop project pages now match mobile: the raw build chat is admin-only.** The project's own build chat (separate from the Genie AI panel) is a secondary, admin-only view on desktop as well as mobile.
+
+## Fixes
+
+- **Fixed a chat that could get permanently stuck after answering one of Genie's interactive cards**, where the card's answer was silently dropped and every later turn failed.
+- **Fixed workspace chats with many image attachments failing on every turn** once a long conversation crossed 20 images.
+- **Fixed voice dictation lagging badly on the workspace dashboard**, sometimes badly enough for the browser to offer to close the tab.
+
+</Update>
+
 <Update label="August 7, 2026" description="Weekly release">
 
 This update lets Genie AI queue a prompt instead of hitting a dead end when a project is already busy, adds a live status badge so you can always tell what your connected projects are doing right now, reworks voice input to stream as you talk, and fixes several build and chat reliability issues.

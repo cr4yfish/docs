@@ -86,6 +86,7 @@ Durchsuche Projekte, erstelle neue aus Prompts und verwalte den vollständigen P
 | `get_project_status` | Leichtgewichtige Prüfung: Läuft gerade ein Build? |
 | `get_project_build_status` | Der umfassendste Live-Status-Aufruf — Phase, Restzeit-Countdown, Fortschritt, aktive Agents, Vorschau-Link, geänderte Seiten, Abschlusszusammenfassung und Vorschläge für Folge-Prompts, entsprechend der Live-Status-Karte der Web-App |
 | `list_connected_project_activity` | Was ein Projekt (oder jedes mit einem bestimmten Workspace-Chat verbundene Projekt) gerade tut — baut, führt eine automatische Korrektur aus oder hat Prompts in seiner Warteschlange wartend — derselbe Schnappschuss, den das Status-Abzeichen auf jeder Workspace-Chat-Oberfläche zeigt. Übergib eine `conversation_id` und/oder einen `project_slug` |
+| `list_project_viewers` | Wer sonst gerade ein Projekt geöffnet hat — derselbe Anwesenheits-Schnappschuss wie das Betrachter-Abzeichen auf der Projektseite. Listet nie den Aufrufer selbst; eine leere Liste bedeutet, dass er der Einzige dort ist |
 | `get_project_deployment_status` | Vollständige phasenweise Build-Aufschlüsselung |
 | `get_project_deployment_plan` | Dateien, die die KI geplant hat zu erstellen oder zu ändern |
 | `get_project_messages` | Build-Verlauf und Chat-Turns |
@@ -232,18 +233,18 @@ Trifft ein Folge-Prompt für ein Projekt ein, das bereits baut, reiht Genie ihn 
 
 ### Workspace-Chat
 
-Stelle Fragen an die Genie-Workspace-KI und durchsuche vergangene Gespräche.
+Stelle Fragen an die Genie-Workspace-KI und durchsuche vergangene Gespräche. Jedes Tool hier wirkt auf jeden Chat im verbundenen Workspace, auch auf einen, den ein Teammitglied begonnen hat, nicht nur auf die eigenen des Aufrufers — `list_workspace_chats`/`search_workspace_chats` zeigen standardmäßig nur die eigenen Gespräche des Aufrufers, akzeptieren aber `scope: "workspace"`, um die aller anderen einzuschließen.
 
 | Tool | Was es tut |
 |---|---|
 | `send_workspace_chat` | Stelle eine Frage zu deinem Workspace und erhalte eine KI-Antwort |
 | `create_workspace_chat` | Starte oder setze einen dauerhaften Chat-Thread fort (in der Chat-Historie gespeichert) |
-| `list_workspace_chats` | Letzte Gespräche mit Titel und Vorschau |
-| `get_workspace_chat` | Vollständige Nachrichtenhistorie eines Gesprächs |
-| `search_workspace_chats` | Suche in allen vergangenen Nachrichten |
+| `list_workspace_chats` | Letzte Gespräche mit Titel und Vorschau. Standardmäßig eigene Gespräche; übergib `scope: "workspace"`, um die von Teammitgliedern einzuschließen |
+| `get_workspace_chat` | Liest das Transkript eines Gesprächs anhand seiner ID, auch das eines Teammitglieds — begrenzt auf standardmäßig die letzten 30 Turns (bis zu 100), jeder Turn auf 2.000 Zeichen gekappt. Prüfe `truncated`/`totalMessages`, bevor du annimmst, das ganze Gespräch zu haben |
+| `search_workspace_chats` | Suche in vergangenen Nachrichten. Standardmäßig eigene Gespräche; übergib `scope: "workspace"`, um die von Teammitgliedern einzuschließen |
 | `search_agent_run_traces` | Durchsuche per Volltextsuche die Ausführungsspur hinter den eigenen Genie-KI-Gesprächen des verbundenen Nutzers — die Begründung, jeden Tool-Aufruf und die endgültige Antwort, nicht nur den sichtbaren Chat-Text. Nützlich für Fragen wie „warum ist das vorhin fehlgeschlagen" oder „welcher Turn hat das Deploy-Tool aufgerufen" |
-| `rename_workspace_chat` | Benenne ein Gespräch um |
-| `delete_workspace_chat` | Lösche ein Gespräch und alle seine Nachrichten dauerhaft |
+| `rename_workspace_chat` | Benenne jedes Gespräch im Workspace um, auch eines, das ein Teammitglied begonnen hat |
+| `delete_workspace_chat` | Lösche jedes Gespräch im Workspace dauerhaft, auch eines, das ein Teammitglied begonnen hat, mitsamt allen Nachrichten. Unumkehrbar — prüfe das Feld `startedByUser` des Gesprächs zuerst, wenn du es nicht selbst begonnen hast |
 | `get_project_chat_connection` | Zeigt, welcher Workspace-Chat der Hauptchat eines Projekts ist — derjenige, in dem die gesamte Arbeit an diesem Projekt stattfindet —, wie das aufgelöst wurde und welche anderen Projekte ihn sich teilen |
 | `list_projects_sharing_chat` | Listet jedes Projekt auf, das einen bestimmten Workspace-Chat als Hauptchat nutzt |
 | `connect_project_chat` | Macht einen Workspace-Chat zum Hauptchat eines Projekts. Behält eine bestehende Verbindung standardmäßig bei — übergib `replace: true`, um sie zu wechseln |
@@ -383,7 +384,9 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Die eigenen Genie-KI-Ausführungsspuren des verbundenen Nutzers durchsuchen | Jeder verbundene Nutzer |
 | Die Screenshots eines Projekts einsehen oder seine Live-Konsolenprotokolle durchsuchen | Jedes Mitglied (das das Projekt einsehen kann) |
 | Den Hauptchat eines Projekts lesen oder festlegen | Jedes Mitglied |
+| Einen Workspace-Chat lesen, umbenennen oder löschen (eigenen oder den eines Teammitglieds) | Jedes Mitglied |
 | Prüfen, was ein Projekt gerade tut (Build, automatische Korrektur, Warteschlange) | Jedes Mitglied (das das Projekt einsehen kann) |
+| Sehen, wer sonst gerade ein Projekt geöffnet hat | Jedes Mitglied (das das Projekt einsehen kann) |
 | Die Prompt-Warteschlange eines Projekts einsehen oder verwalten | Jedes Mitglied |
 | Ein Projekt zurücksetzen oder seinen Versionsverlauf einsehen | Projektinhaber:in |
 | SEO-Einstellungen eines Projekts lesen oder aktualisieren | Projektinhaber:in |

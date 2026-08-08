@@ -86,6 +86,7 @@ Browse projects, create new ones from prompts, and manage the full project lifec
 | `get_project_status` | Lightweight check: is a build currently running? |
 | `get_project_build_status` | The richest live-status call — phase, countdown ETA, progress, active agents, preview link, changed pages, closing summary, and suggested follow-ups, matching the web app's build-status card |
 | `list_connected_project_activity` | What a project (or every project connected to a given workspace chat) is doing right now — building, running autofix, or has prompts waiting in its queue — the same snapshot the status badge on every workspace-chat surface shows. Pass a `conversation_id` and/or a `project_slug` |
+| `list_project_viewers` | Who else has a project open right now — the same presence snapshot as the viewers badge on the project page. Never lists the caller themselves; an empty list means they're the only one there |
 | `get_project_deployment_status` | Full phase-by-phase build breakdown |
 | `get_project_deployment_plan` | Files the AI planned to create or modify |
 | `get_project_messages` | Build history and chat turns |
@@ -232,18 +233,18 @@ When a follow-up prompt arrives for a project that's already building, Genie que
 
 ### Workspace chat
 
-Send questions to the Genie workspace AI and browse past conversations.
+Send questions to the Genie workspace AI and browse past conversations. Every tool here acts on any chat in the connected workspace, including one a teammate started, not just the caller's own — `list_workspace_chats`/`search_workspace_chats` default to the caller's own conversations, but accept a `scope: "workspace"` to include everyone's.
 
 | Tool | What it does |
 |---|---|
 | `send_workspace_chat` | Ask a question about your workspace and get an AI response |
 | `create_workspace_chat` | Start or continue a persistent chat thread (saved to chat history) |
-| `list_workspace_chats` | Recent conversations with title and preview |
-| `get_workspace_chat` | Full message history of a conversation |
-| `search_workspace_chats` | Search across all past messages |
+| `list_workspace_chats` | Recent conversations with title and preview. Own conversations by default; pass `scope: "workspace"` to include teammates' |
+| `get_workspace_chat` | Read a conversation's transcript by id, including a teammate's — windowed to the most recent 30 turns by default (up to 100), each turn capped at 2,000 characters. Check `truncated`/`totalMessages` before assuming you have the whole thing |
+| `search_workspace_chats` | Search across past messages. Own conversations by default; pass `scope: "workspace"` to include teammates' |
 | `search_agent_run_traces` | Fulltext-search the execution trace behind the connected user's own Genie AI conversations — the reasoning, every tool call, and the final answer, not just the visible chat text. Useful for questions like "why did that fail earlier" or "which turn called the deploy tool" |
-| `rename_workspace_chat` | Rename a conversation |
-| `delete_workspace_chat` | Permanently delete a conversation and all its messages |
+| `rename_workspace_chat` | Rename any conversation in the workspace, including one a teammate started |
+| `delete_workspace_chat` | Permanently delete any conversation in the workspace, including one a teammate started, and all its messages. Irreversible — check the conversation's `startedByUser` field first if you didn't start it yourself |
 | `get_project_chat_connection` | Show which workspace chat is a project's main conversation — the one where all the work on that project happens — how that was resolved, and which other projects share it |
 | `list_projects_sharing_chat` | List every project that uses a given workspace chat as its main conversation |
 | `connect_project_chat` | Make a workspace chat a project's main conversation. Keeps an existing connection by default — pass `replace: true` to switch it |
@@ -383,7 +384,9 @@ Role-based access is enforced on every tool call.
 | Search the connected user's own Genie AI run traces | Any connected user |
 | View a project's screenshots or search its live console logs | Any member (who can view the project) |
 | Read or set a project's main workspace chat | Any member |
+| Read, rename, or delete a workspace chat (own or a teammate's) | Any member |
 | Check what a project is doing right now (build, autofix, queue) | Any member (who can view the project) |
+| See who else has a project open right now | Any member (who can view the project) |
 | View or manage a project's prompt queue | Any member |
 | Roll back a project or view its version history | Project owner |
 | Read or update a project's SEO settings | Project owner |
