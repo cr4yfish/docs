@@ -4,6 +4,31 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="8. August 2026" description="Wöchentliches Release">
+
+Dieses Update macht die Genie-AI-Unterhaltung eines Projekts und Workspace-Chats zu etwas, das dein ganzes Team teilt, statt nur einzelne Personen, fügt ein Abzeichen hinzu, das zeigt, wer sonst noch ein Projekt geöffnet hat, und lässt dich jeden Anhang prüfen, bevor du ihn sendest.
+
+## Neue Funktionen
+
+- **Die Genie-AI-Unterhaltung eines Projekts ist jetzt ein einziger, geteilter Thread für dein ganzes Team.** Bisher bekam jedes Teammitglied, das das Genie-AI-Panel eines Projekts öffnete, eine eigene, separate Unterhaltung — jetzt landen alle im selben Thread, sodass niemand erst nachlesen muss, bevor er helfen kann. Siehe [Das Genie-AI-Panel](/de/projects/overview#das-genie-ai-panel).
+- **Auch Workspace-Chats werden jetzt mit deinem Team geteilt.** Ein Link zur Genie-AI-Unterhaltung eines Teammitglieds öffnet sich jetzt für dich, statt mit „Nicht gefunden" fehlzuschlagen, und Workspace-Admins können jede Unterhaltung im Workspace zu Support-Zwecken öffnen, umbenennen oder löschen. Das Durchsuchen deiner eigenen **Letzten Chats** bleibt unverändert. Siehe [Workspace-KI](/de/workspaces/overview#workspace-chats-werden-mit-deinem-team-geteilt).
+- **„Wer ist noch da" — ein Abzeichen dafür, wer ein Projekt gerade betrachtet.** Der Genie-AI-Tab eines Projekts zeigt jetzt neben dem bestehenden Build-Status-Abzeichen auch, wer sonst in deinem Workspace das Projekt gerade geöffnet hat. Siehe [Das Genie-AI-Panel](/de/projects/overview#wer-ist-noch-da).
+- **Genie MCP Server: sehen, wer ein Projekt betrachtet, und jeden Workspace-Chat lesen/umbenennen/löschen.** Das neue Tool `list_project_viewers` spiegelt das Betrachter-Abzeichen wider. `get_workspace_chat`, `rename_workspace_chat` und `delete_workspace_chat` wirken jetzt auf jeden Chat im verbundenen Workspace, nicht nur auf vom Aufrufer begonnene — passend zur geteilten Chat-Änderung oben. Siehe [Genie MCP Server](/de/workspaces/mcp-api).
+
+## Updates
+
+- **Jeder Anhang lässt sich vor dem Senden prüfen.** Klicke auf ein Bild-, PDF- oder Dokument-Chip in jedem Genie-Composer — dem Workspace-Chat, dem Chat-Panel eines Projekts, dem Dashboard oder der Befehlspalette —, um genau zu sehen, was Genie sehen wird: Ein Bild öffnet sich in einer Lightbox, ein hochgeladenes PDF öffnet sich in einem neuen Tab, und ein Dokument zeigt den genauen Text, der gesendet wird, und ob er gekürzt wurde.
+- **Spracheingabe: bis zu 5 Minuten diktieren, und das Mikrofon verschwindet nicht mehr, während du wartest.** Das Aufnahmelimit steigt von 2 auf 5 Minuten, und das Mikrofon bleibt jetzt auch verfügbar, während eine Antwort noch eintrifft oder eine ältere Unterhaltung noch lädt, nicht nur nachdem du zu tippen begonnen hast. Siehe [Sprechen statt tippen](/de/workspaces/overview#sprechen-statt-tippen).
+- **Desktop-Projektseiten gleichen sich jetzt dem Handy an: Der rohe Build-Chat ist nur für Admins.** Der eigene Build-Chat des Projekts (getrennt vom Genie-AI-Panel) ist jetzt sowohl auf dem Desktop als auch auf dem Handy eine sekundäre Ansicht nur für Admins.
+
+## Fixes
+
+- **Ein Chat, der nach der Beantwortung einer interaktiven Genie-Karte dauerhaft hängen bleiben konnte, wurde behoben** — die Antwort auf die Karte wurde dabei stillschweigend verworfen und jeder spätere Turn schlug fehl.
+- **Workspace-Chats mit vielen Bildanhängen, die bei jedem Turn fehlschlugen, sobald ein langes Gespräch 20 Bilder überschritt, wurden behoben.**
+- **Spracheingabe, die auf dem Workspace-Dashboard stark ruckelte** — manchmal stark genug, dass der Browser anbot, den Tab zu schließen —, **wurde behoben.**
+
+</Update>
+
 <Update label="7. August 2026" description="Wöchentliches Release">
 
 Dieses Update lässt Genie AI einen Prompt in eine Warteschlange einreihen, statt bei einem beschäftigten Projekt ins Leere zu laufen, fügt ein Live-Status-Abzeichen hinzu, damit du immer siehst, was deine verbundenen Projekte gerade tun, überarbeitet die Spracheingabe, sodass sie streamt, während du sprichst, und behebt mehrere Build- und Chat-Zuverlässigkeitsprobleme.
