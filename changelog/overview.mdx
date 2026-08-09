@@ -4,6 +4,33 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="August 9, 2026" description="Weekly release">
+
+This update lets Genie AI show you a design mock-up of a change before it builds it, mirrors that feature to the Genie MCP Server, and fixes several chat reliability and responsiveness issues.
+
+## New features
+
+- **Genie AI can show you a design mock-up before it builds anything.** Ask something like "what would this look like with a warmer palette?" and Genie AI screenshots your real app, has an image model repaint it with the change you described, and shows you both pictures — with a clear note that a mock-up is an impression, not a pixel-accurate render. React to what you see and it iterates, or turns an approved direction into a build once you're ready. See [Genie AI can show you a design mock-up](/workspaces/overview#genie-ai-can-show-you-a-design-mock-up).
+- **Genie MCP Server: design mock-ups.** External AI clients can now generate, list, re-fetch, and iterate on a project's design mock-ups with five new tools, mirroring the workspace AI feature above — images are returned as native MCP image content. See [Genie MCP Server](/workspaces/mcp-api).
+
+## Updates
+
+- **Genie's built-in image generation can now produce logos and wordmarks with real, legible text.** Previously every AI-generated image suppressed text entirely, so a logo request came back as vague shapes. Ask for one by name and Genie renders the actual lettering. See [Built-in AI, images, and email](/cloud/ai-and-email).
+- **Every Genie AI message now shows when it was sent**, in your project's Genie AI tab, the standalone chat page, and the command palette alike.
+- **Long Genie AI conversations now load a page at a time** instead of pulling in the entire history every time you open one — scroll up and a **Load older messages** control fetches further back.
+
+## Fixes
+
+- **Fixed the project's build chat and Genie AI tab sometimes loading completely empty** on projects with a lot of build history, instead of your actual conversation.
+- **Fixed Genie AI confirming a follow-up prompt it then couldn't actually afford.** Sending or queuing a prompt from chat now checks your credit balance upfront, the same way starting a new project already did, instead of failing partway through.
+- **Fixed a queued prompt's countdown that could show a stale time** instead of counting down from when the current build actually finishes.
+- **Fixed the chat composer staying blocked for a few seconds after Genie AI had already finished answering.**
+- **Fixed Genie AI occasionally losing track of something said earlier in a long conversation.**
+- **Fixed a few cases where the Genie AI tab's transcript could scroll out of view**, including one where a tall interactive card's answer button could be clipped off-screen entirely.
+- **Fixed autofix and bug-repair turns sometimes making unrelated changes beyond the actual fix.**
+
+</Update>
+
 <Update label="August 8, 2026" description="Weekly release">
 
 This update makes a project's Genie AI conversation and workspace chats shared with your whole team instead of per-person, adds a badge showing who else has a project open, and lets you inspect any attachment before you send it.
