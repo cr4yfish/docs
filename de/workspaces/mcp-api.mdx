@@ -46,7 +46,7 @@ Starte Claude Desktop neu und öffne ein beliebiges Gespräch. Claude wird dich 
 
 ## Verfügbare Tools
 
-Der Genie MCP Server bietet Tools in siebzehn Kategorien.
+Der Genie MCP Server bietet Tools in achtzehn Kategorien.
 
 ### Workspace-Verwaltung
 
@@ -294,6 +294,18 @@ Verwalte die MCP-Server-Integrationen (Linear, GitHub, Notion, Stripe usw.), die
 |---|---|
 | `get_design_principles` | Genies aktuelle Design-Richtlinie — die Look-and-Feel-Vorgaben, denen der Build-Agent für Projekte folgt. Ruf es auf, bevor du ein Design-Briefing für `create_project` oder `send_followup_prompt` schreibst, damit deine Anweisungen konsistent mit Genies tatsächlicher Bauweise bleiben |
 
+### Design-Mockups
+
+Spiegelt die [Design-Mockup](/de/workspaces/overview#genie-ai-kann-dir-ein-design-mockup-zeigen)-Funktion von Genie AI: einen echten Screenshot eines Projekts mit einer gewünschten Design-Änderung neu bemalen, auf Feedback iterieren und ein akzeptiertes Mockup in ein Build-Briefing verwandeln. Bilder werden als native MCP-Bildinhalte zurückgegeben, genau wie bei `get_project_screenshots`. Keine Credit-/Abrechnungsdimension — nur durch Runden-Limits pro Sitzung und pro Tag begrenzt.
+
+| Tool | Was es tut |
+|---|---|
+| `generate_design_mock` | Erzeugt eine Design-Mockup-Runde: Screenshot (oder Wiederverwendung eines vorherigen Mockups/einer vorherigen Runde), bemalt es mit der gewünschten Änderung neu und gibt beide Bilder zurück |
+| `list_design_mocks` | Listet die Mockup-Sitzungen eines Projekts auf, um eine Unterhaltung wieder aufzunehmen |
+| `get_design_mock_round` | Ruft die Bilder einer früheren Runde erneut ab |
+| `record_design_mock_feedback` | Speichert, was der Nutzer zu einer Runde gesagt hat, für die nächste Runde und spätere Chats |
+| `brief_design_mock_for_build` | Verwandelt die Änderungsliste eines akzeptierten Mockups in ein Build-Briefing für `send_followup_prompt` |
+
 ---
 
 ## Schnellbeispiele
@@ -388,6 +400,7 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Prüfen, was ein Projekt gerade tut (Build, automatische Korrektur, Warteschlange) | Jedes Mitglied (das das Projekt einsehen kann) |
 | Sehen, wer sonst gerade ein Projekt geöffnet hat | Jedes Mitglied (das das Projekt einsehen kann) |
 | Die Prompt-Warteschlange eines Projekts einsehen oder verwalten | Jedes Mitglied |
+| Design-Mockups eines Projekts erzeugen, ansehen oder mit Feedback versehen | Jedes Mitglied |
 | Ein Projekt zurücksetzen oder seinen Versionsverlauf einsehen | Projektinhaber:in |
 | SEO-Einstellungen eines Projekts lesen oder aktualisieren | Projektinhaber:in |
 | Datenbanktabellen der Genie Cloud eines Projekts durchsuchen | Projektinhaber:in |

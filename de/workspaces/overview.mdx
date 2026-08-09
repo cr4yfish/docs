@@ -96,8 +96,9 @@ Jeder Workspace enthält eine Genie-KI, die deinen Workspace versteht — deine 
 - *„Welche Datenbankmigrationen hat mein Dashboard-Projekt schon ausgeliefert?"*
 - *„Sieht die Checkout-Seite auf dem Handy richtig aus?"*
 - *„Meine App hat gerade einen Fehler geworfen — kannst du nachsehen, was passiert ist?"*
+- *„Zeig mir, wie das Dashboard mit einer wärmeren Farbpalette aussehen würde"*
 
-Die Workspace-KI kann Projekte erstellen und aktualisieren, Mitglieder verwalten, den Credit-Verbrauch abfragen, Preisfragen beantworten, vergangene Gespräche durchsuchen, prüfen, ob es für einen von dir beschriebenen Fehler bereits eine bekannte Lösung gibt, sich die Screenshots deines Projekts ansehen oder seine Live-Konsolenprotokolle durchsuchen, um zu sehen, was gerade wirklich passiert, den Migrationsverlauf der Datenbank eines Genie-Cloud-Projekts einsehen und deine MCP-Integrationen verwalten — alles über natürliche Sprache.
+Die Workspace-KI kann Projekte erstellen und aktualisieren, Mitglieder verwalten, den Credit-Verbrauch abfragen, Preisfragen beantworten, vergangene Gespräche durchsuchen, prüfen, ob es für einen von dir beschriebenen Fehler bereits eine bekannte Lösung gibt, sich die Screenshots deines Projekts ansehen oder seine Live-Konsolenprotokolle durchsuchen, um zu sehen, was gerade wirklich passiert, dir ein Design-Mockup einer Änderung zeigen, bevor du sie baust, den Migrationsverlauf der Datenbank eines Genie-Cloud-Projekts einsehen und deine MCP-Integrationen verwalten — alles über natürliche Sprache.
 
 <Tip>
   Bitte sie, ein bestehendes Projekt zu aktualisieren — „sende einen Folge-Prompt an mein Dashboard-Projekt: füge einen Dark-Mode-Schalter hinzu" — oder ein brandneues mit einem Eröffnungs-Prompt zu erstellen, und in beiden Fällen verfolgt eine Live-Status-Karte den Build direkt im Chat: eine herunterzählende Restzeit, den Fortschritt und wie viele Agents parallel arbeiten, dazu ein Link, um das Projekt zu öffnen, sobald es fertig ist.
@@ -116,6 +117,16 @@ Bittest du die Workspace-KI, ein bereits im Build befindliches Projekt zu aktual
 ### Genie AI sieht und debuggt dein Projekt
 
 Frag „sieht das richtig aus?" oder „warum hat meine App gerade einen Fehler geworfen?", und die Workspace-KI kann selbst nachsehen, statt aus deiner Beschreibung zu raten. Sie kann die Live-Screenshots deines Projekts aufrufen — die Standardansicht der veröffentlichten App, oder genau das, was auf deinem eigenen Bildschirm zu sehen war, falls du es warst, der gerade hinsah — und sie kann die eigenen Konsolenausgaben, Fehler und Abstürze deiner Live-App durchsuchen, um zu prüfen, ob ein von dir beschriebener Fehler wirklich aufgetreten ist oder ob eine Behebung angekommen ist.
+
+### Genie AI kann dir ein Design-Mockup zeigen
+
+Frag „wie würde das mit einer wärmeren Palette aussehen?" oder „lass das Dashboard mehr wie Linear wirken", und Genie AI kann es dir zeigen, bevor auch nur eine Zeile Code angefasst wird. Sie fotografiert deine echte App, lässt ein Bildmodell sie mit der beschriebenen Änderung neu bemalen und zeigt dir beide Bilder nebeneinander. Genie AI bekommt dieselben beiden Bilder zu sehen, sodass sie beschreibt, was tatsächlich dabei herauskam, statt nur deine Anfrage zu wiederholen.
+
+<Note>
+Ein Mockup ist ein Eindruck, kein pixelgenaues Rendering — Text im Bild kann verzerrt oder frei erfunden herauskommen, und es können Details auftauchen, um die niemand gebeten hat. Jede Mockup-Karte weist direkt unter dem Bild deutlich darauf hin.
+</Note>
+
+Reagiere auf das, was du siehst, und Genie AI iteriert weiter — verfeinert dasselbe Mockup oder beginnt neu mit dem echten Screenshot deiner App. Bist du mit einer Richtung zufrieden, bitte Genie AI, sie zu bauen — sie übergibt die Änderungsliste als Folge-Prompt, nicht das Bild selbst.
 
 ### Anhänge fließen in deinen Build ein
 

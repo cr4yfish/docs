@@ -46,7 +46,7 @@ Restart Claude Desktop and open any conversation. Claude will prompt you to auth
 
 ## Available tools
 
-The Genie MCP Server provides tools across seventeen categories.
+The Genie MCP Server provides tools across eighteen categories.
 
 ### Workspace management
 
@@ -294,6 +294,18 @@ Inspect and manage the workspace PII detection rules. Only workspace owners and 
 |---|---|
 | `get_design_principles` | Genie's current house design direction — the look-and-feel guidance the project build agent follows. Call it before writing a design brief for `create_project` or `send_followup_prompt` so your instructions stay consistent with how Genie actually builds |
 
+### Design mock-ups
+
+Mirrors Genie AI's [design mock-up](/workspaces/overview#genie-ai-can-show-you-a-design-mock-up) feature: repaint a real screenshot of a project with a requested design change, iterate on feedback, and turn an approved mock-up into a build brief. Images are returned as native MCP image content, the same way `get_project_screenshots` returns them. No credit/billing dimension — metered only by per-session and per-day round caps.
+
+| Tool | What it does |
+|---|---|
+| `generate_design_mock` | Generate a design mock-up round: screenshot (or reuse a previous mock-up/round), repaint it with the requested change, and return both images |
+| `list_design_mocks` | List a project's mock-up sessions, to pick a conversation back up |
+| `get_design_mock_round` | Re-fetch an earlier round's images |
+| `record_design_mock_feedback` | Store what the user said about a round, for the next round and later chats |
+| `brief_design_mock_for_build` | Turn an approved mock-up's change list into a build brief for `send_followup_prompt` |
+
 ---
 
 ## Quick examples
@@ -388,6 +400,7 @@ Role-based access is enforced on every tool call.
 | Check what a project is doing right now (build, autofix, queue) | Any member (who can view the project) |
 | See who else has a project open right now | Any member (who can view the project) |
 | View or manage a project's prompt queue | Any member |
+| Generate, view, or give feedback on a project's design mock-ups | Any member |
 | Roll back a project or view its version history | Project owner |
 | Read or update a project's SEO settings | Project owner |
 | Browse a project's Genie Cloud database tables | Project owner |
