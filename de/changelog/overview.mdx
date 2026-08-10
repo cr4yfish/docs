@@ -4,6 +4,17 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="10. August 2026" description="Wöchentliches Release">
+
+Dieses Update schließt zwei Lücken aus den Änderungen der letzten Woche: Spracheingabe funktioniert jetzt auch für Support-Admins, und die Design-Mockup-Weiterentwicklung bricht nicht mehr nach ein paar Runden ab.
+
+## Fixes
+
+- **Behoben: Die Spracheingabe funktionierte nicht für einen Site-Admin, der in einem Workspace aushilft, dessen Mitglied er nicht ist.** Das Mikrofon tat einfach nichts — dieselbe Berechtigung, die ein Site-Admin bereits zum Lesen und Tippen in diesem Chat hat, gilt jetzt auch für die Diktierfunktion.
+- **Behoben: Design-Mockup-Weiterentwicklungen konnten nach ein paar Runden weiterhin mit einem Bildgrößen-Fehler fehlschlagen**, sogar bei kürzeren Unterhaltungen. Jede Mockup-Runde hängt zwei Bilder an (den Screenshot und die Neubemalung), sodass ein Chat mitten in einem Durchgang den Schwellenwert des Anbieters für viele Bilder überschreiten konnte, ohne je das bereits letzte Woche behobene Limit pro Unterhaltung zu erreichen.
+
+</Update>
+
 <Update label="9. August 2026" description="Wöchentliches Release">
 
 Dieses Update lässt Genie AI dir ein Design-Mockup einer Änderung zeigen, bevor sie gebaut wird, spiegelt diese Funktion zum Genie MCP Server und behebt mehrere Chat-Zuverlässigkeits- und Reaktionsfähigkeitsprobleme.

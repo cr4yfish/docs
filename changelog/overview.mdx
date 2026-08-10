@@ -4,6 +4,17 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="August 10, 2026" description="Weekly release">
+
+This update closes two gaps left by last week's changes: voice input now works for support admins, and design mock-up iteration no longer breaks after a couple of rounds.
+
+## Fixes
+
+- **Fixed voice dictation not working for a site admin helping out in a workspace they aren't a member of.** The microphone would sit there doing nothing — the same access a site admin already has to read and type into that chat now also covers dictating into it.
+- **Fixed design mock-up iteration chats that could still fail with an image-size error after a couple of rounds**, even on shorter conversations. Each round of a mock-up attaches two images (the screenshot and the repaint), and a chat could cross the provider's many-image threshold mid-turn without ever hitting the per-conversation limit already fixed last week.
+
+</Update>
+
 <Update label="August 9, 2026" description="Weekly release">
 
 This update lets Genie AI show you a design mock-up of a change before it builds it, mirrors that feature to the Genie MCP Server, and fixes several chat reliability and responsiveness issues.
