@@ -4,6 +4,31 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="11. August 2026" description="Wöchentliches Release">
+
+Dieses Update lässt Genie erzählen, was ihr an deiner App aufgefallen ist, statt still zu versuchen, es zu beheben, macht das Verwerfen einer Genie-AI-Karte sofort, und behebt mehrere Zuverlässigkeitsprobleme bei Chat, Build-Status und auf Mobilgeräten.
+
+## Neue Funktionen
+
+- **Genie sagt dir, wenn ihr etwas auffällt.** Über dem Genie-AI-Eingabefeld erscheint jetzt ein ruhiger Hinweis, sobald Genie ein echtes Problem in deiner Live-App bemerkt — ein Absturz, ein geworfener Fehler, etwas, das als defekt protokolliert wurde —, zusammen mit einer Erklärung in einfacher Sprache statt einer rohen Fehlermeldung. Es gibt eine Aktion, **Mit Genie AI beheben**, die das Problem direkt in deine Unterhaltung übergibt, damit Genie die tatsächlichen Logs prüfen kann (und bei Bedarf nachfragt), bevor eine Lösung vorgeschlagen wird. Siehe [Genie sagt dir, wenn ihr etwas auffällt](/de/workspaces/overview#genie-sagt-dir-wenn-ihr-etwas-auffällt).
+
+## Updates
+
+- **Das Verwerfen einer Genie-AI-Karte ist jetzt sofort.** Eine Bestätigung oder Frage abzubrechen lässt dich nicht mehr auf eine vollständige Antwort warten — die Karte schließt sich sofort und sagt dir klar, was übersprungen wurde, statt eines bloßen „Verworfen."
+- **Ein paar zusätzliche Töne im Sprachmodus.** Eine Aufnahme zu beenden oder das Fünf-Minuten-Limit zu erreichen spielt jetzt jeweils einen eigenen kurzen Ton, zusätzlich zum bestehenden Start-Klang.
+
+## Fixes
+
+- **Behoben: Zwei Prompts an dasselbe Projekt konnten gleichzeitig bauen**, wobei einer die Änderungen des anderen stillschweigend überschrieb. Pro Projekt läuft jetzt immer nur ein Build gleichzeitig; ein zweiter bestätigter Prompt reiht sich stattdessen ein und wartet.
+- **Behoben: Anhänge im Genie-AI-Eingabefeld verschwanden**, wenn eine Bestätigungskarte dich mitten beim Anhängen unterbrach — deine Bilder und Dateien überstehen die Unterbrechung jetzt.
+- **Behoben: Das Senden eines Fotos oder PDFs ohne Frage in einer Genie-AI-Unterhaltung** führte zu einer Antwort, die auf Genies bester Vermutung beruhte — das Eingabefeld hält die Nachricht jetzt zurück, bis du eine kurze Anweisung hinzufügst und jeder Anhang fertig hochgeladen ist.
+- **Behoben: Die „Geänderte Seiten"-Chips einer Build-Status-Karte verlinkten manchmal auf eine Seite, die nicht lud.** Sie sind jetzt schlichte, nicht anklickbare Info-Badges.
+- **Behoben: Ein mehrzeiliger Prompt im Eingabefeld wurde in eine schmale Spalte** zwischen den Anhang- und Senden-Buttons gequetscht — ein umgebrochener Prompt nutzt jetzt die volle Breite der Leiste.
+- **Behoben: Das Autocomplete-Dropdown des Workspace-Dashboards bedeckte auf Mobilgeräten den ganzen Bildschirm**, sobald du zu tippen anfingst — es ist jetzt nur auf dem Desktop aktiv, und die Antipp-Vorschlags-Bubbles sind auf jeder Bildschirmgröße zurück.
+- **Behoben: Die KI-Bilderzeugung in deiner App ignorierte das angeforderte Seitenverhältnis, die Auflösung und das Format.** Diese werden jetzt auf das erzeugte Bild angewendet.
+
+</Update>
+
 <Update label="10. August 2026" description="Wöchentliches Release">
 
 Dieses Update schließt zwei Lücken aus den Änderungen der letzten Woche: Spracheingabe funktioniert jetzt auch für Support-Admins, und die Design-Mockup-Weiterentwicklung bricht nicht mehr nach ein paar Runden ab.
