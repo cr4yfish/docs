@@ -4,6 +4,31 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="August 11, 2026" description="Weekly release">
+
+This update has Genie tell you what it noticed wrong in your app instead of quietly trying to fix it, makes dismissing a Genie AI card instant, and fixes several chat, build-status, and mobile reliability issues.
+
+## New features
+
+- **Genie tells you when it notices something wrong.** A calm alert now appears above the Genie AI composer when Genie spots a real problem in your live app — a crash, a thrown error, something logged as broken — with a plain-language explanation instead of a raw error message. One action, **Fix with Genie AI**, hands it straight into your conversation so Genie can check the actual logs (and ask a question, if it needs one) before proposing a fix. See [Genie tells you when it notices something wrong](/workspaces/overview#genie-tells-you-when-it-notices-something-wrong).
+
+## Updates
+
+- **Dismissing a Genie AI card is now instant.** Cancelling a confirmation or a question no longer makes you wait on a full reply — the card clears right away and tells you plainly what it skipped, instead of a bare "Dismissed."
+- **A couple more sounds in voice mode.** Ending a recording or hitting the five-minute cap now plays its own short cue, alongside the existing start chime.
+
+## Fixes
+
+- **Fixed two prompts to the same project able to build at the same time**, with one silently overwriting the other's changes. Only one build now runs per project at once; a second confirmed prompt queues and waits its turn instead.
+- **Fixed attachments in the Genie AI composer disappearing** if a confirmation card interrupted you mid-attach — your images and files now survive the interruption.
+- **Fixed sending a photo or PDF with no question attached in a Genie AI conversation**, which produced an answer based on Genie's best guess — the composer now holds the message until you add a short instruction and every attachment has finished uploading.
+- **Fixed a build status card's "pages changed" chips sometimes linking to a page that wouldn't load.** They're now plain, non-clickable info badges.
+- **Fixed a multi-line prompt in the composer being squeezed into a narrow column** between the attach and send buttons — a wrapped prompt now uses the full width of the bar.
+- **Fixed the workspace dashboard's autocomplete dropdown covering the whole screen on mobile** the moment you started typing — it's desktop only now, and the tap-to-start suggestion bubbles are back on every phone screen.
+- **Fixed AI image generation in your app ignoring the aspect ratio, resolution, and format you requested.** These are now applied to the generated image.
+
+</Update>
+
 <Update label="August 10, 2026" description="Weekly release">
 
 This update closes two gaps left by last week's changes: voice input now works for support admins, and design mock-up iteration no longer breaks after a couple of rounds.
