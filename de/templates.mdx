@@ -1,6 +1,6 @@
 ---
 title: "Schneller starten mit Genie-Vorlagen"
-description: "Wähle einen fertigen Ausgangspunkt für deine App — Portfolios, Dashboards, CRMs, Tracker und mehr — und passe ihn dann mit Folgeprompts an."
+description: "Wähle einen fertigen Ausgangspunkt für deine App — CRMs, Dashboards, Rechnungen, Tracker und mehr — und passe ihn dann mit Folgeprompts an."
 ---
 
 Vorlagen geben dir einen vollständigen, gut strukturierten Ausgangspunkt statt eines leeren Prompts. Jede Vorlage ist ein bewährtes Layout, gebaut für einen bestimmten Tool- oder Seitentyp. Du wählst die passendste aus, Genie generiert sie, und du verfeinerst von dort aus mit Folgeprompts. Das ist der schnellste Weg von der Idee zur funktionierenden App.
@@ -28,27 +28,72 @@ Vorlagen geben dir einen vollständigen, gut strukturierten Ausgangspunkt statt 
 
 ## Vorlagenkategorien
 
-Vorlagen sind in fünf Kategorien organisiert, basierend auf dem Tool-Typ oder der Zielgruppe.
+Die Vorlagengalerie hat Kategorie-Tabs für Startups, Beratung, Kleinunternehmen, Just for Fun und KI, plus **Alle**. Aktuell sind Vorlagen in drei davon veröffentlicht — Kleinunternehmen, Beratung und Marketing —, weitere Kategorien füllen sich mit der Zeit.
 
 <Tabs>
-  <Tab title="Startup">
-    Vorlagen für Gründer:innen und frühe Teams, die schnell Landingpages, Dashboards und schlanke Produkt-Tools brauchen.
+  <Tab title="Kleinunternehmen">
+    Praktische Alltagstools für Shop-Besitzer:innen, Betreiber und interne Teams — mit Abstand die größte Kategorie.
 
     <CardGroup cols={2}>
-      <Card title="Startup Launchpad" icon="rocket">
-        Baue eine Startup-Landingpage mit Gradient-Hero, 3 Feature-Blöcken, Social Proof, Preisumschalter und Sticky-CTA-Leiste.
+      <Card title="Simple CRM" icon="users">
+        Behalte Leads, Deals und Kundengespräche an einem Ort: Kontaktliste, Pipeline-Kanban, Deal-Karten und ein Notizen-Panel.
 
-        **Tags:** Hero · Features · CTA
+        **Tags:** Pipeline · Kontakte · Deals
       </Card>
-      <Card title="Micro SaaS Dashboard UI" icon="chart-bar">
-        Erstelle ein Frontend-only-Beispiel-Dashboard: Sidebar-Navigation, KPI-Statistikkarten, Charts, Aktivitätsliste und Datentabelle.
+      <Card title="PDF Compressor" icon="file">
+        Dateien reinziehen, kleinere PDFs rausbekommen — komplett im Browser, mit Qualitäts-Regler und Fortschrittsanzeige pro Datei.
 
-        **Tags:** Dashboard · Charts · Navigation
+        **Tags:** PDF · Dateien · Utility
       </Card>
-      <Card title="Task Tracker Mini App" icon="circle-check">
-        Baue eine Aufgabenverwaltungs-App mit Kanban-Spalten, verschiebbaren Karten, Tag-Filtern und Statistik-Zusammenfassung.
+      <Card title="Invoice Generator" icon="receipt">
+        Schnelle Rechnungen mit editierbaren Positionen, automatisch berechneten Summen und einer Live-A4-Vorschau.
 
-        **Tags:** Aufgaben · Board · Filter
+        **Tags:** Rechnungen · Abrechnung · Positionen
+      </Card>
+      <Card title="Internal Knowledge Base" icon="book-open">
+        Durchsuchbare Docs und SOPs für dein Team: Ordner-Sidebar, Artikel-Reader und Volltextsuche.
+
+        **Tags:** Docs · Suche · Team
+      </Card>
+      <Card title="Business KPI Dashboard" icon="chart-bar">
+        Umsatz, Kund:innen und Betriebskennzahlen auf einen Blick: KPI-Kacheln, Charts und eine Bestellübersicht.
+
+        **Tags:** Dashboard · KPIs · Charts
+      </Card>
+      <Card title="Team Task Board" icon="circle-check">
+        Arbeit zuweisen, Status verfolgen, schneller liefern: Kanban-Spalten, verschiebbare Karten und Filter pro Zuständigkeit.
+
+        **Tags:** Aufgaben · Kanban · Team
+      </Card>
+      <Card title="Daily Standup Tracker" icon="calendar-days">
+        Asynchrone Standup-Updates — gestern, heute, Blocker —, mit nach Datum gruppiertem Feed und Blocker-Hervorhebung.
+
+        **Tags:** Standup · Team · Updates
+      </Card>
+      <Card title="SOP Manager" icon="clipboard-list">
+        Standardarbeitsanweisungen, organisiert nach Abteilung, mit Schritt-für-Schritt-Checklisten.
+
+        **Tags:** SOPs · Abläufe · Checklisten
+      </Card>
+      <Card title="Customer Contact Manager" icon="address-book">
+        Kontakte, Segmente und Notizen — ohne schwergewichtiges CRM. Mit Segmentfilter-Sidebar und Aktivitäts-Drawer.
+
+        **Tags:** Kontakte · Segmente · Notizen
+      </Card>
+      <Card title="Inventory Tracker" icon="package">
+        Bestandsmengen, Niedrigbestand-Warnungen und Massenbearbeitung, mit sortierbarer, filterbarer Artikeltabelle.
+
+        **Tags:** Inventar · Bestand · Warnungen
+      </Card>
+      <Card title="Employee Training Quiz" icon="graduation-cap">
+        Baue Quizze für Onboarding und Pflichtschulungen, mit Punktevergabe und Bestanden/Nicht-bestanden-Zusammenfassung.
+
+        **Tags:** Training · Quiz · Onboarding
+      </Card>
+      <Card title="Customer Feedback Vault" icon="lightbulb">
+        Erfasse, tagge und priorisiere Feature-Wünsche und Feedback mit einem berechneten Impact-vs-Aufwand-Score.
+
+        **Tags:** Feedback · Wünsche · Priorisierung
       </Card>
     </CardGroup>
   </Tab>
@@ -57,86 +102,27 @@ Vorlagen sind in fünf Kategorien organisiert, basierend auf dem Tool-Typ oder d
     Vorlagen für Freelancer und Agenturen, die ihre Arbeit professionell präsentieren und Kundenbeziehungen verwalten müssen.
 
     <CardGroup cols={2}>
-      <Card title="Freelancer Portfolio" icon="briefcase">
-        Baue ein Freelancer-Portfolio mit Split-Hero, Leistungsliste, Case-Study-Karten, Testimonial-Leiste und Kontaktformular.
+      <Card title="Quote & Proposal Builder" icon="file-signature">
+        Sende Kund:innen in Minuten professionelle Angebote, mit Preisstufen, Zusatzoptionen und einer gebrandeten Vorschau.
 
-        **Tags:** Portfolio · Leistungen · Case Studies
+        **Tags:** Angebote · Proposals · Preise
       </Card>
-      <Card title="Agency Showcase" icon="building-2">
-        Baue eine Agentur-Website mit Hero, Prozess-Zeitstrahl, Case-Study-Slider, Metriken-Leiste und Kontaktformular-Panel.
+      <Card title="Client Project Portal" icon="folder-open">
+        Geteilte Dateien, Nachrichten und Aufgaben für jede:n Kund:in in einem Tab-Portal.
 
-        **Tags:** Case Studies · Prozess · Kontakt
-      </Card>
-      <Card title="Mini CRM Contacts" icon="book-user">
-        Erstelle eine Mini-CRM-Oberfläche mit Kontakttabelle, Segmentfiltern und rechtsseitigem Drawer mit Aktivitäts-Zeitstrahl.
-
-        **Tags:** Kontakte · Segmente · Notizen
-      </Card>
-      <Card title="Client Portal Lite" icon="folder-open">
-        Erstelle ein Mini-Kundenportal mit Tab-Oberfläche für Dateien, Nachrichten, Aufgaben und Übersicht.
-
-        **Tags:** Portal · Dateien · Aufgaben
-      </Card>
-    </CardGroup>
-  </Tab>
-
-  <Tab title="Kleinunternehmen">
-    Vorlagen für Shop-Besitzer:innen und Betreiber, die praktische Alltagstools benötigen.
-
-    <CardGroup cols={2}>
-      <Card title="Recipe Organizer" icon="utensils">
-        Baue eine Rezept-Mini-App mit durchsuchbarer Liste, Tag-Filter-Chips, Rezept-Detail-Panel und Favoriten.
-
-        **Tags:** Rezepte · Suche · Tags
-      </Card>
-      <Card title="Inventory Lite" icon="package">
-        Baue einen schlanken Inventar-Manager mit Bestandstabelle, Niedrigbestand-Hervorhebungen und Massenbearbeitung.
-
-        **Tags:** Inventar · Tabelle · Filter
+        **Tags:** Portal · Dateien · Kund:innen
       </Card>
     </CardGroup>
   </Tab>
 
   <Tab title="Marketing">
-    Vorlagen für Marketer, die Kampagnen-Tools, Lead-Erfassungsseiten und Quiz-Erlebnisse brauchen.
+    Vorlagen für Marketer, die Kampagnen-Tools und Link-Tracking-Utilities brauchen.
 
     <CardGroup cols={2}>
-      <Card title="Quiz Builder" icon="flask-conical">
-        Baue einen Quiz-Builder mit Fragenliste, Editor, Vorschaumodus und Ergebniszusammenfassung.
+      <Card title="Marketing Link Builder" icon="link">
+        Generiere, beschrifte und kopiere UTM-Links für Kampagnen, mit gespeicherter Linkliste und Validierung.
 
-        **Tags:** Quiz · Builder · Formular
-      </Card>
-      <Card title="UTM Link Tracker" icon="link">
-        Erstelle einen UTM-Builder mit Formular-Eingaben, Echtzeit-Vorschau, Kopier-Button und gespeicherter Linkliste.
-
-        **Tags:** UTM · Builder · Links
-      </Card>
-    </CardGroup>
-  </Tab>
-
-  <Tab title="Spaß">
-    Vorlagen für persönliche Projekte, kreative Portfolios und Hobby-Apps.
-
-    <CardGroup cols={2}>
-      <Card title="Just for Fun Portfolio" icon="palette">
-        Erstelle ein verspieltes persönliches Portfolio mit farbenfrohem Hero, Projektraster, About-Bereich mit Badges und animierten Hover-Effekten.
-
-        **Tags:** Portfolio · Animationen · Verspielt
-      </Card>
-      <Card title="Blog Magazine" icon="newspaper">
-        Baue ein modernes Blog-Magazin-Layout mit Featured-Hero-Artikel, Masonry-Grid, Kategorie-Filter-Pills und Newsletter-Anmeldung.
-
-        **Tags:** Artikel · Kategorien · Suche
-      </Card>
-      <Card title="Habit Tracker" icon="flame">
-        Erstelle einen Gewohnheits-Tracker mit Gewohnheitsliste, monatlichem Erfüllungsraster, Streak-Zähler und Fortschrittsringen.
-
-        **Tags:** Gewohnheiten · Fortschritt · Streak
-      </Card>
-      <Card title="Idea Vault" icon="lightbulb">
-        Baue ein Ideen-Vault mit Masonry-Karten-Raster, Modal zum Hinzufügen einer Idee und Sortierung nach Score.
-
-        **Tags:** Ideen · Tags · Bewertung
+        **Tags:** UTM · Marketing · Links
       </Card>
     </CardGroup>
   </Tab>
@@ -146,21 +132,21 @@ Vorlagen sind in fünf Kategorien organisiert, basierend auf dem Tool-Typ oder d
 
 | Vorlage | Kategorie | Was sie enthält |
 |---|---|---|
-| Startup Launchpad | Startup | Gradient-Hero, Feature-Blöcke, Social Proof, Preisumschalter, Sticky-CTA |
-| Micro SaaS Dashboard UI | Startup | Sidebar-Nav, KPI-Karten, Charts, Aktivitätsliste, Datentabelle |
-| Task Tracker Mini App | Startup | Kanban-Board, verschiebbare Karten, Tag-Filter, Statistik-Zusammenfassung |
-| Freelancer Portfolio | Beratung | Split-Hero, Leistungsliste, Case-Study-Karten, Testimonial-Leiste, Kontaktformular |
-| Agency Showcase | Beratung | Hero, Prozess-Zeitstrahl, Case-Study-Slider, Metriken-Leiste, Kontaktformular |
-| Mini CRM Contacts | Beratung | Kontakttabelle, Segmentfilter, Aktivitäts-Zeitstrahl-Drawer |
-| Client Portal Lite | Beratung | Tab-Oberfläche: Dateien, Nachrichten, Aufgaben, Übersicht |
-| Recipe Organizer | Kleinunternehmen | Durchsuchbare Liste, Tag-Filter, Detail-Panel, Favoriten |
-| Inventory Lite | Kleinunternehmen | Bestandstabelle, Niedrigbestand-Hervorhebungen, Massenbearbeitung |
-| Quiz Builder | Marketing | Fragen-Editor, Vorschaumodus, Ergebniszusammenfassung |
-| UTM Link Tracker | Marketing | UTM-Formular, Echtzeit-Vorschau, Kopier-Button, gespeicherte Links |
-| Just for Fun Portfolio | Spaß | Farbenfroher Hero, Projektraster, About-Bereich, Hover-Animationen |
-| Blog Magazine | Spaß | Featured-Artikel, Masonry-Grid, Kategorie-Filter, Newsletter-Anmeldung |
-| Habit Tracker | Spaß | Gewohnheitsliste, monatliches Raster, Streak-Zähler, Fortschrittsringe |
-| Idea Vault | Spaß | Masonry-Karten-Raster, Modal zum Hinzufügen, Score-Sortierung |
+| Simple CRM | Kleinunternehmen | Kontaktliste, Pipeline-Kanban, Deal-Karten, Notizen-Panel |
+| PDF Compressor | Kleinunternehmen | Drag-and-Drop-Upload, Qualitäts-Regler, Fortschritt pro Datei, Sammel-Download |
+| Invoice Generator | Kleinunternehmen | Kunden-Auswahl, editierbare Positionen, Live-A4-Vorschau, Druck/Download |
+| Internal Knowledge Base | Kleinunternehmen | Ordner-Sidebar, Artikel-Reader, Volltextsuche, zuletzt angesehen |
+| Business KPI Dashboard | Kleinunternehmen | KPI-Kacheln, Umsatz-Chart, Top-Produkte-Chart, Bestellübersicht |
+| Team Task Board | Kleinunternehmen | Kanban-Spalten, verschiebbare Karten, Filter nach Zuständigkeit/Tag, Statistikleiste |
+| Daily Standup Tracker | Kleinunternehmen | Update-Formular, nach Datum gruppierter Feed, Blocker-Hervorhebung, Suche |
+| SOP Manager | Kleinunternehmen | Abteilungsfilter, durchsuchbare SOP-Liste, Schritt-Checklisten-Accordion |
+| Customer Contact Manager | Kleinunternehmen | Kontakttabelle, Segmentfilter, Aktivitäts-Zeitstrahl-Drawer |
+| Inventory Tracker | Kleinunternehmen | Sortierbare Bestandstabelle, Niedrigbestand-Hervorhebungen, Massen-Mengenanpassung |
+| Employee Training Quiz | Kleinunternehmen | Fragen-Editor, Vorschaumodus mit Punktevergabe, Ergebniszusammenfassung |
+| Customer Feedback Vault | Kleinunternehmen | Karten-Raster, Feedback-hinzufügen-Modal, berechneter Prioritäts-Score, Sortierung |
+| Quote & Proposal Builder | Beratung | Leistungspakete, Preisstufen, Rabatte, gebrandete Vorschau |
+| Client Project Portal | Beratung | Tab-Oberfläche: Übersicht, Dateien, Nachrichten, Aufgaben |
+| Marketing Link Builder | Marketing | UTM-Formular, Echtzeit-Vorschau, Kopier-Button, gespeicherte Linkliste |
 
 ## Eine Vorlage anpassen
 
@@ -171,13 +157,13 @@ Jede Vorlage ist ein Ausgangspunkt. Nach der Generierung kannst du mit Folgeprom
     Tippe etwa: `"Ändere das Farbschema zu Türkis und Off-White"` oder `"Verwende einen dunklen Hintergrund mit Bernstein-Akzenten"`.
   </Accordion>
   <Accordion title="Bereiche hinzufügen oder entfernen">
-    Tippe: `"Füge einen Testimonials-Bereich unter den Feature-Blöcken hinzu"` oder `"Entferne den Preisumschalter und ersetze ihn durch einen einzelnen CTA-Button"`.
+    Tippe: `"Füge einen Testimonials-Bereich unter der Deal-Pipeline hinzu"` oder `"Entferne das Steuer-Feld aus den Rechnungspositionen"`.
   </Accordion>
   <Accordion title="Felder und Bezeichnungen umbenennen">
-    Tippe: `"Benenne 'Projekte' in 'Kunden' in der gesamten App um"` oder `"Ändere die Kanban-Spalten von Backlog/In Progress/Done zu Neu/Aktiv/Geschlossen"`.
+    Tippe: `"Benenne 'Deals' in 'Projekte' in der gesamten App um"` oder `"Ändere die Kanban-Spalten von Backlog/In Progress/Done zu Neu/Aktiv/Geschlossen"`.
   </Accordion>
   <Accordion title="Neue Funktionalität hinzufügen">
-    Tippe: `"Füge eine Suchleiste zur Kontakttabelle hinzu"` oder `"Füge dem Habit-Tracker eine Monatsansicht zusätzlich zum bestehenden Raster hinzu"`.
+    Tippe: `"Füge eine Suchleiste zur Kontakttabelle hinzu"` oder `"Füge dem KPI-Dashboard zusätzlich zu den bestehenden Charts eine Monatsübersicht hinzu"`.
   </Accordion>
 </AccordionGroup>
 

@@ -1,6 +1,6 @@
 ---
 title: "Start faster with Genie templates"
-description: "Choose a ready-made starting point for your app — portfolios, dashboards, CRMs, trackers, and more — then customize it with follow-up prompts."
+description: "Choose a ready-made starting point for your app — CRMs, dashboards, invoicing, trackers, and more — then customize it with follow-up prompts."
 ---
 
 Templates give you a complete, well-structured starting point instead of a blank prompt. Each template is a proven layout built for a specific type of tool or page. You pick the one closest to what you need, Genie generates it, and you refine from there with follow-up prompts. It's the fastest way to go from idea to working app.
@@ -28,27 +28,72 @@ Templates give you a complete, well-structured starting point instead of a blank
 
 ## Template categories
 
-Templates are organized into five categories based on the type of tool or audience.
+The template gallery has category tabs for Startups, Consulting, Small Biz, Just for Fun, and AI, plus **All**. Right now, templates are published in three of them — Small Biz, Consulting, and Marketing — with more categories filling in over time.
 
 <Tabs>
-  <Tab title="Startup">
-    Templates for founders and early-stage teams who need landing pages, dashboards, and lightweight product tools quickly.
+  <Tab title="Small Biz">
+    Practical day-to-day tools for shop owners, operators, and internal teams — the biggest category by far.
 
     <CardGroup cols={2}>
-      <Card title="Startup Launchpad" icon="rocket">
-        Build a startup landing page with gradient hero, 3 feature blocks, social proof, pricing toggle, and sticky CTA bar.
+      <Card title="Simple CRM" icon="users">
+        Track leads, deals, and customer conversations in one place: contact list, pipeline kanban, deal cards, and a notes panel.
 
-        **Tags:** Hero · Features · CTA
+        **Tags:** Pipeline · Contacts · Deals
       </Card>
-      <Card title="Micro SaaS Dashboard UI" icon="chart-bar">
-        Create a frontend-only sample dashboard: sidebar nav, KPI stat cards, charts, activity list, and data table.
+      <Card title="PDF Compressor" icon="file">
+        Drop files in, get smaller PDFs out — fully in-browser, with a quality slider and per-file progress.
 
-        **Tags:** Dashboard · Charts · Navigation
+        **Tags:** PDF · Files · Utility
       </Card>
-      <Card title="Task Tracker Mini App" icon="circle-check">
-        Build a task management app with kanban board columns, draggable cards, tag filters, and stats summary.
+      <Card title="Invoice Generator" icon="receipt">
+        Quick invoices with editable line items, auto-calculated totals, and a live A4 preview pane.
 
-        **Tags:** Tasks · Board · Filters
+        **Tags:** Invoices · Billing · Line Items
+      </Card>
+      <Card title="Internal Knowledge Base" icon="book-open">
+        Searchable docs and SOPs for your team: folder sidebar, article reader, and full-text search.
+
+        **Tags:** Docs · Search · Team
+      </Card>
+      <Card title="Business KPI Dashboard" icon="chart-bar">
+        Revenue, customers, and ops metrics at a glance: KPI tiles, charts, and a recent-orders table.
+
+        **Tags:** Dashboard · KPIs · Charts
+      </Card>
+      <Card title="Team Task Board" icon="circle-check">
+        Assign work, track status, ship faster: kanban columns, draggable cards, and per-assignee filters.
+
+        **Tags:** Tasks · Kanban · Team
+      </Card>
+      <Card title="Daily Standup Tracker" icon="calendar-days">
+        Async standup updates — yesterday, today, blockers — with a date-grouped feed and blocker highlighting.
+
+        **Tags:** Standup · Team · Updates
+      </Card>
+      <Card title="SOP Manager" icon="clipboard-list">
+        Standard operating procedures, organized by department, with step-by-step checklists.
+
+        **Tags:** SOPs · Procedures · Checklists
+      </Card>
+      <Card title="Customer Contact Manager" icon="address-book">
+        Contacts, segments, and notes — without a heavy CRM. Includes a segment filter sidebar and activity drawer.
+
+        **Tags:** Contacts · Segments · Notes
+      </Card>
+      <Card title="Inventory Tracker" icon="package">
+        Stock levels, low-stock alerts, and bulk edits, with a sortable, filterable item table.
+
+        **Tags:** Inventory · Stock · Alerts
+      </Card>
+      <Card title="Employee Training Quiz" icon="graduation-cap">
+        Build quizzes for onboarding and compliance training, with scoring and a pass/fail summary.
+
+        **Tags:** Training · Quiz · Onboarding
+      </Card>
+      <Card title="Customer Feedback Vault" icon="lightbulb">
+        Capture, tag, and prioritize feature requests and feedback with a computed impact-vs-effort score.
+
+        **Tags:** Feedback · Requests · Prioritization
       </Card>
     </CardGroup>
   </Tab>
@@ -57,86 +102,27 @@ Templates are organized into five categories based on the type of tool or audien
     Templates for freelancers and agencies who need to present their work professionally and manage client relationships.
 
     <CardGroup cols={2}>
-      <Card title="Freelancer Portfolio" icon="briefcase">
-        Build a freelancer portfolio with split hero, services list, case study cards, testimonial strip, and contact form.
+      <Card title="Quote & Proposal Builder" icon="file-signature">
+        Send professional quotes to clients in minutes, with pricing tiers, add-ons, and a branded preview panel.
 
-        **Tags:** Portfolio · Services · Case Studies
+        **Tags:** Quotes · Proposals · Pricing
       </Card>
-      <Card title="Agency Showcase" icon="building-2">
-        Build an agency site with hero, process timeline, case study slider, metrics strip, and contact form panel.
+      <Card title="Client Project Portal" icon="folder-open">
+        Shared files, messages, and tasks for each client in one tabbed portal.
 
-        **Tags:** Case Studies · Process · Contact
-      </Card>
-      <Card title="Mini CRM Contacts" icon="book-user">
-        Create a mini CRM interface with contact table, segment filters, and right-side drawer with activity timeline.
-
-        **Tags:** Contacts · Segments · Notes
-      </Card>
-      <Card title="Client Portal Lite" icon="folder-open">
-        Create a mini client portal with tabbed interface for files, messages, tasks, and overview.
-
-        **Tags:** Portal · Files · Tasks
-      </Card>
-    </CardGroup>
-  </Tab>
-
-  <Tab title="Small business">
-    Templates for shop owners and operators who need practical day-to-day tools.
-
-    <CardGroup cols={2}>
-      <Card title="Recipe Organizer" icon="utensils">
-        Build a recipe mini app with searchable list, tag filter chips, recipe detail panel, and favorites.
-
-        **Tags:** Recipes · Search · Tags
-      </Card>
-      <Card title="Inventory Lite" icon="package">
-        Build a lightweight inventory manager with stock table, low-stock highlights, and bulk edit.
-
-        **Tags:** Inventory · Table · Filters
+        **Tags:** Portal · Files · Clients
       </Card>
     </CardGroup>
   </Tab>
 
   <Tab title="Marketing">
-    Templates for marketers who need campaign tools, lead capture pages, and quiz experiences.
+    Templates for marketers who need campaign tools and lead-tracking utilities.
 
     <CardGroup cols={2}>
-      <Card title="Quiz Builder" icon="flask-conical">
-        Build a quiz builder with question list, editor, preview mode, and results summary.
+      <Card title="Marketing Link Builder" icon="link">
+        Generate, label, and copy UTM links for campaigns, with a saved-links list and validation.
 
-        **Tags:** Quiz · Builder · Form
-      </Card>
-      <Card title="UTM Link Tracker" icon="link">
-        Create a UTM builder with form inputs, real-time preview, copy button, and saved links list.
-
-        **Tags:** UTM · Builder · Links
-      </Card>
-    </CardGroup>
-  </Tab>
-
-  <Tab title="Fun">
-    Templates for personal projects, creative portfolios, and hobby apps.
-
-    <CardGroup cols={2}>
-      <Card title="Just for Fun Portfolio" icon="palette">
-        Make a playful personal portfolio with colorful hero, project grid, about section with badges, and animated hover effects.
-
-        **Tags:** Portfolio · Animations · Playful
-      </Card>
-      <Card title="Blog Magazine" icon="newspaper">
-        Build a modern blog magazine layout with featured hero article, masonry grid, category filter pills, and newsletter signup.
-
-        **Tags:** Articles · Categories · Search
-      </Card>
-      <Card title="Habit Tracker" icon="flame">
-        Create a habit tracker with habit list, monthly completion grid, streak counter, and progress rings.
-
-        **Tags:** Habits · Progress · Streak
-      </Card>
-      <Card title="Idea Vault" icon="lightbulb">
-        Build an idea vault with masonry card grid, add idea modal, and sort by score.
-
-        **Tags:** Ideas · Tags · Scoring
+        **Tags:** UTM · Marketing · Links
       </Card>
     </CardGroup>
   </Tab>
@@ -146,21 +132,21 @@ Templates are organized into five categories based on the type of tool or audien
 
 | Template | Category | What it includes |
 |---|---|---|
-| Startup Launchpad | Startup | Gradient hero, feature blocks, social proof, pricing toggle, sticky CTA |
-| Micro SaaS Dashboard UI | Startup | Sidebar nav, KPI cards, charts, activity list, data table |
-| Task Tracker Mini App | Startup | Kanban board, draggable cards, tag filters, stats summary |
-| Freelancer Portfolio | Consulting | Split hero, services list, case study cards, testimonial strip, contact form |
-| Agency Showcase | Consulting | Hero, process timeline, case study slider, metrics strip, contact form |
-| Mini CRM Contacts | Consulting | Contact table, segment filters, activity timeline drawer |
-| Client Portal Lite | Consulting | Tabbed interface: files, messages, tasks, overview |
-| Recipe Organizer | Small business | Searchable list, tag filters, detail panel, favorites |
-| Inventory Lite | Small business | Stock table, low-stock highlights, bulk edit |
-| Quiz Builder | Marketing | Question editor, preview mode, results summary |
-| UTM Link Tracker | Marketing | UTM form, real-time preview, copy button, saved links |
-| Just for Fun Portfolio | Fun | Colorful hero, project grid, about section, hover animations |
-| Blog Magazine | Fun | Featured article, masonry grid, category filters, newsletter signup |
-| Habit Tracker | Fun | Habit list, monthly grid, streak counter, progress rings |
-| Idea Vault | Fun | Masonry card grid, add idea modal, score sorting |
+| Simple CRM | Small Biz | Contact list, pipeline kanban, deal cards, notes panel |
+| PDF Compressor | Small Biz | Drag-and-drop upload, quality slider, per-file progress, batch download |
+| Invoice Generator | Small Biz | Client picker, editable line items, live A4 preview, print/download |
+| Internal Knowledge Base | Small Biz | Folder sidebar, article reader, full-text search, recently viewed |
+| Business KPI Dashboard | Small Biz | KPI tiles, revenue chart, top-products chart, recent-orders table |
+| Team Task Board | Small Biz | Kanban columns, draggable cards, assignee/tag filters, stats strip |
+| Daily Standup Tracker | Small Biz | Update form, date-grouped feed, blocker highlighting, search |
+| SOP Manager | Small Biz | Department filters, searchable SOP list, step checklist accordion |
+| Customer Contact Manager | Small Biz | Contact table, segment filters, activity timeline drawer |
+| Inventory Tracker | Small Biz | Sortable stock table, low-stock highlights, bulk adjust-quantity |
+| Employee Training Quiz | Small Biz | Question editor, preview mode with scoring, results summary |
+| Customer Feedback Vault | Small Biz | Card grid, add-feedback modal, computed priority score, sorting |
+| Quote & Proposal Builder | Consulting | Service packages, pricing tiers, discounts, branded preview |
+| Client Project Portal | Consulting | Tabbed interface: overview, files, messages, tasks |
+| Marketing Link Builder | Marketing | UTM form, real-time preview, copy button, saved links list |
 
 ## Customizing a template
 
@@ -171,13 +157,13 @@ Every template is a starting point. After generating, you can use follow-up prom
     Type something like: `"Change the color scheme to teal and off-white"` or `"Use a dark background with amber accents"`.
   </Accordion>
   <Accordion title="Add or remove sections">
-    Type: `"Add a testimonials section below the feature blocks"` or `"Remove the pricing toggle and replace it with a single CTA button"`.
+    Type: `"Add a testimonials section below the deal pipeline"` or `"Remove the tax field from the invoice line items"`.
   </Accordion>
   <Accordion title="Rename fields and labels">
-    Type: `"Rename 'Projects' to 'Clients' throughout the app"` or `"Change the kanban columns from Backlog/In Progress/Done to New/Active/Closed"`.
+    Type: `"Rename 'Deals' to 'Projects' throughout the app"` or `"Change the kanban columns from Backlog/In Progress/Done to New/Active/Closed"`.
   </Accordion>
   <Accordion title="Add new functionality">
-    Type: `"Add a search bar to the contact table"` or `"Add a monthly view to the habit tracker alongside the existing grid"`.
+    Type: `"Add a search bar to the contact table"` or `"Add a monthly summary view to the KPI dashboard alongside the existing charts"`.
   </Accordion>
 </AccordionGroup>
 
