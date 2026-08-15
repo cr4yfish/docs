@@ -174,10 +174,7 @@ Durchsuche die Tabellen der verbundenen [Genie-Cloud](/de/cloud/overview)-Datenb
 |---|---|
 | `list_project_database_tables` | Liste die Tabellen und Views der Datenbank eines Projekts mit Spalten- und ungefährer Zeilenanzahl |
 | `get_project_database_table_preview` | Spaltendefinitionen und bis zu 25 Beispielzeilen für eine Tabelle |
-
-<Note>
-Der Migrationsverlauf ist über MCP nicht verfügbar. Bitte die Genie-Workspace-KI direkt darum, den Migrationsverlauf eines Projekts durchzusehen.
-</Note>
+| `list_project_cloud_migrations` | Liste die erfassten Datenbank-Migrationen eines Projekts auf — ein Eintrag pro Deployment, neueste zuerst, mit der Anzahl der enthaltenen Anweisungen, wie viele davon ein Rollback rückgängig machen könnte, und ihrem Status (angewendet / zurückgenommen / teilweise zurückgenommen). Kennzeichnet außerdem Änderungen, die bereits in Supabase angewendet, aber noch nicht mit einem Deployment ausgeliefert wurden. Enthält keinen SQL-Text, nur den Umriss des Verlaufs — um eine Änderung rückgängig zu machen, verwende `rollback_project_deployment` |
 
 ### Projekt-Secrets
 

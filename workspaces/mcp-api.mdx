@@ -174,10 +174,7 @@ Browse the tables in a project's connected [Genie Cloud](/cloud/overview) databa
 |---|---|
 | `list_project_database_tables` | List a project's database tables and views, with column and approximate row counts |
 | `get_project_database_table_preview` | Column definitions and up to 25 sample rows for one table |
-
-<Note>
-Migration history isn't available via MCP. Ask the Genie workspace AI directly to review a project's migration history.
-</Note>
+| `list_project_cloud_migrations` | List the tracked database migrations for a project — one entry per deployment, newest first, with how many statements it holds, how many a rollback could undo, and its status (applied / reverted / partly reverted). Also flags changes already applied in Supabase but not yet shipped with a deployment. Doesn't return SQL text, only the shape of the history — to undo a change, use `rollback_project_deployment` |
 
 ### Project secrets
 
