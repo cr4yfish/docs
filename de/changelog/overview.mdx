@@ -4,6 +4,31 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="15. August 2026" description="Wöchentliches Release">
+
+Dieses Update behebt zwei Chat-Zuverlässigkeitsprobleme auf Mobilgeräten und bei eingefügten Screenshots und ergänzt zwei Genie-MCP-Server-Tools um eine Run-ID.
+
+## Updates
+
+- **Genie MCP Server: `create_project` und `send_followup_prompt` geben jetzt eine Run-ID zurück.** Übergib sie an `get_project_build_status`, um genau den Build-Turn abzufragen, den du gerade gestartet hast, statt immer den neuesten Turn des Projekts zu erhalten — praktisch, wenn du mehrere Prompts hintereinander abschickst. Siehe [Genie MCP Server](/workspaces/mcp-api).
+
+## Fixes
+
+- **Behoben: Ein eingefügter Screenshot im Genie-AI-Chat zeigte manchmal das falsche Bild.** Screenshots teilen sich einen generischen Dateinamen, sodass das Einfügen eines zweiten in derselben Unterhaltung stillschweigend das Bild ersetzen konnte, auf das eine frühere Nachricht noch verwies. Jedes eingefügte Bild bekommt jetzt einen eigenen Speicherort.
+- **Behoben: Die mobile Chat-Tool-Schublade — das Sheet, das sich z. B. für die "Projekt erstellen"-Bestätigung öffnet — wurde bei geöffneter Bildschirmtastatur auf dem iPhone manchmal zu kurz dargestellt**, sodass Feld und Buttons unten aus dem Bild gedrückt wurden.
+
+</Update>
+
+<Update label="14. August 2026" description="Wöchentliches Release">
+
+Dieses Update behebt, dass Genie AIs Bestätigungs- und Rückfrage-Karten bei langem Text abgeschnitten wurden.
+
+## Fixes
+
+- **Behoben: Genie AIs Bestätigungs- und Rückfrage-Karten wurden abgeschnitten oder liefen über, wenn ein Button-Label oder der Kartentext lang war.** Buttons brechen jetzt in eine neue Zeile um, statt abgeschnitten zu werden, und langer Kartentext klappt hinter einem **Mehr anzeigen**-Umschalter ein, statt die Karte zu strecken.
+
+</Update>
+
 <Update label="13. August 2026" description="Wöchentliches Release">
 
 Dieses Update behebt, dass die Workspace-Dashboard-Suche und die Befehlspalette bei manchen Tastenanschlägen eingefroren sind.

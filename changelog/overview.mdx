@@ -4,6 +4,31 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="August 15, 2026" description="Weekly release">
+
+This update fixes two chat reliability issues on mobile and with pasted screenshots, and adds a run id to two Genie MCP Server tools.
+
+## Updates
+
+- **Genie MCP Server: `create_project` and `send_followup_prompt` now return a run id.** Pass it to `get_project_build_status` to poll the exact build turn you just started, instead of always getting the project's newest one — handy if you fire off more than one prompt in a row. See [Genie MCP Server](/workspaces/mcp-api).
+
+## Fixes
+
+- **Fixed a pasted screenshot in Genie AI chat sometimes showing the wrong image.** Screenshots share a generic filename, so pasting a second one into the same conversation could silently replace the picture an earlier message still pointed to. Every pasted image now gets its own storage location.
+- **Fixed the mobile chat tool drawer — the sheet that opens for things like the "create project" confirmation — sometimes rendering too short with the on-screen keyboard open on iPhone**, squeezing its field and buttons off the bottom edge.
+
+</Update>
+
+<Update label="August 14, 2026" description="Weekly release">
+
+This update fixes Genie AI's confirmation and question cards clipping when their text ran long.
+
+## Fixes
+
+- **Fixed Genie AI's confirmation and question cards clipping or overflowing when a button label or the card text ran long.** Buttons now wrap onto a new line instead of getting cut off, and long card text collapses behind a **Show more** toggle instead of stretching the card.
+
+</Update>
+
 <Update label="August 13, 2026" description="Weekly release">
 
 This update fixes the workspace dashboard search and command palette freezing on some keystrokes.

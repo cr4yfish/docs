@@ -313,13 +313,15 @@ Spiegelt die [Design-Mockup](/de/workspaces/overview#genie-ai-kann-dir-ein-desig
 Tool: create_project
 { "prompt": "A SaaS dashboard with auth, dark mode, and a billing page" }
 
-→ Returns: deploymentUrl, slug
+→ Returns: deploymentUrl, slug, runId
 
 Tool: send_followup_prompt
 { "project_slug": "my-app-abc123", "prompt": "Add a CSV export button to the reports page" }
+
+→ Returns: ok, runId
 ```
 
-Der `create_project`-Aufruf startet den Build sofort und gibt die Deployment-URL zurück. Verwende `get_project_build_status`, um alles auf einmal abzufragen — Phase, Restzeit, Fortschritt und die Abschlusszusammenfassung, sobald sie fertig ist — oder `get_project_status` für eine leichtgewichtige Läuft/läuft-nicht-Prüfung.
+Der `create_project`-Aufruf startet den Build sofort und gibt die Deployment-URL zurück. Verwende `get_project_build_status`, um alles auf einmal abzufragen — Phase, Restzeit, Fortschritt und die Abschlusszusammenfassung, sobald sie fertig ist — oder `get_project_status` für eine leichtgewichtige Läuft/läuft-nicht-Prüfung. Übergib die zurückgegebene `runId` als `run_id` an `get_project_build_status`, um die Antwort auf genau diesen Turn festzulegen statt auf den neuesten Turn des Projekts — nützlich, wenn du mehrere Prompts hintereinander abschickst. Das ist optional; lässt du sie weg, bekommst du wie bisher den neuesten Turn.
 
 ### Auf eine frühere Version zurücksetzen
 

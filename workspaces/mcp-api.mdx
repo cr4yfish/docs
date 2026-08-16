@@ -313,13 +313,15 @@ Mirrors Genie AI's [design mock-up](/workspaces/overview#genie-ai-can-show-you-a
 Tool: create_project
 { "prompt": "A SaaS dashboard with auth, dark mode, and a billing page" }
 
-→ Returns: deploymentUrl, slug
+→ Returns: deploymentUrl, slug, runId
 
 Tool: send_followup_prompt
 { "project_slug": "my-app-abc123", "prompt": "Add a CSV export button to the reports page" }
+
+→ Returns: ok, runId
 ```
 
-The `create_project` call starts the build immediately and returns the deployment URL. Use `get_project_build_status` to poll for everything at once — phase, ETA, progress, and the closing summary once it's done — or `get_project_status` for a lightweight running/not-running check.
+The `create_project` call starts the build immediately and returns the deployment URL. Use `get_project_build_status` to poll for everything at once — phase, ETA, progress, and the closing summary once it's done — or `get_project_status` for a lightweight running/not-running check. Pass the returned `runId` as `get_project_build_status`'s `run_id` to pin the answer to that exact turn instead of the project's newest one — useful if you fire off more than one prompt in a row. It's optional; omit it and you get the newest turn, same as before.
 
 ### Roll back to a previous version
 
