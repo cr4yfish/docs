@@ -4,6 +4,29 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="August 17, 2026" description="Weekly release">
+
+This update gives Genie AI a shared per-project memory, lets design mock-ups start from an image you just uploaded, and fixes several chat, voice, and preview reliability issues.
+
+## New features
+
+- **Genie AI now remembers your project, not just you.** Tell it a standing rule — "every screen must work on mobile" — or a confirmed detail about a service you're integrating, and Genie keeps a shared note the whole team can see, updating it in place the next time you restate it instead of piling up a duplicate. See [Genie remembers your project](/workspaces/overview#genie-remembers-your-project).
+
+## Updates
+
+- **Design mock-ups can now start from a screenshot you just uploaded in chat**, not only from Genie's own capture of your running app — handy for asking Genie to redesign a picture you sent it directly.
+- **The queued-prompt card in Genie AI chat now follows its own prompt.** It used to freeze on its original "queued" text for the whole build; it now hands off to the same live status card an un-queued prompt gets, the moment your turn starts running.
+- **The workspace dashboard's greeting is friendlier late at night and varies from day to day**, instead of a fixed "Good night" after 10pm and the same line every time.
+
+## Fixes
+
+- **Fixed Genie AI's replies sometimes flickering** — a blur-in animation replaying across text that had already fully appeared, partway through a longer answer.
+- **Fixed dictating a message able to send half a sentence early.** Send and Enter stayed active while your words were still streaming into the composer, so pressing either mid-dictation could submit a fragment and leave the rest typed into an empty box.
+- **Fixed the preview's refresh button reloading your app's homepage instead of the page you were actually on.**
+- **Fixed a design mock-up round that reused an earlier image from the chat sometimes failing**, and an error message that could include an internal file path.
+
+</Update>
+
 <Update label="August 16, 2026" description="Weekly release">
 
 This update removes a redundant button Genie AI chat sometimes showed right after confirming a build.
