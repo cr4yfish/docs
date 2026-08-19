@@ -4,6 +4,26 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="18. August 2026" description="Wöchentliches Release">
+
+Dieses Update platziert Genies Vorschlag für den nächsten Schritt direkt über deinem Eingabefeld, sobald ein Build fertig ist, lässt Genie AI bei einer mehrdeutigen Anfrage lieber nachfragen statt zu raten, fügt Excel-Tabellen als Anhang hinzu und macht das Projekt-Gedächtnis für externe MCP-Clients verfügbar.
+
+## Neue Funktionen
+
+- **Genies Vorschlag für den nächsten Schritt erscheint jetzt direkt über deinem Eingabefeld**, sobald ein Build fertig ist, statt nur unten an einer Build-Karte, an der du wahrscheinlich schon vorbeigescrollt bist. Tippe darauf, um die Ideen als Checkliste zu sehen, hake an, was du willst, und **Übernehmen** legt einen versandfertigen Prompt in dein Eingabefeld, ohne ihn zu senden. Siehe [Genie schlägt vor, was als Nächstes zu bauen ist](/de/workspaces/overview#genie-schlägt-vor-was-als-nächstes-zu-bauen-ist).
+- **Genie AI fragt jetzt lieber nach, bevor sie bei einer mehrdeutigen Anfrage rät** — etwa welches Projekt gemeint ist, oder ob „hinzufügen" etwas Neues oder einen Ersatz bedeutet —, statt das Falsche zu bauen. Sie erkennt jetzt außerdem, wenn du noch einmal um dasselbe bittest, egal wie anders formuliert, und fragt erst nach, was beim letzten Mal passiert ist, statt denselben Versuch zu wiederholen. Siehe [Genie fragt lieber nach, statt zu raten](/de/workspaces/overview#genie-fragt-lieber-nach-statt-zu-raten).
+- **Du kannst jetzt Excel-Tabellen (.xlsx) an eine Genie-AI-Chatnachricht anhängen**, zusätzlich zu reinem Text, Markdown, CSV, JSON und Word-Dokumenten — Genie liest den Tabelleninhalt als Tabelle. Siehe [Anhänge fließen in deinen Build ein](/de/workspaces/overview#anhänge-fließen-in-deinen-build-ein).
+
+## Updates
+
+- **Genie MCP Server: Projekt-Gedächtnis ist jetzt für externe Clients verfügbar.** `save_project_memory`, `search_project_memory` und `forget_project_memory` lassen einen externen KI-Client dieselben geteilten Projekt-Notizen lesen und schreiben, die Genie AI im Workspace-Chat führt. Siehe [Genie MCP Server](/de/workspaces/mcp-api).
+
+## Fixes
+
+- **Behoben: Genie AIs codebasierte Antworten fielen manchmal darauf zurück, ein Symbol nur beim Namen zu beschreiben statt den echten Code zu lesen** — bei Projekten, die über einen eigenen URL-Slug erreichbar sind.
+
+</Update>
+
 <Update label="17. August 2026" description="Wöchentliches Release">
 
 Dieses Update gibt Genie AI ein geteiltes Projekt-Gedächtnis, lässt Design-Mock-ups von einem gerade hochgeladenen Bild ausgehen und behebt mehrere Zuverlässigkeitsprobleme bei Chat, Spracheingabe und Vorschau.

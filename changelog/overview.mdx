@@ -4,6 +4,26 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="August 18, 2026" description="Weekly release">
+
+This update puts Genie's next-step suggestion right above your message box when a build finishes, has Genie AI check with you before guessing at an ambiguous request, adds Excel spreadsheet attachments, and exposes project memory to external MCP clients.
+
+## New features
+
+- **Genie's suggestion for what to build next now appears right above your message box** the moment a build finishes, instead of only at the bottom of a build card you've likely already scrolled past. Tap it to see the ideas as a checklist, tick the ones you want, and **Apply** puts a ready-to-send prompt in your message box without sending it. See [Genie suggests what to build next](/workspaces/overview#genie-suggests-what-to-build-next).
+- **Genie AI now checks with you before guessing at an ambiguous request** — like which project you mean, or whether "add" means something new or a replacement — instead of building the wrong thing. It also now recognizes when you're asking for the same thing again, however differently worded, and stops to check what happened last time rather than repeating the same attempt. See [Genie checks before guessing](/workspaces/overview#genie-checks-before-guessing).
+- **You can now attach Excel spreadsheets (.xlsx) to a Genie AI chat message**, alongside the existing plain text, Markdown, CSV, JSON, and Word documents — Genie reads the sheet contents as a table. See [Attachments carry into your build](/workspaces/overview#attachments-carry-into-your-build).
+
+## Updates
+
+- **Genie MCP Server: project memory is now available to external clients.** `save_project_memory`, `search_project_memory`, and `forget_project_memory` let an external AI client read and write the same shared project notes Genie AI keeps in the workspace chat. See [Genie MCP Server](/workspaces/mcp-api).
+
+## Fixes
+
+- **Fixed Genie AI's code-grounded answers occasionally falling back to describing a symbol by name only, instead of reading the real code**, for projects reachable by a custom URL slug.
+
+</Update>
+
 <Update label="August 17, 2026" description="Weekly release">
 
 This update gives Genie AI a shared per-project memory, lets design mock-ups start from an image you just uploaded, and fixes several chat, voice, and preview reliability issues.

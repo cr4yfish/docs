@@ -114,6 +114,10 @@ Bittest du die Workspace-KI, ein bereits im Build befindliches Projekt zu aktual
 
 Überall, wo du mit Genie AI sprichst — dem projektinternen Genie-AI-Tab, der eigenständigen Chat-Seite und der Befehlspalette — zeigt ein kleines Status-Abzeichen jedes mit dieser Unterhaltung verbundene Projekt an, sodass du auf einen Blick siehst, ob es gerade baut, eine automatische Korrektur ausführt oder Prompts in seiner Warteschlange wartet. Sobald ein Projekt untätig ist, wird nichts angezeigt.
 
+### Genie schlägt vor, was als Nächstes zu bauen ist
+
+In dem Moment, in dem ein Build fertig ist, wird der Status direkt über deinem Eingabefeld blau und zeigt eine Idee, was als Nächstes zu bauen wäre. Tippe darauf, um die Vorschläge als Checkliste zu sehen, hake an, was du willst, und **Übernehmen** legt einen versandfertigen Prompt in dein Eingabefeld — gesendet wird er nicht automatisch. Blendest du den Vorschlag aus, geht er nicht verloren.
+
 ### Genie AI sieht und debuggt dein Projekt
 
 Frag „sieht das richtig aus?" oder „warum hat meine App gerade einen Fehler geworfen?", und die Workspace-KI kann selbst nachsehen, statt aus deiner Beschreibung zu raten. Sie kann die Live-Screenshots deines Projekts aufrufen — die Standardansicht der veröffentlichten App, oder genau das, was auf deinem eigenen Bildschirm zu sehen war, falls du es warst, der gerade hinsah — und sie kann die eigenen Konsolenausgaben, Fehler und Abstürze deiner Live-App durchsuchen, um zu prüfen, ob ein von dir beschriebener Fehler wirklich aufgetreten ist oder ob eine Behebung angekommen ist.
@@ -138,7 +142,7 @@ Reagiere auf das, was du siehst, und Genie AI iteriert weiter — verfeinert das
 
 ### Anhänge fließen in deinen Build ein
 
-Hängst du beim Bitten der Workspace-KI, ein Projekt zu erstellen oder zu aktualisieren, ein Bild oder PDF an deine Nachricht an — einen Entwurf, ein Referenzfoto —, geht die Datei selbst in diesen Build ein, nicht nur eine Textbeschreibung davon. Über Bilder und PDFs hinaus kannst du auch reinen Text, Markdown, CSV, JSON und Word-Dokumente anhängen, und ein iPhone-HEIC-Foto wird automatisch umgewandelt, damit seine Vorschau korrekt angezeigt wird.
+Hängst du beim Bitten der Workspace-KI, ein Projekt zu erstellen oder zu aktualisieren, ein Bild oder PDF an deine Nachricht an — einen Entwurf, ein Referenzfoto —, geht die Datei selbst in diesen Build ein, nicht nur eine Textbeschreibung davon. Über Bilder und PDFs hinaus kannst du auch reinen Text, Markdown, CSV, JSON, Word-Dokumente und Excel-Tabellen anhängen — der Tabelleninhalt kommt bei Genie als Tabelle an —, und ein iPhone-HEIC-Foto wird automatisch umgewandelt, damit seine Vorschau korrekt angezeigt wird.
 
 Klicke vor dem Senden auf einen Anhang, um genau zu prüfen, was Genie sehen wird: Ein Bild öffnet sich in einer Lightbox, durch die du blättern kannst, ein hochgeladenes PDF öffnet sich in einem neuen Tab, und ein Dokument zeigt den genauen Text, der gesendet wird, seine Länge und ob er gekürzt wurde.
 
@@ -149,6 +153,10 @@ Bei einer klaren, konkreten Anfrage — „eine einseitige Website, die einfach 
 <Tip>
   Es eilig? Sag „bau es einfach" oder ignoriere die Rückfrage, und Genie macht mit dem weiter, was sie bereits hat, statt auf mehr zu drängen.
 </Tip>
+
+### Genie fragt lieber nach, statt zu raten
+
+Könnte das, worum du bittest, vernünftigerweise zweierlei bedeuten — welches Projekt gemeint ist, oder ob „hinzufügen" einen neuen Abschnitt heißt oder das Ersetzen von etwas Bestehendem —, bietet Genie AI dir die möglichen Lesarten zur schnellen Auswahl an, statt einfach die falsche zu bauen. Und bittest du ein zweites Mal um dasselbe — anders formuliert, in der anderen Sprache, oder einfach „das stimmt immer noch nicht" —, erkennt Genie das als Wiederholung, statt denselben Prompt ein zweites Mal zu senden, und fragt erst nach, was beim letzten Mal passiert ist, bevor sie es erneut versucht.
 
 ### Hinführung zu dem, was Genie gut baut
 
