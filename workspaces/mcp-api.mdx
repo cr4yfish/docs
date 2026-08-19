@@ -152,6 +152,16 @@ Genie's workspace AI remembers things you've mentioned about yourself in chat �
 | `search_user_memory` | Search everything Genie remembers about the connected user, ranked by relevance to a query, or list the most recently reinforced memories when no query is given. Read-only |
 | `forget_user_memory` | Permanently delete one specific remembered fact about the connected user by id (obtained from `search_user_memory`) |
 
+### Project memory
+
+Genie's workspace AI also keeps notes that belong to a project itself — a standing requirement, or a confirmed detail about a third-party service the project integrates with — shared with everyone who has access to that project. These tools let an external AI client read and write that same shared memory. Requires access to the project; writing requires project ownership or workspace-admin/member access.
+
+| Tool | What it does |
+|---|---|
+| `save_project_memory` | Save or update a project note. A new note that closely matches an existing one of the same kind updates it in place instead of creating a duplicate |
+| `search_project_memory` | Search a project's notes, ranked by relevance to a query, or list the most recent ones when no query is given. Read-only |
+| `forget_project_memory` | Permanently delete one specific project note by id (obtained from `search_project_memory`) |
+
 ### Genie Cloud backend management
 
 Manage a project's connected [Genie Cloud](/cloud/overview) backend: end-user roles, sign-in providers, and access settings. Only the project owner can use these tools.

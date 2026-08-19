@@ -152,6 +152,16 @@ Genies Workspace-KI merkt sich Dinge, die du im Chat über dich selbst erwähnt 
 | `search_user_memory` | Durchsuche alles, was Genie sich über den verbundenen Nutzer gemerkt hat, sortiert nach Relevanz zu einer Anfrage, oder liste die zuletzt bekräftigten Erinnerungen, wenn keine Anfrage angegeben ist. Nur lesend |
 | `forget_user_memory` | Lösche dauerhaft eine bestimmte gemerkte Tatsache über den verbundenen Nutzer anhand ihrer ID (ermittelt über `search_user_memory`) |
 
+### Projekt-Gedächtnis
+
+Genies Workspace-KI hält außerdem Notizen fest, die zu einem Projekt selbst gehören — eine feste Vorgabe, oder ein bestätigtes Detail zu einem Drittanbieter-Dienst, den das Projekt einbindet — und teilt sie mit allen, die Zugriff auf das Projekt haben. Mit diesen Tools kann ein externer KI-Client dasselbe geteilte Gedächtnis lesen und schreiben. Erfordert Zugriff auf das Projekt; zum Schreiben ist Projekt-Eigentümerschaft oder Workspace-Admin-/Mitgliedszugriff nötig.
+
+| Tool | Was es tut |
+|---|---|
+| `save_project_memory` | Speichere oder aktualisiere eine Projekt-Notiz. Eine neue Notiz, die einer bestehenden derselben Art stark ähnelt, aktualisiert diese, statt ein Duplikat anzulegen |
+| `search_project_memory` | Durchsuche die Notizen eines Projekts, sortiert nach Relevanz zu einer Anfrage, oder liste die neuesten, wenn keine Anfrage angegeben ist. Nur lesend |
+| `forget_project_memory` | Lösche dauerhaft eine bestimmte Projekt-Notiz anhand ihrer ID (ermittelt über `search_project_memory`) |
+
 ### Genie-Cloud-Backend-Verwaltung
 
 Verwalte das verbundene [Genie-Cloud](/de/cloud/overview)-Backend eines Projekts: Endnutzer-Rollen, Anmeldeanbieter und Zugriffseinstellungen. Nur der Projektinhaber bzw. die Projektinhaberin kann diese Tools verwenden.
