@@ -4,6 +4,26 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="20. August 2026" description="Wöchentliches Release">
+
+Dieses Update fügt eine Wissensdatenbank für Workspace und Projekte hinzu, mit der Genie AI baut, macht sie für externe MCP-Clients verfügbar und behebt einen seltenen Fehler, der deinen Chat-Verlauf löschen konnte.
+
+## Neue Funktionen
+
+- **Teams können jetzt das Material ablegen, mit dem Genie AI bauen soll** — Markenrichtlinien, Tonalität, ein API-Schema, ein Datenwörterbuch — als **Wissensdokumente**, beschränkt auf den ganzen Workspace oder ein einzelnes Projekt. Genie AI prüft vor dem Bauen oder Aktualisieren eines Projekts automatisch die dafür geltende Wissensdatenbank. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank).
+
+## Updates
+
+- **Genie MCP Server: Wissensdokumente sind jetzt für externe Clients verfügbar.** `list_workspace_documents`, `search_workspace_documents`, `read_workspace_document`, `add_workspace_documents`, `update_workspace_document` und `delete_workspace_document` lassen einen externen KI-Client dieselbe Wissensdatenbank verwalten. Siehe [Genie MCP Server](/de/workspaces/mcp-api).
+- **Der Hinweis „Genie hat etwas in deiner App bemerkt" sagt jetzt dazu, wenn ein Fehler nach einem einmaligen Netzwerk-Aussetzer aussieht** — einer häufigen Ursache hinter einem schlichten „failed to fetch" —, solange das noch die wahrscheinlichste Erklärung ist. Siehe [Genie sagt dir, wenn ihr etwas auffällt](/de/workspaces/overview#genie-sagt-dir-wenn-ihr-etwas-auffällt).
+- **Der Stopp-Button im Genie-AI-Chat startet jetzt für ein paar Sekunden nach dem Senden einer Nachricht deaktiviert**, damit ein versehentlicher weiterer Tipp direkt nach dem Senden den gerade erst angefragten Durchlauf nicht mehr abbrechen kann.
+
+## Fixes
+
+- **Ein seltener Fall behoben, bei dem ein fehlgeschlagener Versuch, ein langes Gespräch zusammenzufassen, dessen Verlauf löschen konnte, statt ihn zu erhalten.**
+
+</Update>
+
 <Update label="18. August 2026" description="Wöchentliches Release">
 
 Dieses Update platziert Genies Vorschlag für den nächsten Schritt direkt über deinem Eingabefeld, sobald ein Build fertig ist, lässt Genie AI bei einer mehrdeutigen Anfrage lieber nachfragen statt zu raten, fügt Excel-Tabellen als Anhang hinzu und macht das Projekt-Gedächtnis für externe MCP-Clients verfügbar.

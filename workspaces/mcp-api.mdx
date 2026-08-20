@@ -46,7 +46,7 @@ Restart Claude Desktop and open any conversation. Claude will prompt you to auth
 
 ## Available tools
 
-The Genie MCP Server provides tools across nineteen categories.
+The Genie MCP Server provides tools across twenty-one categories.
 
 ### Workspace management
 
@@ -161,6 +161,19 @@ Genie's workspace AI also keeps notes that belong to a project itself — a stan
 | `save_project_memory` | Save or update a project note. A new note that closely matches an existing one of the same kind updates it in place instead of creating a duplicate |
 | `search_project_memory` | Search a project's notes, ranked by relevance to a query, or list the most recent ones when no query is given. Read-only |
 | `forget_project_memory` | Permanently delete one specific project note by id (obtained from `search_project_memory`) |
+
+### Workspace knowledge documents
+
+Material a team wants every build to respect — brand guidelines, tone of voice, an API schema, a data dictionary — filed against the whole workspace or one project. See [Knowledge base](/workspaces/overview#knowledge-base). Like project memory above, these tools run as the connected user rather than impersonating the project owner, so a project's own access rules decide who can read or change its documents.
+
+| Tool | What it does |
+|---|---|
+| `list_workspace_documents` | List knowledge documents, paginated and filterable by title/description/filename. `scope`: `workspace`, `project`, `effective` (workspace + one project — what actually applies when building it), or `all` (default) |
+| `search_workspace_documents` | Search inside documents' text (hybrid semantic + keyword) and get back matching passages |
+| `read_workspace_document` | Read one document's full text in bounded, pageable slices |
+| `add_workspace_documents` | File one or more documents (up to 10 per call) for the workspace or a project |
+| `update_workspace_document` | Retitle, re-describe, or move a document between scopes |
+| `delete_workspace_document` | Permanently delete a document and its search index |
 
 ### Genie Cloud backend management
 
@@ -402,6 +415,8 @@ Role-based access is enforced on every tool call.
 | Report a known issue | Project owner |
 | Search the shared bug-solution knowledge base | Any connected user |
 | Search or forget the connected user's memory | Any connected user |
+| Read or write a workspace-wide knowledge document | Any member |
+| Read or write a project-scoped knowledge document | Anyone with edit access to that project — tighter than plain view access, since a public project must never expose its team's internal material |
 | Search the connected user's own Genie AI run traces | Any connected user |
 | View a project's screenshots or search its live console logs | Any member (who can view the project) |
 | Read or set a project's main workspace chat | Any member |

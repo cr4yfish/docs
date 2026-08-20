@@ -46,7 +46,7 @@ Starte Claude Desktop neu und öffne ein beliebiges Gespräch. Claude wird dich 
 
 ## Verfügbare Tools
 
-Der Genie MCP Server bietet Tools in neunzehn Kategorien.
+Der Genie MCP Server bietet Tools in einundzwanzig Kategorien.
 
 ### Workspace-Verwaltung
 
@@ -161,6 +161,19 @@ Genies Workspace-KI hält außerdem Notizen fest, die zu einem Projekt selbst ge
 | `save_project_memory` | Speichere oder aktualisiere eine Projekt-Notiz. Eine neue Notiz, die einer bestehenden derselben Art stark ähnelt, aktualisiert diese, statt ein Duplikat anzulegen |
 | `search_project_memory` | Durchsuche die Notizen eines Projekts, sortiert nach Relevanz zu einer Anfrage, oder liste die neuesten, wenn keine Anfrage angegeben ist. Nur lesend |
 | `forget_project_memory` | Lösche dauerhaft eine bestimmte Projekt-Notiz anhand ihrer ID (ermittelt über `search_project_memory`) |
+
+### Workspace-Wissensdokumente
+
+Material, das ein Team von jedem Build respektiert haben will — Markenrichtlinien, Tonalität, ein API-Schema, ein Datenwörterbuch — abgelegt für den ganzen Workspace oder ein einzelnes Projekt. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank). Wie das Projekt-Gedächtnis oben laufen diese Tools als der verbundene Nutzer, statt den Projekt-Eigentümer zu imitieren — die eigenen Zugriffsregeln des Projekts entscheiden, wer seine Dokumente lesen oder ändern darf.
+
+| Tool | Was es tut |
+|---|---|
+| `list_workspace_documents` | Liste Wissensdokumente, paginiert und filterbar nach Titel/Beschreibung/Dateiname. `scope`: `workspace`, `project`, `effective` (Workspace + ein Projekt — was beim Bauen tatsächlich gilt) oder `all` (Standard) |
+| `search_workspace_documents` | Durchsuche den Text der Dokumente (hybrid, semantisch + Stichwort) und erhalte passende Textstellen zurück |
+| `read_workspace_document` | Lies den vollständigen Text eines Dokuments in begrenzten, seitenweise abrufbaren Abschnitten |
+| `add_workspace_documents` | Lege ein oder mehrere Dokumente ab (bis zu 10 pro Aufruf) für den Workspace oder ein Projekt |
+| `update_workspace_document` | Benenne um, beschreibe neu, oder verschiebe ein Dokument zwischen Geltungsbereichen |
+| `delete_workspace_document` | Lösche ein Dokument und seinen Suchindex dauerhaft |
 
 ### Genie-Cloud-Backend-Verwaltung
 
@@ -402,6 +415,8 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Einen bekannten Bug melden | Projektinhaber:in |
 | Die gemeinsame Bug-Lösungs-Wissensdatenbank durchsuchen | Jeder verbundene Nutzer |
 | Das Gedächtnis des verbundenen Nutzers durchsuchen oder löschen | Jeder verbundene Nutzer |
+| Ein workspaceweites Wissensdokument lesen oder schreiben | Jedes Mitglied |
+| Ein projektbezogenes Wissensdokument lesen oder schreiben | Jeder mit Bearbeitungszugriff auf das Projekt — enger als reiner Ansichtszugriff, da ein öffentliches Projekt niemals interne Team-Materialien preisgeben darf |
 | Die eigenen Genie-KI-Ausführungsspuren des verbundenen Nutzers durchsuchen | Jeder verbundene Nutzer |
 | Die Screenshots eines Projekts einsehen oder seine Live-Konsolenprotokolle durchsuchen | Jedes Mitglied (das das Projekt einsehen kann) |
 | Den Hauptchat eines Projekts lesen oder festlegen | Jedes Mitglied |
