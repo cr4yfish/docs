@@ -130,6 +130,10 @@ Ask "how does checkout work in my app?" and Genie AI now reads the real code beh
 
 Genie watches your live preview for real problems — a crash, a thrown error, something logged as broken — and raises a calm alert right above the Genie AI composer: "Genie noticed something in your app," together with a plain-language explanation instead of a raw error message. There's one action, **Fix with Genie AI**, which hands the issue straight into your conversation so Genie can check the actual logs — and ask a question if it needs one — before proposing a fix, rather than guessing from the error text alone.
 
+<Tip>
+If the problem looks like a one-off network hiccup — the most common cause behind a plain "failed to fetch" — the alert says so, for as long as that's honestly still the most likely explanation. The note drops away the moment the same failure repeats or anything more serious shows up on the card.
+</Tip>
+
 ### Genie AI can show you a design mock-up
 
 Ask "what would this look like with a warmer palette?" or "make the dashboard feel more like Linear" and Genie AI can show you, before touching any code. It screenshots your real app, has an image model repaint it with the change you described, and shows you both pictures side by side. Genie AI is shown the same two pictures, so it describes what actually came back rather than just restating your request.
@@ -187,6 +191,23 @@ You can also ask it directly — try *"what do you remember about me?"* — and 
 Beyond what it knows about you, Genie AI also keeps notes that belong to the project itself, shared with everyone who has access to it — a standing requirement you've stated ("every screen must work on mobile") or a confirmed detail about a third-party service you're integrating ("the webhook payload nests under `data.object`"). Once you've told Genie something like that, you don't need to repeat it in the next conversation, and it's there for your teammates too.
 
 Ask *"what do you remember about this project?"* to see what's recorded. If a requirement changes, just restate it — Genie updates the existing note in place instead of piling up a contradicting one. Genie never stores credentials or secrets this way, only confirmed details and standing instructions.
+
+### Knowledge base
+
+Beyond what Genie AI remembers from conversation, your team can file the material Genie should build *with* — brand guidelines, tone of voice, an API schema, a data dictionary — as **knowledge documents**, at two scopes:
+
+- **Workspace** — applies to every project.
+- **Project** — applies to just the one project it's filed under.
+
+Open **Knowledge** in the workspace sidebar to browse and manage documents at both scopes, or open a project's **Settings → Knowledge** tab to manage just that project's — either surface can also see and file the other kind, and moving a document between scopes keeps its content and search index intact. Workspace owners and admins can file a document into any project in the workspace, not only ones they're a member of.
+
+Upload plain text, Markdown, CSV, JSON, YAML, XML, HTML, source files, Word (`.docx`), or Excel (`.xlsx`) files — up to 10 MB each. PDFs and images aren't accepted directly in the uploader, since their text can't be extracted in the browser; send them to Genie AI in chat instead and ask it to file them for you.
+
+Before building or updating a project, Genie AI automatically checks the knowledge base that applies to it — the workspace-wide documents plus anything filed just for that project — and carries what it finds into the build.
+
+<Tip>
+Ask Genie AI things like *"file our brand guidelines as a knowledge document"* or *"what do we have on file about the payments API?"* — it can search, read, add, retitle, move, and delete knowledge documents on your behalf, the same as you can from the Knowledge page.
+</Tip>
 
 ### Talk instead of type
 

@@ -4,6 +4,26 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="August 20, 2026" description="Weekly release">
+
+This update adds a workspace and project knowledge base Genie AI builds with, extends it to external MCP clients, and fixes a rare bug that could erase your chat history.
+
+## New features
+
+- **Teams can now file the material Genie AI should build with** — brand guidelines, tone of voice, an API schema, a data dictionary — as **knowledge documents**, scoped to the whole workspace or to a single project. Genie AI automatically checks the knowledge base that applies before building or updating a project. See [Knowledge base](/workspaces/overview#knowledge-base).
+
+## Updates
+
+- **Genie MCP Server: knowledge documents are now available to external clients.** `list_workspace_documents`, `search_workspace_documents`, `read_workspace_document`, `add_workspace_documents`, `update_workspace_document`, and `delete_workspace_document` let an external AI client manage the same knowledge base. See [Genie MCP Server](/workspaces/mcp-api).
+- **The "Genie noticed something in your app" alert now says so when a failure looks like a one-off network hiccup** — a common cause behind a plain "failed to fetch" — for as long as that's still the most likely explanation. See [Genie tells you when it notices something wrong](/workspaces/overview#genie-tells-you-when-it-notices-something-wrong).
+- **The stop button in Genie AI chat now starts disarmed for a few seconds after you send a message**, so a stray extra tap right after sending can no longer abort the turn you just asked for.
+
+## Fixes
+
+- **Fixed a rare case where a failed attempt to summarize a long conversation could erase its history instead of leaving it intact.**
+
+</Update>
+
 <Update label="August 18, 2026" description="Weekly release">
 
 This update puts Genie's next-step suggestion right above your message box when a build finishes, has Genie AI check with you before guessing at an ambiguous request, adds Excel spreadsheet attachments, and exposes project memory to external MCP clients.

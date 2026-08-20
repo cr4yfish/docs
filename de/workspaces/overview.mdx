@@ -130,6 +130,10 @@ Frag „wie funktioniert der Checkout in meiner App?", und Genie AI liest jetzt 
 
 Genie beobachtet deine Live-Vorschau auf echte Probleme — einen Absturz, einen geworfenen Fehler, etwas, das als defekt protokolliert wurde — und zeigt direkt über dem Genie-AI-Eingabefeld einen ruhigen Hinweis: „Genie hat etwas in deiner App bemerkt", zusammen mit einer Erklärung in einfacher Sprache statt einer rohen Fehlermeldung. Es gibt eine Aktion, **Mit Genie AI beheben**, die das Problem direkt in deine Unterhaltung übergibt, damit Genie die tatsächlichen Logs prüfen kann — und bei Bedarf nachfragt — bevor eine Lösung vorgeschlagen wird, statt allein aus dem Fehlertext zu raten.
 
+<Tip>
+Sieht das Problem nach einem einmaligen Netzwerk-Aussetzer aus — der häufigsten Ursache hinter einem schlichten „failed to fetch" —, sagt der Hinweis das dazu, solange das ehrlich noch die wahrscheinlichste Erklärung ist. Die Anmerkung verschwindet, sobald sich derselbe Fehler wiederholt oder etwas Ernsteres auf der Karte auftaucht.
+</Tip>
+
 ### Genie AI kann dir ein Design-Mockup zeigen
 
 Frag „wie würde das mit einer wärmeren Palette aussehen?" oder „lass das Dashboard mehr wie Linear wirken", und Genie AI kann es dir zeigen, bevor auch nur eine Zeile Code angefasst wird. Sie fotografiert deine echte App, lässt ein Bildmodell sie mit der beschriebenen Änderung neu bemalen und zeigt dir beide Bilder nebeneinander. Genie AI bekommt dieselben beiden Bilder zu sehen, sodass sie beschreibt, was tatsächlich dabei herauskam, statt nur deine Anfrage zu wiederholen.
@@ -187,6 +191,23 @@ Du kannst auch direkt nachfragen — probier *„was merkst du dir über mich?"*
 Über das hinaus, was sie über dich weiß, hält Genie-KI auch Notizen fest, die zum Projekt selbst gehören und mit allen geteilt werden, die Zugriff darauf haben — eine feste Vorgabe, die du genannt hast („jede Seite muss auf Mobilgeräten funktionieren"), oder ein bestätigtes Detail zu einem Drittanbieter-Dienst, den du einbindest („die Webhook-Payload steckt unter `data.object`"). Hast du Genie das einmal gesagt, musst du es im nächsten Gespräch nicht wiederholen — und es steht auch deinem Team zur Verfügung.
 
 Frag „was merkst du dir über dieses Projekt?", um zu sehen, was gespeichert ist. Ändert sich eine Vorgabe, formuliere sie einfach neu — Genie aktualisiert die bestehende Notiz, statt eine widersprüchliche daneben anzulegen. Zugangsdaten oder Geheimnisse speichert Genie auf diese Weise nie, nur bestätigte Details und feste Vorgaben.
+
+### Wissensdatenbank
+
+Über das hinaus, was Genie AI sich aus dem Gespräch merkt, kann dein Team das Material, mit dem Genie bauen soll — Markenrichtlinien, Tonalität, ein API-Schema, ein Datenwörterbuch — als **Wissensdokumente** ablegen, mit zwei Geltungsbereichen:
+
+- **Workspace** — gilt für jedes Projekt.
+- **Projekt** — gilt nur für das eine Projekt, unter dem es abgelegt ist.
+
+Öffne **Knowledge** in der Workspace-Seitenleiste, um Dokumente in beiden Geltungsbereichen zu durchsuchen und zu verwalten, oder öffne den Tab **Einstellungen → Knowledge** eines Projekts, um nur dessen Dokumente zu verwalten — beide Oberflächen können auch die jeweils andere Art sehen und ablegen, und das Verschieben eines Dokuments zwischen den Geltungsbereichen erhält Inhalt und Suchindex. Workspace-Owner und -Admins können ein Dokument in jedem Projekt des Workspace ablegen, nicht nur in solchen, denen sie angehören.
+
+Lade reinen Text, Markdown, CSV, JSON, YAML, XML, HTML, Quellcode-Dateien, Word (`.docx`) oder Excel (`.xlsx`) hoch — bis zu 10 MB pro Datei. PDFs und Bilder werden im Uploader nicht direkt angenommen, da ihr Text nicht im Browser extrahiert werden kann; schick sie stattdessen im Chat an Genie AI und bitte sie, sie für dich abzulegen.
+
+Bevor Genie AI ein Projekt baut oder aktualisiert, prüft sie automatisch die für dieses Projekt geltende Wissensdatenbank — die workspaceweiten Dokumente plus alles, was nur für dieses Projekt abgelegt wurde — und lässt das Gefundene in den Build einfließen.
+
+<Tip>
+Bitte Genie AI zum Beispiel *„lege unsere Markenrichtlinien als Wissensdokument ab"* oder *„was haben wir zur Zahlungs-API hinterlegt?"* — sie kann Wissensdokumente in deinem Namen suchen, lesen, hinzufügen, umbenennen, verschieben und löschen, genau wie du es auf der Knowledge-Seite selbst tun kannst.
+</Tip>
 
 ### Sprechen statt tippen
 
