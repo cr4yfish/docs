@@ -4,6 +4,27 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="August 22, 2026" description="Weekly release">
+
+This update lets Genie AI theme your app with two colors instead of one, and fixes a bug that was signing people out of Genie unexpectedly.
+
+## New features
+
+- **Genie AI can now theme your app with two colors instead of one** — a primary action color plus a separate dark color for navbars, headers, sidebars, and other dark surfaces — so a request like "yellow buttons and a navy navbar" comes out looking the way you described, in one step. See [Genie AI can theme your app with two colors](/workspaces/overview#genie-ai-can-theme-your-app-with-two-colors).
+
+## Updates
+
+- **The mobile chat composer has bigger, better-spaced touch controls** — larger buttons for attachments, voice, and send/stop, sized and placed for a thumb instead of reusing the desktop layout at a smaller scale.
+- **Genie MCP Server: drafting a design mock-up before a build is now the default here too**, for external MCP clients — matching the in-app chat behavior from August 21. See [Genie MCP Server](/workspaces/mcp-api).
+
+## Fixes
+
+- **Fixed being signed out of Genie unexpectedly during an active session.** A bug in how your session was kept alive meant it could stop refreshing after login, so it could expire well before it should have. Two dead login links (in account add-ons and the credit top-up page) were fixed at the same time.
+- **Fixed Genie AI's color updates sometimes silently not taking effect, or applying a different color than the one you asked for**, on apps with more complex existing styling.
+- Fixed a rare case where a Genie Cloud database query joining several related tables could fail to run instead of returning results.
+
+</Update>
+
 <Update label="August 21, 2026" description="Weekly release">
 
 This update makes drafting a design mock-up Genie AI's default first move on any visual change, not just when you ask to see a direction first.
