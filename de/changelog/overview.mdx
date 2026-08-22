@@ -4,6 +4,27 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="22. August 2026" description="Wöchentliches Release">
+
+Dieses Update lässt Genie AI deine App mit zwei Farben statt nur einer gestalten und behebt einen Fehler, durch den Nutzer unerwartet aus Genie abgemeldet wurden.
+
+## Neue Funktionen
+
+- **Genie AI kann deine App jetzt mit zwei Farben statt nur einer gestalten** — eine Primärfarbe für Aktionen plus eine separate dunkle Farbe für Navigationsleisten, Kopfzeilen, Seitenleisten und andere dunkle Flächen —, sodass eine Anfrage wie „gelbe Buttons und eine dunkelblaue Navigationsleiste" in einem Schritt genau so umgesetzt wird, wie du sie beschrieben hast. Siehe [Genie AI kann deine App mit zwei Farben gestalten](/de/workspaces/overview#genie-ai-kann-deine-app-mit-zwei-farben-gestalten).
+
+## Updates
+
+- **Die mobile Chat-Eingabeleiste hat jetzt größere, besser platzierte Touch-Steuerelemente** — größere Buttons für Anhänge, Sprache und Senden/Stopp, für den Daumen ausgelegt statt einfach das Desktop-Layout verkleinert zu übernehmen.
+- **Genie MCP Server: Ein Design-Mockup vor einem Build zu entwerfen ist jetzt auch hier der Standard**, für externe MCP-Clients — passend zum In-App-Chat-Verhalten vom 21. August. Siehe [Genie MCP Server](/de/workspaces/mcp-api).
+
+## Fixes
+
+- **Behebt unerwartete Abmeldungen aus Genie während einer aktiven Sitzung.** Ein Fehler beim Erneuern deiner Sitzung konnte dazu führen, dass sie nach dem Login nicht mehr erneuert wurde und dadurch deutlich früher ablief als vorgesehen. Zwei tote Login-Links (in den Konto-Add-ons und auf der Credit-Aufladeseite) wurden dabei ebenfalls behoben.
+- **Behebt, dass Genie AIs Farbänderungen manchmal stillschweigend nicht griffen oder eine andere Farbe anwendeten als die angefragte**, bei Apps mit komplexerem bestehendem Styling.
+- Behebt einen seltenen Fall, in dem eine Genie-Cloud-Datenbankabfrage, die mehrere verknüpfte Tabellen verbindet, mit einem Fehler statt mit einem Ergebnis fehlschlagen konnte.
+
+</Update>
+
 <Update label="21. August 2026" description="Wöchentliches Release">
 
 Dieses Update macht das Entwerfen eines Design-Mockups zu Genie AIs Standardschritt bei jeder optischen Änderung, nicht nur, wenn du ausdrücklich erst eine Richtung sehen willst.
