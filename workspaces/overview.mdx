@@ -41,17 +41,17 @@ The left sidebar is the primary navigation hub for your workspace.
   <Card title="Overview" icon="house">
     Returns you to the workspace home from anywhere inside the workspace.
   </Card>
-  <Card title="Activities" icon="activity">
-    Opens the workspace-wide activity log. This item is only visible to admins and owners when the activity log is enabled.
+  <Card title="Projects" icon="folder-kanban">
+    Lists every project in the workspace that you have access to, with search, filtering, and pagination.
   </Card>
-  <Card title="All Projects" icon="folder-open">
-    Lists every project in the workspace that you have access to.
+  <Card title="Genie AI" icon="message-square">
+    Opens the standalone workspace chat page — the same Genie AI as on the home page, full-screen.
   </Card>
-  <Card title="Members & Roles" icon="users">
-    A shortcut to the members section of **Settings**. Visible to admins and owners only.
+  <Card title="Knowledge" icon="book-open">
+    The workspace's knowledge base. See [Knowledge base](#knowledge-base).
   </Card>
   <Card title="Settings" icon="settings">
-    Opens workspace settings: members, access control, activity logging, and integrations.
+    A collapsible sub-list at the bottom of the sidebar: General, Members & Roles, Integrations, PII Detection, and — for admins and owners — Activities and (on a billing-enabled workspace) Billing.
   </Card>
 </CardGroup>
 
@@ -59,22 +59,15 @@ The left sidebar is the primary navigation hub for your workspace.
 On mobile, the workspace switcher opens as a bottom drawer. Tap the workspace name at the top of the screen to switch workspaces or go to settings.
 </Tip>
 
-### Stats
+### Recent projects
 
-Below the greeting, the home page shows four at-a-glance stat cards:
-
-- **Active Projects** — the number of projects currently in this workspace.
-- **Live Published** — how many projects have been published and are online.
-- **Generations** — total AI generation count across all projects.
-- **Contributors** — the number of workspace members.
-
-### Project list
-
-Beneath the stats, the home page shows all projects you have access to in a card grid. Each project card links directly to the project. If no projects exist yet, you will see an empty state with a **New Project** button.
+Below the greeting and the Genie AI prompt box, the home page shows a few of your most recently edited projects, plus a card to start another one. It's a preview, not the full list — click **View all** (or **Projects** in the sidebar) for the complete, searchable, filterable, paginated list of every project you have access to. If you have no projects yet, you'll see an empty state instead, with a way to create your first one.
 
 ### Activity log
 
-If the activity log is enabled by an admin or owner, a recent-activity panel appears between the stats and the project list. It shows a live feed of workspace-wide events — new projects, member changes, setting updates — with relative timestamps. Click **View all** to open the full activity log page.
+If the activity log is enabled by an admin or owner, a recent-activity panel appears below the recent projects. It shows a live feed of workspace-wide events — new projects, member changes, setting updates — with relative timestamps. Click **View all** to open the full activity log page.
+
+If you're the only member of the workspace, this area shows your plan and credit usage instead of an activity feed.
 
 <Note>
 The activity log must be turned on from **Settings → Audit & Logging** before it appears. Only admins and owners can enable or disable it.

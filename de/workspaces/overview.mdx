@@ -41,17 +41,17 @@ Die linke Seitenleiste ist die primäre Navigation für deinen Workspace.
   <Card title="Übersicht" icon="house">
     Bringt dich von überall im Workspace zurück zur Workspace-Startseite.
   </Card>
-  <Card title="Aktivitäten" icon="activity">
-    Öffnet das workspace-weite Aktivitätsprotokoll. Dieser Punkt ist nur für Admins und Eigentümer sichtbar, wenn das Aktivitätsprotokoll aktiviert ist.
+  <Card title="Projekte" icon="folder-kanban">
+    Listet jedes Projekt im Workspace auf, auf das du Zugriff hast — mit Suche, Filtern und Seitennummerierung.
   </Card>
-  <Card title="Alle Projekte" icon="folder-open">
-    Listet jedes Projekt im Workspace auf, auf das du Zugriff hast.
+  <Card title="Genie AI" icon="message-square">
+    Öffnet die eigenständige Workspace-Chat-Seite — dieselbe Genie AI wie auf der Startseite, im Vollbild.
   </Card>
-  <Card title="Mitglieder & Rollen" icon="users">
-    Eine Verknüpfung zum Mitglieder-Bereich der **Einstellungen**. Nur für Admins und Eigentümer sichtbar.
+  <Card title="Knowledge" icon="book-open">
+    Die Wissensdatenbank des Workspace. Siehe [Wissensdatenbank](#wissensdatenbank).
   </Card>
   <Card title="Einstellungen" icon="settings">
-    Öffnet die Workspace-Einstellungen: Mitglieder, Zugriffssteuerung, Aktivitätsprotokollierung und Integrationen.
+    Eine ausklappbare Unterliste am unteren Rand der Seitenleiste: Allgemein, Mitglieder & Rollen, Integrationen, PII-Erkennung sowie — für Admins und Eigentümer — Aktivitäten und (bei einem Workspace mit aktivierter Abrechnung) Abrechnung.
   </Card>
 </CardGroup>
 
@@ -59,22 +59,15 @@ Die linke Seitenleiste ist die primäre Navigation für deinen Workspace.
 Auf dem Mobilgerät öffnet sich der Workspace-Umschalter als unteres Drawer. Tippe oben auf den Workspace-Namen, um zu wechseln oder zu den Einstellungen zu gelangen.
 </Tip>
 
-### Statistiken
+### Zuletzt bearbeitete Projekte
 
-Unter der Begrüßung zeigt die Startseite vier Übersichts-Statistikkarten:
-
-- **Aktive Projekte** — die Anzahl der derzeit in diesem Workspace befindlichen Projekte.
-- **Live veröffentlicht** — wie viele Projekte veröffentlicht und online sind.
-- **Generierungen** — die Gesamtzahl der KI-Generierungen über alle Projekte hinweg.
-- **Beitragende** — die Anzahl der Workspace-Mitglieder.
-
-### Projektliste
-
-Unter den Statistiken zeigt die Startseite alle Projekte, auf die du Zugriff hast, in einem Karten-Raster. Jede Projektkarte verlinkt direkt auf das Projekt. Wenn noch keine Projekte vorhanden sind, siehst du einen leeren Zustand mit einem **Neues Projekt**-Button.
+Unter der Begrüßung und dem Genie-AI-Eingabefeld zeigt die Startseite einige deiner zuletzt bearbeiteten Projekte sowie eine Karte, um ein weiteres zu starten. Das ist eine Vorschau, nicht die vollständige Liste — klicke auf **Alle anzeigen** (oder auf **Projekte** in der Seitenleiste) für die vollständige, durchsuchbare, filterbare und paginierte Liste aller Projekte, auf die du Zugriff hast. Wenn du noch keine Projekte hast, siehst du stattdessen einen leeren Zustand mit einer Möglichkeit, dein erstes Projekt zu erstellen.
 
 ### Aktivitätsprotokoll
 
-Wenn das Aktivitätsprotokoll von einem Admin oder Eigentümer aktiviert ist, erscheint zwischen den Statistiken und der Projektliste ein Panel mit aktuellen Aktivitäten. Es zeigt einen Live-Feed workspace-weiter Ereignisse — neue Projekte, Mitgliederänderungen, Einstellungs-Updates — mit relativen Zeitstempeln. Klicke auf **Alle anzeigen**, um die vollständige Aktivitätsprotokoll-Seite zu öffnen.
+Wenn das Aktivitätsprotokoll von einem Admin oder Eigentümer aktiviert ist, erscheint unterhalb der zuletzt bearbeiteten Projekte ein Panel mit aktuellen Aktivitäten. Es zeigt einen Live-Feed workspace-weiter Ereignisse — neue Projekte, Mitgliederänderungen, Einstellungs-Updates — mit relativen Zeitstempeln. Klicke auf **Alle anzeigen**, um die vollständige Aktivitätsprotokoll-Seite zu öffnen.
+
+Wenn du das einzige Mitglied des Workspace bist, zeigt dieser Bereich stattdessen deinen Tarif und deinen Credit-Verbrauch statt eines Aktivitäts-Feeds.
 
 <Note>
 Das Aktivitätsprotokoll muss unter **Einstellungen → Audit & Logging** eingeschaltet werden, bevor es erscheint. Nur Admins und Eigentümer können es aktivieren oder deaktivieren.
