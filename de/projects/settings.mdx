@@ -15,13 +15,13 @@ Die Projekteinstellungen geben dir Kontrolle darüber, wie deine App identifizie
     Klicke in der Projektansicht auf den Button **Einstellungen** (Zahnradsymbol). Der Projekteinstellungs-Dialog öffnet sich.
   </Step>
   <Step title="Wähle den Tab Allgemein">
-    Der Dialog öffnet sich standardmäßig im Tab **Allgemein**. Hier findest du die Einstellungen für Name, Beschreibung, Sichtbarkeit und Remixable.
+    Der Dialog öffnet sich standardmäßig im Tab **Allgemein**. Hier findest du die Einstellungen für Name, Beschreibung, Workspace, Sichtbarkeit und Remixable.
   </Step>
 </Steps>
 
 ## Allgemeine Einstellungen
 
-Der Tab **Allgemein** enthält vier Felder. Klicke nach Änderungen auf **Speichern**, um sie anzuwenden. Klicke auf **Abbrechen**, um Änderungen zu verwerfen.
+Der Tab **Allgemein** enthält fünf Felder. Name, Beschreibung, Sichtbarkeit und Remixable werden gemeinsam gespeichert — klicke nach Änderungen auf **Speichern**, um sie anzuwenden, oder auf **Abbrechen**, um sie zu verwerfen. Workspace ist unabhängig davon: Wählst du im zugehörigen Umschalter einen Workspace aus, wird das Projekt sofort verschoben, ganz ohne Speichern-Schritt.
 
 ### Name
 
@@ -40,6 +40,18 @@ Das Feld **Beschreibung** ist ein Freitextbereich, in dem du eine kurze Zusammen
 <Tip>
   Schreibe die Beschreibung aus der Perspektive von jemandem, der deine App zum ersten Mal entdeckt. Ein oder zwei Sätze, die erklären, was die App tut und für wen sie gedacht ist, reichen meist.
 </Tip>
+
+### Workspace
+
+Das Feld **Workspace** zeigt den Workspace, in dem dein Projekt aktuell liegt, mit einem **Wechseln**-Button daneben.
+
+Ein Klick auf **Wechseln** öffnet eine Auswahl deiner anderen Workspaces. Wählst du einen aus, wird das Projekt **sofort dorthin verschoben** — es gibt keinen separaten Speicherschritt und keine Navigation aus dem Einstellungsdialog heraus. Während der Verschiebung zeigt die ausgewählte Zeile kurz einen Ladeindikator, danach zeigt das Feld den Namen des neuen Workspaces.
+
+<Note>
+  Hat ein Projekt gar keinen Workspace — zum Beispiel, weil es auf anderem Weg von seinem Workspace getrennt wurde —, zeigt dieses Feld „Kein Workspace zugewiesen" und bietet statt **Wechseln** einen Button **Zu Workspace hinzufügen** an. Das ist der einzige Weg, ein solches Projekt wieder in einen Workspace zu bringen.
+</Note>
+
+Siehst du keine anderen Workspaces zum Wechseln? Der leere Zustand der Auswahl bietet einen Button **Neuer Workspace**, mit dem du direkt im selben Ablauf einen erstellst und das Projekt dorthin verschiebst. Siehe [Workspaces](/de/workspaces/overview) für mehr dazu, was ein Workspace ist.
 
 ### Sichtbarkeit
 
@@ -81,7 +93,7 @@ Der Einstellungsdialog enthält weitere Tabs neben Allgemein. Hier eine Zusammen
 
 <AccordionGroup>
   <Accordion title="Allgemein">
-    Name, Beschreibung, Sichtbarkeit (öffentlich/privat) und Remixable-Schalter. Wird auf dieser Seite behandelt.
+    Name, Beschreibung, Workspace, Sichtbarkeit (öffentlich/privat) und Remixable-Schalter. Wird auf dieser Seite behandelt.
   </Accordion>
   <Accordion title="SEO">
     Titel, Beschreibung, kanonische URL, Open-Graph-Bild und noIndex-Flag für Suchmaschinenoptimierung.
