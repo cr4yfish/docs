@@ -15,13 +15,13 @@ Project settings give you control over how your app is identified and who can ac
     Click the **Settings** button (gear icon) in the project view. The project settings dialog opens.
   </Step>
   <Step title="Select the General tab">
-    The dialog opens on the **General** tab by default. This is where you find the name, description, visibility, and remixable settings.
+    The dialog opens on the **General** tab by default. This is where you find the name, description, workspace, visibility, and remixable settings.
   </Step>
 </Steps>
 
 ## General settings
 
-The **General** tab contains four fields. After making changes, click **Save** to apply them. Click **Cancel** to discard any edits.
+The **General** tab contains five fields. Name, description, visibility, and remixable are saved together — after making changes, click **Save** to apply them, or **Cancel** to discard any edits. Workspace is separate: picking a workspace in its switcher moves the project immediately, with no Save step.
 
 ### Name
 
@@ -40,6 +40,18 @@ The **Description** field is a free-text area where you can write a short summar
 <Tip>
   Write the description from the perspective of someone discovering your app for the first time. One or two sentences explaining what the app does and who it is for is usually enough.
 </Tip>
+
+### Workspace
+
+The **Workspace** field shows the workspace your project currently lives in, with a **Switch** button next to it.
+
+Clicking **Switch** opens a picker listing your other workspaces. Selecting one **moves the project there immediately** — there's no separate save step, and no navigation away from the settings dialog. A short spinner shows on the picked row while the move completes, then the field updates to the new workspace's name.
+
+<Note>
+  If a project has no workspace at all — for example, one detached from its workspace some other way — this field reads "Not in a workspace" and offers an **Add to workspace** button instead of **Switch**. It's the only way to bring such a project back into a workspace.
+</Note>
+
+Don't see any other workspaces to switch into? The picker's empty state offers a **New Workspace** button so you can create one and move the project there in the same flow. See [Workspaces](/workspaces/overview) for more on what a workspace is.
 
 ### Visibility
 
@@ -81,7 +93,7 @@ The settings dialog contains additional tabs beyond General. Here is a summary o
 
 <AccordionGroup>
   <Accordion title="General">
-    Name, description, visibility (public/private), and remixable toggle. Covered on this page.
+    Name, description, workspace, visibility (public/private), and remixable toggle. Covered on this page.
   </Accordion>
   <Accordion title="SEO">
     Title, description, canonical URL, Open Graph image, and noIndex flag for search engine optimization.
