@@ -97,6 +97,17 @@ This update adds a workspace and project knowledge base Genie AI builds with, ex
 
 </Update>
 
+<Update label="August 19, 2026" description="Weekly release">
+
+This update catches up two knowledge base fixes from August 19 that were missed in the original pass.
+
+## Fixes
+
+- **Fixed a workspace admin's "Applies to" dropdown in Knowledge base sometimes opening blank instead of listing every project they administer** — including the project the admin was standing in when they opened it. Filing a document into a project is now also checked against the workspace it's filed under, so a project from the wrong workspace can no longer be picked. See [Knowledge base](/workspaces/overview#knowledge-base).
+- **Fixed Genie AI saying it couldn't help with the knowledge base in a workspace that had no documents filed yet.** It now recognizes the feature from the start and can add the first one.
+
+</Update>
+
 <Update label="August 18, 2026" description="Weekly release">
 
 This update puts Genie's next-step suggestion right above your message box when a build finishes, has Genie AI check with you before guessing at an ambiguous request, adds Excel spreadsheet attachments, and exposes project memory to external MCP clients.
