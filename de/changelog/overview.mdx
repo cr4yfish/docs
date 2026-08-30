@@ -97,6 +97,17 @@ Dieses Update fügt eine Wissensdatenbank für Workspace und Projekte hinzu, mit
 
 </Update>
 
+<Update label="19. August 2026" description="Wöchentliches Release">
+
+Dieses Update holt zwei Fixes zur Wissensdatenbank vom 19. August nach, die im ursprünglichen Durchlauf übersehen wurden.
+
+## Fixes
+
+- **Behebt, dass das „Gilt für"-Dropdown in der Wissensdatenbank bei Workspace-Admins manchmal leer aufging, statt jedes von ihnen verwaltete Projekt aufzulisten** — einschließlich des Projekts, in dem der Admin sich beim Öffnen gerade befand. Beim Ablegen eines Dokuments in einem Projekt wird jetzt zusätzlich geprüft, ob das Projekt zum richtigen Workspace gehört, sodass kein Projekt aus dem falschen Workspace mehr ausgewählt werden kann. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank).
+- **Behebt, dass Genie AI in einem Workspace ohne abgelegte Dokumente sagte, sie könne bei der Wissensdatenbank nicht helfen.** Sie erkennt die Funktion jetzt von Anfang an und kann das erste Dokument hinzufügen.
+
+</Update>
+
 <Update label="18. August 2026" description="Wöchentliches Release">
 
 Dieses Update platziert Genies Vorschlag für den nächsten Schritt direkt über deinem Eingabefeld, sobald ein Build fertig ist, lässt Genie AI bei einer mehrdeutigen Anfrage lieber nachfragen statt zu raten, fügt Excel-Tabellen als Anhang hinzu und macht das Projekt-Gedächtnis für externe MCP-Clients verfügbar.
