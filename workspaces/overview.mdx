@@ -119,6 +119,14 @@ Ask "does this look right?" or "why did my app just throw an error?" and the wor
 
 Ask "how does checkout work in my app?" and Genie AI now reads the real code behind its answer instead of guessing from file and function names — so it describes what your code actually does, not just what its name suggests.
 
+### Genie AI can search the web
+
+When a question isn't answered by Genie's own knowledge or your workspace — a third-party API's current behavior, a competitor, a price Genie can't otherwise know — Genie AI now runs a live web search, or reads a specific page you point it to, instead of guessing or answering from what it already knew at training time.
+
+<Note>
+Genie AI treats fetched page content as untrusted — it reads it for the answer, but won't follow instructions that happen to be written on the page.
+</Note>
+
 ### Genie tells you when it notices something wrong
 
 Genie watches your live preview for real problems — a crash, a thrown error, something logged as broken — and raises a calm alert right above the Genie AI composer: "Genie noticed something in your app," together with a plain-language explanation instead of a raw error message. There's one action, **Fix with Genie AI**, which hands the issue straight into your conversation so Genie can check the actual logs — and ask a question if it needs one — before proposing a fix, rather than guessing from the error text alone.
