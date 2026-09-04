@@ -4,6 +4,18 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="September 3, 2026" description="Weekly release">
+
+This update tells you plainly when Genie's AI provider is just busy instead of showing a generic error, brings the build preview-refresh control to workspace projects where it was unreachable, and fixes dates written in German format sometimes being saved wrong in your Genie Cloud database.
+
+## Fixes
+
+- **Fixed workspace chat showing a generic "Something went wrong" message when Genie's AI provider was only temporarily overloaded.** It now says so plainly and keeps the **Retry** button live for that case, instead of reading like a bug in your message or in Genie.
+- **Fixed the "See current version" preview-refresh button being unreachable on a workspace project.** It used to live only on the project chat, which is admin-only there; it's now also on Genie AI's own build card, with the same one-time auto-refresh once your build settles.
+- **Fixed dates written in German format (like 21.08.2026) sometimes being saved as the wrong date, or rejected outright, when Genie AI wrote data into your Genie Cloud database.** These are now read correctly before being stored.
+
+</Update>
+
 <Update label="September 2, 2026" description="Weekly release">
 
 This update makes an approved design mock-up's own picture reach your build, gives every choice card a way to type your own answer, and fixes workspace chat conversations that used web search sometimes getting permanently stuck after a reload.
