@@ -4,6 +4,16 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="4. September 2026" description="Wöchentliches Release">
+
+Dieses Update sorgt dafür, dass Genies Hinweis „etwas in deiner App" nicht mehr von einem Netzwerk-Aussetzer spricht, wenn der Fehler tatsächlich im Backend deines eigenen Projekts lag.
+
+## Fixes
+
+- **Behebt, dass der Hinweis „Genie hat etwas in deiner App bemerkt" einen Fehler als einmaligen Netzwerk-Aussetzer bezeichnete, obwohl die Anfrage tatsächlich an die Edge Function deines eigenen Projekts fehlgeschlagen war** — nicht deployed, beim Start abgestürzt oder ohne CORS-Header, was der Browser identisch zu einem echten Netzwerk-Aussetzer meldet, sich aber nicht durch Neuladen behebt. Genie AIs Übergabe-Prompt prüft jetzt die Funktion selbst, statt vorzuschlagen, die eigene Verbindung zu prüfen. Siehe [Genie sagt dir, wenn ihr etwas auffällt](/de/workspaces/overview#genie-sagt-dir-wenn-ihr-etwas-auffällt).
+
+</Update>
+
 <Update label="3. September 2026" description="Wöchentliches Release">
 
 Dieses Update sagt dir jetzt klar, wenn Genies KI-Anbieter nur ausgelastet ist, statt einen generischen Fehler zu zeigen, bringt den Vorschau-Refresh-Button auf Workspace-Projekte, wo er bisher nicht erreichbar war, und behebt, dass im deutschen Format geschriebene Daten manchmal falsch in deiner Genie-Cloud-Datenbank gespeichert wurden.
