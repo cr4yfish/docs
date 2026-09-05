@@ -4,6 +4,16 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="September 4, 2026" description="Weekly release">
+
+This update stops Genie's "something in your app" alert reassuring you about a network hiccup when the failure was actually your own project's backend.
+
+## Fixes
+
+- **Fixed the "Genie noticed something in your app" alert calling a failure a one-off network hiccup when the request had actually failed against your own project's Edge Function** — undeployed, crashed on boot, or missing a CORS header, which the browser reports identically to a real network blip but won't fix itself on reload. Genie AI's hand-off prompt now checks the function itself instead of suggesting you check your connection. See [Genie tells you when it notices something wrong](/workspaces/overview#genie-tells-you-when-it-notices-something-wrong).
+
+</Update>
+
 <Update label="September 3, 2026" description="Weekly release">
 
 This update tells you plainly when Genie's AI provider is just busy instead of showing a generic error, brings the build preview-refresh control to workspace projects where it was unreachable, and fixes dates written in German format sometimes being saved wrong in your Genie Cloud database.

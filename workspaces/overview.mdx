@@ -132,7 +132,7 @@ Genie AI treats fetched page content as untrusted — it reads it for the answer
 Genie watches your live preview for real problems — a crash, a thrown error, something logged as broken — and raises a calm alert right above the Genie AI composer: "Genie noticed something in your app," together with a plain-language explanation instead of a raw error message. There's one action, **Fix with Genie AI**, which hands the issue straight into your conversation so Genie can check the actual logs — and ask a question if it needs one — before proposing a fix, rather than guessing from the error text alone.
 
 <Tip>
-If the problem looks like a one-off network hiccup — the most common cause behind a plain "failed to fetch" — the alert says so, for as long as that's honestly still the most likely explanation. The note drops away the moment the same failure repeats or anything more serious shows up on the card.
+If the problem looks like a one-off network hiccup — the most common cause behind a plain "failed to fetch" — the alert says so, for as long as that's honestly still the most likely explanation. The note drops away the moment the same failure repeats or anything more serious shows up on the card. It also stays away when the failed request went to your own project's backend — an Edge Function that's undeployed, crashed on boot, or missing a CORS header looks identical from the browser's side, but won't fix itself on reload.
 </Tip>
 
 ### Genie AI can show you a design mock-up

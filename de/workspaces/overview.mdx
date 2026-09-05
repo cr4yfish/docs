@@ -132,7 +132,7 @@ Genie AI behandelt abgerufene Seiteninhalte als nicht vertrauenswürdig — sie 
 Genie beobachtet deine Live-Vorschau auf echte Probleme — einen Absturz, einen geworfenen Fehler, etwas, das als defekt protokolliert wurde — und zeigt direkt über dem Genie-AI-Eingabefeld einen ruhigen Hinweis: „Genie hat etwas in deiner App bemerkt", zusammen mit einer Erklärung in einfacher Sprache statt einer rohen Fehlermeldung. Es gibt eine Aktion, **Mit Genie AI beheben**, die das Problem direkt in deine Unterhaltung übergibt, damit Genie die tatsächlichen Logs prüfen kann — und bei Bedarf nachfragt — bevor eine Lösung vorgeschlagen wird, statt allein aus dem Fehlertext zu raten.
 
 <Tip>
-Sieht das Problem nach einem einmaligen Netzwerk-Aussetzer aus — der häufigsten Ursache hinter einem schlichten „failed to fetch" —, sagt der Hinweis das dazu, solange das ehrlich noch die wahrscheinlichste Erklärung ist. Die Anmerkung verschwindet, sobald sich derselbe Fehler wiederholt oder etwas Ernsteres auf der Karte auftaucht.
+Sieht das Problem nach einem einmaligen Netzwerk-Aussetzer aus — der häufigsten Ursache hinter einem schlichten „failed to fetch" —, sagt der Hinweis das dazu, solange das ehrlich noch die wahrscheinlichste Erklärung ist. Die Anmerkung verschwindet, sobald sich derselbe Fehler wiederholt oder etwas Ernsteres auf der Karte auftaucht. Sie bleibt auch aus, wenn die fehlgeschlagene Anfrage an das Backend deines eigenen Projekts ging — eine Edge Function, die nicht deployed ist, beim Start abstürzt oder einen CORS-Header vermissen lässt, sieht aus Sicht des Browsers identisch aus, behebt sich aber nicht durch Neuladen.
 </Tip>
 
 ### Genie AI kann dir ein Design-Mockup zeigen
