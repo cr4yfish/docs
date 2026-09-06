@@ -4,6 +4,24 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="5. September 2026" description="Wöchentliches Release">
+
+Dieses Update lässt benannte Dinge in einer von Genie gebauten App — ein Nutzer, eine Bestellung, ein Projekt — zu ihrer eigenen Seite oder ihren Details verlinken, und behebt ausgewaschenen Button-Text bei manchen Markenfarben sowie ein paar Kleinigkeiten im Workspace-Chat und bei Design-Mockups.
+
+## Updates
+
+- **Benannte Dinge in einer von Genie für dich gebauten App sind jetzt klickbar**, überall dort, wo die App eine eigene Seite oder einen Dialog dafür hat — ein Kunde in einer Bestellzeile, ein Nutzer auf einer Aufgabenkarte — statt als reiner, inaktiver Text zu erscheinen.
+- **Genie MCP Server: `generate_design_mock` verlangt jetzt eine Layout- und Farbrichtung, genau wie das In-App-Design-Mockup-Tool** — externe MCP-Clients hatten bisher keine Möglichkeit, beides vorzugeben, sodass die Richtung eines Mockups komplett dem Bildmodell überlassen blieb. `brief_design_mock_for_build` liefert jetzt außerdem einen fertigen, einfügbaren Design-Abschnitt zurück. Siehe [Genie MCP Server](/de/workspaces/mcp-api).
+
+## Fixes
+
+- **Behebt, dass ein mehrseitiges Design-Mockup eine leere Lücke für seine Seiten-Tabs offenließ, während die Seiten noch generiert wurden** — jetzt zeigt es für jede Seite einen passend großen Platzhalter-Tab, während sie entstehen.
+- **Behebt, dass manche mittelhellen Markenfarben beim Bitten, deine App einzufärben, ausgewaschenen schwarzen Button-Text bekamen** — Buttons in Farben wie einem Salbeigrün oder einem kräftigen Blau bekommen jetzt weißen Text, wo das besser lesbar ist, passend zur üblichen Design-Konvention, während zu helle Farben (wie ein blasses Gelb) unverändert bleiben.
+- **Behebt, dass einige Workspace-Chat-Karten deutschen Nutzern englischen „preparing…"-Text zeigten**, während ihre Details noch geladen wurden.
+- **Behebt, dass sich die eigenständige Workspace-Chat-Seite nur scrollen ließ, wenn der Cursor exakt über der Unterhaltung stand.**
+
+</Update>
+
 <Update label="4. September 2026" description="Wöchentliches Release">
 
 Dieses Update sorgt dafür, dass Genies Hinweis „etwas in deiner App" nicht mehr von einem Netzwerk-Aussetzer spricht, wenn der Fehler tatsächlich im Backend deines eigenen Projekts lag.

@@ -4,6 +4,24 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="September 5, 2026" description="Weekly release">
+
+This update makes named things in a Genie-built app — a user, an order, a project — link to their own page or details, and fixes washed-out button text on some brand colors along with a few workspace chat and design mock-up rough edges.
+
+## Updates
+
+- **Named things in an app Genie builds for you are now clickable**, wherever the app has its own page or dialog for them — a customer on an order row, a user on a task card — instead of being plain, inert text.
+- **Genie MCP Server: `generate_design_mock` now takes a layout and color direction, matching the in-app design mock-up tool** — external MCP clients previously had no way to steer either, so a mock-up's direction was left entirely to the image model. `brief_design_mock_for_build` also now returns a ready-to-paste design section. See [Genie MCP Server](/workspaces/mcp-api).
+
+## Fixes
+
+- **Fixed a multi-page design mock-up reserving an empty gap where its page tabs would go while the pages were still generating** — it now shows a placeholder tab for each page, sized to fit, while they paint.
+- **Fixed some medium-brightness brand colors getting washed-out black button text when you asked Genie to theme your app** — buttons on a color like a sage green or a bright blue now get white text where that reads better, matching common design convention, while colors too light for white text (like a pale yellow) are unaffected.
+- **Fixed a few workspace chat cards showing English "preparing…" text to German users** while their details were still loading in.
+- **Fixed the standalone workspace chat page not scrolling the conversation** unless your cursor was exactly over it.
+
+</Update>
+
 <Update label="September 4, 2026" description="Weekly release">
 
 This update stops Genie's "something in your app" alert reassuring you about a network hiccup when the failure was actually your own project's backend.
