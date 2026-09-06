@@ -320,11 +320,11 @@ Mirrors Genie AI's [design mock-up](/workspaces/overview#genie-ai-can-show-you-a
 
 | Tool | What it does |
 |---|---|
-| `generate_design_mock` | Generate a design mock-up round: screenshot (or reuse a previous mock-up/round), repaint it with the requested change, and return both images |
+| `generate_design_mock` | Generate a design mock-up round: screenshot (or reuse a previous mock-up/round), repaint it with the requested change plus a required layout and color direction, and return both images |
 | `list_design_mocks` | List a project's mock-up sessions, to pick a conversation back up |
 | `get_design_mock_round` | Re-fetch an earlier round's images |
 | `record_design_mock_feedback` | Store what the user said about a round, for the next round and later chats |
-| `brief_design_mock_for_build` | Turn an approved mock-up's change list into a build brief for `send_followup_prompt` |
+| `brief_design_mock_for_build` | Turn an approved mock-up's change list into a ready-to-paste design section for `send_followup_prompt` or `create_project` |
 
 ---
 
