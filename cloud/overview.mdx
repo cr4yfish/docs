@@ -24,6 +24,16 @@ Every app you build with Genie needs somewhere to store data, handle sign-ins, a
 
 Genie Cloud also includes **automatic backups** and usage tracking, so your data is always protected and you can monitor how your app is growing.
 
+## Connecting a new project to share data
+
+Sometimes a new app you build isn't really a separate product — it's another facet of the same one. A customer-facing storefront and an internal admin app for the same shop, or a public site and a companion staff app, usually need the same customers, the same sign-ins, and the same underlying data, rather than a second, empty copy of everything.
+
+When you start a new project that fits this pattern, Genie can connect it to an existing project's Genie Cloud backend instead of provisioning a fresh one. From that point on, both projects read and write the exact same tables, users, and files — effectively one shared backend behind two (or more) separate apps.
+
+Only the data is shared. Each connected app still deploys, scales, and is billed on its own — its own edge functions, its own URL, its own credit usage — so connecting two apps' data doesn't merge the apps themselves.
+
+Genie only offers this when it makes sense — for example, when a new project is clearly a companion to one you already have — and always explains the connection and asks you to confirm it before creating the project; it's never applied silently. This currently only works for a brand-new, empty project being connected at creation time — it isn't (yet) a way to merge two apps that already have their own separate data.
+
 ## Enabling Genie Cloud
 
 Genie Cloud is available on all paid plans. If your project does not have it enabled yet, you will see an **Enable Genie Cloud** button in the Cloud tab.

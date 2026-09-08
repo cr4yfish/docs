@@ -1,0 +1,92 @@
+---
+title: "Workflow apps: backend automations without a server"
+description: "Build backend automations that have no screen of their own — a database lookup, an AI step, a webhook — by describing what you want to Genie AI. Runs durably on Genie's platform, triggered by a schedule or an incoming request."
+---
+
+Most projects you build in Genie have a UI — pages someone opens and clicks around in. A **workflow app** is different: it's a small backend automation with no screen of its own. You give it a typed input, it runs a short sequence of steps, and it returns a typed output. Think "when this webhook fires, look something up in the database, ask the AI to draft a reply, and post it somewhere" — without needing to run your own server for it.
+
+<Note>
+  Workflow apps live in your **workspace**, not inside a single project — though a workflow can be bound to one of your projects when it needs that project's own database or custom backend code. See [Workspaces overview](/workspaces/overview).
+</Note>
+
+## What a workflow app is
+
+A workflow app is a short sequence of **steps**. Each step does one thing, and a later step can use an earlier step's result — for example, the AI step can use the email address the database step just looked up. You don't wire this up by hand: Genie figures out the order automatically from what you type.
+
+Five kinds of step are available today:
+
+| Step | What it does |
+|---|---|
+| **Database** | Runs one query against your workspace's Genie Cloud database |
+| **HTTP** | Calls an external URL — send a webhook, hit a third-party API |
+| **AI** | Asks Genie's AI to do something as one step in the flow — summarize, draft a message, make a decision |
+| **Edge function** | Runs one of your own project's custom backend functions, for real code or anything the other step kinds can't do |
+| **Another workflow app** | Calls a workflow app you've already built, so you can compose smaller flows into bigger ones |
+
+<Tip>
+  Need something none of these five cover on their own? Reach for an edge function step — it runs real code, so it can do anything a custom backend function can do.
+</Tip>
+
+## Build it by talking to Genie AI
+
+You configure a workflow app the same way you build everything else in Genie: by describing what you want to the workspace AI.
+
+- *"When a new row appears in my `orders` table, look up the customer's email and send them a thank-you note"*
+- *"Every hour, check my `signups` table for anything new and post a summary to my Slack webhook"*
+- *"Add a step that drafts a reply with AI before it sends the webhook"*
+
+Genie AI builds and edits the sequence of steps for you, and can run a **preview** first — a dry run that shows you what each step would do with no real side effects: no email actually sent, no request actually made, no query actually run. Use it (or ask Genie to use it) to check a new or changed workflow before you save it for real.
+
+## The visual editor
+
+If you'd rather see the steps laid out and adjust them by hand, open **Workspace → Workflows** and select an app to reach its editor — a canvas showing every step and how they connect. You can connect two steps by clicking one step's output and then the step that should use it, rename a step, or remove one.
+
+<Tip>
+  There's only ever one workflow behind the scenes, not two competing copies. Whatever you change on the canvas, Genie AI sees the next time you talk to it — and whatever Genie AI changes, the canvas reflects the next time you open it.
+</Tip>
+
+## Triggers
+
+A workflow app doesn't only run when you ask it to in chat. You can set it up to start on its own:
+
+- **On a schedule** — the same idea as [scheduled jobs](/cloud/scheduling): "run this every night at 2am."
+- **On an incoming webhook** — give an external service (like a form tool or a payment provider) a URL to call, and the workflow runs when a request arrives.
+- **Manually** — run it yourself, or have Genie AI run it, on demand.
+
+An app can hold more than one trigger at once — nightly *and* reachable by webhook, for example.
+
+<Tip>
+  Ask Genie AI things like *"run this workflow every Monday at 9am"* or *"give me a webhook URL that triggers this workflow"* — the same conversation that builds the workflow also sets up how it starts.
+</Tip>
+
+## Secrets stay out of the flow
+
+If a step needs an API key or another credential — an `Authorization` header for a webhook, say — it's stored securely, the same way project secrets are, and the step refers to it by name. The credential itself is never pasted into the flow or shown back to you (or to the AI) in plain text.
+
+## Billing
+
+An AI step draws credits the same way sending a message in chat does. Steps that don't call the AI — a database query, an HTTP request — don't consume AI credits.
+
+## Where to find it
+
+Open **Workspace → Workflows** in the sidebar to see every workflow app in your workspace: whether it's active, when it last ran, and what happened. Select one to open its visual editor.
+
+## Limits
+
+- Up to **25 steps** per workflow.
+- A scheduled workflow is checked for its next run at least every 10 minutes, so schedules finer than that aren't meaningful — Genie won't accept one.
+- A workflow that calls another workflow app has a capped composition depth, so one can't be set up to call itself in a loop through others.
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Scheduled jobs" icon="clock" href="/cloud/scheduling">
+    Schedule a deployed edge function to run automatically on a recurring timer.
+  </Card>
+  <Card title="Genie Cloud database" icon="database" href="/cloud/database">
+    Learn about the database a workflow app's database step queries.
+  </Card>
+  <Card title="Workspaces overview" icon="house" href="/workspaces/overview">
+    Find your way around the workspace and its sidebar.
+  </Card>
+</CardGroup>

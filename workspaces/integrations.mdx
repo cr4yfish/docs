@@ -95,6 +95,12 @@ If the tool you need is not in the preset list, you can connect any MCP-compatib
   </Tab>
 </Tabs>
 
+## Shared vs. personal connections
+
+Most connectors are still one shared connection for the whole workspace — an admin connects it once, and every member's tools use that same credential, as described above. A few connectors need a personal account instead, because a shared credential wouldn't make sense there — an email or calendar connector like Outlook, for example, needs to reach each person's own mailbox rather than one shared inbox. For those, an admin still sets up the connector itself for the workspace, but each member then connects their own account from their side, and Genie's AI acts using that member's own connected account whenever it's that member talking to it, not a shared one.
+
+If you haven't connected your own account yet, that connector simply isn't available to you until you do — Genie never falls back to someone else's connected account. If someone leaves the workspace, their personal connection is removed along with their membership. Only you can see that your own account is connected in a way that exposes your credentials; admins can see whether a connector is connected or not, but never the credential itself, even for connectors you've personally connected.
+
 ## Manage connected servers
 
 Each connected server appears as a row in the **Connected servers** list. From the row you can:

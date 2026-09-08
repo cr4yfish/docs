@@ -4,6 +4,34 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="8. September 2026" description="Wöchentliches Release">
+
+Deckt ab, was seit dem 5. September dazugekommen ist. Die Schlagzeile sind **Workflow-Apps** — eine neue Art von App für einen Workspace ganz ohne eigenen Bildschirm, nur ein Ablauf aus Schritten, der nach Zeitplan oder per Webhook läuft — dazu **API-Keys**, um mit Genie AI aus eigenem Code heraus zu sprechen, Projekte, die jetzt **ein gemeinsames Genie-Cloud-Backend teilen** können, sowie ein überarbeiteter Genie-AI-Chat mit deinem Verlauf in einer größenveränderbaren Seitenleiste und standardmäßig privaten Unterhaltungen.
+
+## Updates
+
+- **Workflow-Apps: eine neue Art von App ganz ohne eigenen Bildschirm.** Baue einen Ablauf aus Schritten — frag deine Genie-Cloud-Datenbank ab, ruf eine externe API auf, lass die KI etwas erledigen, führe eine der eigenen Backend-Funktionen deines Projekts aus oder ruf eine andere Workflow-App auf — konfiguriert, indem du Genie AI beschreibst, was du willst, mit einem visuellen Editor, falls du den Ablauf lieber selbst siehst und anpasst. Lass sie nach Zeitplan laufen oder per eingehendem Webhook auslösen. Siehe [Workflow-Apps](/de/workspaces/workflow-apps).
+- **Sprich mit Genie AI aus deinem eigenen Code heraus.** Workspaces können jetzt API-Keys ausstellen, damit ein Backend, ein Cron-Job oder ein Bot Nachrichten per HTTP an die Genie AI deines Workspaces schicken kann — abgerechnet über den Workspace, und eine echte Unterhaltung, die dein Team sehen und beantworten kann, kein separater Assistent. Siehe [Workspace-API-Keys](/de/workspaces/api-keys).
+- **Ein neues Projekt kann jetzt das Genie-Cloud-Backend eines bestehenden Projekts teilen**, statt mit einer leeren Datenbank zu starten — nützlich, wenn zwei Apps eigentlich Facetten desselben Produkts sind und dieselben Kunden und Daten sehen sollen. Jede App wird weiterhin einzeln deployt und abgerechnet; geteilt werden nur die Daten. Siehe [Genie Cloud](/de/cloud/overview).
+- **Der Genie-AI-Chatverlauf ist in die Workspace-Seitenleiste gewandert**, die du jetzt per Ziehen ihres Rands in der Breite anpassen kannst — bisher erschien er nur auf dem leeren Chat-Bildschirm, war auf wenige Zeilen begrenzt und verschwand, sobald du eine Nachricht abgeschickt hattest.
+- **Workspace-Chats sind jetzt standardmäßig privat.** Nur du kannst einen von dir gestarteten Chat lesen; gib ihn explizit für den Workspace frei, wenn Kolleg:innen ihn sehen oder weiterführen sollen sollen. Bisher war jeder Chat standardmäßig für das ganze Team sichtbar.
+- **Verknüpfte Anmeldungen.** Meldest du dich auf eine neue Art an — dein Unternehmen aktiviert SSO, oder du nutzt eine andere Anmeldemethode — und stimmt die verifizierte E-Mail-Adresse mit deinem bestehenden Konto überein, verknüpft Genie sie automatisch, statt ein verwirrendes leeres Duplikat-Konto anzulegen. Verwalte deine verknüpften Anmeldungen in den Kontoeinstellungen.
+- **Persönliche Verbindungen für persönliche Integrationen**, etwa ein Postfach: Ein Admin richtet den Connector weiterhin einmal für den Workspace ein, aber jedes Teammitglied verbindet sein eigenes Konto, und Genie handelt immer im Namen der Person, die gerade mit ihm spricht — nie mit der Verbindung einer anderen Person als Rückfalllösung. Siehe [Integrationen](/de/workspaces/integrations).
+- **Tabellenkalkulationen behalten ihre Formeln und Zellbezüge, wenn sie an Genie AI angehängt werden**, statt als flache Werte-Tabelle anzukommen — sodass „warum stimmt die Summe in D7 nicht?" jetzt beantwortbar ist. Große Arbeitsmappen (weit über 10 MB, bis in den Millionen-Zeilen-Bereich) werden jetzt ebenfalls unterstützt, und Apple-Numbers-Dateien funktionieren genauso wie `.xlsx`.
+- **Claude-Modelle (Anthropic) sind jetzt über Genies eingebautes KI-Relay verfügbar**, zusätzlich zu OpenAI, für den eigenen Backend-Code deines Projekts — kein separates Anthropic-Konto nötig. Siehe [Eingebaute KI](/de/cloud/ai-and-email).
+- **Das Workspace-Dashboard wurde überarbeitet**: ein bildschirmfüllender Hero-Bereich mit deinen Projekten darunter, ein stabiler Beispiel-Prompt statt einer Tipp-Animation, und Tab, um ihn zu übernehmen.
+- **Der Genie-AI-Chat folgt jetzt dem Theme deiner App**, statt immer dunkel zu erscheinen, und passt sich damit an, ob du hell- oder Dunkelmodus gewählt hast.
+
+## Fixes
+
+- **Behebt, dass die Deployment-Status-Pille im Genie-AI-Chat manchmal dauerhaft bei „wird gebaut" hängen blieb**, wenn ein Lauf nie zurückmeldete, dass er sich beruhigt hatte.
+- **Behebt, dass ein geplanter Job auf eine noch nicht deployte Edge Function zeigen konnte** — die Planung deployt jetzt zuerst die eigene Funktion des Laufs, falls sie noch nicht live ist, statt dass der Zeitplan stillschweigend nie auslöst.
+- **Behebt, dass die Bildgenerierung Anfragen mit einem von einem Modell nicht unterstützten Seitenverhältnis ablehnte** — Genie begrenzt oder korrigiert das Seitenverhältnis jetzt automatisch, statt die Anfrage scheitern zu lassen.
+- **Genie MCP Server: Ein Folge-Prompt an ein bereits im Bau befindliches Projekt wird jetzt automatisch eingereiht**, statt komplett zu scheitern — passend zum Verhalten, das die Web-App bereits zeigt. Siehe [Genie MCP Server](/de/workspaces/mcp-api).
+- **Behebt, dass der Wechsel zwischen Workspace-Seiten — Übersicht, Genie AI, Aktivitäten, Archiv, Einstellungen — bei jedem Klick eine bildschirmfüllende Lade-Animation zeigte**, am auffälligsten vom Dashboard aus; der Seitenwechsel in der Seitenleiste fühlt sich jetzt sofort an.
+
+</Update>
+
 <Update label="5. September 2026" description="Wöchentliches Release">
 
 Dieses Update lässt benannte Dinge in einer von Genie gebauten App — ein Nutzer, eine Bestellung, ein Projekt — zu ihrer eigenen Seite oder ihren Details verlinken, und behebt ausgewaschenen Button-Text bei manchen Markenfarben sowie ein paar Kleinigkeiten im Workspace-Chat und bei Design-Mockups.
