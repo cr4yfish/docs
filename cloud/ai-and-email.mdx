@@ -14,8 +14,8 @@ When your app needs to generate text with AI, create or edit an image, or send a
 When Genie Cloud is provisioned for your project, Genie automatically adds a set of ready-to-use credentials to your project [secrets](/projects/secrets). You do not have to create them, and you do not have to paste them anywhere — Genie's generated code reads them on its own.
 
 <CardGroup cols={2}>
-  <Card title="AI text (OpenAI)" icon="sparkles">
-    Generate text, summaries, chat replies, and other AI content — and read images or PDFs you give it. Backed by OpenAI through Genie.
+  <Card title="AI text (OpenAI & Anthropic)" icon="sparkles">
+    Generate text, summaries, chat replies, and other AI content — and read images or PDFs you give it. Backed by OpenAI or Anthropic's Claude models through Genie.
   </Card>
   <Card title="Image generation (Replicate)" icon="image">
     Generate an image from a prompt, or edit an existing image — for example, changing a photo's background or style. Ask for a logo or wordmark and Genie renders the actual requested lettering instead of leaving text out. Backed by Google's image model through Replicate.
@@ -33,11 +33,12 @@ These show up in your **Secrets** tab as the following entries, already filled i
 | Secret | What it powers |
 |---|---|
 | `OPENAI_API_KEY` | AI text generation |
+| `ANTHROPIC_API_KEY` | AI text generation (Claude models) |
 | `REPLICATE_API_TOKEN` | Image generation and editing |
 | `RESEND_API_KEY` | Sending email |
 | `HF_TOKEN` | Hugging Face model inference |
 
-You will also see matching `OPENAI_BASE_URL`, `REPLICATE_BASE_URL`, `RESEND_BASE_URL`, and `HF_ENDPOINT` entries. These tell your app to route requests through Genie. Leave them as they are unless you are switching to your own key (see [Bringing your own key](#bringing-your-own-key) below).
+You will also see matching `OPENAI_BASE_URL`, `ANTHROPIC_BASE_URL`, `REPLICATE_BASE_URL`, `RESEND_BASE_URL`, and `HF_ENDPOINT` entries. These tell your app to route requests through Genie. Leave them as they are unless you are switching to your own key (see [Bringing your own key](#bringing-your-own-key) below).
 
 <Tip>
   Just describe what you want — "summarise each support ticket", "generate a hero image of a sunset over mountains", "change the background of this photo to a beach", "design a wordmark logo that says Nova Studio", "answer questions about this uploaded PDF", "email me when someone submits the form" — and Genie builds the feature using these built-in credentials. You do not need to mention API keys at all.
@@ -45,11 +46,11 @@ You will also see matching `OPENAI_BASE_URL`, `REPLICATE_BASE_URL`, `RESEND_BASE
 
 ## How it works
 
-Your app never holds a real OpenAI, Replicate, or Resend key. Instead, the credentials Genie seeds are **project-specific access tokens** that point at Genie's secure relay. When your app makes a request:
+Your app never holds a real OpenAI, Anthropic, Replicate, or Resend key. Instead, the credentials Genie seeds are **project-specific access tokens** that point at Genie's secure relay. When your app makes a request:
 
 <Steps>
   <Step title="Your app calls the service">
-    Your generated code calls OpenAI, Replicate, Resend, or Hugging Face as normal, using the seeded credentials.
+    Your generated code calls OpenAI, Anthropic, Replicate, Resend, or Hugging Face as normal, using the seeded credentials.
   </Step>
   <Step title="Genie authenticates and forwards it">
     The request reaches Genie, which verifies it belongs to your project and then forwards it to the real provider using Genie's own provider key.
@@ -65,7 +66,7 @@ This design keeps the real provider keys on Genie's side — they are never plac
 
 Each request your app makes through the built-in credentials is **recorded** — provider, endpoint, status, and timing — so Genie can monitor the service and attribute usage to your project.
 
-**AI text (OpenAI) and image, video, or audio generation (Replicate) draw down your [credits](/billing/credits).** A successful request is billed using the same per-model rate your project chat is billed with, and appears in your ledger as `Genie proxy · <provider> · <model>`. Track your live app's usage under **Project Settings → Usage** — a day-by-day breakdown with a 7/30/90-day range toggle — or in your [account transaction history](/billing/credits#checking-your-current-usage).
+**AI text (OpenAI or Anthropic) and image, video, or audio generation (Replicate) draw down your [credits](/billing/credits).** A successful request is billed using the same per-model rate your project chat is billed with, and appears in your ledger as `Genie proxy · <provider> · <model>`. Track your live app's usage under **Project Settings → Usage** — a day-by-day breakdown with a 7/30/90-day range toggle — or in your [account transaction history](/billing/credits#checking-your-current-usage).
 
 Email (Resend) and Hugging Face inference are not metered yet and do not currently draw credits.
 
@@ -100,7 +101,9 @@ The included credentials are tuned for the common case — getting features work
 
 ### AI model
 
-The built-in OpenAI credential is limited to Genie's default model, which is selected to be fast and cost-effective for typical app features. If your app requests a different model, the request is rejected. To use a specific or more powerful model, [bring your own OpenAI key](#bringing-your-own-key).
+The built-in OpenAI credential is limited to Genie's default model, which is selected to be fast and cost-effective for typical app features. The built-in Anthropic credential works the same way, limited to Genie's default Claude model. If your app requests a different model, the request is rejected. To use a specific or more powerful model, [bring your own OpenAI or Anthropic key](#bringing-your-own-key).
+
+Some more powerful models — including certain Claude models — may be limited to certain plans or accounts, so don't assume every model is available to every project.
 
 ### Image model
 
@@ -126,13 +129,13 @@ You can replace any of the built-in credentials with your own at any time. This 
 
 <Steps>
   <Step title="Create a key with the provider">
-    Sign up with [OpenAI](https://platform.openai.com), [Replicate](https://replicate.com), [Resend](https://resend.com), or [Hugging Face](https://huggingface.co) and create an API key. For Resend, verify your sending domain in their dashboard first.
+    Sign up with [OpenAI](https://platform.openai.com), [Anthropic](https://console.anthropic.com), [Replicate](https://replicate.com), [Resend](https://resend.com), or [Hugging Face](https://huggingface.co) and create an API key. For Resend, verify your sending domain in their dashboard first.
   </Step>
   <Step title="Open your project Secrets">
     In your project, open **Settings → Secrets**. See [Secrets](/projects/secrets) for details.
   </Step>
   <Step title="Replace the value">
-    Edit the relevant secret — `OPENAI_API_KEY`, `REPLICATE_API_TOKEN`, `RESEND_API_KEY`, or `HF_TOKEN` — and paste your own key in place of the built-in one.
+    Edit the relevant secret — `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `REPLICATE_API_TOKEN`, `RESEND_API_KEY`, or `HF_TOKEN` — and paste your own key in place of the built-in one.
   </Step>
   <Step title="Save">
     Save the secret. Genie automatically updates the matching base-URL entry to point at the provider directly, so your app talks to the provider with your key instead of going through Genie's relay. No code changes are needed.
@@ -149,7 +152,7 @@ Once you have switched, requests for that provider go straight from your app to 
 
 | What you see | Likely cause | What to do |
 |---|---|---|
-| AI requests fail with an "invalid model" error | Your app asked for a model the built-in credential does not allow | Switch the feature to Genie's default model, or [bring your own OpenAI key](#bringing-your-own-key) |
+| AI requests fail with an "invalid model" error | Your app asked for a model the built-in credential does not allow | Switch the feature to Genie's default model, or [bring your own OpenAI or Anthropic key](#bringing-your-own-key) |
 | An image or PDF request is rejected with an unsupported-input error | The model your app requested isn't configured to accept that kind of input | Switch the feature to Genie's default model, which reads both, or [bring your own OpenAI key](#bringing-your-own-key) |
 | Image generation or editing fails with a model error | Your app asked for an image model outside the built-in Replicate allowlist | Switch the feature to a supported model, or [bring your own Replicate key](#bringing-your-own-key) |
 | Email is rejected with a sender/domain error | The app is sending from an address other than `noreply@email.genie-app.de` | Use the built-in sender address, or bring your own Resend key with a verified domain |

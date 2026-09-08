@@ -1,0 +1,99 @@
+---
+title: "Workspace-API-Schlüssel: mit Genie AI aus eigenem Code sprechen"
+description: "Erstelle Bearer-Token-API-Schlüssel, damit deine eigenen Skripte, Backends und Bots per HTTP mit der Genie AI deines Workspaces sprechen können — abgerechnet über den Workspace, mit demselben Verlauf und denselben Berechtigungen wie eine Person."
+---
+
+Ein Workspace kann API-Schlüssel erstellen, mit denen deine eigene Software per HTTP mit **Genie AI** — der Chat-Assistentin deines Workspaces — sprechen kann, außerhalb der Genie-Web-App. Nutze das, um Genie AI in ein Backend, einen Cron-Job, einen CI-Schritt oder einen Support-Bot einzubinden, ohne dass eine Person im Chatfenster sitzt.
+
+<Note>
+  Alles, was ein API-Schlüssel verbraucht, wird dem Workspace in Rechnung gestellt — genau wie jedes andere Genie-AI-Gespräch. Siehe [Credits](/de/billing/credits).
+</Note>
+
+## Wo Schlüssel verwaltet werden
+
+Gehe zu **Workspace → Einstellungen → API-Schlüssel**. Erstellen, Umbenennen, Neu-Skopieren und Widerrufen von Schlüsseln ist auf **Inhaber:innen und Admins** des Workspace beschränkt.
+
+Du kannst Schlüssel auch verwalten, indem du Genie AI direkt im Chat darum bittest — sie kann deine Schlüssel auflisten, einen neuen erstellen, einen bestehenden umbenennen oder neu skopieren und einen widerrufen, genauso wie über die Einstellungsseite:
+
+- *„Liste meine Workspace-API-Schlüssel auf"*
+- *„Erstelle einen API-Schlüssel für unseren Support-Bot"*
+- *„Widerrufe den Schlüssel namens 'nightly-sync'"*
+
+## Es ist ein echtes Gespräch, keine zweite Assistentin
+
+Eine über die API gesendete Nachricht startet oder setzt einen ganz normalen Workspace-Chat fort — es gibt keine separate, parallele Version von Genie AI, die nur API-Aufrufer sehen. Das bedeutet:
+
+- Das Gespräch erscheint in der Workspace-Chat-Oberfläche wie jedes andere auch.
+- Ein Teammitglied kann es öffnen, lesen und selbst darauf antworten.
+- Genie AI kann es später durchsuchen, genau wie jedes andere Gespräch.
+- Es folgt denselben [Workspace-PII-Regeln](/de/workspaces/pii-rules) wie eine im Browser eingegebene Nachricht — eine auf Blockieren gesetzte Regel blockiert auch einen maschinellen Aufrufer.
+
+## Der Aufrufer speichert keinen Zustand
+
+Deine Integration muss keinen Gesprächsverlauf speichern oder erneut senden. Sende eine Nachricht — Genie behält den Gesprächsverlauf auf der Workspace-Seite.
+
+<Steps>
+  <Step title="Nachricht senden">
+    ```bash
+    curl https://www.genie-app.de/api/genie/v1/chat \
+      -H "Authorization: Bearer gnw_..." \
+      -H "Content-Type: application/json" \
+      -d '{"message": "Was hat das Team letzte Woche released?"}'
+    ```
+
+    ```json
+    {
+      "conversationId": "c_8f2a1b...",
+      "text": "Letzte Woche hat das Team...",
+      "usage": { "credits": 1.2 }
+    }
+    ```
+
+    Die Antwort enthält die Gespräch-ID zusätzlich in einem `x-genie-conversation-id`-Header.
+  </Step>
+  <Step title="Fortsetzen (optional)">
+    Gib dieselbe `conversationId` bei deiner nächsten Anfrage zurück, um dieses Gespräch fortzusetzen. Lässt du sie weg, startet Genie ein neues Gespräch.
+  </Step>
+</Steps>
+
+| Endpunkt | Was er tut |
+|---|---|
+| `POST /api/genie/v1/chat` | Eine Nachricht senden und eine Antwort erhalten (oder einen Stream — siehe unten) |
+| `GET /api/genie/v1/conversations/{id}` | Das vollständige Transkript eines Gesprächs zurücklesen, das über die API gestartet wurde |
+| `GET /api/genie/v1/usage` | Sehen, was ein bestimmter Schlüssel verbraucht hat |
+
+<Tip>
+  Du musst die Gespräch-ID nicht einmal speichern. Jedes Gespräch ist auch über die Workspace-Chat-Oberfläche lesbar und kann von Genie AI auf Nachfrage nachgeschlagen werden.
+</Tip>
+
+### Streaming
+
+Wenn deine Integration die Antwort anzeigen möchte, während sie generiert wird, statt auf die vollständige Antwort zu warten, gib `"stream": true` im Request-Body an. Genie antwortet dann mit einem Server-Sent-Events-(SSE)-Stream statt einem einzelnen JSON-Payload.
+
+## Der Zugangsschlüssel
+
+Ein API-Schlüssel sieht aus wie `gnw_...` und wird dir **nur einmal** angezeigt — im Moment der Erstellung, im Dialog der Einstellungsseite oder in Genie AIs Antwort, wenn du sie gebeten hast, den Schlüssel für dich zu erstellen. Kopiere ihn sofort an einen sicheren Ort — verlierst du ihn, gibt es keine Möglichkeit, ihn erneut abzurufen, und du musst einen neuen Schlüssel erstellen.
+
+<Warning>
+  Behandle einen Workspace-API-Schlüssel wie ein Passwort. Committe ihn niemals in die Versionsverwaltung und füge ihn nirgendwo ein, wo er offengelegt werden könnte — wer ihn besitzt, kann in deinem Workspace als Genie AI agieren. Dein Schlüssel selbst wird von Genie nie im Klartext gespeichert, nur ein Einweg-Hash — selbst Genie kann ihn dir nach der Erstellung nicht erneut anzeigen.
+</Warning>
+
+## Sicherheit
+
+- Ein Schlüssel funktioniert nur, solange seine Ersteller:in noch Mitglied des Workspace ist. Wird sie aus dem Workspace entfernt, funktionieren ihre Schlüssel sofort nicht mehr.
+- Ein Schlüssel kann nie mehr tun, als die Person, die ihn erstellt hat, tun könnte — er ist ein Zugangsschlüssel, um *als sie* zu handeln, keine eigenständige Identität mit eigenen Berechtigungen.
+- Nur Inhaber:innen und Admins können Schlüssel erstellen, umbenennen, neu skopieren oder widerrufen — egal ob über die Einstellungsseite oder durch eine Anfrage an Genie AI.
+
+## Verwandte Seiten
+
+<CardGroup cols={2}>
+  <Card title="Workspaces-Übersicht" icon="building-2" href="/de/workspaces/overview">
+    Erfahre, was ein Workspace ist und wie Genie AI hineinpasst.
+  </Card>
+  <Card title="Genie MCP Server" icon="plug" href="/de/workspaces/mcp-api">
+    Eine viel breitere Tool-Oberfläche zur programmgesteuerten Verwaltung deines gesamten Workspace, statt nur mit Genie AI zu chatten.
+  </Card>
+  <Card title="Credits" icon="credit-card" href="/de/billing/credits">
+    Verstehe, wie Credit-Verbrauch und Abrechnung funktionieren.
+  </Card>
+</CardGroup>

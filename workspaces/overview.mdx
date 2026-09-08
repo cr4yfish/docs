@@ -50,6 +50,9 @@ The left sidebar is the primary navigation hub for your workspace.
   <Card title="Knowledge" icon="book-open">
     The workspace's knowledge base. See [Knowledge base](#knowledge-base).
   </Card>
+  <Card title="Workflows" icon="workflow">
+    Every [workflow app](/workspaces/workflow-apps) in the workspace — backend automations with no screen of their own.
+  </Card>
   <Card title="Settings" icon="settings">
     A collapsible sub-list at the bottom of the sidebar: General, Members & Roles, Integrations, PII Detection, and — for admins and owners — Activities and (on a billing-enabled workspace) Billing.
   </Card>
@@ -157,7 +160,7 @@ Ask for something like "yellow buttons and a navy navbar" and Genie AI applies b
 
 ### Attachments carry into your build
 
-Attach an image or PDF to your message when asking the workspace AI to create or update a project — a mockup, a reference photo — and the file itself goes into that build, not just a text description of it. Beyond images and PDFs, you can attach plain text, Markdown, CSV, JSON, Word documents, and Excel spreadsheets too — spreadsheet contents come through to Genie as a table — and an iPhone HEIC photo is converted automatically so its preview displays correctly.
+Attach an image or PDF to your message when asking the workspace AI to create or update a project — a mockup, a reference photo — and the file itself goes into that build, not just a text description of it. Beyond images and PDFs, you can attach plain text, Markdown, CSV, JSON, Word documents, and spreadsheets too — Excel workbooks and Apple Numbers files both come through with their cell references and formulas intact, not just the calculated values — and an iPhone HEIC photo is converted automatically so its preview displays correctly.
 
 Before you send, click any attachment chip to check exactly what Genie will see: an image opens in a lightbox you can page through, an uploaded PDF opens in a new tab, and a document shows the exact text that will be sent, its length, and whether it was clipped.
 
@@ -224,9 +227,9 @@ Ask Genie AI things like *"file our brand guidelines as a knowledge document"* o
 
 Don't want to type your prompt? Tap the microphone icon in any Genie chat composer, or next to the **Get started** button on the workspace dashboard, to dictate instead. Your words appear in the composer as you speak, rather than arriving all at once when you stop, and dictation recognizes Genie- and product-specific terms — like "Genie Cloud" or "MCP" — instead of mishearing them. The microphone stays available even after you've started typing, and even while a response is still streaming in or an earlier conversation is still loading, so you can dictate a correction or an addition onto a draft without clearing the box first; tap it again to stop recording, or it stops on its own after five minutes. Genie transcribes what you said so you can review or edit it before sending — nothing is submitted automatically. Voice input is available in the workspace chat, a project's chat panel, the workspace dashboard, and the command palette's **Ask Genie**, on any browser that supports microphone recording.
 
-### Workspace chats are shared with your team
+### Workspace chats are private by default
 
-Any conversation with the workspace AI belongs to the whole workspace, not just the person who started it. If a teammate shares a link to their own Genie AI conversation, opening it now works for anyone else in the workspace — instead of a "not found" error. Browsing your **Recent chats** still only shows your own conversations by default, so this doesn't flood your list with everyone else's threads. Workspace admins can also open, rename, or delete any conversation in the workspace, so support can pick up a stuck conversation without you having to reproduce it for them.
+A conversation with the workspace AI is visible only to the person who started it — nobody else in the workspace, including admins, can open or write to it by default. To bring a teammate into a conversation, share it with the workspace from the chat; once shared, every member can read and reply to it. Browsing your **Recent chats** still only shows your own conversations by default, whether or not you've shared any of them, so this doesn't flood your list with everyone else's threads. If you ever need help from Genie support with a conversation, they can access it to assist you, even if it hasn't been shared.
 
 ### The command palette
 

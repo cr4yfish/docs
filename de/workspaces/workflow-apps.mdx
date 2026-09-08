@@ -1,0 +1,92 @@
+---
+title: "Workflow-Apps: Backend-Automatisierungen ohne eigenen Server"
+description: "Baue Backend-Automatisierungen ohne eigene Oberfläche — eine Datenbankabfrage, ein KI-Schritt, ein Webhook — indem du Genie AI beschreibst, was du möchtest. Läuft dauerhaft auf der Genie-Plattform, ausgelöst per Zeitplan oder eingehender Anfrage."
+---
+
+Die meisten Projekte, die du in Genie baust, haben eine Oberfläche — Seiten, die jemand öffnet und durchklickt. Eine **Workflow-App** ist anders: Sie ist eine kleine Backend-Automatisierung ohne eigene Oberfläche. Du gibst ihr eine typisierte Eingabe, sie durchläuft eine kurze Abfolge von Schritten und liefert eine typisierte Ausgabe zurück. Denk an: „Wenn dieser Webhook auslöst, schau in der Datenbank nach, lass die KI eine Antwort entwerfen und poste sie irgendwo" — ganz ohne einen eigenen Server dafür zu betreiben.
+
+<Note>
+  Workflow-Apps gehören zu deinem **Workspace**, nicht zu einem einzelnen Projekt — eine Workflow-App kann aber an eines deiner Projekte gebunden werden, wenn sie dessen eigene Datenbank oder eigenen Backend-Code braucht. Siehe [Workspaces-Übersicht](/de/workspaces/overview).
+</Note>
+
+## Was eine Workflow-App ist
+
+Eine Workflow-App ist eine kurze Abfolge von **Schritten**. Jeder Schritt erledigt eine Sache, und ein späterer Schritt kann das Ergebnis eines früheren nutzen — zum Beispiel kann der KI-Schritt die E-Mail-Adresse verwenden, die der Datenbank-Schritt gerade nachgeschlagen hat. Das musst du nicht selbst verdrahten: Genie ermittelt die Reihenfolge automatisch aus dem, was du eingibst.
+
+Aktuell stehen fünf Arten von Schritten zur Verfügung:
+
+| Schritt | Was er tut |
+|---|---|
+| **Datenbank** | Führt eine Abfrage gegen die Genie-Cloud-Datenbank deines Workspaces aus |
+| **HTTP** | Ruft eine externe URL auf — sendet einen Webhook, spricht eine externe API an |
+| **KI** | Bittet Genies KI, als ein Schritt im Ablauf etwas zu erledigen — zusammenfassen, einen Text entwerfen, eine Entscheidung treffen |
+| **Edge Function** | Führt eine deiner eigenen individuellen Backend-Funktionen aus einem Projekt aus, für echten Code oder alles, was die anderen Schritte nicht können |
+| **Andere Workflow-App** | Ruft eine Workflow-App auf, die du bereits gebaut hast, sodass du kleinere Abläufe zu größeren zusammensetzen kannst |
+
+<Tip>
+  Brauchst du etwas, das diese fünf allein nicht abdecken? Greif zu einem Edge-Function-Schritt — er führt echten Code aus und kann daher alles, was eine individuelle Backend-Funktion kann.
+</Tip>
+
+## Bauen, indem du mit Genie AI sprichst
+
+Du konfigurierst eine Workflow-App genauso wie alles andere in Genie: indem du der Workspace-KI beschreibst, was du möchtest.
+
+- „Wenn eine neue Zeile in meiner Tabelle `orders` erscheint, schau die E-Mail-Adresse der Kundin oder des Kunden nach und sende ihr oder ihm eine Dankesnachricht"
+- „Prüfe jede Stunde meine Tabelle `signups` auf Neues und poste eine Zusammenfassung an meinen Slack-Webhook"
+- „Füge einen Schritt hinzu, der eine Antwort mit KI entwirft, bevor der Webhook gesendet wird"
+
+Genie AI baut und bearbeitet die Schrittfolge für dich und kann zuerst eine **Vorschau** ausführen — einen Testlauf, der zeigt, was jeder Schritt tun würde, ganz ohne echte Nebeneffekte: keine wirklich versendete E-Mail, keine wirklich gesendete Anfrage, keine wirklich ausgeführte Abfrage. Nutze sie (oder lass Genie sie nutzen), um eine neue oder geänderte Workflow-App zu prüfen, bevor du sie endgültig speicherst.
+
+## Der visuelle Editor
+
+Wenn du die Schritte lieber angeordnet siehst und von Hand anpassen möchtest, öffne **Workspace → Workflows** und wähle eine App aus, um zu ihrem Editor zu gelangen — eine Arbeitsfläche, die jeden Schritt und seine Verbindungen zeigt. Du kannst zwei Schritte verbinden, indem du auf die Ausgabe des einen und dann auf den Schritt klickst, der sie nutzen soll, einen Schritt umbenennen oder entfernen.
+
+<Tip>
+  Im Hintergrund gibt es immer nur einen Workflow, nicht zwei konkurrierende Kopien. Was auch immer du auf der Arbeitsfläche änderst, sieht Genie AI beim nächsten Gespräch mit dir — und was Genie AI ändert, zeigt die Arbeitsfläche beim nächsten Öffnen.
+</Tip>
+
+## Auslöser
+
+Eine Workflow-App läuft nicht nur, wenn du sie im Chat dazu aufforderst. Du kannst sie so einrichten, dass sie von selbst startet:
+
+- **Nach Zeitplan** — dieselbe Idee wie bei [geplanten Jobs](/de/cloud/scheduling): „Führe das jede Nacht um 2 Uhr aus."
+- **Über einen eingehenden Webhook** — gib einem externen Dienst (z. B. einem Formular-Tool oder Zahlungsanbieter) eine URL, die er aufrufen kann, und die Workflow-App läuft, sobald eine Anfrage eintrifft.
+- **Manuell** — führe sie selbst aus, oder lass Genie AI sie bei Bedarf ausführen.
+
+Eine App kann mehrere Auslöser gleichzeitig haben — zum Beispiel nächtlich *und* über einen Webhook erreichbar.
+
+<Tip>
+  Bitte Genie AI zum Beispiel: „Führe diese Workflow-App jeden Montag um 9 Uhr aus" oder „Gib mir eine Webhook-URL, die diese Workflow-App auslöst" — dasselbe Gespräch, das die Workflow-App baut, richtet auch ein, wie sie startet.
+</Tip>
+
+## Geheimnisse bleiben aus dem Ablauf heraus
+
+Wenn ein Schritt einen API-Schlüssel oder ein anderes Zugangsdatum braucht — etwa einen `Authorization`-Header für einen Webhook —, wird es sicher gespeichert, genau wie Projekt-Geheimnisse, und der Schritt verweist nur namentlich darauf. Das Zugangsdatum selbst wird nie im Klartext in den Ablauf eingefügt oder dir (oder der KI) angezeigt.
+
+## Abrechnung
+
+Ein KI-Schritt verbraucht Credits genauso wie eine Nachricht im Chat. Schritte, die keine KI aufrufen — eine Datenbankabfrage, eine HTTP-Anfrage — verbrauchen keine KI-Credits.
+
+## Wo du sie findest
+
+Öffne **Workspace → Workflows** in der Seitenleiste, um alle Workflow-Apps in deinem Workspace zu sehen: ob sie aktiv sind, wann sie zuletzt gelaufen sind und was dabei passiert ist. Wähle eine aus, um ihren visuellen Editor zu öffnen.
+
+## Grenzen
+
+- Bis zu **25 Schritte** pro Workflow-App.
+- Eine geplante Workflow-App wird mindestens alle 10 Minuten auf ihren nächsten Lauf geprüft — ein feinerer Zeitplan als das ist daher nicht sinnvoll, Genie akzeptiert keinen solchen.
+- Eine Workflow-App, die eine andere Workflow-App aufruft, hat eine begrenzte Verschachtelungstiefe, damit keine sich über andere selbst in einer Schleife aufruft.
+
+## Verwandte Seiten
+
+<CardGroup cols={2}>
+  <Card title="Geplante Jobs" icon="clock" href="/de/cloud/scheduling">
+    Plane eine bereitgestellte Edge Function so, dass sie automatisch nach einem wiederkehrenden Zeitplan läuft.
+  </Card>
+  <Card title="Genie-Cloud-Datenbank" icon="database" href="/de/cloud/database">
+    Erfahre mehr über die Datenbank, die der Datenbank-Schritt einer Workflow-App abfragt.
+  </Card>
+  <Card title="Workspaces-Übersicht" icon="house" href="/de/workspaces/overview">
+    Finde dich im Workspace und seiner Seitenleiste zurecht.
+  </Card>
+</CardGroup>

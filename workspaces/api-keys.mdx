@@ -1,0 +1,99 @@
+---
+title: "Workspace API keys: talk to Genie AI from your own code"
+description: "Create bearer-token API keys so your own scripts, backends, and bots can send messages to your workspace's Genie AI over HTTP — billed to the workspace, with the same history and permissions as a person."
+---
+
+A workspace can mint API keys that let your own software talk to **Genie AI** — your workspace's conversational assistant — over HTTP, from outside the Genie web app. Use it to wire Genie AI into a backend service, a cron job, a CI step, or a support bot, without a person sitting in the chat window.
+
+<Note>
+  Everything an API key spends is billed to the workspace, the same as any other Genie AI conversation. See [Credits](/billing/credits).
+</Note>
+
+## Where to manage keys
+
+Go to **Workspace → Settings → API keys**. Creating, renaming, rescoping, and revoking keys is restricted to workspace **owners and admins**.
+
+You can also manage keys by asking Genie AI directly in chat — it can list your keys, create a new one, rename or rescope an existing one, and revoke one, the same as using the settings page:
+
+- *"List my workspace API keys"*
+- *"Create an API key for our support bot"*
+- *"Revoke the key named 'nightly-sync'"*
+
+## It's a real conversation, not a second assistant
+
+A message sent through the API starts or continues an ordinary workspace chat — there is no separate, parallel version of Genie AI that only API callers see. That means:
+
+- The conversation shows up in the workspace chat UI like any other.
+- A teammate can open it, read it, and reply to it themselves.
+- Genie AI can search it later, the same as any other conversation.
+- It follows the same [workspace PII rules](/workspaces/pii-rules) as a message typed in the browser — a rule set to block still blocks a machine caller.
+
+## The caller holds no state
+
+Your integration doesn't need to store or replay a transcript. Send one message; Genie keeps the conversation history on the workspace side.
+
+<Steps>
+  <Step title="Send a message">
+    ```bash
+    curl https://www.genie-app.de/api/genie/v1/chat \
+      -H "Authorization: Bearer gnw_..." \
+      -H "Content-Type: application/json" \
+      -d '{"message": "What did the team ship last week?"}'
+    ```
+
+    ```json
+    {
+      "conversationId": "c_8f2a1b...",
+      "text": "Last week the team shipped...",
+      "usage": { "credits": 1.2 }
+    }
+    ```
+
+    The response also carries the conversation ID in an `x-genie-conversation-id` header.
+  </Step>
+  <Step title="Continue it (optional)">
+    Pass the same `conversationId` back on your next request to continue that thread. Leave it out and Genie starts a new conversation.
+  </Step>
+</Steps>
+
+| Endpoint | What it does |
+|---|---|
+| `POST /api/genie/v1/chat` | Send one message and get one answer (or a stream — see below) |
+| `GET /api/genie/v1/conversations/{id}` | Read back the full transcript of a conversation the API started |
+| `GET /api/genie/v1/usage` | See what a given key has spent |
+
+<Tip>
+  You don't have to keep the conversation ID at all. Every conversation is also readable from the workspace chat UI and by asking Genie AI to look it up.
+</Tip>
+
+### Streaming
+
+If your integration wants to render the answer as it's generated instead of waiting for the full response, pass `"stream": true` in the request body. Genie responds with a server-sent events (SSE) stream instead of a single JSON payload.
+
+## The credential
+
+An API key looks like `gnw_...` and is shown to you **only once**, at the moment you create it — in the settings page dialog, or in Genie AI's reply if you asked it to create the key for you. Copy it somewhere safe immediately; if you lose it, there's no way to retrieve it again and you'll need to create a new key.
+
+<Warning>
+  Treat a workspace API key like a password. Never commit it to source control or paste it somewhere it could be exposed — anyone holding it can act as Genie AI in your workspace. Your key itself is never stored in plaintext by Genie, only a one-way hash, so even Genie can't show it to you again after creation.
+</Warning>
+
+## Security
+
+- A key only works for as long as its creator is still a member of the workspace. If they're removed from the workspace, their keys stop working immediately.
+- A key can never do more than the person who created it could do — it's a credential for acting *as* them, not a separate identity with its own permissions.
+- Only owners and admins can create, rename, rescope, or revoke keys, whether from the settings page or by asking Genie AI.
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Workspaces overview" icon="building-2" href="/workspaces/overview">
+    See what a workspace is and how Genie AI fits into it.
+  </Card>
+  <Card title="Genie MCP Server" icon="plug" href="/workspaces/mcp-api">
+    A much broader tool surface for managing your whole workspace programmatically, rather than just chatting with Genie AI.
+  </Card>
+  <Card title="Credits" icon="credit-card" href="/billing/credits">
+    Understand how credit usage and billing work.
+  </Card>
+</CardGroup>
