@@ -15,7 +15,7 @@ When Genie Cloud is provisioned for your project, Genie automatically adds a set
 
 <CardGroup cols={2}>
   <Card title="AI text (OpenAI & Anthropic)" icon="sparkles">
-    Generate text, summaries, chat replies, and other AI content — and read images or PDFs you give it. Backed by OpenAI or Anthropic's Claude models through Genie.
+    Generate text, summaries, chat replies, and other AI content — and read images, PDFs, or spreadsheets you give it. Backed by OpenAI or Anthropic's Claude models through Genie.
   </Card>
   <Card title="Image generation (Replicate)" icon="image">
     Generate an image from a prompt, or edit an existing image — for example, changing a photo's background or style. Ask for a logo or wordmark and Genie renders the actual requested lettering instead of leaving text out. Backed by Google's image model through Replicate.
@@ -109,6 +109,12 @@ Some more powerful models — including certain Claude models — may be limited
 
 The built-in Replicate credential is limited to a small set of Genie-selected image models (Google's nano-banana family, used for both generating a new image and editing an existing one). If your app requests a model outside that set, the request is rejected. To use a different image model, [bring your own Replicate key](#bringing-your-own-key).
 
+### Spreadsheet attachments
+
+No AI model reads a `.xlsx` file directly, so when your app sends one as part of a built-in AI request, Genie automatically converts it to a plain-text table before it reaches the model — the same data, just in a format every model can already read. There's nothing to configure; this happens for every request through the built-in credential.
+
+Very large workbooks are trimmed so a request stays a reasonable size: up to 8 MB per file, 5 files per request, and the first 10 sheets (500 rows × 30 columns each) are included, with a note added where content had to be cut.
+
 ### Email sender address
 
 Email sent through the built-in Resend credential must use Genie's verified sending address:
@@ -154,6 +160,7 @@ Once you have switched, requests for that provider go straight from your app to 
 |---|---|---|
 | AI requests fail with an "invalid model" error | Your app asked for a model the built-in credential does not allow | Switch the feature to Genie's default model, or [bring your own OpenAI or Anthropic key](#bringing-your-own-key) |
 | An image or PDF request is rejected with an unsupported-input error | The model your app requested isn't configured to accept that kind of input | Switch the feature to Genie's default model, which reads both, or [bring your own OpenAI key](#bringing-your-own-key) |
+| A spreadsheet attachment is rejected instead of being read | The file isn't a valid `.xlsx` workbook, or it's over the size or sheet limits | Reduce the file to a supported size, or send its data as CSV or plain text instead |
 | Image generation or editing fails with a model error | Your app asked for an image model outside the built-in Replicate allowlist | Switch the feature to a supported model, or [bring your own Replicate key](#bringing-your-own-key) |
 | Email is rejected with a sender/domain error | The app is sending from an address other than `noreply@email.genie-app.de` | Use the built-in sender address, or bring your own Resend key with a verified domain |
 | A service stops working after you edited a secret | The built-in credential was changed or cleared by mistake | Re-run bootstrap from the **Cloud** tab to restore the built-in values, or paste a valid key of your own |

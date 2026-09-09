@@ -15,7 +15,7 @@ Wenn Genie Cloud für dein Projekt bereitgestellt wird, fügt Genie deinem Proje
 
 <CardGroup cols={2}>
   <Card title="KI-Text (OpenAI & Anthropic)" icon="sparkles">
-    Erzeuge Texte, Zusammenfassungen, Chat-Antworten und andere KI-Inhalte — und lies Bilder oder PDFs, die du ihr gibst. Bereitgestellt über OpenAI oder Anthropics Claude-Modelle via Genie.
+    Erzeuge Texte, Zusammenfassungen, Chat-Antworten und andere KI-Inhalte — und lies Bilder, PDFs oder Tabellen, die du ihr gibst. Bereitgestellt über OpenAI oder Anthropics Claude-Modelle via Genie.
   </Card>
   <Card title="Bilderzeugung (Replicate)" icon="image">
     Erzeuge ein Bild aus einem Prompt oder bearbeite ein vorhandenes Bild — zum Beispiel den Hintergrund oder Stil eines Fotos ändern. Frag nach einem Logo oder Schriftzug, und Genie rendert den tatsächlich gewünschten Schriftzug, statt Text wegzulassen. Bereitgestellt über Googles Bildmodell via Replicate.
@@ -109,6 +109,12 @@ Manche leistungsfähigeren Modelle — darunter bestimmte Claude-Modelle — sin
 
 Die eingebauten Replicate-Zugangsdaten sind auf eine kleine Auswahl von Genie-ausgewählten Bildmodellen beschränkt (Googles nano-banana-Familie, sowohl für die Erzeugung neuer Bilder als auch für die Bearbeitung vorhandener Bilder). Wenn deine App ein Modell außerhalb dieser Auswahl anfordert, wird die Anfrage abgelehnt. Um ein anderes Bildmodell zu nutzen, [verwende deinen eigenen Replicate-Schlüssel](#eigene-schl%C3%BCssel-verwenden).
 
+### Tabellen-Anhänge
+
+Kein KI-Modell liest eine `.xlsx`-Datei direkt, deshalb wandelt Genie sie automatisch in eine reine Text-Tabelle um, bevor sie im Rahmen einer eingebauten KI-Anfrage deiner App das Modell erreicht — dieselben Daten, nur in einem Format, das jedes Modell bereits lesen kann. Es gibt nichts einzurichten; das passiert bei jeder Anfrage über die eingebauten Zugangsdaten.
+
+Sehr große Arbeitsmappen werden gekürzt, damit eine Anfrage eine vernünftige Größe behält: bis zu 8 MB pro Datei, 5 Dateien pro Anfrage, und es werden die ersten 10 Tabellenblätter (je 500 Zeilen × 30 Spalten) einbezogen, mit einem Hinweis, wo Inhalt gekürzt werden musste.
+
 ### E-Mail-Absenderadresse
 
 E-Mails, die über die eingebauten Resend-Zugangsdaten versendet werden, müssen Genies verifizierte Absenderadresse verwenden:
@@ -154,6 +160,7 @@ Nach dem Wechsel gehen die Anfragen für diesen Anbieter direkt von deiner App z
 |---|---|---|
 | KI-Anfragen scheitern mit einem Fehler „ungültiges Modell" | Deine App hat ein Modell angefragt, das die eingebauten Zugangsdaten nicht erlauben | Stelle die Funktion auf Genies Standardmodell um oder [verwende deinen eigenen OpenAI- oder Anthropic-Schlüssel](#eigene-schl%C3%BCssel-verwenden) |
 | Eine Bild- oder PDF-Anfrage wird mit einem Fehler zu nicht unterstützter Eingabe abgelehnt | Das von deiner App angefragte Modell ist nicht dafür konfiguriert, diese Art von Eingabe zu akzeptieren | Stelle die Funktion auf Genies Standardmodell um, das beides liest, oder [verwende deinen eigenen OpenAI-Schlüssel](#eigene-schl%C3%BCssel-verwenden) |
+| Ein Tabellen-Anhang wird abgelehnt, statt gelesen zu werden | Die Datei ist keine gültige `.xlsx`-Arbeitsmappe oder überschreitet die Größen- oder Tabellenblatt-Grenzen | Verkleinere die Datei auf eine unterstützte Größe oder sende die Daten stattdessen als CSV oder reinen Text |
 | Bilderzeugung oder -bearbeitung scheitert mit einem Modell-Fehler | Deine App hat ein Bildmodell außerhalb der eingebauten Replicate-Allowlist angefragt | Stelle die Funktion auf ein unterstütztes Modell um oder [verwende deinen eigenen Replicate-Schlüssel](#eigene-schl%C3%BCssel-verwenden) |
 | E-Mail wird mit einem Absender-/Domain-Fehler abgelehnt | Die App sendet von einer anderen Adresse als `noreply@email.genie-app.de` | Verwende die eingebaute Absenderadresse oder deinen eigenen Resend-Schlüssel mit verifizierter Domain |
 | Ein Dienst funktioniert nach dem Bearbeiten eines Secrets nicht mehr | Die eingebauten Zugangsdaten wurden versehentlich geändert oder gelöscht | Führe im **Cloud**-Tab „Bootstrap erneut ausführen" aus, um die eingebauten Werte wiederherzustellen, oder füge einen gültigen eigenen Schlüssel ein |
