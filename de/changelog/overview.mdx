@@ -4,6 +4,28 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="9. September 2026" description="Wöchentliches Release">
+
+Deckt ab, was am 9. September dazukam. Die Schlagzeile ist ein überarbeiteter Workspace: eine einzige Einstellungs-Oberfläche statt zwei getrennter Bildschirme, benutzerdefinierte Rollen mit feingranularen Berechtigungen und eine vereinfachte Seitenleiste, die sich um deinen Chatverlauf dreht. Workflow-Apps haben außerdem einen öffentlichen Namen bekommen — **Genie Agents** — dazu einen schnelleren Weg, einen zu erstellen, und Steuerungen direkt in der Zeile.
+
+## Updates
+
+- **Workspace- und persönliche Einstellungen sind jetzt eine Oberfläche.** Bisher waren es zwei unabhängige Bildschirme — Workspace-Einstellungen innerhalb des Workspace, persönliche Einstellungen als nackte Seite ohne Weg zurück. Öffne beide über das Kontomenü unten in der Seitenleiste und du bekommst dieselbe Navigation, mit der jeweils anderen Hälfte immer einen Klick entfernt. Siehe [Kontoeinstellungen](/de/account/settings).
+- **Benutzerdefinierte Rollen.** Über die vier eingebauten Rollen hinaus können Owner und Admins jetzt benutzerdefinierte Rollen bauen, die genau eingrenzen, was eine Rolle darf — Abrechnungszugriff entfernen, Mitgliederverwaltung behalten, das Löschen von Projekten streichen — aus einem Katalog feingranularer Berechtigungen. Siehe [Benutzerdefinierte Rollen](/de/workspaces/members#custom-roles).
+- **Eine einfachere Workspace-Seitenleiste.** Dein Chatverlauf ist jetzt der Hauptinhalt der Seitenleiste, und die gerade geöffnete Unterhaltung markiert dort selbst ihren Platz — ein separater „Genie AI"-Eintrag ist nicht mehr nötig. Zieh den Rand der Seitenleiste, um sie in der Breite anzupassen oder auf reine Icons einzuklappen, und zieh ihn wieder heraus, um sie erneut zu öffnen.
+- **Die Befehlspalette (⌘K) hat eine optische Auffrischung bekommen** — eine übersichtlichere Ergebnisliste ohne die zusätzliche Seitenleiste, die sie bisher zeigte.
+- **Workflow-Apps heißen jetzt Genie Agents.** Du kannst einen jetzt direkt über die **Genie Agents**-Seite bauen — gib ihm einen Namen und einen ersten Schritt und du landest direkt im Editor, ohne ihn erst Genie AI zu beschreiben. Benenne einen Agenten über sein Zeilenmenü um, pausiere/setze ihn fort oder lösche ihn, und wechsle zwischen Karten- und Tabellenansicht deiner Agenten. Siehe [Genie Agents](/de/workspaces/workflow-apps).
+- **Microsoft 365 (Outlook, OneDrive, SharePoint) lässt sich jetzt verbinden** — als Workspace-Integration mit persönlicher, pro Mitglied getrennter Verbindung wie bei den anderen Postfach-artigen Connectoren. Siehe [Integrationen](/de/workspaces/integrations).
+- **Workspace-Chats zeigen jetzt einen echten Namen im Header** — den Titel, den du dem Chat gegeben hast, oder seine erste Nachricht — mit einer Möglichkeit, ihn umzubenennen und zu sehen, mit welchen Projekten er verbunden ist, statt dass jede offene Unterhaltung „Neuer Chat" heißt.
+
+## Fixes
+
+- **Behebt eine Build-Status-Prüfung, die bei einem länger laufenden Build in ein Timeout laufen konnte**, wodurch der Status hängen blieb, statt das tatsächliche Ergebnis zu zeigen.
+- **Behebt einen seltenen Fall, in dem die Antwort von Genie AI komplett scheitern konnte, wenn das Speichern ihres eigenen Live-Status-Updates fehlschlug**, obwohl die Antwort selbst bereits fertig war.
+- **Behebt, dass der Workspace-Chatverlauf deinen geöffneten Chat manchmal nicht ins Sichtfeld scrollte**, wenn er nach dem Rest der Liste nachgeladen wurde.
+
+</Update>
+
 <Update label="8. September 2026" description="Wöchentliches Release">
 
 Deckt ab, was seit dem 5. September dazugekommen ist. Die Schlagzeile sind **Workflow-Apps** — eine neue Art von App für einen Workspace ganz ohne eigenen Bildschirm, nur ein Ablauf aus Schritten, der nach Zeitplan oder per Webhook läuft — dazu **API-Keys**, um mit Genie AI aus eigenem Code heraus zu sprechen, Projekte, die jetzt **ein gemeinsames Genie-Cloud-Backend teilen** können, sowie ein überarbeiteter Genie-AI-Chat mit deinem Verlauf in einer größenveränderbaren Seitenleiste und standardmäßig privaten Unterhaltungen.

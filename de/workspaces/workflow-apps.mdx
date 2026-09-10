@@ -1,17 +1,17 @@
 ---
-title: "Workflow-Apps: Backend-Automatisierungen ohne eigenen Server"
-description: "Baue Backend-Automatisierungen ohne eigene Oberfläche — eine Datenbankabfrage, ein KI-Schritt, ein Webhook — indem du Genie AI beschreibst, was du möchtest. Läuft dauerhaft auf der Genie-Plattform, ausgelöst per Zeitplan oder eingehender Anfrage."
+title: "Genie Agents: Backend-Automatisierungen ohne eigenen Server"
+description: "Baue Backend-Automatisierungen ohne eigene Oberfläche — eine Datenbankabfrage, ein KI-Schritt, ein Webhook — indem du Genie AI beschreibst, was du möchtest, oder es selbst im visuellen Editor verdrahtest. Läuft dauerhaft auf der Genie-Plattform, ausgelöst per Zeitplan oder eingehender Anfrage."
 ---
 
-Die meisten Projekte, die du in Genie baust, haben eine Oberfläche — Seiten, die jemand öffnet und durchklickt. Eine **Workflow-App** ist anders: Sie ist eine kleine Backend-Automatisierung ohne eigene Oberfläche. Du gibst ihr eine typisierte Eingabe, sie durchläuft eine kurze Abfolge von Schritten und liefert eine typisierte Ausgabe zurück. Denk an: „Wenn dieser Webhook auslöst, schau in der Datenbank nach, lass die KI eine Antwort entwerfen und poste sie irgendwo" — ganz ohne einen eigenen Server dafür zu betreiben.
+Die meisten Projekte, die du in Genie baust, haben eine Oberfläche — Seiten, die jemand öffnet und durchklickt. Ein **Genie Agent** ist anders: Er ist eine kleine Backend-Automatisierung ohne eigene Oberfläche. Du gibst ihm eine typisierte Eingabe, er durchläuft eine kurze Abfolge von Schritten und liefert eine typisierte Ausgabe zurück. Denk an: „Wenn dieser Webhook auslöst, schau in der Datenbank nach, lass die KI eine Antwort entwerfen und poste sie irgendwo" — ganz ohne einen eigenen Server dafür zu betreiben.
 
 <Note>
-  Workflow-Apps gehören zu deinem **Workspace**, nicht zu einem einzelnen Projekt — eine Workflow-App kann aber an eines deiner Projekte gebunden werden, wenn sie dessen eigene Datenbank oder eigenen Backend-Code braucht. Siehe [Workspaces-Übersicht](/de/workspaces/overview).
+  Genie Agents gehören zu deinem **Workspace**, nicht zu einem einzelnen Projekt — ein Agent kann aber an eines deiner Projekte gebunden werden, wenn er dessen eigene Datenbank oder eigenen Backend-Code braucht. Siehe [Workspaces-Übersicht](/de/workspaces/overview). In der URL der Seitenleiste und an ein paar entwicklerseitigen Stellen heißen sie weiterhin „Workflows" — dasselbe Feature, dieselben Daten, nur der eine Name, den eine Person liest, und der andere, den ein Link verwendet.
 </Note>
 
-## Was eine Workflow-App ist
+## Was ein Genie Agent ist
 
-Eine Workflow-App ist eine kurze Abfolge von **Schritten**. Jeder Schritt erledigt eine Sache, und ein späterer Schritt kann das Ergebnis eines früheren nutzen — zum Beispiel kann der KI-Schritt die E-Mail-Adresse verwenden, die der Datenbank-Schritt gerade nachgeschlagen hat. Das musst du nicht selbst verdrahten: Genie ermittelt die Reihenfolge automatisch aus dem, was du eingibst.
+Ein Genie Agent ist eine kurze Abfolge von **Schritten**. Jeder Schritt erledigt eine Sache, und ein späterer Schritt kann das Ergebnis eines früheren nutzen — zum Beispiel kann der KI-Schritt die E-Mail-Adresse verwenden, die der Datenbank-Schritt gerade nachgeschlagen hat. Das musst du nicht selbst verdrahten: Genie ermittelt die Reihenfolge automatisch aus dem, was du eingibst.
 
 Aktuell stehen fünf Arten von Schritten zur Verfügung:
 
@@ -21,42 +21,58 @@ Aktuell stehen fünf Arten von Schritten zur Verfügung:
 | **HTTP** | Ruft eine externe URL auf — sendet einen Webhook, spricht eine externe API an |
 | **KI** | Bittet Genies KI, als ein Schritt im Ablauf etwas zu erledigen — zusammenfassen, einen Text entwerfen, eine Entscheidung treffen |
 | **Edge Function** | Führt eine deiner eigenen individuellen Backend-Funktionen aus einem Projekt aus, für echten Code oder alles, was die anderen Schritte nicht können |
-| **Andere Workflow-App** | Ruft eine Workflow-App auf, die du bereits gebaut hast, sodass du kleinere Abläufe zu größeren zusammensetzen kannst |
+| **Ein anderer Agent** | Ruft einen Genie Agent auf, den du bereits gebaut hast, sodass du kleinere Abläufe zu größeren zusammensetzen kannst |
 
 <Tip>
   Brauchst du etwas, das diese fünf allein nicht abdecken? Greif zu einem Edge-Function-Schritt — er führt echten Code aus und kann daher alles, was eine individuelle Backend-Funktion kann.
 </Tip>
 
-## Bauen, indem du mit Genie AI sprichst
+## Zwei Wege, einen zu starten
 
-Du konfigurierst eine Workflow-App genauso wie alles andere in Genie: indem du der Workspace-KI beschreibst, was du möchtest.
+<Steps>
+  <Step title="Direkt auf der Seite erstellen">
+    Öffne **Workspace → Genie Agents** und klicke auf **Neuer Agent**. Gib ihm einen Namen, eine kurze Beschreibung, wofür er da ist, und seinen ersten Schritt — das reicht, um dich direkt in den visuellen Editor zu bringen, wo du den Rest baust. Kein Gespräch mit Genie AI nötig, um loszulegen.
+  </Step>
+  <Step title="Oder Genie AI beschreiben">
+    Sag der Workspace-KI, was du möchtest — genauso, wie du alles andere in Genie anfragst:
 
-- „Wenn eine neue Zeile in meiner Tabelle `orders` erscheint, schau die E-Mail-Adresse der Kundin oder des Kunden nach und sende ihr oder ihm eine Dankesnachricht"
-- „Prüfe jede Stunde meine Tabelle `signups` auf Neues und poste eine Zusammenfassung an meinen Slack-Webhook"
-- „Füge einen Schritt hinzu, der eine Antwort mit KI entwirft, bevor der Webhook gesendet wird"
+    - „Wenn eine neue Zeile in meiner Tabelle `orders` erscheint, schau die E-Mail-Adresse der Kundin oder des Kunden nach und sende ihr oder ihm eine Dankesnachricht"
+    - „Prüfe jede Stunde meine Tabelle `signups` auf Neues und poste eine Zusammenfassung an meinen Slack-Webhook"
+    - „Füge einen Schritt hinzu, der eine Antwort mit KI entwirft, bevor der Webhook gesendet wird"
 
-Genie AI baut und bearbeitet die Schrittfolge für dich und kann zuerst eine **Vorschau** ausführen — einen Testlauf, der zeigt, was jeder Schritt tun würde, ganz ohne echte Nebeneffekte: keine wirklich versendete E-Mail, keine wirklich gesendete Anfrage, keine wirklich ausgeführte Abfrage. Nutze sie (oder lass Genie sie nutzen), um eine neue oder geänderte Workflow-App zu prüfen, bevor du sie endgültig speicherst.
+    Genie AI baut und bearbeitet die Schrittfolge für dich und kann zuerst eine **Vorschau** ausführen — einen Testlauf, der zeigt, was jeder Schritt tun würde, ganz ohne echte Nebeneffekte: keine wirklich versendete E-Mail, keine wirklich gesendete Anfrage, keine wirklich ausgeführte Abfrage. Nutze sie (oder lass Genie sie nutzen), um einen neuen oder geänderten Agenten zu prüfen, bevor du ihn endgültig speicherst.
+  </Step>
+</Steps>
 
 ## Der visuelle Editor
 
-Wenn du die Schritte lieber angeordnet siehst und von Hand anpassen möchtest, öffne **Workspace → Workflows** und wähle eine App aus, um zu ihrem Editor zu gelangen — eine Arbeitsfläche, die jeden Schritt und seine Verbindungen zeigt. Du kannst zwei Schritte verbinden, indem du auf die Ausgabe des einen und dann auf den Schritt klickst, der sie nutzen soll, einen Schritt umbenennen oder entfernen.
+Wähle einen Agenten auf der Seite **Genie Agents** aus, um zu seinem Editor zu gelangen — eine Arbeitsfläche, die jeden Schritt und seine Verbindungen zeigt. Du kannst zwei Schritte verbinden, indem du auf die Ausgabe des einen und dann auf den Schritt klickst, der sie nutzen soll, einen Schritt umbenennen oder entfernen.
 
 <Tip>
-  Im Hintergrund gibt es immer nur einen Workflow, nicht zwei konkurrierende Kopien. Was auch immer du auf der Arbeitsfläche änderst, sieht Genie AI beim nächsten Gespräch mit dir — und was Genie AI ändert, zeigt die Arbeitsfläche beim nächsten Öffnen.
+  Im Hintergrund gibt es immer nur einen Agenten, nicht zwei konkurrierende Kopien. Was auch immer du auf der Arbeitsfläche änderst, sieht Genie AI beim nächsten Gespräch mit dir — und was Genie AI ändert, zeigt die Arbeitsfläche beim nächsten Öffnen.
 </Tip>
+
+## Einen Agenten verwalten
+
+Die Seite **Genie Agents** listet jeden Agenten in deinem Workspace auf — als Karten oder als Tabelle, je nachdem, wie du lieber durchsiehst (wechsle über den Ansicht-Umschalter; deine Wahl wird gemerkt). Das Zeilenmenü (**⋯**) jedes Agenten bietet:
+
+- **Umbenennen** — ändert seinen Anzeigenamen. Das ändert nie seinen zugrundeliegenden Bezeichner, sodass jedes darauf aufbauende veröffentlichte Tool oder jede Webhook-URL weiter funktioniert.
+- **Pausieren / Fortsetzen** — Pausieren verhindert, dass er einen neuen Lauf startet (per Zeitplan, Webhook oder Aufruf durch einen anderen Agenten), bis du ihn fortsetzt; ein bereits laufender Lauf wird dadurch nie unterbrochen.
+- **Letzte Läufe** — sieh dir seine Lauf-Historie an und was bei jedem Lauf passiert ist.
+- **Löschen** — entfernt den Agenten dauerhaft, jede Version davon und seine gesamte Lauf-Historie. Das lässt sich nicht rückgängig machen — pausiere ihn stattdessen, wenn er nur aufhören soll zu laufen.
 
 ## Auslöser
 
-Eine Workflow-App läuft nicht nur, wenn du sie im Chat dazu aufforderst. Du kannst sie so einrichten, dass sie von selbst startet:
+Ein Agent läuft nicht nur, wenn du ihn im Chat dazu aufforderst. Du kannst ihn so einrichten, dass er von selbst startet:
 
 - **Nach Zeitplan** — dieselbe Idee wie bei [geplanten Jobs](/de/cloud/scheduling): „Führe das jede Nacht um 2 Uhr aus."
-- **Über einen eingehenden Webhook** — gib einem externen Dienst (z. B. einem Formular-Tool oder Zahlungsanbieter) eine URL, die er aufrufen kann, und die Workflow-App läuft, sobald eine Anfrage eintrifft.
-- **Manuell** — führe sie selbst aus, oder lass Genie AI sie bei Bedarf ausführen.
+- **Über einen eingehenden Webhook** — gib einem externen Dienst (z. B. einem Formular-Tool oder Zahlungsanbieter) eine URL, die er aufrufen kann, und der Agent läuft, sobald eine Anfrage eintrifft.
+- **Manuell** — führe ihn selbst aus, oder lass Genie AI ihn bei Bedarf ausführen.
 
-Eine App kann mehrere Auslöser gleichzeitig haben — zum Beispiel nächtlich *und* über einen Webhook erreichbar.
+Ein Agent kann mehrere Auslöser gleichzeitig haben — zum Beispiel nächtlich *und* über einen Webhook erreichbar.
 
 <Tip>
-  Bitte Genie AI zum Beispiel: „Führe diese Workflow-App jeden Montag um 9 Uhr aus" oder „Gib mir eine Webhook-URL, die diese Workflow-App auslöst" — dasselbe Gespräch, das die Workflow-App baut, richtet auch ein, wie sie startet.
+  Bitte Genie AI zum Beispiel: „Führe das jeden Montag um 9 Uhr aus" oder „Gib mir eine Webhook-URL, die diesen Agenten auslöst" — dasselbe Gespräch, das ihn baut, richtet auch ein, wie er startet.
 </Tip>
 
 ## Geheimnisse bleiben aus dem Ablauf heraus
@@ -67,15 +83,11 @@ Wenn ein Schritt einen API-Schlüssel oder ein anderes Zugangsdatum braucht — 
 
 Ein KI-Schritt verbraucht Credits genauso wie eine Nachricht im Chat. Schritte, die keine KI aufrufen — eine Datenbankabfrage, eine HTTP-Anfrage — verbrauchen keine KI-Credits.
 
-## Wo du sie findest
-
-Öffne **Workspace → Workflows** in der Seitenleiste, um alle Workflow-Apps in deinem Workspace zu sehen: ob sie aktiv sind, wann sie zuletzt gelaufen sind und was dabei passiert ist. Wähle eine aus, um ihren visuellen Editor zu öffnen.
-
 ## Grenzen
 
-- Bis zu **25 Schritte** pro Workflow-App.
-- Eine geplante Workflow-App wird mindestens alle 10 Minuten auf ihren nächsten Lauf geprüft — ein feinerer Zeitplan als das ist daher nicht sinnvoll, Genie akzeptiert keinen solchen.
-- Eine Workflow-App, die eine andere Workflow-App aufruft, hat eine begrenzte Verschachtelungstiefe, damit keine sich über andere selbst in einer Schleife aufruft.
+- Bis zu **25 Schritte** pro Agent.
+- Ein geplanter Agent wird mindestens alle 10 Minuten auf seinen nächsten Lauf geprüft — ein feinerer Zeitplan als das ist daher nicht sinnvoll, Genie akzeptiert keinen solchen.
+- Ein Agent, der einen anderen Agenten aufruft, hat eine begrenzte Verschachtelungstiefe, damit sich keiner über andere selbst in einer Schleife aufruft.
 
 ## Verwandte Seiten
 
@@ -84,7 +96,7 @@ Ein KI-Schritt verbraucht Credits genauso wie eine Nachricht im Chat. Schritte, 
     Plane eine bereitgestellte Edge Function so, dass sie automatisch nach einem wiederkehrenden Zeitplan läuft.
   </Card>
   <Card title="Genie-Cloud-Datenbank" icon="database" href="/de/cloud/database">
-    Erfahre mehr über die Datenbank, die der Datenbank-Schritt einer Workflow-App abfragt.
+    Erfahre mehr über die Datenbank, die der Datenbank-Schritt eines Agenten abfragt.
   </Card>
   <Card title="Workspaces-Übersicht" icon="house" href="/de/workspaces/overview">
     Finde dich im Workspace und seiner Seitenleiste zurecht.

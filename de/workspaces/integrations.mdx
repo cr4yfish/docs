@@ -11,7 +11,7 @@ MCP-Integrationen sind im **Teams**-Tarif verfügbar. Wenn dein Workspace in ein
 
 ## Die Integrationen-Seite öffnen
 
-Klicke in der Workspace-Seitenleiste auf **Einstellungen**, dann auf **Verwalten** im Bereich **Integrationen** — oder gehe direkt zu **Einstellungen → Integrationen** auf der Einstellungsseite.
+Klicke auf die Kontozeile unten in der Workspace-Seitenleiste, wähle **Workspace-Einstellungen** und öffne dann **Integrationen**.
 
 ## Eine Preset-Integration hinzufügen
 
@@ -39,6 +39,7 @@ Genie enthält Ein-Klick-Presets für die beliebtesten Tools. Preset-Verbindunge
 
 | Dienst | Server-URL | Transport | Auth |
 |---|---|---|---|
+| **Microsoft 365** (Outlook, OneDrive, SharePoint) | `https://graph.microsoft.com/v1.0` | HTTP | OAuth2, pro Mitglied |
 | **Linear** | `https://mcp.linear.app/sse` | SSE | OAuth2 |
 | **GitHub** | `https://api.githubcopilot.com/mcp/` | HTTP | OAuth2 |
 | **Notion** | `https://mcp.notion.com/mcp` | HTTP | OAuth2 |
@@ -97,7 +98,7 @@ Wenn das benötigte Tool nicht in der Preset-Liste ist, kannst du jeden MCP-komp
 
 ## Geteilte vs. persönliche Verbindungen
 
-Die meisten Konnektoren bleiben eine gemeinsame Verbindung für den gesamten Workspace — ein Admin verbindet sie einmal, und die Tools aller Mitglieder verwenden dieselben Zugangsdaten, wie oben beschrieben. Einige Konnektoren benötigen stattdessen ein persönliches Konto, weil gemeinsame Zugangsdaten dort keinen Sinn ergeben — ein E-Mail- oder Kalender-Konnektor wie Outlook zum Beispiel muss auf das eigene Postfach jeder Person zugreifen, nicht auf ein gemeinsames Postfach. Für solche Konnektoren richtet ein Admin den Konnektor weiterhin einmal für den Workspace ein, aber jedes Mitglied verbindet danach sein eigenes Konto von seiner Seite aus, und Genies KI handelt mit dem eigenen verbundenen Konto des jeweiligen Mitglieds, wenn genau dieses Mitglied mit ihr spricht — nicht mit einem gemeinsamen Konto.
+Die meisten Konnektoren bleiben eine gemeinsame Verbindung für den gesamten Workspace — ein Admin verbindet sie einmal, und die Tools aller Mitglieder verwenden dieselben Zugangsdaten, wie oben beschrieben. Einige Konnektoren benötigen stattdessen ein persönliches Konto, weil gemeinsame Zugangsdaten dort keinen Sinn ergeben — **Microsoft 365** zum Beispiel muss auf das eigene Outlook-Postfach, OneDrive und SharePoint jeder Person zugreifen, nicht auf ein gemeinsames Postfach. Für solche Konnektoren richtet ein Admin den Konnektor weiterhin einmal für den Workspace ein, aber jedes Mitglied verbindet danach sein eigenes Konto von seiner Seite aus, und Genies KI handelt mit dem eigenen verbundenen Konto des jeweiligen Mitglieds, wenn genau dieses Mitglied mit ihr spricht — nicht mit einem gemeinsamen Konto.
 
 Hast du dein eigenes Konto noch nicht verbunden, steht dir dieser Konnektor einfach nicht zur Verfügung, bis du das tust — Genie greift niemals auf das verbundene Konto einer anderen Person zurück. Verlässt jemand den Workspace, wird seine persönliche Verbindung zusammen mit der Mitgliedschaft entfernt. Nur du selbst kannst sehen, dass dein eigenes Konto in einer Weise verbunden ist, die deine Zugangsdaten offenlegt; Admins sehen, ob ein Konnektor verbunden ist oder nicht, aber niemals die Zugangsdaten selbst — auch nicht für Konnektoren, die du persönlich verbunden hast.
 
