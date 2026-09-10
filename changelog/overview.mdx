@@ -4,6 +4,28 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="September 9, 2026" description="Weekly release">
+
+Covers what shipped on September 9. The headline is a reworked workspace: one settings surface instead of two disconnected screens, custom roles with fine-grained permissions, and a simplified sidebar built around your chat history. Workflow apps also got a public name — **Genie Agents** — a faster way to create one, and row-level controls.
+
+## Updates
+
+- **Workspace and personal settings are now one surface.** They used to be two unrelated screens — workspace settings inside the workspace, personal settings as a bare page with no way back. Open either from the account menu at the bottom of the sidebar and you get the same navigation, with the other half always one click away. See [Account settings](/account/settings).
+- **Custom roles.** Beyond the four built-in roles, owners and admins can now build custom roles that narrow exactly what a role can do — remove billing access, keep member management, drop the ability to delete projects — from a catalog of granular permissions. See [Custom roles](/workspaces/members#custom-roles).
+- **A simpler workspace sidebar.** Your chat history is now the sidebar's main content, and the conversation you have open marks its own place there — no separate "Genie AI" entry needed. Drag the sidebar's edge to resize it or collapse it to icons only, and drag it back out to reopen.
+- **The command palette (⌘K) got a visual refresh** — a cleaner list of results without the extra sidebar it used to show.
+- **Workflow apps are now called Genie Agents.** You can now build one directly from the **Genie Agents** page — give it a name and a first step and you land straight in the editor, without describing it to Genie AI first. Rename, pause/resume, or delete an agent from its row menu, and switch between a card or table view of your agents. See [Genie Agents](/workspaces/workflow-apps).
+- **Microsoft 365 (Outlook, OneDrive, SharePoint) can now be connected** as a workspace integration — a personal, per-member connection like the other mailbox-style connectors. See [Integrations](/workspaces/integrations).
+- **Workspace chats now show a real name in their header** — the title you gave the chat, or its first message — with a way to rename it and see which projects it's connected to, instead of every open conversation reading "New chat."
+
+## Fixes
+
+- **Fixed a build-status check that could time out on a longer-running build**, leaving the status stuck instead of showing what actually happened.
+- **Fixed a rare case where Genie AI's reply could fail outright if saving its own live status update failed**, even though the reply itself was already fine.
+- **Fixed the workspace chat history sometimes not scrolling your open chat into view** when it loaded in after the rest of the list.
+
+</Update>
+
 <Update label="September 8, 2026" description="Weekly release">
 
 Covers what shipped since September 5. The headline is **workflow apps** — a new kind of app a workspace can hold with no UI of its own, just a flow of steps that runs on a schedule or a webhook — alongside **API keys** for talking to Genie AI from your own code, projects that can now **share one Genie Cloud backend**, and a redesigned Genie AI chat with your history in a resizable sidebar and private-by-default conversations.

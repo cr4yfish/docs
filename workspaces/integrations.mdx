@@ -11,7 +11,7 @@ MCP integrations are available on the **Teams** plan. If your workspace is on a 
 
 ## Open the integrations page
 
-In the workspace sidebar, click **Settings**, then click **Manage** in the **Integrations** section — or go directly to **Settings → Integrations** from the settings page.
+Click the account row at the bottom of the workspace sidebar, choose **Workspace settings**, then open **Integrations**.
 
 ## Add a preset integration
 
@@ -39,6 +39,7 @@ Genie includes one-click presets for the most popular tools. Preset connections 
 
 | Service | Server URL | Transport | Auth |
 |---|---|---|---|
+| **Microsoft 365** (Outlook, OneDrive, SharePoint) | `https://graph.microsoft.com/v1.0` | HTTP | OAuth2, per member |
 | **Linear** | `https://mcp.linear.app/sse` | SSE | OAuth2 |
 | **GitHub** | `https://api.githubcopilot.com/mcp/` | HTTP | OAuth2 |
 | **Notion** | `https://mcp.notion.com/mcp` | HTTP | OAuth2 |
@@ -97,7 +98,7 @@ If the tool you need is not in the preset list, you can connect any MCP-compatib
 
 ## Shared vs. personal connections
 
-Most connectors are still one shared connection for the whole workspace — an admin connects it once, and every member's tools use that same credential, as described above. A few connectors need a personal account instead, because a shared credential wouldn't make sense there — an email or calendar connector like Outlook, for example, needs to reach each person's own mailbox rather than one shared inbox. For those, an admin still sets up the connector itself for the workspace, but each member then connects their own account from their side, and Genie's AI acts using that member's own connected account whenever it's that member talking to it, not a shared one.
+Most connectors are still one shared connection for the whole workspace — an admin connects it once, and every member's tools use that same credential, as described above. A few connectors need a personal account instead, because a shared credential wouldn't make sense there — **Microsoft 365**, for example, needs to reach each person's own Outlook mailbox, OneDrive, and SharePoint rather than one shared inbox. For those, an admin still adds the connector itself for the workspace, but each member then connects their own account from their side, and Genie's AI acts using that member's own connected account whenever it's that member talking to it, not a shared one.
 
 If you haven't connected your own account yet, that connector simply isn't available to you until you do — Genie never falls back to someone else's connected account. If someone leaves the workspace, their personal connection is removed along with their membership. Only you can see that your own account is connected in a way that exposes your credentials; admins can see whether a connector is connected or not, but never the credential itself, even for connectors you've personally connected.
 

@@ -6,7 +6,7 @@ description: "Add teammates to your workspace via invite link or email, assign t
 Every workspace has a members list that determines who can access projects and what they can do. Owners and admins control the list: they can invite new people, adjust roles, and remove members at any time. Regular members and editors can see the workspace and work in projects, but they cannot manage other members or workspace settings.
 
 <Note>
-Only **owners** and **admins** can open **Settings** and manage workspace members. If you do not see the **Settings** link in the sidebar, contact your workspace owner.
+Only **owners** and **admins** can open **Workspace settings** and manage workspace members. If you do not see it under the account menu at the bottom of the sidebar, contact your workspace owner.
 </Note>
 
 ## Roles at a glance
@@ -28,13 +28,38 @@ Genie has four workspace roles. Each role inherits all the permissions of the ro
   </Card>
 </CardGroup>
 
+## Custom roles
+
+The four built-in roles above are a starting point, not a ceiling — owners and admins can create **custom roles** that narrow exactly what a role is allowed to do, picked from a catalog of granular permissions grouped by area (projects, members, roles, integrations, billing, security, and more).
+
+A custom role always **inherits** one of the built-in roles as its base, and can only take permissions away from that base — never add ones the base role doesn't have. So a custom role built on **Member** can, for example, keep the ability to create and edit projects while losing access to billing or the ability to remove other members, but it can never be granted something an Owner-only permission like deleting the workspace.
+
+<Steps>
+  <Step title="Open Roles">
+    Click the account row at the bottom of the sidebar, choose **Workspace settings**, then open **Roles**.
+  </Step>
+  <Step title="Create a role">
+    Click **New role** and pick which built-in role it's based on. This sets the ceiling for every permission it can hold.
+  </Step>
+  <Step title="Choose permissions">
+    Untick anything you want this role not to have. A permission that depends on another (for example, removing a member depends on being able to see the member list) is handled automatically. Anything above the base role's ceiling is locked and shows which role it comes from.
+  </Step>
+  <Step title="Assign it">
+    Give the role a name and save it, then assign it to a member from their row in the members table the same way you'd assign a built-in role.
+  </Step>
+</Steps>
+
+<Note>
+Deleting a custom role doesn't remove access from the people who had it — they drop back to its base built-in role automatically.
+</Note>
+
 ## Invite people to your workspace
 
 You can invite new members by generating a shareable invite link. Each invite link carries a specific role, a maximum number of uses, and an expiry date.
 
 <Steps>
   <Step title="Open Invitations">
-    From the workspace home, click **Settings** in the sidebar footer, then click **+ Invite** in the **Members & Roles** section header. This opens the **Invitations** page.
+    From the workspace home, click the account row at the bottom of the sidebar, choose **Workspace settings**, open **Members**, then click **+ Invite**. This opens the **Invitations** page.
   </Step>
   <Step title="Configure the invite">
     Fill in the three fields under **New Invitation**:
@@ -65,7 +90,7 @@ A workspace project supports one active editor at a time. If you open a project 
 
 ## Manage existing members
 
-To view or change a member's role, go to **Settings** in the sidebar and find the **Members & Roles** section.
+To view or change a member's role, click the account row at the bottom of the sidebar, choose **Workspace settings**, then open **Members**.
 
 ### Find a member
 

@@ -6,7 +6,7 @@ description: "Füge Teamkolleg:innen über einen Einladungslink oder per E-Mail 
 Jeder Workspace hat eine Mitgliederliste, die festlegt, wer auf Projekte zugreifen kann und was er tun darf. Eigentümer und Admins steuern die Liste: Sie können neue Personen einladen, Rollen anpassen und Mitglieder jederzeit entfernen. Reguläre Mitglieder und Editoren können den Workspace sehen und in Projekten arbeiten, aber keine anderen Mitglieder oder Workspace-Einstellungen verwalten.
 
 <Note>
-Nur **Eigentümer** und **Admins** können die **Einstellungen** öffnen und Workspace-Mitglieder verwalten. Wenn du den **Einstellungen**-Link in der Seitenleiste nicht siehst, wende dich an die Workspace-Eigentümerin.
+Nur **Eigentümer** und **Admins** können die **Workspace-Einstellungen** öffnen und Workspace-Mitglieder verwalten. Wenn du sie im Kontomenü unten in der Seitenleiste nicht siehst, wende dich an die Workspace-Eigentümerin.
 </Note>
 
 ## Rollen auf einen Blick
@@ -28,13 +28,38 @@ Genie hat vier Workspace-Rollen. Jede Rolle erbt alle Berechtigungen der darunte
   </Card>
 </CardGroup>
 
+## Benutzerdefinierte Rollen
+
+Die vier eingebauten Rollen oben sind ein Ausgangspunkt, keine Obergrenze — Eigentümer und Admins können **benutzerdefinierte Rollen** erstellen, die genau eingrenzen, was eine Rolle darf, ausgewählt aus einem Katalog feingranularer Berechtigungen, gruppiert nach Bereich (Projekte, Mitglieder, Rollen, Integrationen, Abrechnung, Sicherheit und mehr).
+
+Eine benutzerdefinierte Rolle **erbt** immer eine der eingebauten Rollen als Basis und kann dieser Basis nur Berechtigungen wegnehmen — nie welche hinzufügen, die die Basis nicht hat. Eine auf **Mitglied** aufgebaute benutzerdefinierte Rolle kann zum Beispiel die Fähigkeit behalten, Projekte zu erstellen und zu bearbeiten, aber den Zugriff auf die Abrechnung oder die Möglichkeit verlieren, andere Mitglieder zu entfernen — sie kann aber nie eine nur für Eigentümer vorgesehene Berechtigung wie das Löschen des Workspace erhalten.
+
+<Steps>
+  <Step title="Rollen öffnen">
+    Klicke auf die Kontozeile unten in der Seitenleiste, wähle **Workspace-Einstellungen** und öffne dann **Rollen**.
+  </Step>
+  <Step title="Rolle erstellen">
+    Klicke auf **Neue Rolle** und wähle, auf welcher eingebauten Rolle sie basiert. Das legt die Obergrenze für jede Berechtigung fest, die sie halten kann.
+  </Step>
+  <Step title="Berechtigungen wählen">
+    Entferne das Häkchen bei allem, was diese Rolle nicht haben soll. Eine Berechtigung, die von einer anderen abhängt (zum Beispiel hängt das Entfernen eines Mitglieds davon ab, die Mitgliederliste sehen zu können), wird automatisch mitgeregelt. Alles oberhalb der Obergrenze der Basisrolle ist gesperrt und zeigt an, aus welcher Rolle sie stammt.
+  </Step>
+  <Step title="Zuweisen">
+    Gib der Rolle einen Namen und speichere sie, dann weise sie einem Mitglied über dessen Zeile in der Mitgliedertabelle zu — genauso, wie du eine eingebaute Rolle zuweisen würdest.
+  </Step>
+</Steps>
+
+<Note>
+Das Löschen einer benutzerdefinierten Rolle entzieht den Personen, die sie hatten, keinen Zugriff — sie fallen automatisch auf die zugrundeliegende eingebaute Rolle zurück.
+</Note>
+
 ## Personen in deinen Workspace einladen
 
 Du kannst neue Mitglieder einladen, indem du einen teilbaren Einladungslink generierst. Jeder Einladungslink trägt eine bestimmte Rolle, eine maximale Anzahl an Nutzungen und ein Ablaufdatum.
 
 <Steps>
   <Step title="Einladungen öffnen">
-    Klicke auf der Workspace-Startseite im Fuß der Seitenleiste auf **Einstellungen** und dann auf **+ Einladen** in der Kopfzeile des Bereichs **Mitglieder & Rollen**. Das öffnet die Seite **Einladungen**.
+    Klicke auf der Workspace-Startseite auf die Kontozeile unten in der Seitenleiste, wähle **Workspace-Einstellungen**, öffne **Mitglieder** und klicke dann auf **+ Einladen**. Das öffnet die Seite **Einladungen**.
   </Step>
   <Step title="Einladung konfigurieren">
     Fülle die drei Felder unter **Neue Einladung** aus:
@@ -65,7 +90,7 @@ Ein Workspace-Projekt unterstützt jeweils nur eine aktiv bearbeitende Person. W
 
 ## Bestehende Mitglieder verwalten
 
-Um die Rolle eines Mitglieds anzusehen oder zu ändern, gehe in der Seitenleiste zu **Einstellungen** und finde den Bereich **Mitglieder & Rollen**.
+Um die Rolle eines Mitglieds anzusehen oder zu ändern, klicke auf die Kontozeile unten in der Seitenleiste, wähle **Workspace-Einstellungen** und öffne dann **Mitglieder**.
 
 ### Ein Mitglied finden
 
