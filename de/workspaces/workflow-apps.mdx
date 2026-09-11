@@ -13,7 +13,7 @@ Die meisten Projekte, die du in Genie baust, haben eine Oberfläche — Seiten, 
 
 Ein Genie Agent ist eine kurze Abfolge von **Schritten**. Jeder Schritt erledigt eine Sache, und ein späterer Schritt kann das Ergebnis eines früheren nutzen — zum Beispiel kann der KI-Schritt die E-Mail-Adresse verwenden, die der Datenbank-Schritt gerade nachgeschlagen hat. Das musst du nicht selbst verdrahten: Genie ermittelt die Reihenfolge automatisch aus dem, was du eingibst.
 
-Aktuell stehen fünf Arten von Schritten zur Verfügung:
+Aktuell stehen sieben Arten von Schritten zur Verfügung:
 
 | Schritt | Was er tut |
 |---|---|
@@ -21,10 +21,16 @@ Aktuell stehen fünf Arten von Schritten zur Verfügung:
 | **HTTP** | Ruft eine externe URL auf — sendet einen Webhook, spricht eine externe API an |
 | **KI** | Bittet Genies KI, als ein Schritt im Ablauf etwas zu erledigen — zusammenfassen, einen Text entwerfen, eine Entscheidung treffen |
 | **Edge Function** | Führt eine deiner eigenen individuellen Backend-Funktionen aus einem Projekt aus, für echten Code oder alles, was die anderen Schritte nicht können |
+| **Verbundene App** | Ruft ein Tool einer der [verbundenen Integrationen](/de/workspaces/integrations) deines Workspaces auf — Linear, Notion, Outlook und mehr — oder **Genie selbst**, immer verfügbar als integrierte verbundene App, ganz ohne Einrichtung |
+| **Benachrichtigung** | Sendet eine Benachrichtigung in die Genie-App, an die Person, die den Agenten ausgeführt hat, oder an den Eigentümer bzw. die Eigentümerin des Agenten |
 | **Ein anderer Agent** | Ruft einen Genie Agent auf, den du bereits gebaut hast, sodass du kleinere Abläufe zu größeren zusammensetzen kannst |
 
 <Tip>
-  Brauchst du etwas, das diese fünf allein nicht abdecken? Greif zu einem Edge-Function-Schritt — er führt echten Code aus und kann daher alles, was eine individuelle Backend-Funktion kann.
+  Genie als integrierte verbundene App bedeutet, dass ein Schritt alles tun kann, was Genie AI selbst im Chat kann — ein Projekt erstellen, einen Folge-Prompt senden, eine Workspace-Einstellung ändern — als Teil einer Automatisierung, ohne Zugangsdaten einzurichten. Ein Schritt kann nur erreichen, was das Mitglied, dem der Agent gehört, auch durch eine direkte Anfrage an Genie AI erreichen könnte.
+</Tip>
+
+<Tip>
+  Brauchst du etwas, das diese allein nicht abdecken? Greif zu einem Edge-Function-Schritt — er führt echten Code aus und kann daher alles, was eine individuelle Backend-Funktion kann.
 </Tip>
 
 ## Zwei Wege, einen zu starten
@@ -48,8 +54,22 @@ Aktuell stehen fünf Arten von Schritten zur Verfügung:
 
 Wähle einen Agenten auf der Seite **Genie Agents** aus, um zu seinem Editor zu gelangen — eine Arbeitsfläche, die jeden Schritt und seine Verbindungen zeigt. Du kannst zwei Schritte verbinden, indem du auf die Ausgabe des einen und dann auf den Schritt klickst, der sie nutzen soll, einen Schritt umbenennen oder entfernen.
 
+Um das Ergebnis eines früheren Schritts in einem Feld zu verwenden — einem KI-Prompt, einer Datenbankabfrage, einer URL — klicke auf das **+** neben der Feldbeschriftung. Eine verschachtelte Auswahl lässt dich in einen Schritt eintauchen und genau den Wert wählen, den du brauchst; er erscheint dann als Chip direkt im Feld, an der Stelle, an der du ihn platziert hast. Klicke auf einen Chip, um ihn gegen einen anderen Wert zu tauschen, oder wähle **Selbst schreiben**, um den Rohtext direkt zu bearbeiten.
+
 <Tip>
   Im Hintergrund gibt es immer nur einen Agenten, nicht zwei konkurrierende Kopien. Was auch immer du auf der Arbeitsfläche änderst, sieht Genie AI beim nächsten Gespräch mit dir — und was Genie AI ändert, zeigt die Arbeitsfläche beim nächsten Öffnen.
+</Tip>
+
+## Einen Agenten testen
+
+Bevor du eine Änderung endgültig machst, kannst du einen echten Test ausführen, um genau zu sehen, was ein Agent — oder nur ein Schritt davon — tatsächlich tut.
+
+- **Testlauf** — startet einen echten Lauf deiner zuletzt gespeicherten Version und zeigt auf jeder Schrittkarte den Live-Status an, während er läuft: wartend, laufend, fertig oder fehlgeschlagen, zusammen mit dem Ergebnis jedes Schritts. Das verwendet deine echten Daten und verbundenen Apps und verbraucht die Credits, die es normalerweise verbrauchen würde — keine Simulation. Speichere deine Änderungen zuerst; ein Testlauf verwendet immer die gespeicherte Version.
+- **Diesen Schritt testen** — testet einen einzelnen **Verbundene-App**-Schritt für sich allein, ohne zu speichern oder den Rest des Ablaufs auszuführen. Genie füllt realistische Beispielwerte für alles ein, was der Schritt normalerweise von einem früheren Schritt bekäme, sodass der Test wahrscheinlich beim ersten Versuch gelingt. Da es ein echter Aufruf ist, schreibt ein schreibender Schritt tatsächlich Daten.
+- **Genie AI bitten, es zu beheben** — schlägt der Test eines Schritts fehl, gib den Fehler mit einem Klick an Genie AI weiter. Genie sieht das fehlgeschlagene Tool, die eigene Fehlermeldung der verbundenen App und genau das, was gesendet wurde, und schlägt eine Lösung vor.
+
+<Tip>
+  Genie AI kann auch in deinem Auftrag einen Schritt testen — bitte sie einfach darum, während du im Chat Änderungen an deinem Agenten beschreibst.
 </Tip>
 
 ## Einen Agenten verwalten

@@ -1,0 +1,81 @@
+---
+title: "Workspace guardrails: control what Genie AI will discuss"
+description: "Turn on guardrails to block harmful content, off-limits topics, and banned words in Genie AI conversations. Configure everything in plain language — a Teams-plan feature for owners and admins."
+---
+
+Genie AI checks every message sent in workspace chat against your workspace's guardrails before it answers. Workspace owners and admins configure guardrails in plain language — no technical setup — deciding what kinds of content Genie AI should refuse to engage with.
+
+<Note>
+Guardrails are available on the **Teams** plan. Only **owners** and **admins** (or a custom role granted the right permission) can configure them. All workspace members are subject to guardrails once they're turned on.
+</Note>
+
+## Open Guardrails settings
+
+Click the account row at the bottom of the workspace sidebar, choose **Workspace settings**, then open **Guardrails**.
+
+## Turn guardrails on
+
+Toggle **Guardrail protection** on. If nothing has been configured yet, Genie starts from a set of protective defaults that you can adjust from there. At least one protection must stay active at all times — an empty guardrail configuration can't be saved.
+
+## What you can configure
+
+### Harmful content
+
+Set a strength for each category — **Off**, **Relaxed**, **Balanced**, or **Strict**:
+
+| Category | What it catches |
+|---|---|
+| Hate speech | Discrimination or attacks on people because of who they are |
+| Insults | Demeaning, humiliating, or bullying language |
+| Sexual content | Explicit or suggestive sexual content |
+| Violence | Glorifying or threatening physical harm |
+| Illegal activities | Help with crimes, fraud, or other wrongdoing |
+| Manipulation attempts | Attempts to trick Genie AI into ignoring its rules ("jailbreaks") — only applies to what a person sends |
+
+### Off-limits topics
+
+Add named topics that Genie AI should refuse to discuss in your workspace — for example, "Investment advice." Each topic gets a plain-language description of what counts as that topic, plus optional example messages to help Genie recognize it.
+
+### Blocked words
+
+Turn on a built-in profanity filter, and add your own list of banned words or phrases specific to your organization — one per line.
+
+### Message shown when blocked
+
+Optionally write your own message, shown to a member instead of Genie's answer when a guardrail blocks their message. Leave it blank to use Genie's default explanation.
+
+## Blocked messages log
+
+The Guardrails page keeps a log of recent interventions: which category or topic triggered the block, where it happened (workspace chat or a project), who sent it, and when. The message content itself is never stored — only the reason it was blocked.
+
+## Manage guardrails from workspace chat
+
+Ask the Genie workspace AI in plain language:
+
+- *"Turn on guardrails and block sexual content and violence at the strictest level"*
+- *"Add an off-limits topic for legal advice"*
+- *"Show me recent blocked messages"*
+- *"Turn off the manipulation-attempt filter"*
+
+Genie AI asks you to confirm before weakening or disabling a protection.
+
+<Tip>
+Open the **Guardrails** page and click **Ask Genie AI** for a ready-made prompt that walks you through setting up guardrails for your team.
+</Tip>
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="PII rules" icon="shield" href="/workspaces/pii-rules">
+    Detect and block sensitive data like credit card numbers and API keys in chat.
+  </Card>
+  <Card title="Governance" icon="check-check" href="/workspaces/governance">
+    Review projects and enforce compliance rules across your workspace.
+  </Card>
+  <Card title="Genie MCP Server" icon="code" href="/workspaces/mcp-api">
+    Manage guardrails programmatically from any MCP client.
+  </Card>
+  <Card title="Members and roles" icon="users" href="/workspaces/members">
+    Grant the guardrails permission to a custom role.
+  </Card>
+</CardGroup>

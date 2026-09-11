@@ -1,0 +1,52 @@
+---
+title: "Tracing: see every Genie AI turn in your workspace"
+description: "An admin observability page showing every Genie AI conversation turn in your workspace — model, tokens, credits, timing, and every tool call — for troubleshooting and oversight."
+---
+
+**Tracing** shows every turn any member has had with the Genie workspace AI, listed like a request log — status, which surface it came from, the model used, tokens, credits billed, duration, and which tools were called — with a detailed view of any individual turn.
+
+<Note>
+Tracing requires a specific permission — **See Genie AI traces** — which only owners and admins hold by default, since traces include other members' messages. Ask a workspace admin to grant it to your role if you need it. See [Custom roles](/workspaces/members#custom-roles).
+</Note>
+
+## Open Tracing
+
+Click the account row at the bottom of the workspace sidebar, choose **Workspace settings**, then open **Tracing**.
+
+## What the page shows
+
+- **Stat tiles** — total traces, error rate, total tokens, and average turn time, broken down into how long was spent before the AI model, inside it, and after.
+- **Traces per day** — a chart of daily volume, with failed turns shown as their own series so a bad day stands out at a glance.
+- **Filters** — time window (last 24 hours, 7 days, or 30 days), status (completed, failed, aborted), surface, and a free-text search across messages, answers, tool names, and errors.
+- **The traces table** — one row per turn: time, status, surface, message, model, tokens, credits, duration, tools called, and which member it was.
+
+Click any row to open its full detail: a timeline of the turn's phases, the member's message, Genie's reasoning, every tool call with what it sent and got back, the final answer, and any error.
+
+## Manage Tracing from workspace chat
+
+Ask the Genie workspace AI in plain language:
+
+- *"Which Genie AI turns failed in this workspace this week?"*
+- *"Open trace [id]"*
+- *"How many tokens did we use yesterday?"*
+
+<Tip>
+Every member already has access to their own past conversations via the [Genie MCP Server](/workspaces/mcp-api). Tracing — and its matching MCP tools — is the workspace-wide, admin view across every member's turns.
+</Tip>
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Guardrails" icon="shield-alert" href="/workspaces/guardrails">
+    Control what Genie AI will discuss in your workspace.
+  </Card>
+  <Card title="Governance" icon="check-check" href="/workspaces/governance">
+    Review projects and enforce compliance rules.
+  </Card>
+  <Card title="Genie MCP Server" icon="code" href="/workspaces/mcp-api">
+    Manage your workspace programmatically from any AI client.
+  </Card>
+  <Card title="Members and roles" icon="users" href="/workspaces/members">
+    Grant the tracing permission to a custom role.
+  </Card>
+</CardGroup>

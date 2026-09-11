@@ -1,0 +1,81 @@
+---
+title: "Workspace-Guardrails: Steuern, worüber Genie AI spricht"
+description: "Aktiviere Guardrails, um schädliche Inhalte, tabuisierte Themen und gesperrte Wörter in Genie-AI-Gesprächen zu blockieren. Alles in natürlicher Sprache konfiguriert — ein Feature des Teams-Tarifs für Eigentümer:innen und Admins."
+---
+
+Genie AI prüft jede Nachricht, die im Workspace-Chat gesendet wird, gegen die Guardrails deines Workspaces, bevor sie beantwortet wird. Workspace-Eigentümer:innen und Admins konfigurieren Guardrails in natürlicher Sprache — ohne technisches Setup — und legen fest, mit welchen Inhalten sich Genie AI nicht befassen soll.
+
+<Note>
+Guardrails sind im **Teams**-Tarif verfügbar. Nur **Eigentümer:innen** und **Admins** (oder eine benutzerdefinierte Rolle mit der passenden Berechtigung) können sie konfigurieren. Sobald Guardrails aktiviert sind, gelten sie für alle Workspace-Mitglieder.
+</Note>
+
+## Guardrails-Einstellungen öffnen
+
+Klicke auf die Kontozeile unten in der Workspace-Seitenleiste, wähle **Workspace-Einstellungen** und öffne dann **Guardrails**.
+
+## Guardrails aktivieren
+
+Schalte **Guardrail-Schutz** ein. Wenn noch nichts konfiguriert wurde, startet Genie mit einer Reihe schützender Standardeinstellungen, die du von dort aus anpassen kannst. Mindestens ein Schutz muss jederzeit aktiv bleiben — eine leere Guardrail-Konfiguration kann nicht gespeichert werden.
+
+## Was du konfigurieren kannst
+
+### Schädliche Inhalte
+
+Lege für jede Kategorie eine Stärke fest — **Aus**, **Locker**, **Ausgewogen** oder **Streng**:
+
+| Kategorie | Was sie erkennt |
+|---|---|
+| Hassrede | Diskriminierung oder Angriffe auf Personen wegen dessen, wer sie sind |
+| Beleidigungen | Herabwürdigende, demütigende oder schikanierende Sprache |
+| Sexuelle Inhalte | Explizite oder anzügliche sexuelle Inhalte |
+| Gewalt | Verherrlichung oder Androhung körperlicher Gewalt |
+| Illegale Aktivitäten | Hilfe bei Straftaten, Betrug oder anderem Fehlverhalten |
+| Manipulationsversuche | Versuche, Genie AI dazu zu bringen, ihre Regeln zu ignorieren („Jailbreaks") — gilt nur für das, was eine Person sendet |
+
+### Tabuisierte Themen
+
+Füge benannte Themen hinzu, über die Genie AI in deinem Workspace nicht sprechen soll — zum Beispiel „Anlageberatung". Jedes Thema erhält eine Beschreibung in natürlicher Sprache, was dazuzählt, sowie optionale Beispielnachrichten, die Genie beim Erkennen helfen.
+
+### Gesperrte Wörter
+
+Aktiviere einen integrierten Schimpfwortfilter und füge deine eigene Liste organisationsspezifischer gesperrter Wörter oder Phrasen hinzu — eine pro Zeile.
+
+### Nachricht bei Blockierung
+
+Schreibe optional deine eigene Nachricht, die einem Mitglied anstelle von Genies Antwort angezeigt wird, wenn eine Guardrail seine Nachricht blockiert. Leer lassen, um Genies Standarderklärung zu verwenden.
+
+## Protokoll blockierter Nachrichten
+
+Die Guardrails-Seite führt ein Protokoll der letzten Eingriffe: welche Kategorie oder welches Thema die Blockierung ausgelöst hat, wo es passiert ist (Workspace-Chat oder ein Projekt), wer es gesendet hat und wann. Der Inhalt der Nachricht selbst wird nie gespeichert — nur der Grund für die Blockierung.
+
+## Guardrails über den Workspace-Chat verwalten
+
+Frag die Genie-Workspace-KI in natürlicher Sprache:
+
+- *„Aktiviere Guardrails und blockiere sexuelle Inhalte und Gewalt auf der strengsten Stufe"*
+- *„Füge ein tabuisiertes Thema für Rechtsberatung hinzu"*
+- *„Zeig mir kürzlich blockierte Nachrichten"*
+- *„Schalte den Filter für Manipulationsversuche aus"*
+
+Genie AI bittet dich um Bestätigung, bevor sie einen Schutz abschwächt oder deaktiviert.
+
+<Tip>
+Öffne die Seite **Guardrails** und klicke auf **Genie AI fragen** für einen vorformulierten Prompt, der dich durch die Einrichtung von Guardrails für dein Team führt.
+</Tip>
+
+## Verwandte Seiten
+
+<CardGroup cols={2}>
+  <Card title="PII-Regeln" icon="shield" href="/de/workspaces/pii-rules">
+    Erkenne und blockiere sensible Daten wie Kreditkartennummern und API-Schlüssel im Chat.
+  </Card>
+  <Card title="Governance" icon="check-check" href="/de/workspaces/governance">
+    Überprüfe Projekte und setze Compliance-Regeln im gesamten Workspace durch.
+  </Card>
+  <Card title="Genie MCP Server" icon="code" href="/de/workspaces/mcp-api">
+    Verwalte Guardrails programmgesteuert von jedem MCP-Client aus.
+  </Card>
+  <Card title="Mitglieder und Rollen" icon="users" href="/de/workspaces/members">
+    Vergib die Guardrails-Berechtigung an eine benutzerdefinierte Rolle.
+  </Card>
+</CardGroup>
