@@ -172,8 +172,14 @@ Material a team wants every build to respect — brand guidelines, tone of voice
 | `search_workspace_documents` | Search inside documents' text (hybrid semantic + keyword) and get back matching passages |
 | `read_workspace_document` | Read one document's full text in bounded, pageable slices |
 | `add_workspace_documents` | File one or more documents (up to 10 per call) for the workspace or a project |
-| `update_workspace_document` | Retitle, re-describe, or move a document between scopes |
+| `update_workspace_document` | Retitle, re-describe, or move a document between scopes — and between folders, via `folder` |
 | `delete_workspace_document` | Permanently delete a document and its search index |
+| `list_workspace_document_folders` | The workspace's filing folders, each with how many documents it holds and how much room is left before the 200-per-folder cap |
+| `create_workspace_document_folder` | Create a folder. Names are unique per workspace, case-insensitively |
+| `update_workspace_document_folder` | Rename a folder. The documents in it are untouched |
+| `delete_workspace_document_folder` | Delete a folder. The documents in it are **not** deleted — they become unfiled and stay searchable; the result says how many |
+
+**Folders are orthogonal to scope.** Scope decides which projects may *use* a document; a folder only decides where a human *finds* it, and no retrieval path reads it — filing a document, or deleting the folder it's in, never changes what a search returns. `list_workspace_documents`, `add_workspace_documents`, and `update_workspace_document` each accept a `folder` (a name, an id, or `unfiled`), addressable by name since that's what a client actually sees. A folder holds at most 200 documents, enforced the same way for MCP, the in-app agent, and the browser.
 
 ### Genie Cloud backend management
 
@@ -452,6 +458,7 @@ Role-based access is enforced on every tool call.
 | Search or forget the connected user's memory | Any connected user |
 | Read or write a workspace-wide knowledge document | Any member |
 | Read or write a project-scoped knowledge document | Anyone with edit access to that project — tighter than plain view access, since a public project must never expose its team's internal material |
+| Create, rename, or delete a knowledge-document folder | Any member |
 | Search the connected user's own Genie AI run traces | Any connected user |
 | View a project's screenshots or search its live console logs | Any member (who can view the project) |
 | Read or set a project's main workspace chat | Any member |

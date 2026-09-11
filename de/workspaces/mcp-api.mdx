@@ -172,8 +172,14 @@ Material, das ein Team von jedem Build respektiert haben will — Markenrichtlin
 | `search_workspace_documents` | Durchsuche den Text der Dokumente (hybrid, semantisch + Stichwort) und erhalte passende Textstellen zurück |
 | `read_workspace_document` | Lies den vollständigen Text eines Dokuments in begrenzten, seitenweise abrufbaren Abschnitten |
 | `add_workspace_documents` | Lege ein oder mehrere Dokumente ab (bis zu 10 pro Aufruf) für den Workspace oder ein Projekt |
-| `update_workspace_document` | Benenne um, beschreibe neu, oder verschiebe ein Dokument zwischen Geltungsbereichen |
+| `update_workspace_document` | Benenne um, beschreibe neu, oder verschiebe ein Dokument zwischen Geltungsbereichen — und zwischen Ordnern, über `folder` |
 | `delete_workspace_document` | Lösche ein Dokument und seinen Suchindex dauerhaft |
+| `list_workspace_document_folders` | Die Ablage-Ordner des Workspace, jeweils mit der Zahl abgelegter Dokumente und wie viel Platz vor der 200er-Grenze pro Ordner bleibt |
+| `create_workspace_document_folder` | Lege einen Ordner an. Namen sind pro Workspace eindeutig, ohne Berücksichtigung von Groß-/Kleinschreibung |
+| `update_workspace_document_folder` | Benenne einen Ordner um. Die darin enthaltenen Dokumente bleiben unverändert |
+| `delete_workspace_document_folder` | Lösche einen Ordner. Die darin enthaltenen Dokumente werden **nicht** gelöscht — sie werden unabgelegt und bleiben durchsuchbar; das Ergebnis nennt, wie viele |
+
+**Ordner stehen quer zum Geltungsbereich.** Der Geltungsbereich entscheidet, welche Projekte ein Dokument *nutzen* dürfen; ein Ordner entscheidet nur, wo ein Mensch es *findet*, und kein Suchpfad liest ihn aus — ein Dokument abzulegen oder den Ordner zu löschen, in dem es liegt, ändert nie, was eine Suche zurückgibt. `list_workspace_documents`, `add_workspace_documents` und `update_workspace_document` akzeptieren jeweils einen `folder` (Name, ID oder `unfiled`), adressierbar per Name, da das ist, was ein Client tatsächlich sieht. Ein Ordner fasst höchstens 200 Dokumente, für MCP, den In-App-Agenten und den Browser auf dieselbe Weise durchgesetzt.
 
 ### Genie-Cloud-Backend-Verwaltung
 
@@ -452,6 +458,7 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Das Gedächtnis des verbundenen Nutzers durchsuchen oder löschen | Jeder verbundene Nutzer |
 | Ein workspaceweites Wissensdokument lesen oder schreiben | Jedes Mitglied |
 | Ein projektbezogenes Wissensdokument lesen oder schreiben | Jeder mit Bearbeitungszugriff auf das Projekt — enger als reiner Ansichtszugriff, da ein öffentliches Projekt niemals interne Team-Materialien preisgeben darf |
+| Einen Wissensdokument-Ordner anlegen, umbenennen oder löschen | Jedes Mitglied |
 | Die eigenen Genie-KI-Ausführungsspuren des verbundenen Nutzers durchsuchen | Jeder verbundene Nutzer |
 | Die Screenshots eines Projekts einsehen oder seine Live-Konsolenprotokolle durchsuchen | Jedes Mitglied (das das Projekt einsehen kann) |
 | Den Hauptchat eines Projekts lesen oder festlegen | Jedes Mitglied |
