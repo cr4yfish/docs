@@ -4,6 +4,24 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="September 10, 2026" description="Weekly release">
+
+Covers what shipped on September 10. The headline is three new workspace-wide controls for security- and compliance-minded teams — **Guardrails**, **Governance**, and **Tracing** — alongside a more capable Genie Agents editor: a real test run on the canvas, testing a single connected-app step on its own, a built-in Genie connector, a new Notification step, and value chips for wiring steps together.
+
+## Updates
+
+- **Guardrails: control what Genie AI will discuss.** Teams-plan workspaces can now turn on guardrails from workspace settings — dial the strength of harmful-content filters, name off-limits topics, and block specific words — all configured in plain language. See [Guardrails](/workspaces/guardrails).
+- **Governance: review projects and enforce compliance rules.** A new workspace settings page lets owners and admins approve, flag, or disable individual projects, see every integration and knowledge document shared workspace-wide, and write natural-language compliance rules — with built-in templates for things like GDPR and the EU AI Act — that re-check every project automatically whenever it ships. See [Governance](/workspaces/governance).
+- **Tracing: see every Genie AI turn in your workspace.** A new admin page lists every conversation turn any member has had with Genie AI — model, tokens, credits, timing, and every tool call — with a detailed view of any individual turn, gated behind its own permission. See [Tracing](/workspaces/tracing).
+- **Genie Agents can now be tested for real.** A **Test run** button starts an actual run of your saved agent and paints live status on every step as it goes, and **Test this step** runs a single connected-app step on its own with realistic example values — no need to save or run the whole flow first. If a step's test fails, hand it to Genie AI with one click and it proposes a fix. See [Testing an agent](/workspaces/workflow-apps#testing-an-agent).
+- **Genie itself is now a built-in connected app for Genie Agents** — nothing to set up, always available — so a step can create a project, send a follow-up prompt, or change a workspace setting as part of an automation. See [Genie Agents](/workspaces/workflow-apps).
+- **A new Notification step** pushes a message straight into the Genie app for whoever ran the agent, or for the agent's owner — no email address or webhook to configure.
+- **Wiring a step to an earlier one's output is now a chip inside the field itself**, with a nested picker to find the right value, instead of a separate reference list below the form.
+- **The Genie MCP Server now covers Guardrails, Governance, and Tracing**, so an external AI client has the same access an admin has from the settings pages. See [Genie MCP Server](/workspaces/mcp-api).
+- **Genie AI's activity feed now names which connected app a step used** — "Searching Notion", "Added something in Linear" — instead of a generic "Working on it".
+
+</Update>
+
 <Update label="September 9, 2026" description="Weekly release">
 
 Covers what shipped on September 9. The headline is a reworked workspace: one settings surface instead of two disconnected screens, custom roles with fine-grained permissions, and a simplified sidebar built around your chat history. Workflow apps also got a public name — **Genie Agents** — a faster way to create one, and row-level controls.

@@ -1,0 +1,52 @@
+---
+title: "Tracing: Jeden Genie-AI-Durchlauf in deinem Workspace einsehen"
+description: "Eine Admin-Beobachtungsseite, die jeden Genie-AI-Gesprächsdurchlauf in deinem Workspace zeigt — Modell, Tokens, Credits, Timing und jeden Tool-Aufruf — für Fehlersuche und Aufsicht."
+---
+
+**Tracing** zeigt jeden Durchlauf, den ein Mitglied mit der Genie-Workspace-KI hatte, wie ein Anfrageprotokoll aufgelistet — Status, von welcher Oberfläche er kam, das verwendete Modell, Tokens, abgerechnete Credits, Dauer und welche Tools aufgerufen wurden — mit einer Detailansicht für jeden einzelnen Durchlauf.
+
+<Note>
+Tracing erfordert eine bestimmte Berechtigung — **Genie-AI-Traces einsehen** — die standardmäßig nur Eigentümer:innen und Admins haben, da Traces Nachrichten anderer Mitglieder enthalten. Bitte einen Workspace-Admin, sie deiner Rolle zuzuweisen, falls du sie brauchst. Siehe [Benutzerdefinierte Rollen](/de/workspaces/members#benutzerdefinierte-rollen).
+</Note>
+
+## Tracing öffnen
+
+Klicke auf die Kontozeile unten in der Workspace-Seitenleiste, wähle **Workspace-Einstellungen** und öffne dann **Tracing**.
+
+## Was die Seite zeigt
+
+- **Kennzahlen-Kacheln** — Gesamtzahl der Traces, Fehlerquote, Gesamtanzahl der Tokens und durchschnittliche Durchlaufzeit, aufgeschlüsselt danach, wie lange vor dem KI-Modell, im Modell selbst und danach verbracht wurde.
+- **Traces pro Tag** — ein Diagramm des täglichen Volumens, wobei fehlgeschlagene Durchläufe als eigene Reihe angezeigt werden, sodass ein schlechter Tag sofort auffällt.
+- **Filter** — Zeitfenster (letzte 24 Stunden, 7 Tage oder 30 Tage), Status (abgeschlossen, fehlgeschlagen, abgebrochen), Oberfläche und eine Freitextsuche über Nachrichten, Antworten, Tool-Namen und Fehler.
+- **Die Traces-Tabelle** — eine Zeile pro Durchlauf: Zeit, Status, Oberfläche, Nachricht, Modell, Tokens, Credits, Dauer, aufgerufene Tools und welches Mitglied es war.
+
+Klicke auf eine Zeile, um die vollständigen Details zu öffnen: eine Zeitleiste der Phasen des Durchlaufs, die Nachricht des Mitglieds, Genies Überlegungen, jeden Tool-Aufruf mit dem, was gesendet und zurückgegeben wurde, die endgültige Antwort und etwaige Fehler.
+
+## Tracing über den Workspace-Chat verwalten
+
+Frag die Genie-Workspace-KI in natürlicher Sprache:
+
+- *„Welche Genie-AI-Durchläufe sind diese Woche in diesem Workspace fehlgeschlagen?"*
+- *„Öffne Trace [id]"*
+- *„Wie viele Tokens haben wir gestern verbraucht?"*
+
+<Tip>
+Jedes Mitglied hat über den [Genie MCP Server](/de/workspaces/mcp-api) bereits Zugriff auf seine eigenen vergangenen Gespräche. Tracing — und die passenden MCP-Tools — ist die workspaceweite Admin-Ansicht über die Durchläufe aller Mitglieder hinweg.
+</Tip>
+
+## Verwandte Seiten
+
+<CardGroup cols={2}>
+  <Card title="Guardrails" icon="shield-alert" href="/de/workspaces/guardrails">
+    Steuere, worüber Genie AI in deinem Workspace spricht.
+  </Card>
+  <Card title="Governance" icon="check-check" href="/de/workspaces/governance">
+    Überprüfe Projekte und setze Compliance-Regeln durch.
+  </Card>
+  <Card title="Genie MCP Server" icon="code" href="/de/workspaces/mcp-api">
+    Verwalte deinen Workspace programmgesteuert von jedem KI-Client aus.
+  </Card>
+  <Card title="Mitglieder und Rollen" icon="users" href="/de/workspaces/members">
+    Vergib die Tracing-Berechtigung an eine benutzerdefinierte Rolle.
+  </Card>
+</CardGroup>

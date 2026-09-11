@@ -1,0 +1,96 @@
+---
+title: "Governance: Projekte überprüfen und Compliance-Regeln durchsetzen"
+description: "Überprüfe jedes Projekt in deinem Workspace, sieh, auf welche Integrationen und welches Wissen Genie AI zugreifen kann, und schreibe Compliance-Regeln in natürlicher Sprache, die jedes Projekt automatisch prüfen, sobald es veröffentlicht wird."
+---
+
+**Governance** gibt Workspace-Eigentümer:innen und Admins einen zentralen Ort, um Projekte zu überprüfen, zu sehen, worauf Genie AI im gesamten Workspace zugreifen kann, und Compliance-Regeln durchzusetzen, die jedes Projekt automatisch erneut prüfen, sobald es eine neue Version veröffentlicht.
+
+<Note>
+Governance ist standardmäßig Teil jedes Workspaces — es gibt nichts zu aktivieren. Ein Workspace, der noch keine Compliance-Regeln geschrieben hat, hat schlicht noch nichts zu prüfen.
+</Note>
+
+## Governance öffnen
+
+Klicke auf die Kontozeile unten in der Workspace-Seitenleiste, wähle **Workspace-Einstellungen** und öffne dann **Governance**.
+
+Governance hat drei Tabs: **Projekte**, **Integrationen & Wissen** und **Compliance-Regeln**.
+
+## Projekte: Überprüfung
+
+Der Tab **Projekte** listet jedes Projekt im Workspace mit seinem Überprüfungsstatus und Compliance-Zustand auf. Öffne ein Projekt, um ein Urteil zu setzen:
+
+- **Genehmigen** — markiert das Projekt als überprüft und konform mit seiner aktuellen Version.
+- **Markieren** — lässt das Projekt weiterlaufen, vermerkt aber ein Anliegen für andere Prüfer:innen.
+- **Deaktivieren** — blockiert neue Builds und Prompts für alle außer dem Projekteigentümer bzw. der Projekteigentümerin. Die Person sieht deine Notiz, und sobald sie eine korrigierte Version veröffentlicht, wird das Urteil automatisch aufgehoben und die Compliance-Regeln werden erneut geprüft.
+- **Urteil zurücksetzen** — entfernt das aktuelle Urteil.
+
+Du kannst jedem Urteil eine interne Notiz beifügen. Sie ist für andere Prüfer:innen sichtbar — und, falls du ein Projekt deaktivierst, auch für dessen Eigentümer:in.
+
+<Warning>
+Ein Projekt zu deaktivieren blockiert sofort Builds für alle außer dem Eigentümer bzw. der Eigentümerin. Nutze stattdessen **Markieren**, wenn du nur ein Anliegen festhalten möchtest, ohne die Arbeit zu unterbrechen.
+</Warning>
+
+## Integrationen & Wissen: Aufsicht über geteilte Ressourcen
+
+Der Tab **Integrationen & Wissen** bietet eine schreibgeschützte Übersicht über alles, was workspaceweit geteilt wird und worauf Genie AI zugreifen kann: jede Integration auf Workspace-Ebene (Server, Auth-Typ und die Tools, die sie bereitstellt) und jedes workspaceweite Wissensdokument. Nutze sie, um auf einen Blick zu sehen, worauf Genie AI über alle deine Projekte hinweg Zugriff hat.
+
+## Compliance-Regeln
+
+Verwandle die Richtlinien deiner Organisation in automatische Prüfungen. Jede Regel ist eine **Fehlerbedingung** in natürlicher Sprache — zum Beispiel „Das Projekt schlägt fehl, wenn es personenbezogene Daten ohne erkennbare Rechtsgrundlage verarbeitet" — mit Name, Beschreibung und Schweregrad (**Niedrig**, **Mittel**, **Hoch** oder **Kritisch**).
+
+<Steps>
+  <Step title="Compliance-Regeln öffnen">
+    Öffne auf der Governance-Seite den Tab **Compliance-Regeln** und klicke auf **Neue Regel**.
+  </Step>
+  <Step title="Von einer Vorlage starten oder selbst schreiben">
+    Genie liefert integrierte Vorlagen, von denen du starten kannst: **EU-KI-Verordnung — verbotene Praktiken**, **DSGVO — Umgang mit personenbezogenen Daten**, **Keine internen Daten in öffentlichen Projekten**, **Jedes Projekt hat eine Beschreibung**, **Keine ungelösten Sicherheitsprobleme** und **Drittanbieterdienste sind deklariert**. Oder schreibe deine eigene Fehlerbedingung von Grund auf.
+  </Step>
+  <Step title="Schweregrad festlegen">
+    Wähle Niedrig, Mittel, Hoch oder Kritisch, um abzubilden, wie ernst ein Verstoß ist.
+  </Step>
+  <Step title="Speichern">
+    Aktiviere **Bestehende Projekte jetzt prüfen**, um die neue Regel sofort gegen jedes aktuelle Projekt laufen zu lassen, oder lass es deaktiviert — dann greift sie erst, wenn ein Projekt das nächste Mal veröffentlicht wird.
+  </Step>
+</Steps>
+
+Genie prüft jedes Projekt gegen jede aktivierte Regel, indem es dessen Namen, Beschreibung, Sichtbarkeit, verbundene Integrationen und den Inhalt der zuletzt veröffentlichten Version betrachtet — niemals den Inhalt deiner Chat-Gespräche. Prüfungen laufen automatisch bei jeder Veröffentlichung einer neuen Projektversion, und du kannst sie auch manuell auslösen: **Prüfungen ausführen** für ein einzelnes Projekt, **Prüfungen für alle Projekte ausführen** aus der Projektliste, oder **Auf alle Projekte anwenden** von einer bestimmten Regel aus.
+
+Die eigene Seite einer Regel zeigt Analysen — wie oft sie gelaufen ist, wie oft sie fehlgeschlagen ist und ihre Ergebnisse über Projekte hinweg im Zeitverlauf.
+
+## Wer Zugriff auf Governance hat
+
+Eigentümer:innen und Admins haben immer vollen Zugriff. Ein Mitglied oder eine Redakteurin ohne Admin-Rechte kann individuell **Lesezugriff** erhalten — Überprüfungen und Regelergebnisse sehen, aber Regeln oder Einstellungen nicht ändern — im Abschnitt Governance-Einstellungen auf der Workspace-Einstellungsseite. Alle anderen können Governance nicht öffnen.
+
+<Note>
+Eigentümer:innen und Admins können im selben Einstellungsabschnitt außerdem festlegen, **private Projekte** aus der Governance-Ansicht auszublenden.
+</Note>
+
+## Governance über den Workspace-Chat verwalten
+
+Frag die Genie-Workspace-KI in natürlicher Sprache:
+
+- *„Welche Projekte scheitern gerade an der Compliance?"*
+- *„Markiere das Kundenportal-Projekt — es verarbeitet PII ohne Richtlinie"*
+- *„Erstelle eine Compliance-Regel, dass jedes Projekt eine Beschreibung haben muss"*
+- *„Führe Compliance-Prüfungen für alle Projekte aus"*
+
+<Tip>
+Jede Governance-Seite hat einen **Genie AI fragen**-Button mit einem vorformulierten Prompt für diese Seite — einschließlich der Möglichkeit, eine Richtlinie in natürlicher Sprache zu beschreiben und Genie die Fehlerbedingung dafür entwerfen zu lassen.
+</Tip>
+
+## Verwandte Seiten
+
+<CardGroup cols={2}>
+  <Card title="Guardrails" icon="shield-alert" href="/de/workspaces/guardrails">
+    Steuere, worüber Genie AI in deinem Workspace spricht.
+  </Card>
+  <Card title="PII-Regeln" icon="shield" href="/de/workspaces/pii-rules">
+    Erkenne und blockiere sensible Daten im Chat.
+  </Card>
+  <Card title="Genie MCP Server" icon="code" href="/de/workspaces/mcp-api">
+    Verwalte Governance programmgesteuert von jedem MCP-Client aus.
+  </Card>
+  <Card title="Mitglieder und Rollen" icon="users" href="/de/workspaces/members">
+    Vergib Lesezugriff auf Governance an ein Mitglied ohne Admin-Rechte.
+  </Card>
+</CardGroup>

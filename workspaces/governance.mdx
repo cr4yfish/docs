@@ -1,0 +1,96 @@
+---
+title: "Governance: review projects and enforce compliance rules"
+description: "Review every project in your workspace, see what integrations and knowledge Genie AI has access to, and write natural-language compliance rules that check each project automatically whenever it ships."
+---
+
+**Governance** gives workspace owners and admins one place to review projects, see what Genie AI has access to across the workspace, and enforce compliance rules that re-check every project automatically whenever it ships a new version.
+
+<Note>
+Governance is part of every workspace by default — there's nothing to turn on. A workspace that hasn't written any compliance rules simply has nothing to check yet.
+</Note>
+
+## Open Governance
+
+Click the account row at the bottom of the workspace sidebar, choose **Workspace settings**, then open **Governance**.
+
+Governance has three tabs: **Projects**, **Integrations & Knowledge**, and **Compliance rules**.
+
+## Projects: review
+
+The **Projects** tab lists every project in the workspace with its review status and compliance state. Open a project to set a verdict:
+
+- **Approve** — marks the project reviewed and compliant on its current version.
+- **Flag** — keeps the project running but records a note for other reviewers.
+- **Disable** — blocks new builds and prompts from everyone except the project's owner. The owner sees your note, and once they publish a fixed version the verdict lifts automatically and the compliance rules re-run.
+- **Clear verdict** — removes the current verdict.
+
+You can attach an internal note to any verdict. It's visible to other reviewers, and — if you disable a project — to its owner.
+
+<Warning>
+Disabling a project immediately blocks builds for everyone but the owner. Reach for **Flag** instead if you just want to record a concern without interrupting work.
+</Warning>
+
+## Integrations & Knowledge: shared-asset oversight
+
+The **Integrations & Knowledge** tab is a read-only overview of everything shared workspace-wide that Genie AI can act with: every workspace-level MCP integration (server, auth type, and the tools it exposes) and every workspace-wide knowledge document. Use it to check what Genie AI has access to across all your projects at a glance.
+
+## Compliance rules
+
+Turn your organization's policies into automatic checks. Each rule is a plain-language **failure condition** — for example, "The project fails when it handles personal data without a visible lawful basis" — with a name, description, and severity (**Low**, **Medium**, **High**, or **Critical**).
+
+<Steps>
+  <Step title="Open Compliance rules">
+    From the Governance page, open the **Compliance rules** tab and click **New rule**.
+  </Step>
+  <Step title="Start from a template or write your own">
+    Genie ships with built-in templates you can start from: **EU AI Act — prohibited practices**, **GDPR — personal data handling**, **No internal data in public projects**, **Every project has a description**, **No unresolved security issues**, and **Third-party services are declared**. Or write your own failure condition from scratch.
+  </Step>
+  <Step title="Set a severity">
+    Choose Low, Medium, High, or Critical to reflect how serious a failure is.
+  </Step>
+  <Step title="Save">
+    Tick **Check existing projects now** to run the new rule against every current project immediately, or leave it unchecked and it applies the next time each project ships.
+  </Step>
+</Steps>
+
+Genie checks each project against every enabled rule by looking at its name, description, visibility, connected integrations, and what its most recently published version actually shipped — never the contents of your chat conversations. Checks run automatically every time a project publishes a new version, and you can also trigger them manually: **Run checks** on a single project, **Run checks on all projects** from the project list, or **Run on all projects** from a specific rule.
+
+A rule's own page shows analytics — how many times it's run, how often it's failed, and its results across projects over time.
+
+## Who can access Governance
+
+Owners and admins always have full access. A non-admin member or editor can be individually granted **view access** — see reviews and rule results, but not change rules or settings — from the Governance settings section on the workspace settings page. Everyone else can't open Governance.
+
+<Note>
+Owners and admins can also choose to **hide private projects** from the Governance view, from the same settings section.
+</Note>
+
+## Manage Governance from workspace chat
+
+Ask the Genie workspace AI in plain language:
+
+- *"Which projects are failing compliance right now?"*
+- *"Flag the customer-portal project — it's handling PII without a policy"*
+- *"Create a compliance rule that every project must have a description"*
+- *"Run compliance checks on all projects"*
+
+<Tip>
+Every Governance page has an **Ask Genie AI** button with a ready-made prompt for that page — including describing a policy in plain language and letting Genie draft the failure condition for you.
+</Tip>
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Guardrails" icon="shield-alert" href="/workspaces/guardrails">
+    Control what Genie AI will discuss in your workspace.
+  </Card>
+  <Card title="PII rules" icon="shield" href="/workspaces/pii-rules">
+    Detect and block sensitive data in chat.
+  </Card>
+  <Card title="Genie MCP Server" icon="code" href="/workspaces/mcp-api">
+    Manage governance programmatically from any MCP client.
+  </Card>
+  <Card title="Members and roles" icon="users" href="/workspaces/members">
+    Grant view access to Governance for a non-admin member.
+  </Card>
+</CardGroup>

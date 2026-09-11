@@ -46,7 +46,7 @@ Starte Claude Desktop neu und öffne ein beliebiges Gespräch. Claude wird dich 
 
 ## Verfügbare Tools
 
-Der Genie MCP Server bietet Tools in einundzwanzig Kategorien.
+Der Genie MCP Server bietet Tools in vierundzwanzig Kategorien.
 
 ### Workspace-Verwaltung
 
@@ -296,6 +296,41 @@ Verwalte die MCP-Server-Integrationen (Linear, GitHub, Notion, Stripe usw.), die
 | `delete_workspace_pii_rule` | Entferne eine benutzerdefinierte Regel |
 | `reset_workspace_pii_rules` | Setze alle integrierten Detektoren auf ihre Standardwerte zurück |
 
+### Workspace-Governance
+
+Projektüberprüfungen, Aufsicht über geteilte Ressourcen und Compliance-Regeln in natürlicher Sprache. Siehe [Governance](/de/workspaces/governance) für eine vollständige Anleitung. Der Zugriff folgt derselben Regel wie die Governance-Seite und nicht dem RBAC-Berechtigungskatalog: Eigentümer:innen und Admins können lesen und verwalten; ein Mitglied oder eine Redakteurin mit „Governance einsehen" kann lesen, aber nicht verwalten.
+
+| Tool | Was es tut |
+|---|---|
+| `list_governance_projects` | Governance-Übersicht der Projekte des Workspaces: Eigentümer:in, Sichtbarkeit, letzte Version, Überprüfungsurteil, Compliance-Zustand und Integrationsrisiko-Signale. Filtern mit `only_failing` / `only_unreviewed` |
+| `get_project_compliance` | Governance-Detail eines Projekts: aktuelles Urteil plus das neueste Ergebnis jeder Compliance-Regel (mit Begründung) und eine begrenzte kürzliche Historie |
+| `review_project` | Setzt ein Urteil — `approved`, `flagged` oder `disabled` (blockiert neue Builds für alle außer dem Eigentümer bzw. der Eigentümerin) — oder `clear`, um es zu entfernen |
+| `list_compliance_rules` | Listet die Compliance-Regeln des Workspaces plus die integrierte Vorlagenbibliothek, von der eine neue Regel starten kann |
+| `create_compliance_rule` | Erstellt eine Regel (Name, Schweregrad, eine Fehlerbedingung in natürlicher Sprache), optional aus einer Vorlage, mit der Option, bestehende Projekte sofort zu prüfen. Nur Eigentümer:in/Admin |
+| `update_compliance_rule` | Ändert Name, Beschreibung, Schweregrad, Fehlerbedingung und/oder Aktivierungsstatus einer Regel. Nur Eigentümer:in/Admin |
+| `delete_compliance_rule` | Löscht eine Regel und ihre Prüfhistorie dauerhaft. Erfordert `confirm_delete: true`. Nur Eigentümer:in/Admin |
+| `run_compliance_checks` | Führt aktivierte Regeln jetzt aus, für ein Projekt oder workspaceweit |
+
+### Workspace-Guardrails
+
+Konfiguriere Guardrails für den Workspace-Chat-Agenten, für zahlende Workspaces. Siehe [Guardrails](/de/workspaces/guardrails) für eine vollständige Anleitung. Erfordert die Berechtigungen `security.guardrails.view` / `security.guardrails.manage` — dieselben, die auch die Einstellungsseite durchsetzt.
+
+| Tool | Was es tut |
+|---|---|
+| `get_guardrails` | Liest, ob Guardrails aktiviert sind, die Stärke der Inhaltsfilter je Kategorie, tabuisierte Themen, den Schimpfwortfilter, gesperrte Wörter und die benutzerdefinierte Blockier-Nachricht |
+| `list_guardrail_events` | Listet kürzlich von einer Guardrail blockierte Nachrichten — wer, wo, welche Kategorie oder welches Thema ausgelöst hat. Niemals der Nachrichtentext |
+| `update_guardrails` | Teilaktualisierung der Guardrail-Konfiguration, live angewendet. Ausgelassene Felder behalten ihren aktuellen Wert; Themen- und Wortlisten werden vollständig ersetzt. Mindestens ein Schutz muss aktiv bleiben |
+| `set_guardrails_enabled` | Schaltet die Durchsetzung von Guardrails ein oder aus. Aktivieren ohne gespeicherte Konfiguration startet mit den schützenden Standardeinstellungen |
+
+### Workspace-Tracing
+
+Workspaceweite Beobachtbarkeit über die Genie-AI-Durchläufe aller Mitglieder — das Admin-Gegenstück zu `search_agent_run_traces` oben, das auf die eigenen Durchläufe der aufrufenden Person begrenzt ist. Siehe [Tracing](/de/workspaces/tracing) für eine vollständige Anleitung. Erfordert bei jedem Aufruf die Berechtigung `security.tracing.view` (standardmäßig Eigentümer:in/Admin; eine benutzerdefinierte Rolle kann sie erhalten).
+
+| Tool | Was es tut |
+|---|---|
+| `list_workspace_traces` | Listet Lauf-Traces über alle Workspace-Mitglieder hinweg: Status, Oberfläche, Modell, Tokens, abgerechnete Credits, Dauer, Tool-Namen und kurze Ausschnitte. Optionale Volltextsuche `query`; neueste zuerst |
+| `get_workspace_trace` | Liest einen Lauf-Trace vollständig: Timings, die Nachricht der Nutzerin oder des Nutzers, Überlegungen, jeden Tool-Aufruf (begrenzte Vorschau von Eingabe/Ausgabe), die Antwort und etwaige Fehler |
+
 ### Preise
 
 | Tool | Was es tut |
@@ -435,6 +470,11 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Speicherdateien eines Projekts verwalten | Projektinhaber:in |
 | Genie-Preise lesen | Jedes Mitglied |
 | Genies Status-Seite lesen | Jeder verbundene Nutzer |
+| Governance einsehen (Projektüberprüfungen, Compliance-Ergebnisse) | Eigentümer:in, Admin, oder ein Mitglied mit „Governance einsehen" |
+| Compliance-Regeln verwalten und Prüfungen ausführen | Eigentümer:in oder Admin |
+| Guardrail-Konfiguration und Protokoll blockierter Nachrichten lesen | Eigentümer:in, Admin, oder eine Rolle mit `security.guardrails.view` |
+| Guardrail-Konfiguration ändern | Eigentümer:in, Admin, oder eine Rolle mit `security.guardrails.manage` |
+| Workspaceweite Genie-AI-Traces lesen | Eigentümer:in, Admin, oder eine Rolle mit `security.tracing.view` |
 
 ---
 
@@ -442,6 +482,9 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 
 - [MCP-Integrationen mit deinem Workspace verbinden](/de/workspaces/integrations)
 - [Workspace-PII-Regeln](/de/workspaces/pii-rules)
+- [Workspace-Guardrails](/de/workspaces/guardrails)
+- [Governance](/de/workspaces/governance)
+- [Tracing](/de/workspaces/tracing)
 - [Geplante Jobs](/de/cloud/scheduling)
 - [Workspace-Mitglieder und Rollen](/de/workspaces/members)
 - [Workspace-API-Schlüssel](/de/workspaces/api-keys) — eine einfachere Bearer-Token-HTTP-API, um direkt mit Genie AI zu sprechen, statt der deutlich breiteren Tool-Oberfläche hier

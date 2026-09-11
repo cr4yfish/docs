@@ -46,7 +46,7 @@ Restart Claude Desktop and open any conversation. Claude will prompt you to auth
 
 ## Available tools
 
-The Genie MCP Server provides tools across twenty-one categories.
+The Genie MCP Server provides tools across twenty-four categories.
 
 ### Workspace management
 
@@ -296,6 +296,41 @@ Inspect and manage the workspace PII detection rules. Only workspace owners and 
 | `delete_workspace_pii_rule` | Remove a custom rule |
 | `reset_workspace_pii_rules` | Reset all built-in detectors to their defaults |
 
+### Workspace Governance
+
+Project reviews, shared-asset oversight, and natural-language compliance rules. See [Governance](/workspaces/governance) for a full guide. Access follows the same rule as the Governance page rather than the RBAC permission catalog: owners and admins can read and manage; a member or editor granted "View governance" can read but not manage.
+
+| Tool | What it does |
+|---|---|
+| `list_governance_projects` | Governance overview of the workspace's projects: owner, visibility, latest version, review verdict, compliance state, and integration-risk signals. Filter with `only_failing` / `only_unreviewed` |
+| `get_project_compliance` | One project's governance detail: current verdict plus the newest result of every compliance rule (with reasoning) and a bounded recent history |
+| `review_project` | Record a verdict — `approved`, `flagged`, or `disabled` (blocks new builds from everyone but the owner) — or `clear` to remove it |
+| `list_compliance_rules` | List the workspace's compliance rules plus the built-in template library a new rule can start from |
+| `create_compliance_rule` | Create a rule (name, severity, a natural-language failure condition), optionally from a template, with an option to check existing projects immediately. Owner/admin only |
+| `update_compliance_rule` | Change a rule's name, description, severity, failure condition, and/or enabled state. Owner/admin only |
+| `delete_compliance_rule` | Permanently delete a rule and its check history. Requires `confirm_delete: true`. Owner/admin only |
+| `run_compliance_checks` | Run enabled rules now, on one project or across the workspace |
+
+### Workspace Guardrails
+
+Configure guardrails on the workspace chat agent, for paid workspaces. See [Guardrails](/workspaces/guardrails) for a full guide. Requires the `security.guardrails.view` / `security.guardrails.manage` permissions — the same ones the settings page enforces.
+
+| Tool | What it does |
+|---|---|
+| `get_guardrails` | Read whether guardrails are enabled, the per-category content-filter strength, denied topics, profanity filter, blocked words, and custom blocked message |
+| `list_guardrail_events` | List recent messages a guardrail blocked — who, where, which category or topic fired. Never the message text |
+| `update_guardrails` | Partial update to the guardrail configuration, applied live. Omitted fields keep their current value; topic and word lists replace the whole list. At least one protection must stay active |
+| `set_guardrails_enabled` | Turn guardrail enforcement on or off. Enabling with no saved configuration starts from the protective defaults |
+
+### Workspace Tracing
+
+Workspace-wide observability over every member's Genie AI turns — the admin counterpart to `search_agent_run_traces` above, which is scoped to the caller's own turns. See [Tracing](/workspaces/tracing) for a full guide. Requires the `security.tracing.view` permission (owner/admin by default; a custom role can be granted it) on every call.
+
+| Tool | What it does |
+|---|---|
+| `list_workspace_traces` | List run traces across all workspace members: status, surface, model, tokens, billed credits, duration, tool names, and short excerpts. Optional fulltext `query`; newest first |
+| `get_workspace_trace` | Read one run trace in full: timings, the user message, reasoning, every tool call (bounded input/output preview), the answer, and any error |
+
 ### Pricing
 
 | Tool | What it does |
@@ -435,6 +470,11 @@ Role-based access is enforced on every tool call.
 | Manage a project's storage files | Project owner |
 | Read Genie pricing | Any member |
 | Read Genie's status page | Any connected user |
+| View Governance (project reviews, compliance results) | Owner, admin, or a member granted "View governance" |
+| Manage compliance rules and run checks | Owner or admin |
+| Read guardrail configuration and blocked-message log | Owner, admin, or a role granted `security.guardrails.view` |
+| Change guardrail configuration | Owner, admin, or a role granted `security.guardrails.manage` |
+| Read workspace-wide Genie AI traces | Owner, admin, or a role granted `security.tracing.view` |
 
 ---
 
@@ -442,6 +482,9 @@ Role-based access is enforced on every tool call.
 
 - [Connect MCP integrations to your workspace](/workspaces/integrations)
 - [Workspace PII rules](/workspaces/pii-rules)
+- [Workspace guardrails](/workspaces/guardrails)
+- [Governance](/workspaces/governance)
+- [Tracing](/workspaces/tracing)
 - [Scheduled jobs](/cloud/scheduling)
 - [Workspace members and roles](/workspaces/members)
 - [Workspace API keys](/workspaces/api-keys) — a simpler bearer-token HTTP API for talking to Genie AI itself, rather than the much broader tool surface here

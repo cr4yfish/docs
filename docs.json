@@ -88,6 +88,9 @@
                   "workspaces/members",
                   "workspaces/integrations",
                   "workspaces/pii-rules",
+                  "workspaces/guardrails",
+                  "workspaces/governance",
+                  "workspaces/tracing",
                   "workspaces/workflow-apps",
                   "workspaces/mcp-api",
                   "workspaces/api-keys"
@@ -203,6 +206,9 @@
                   "de/workspaces/members",
                   "de/workspaces/integrations",
                   "de/workspaces/pii-rules",
+                  "de/workspaces/guardrails",
+                  "de/workspaces/governance",
+                  "de/workspaces/tracing",
                   "de/workspaces/workflow-apps",
                   "de/workspaces/mcp-api",
                   "de/workspaces/api-keys"

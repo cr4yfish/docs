@@ -13,7 +13,7 @@ Most projects you build in Genie have a UI — pages someone opens and clicks ar
 
 A Genie Agent is a short sequence of **steps**. Each step does one thing, and a later step can use an earlier step's result — for example, the AI step can use the email address the database step just looked up. You don't wire this up by hand: Genie figures out the order automatically from what you type.
 
-Five kinds of step are available today:
+Seven kinds of step are available today:
 
 | Step | What it does |
 |---|---|
@@ -21,10 +21,16 @@ Five kinds of step are available today:
 | **HTTP** | Calls an external URL — send a webhook, hit a third-party API |
 | **AI** | Asks Genie's AI to do something as one step in the flow — summarize, draft a message, make a decision |
 | **Edge function** | Runs one of your own project's custom backend functions, for real code or anything the other step kinds can't do |
+| **Connected app** | Calls a tool on one of your workspace's [connected integrations](/workspaces/integrations) — Linear, Notion, Outlook, and more — or on **Genie itself**, always available as a built-in connected app with nothing to set up |
+| **Notification** | Pushes a notification into the Genie app, to whoever ran the agent or to the agent's owner |
 | **Another agent** | Calls a Genie Agent you've already built, so you can compose smaller flows into bigger ones |
 
 <Tip>
-  Need something none of these five cover on their own? Reach for an edge function step — it runs real code, so it can do anything a custom backend function can do.
+Genie as a built-in connected app means a step can do anything Genie AI itself can do in chat — create a project, send a follow-up prompt, change a workspace setting — as part of an automation, with no credentials to connect. A step can only reach what the member who owns the agent could reach by asking Genie AI directly.
+</Tip>
+
+<Tip>
+  Need something none of these cover on their own? Reach for an edge function step — it runs real code, so it can do anything a custom backend function can do.
 </Tip>
 
 ## Two ways to start one
@@ -48,8 +54,22 @@ Five kinds of step are available today:
 
 Select an agent from the **Genie Agents** page to reach its editor — a canvas showing every step and how they connect. You can connect two steps by clicking one step's output and then the step that should use it, rename a step, or remove one.
 
+To use an earlier step's output inside a field — an AI prompt, a database query, a URL — click the **+** next to the field's label. A nested picker lets you drill into a step and pick exactly the value you want, which then appears as a chip right inside the field, wherever you placed it. Click a chip to swap it for a different value, or choose **Write it myself** to edit the raw text directly.
+
 <Tip>
   There's only ever one agent behind the scenes, not two competing copies. Whatever you change on the canvas, Genie AI sees the next time you talk to it — and whatever Genie AI changes, the canvas reflects the next time you open it.
+</Tip>
+
+## Testing an agent
+
+Before you commit to a change, you can run a real test to see exactly what an agent — or just one step of it — actually does.
+
+- **Test run** — starts a real run of your last saved version and paints live status on every step's card as it goes: waiting, running, done, or failed, along with the value each step produced. This uses your real data and connected apps, and spends any credits it normally would — it isn't a simulation. Save your changes first; a test run always uses the saved version.
+- **Test this step** — test a single **Connected app** step on its own, without saving or running the rest of the flow. Genie fills in realistic example values for anything the step would normally get from an earlier step, so the test is likely to succeed on the first try. Because it's a real call, a step that writes data will actually write it.
+- **Ask Genie AI to fix it** — if a step's test fails, hand the failure to Genie AI with one click. Genie sees the tool that failed, the connected app's own error, and exactly what was sent, and proposes a fix.
+
+<Tip>
+  Genie AI can test a step on your behalf too — just ask it to test a step while you're describing changes to your agent in chat.
 </Tip>
 
 ## Managing an agent
