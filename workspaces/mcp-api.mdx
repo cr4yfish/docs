@@ -46,7 +46,7 @@ Restart Claude Desktop and open any conversation. Claude will prompt you to auth
 
 ## Available tools
 
-The Genie MCP Server provides tools across twenty-four categories.
+The Genie MCP Server provides tools across twenty-six categories.
 
 ### Workspace management
 
@@ -120,6 +120,24 @@ Ask questions about a project's own code — useful for an external AI client th
 | Tool | What it does |
 |---|---|
 | `query_project_code_graph` | Ask a natural-language question about a project's code — callers/callees, imports, symbol history, recent changes, or a free-text search — and get back file paths and exact line numbers |
+
+### Project Files
+
+The manual counterpart to `query_project_code_graph`: the graph answers "which file", these answer "show me the rest of it" for a path you already know.
+
+| Tool | What it does |
+|---|---|
+| `list_project_files` | List the file paths in a project's current code branch — its file tree. Filter with `query` (substring) or `prefix` (folder). |
+| `read_project_file` | Read a specific file from a project's current code branch, up to 300 lines at a time — page further in with `start_line`. A wrong path comes back with suggested near-matches instead of content. Refuses to read `.env` and other files that hold secrets or platform config. |
+
+### Project Design Guidelines
+
+A project's own style guide (`branding.md`) — brand colors, typography, component specs, and dos and don'ts — read by the build agent before it writes any frontend code. Distinct from Genie's own global design principles, which are read-only and not project-specific.
+
+| Tool | What it does |
+|---|---|
+| `get_project_design_guidelines` | Read a project's design guidelines. When the project has none yet, the result says so and includes the reference format to write one in. |
+| `update_project_design_guidelines` | Replace a project's design guidelines with the full markdown supplied, creating the file if the project has none yet. A write that would blank the document, exceed 20,000 characters, or shrink an existing document to under 40% of its length is rejected unless `confirm_shrink` is set — so a partial edit can't silently delete a style guide. Doesn't restyle the live app by itself — send a follow-up prompt to apply it. |
 
 ### Project feature tree
 
@@ -450,6 +468,8 @@ Role-based access is enforced on every tool call.
 | Send follow-up prompts and trigger builds | Any member |
 | Turn Auto mode on or off for a project | Any member |
 | Query a project's code graph | Any member |
+| List or read a project's files | Any member |
+| Read or update a project's design guidelines | Any member |
 | Read a project's feature tree | Any member (who can view the project) |
 | Add or edit a feature in the tree | Project owner |
 | Read a project's known issues | Any member (who can view the project) |
