@@ -119,7 +119,7 @@ Frag „sieht das richtig aus?" oder „warum hat meine App gerade einen Fehler 
 
 ### Genie AI antwortet mit dem echten Code
 
-Frag „wie funktioniert der Checkout in meiner App?", und Genie AI liest jetzt den echten Code hinter seiner Antwort, statt anhand von Datei- und Funktionsnamen zu raten — es beschreibt also, was dein Code tatsächlich tut, und nicht nur, was sein Name vermuten lässt.
+Frag „wie funktioniert der Checkout in meiner App?", und Genie AI liest jetzt den echten Code hinter seiner Antwort, statt anhand von Datei- und Funktionsnamen zu raten — es beschreibt also, was dein Code tatsächlich tut, und nicht nur, was sein Name vermuten lässt. Für die Dateien, die für deine Frage am wichtigsten sind, liest sie jetzt die ganze Datei statt nur eines kurzen Ausschnitts, und du kannst sie auch bitten, eine bestimmte Datei direkt zu öffnen — „zeig mir App.tsx" oder „was steht in der Login-Seite?"
 
 ### Genie AI kann im Web suchen
 
@@ -156,6 +156,14 @@ Planst du etwas komplett Neues? Beschreib die App, die du dir vorstellst, und Ge
 ### Genie AI kann deine App mit zwei Farben gestalten
 
 Frag zum Beispiel nach „gelbe Buttons und eine dunkelblaue Navigationsleiste", und Genie AI setzt jetzt beides um: Deine Primärfarbe bestimmt Buttons, Links und andere Aktionselemente, während eine zweite, dunklere Farbe Navigationsleisten, Kopfzeilen, Seitenleisten und andere dunkle Flächen verankert. Vorher ließ sich nur eine Farbe auf einmal festlegen, sodass eine Anfrage mit zwei Farben nur zur Hälfte umgesetzt wurde.
+
+### Genie AI kann die Design-Richtlinien deines Projekts lesen und aktualisieren
+
+Frag *„was sind die Markenfarben und Schriftarten dieses Projekts?"*, und Genie AI liest `branding.md` — den Styleguide, den der Build-Agent prüft, bevor er Frontend-Code schreibt: Farben, Typografie, Vorgaben für Komponenten und was erlaubt beziehungsweise tabu ist. Sag ihr eine dauerhafte Design-Entscheidung — *„unser Markengrün ist #0f9d58, Überschriften sind Poppins, nie reines Schwarz verwenden"* —, und Genie AI speichert sie und legt das Richtliniendokument an, falls das Projekt noch keins hat — so bleibt im Chat Festgelegtes für jeden künftigen Build erhalten, statt nur in einem einzigen Build-Briefing zu landen.
+
+<Note>
+Neue Richtlinien zu speichern gestaltet deine Live-App nicht von selbst um — es ändert nur, wonach sich dein *nächster* Build richtet. Bitte Genie um einen neuen Build, wenn du den neuen Look sofort angewendet haben willst.
+</Note>
 
 ### Anhänge fließen in deinen Build ein
 

@@ -119,7 +119,7 @@ Ask "does this look right?" or "why did my app just throw an error?" and the wor
 
 ### Genie AI answers with the actual code
 
-Ask "how does checkout work in my app?" and Genie AI now reads the real code behind its answer instead of guessing from file and function names — so it describes what your code actually does, not just what its name suggests.
+Ask "how does checkout work in my app?" and Genie AI now reads the real code behind its answer instead of guessing from file and function names — so it describes what your code actually does, not just what its name suggests. For the files most relevant to your question it now reads the whole file rather than a short snippet, and you can also ask it to open a specific file directly — "show me App.tsx" or "what's in the login page?"
 
 ### Genie AI can search the web
 
@@ -156,6 +156,14 @@ Building something brand new? Describe the app you want and Genie AI drafts the 
 ### Genie AI can theme your app with two colors
 
 Ask for something like "yellow buttons and a navy navbar" and Genie AI applies both at once: your primary color drives buttons, links, and other action elements, while a second, darker color anchors navbars, headers, sidebars, and other dark surfaces. Before, only one color could be set at a time, so a two-color request would come out with half of it missing.
+
+### Genie AI can read and update your project's design guidelines
+
+Ask *"what are this project's brand colors and fonts?"* and Genie AI reads `branding.md` — the style guide the build agent checks before writing any frontend code, covering colors, typography, component specs, and dos and don'ts. Tell it a lasting design decision — *"our brand green is #0f9d58, headings are Poppins, never use pure black"* — and Genie AI saves it, creating the guidelines document if the project doesn't have one yet, so what you decide in chat is remembered by every future build instead of living in a single build brief.
+
+<Note>
+Saving new guidelines doesn't restyle your live app by itself — it changes what your *next* build follows. Ask Genie to rebuild if you want the new look applied right away.
+</Note>
 
 ### Attachments carry into your build
 

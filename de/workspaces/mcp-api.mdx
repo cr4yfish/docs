@@ -46,7 +46,7 @@ Starte Claude Desktop neu und öffne ein beliebiges Gespräch. Claude wird dich 
 
 ## Verfügbare Tools
 
-Der Genie MCP Server bietet Tools in vierundzwanzig Kategorien.
+Der Genie MCP Server bietet Tools in sechsundzwanzig Kategorien.
 
 ### Workspace-Verwaltung
 
@@ -120,6 +120,24 @@ Stelle Fragen zum eigenen Code eines Projekts — nützlich für einen externen 
 | Tool | Was es tut |
 |---|---|
 | `query_project_code_graph` | Stelle eine natürlichsprachige Frage zum Code eines Projekts — Aufrufer/Aufgerufene, Imports, Symbolverlauf, letzte Änderungen oder eine Volltextsuche — und erhalte Dateipfade und exakte Zeilennummern zurück |
+
+### Projekt-Dateien
+
+Das manuelle Gegenstück zu `query_project_code_graph`: Der Code-Graph beantwortet „welche Datei", diese Tools beantworten „zeig mir den Rest davon" für einen bereits bekannten Pfad.
+
+| Tool | Was es tut |
+|---|---|
+| `list_project_files` | Liste die Dateipfade im aktuellen Code-Branch eines Projekts — seinen Dateibaum. Filtere mit `query` (Teilstring) oder `prefix` (Ordner). |
+| `read_project_file` | Lies eine bestimmte Datei aus dem aktuellen Code-Branch eines Projekts, bis zu 300 Zeilen auf einmal — blättere mit `start_line` weiter. Ein falscher Pfad liefert statt Inhalt ähnliche Pfadvorschläge zurück. Verweigert das Lesen von `.env` und anderen Dateien, die Secrets oder Plattform-Konfiguration enthalten. |
+
+### Projekt-Design-Richtlinien
+
+Der eigene Styleguide eines Projekts (`branding.md`) — Markenfarben, Typografie, Vorgaben für Komponenten und was erlaubt beziehungsweise tabu ist —, den der Build-Agent liest, bevor er Frontend-Code schreibt. Zu unterscheiden von Genies eigenen globalen Design-Prinzipien, die nur lesbar und nicht projektspezifisch sind.
+
+| Tool | Was es tut |
+|---|---|
+| `get_project_design_guidelines` | Lies die Design-Richtlinien eines Projekts. Hat das Projekt noch keine, sagt das Ergebnis das und liefert das Referenzformat, in dem sie zu schreiben sind. |
+| `update_project_design_guidelines` | Ersetze die Design-Richtlinien eines Projekts durch das übergebene vollständige Markdown und lege die Datei an, falls das Projekt noch keine hat. Ein Schreibvorgang, der das Dokument leeren, 20.000 Zeichen überschreiten oder ein bestehendes Dokument auf unter 40 % seiner Länge schrumpfen würde, wird abgelehnt, sofern nicht `confirm_shrink` gesetzt ist — so kann eine Teilbearbeitung nicht versehentlich einen Styleguide löschen. Gestaltet die Live-App nicht von selbst um — sende einen Folge-Prompt, um sie anzuwenden. |
 
 ### Projekt-Feature-Baum
 
@@ -450,6 +468,8 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Folgeanweisungen senden und Builds auslösen | Jedes Mitglied |
 | Auto-Modus für ein Projekt ein- oder ausschalten | Jedes Mitglied |
 | Den Code-Graph eines Projekts abfragen | Jedes Mitglied |
+| Die Dateien eines Projekts auflisten oder lesen | Jedes Mitglied |
+| Die Design-Richtlinien eines Projekts lesen oder aktualisieren | Jedes Mitglied |
 | Den Feature-Baum eines Projekts lesen | Jedes Mitglied (das das Projekt einsehen kann) |
 | Ein Feature im Baum hinzufügen oder bearbeiten | Projektinhaber:in |
 | Bekannte Bugs eines Projekts lesen | Jedes Mitglied (das das Projekt einsehen kann) |
