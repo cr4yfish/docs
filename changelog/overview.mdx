@@ -4,6 +4,29 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="September 13, 2026" description="Weekly release">
+
+Covers what shipped since September 12. The headline is a product-wide rename — a **Project** is now called a **Genie App** — alongside members who can now hold more than one role, a Knowledge base redesigned as a familiar file browser, and a more detailed Tracing view.
+
+## Updates
+
+- **A Project is now called a Genie App.** Every screen that used to say "Project" — the sidebar, the dashboard, settings, and Genie AI's own replies — now says "Genie App", matching the name the rest of the product (like the generated app's own transactional email address) already used. Nothing about how they work changes, only the name.
+- **Members can hold more than one role at once.** Assign someone **Editor** plus a custom **Billing Manager** role, for example, and they get everything either one allows. See [Members and roles](/workspaces/members#custom-roles).
+- **The Knowledge base is redesigned as a familiar file browser.** Folders and documents now behave like Drive: a breadcrumb to navigate, list or grid layouts, sortable columns, and dragging a document straight onto a folder to file it. See [Knowledge base](/workspaces/overview#knowledge-base).
+- **Tracing shows more, and shows it better.** A trace's detail view is now resizable, opens as its own fullscreen page, and every id in it — member, project, conversation — links back to that item. Each trace also now shows its **flaggings**: what your PII rules, Guardrails, and Governance rules noticed about that turn. See [Tracing](/workspaces/tracing#flaggings).
+- **Genie Agents: the Start card shows — and edits — the real start conditions.** It now names the agent's actual schedule or webhook trigger instead of a generic description, and its Start panel lets you add, retime, or switch off a trigger without describing the change to Genie AI. See [Genie Agents](/workspaces/workflow-apps#editing-triggers-from-the-canvas).
+- **Two new previews on the workspace dashboard**, alongside your recent projects: your most recent **Genie Agents**, and a few **Knowledge** documents, each with a quick link to its full page. See [Workspaces overview](/workspaces/overview#recent-projects).
+- **Genie AI's confirmation cards — approve, choose, or review something before it proceeds — now appear inline in the chat**, in the order they came up, instead of replacing your prompt input until you answer them.
+- **The Genie MCP Server**: `get_workspace_trace` now returns the same flaggings and resolved member/project names the web view shows, and `list_workspace_members` reports every role a member holds, not just the strongest one. See [Genie MCP Server](/workspaces/mcp-api).
+
+## Fixes
+
+- **Fixed the Tracing detail view overflowing its own panel on a narrow (phone-width) screen.**
+- **Fixed the workspace chat's message box causing the conversation to jump while you were still typing a longer message.**
+- **Fixed a few low-contrast text issues in the command palette and the dashboard.**
+
+</Update>
+
 <Update label="September 12, 2026" description="Weekly release">
 
 Covers what shipped on September 12. Genie AI can now read and update a project's own design guidelines, and open any file in your code directly.

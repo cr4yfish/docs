@@ -55,7 +55,7 @@ Read and update your workspace, members, invitations, settings, and billing.
 | Tool | What it does |
 |---|---|
 | `get_workspace_info` | Name, member count, settings, and creation date |
-| `list_workspace_members` | Members with roles and join dates |
+| `list_workspace_members` | Members with roles and join dates — a member can hold more than one role, so `roles` lists the full set and `role` the strongest one |
 | `list_workspace_invites` | Pending invite links with expiry and remaining uses |
 | `invite_workspace_member` | Create a shareable invite link for a given role |
 | `revoke_workspace_invite` | Cancel a pending invite |
@@ -353,7 +353,7 @@ Workspace-wide observability over every member's Genie AI turns — the admin co
 | Tool | What it does |
 |---|---|
 | `list_workspace_traces` | List run traces across all workspace members: status, surface, model, tokens, billed credits, duration, tool names, and short excerpts. Optional fulltext `query`; newest first |
-| `get_workspace_trace` | Read one run trace in full: timings, the user message, reasoning, every tool call (bounded input/output preview), the answer, and any error |
+| `get_workspace_trace` | Read one run trace in full: timings, the user message, reasoning, every tool call (bounded input/output preview), the answer, any error, resolved member/project names, and the trace's flaggings (see [Tracing](/workspaces/tracing#flaggings)) |
 
 ### Pricing
 

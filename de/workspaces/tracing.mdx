@@ -20,7 +20,11 @@ Klicke auf die Kontozeile unten in der Workspace-Seitenleiste, wähle **Workspac
 - **Filter** — Zeitfenster (letzte 24 Stunden, 7 Tage oder 30 Tage), Status (abgeschlossen, fehlgeschlagen, abgebrochen), Oberfläche und eine Freitextsuche über Nachrichten, Antworten, Tool-Namen und Fehler.
 - **Die Traces-Tabelle** — eine Zeile pro Durchlauf: Zeit, Status, Oberfläche, Nachricht, Modell, Tokens, Credits, Dauer, aufgerufene Tools und welches Mitglied es war.
 
-Klicke auf eine Zeile, um die vollständigen Details zu öffnen: eine Zeitleiste der Phasen des Durchlaufs, die Nachricht des Mitglieds, Genies Überlegungen, jeden Tool-Aufruf mit dem, was gesendet und zurückgegeben wurde, die endgültige Antwort und etwaige Fehler.
+Klicke auf eine Zeile, um die vollständigen Details zu öffnen: eine Zeitleiste der Phasen des Durchlaufs, die Nachricht des Mitglieds, Genies Überlegungen, jeden Tool-Aufruf mit dem, was gesendet und zurückgegeben wurde, die endgültige Antwort und etwaige Fehler. Das Detail öffnet als größenveränderbares Panel — zieh an seinem Rand, um es breiter zu machen — oder klicke auf seinen Erweitern-Button (oder direkt auf die Zeile eines Traces) für dieselbe Ansicht als eigene, vollständige Seite. Jede angezeigte ID — Mitglied, Projekt, Gespräch — ist ein Link zu diesem Element, aufgelöst zu einem lesbaren Namen mit der rohen ID darunter.
+
+## Markierungen
+
+Die Detailansicht eines Traces zeigt auch, was diesem Durchlauf sonst noch aufgefallen ist: was die [PII-Regeln](/de/workspaces/pii-rules) des Workspace darin erkannt haben, worauf eine [Guardrail](/de/workspaces/guardrails) eingegriffen hat, und was [Governance](/de/workspaces/governance) über das Projekt sagt, gegen das der Durchlauf lief. Jeder Abschnitt braucht eine eigene Berechtigung zum Einsehen — PII-Erkennung, Guardrails oder eine Governance-Betrachterrolle — und zeigt „ausgeblendet — benötigt `X`" statt einer leeren Liste, wenn du sie nicht hast, sodass ein leerer Abschnitt immer bedeutet, dass nichts ausgelöst wurde, nie, dass du es nicht sehen kannst.
 
 ## Tracing über den Workspace-Chat verwalten
 

@@ -95,6 +95,14 @@ An agent can hold more than one trigger at once — nightly *and* reachable by w
   Ask Genie AI things like *"run this every Monday at 9am"* or *"give me a webhook URL that triggers this agent"* — the same conversation that builds it also sets up how it starts.
 </Tip>
 
+### Editing triggers from the canvas
+
+The editor's **Start** card names every real way the agent starts — its schedule as a plain sentence ("Every day at 02:00", "When something calls in", or "No schedule — this agent only runs when you press play"), plus when it fires next. Select it to open the **Start** panel, where you can add a trigger, retime or switch off an existing one, or remove it — no need to describe the change to Genie AI, though you still can. A schedule is built entirely from a cadence, a time, and day toggles rather than typed as a cron expression; anything the picker can't express opens under **Advanced** on its raw schedule instead of being silently rewritten.
+
+<Note>
+If every trigger is off (or none is set) and nothing else calls this agent, the Start card shows it as unplugged — the agent can still be run from the page, from Genie AI, or by another agent, but nothing starts it on its own.
+</Note>
+
 ## Secrets stay out of the flow
 
 If a step needs an API key or another credential — an `Authorization` header for a webhook, say — it's stored securely, the same way project secrets are, and the step refers to it by name. The credential itself is never pasted into the flow or shown back to you (or to the AI) in plain text.

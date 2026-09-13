@@ -6,6 +6,10 @@ description: "Ein Workspace ist eine gemeinsame Umgebung, in der die Projekte, M
 Ein Workspace ist der oberste Container in Genie, der deine Projekte und Personen an einem Ort zusammenbringt. Statt isoliert zu arbeiten, teilt sich dein Team eine einzige Umgebung, in der jedes Projekt sichtbar ist, Aktivitäten verfolgt werden und alle aus demselben Kontext arbeiten. Du kannst zu mehreren Workspaces gehören — zum Beispiel zu einem für dein Unternehmen und einem für ein Nebenprojekt — und über die Seitenleiste sofort zwischen ihnen wechseln.
 
 <Note>
+Seit dem [Update vom 13. September 2026](/de/changelog/overview) nennt die Produktoberfläche ein Projekt **Genie App** statt „Projekt". Diese Seiten sagen weiterhin „Projekt" — gemeint ist so oder so dasselbe.
+</Note>
+
+<Note>
 Vollständige Team-Funktionen — einschließlich Mitgliederverwaltung und MCP-Integrationen — erfordern den **Teams**-Tarif. Du kannst in jedem Tarif einen Workspace erstellen, aber Kollaborationsfunktionen werden mit einem Upgrade freigeschaltet.
 </Note>
 
@@ -64,6 +68,8 @@ Workspace-Einstellungen und deine persönlichen Einstellungen teilen sich eine N
 ### Zuletzt bearbeitete Projekte
 
 Unter der Begrüßung und dem Genie-AI-Eingabefeld zeigt die Startseite einige deiner zuletzt bearbeiteten Projekte sowie eine Karte, um ein weiteres zu starten. Das ist eine Vorschau, nicht die vollständige Liste — klicke auf **Alle anzeigen** (oder auf **Projekte** in der Seitenleiste) für die vollständige, durchsuchbare, filterbare und paginierte Liste aller Projekte, auf die du Zugriff hast. Wenn du noch keine Projekte hast, siehst du stattdessen einen leeren Zustand mit einer Möglichkeit, dein erstes Projekt zu erstellen.
+
+Darunter folgen zwei weitere reine Vorschauen im selben Stil: deine zuletzt verwendeten **Genie Agents** und einige Dokumente aus der **Knowledge**-Datenbank deines Workspace — jeweils mit einer eigenen „Genie AI fragen"-Abkürzung und einem Link zur vollständigen Seite. Keine der beiden Vorschauen kann selbst einen Agenten ausführen oder ein Dokument verwalten; sie dienen nur dem schnellen Blick auf dem Weg zur Seite, zu der sie gehören.
 
 ### Aktivitätsprotokoll
 
@@ -221,6 +227,8 @@ Frag „was merkst du dir über dieses Projekt?", um zu sehen, was gespeichert i
 - **Projekt** — gilt nur für das eine Projekt, unter dem es abgelegt ist.
 
 Öffne **Knowledge** in der Workspace-Seitenleiste, um Dokumente in beiden Geltungsbereichen zu durchsuchen und zu verwalten, oder öffne den Tab **Einstellungen → Knowledge** eines Projekts, um nur dessen Dokumente zu verwalten — beide Oberflächen können auch die jeweils andere Art sehen und ablegen, und das Verschieben eines Dokuments zwischen den Geltungsbereichen erhält Inhalt und Suchindex. Workspace-Owner und -Admins können ein Dokument in jedem Projekt des Workspace ablegen, nicht nur in solchen, denen sie angehören.
+
+Die Oberfläche ist wie ein vertrauter Dateimanager aufgebaut: Ordner und unabgelegte Dokumente liegen an der Wurzel, das Öffnen eines Ordners zeigt seinen Inhalt, und ein Breadcrumb führt zurück nach oben — nichts wird je an zwei Stellen zugleich aufgelistet. Die Suche verlässt die Ordneransicht komplett und durchsucht alles auf einmal, sodass das Finden eines Dokuments nie davon abhängt, sich zu merken, wo es abgelegt wurde. Wechsle zwischen Listen- und Kachelansicht (für das nächste Mal gemerkt), sortiere nach jeder Spalte, und zieh ein Dokument direkt auf einen Ordner, um es dort abzulegen — oder auf den Breadcrumb **Knowledge**, um es wieder herauszunehmen — statt den Verschieben-Dialog zu öffnen.
 
 Lade reinen Text, Markdown, CSV, JSON, YAML, XML, HTML, Quellcode-Dateien, Word (`.docx`) oder Excel (`.xlsx`) hoch — bis zu 10 MB pro Datei. PDFs und Bilder werden im Uploader nicht direkt angenommen, da ihr Text nicht im Browser extrahiert werden kann; schick sie stattdessen im Chat an Genie AI und bitte sie, sie für dich abzulegen.
 
