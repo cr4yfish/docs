@@ -34,6 +34,10 @@ The four built-in roles above are a starting point, not a ceiling — owners and
 
 A custom role always **inherits** one of the built-in roles as its base, and can only take permissions away from that base — never add ones the base role doesn't have. So a custom role built on **Member** can, for example, keep the ability to create and edit projects while losing access to billing or the ability to remove other members, but it can never be granted something an Owner-only permission like deleting the workspace.
 
+<Tip>
+A member isn't limited to holding one role. Give someone **Editor** plus a custom **Billing Manager** role, for example, and they get everything either one allows — the strongest role they hold decides their overall standing (an owner among their roles still makes them an owner), and every other role only adds permissions on top of that. See [Change a member's role](#change-a-members-role).
+</Tip>
+
 <Steps>
   <Step title="Open Roles">
     Click the account row at the bottom of the sidebar, choose **Workspace settings**, then open **Roles**.
@@ -102,8 +106,8 @@ Use the search bar above the members table to filter by name or email address. Y
   <Step title="Open the member panel">
     Click anywhere on a member's row in the table, or click the pencil icon on the right side of the row. A side panel slides in showing the member's current role and join date.
   </Step>
-  <Step title="Select the new role">
-    Use the **Change role** dropdown to pick a new role. The options available depend on your own role: only owners can assign the Owner role to someone else.
+  <Step title="Choose the member's roles">
+    Tick every role this member should hold — a built-in role, a custom role, or several at once — in the **Change role** panel, which starts pre-ticked with whatever they currently have. The panel names the effective role live as you tick and untick. The options available depend on your own role: only owners can assign the Owner role to someone else.
   </Step>
   <Step title="Save">
     Click **Save role**. The change takes effect immediately.

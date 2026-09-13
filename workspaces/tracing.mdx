@@ -20,7 +20,11 @@ Click the account row at the bottom of the workspace sidebar, choose **Workspace
 - **Filters** — time window (last 24 hours, 7 days, or 30 days), status (completed, failed, aborted), surface, and a free-text search across messages, answers, tool names, and errors.
 - **The traces table** — one row per turn: time, status, surface, message, model, tokens, credits, duration, tools called, and which member it was.
 
-Click any row to open its full detail: a timeline of the turn's phases, the member's message, Genie's reasoning, every tool call with what it sent and got back, the final answer, and any error.
+Click any row to open its full detail: a timeline of the turn's phases, the member's message, Genie's reasoning, every tool call with what it sent and got back, the final answer, and any error. The detail opens as a resizable panel — drag its edge to make it wider — or click its expand button (or a trace's row directly) for the same view as its own full page. Every id it shows — the member, the project, the conversation — is a link to that item, resolved to a human-readable name with the raw id underneath.
+
+## Flaggings
+
+A trace's detail also shows what else noticed that turn: what the workspace's [PII rules](/workspaces/pii-rules) matched on it, what a [Guardrail](/workspaces/guardrails) intervened on, and what [Governance](/workspaces/governance) says about the project it ran against. Each section needs its own permission to view — PII detection, guardrails, or a Governance viewer role — and renders "hidden — needs `X`" rather than an empty list when you don't hold it, so an empty section always means nothing fired, never that you can't see it.
 
 ## Manage Tracing from workspace chat
 

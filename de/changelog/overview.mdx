@@ -4,6 +4,29 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="13. September 2026" description="Wöchentliches Release">
+
+Deckt ab, was seit dem 12. September dazukam. Die Schlagzeile ist eine produktweite Umbenennung — ein **Projekt** heißt jetzt **Genie App** —, dazu Mitglieder, die jetzt mehr als eine Rolle gleichzeitig halten können, eine als vertrauter Dateibrowser neugestaltete Wissensdatenbank und eine detailliertere Tracing-Ansicht.
+
+## Updates
+
+- **Ein Projekt heißt jetzt Genie App.** Jede Stelle, die bisher „Projekt" sagte — die Seitenleiste, das Dashboard, die Einstellungen und Genie AIs eigene Antworten —, sagt jetzt „Genie App" und stimmt damit mit dem Namen überein, den der Rest des Produkts (etwa die eigene Transaktions-E-Mail-Adresse der erzeugten App) bereits verwendete. An der Funktionsweise ändert sich nichts, nur der Name.
+- **Mitglieder können jetzt mehr als eine Rolle gleichzeitig halten.** Gib jemandem zum Beispiel **Editor** plus eine benutzerdefinierte Rolle **Billing Manager**, und die Person bekommt alles, was beide erlauben. Siehe [Mitglieder und Rollen](/de/workspaces/members#benutzerdefinierte-rollen).
+- **Die Wissensdatenbank ist als vertrauter Dateibrowser neugestaltet.** Ordner und Dokumente verhalten sich jetzt wie in Drive: ein Breadcrumb zur Navigation, Listen- oder Kachelansicht, sortierbare Spalten und ein Dokument direkt auf einen Ordner ziehen, um es dort abzulegen. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank).
+- **Tracing zeigt mehr — und zeigt es besser.** Die Detailansicht eines Traces ist jetzt größenveränderbar, öffnet als eigene Vollbildseite, und jede darin gezeigte ID — Mitglied, Projekt, Gespräch — verlinkt zurück zu diesem Element. Jeder Trace zeigt jetzt außerdem seine **Markierungen**: was deine PII-Regeln, Guardrails und Governance-Regeln bei diesem Durchlauf bemerkt haben. Siehe [Tracing](/de/workspaces/tracing#markierungen).
+- **Genie Agents: Die Start-Karte zeigt — und bearbeitet — die echten Startbedingungen.** Sie nennt jetzt den tatsächlichen Zeitplan oder Webhook-Auslöser des Agenten statt einer generischen Beschreibung, und ihr Start-Panel lässt dich einen Auslöser hinzufügen, umplanen oder abschalten, ohne die Änderung Genie AI beschreiben zu müssen. Siehe [Genie Agents](/de/workspaces/workflow-apps#auslöser-direkt-auf-der-arbeitsfläche-bearbeiten).
+- **Zwei neue Vorschauen auf dem Workspace-Dashboard**, neben deinen zuletzt bearbeiteten Projekten: deine zuletzt verwendeten **Genie Agents** und einige **Knowledge**-Dokumente, jeweils mit einem schnellen Link zur vollständigen Seite. Siehe [Workspaces-Übersicht](/de/workspaces/overview#zuletzt-bearbeitete-projekte).
+- **Genie AIs Bestätigungskarten — etwas genehmigen, auswählen oder prüfen, bevor es weitergeht — erscheinen jetzt inline im Chat**, in der Reihenfolge, in der sie auftraten, statt dein Eingabefeld zu ersetzen, bis du sie beantwortest.
+- **Der Genie MCP Server**: `get_workspace_trace` liefert jetzt dieselben Markierungen und aufgelösten Mitglieds-/Projektnamen wie die Web-Ansicht, und `list_workspace_members` meldet jede Rolle, die ein Mitglied hält, nicht nur die stärkste. Siehe [Genie MCP Server](/de/workspaces/mcp-api).
+
+## Fixes
+
+- **Behebt, dass die Tracing-Detailansicht auf einem schmalen Bildschirm (Smartphone-Breite) über ihr eigenes Panel hinausragte.**
+- **Behebt, dass das Nachrichtenfeld des Workspace-Chats das Gespräch nach oben springen ließ, während noch eine längere Nachricht getippt wurde.**
+- **Behebt einige Fälle mit zu geringem Textkontrast in der Befehlspalette und im Dashboard.**
+
+</Update>
+
 <Update label="12. September 2026" description="Wöchentliches Release">
 
 Deckt ab, was am 12. September dazukam. Genie AI kann jetzt die Design-Richtlinien eines Projekts lesen und aktualisieren und beliebige Dateien in deinem Code direkt öffnen.

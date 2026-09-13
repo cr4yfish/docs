@@ -95,6 +95,14 @@ Ein Agent kann mehrere Auslöser gleichzeitig haben — zum Beispiel nächtlich 
   Bitte Genie AI zum Beispiel: „Führe das jeden Montag um 9 Uhr aus" oder „Gib mir eine Webhook-URL, die diesen Agenten auslöst" — dasselbe Gespräch, das ihn baut, richtet auch ein, wie er startet.
 </Tip>
 
+### Auslöser direkt auf der Arbeitsfläche bearbeiten
+
+Die **Start**-Karte des Editors nennt jeden echten Weg, wie der Agent startet — seinen Zeitplan als Klartext-Satz („Täglich um 02:00 Uhr", „Wenn etwas anruft" oder „Kein Zeitplan — dieser Agent läuft nur, wenn du auf Play drückst") sowie den nächsten Auslösezeitpunkt. Wähle sie aus, um das **Start**-Panel zu öffnen, in dem du einen Auslöser hinzufügen, einen bestehenden umplanen oder abschalten oder entfernen kannst — ganz ohne die Änderung Genie AI beschreiben zu müssen, auch wenn das weiterhin geht. Ein Zeitplan wird komplett aus einer Kadenz, einer Uhrzeit und Wochentag-Schaltern zusammengesetzt statt als Cron-Ausdruck eingetippt; alles, was sich mit den Reglern nicht abbilden lässt, öffnet unter **Erweitert** auf seinem rohen Zeitplan, statt still umgeschrieben zu werden.
+
+<Note>
+Sind alle Auslöser aus (oder keiner gesetzt) und ruft nichts anderes diesen Agenten auf, zeigt die Start-Karte ihn als unverbunden an — der Agent lässt sich weiterhin über die Seite, über Genie AI oder von einem anderen Agenten ausführen, aber nichts startet ihn von selbst.
+</Note>
+
 ## Geheimnisse bleiben aus dem Ablauf heraus
 
 Wenn ein Schritt einen API-Schlüssel oder ein anderes Zugangsdatum braucht — etwa einen `Authorization`-Header für einen Webhook —, wird es sicher gespeichert, genau wie Projekt-Geheimnisse, und der Schritt verweist nur namentlich darauf. Das Zugangsdatum selbst wird nie im Klartext in den Ablauf eingefügt oder dir (oder der KI) angezeigt.

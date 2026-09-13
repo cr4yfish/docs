@@ -55,7 +55,7 @@ Lese und aktualisiere deinen Workspace, Mitglieder, Einladungen, Einstellungen u
 | Tool | Was es tut |
 |---|---|
 | `get_workspace_info` | Name, Mitgliederzahl, Einstellungen und Erstellungsdatum |
-| `list_workspace_members` | Mitglieder mit Rollen und Beitrittsdaten |
+| `list_workspace_members` | Mitglieder mit Rollen und Beitrittsdaten — ein Mitglied kann mehr als eine Rolle halten, `roles` listet die vollständige Menge, `role` die stärkste davon |
 | `list_workspace_invites` | Ausstehende Einlade-Links mit Ablaufdatum und verbleibenden Nutzungen |
 | `invite_workspace_member` | Erstelle einen teilbaren Einlade-Link für eine bestimmte Rolle |
 | `revoke_workspace_invite` | Breche eine ausstehende Einladung ab |
@@ -353,7 +353,7 @@ Workspaceweite Beobachtbarkeit über die Genie-AI-Durchläufe aller Mitglieder �
 | Tool | Was es tut |
 |---|---|
 | `list_workspace_traces` | Listet Lauf-Traces über alle Workspace-Mitglieder hinweg: Status, Oberfläche, Modell, Tokens, abgerechnete Credits, Dauer, Tool-Namen und kurze Ausschnitte. Optionale Volltextsuche `query`; neueste zuerst |
-| `get_workspace_trace` | Liest einen Lauf-Trace vollständig: Timings, die Nachricht der Nutzerin oder des Nutzers, Überlegungen, jeden Tool-Aufruf (begrenzte Vorschau von Eingabe/Ausgabe), die Antwort und etwaige Fehler |
+| `get_workspace_trace` | Liest einen Lauf-Trace vollständig: Timings, die Nachricht der Nutzerin oder des Nutzers, Überlegungen, jeden Tool-Aufruf (begrenzte Vorschau von Eingabe/Ausgabe), die Antwort, etwaige Fehler, aufgelöste Mitglieds-/Projektnamen und die Markierungen des Traces (siehe [Tracing](/de/workspaces/tracing#markierungen)) |
 
 ### Preise
 

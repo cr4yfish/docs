@@ -6,6 +6,10 @@ description: "A workspace is a shared environment where your team's projects, me
 A workspace is the top-level container in Genie that brings your projects and people together in one place. Instead of working in isolation, your team shares a single environment where every project is visible, activity is tracked, and everyone works from the same context. You can belong to multiple workspaces — for example, one for your company and another for a side project — and switch between them instantly from the sidebar.
 
 <Note>
+As of the [September 13, 2026 update](/changelog/overview), the product UI calls a project a **Genie App** rather than a "Project". These pages still say "project" — the same thing either way.
+</Note>
+
+<Note>
 Full team features — including member management and MCP integrations — require the **Teams** plan. You can create a workspace on any plan, but collaboration features are unlocked when you upgrade.
 </Note>
 
@@ -64,6 +68,8 @@ Workspace settings and your personal settings share one navigation, reached from
 ### Recent projects
 
 Below the greeting and the Genie AI prompt box, the home page shows a few of your most recently edited projects, plus a card to start another one. It's a preview, not the full list — click **View all** (or **Projects** in the sidebar) for the complete, searchable, filterable, paginated list of every project you have access to. If you have no projects yet, you'll see an empty state instead, with a way to create your first one.
+
+Below that, two more read-only previews follow the same shape: your most recent **Genie Agents**, and a few of your workspace's **Knowledge** documents — each with its own "Ask Genie AI" shortcut and a link to its full page. Neither peek can run an agent or manage a document itself; they're for a quick look on your way to the page that owns that.
 
 ### Activity log
 
@@ -221,6 +227,8 @@ Beyond what Genie AI remembers from conversation, your team can file the materia
 - **Project** — applies to just the one project it's filed under.
 
 Open **Knowledge** in the workspace sidebar to browse and manage documents at both scopes, or open a project's **Settings → Knowledge** tab to manage just that project's — either surface can also see and file the other kind, and moving a document between scopes keeps its content and search index intact. Workspace owners and admins can file a document into any project in the workspace, not only ones they're a member of.
+
+The browser is shaped like a familiar file manager: folders and unfiled documents sit at the root, opening a folder shows what's inside it, and a breadcrumb walks you back up — nothing is ever listed in two places at once. Search drops the folder view entirely and searches everything at once, so finding a document never depends on remembering where it was filed. Switch between a list or grid layout (remembered for next time), sort any column, and drag a document straight onto a folder to file it — or onto the **Knowledge** breadcrumb to take it back out — instead of opening the move dialog.
 
 Upload plain text, Markdown, CSV, JSON, YAML, XML, HTML, source files, Word (`.docx`), or Excel (`.xlsx`) files — up to 10 MB each. PDFs and images aren't accepted directly in the uploader, since their text can't be extracted in the browser; send them to Genie AI in chat instead and ask it to file them for you.
 

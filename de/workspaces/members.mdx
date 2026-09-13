@@ -34,6 +34,10 @@ Die vier eingebauten Rollen oben sind ein Ausgangspunkt, keine Obergrenze — Ei
 
 Eine benutzerdefinierte Rolle **erbt** immer eine der eingebauten Rollen als Basis und kann dieser Basis nur Berechtigungen wegnehmen — nie welche hinzufügen, die die Basis nicht hat. Eine auf **Mitglied** aufgebaute benutzerdefinierte Rolle kann zum Beispiel die Fähigkeit behalten, Projekte zu erstellen und zu bearbeiten, aber den Zugriff auf die Abrechnung oder die Möglichkeit verlieren, andere Mitglieder zu entfernen — sie kann aber nie eine nur für Eigentümer vorgesehene Berechtigung wie das Löschen des Workspace erhalten.
 
+<Tip>
+Ein Mitglied ist nicht auf eine einzige Rolle beschränkt. Gib jemandem zum Beispiel **Editor** plus eine benutzerdefinierte Rolle **Billing Manager**, und die Person bekommt alles, was beide erlauben — die stärkste gehaltene Rolle entscheidet über den Gesamtstatus (ist eine Eigentümer-Rolle darunter, ist die Person weiterhin Eigentümerin), und jede weitere Rolle fügt nur zusätzliche Berechtigungen hinzu. Siehe [Die Rolle eines Mitglieds ändern](#die-rolle-eines-mitglieds-ändern).
+</Tip>
+
 <Steps>
   <Step title="Rollen öffnen">
     Klicke auf die Kontozeile unten in der Seitenleiste, wähle **Workspace-Einstellungen** und öffne dann **Rollen**.
@@ -102,8 +106,8 @@ Nutze die Suchleiste über der Mitgliedertabelle, um nach Name oder E-Mail-Adres
   <Step title="Mitglieder-Panel öffnen">
     Klicke irgendwo auf die Zeile eines Mitglieds in der Tabelle oder klicke auf das Stift-Symbol rechts in der Zeile. Ein Seitenpanel öffnet sich und zeigt die aktuelle Rolle und das Beitrittsdatum.
   </Step>
-  <Step title="Neue Rolle auswählen">
-    Wähle im Dropdown **Rolle ändern** eine neue Rolle. Die verfügbaren Optionen hängen von deiner eigenen Rolle ab: Nur Eigentümer können die Rolle „Eigentümer" an jemand anderen vergeben.
+  <Step title="Rollen des Mitglieds wählen">
+    Hake im Panel **Rolle ändern** jede Rolle an, die dieses Mitglied haben soll — eine eingebaute Rolle, eine benutzerdefinierte Rolle oder mehrere gleichzeitig. Das Panel startet vorausgefüllt mit den aktuell gehaltenen Rollen und zeigt live an, welche effektive Rolle sich aus deiner Auswahl ergibt. Die verfügbaren Optionen hängen von deiner eigenen Rolle ab: Nur Eigentümer können die Rolle „Eigentümer" an jemand anderen vergeben.
   </Step>
   <Step title="Speichern">
     Klicke auf **Rolle speichern**. Die Änderung wird sofort wirksam.
