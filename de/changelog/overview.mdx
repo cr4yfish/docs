@@ -4,6 +4,27 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="14. September 2026" description="Wöchentliches Release">
+
+Deckt ab, was am 13. September dazukam. Die Schlagzeile ist eine neugestaltete Workspace-Aktivitätsseite — Suche, Filter und ein Kennzahlen-Trenddiagramm —, dazu Governance-Lesezugriff, der jetzt über benutzerdefinierte Rollen läuft, sowie ein Workspace-Profil, das du jetzt mit Logo und Akzentfarbe branden kannst.
+
+## Updates
+
+- **Die Workspace-Aktivitätsseite bekommt Suche, Filter und ein Kennzahlen-Trenddiagramm.** Oberhalb der Ereignisliste zeigt ein Insights-Panel eine Kennzahlen-Reihe und ein Trenddiagramm, die sich sofort nach Metrik und Zeitraum (7, 30 oder 90 Tage) neu berechnen; darunter durchsuchen eine Freitextsuche und ein Kategorie-Filter das *gesamte* Protokoll serverseitig, nicht nur die gerade sichtbare Seite. Siehe [Workspaces-Übersicht](/de/workspaces/overview#aktivitätsprotokoll).
+- **Governance-Lesezugriff kommt jetzt über eine Rolle, nicht mehr über einen Schalter pro Mitglied.** Vergib die Berechtigung **Governance einsehen** über eine benutzerdefinierte Rolle — oder workspaceweit über die eingebaute Rolle „Mitglied" — auf der Seite Rollen, genauso wie jede andere Berechtigung. Der alte Schalter pro Mitglied ist weg — vergib den Zugriff bei Bedarf erneut als Rolle. Siehe [Wer Zugriff auf Governance hat](/de/workspaces/governance#wer-zugriff-auf-governance-hat).
+- **Workspace-Einstellungen → Allgemein ist jetzt ein editierbares Workspace-Profil.** Lege Name, Beschreibung, Logo und Akzentfarbe für den Workspace fest — sichtbar überall, wo er benannt wird, auch im Umschalter der Seitenleiste. Siehe [Workspace-Profil](/de/workspaces/overview#workspace-profil).
+- **Tracing zeichnet jetzt blockierte Durchläufe auf.** Eine Nachricht, die Guardrails oder eine PII-Regel abgelehnt hat, hinterließ bisher keine Spur; sie erscheint jetzt als **blockierter** Durchlauf in Tracing, mit der Regel, die blockiert hat. Siehe [Blockierte Durchläufe](/de/workspaces/tracing#blockierte-durchläufe).
+- **Integrationen zeigen in einfacher Sprache, was sie gerade tun.** Jede Zeile eines verbundenen Servers zeigt jetzt einen Status in einfacher Sprache — verbunden, bereit, funktioniert nicht und so weiter —, mit einem **Verbinden**-Button direkt in der Zeile, wenn nur noch die Anmeldung fehlt, statt Endpunkt-URLs und einem versteckten Menü. Siehe [Integrationen](/de/workspaces/integrations#verbundene-server-verwalten).
+- **Genie AIs mehrseitige Design-Mockups lassen sich jetzt durchwischen.** Umfasst ein Entwurf mehrere Seiten, wische zwischen ihnen — oder nutze die Pfeile, sobald eine Seite in voller Größe geöffnet ist —, die Tabs bleiben dabei synchron mit der gerade angezeigten Seite. Siehe [Genie AI kann dir ein Design-Mockup zeigen](/de/workspaces/overview#genie-ai-kann-dir-ein-design-mockup-zeigen).
+
+## Fixes
+
+- **Behebt, dass das Anhängen einer Datei im Chat-Eingabefeld die Seite verschob.** Anhänge erscheinen jetzt als kompakter Pill-Streifen neben der Büroklammer statt als Kachel, die das Eingabefeld vergrößerte; fahr mit der Maus über einen Pill oder tippe ihn an für die vollständige Vorschau.
+- **Behebt, dass Governances deutsche Oberfläche ein Urteil anzeigte, das es gar nicht gibt („Nicht geprüft").**
+- **Behebt, dass die Zeile eines laufenden Traces auf der Tracing-Zeitleiste die Position wechselte, während er noch lief.**
+
+</Update>
+
 <Update label="13. September 2026" description="Wöchentliches Release">
 
 Deckt ab, was seit dem 12. September dazukam. Die Schlagzeile ist eine produktweite Umbenennung — ein **Projekt** heißt jetzt **Genie App** —, dazu Mitglieder, die jetzt mehr als eine Rolle gleichzeitig halten können, eine als vertrauter Dateibrowser neugestaltete Wissensdatenbank und eine detailliertere Tracing-Ansicht.
