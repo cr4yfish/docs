@@ -4,6 +4,26 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="September 15, 2026" description="Weekly release">
+
+Covers what shipped on September 14. A blocked message now reads as a calm notice instead of an error, with an opt-in email alert for admins; Guardrails can check attached images too; the Activity page adds a Security alerts summary and CSV/PDF export; and projects get a personal Favorites shelf.
+
+## Updates
+
+- **A blocked message now reads "Message held back," not an error.** PII rules and Guardrails already stopped a message that broke a rule; the card now says so plainly, with no "Try again" button. If you can already see that block in the log, you can subscribe to get emailed the moment a new one happens. See [PII rules: Actions](/workspaces/pii-rules#actions) and [Activity log](/workspaces/overview#activity-log).
+- **Guardrails now check attachments, not just text.** Turn on **Check images** to judge attached PNG/JPEGs for harmful content, and **Refuse attachments that cannot be checked** to block anything guardrails can't read at all — a PDF, a GIF/WebP image, or any image while image checking is off. See [Guardrails: Scanning attachments](/workspaces/guardrails#scanning-attachments).
+- **The Activity page adds a Security alerts panel and CSV/PDF export.** A summary of recent PII and Guardrails blocks sits alongside the insights panel, and the whole log can now be exported as a CSV or PDF from **View all**. See [Activity log](/workspaces/overview#activity-log).
+- **Favorite your most-used projects.** Star one from its card (or ask Genie AI) to pin it above the Projects grid, lead the dashboard preview, and filter for it with the new **Favorites** pill — personal to you, and available once a workspace holds three or more projects. See [Recent projects](/workspaces/overview#recent-projects).
+- **The workspace switcher lists your own workspaces before ones you've joined**, with your personal default workspace pinned at the very top.
+
+## Fixes
+
+- **Fixed the Genie AI composer sitting at the transcript's full width even while empty** — it's now narrower and centered until you start typing, and widens back out on the first character.
+- **Fixed the chat composer's frosted-glass background not actually blurring the transcript behind it** on some browsers.
+- **Fixed a hover anywhere in the sidebar darkening every chat icon in the list**, not just the one under the pointer.
+
+</Update>
+
 <Update label="September 14, 2026" description="Weekly release">
 
 Covers what shipped on September 13. The headline is a redesigned workspace Activity page — search, filters, and a KPI trend chart — alongside Governance view access moving onto custom roles, and a workspace profile you can now brand with a logo and an accent color.
