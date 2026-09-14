@@ -44,9 +44,18 @@ Turn on a built-in profanity filter, and add your own list of banned words or ph
 
 Optionally write your own message, shown to a member instead of Genie's answer when a guardrail blocks their message. Leave it blank to use Genie's default explanation.
 
+## Scanning attachments
+
+Guardrails judge a message's text by default. Two more switches, both off until you turn them on, extend that to what's attached:
+
+- **Check images** — attached PNG/JPEG images are judged for harmful content (hate, violence, sexual content, and so on) alongside the message's text. Off-limits topics and blocked words only ever apply to text.
+- **Refuse attachments that cannot be checked** — block a message outright if it carries something guardrails can't judge at all: a PDF, a GIF or WebP image, or any image while **Check images** is off.
+
+A document like a `.txt`, `.docx`, or spreadsheet is already covered as text — its content is extracted before Genie AI ever sees it.
+
 ## Blocked messages log
 
-The Guardrails page keeps a log of recent interventions: which category or topic triggered the block, where it happened (workspace chat or a project), who sent it, and when. The message content itself is never stored — only the reason it was blocked.
+The Guardrails page keeps a log of recent interventions: which category or topic triggered the block, where it happened (workspace chat or a project), who sent it, and when. The message content itself is never stored — only the reason it was blocked. Anyone who can already see this log can also turn on **email alerts** for new blocks — see [Activity log](/workspaces/overview#activity-log).
 
 ## Manage guardrails from workspace chat
 

@@ -73,9 +73,9 @@ Each rule has an action that controls what happens when it matches a message.
     **Use this for:** data you want to monitor without disrupting users.
   </Tab>
   <Tab title="Block">
-    The message is rejected before it reaches the AI. The user sees an error explaining which category of data triggered the block (for example, "Your message contained a credit card number"). They cannot retry with the same content.
+    The message is rejected before it reaches the AI. The person sees a plain "Message held back" notice — not an error — naming which category of data triggered the block (for example, "Your message contained a credit card number"), with no retry button: sending the identical content would just block it again.
 
-    Blocked messages are also logged (censored) so admins can review them.
+    Blocked messages are also logged (censored) so admins can review them, and anyone who can already see this log can turn on **email alerts** for new blocks — see [Activity log](/workspaces/overview#activity-log).
 
     **Use this for:** data that must never be sent to an AI — payment details, credentials, government IDs.
   </Tab>

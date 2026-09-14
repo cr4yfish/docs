@@ -40,7 +40,7 @@ Die linke Seitenleiste ist die primäre Navigation für deinen Workspace.
 
 <CardGroup cols={2}>
   <Card title="Workspace-Umschalter" icon="arrow-left-right">
-    Workspace-Name und Tarif erscheinen oben in der Seitenleiste. Klicke darauf, um zu einem anderen Workspace zu wechseln oder einen neuen zu erstellen.
+    Workspace-Name und Tarif erscheinen oben in der Seitenleiste. Klicke darauf, um zu einem anderen Workspace zu wechseln oder einen neuen zu erstellen — eigene Workspaces stehen vor denen, in die du eingeladen wurdest, mit deinem persönlichen Standard-Workspace ganz oben.
   </Card>
   <Card title="Übersicht" icon="house">
     Bringt dich von überall im Workspace zurück zur Workspace-Startseite.
@@ -79,6 +79,8 @@ Unter der Begrüßung und dem Genie-AI-Eingabefeld zeigt die Startseite einige d
 
 Darunter folgen zwei weitere reine Vorschauen im selben Stil: deine zuletzt verwendeten **Genie Agents** und einige Dokumente aus der **Knowledge**-Datenbank deines Workspace — jeweils mit einer eigenen „Genie AI fragen"-Abkürzung und einem Link zur vollständigen Seite. Keine der beiden Vorschauen kann selbst einen Agenten ausführen oder ein Dokument verwalten; sie dienen nur dem schnellen Blick auf dem Weg zur Seite, zu der sie gehören.
 
+Markiere ein Projekt über einen Stern auf seiner Karte (oder bitte Genie AI darum) als Favorit, um es griffbereit zu halten: favorisierte Projekte bekommen ein eigenes Regal oberhalb des Projekte-Rasters, führen diese Dashboard-Vorschau an und lassen sich auf der Projekte-Seite über den Filter **Favoriten** auswählen. Ein Favorit ist persönlich — Teamkolleg:innen behalten eigene Regale — und die Funktion schaltet sich erst ab drei oder mehr Projekten im Workspace ein, weil das Raster darunter ohnehin schon alles auf einen Blick zeigt.
+
 ### Aktivitätsprotokoll
 
 Wenn das Aktivitätsprotokoll von einem Admin oder Eigentümer aktiviert ist, erscheint unterhalb der zuletzt bearbeiteten Projekte ein Panel mit aktuellen Aktivitäten. Es zeigt einen Live-Feed workspace-weiter Ereignisse — neue Projekte, Mitgliederänderungen, Einstellungs-Updates — mit relativen Zeitstempeln. Klicke auf **Alle anzeigen**, um die vollständige Aktivitätsprotokoll-Seite zu öffnen.
@@ -90,6 +92,8 @@ Das Aktivitätsprotokoll muss unter **Einstellungen → Audit & Logging** einges
 </Note>
 
 Die vollständige Aktivitätsprotokoll-Seite ergänzt ein Insights-Panel oberhalb der Ereignisliste: eine Kennzahlen-Reihe und ein Trenddiagramm, beide sofort neu berechnet über ein Metrik-Dropdown (Ereignisse, aktive Mitglieder oder eine bestimmte Kategorie) und einen Zeitraum (7, 30 oder 90 Tage). Darunter durchsuchen eine Freitextsuche und ein Kategorie-Filter das gesamte Protokoll serverseitig — nicht nur die gerade angezeigten Zeilen —, sodass eine Suche nach dem Namen einer Kollegin oder eines Kollegen alles findet, was sie oder er getan hat, egal wie weit es zurückliegt.
+
+Ein **Sicherheitswarnungen**-Panel steht daneben und fasst kürzliche Blockierungen aus deinen [PII-Regeln](/de/workspaces/pii-rules) und [Guardrails](/de/workspaces/guardrails) zusammen — sichtbar für alle, die das zugrunde liegende Protokoll ohnehin schon einsehen können. Von demselben Panel aus kann jede Person mit diesem Zugriff sich per E-Mail benachrichtigen lassen, sobald eine neue Blockierung passiert — standardmäßig ausgeschaltet. Das gesamte Aktivitätsprotokoll lässt sich außerdem über **Alle anzeigen** als CSV oder PDF exportieren.
 
 ## Workspace-KI
 

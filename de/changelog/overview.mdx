@@ -4,6 +4,26 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="15. September 2026" description="Wöchentliches Release">
+
+Deckt ab, was am 14. September dazukam. Eine blockierte Nachricht liest sich jetzt als ruhiger Hinweis statt als Fehler, mit einer optionalen E-Mail-Benachrichtigung für Admins; Guardrails können jetzt auch Bilder prüfen; die Aktivitätsseite bekommt eine Sicherheitswarnungen-Zusammenfassung und CSV/PDF-Export; und Projekte bekommen ein persönliches Favoriten-Regal.
+
+## Updates
+
+- **Eine blockierte Nachricht liest sich jetzt als „Nachricht zurückgehalten", nicht als Fehler.** PII-Regeln und Guardrails haben schon bisher eine regelwidrige Nachricht gestoppt; die Karte sagt das jetzt schlicht, ohne „Erneut versuchen"-Button. Kannst du diese Blockierung im Protokoll ohnehin schon einsehen, kannst du dich per E-Mail benachrichtigen lassen, sobald die nächste passiert. Siehe [PII-Regeln: Aktionen](/de/workspaces/pii-rules#aktionen) und [Aktivitätsprotokoll](/de/workspaces/overview#aktivitätsprotokoll).
+- **Guardrails prüfen jetzt auch Anhänge, nicht nur Text.** Schalte **Bilder prüfen** ein, um angehängte PNG/JPEGs auf schädliche Inhalte zu prüfen, und **Nicht prüfbare Anhänge ablehnen**, um alles zu blockieren, was Guardrails gar nicht lesen können — ein PDF, ein GIF/WebP-Bild, oder jedes Bild, solange die Bildprüfung aus ist. Siehe [Guardrails: Anhänge scannen](/de/workspaces/guardrails#anhänge-scannen).
+- **Die Aktivitätsseite bekommt ein Sicherheitswarnungen-Panel und CSV/PDF-Export.** Eine Zusammenfassung kürzlicher PII- und Guardrails-Blockierungen steht jetzt neben dem Insights-Panel, und das gesamte Protokoll lässt sich über **Alle anzeigen** als CSV oder PDF exportieren. Siehe [Aktivitätsprotokoll](/de/workspaces/overview#aktivitätsprotokoll).
+- **Favorisiere deine meistgenutzten Projekte.** Markiere eines über den Stern auf seiner Karte (oder bitte Genie AI darum), um es oberhalb des Projekte-Rasters anzupinnen, in der Dashboard-Vorschau anzuführen und über den neuen Filter **Favoriten** auszuwählen — persönlich für dich, verfügbar ab drei oder mehr Projekten im Workspace. Siehe [Zuletzt bearbeitete Projekte](/de/workspaces/overview#zuletzt-bearbeitete-projekte).
+- **Der Workspace-Umschalter listet jetzt deine eigenen Workspaces vor denen, in die du eingeladen wurdest**, mit deinem persönlichen Standard-Workspace ganz oben.
+
+## Fixes
+
+- **Behebt, dass der Genie-AI-Composer auch im leeren Zustand die volle Breite des Gesprächsverlaufs einnahm** — er ist jetzt schmaler und zentriert, bis du zu tippen beginnst, und weitet sich beim ersten Zeichen wieder auf.
+- **Behebt, dass der Glaseffekt-Hintergrund des Chat-Composers den Gesprächsverlauf dahinter in manchen Browsern nicht tatsächlich weichzeichnete.**
+- **Behebt, dass ein Hover irgendwo in der Seitenleiste jedes Chat-Icon in der Liste abdunkelte**, nicht nur das unter dem Mauszeiger.
+
+</Update>
+
 <Update label="14. September 2026" description="Wöchentliches Release">
 
 Deckt ab, was am 13. September dazukam. Die Schlagzeile ist eine neugestaltete Workspace-Aktivitätsseite — Suche, Filter und ein Kennzahlen-Trenddiagramm —, dazu Governance-Lesezugriff, der jetzt über benutzerdefinierte Rollen läuft, sowie ein Workspace-Profil, das du jetzt mit Logo und Akzentfarbe branden kannst.

@@ -44,9 +44,18 @@ Aktiviere einen integrierten Schimpfwortfilter und füge deine eigene Liste orga
 
 Schreibe optional deine eigene Nachricht, die einem Mitglied anstelle von Genies Antwort angezeigt wird, wenn eine Guardrail seine Nachricht blockiert. Leer lassen, um Genies Standarderklärung zu verwenden.
 
+## Anhänge scannen
+
+Guardrails prüfen standardmäßig nur den Text einer Nachricht. Zwei weitere Schalter, beide zunächst ausgeschaltet, erweitern das auf Anhänge:
+
+- **Bilder prüfen** — angehängte PNG/JPEG-Bilder werden zusammen mit dem Nachrichtentext auf schädliche Inhalte geprüft (Hassrede, Gewalt, sexuelle Inhalte und so weiter). Tabuisierte Themen und gesperrte Wörter gelten immer nur für Text.
+- **Nicht prüfbare Anhänge ablehnen** — blockiert eine Nachricht komplett, wenn sie etwas enthält, das Guardrails überhaupt nicht beurteilen können: ein PDF, ein GIF- oder WebP-Bild, oder jedes Bild, solange **Bilder prüfen** aus ist.
+
+Ein Dokument wie eine `.txt`-, `.docx`- oder Tabellendatei ist bereits als Text abgedeckt — sein Inhalt wird extrahiert, bevor Genie AI ihn überhaupt sieht.
+
 ## Protokoll blockierter Nachrichten
 
-Die Guardrails-Seite führt ein Protokoll der letzten Eingriffe: welche Kategorie oder welches Thema die Blockierung ausgelöst hat, wo es passiert ist (Workspace-Chat oder ein Projekt), wer es gesendet hat und wann. Der Inhalt der Nachricht selbst wird nie gespeichert — nur der Grund für die Blockierung.
+Die Guardrails-Seite führt ein Protokoll der letzten Eingriffe: welche Kategorie oder welches Thema die Blockierung ausgelöst hat, wo es passiert ist (Workspace-Chat oder ein Projekt), wer es gesendet hat und wann. Der Inhalt der Nachricht selbst wird nie gespeichert — nur der Grund für die Blockierung. Wer dieses Protokoll ohnehin schon einsehen kann, kann außerdem **E-Mail-Benachrichtigungen** für neue Blockierungen einschalten — siehe [Aktivitätsprotokoll](/de/workspaces/overview#aktivitätsprotokoll).
 
 ## Guardrails über den Workspace-Chat verwalten
 
