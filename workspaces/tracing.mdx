@@ -17,7 +17,7 @@ Click the account row at the bottom of the workspace sidebar, choose **Workspace
 
 - **Stat tiles** — total traces, error rate, total tokens, and average turn time, broken down into how long was spent before the AI model, inside it, and after.
 - **Traces per day** — a chart of daily volume, with failed turns shown as their own series so a bad day stands out at a glance.
-- **Filters** — time window (last 24 hours, 7 days, or 30 days), status (completed, failed, aborted), surface, and a free-text search across messages, answers, tool names, and errors.
+- **Filters** — time window (last 24 hours, 7 days, or 30 days), status (completed, failed, aborted, blocked), surface, and a free-text search across messages, answers, tool names, and errors.
 - **The traces table** — one row per turn: time, status, surface, message, model, tokens, credits, duration, tools called, and which member it was.
 
 Click any row to open its full detail: a timeline of the turn's phases, the member's message, Genie's reasoning, every tool call with what it sent and got back, the final answer, and any error. The detail opens as a resizable panel — drag its edge to make it wider — or click its expand button (or a trace's row directly) for the same view as its own full page. Every id it shows — the member, the project, the conversation — is a link to that item, resolved to a human-readable name with the raw id underneath.
@@ -25,6 +25,10 @@ Click any row to open its full detail: a timeline of the turn's phases, the memb
 ## Flaggings
 
 A trace's detail also shows what else noticed that turn: what the workspace's [PII rules](/workspaces/pii-rules) matched on it, what a [Guardrail](/workspaces/guardrails) intervened on, and what [Governance](/workspaces/governance) says about the project it ran against. Each section needs its own permission to view — PII detection, guardrails, or a Governance viewer role — and renders "hidden — needs `X`" rather than an empty list when you don't hold it, so an empty section always means nothing fired, never that you can't see it.
+
+## Blocked turns
+
+A message that [Guardrails](/workspaces/guardrails) or a [PII rule](/workspaces/pii-rules) refuses now shows up in Tracing as a **blocked** turn — which rule blocked it, and why — instead of vanishing without a trace. It's not counted as a failure (blocking a message on purpose isn't an outage), and a PII-blocked turn only ever stores the already-masked message, never what was actually typed.
 
 ## Manage Tracing from workspace chat
 

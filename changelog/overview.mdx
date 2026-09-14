@@ -4,6 +4,27 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="September 14, 2026" description="Weekly release">
+
+Covers what shipped on September 13. The headline is a redesigned workspace Activity page — search, filters, and a KPI trend chart — alongside Governance view access moving onto custom roles, and a workspace profile you can now brand with a logo and an accent color.
+
+## Updates
+
+- **The workspace Activity page adds search, filters, and a KPI trend chart.** Above the event list, an insights panel shows a KPI row and a trend chart that re-cut instantly by metric and by time range (7, 30, or 90 days); below it, a free-text search and a category filter search the *whole* log on the server, not just the page you're looking at. See [Workspaces overview](/workspaces/overview#activity-log).
+- **Governance view access now comes from a role, not a per-member switch.** Grant the **See Governance** permission on a custom role — or on the built-in Member role, workspace-wide — from the Roles page, the same way you'd grant any other permission. The old per-member toggle is gone; regrant access as a role if you'd used it before. See [Who can access Governance](/workspaces/governance#who-can-access-governance).
+- **Workspace Settings → General is now an editable workspace profile.** Set a name, description, logo, and accent color for the workspace, all shown everywhere it's named — the sidebar switcher included. See [Workspace profile](/workspaces/overview#workspace-profile).
+- **Tracing now records blocked turns.** A message Guardrails or a PII rule refused used to leave no trace at all; it now shows up in Tracing as a **blocked** turn, with which rule blocked it. See [Blocked turns](/workspaces/tracing#blocked-turns).
+- **Integrations show what they're doing, in plain language.** Each connected server's row now gives a plain-language status — connected, ready, not working, and so on — with **Connect** right on the row when a sign-in is all that's missing, instead of endpoint URLs and a buried menu. See [Integrations](/workspaces/integrations#manage-connected-servers).
+- **Genie AI's multi-page design mock-ups are now swipeable.** When a draft covers more than one page, swipe between them (or use the arrows once you've opened one full-size) — the tabs stay in sync with whichever page is on screen. See [Genie AI can show you a design mock-up](/workspaces/overview#genie-ai-can-show-you-a-design-mock-up).
+
+## Fixes
+
+- **Fixed staging a file in a chat composer shifting the page.** Attachments now show as a compact strip of pills next to the paperclip instead of a tile that grew the input; hover or tap a pill for the full preview.
+- **Fixed Governance's German UI showing a verdict that doesn't exist ("Nicht geprüft").**
+- **Fixed a live trace's row jumping position on the Tracing timeline while it was still running.**
+
+</Update>
+
 <Update label="September 13, 2026" description="Weekly release">
 
 Covers what shipped since September 12. The headline is a product-wide rename — a **Project** is now called a **Genie App** — alongside members who can now hold more than one role, a Knowledge base redesigned as a familiar file browser, and a more detailed Tracing view.
