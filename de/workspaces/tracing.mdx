@@ -22,6 +22,10 @@ Klicke auf die Kontozeile unten in der Workspace-Seitenleiste, wähle **Workspac
 
 Klicke auf eine Zeile, um die vollständigen Details zu öffnen: eine Zeitleiste der Phasen des Durchlaufs, die Nachricht des Mitglieds, Genies Überlegungen, jeden Tool-Aufruf mit dem, was gesendet und zurückgegeben wurde, die endgültige Antwort und etwaige Fehler. Das Detail öffnet als größenveränderbares Panel — zieh an seinem Rand, um es breiter zu machen — oder klicke auf seinen Erweitern-Button (oder direkt auf die Zeile eines Traces) für dieselbe Ansicht als eigene, vollständige Seite. Jede angezeigte ID — Mitglied, Projekt, Gespräch — ist ein Link zu diesem Element, aufgelöst zu einem lesbaren Namen mit der rohen ID darunter.
 
+## Ein lesbarer Name für jeden Trace
+
+Ein Trace wird nicht mehr nur über eine rohe ID identifiziert — er heißt jetzt `<workspace-slug>-<n>` (zum Beispiel `genie-demo-142`), ein kurzer, für deinen Workspace eindeutiger Zähler. Dieser Name erscheint in der Tabelle, im Titel und in der URL der Detailseite und ist das, was Genie AI verwendet, wenn sie einen Trace erwähnt oder du sie bittest, einen zu öffnen. Eine Umbenennung deines Workspace macht darauf aufbauende Links nie kaputt, da wirklich nur die Nummer aufgelöst wird — und ein alter Link mit der rohen ID öffnet weiterhin denselben Trace.
+
 ## Markierungen
 
 Die Detailansicht eines Traces zeigt auch, was diesem Durchlauf sonst noch aufgefallen ist: was die [PII-Regeln](/de/workspaces/pii-rules) des Workspace darin erkannt haben, worauf eine [Guardrail](/de/workspaces/guardrails) eingegriffen hat, und was [Governance](/de/workspaces/governance) über das Projekt sagt, gegen das der Durchlauf lief. Jeder Abschnitt braucht eine eigene Berechtigung zum Einsehen — PII-Erkennung, Guardrails oder eine Governance-Betrachterrolle — und zeigt „ausgeblendet — benötigt `X`" statt einer leeren Liste, wenn du sie nicht hast, sodass ein leerer Abschnitt immer bedeutet, dass nichts ausgelöst wurde, nie, dass du es nicht sehen kannst.

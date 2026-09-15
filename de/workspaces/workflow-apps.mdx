@@ -13,17 +13,28 @@ Die meisten Projekte, die du in Genie baust, haben eine Oberfläche — Seiten, 
 
 Ein Genie Agent ist eine kurze Abfolge von **Schritten**. Jeder Schritt erledigt eine Sache, und ein späterer Schritt kann das Ergebnis eines früheren nutzen — zum Beispiel kann der KI-Schritt die E-Mail-Adresse verwenden, die der Datenbank-Schritt gerade nachgeschlagen hat. Das musst du nicht selbst verdrahten: Genie ermittelt die Reihenfolge automatisch aus dem, was du eingibst.
 
-Aktuell stehen sieben Arten von Schritten zur Verfügung:
+Aktuell stehen zehn Arten von Schritten zur Verfügung:
 
 | Schritt | Was er tut |
 |---|---|
-| **Datenbank** | Führt eine Abfrage gegen die Genie-Cloud-Datenbank deines Workspaces aus |
+| **Datenbank** | Führt eine Abfrage gegen eine Genie-Cloud-Datenbank aus — standardmäßig das an den Agenten gebundene Projekt, oder jede andere Genie App in deinem Workspace |
 | **HTTP** | Ruft eine externe URL auf — sendet einen Webhook, spricht eine externe API an |
 | **KI** | Bittet Genies KI, als ein Schritt im Ablauf etwas zu erledigen — zusammenfassen, einen Text entwerfen, eine Entscheidung treffen |
-| **Edge Function** | Führt eine deiner eigenen individuellen Backend-Funktionen aus einem Projekt aus, für echten Code oder alles, was die anderen Schritte nicht können |
+| **Edge Function** | Führt eine bereitgestellte Backend-Funktion aus — standardmäßig die des an den Agenten gebundenen Projekts, oder die jeder anderen Genie App in deinem Workspace |
 | **Verbundene App** | Ruft ein Tool einer der [verbundenen Integrationen](/de/workspaces/integrations) deines Workspaces auf — Linear, Notion, Outlook und mehr — oder **Genie selbst**, immer verfügbar als integrierte verbundene App, ganz ohne Einrichtung |
 | **Benachrichtigung** | Sendet eine Benachrichtigung in die Genie-App, an die Person, die den Agenten ausgeführt hat, oder an den Eigentümer bzw. die Eigentümerin des Agenten |
+| **Websuche** | Durchsucht das lebende Web und liefert die Ergebnisse als Daten zurück — Titel, Links, Ausschnitte — für einen späteren Schritt |
+| **Webseite lesen** | Liest eine Seite über Genies sicheren Seitenleser (denselben, den Genie AI im Chat verwendet) und liefert ihren Text zurück |
+| **Compliance-Prüfung** | Prüft einen Wert gegen die [PII-Regeln](/de/workspaces/pii-rules) und/oder [Guardrails](/de/workspaces/guardrails) deines Workspace, bevor er im Ablauf weitergeht |
 | **Ein anderer Agent** | Ruft einen Genie Agent auf, den du bereits gebaut hast, sodass du kleinere Abläufe zu größeren zusammensetzen kannst |
+
+<Tip>
+Ein **Datenbank**- oder **Edge-Function**-Schritt muss nicht beim an den Agenten gebundenen Projekt bleiben — richte ihn stattdessen auf jede andere Genie App in deinem Workspace aus, um deren eigene Datenbank zu lesen oder zu beschreiben oder ihre eigenen Backend-Funktionen aufzurufen. Wähle das Zielprojekt über die Auswahl des Feldes im Editor, oder sag Genie AI einfach, welche App du meinst.
+</Tip>
+
+<Tip>
+Ein **Websuche**-Schritt liefert die rohen Ergebnisse, keine geschriebene Zusammenfassung — füge danach einen **KI**-Schritt hinzu, wenn Genie das Gefundene zusammenfassen oder darauf reagieren soll. So verbraucht eine geplante Suche nicht heimlich KI-Credits für eine Zusammenfassung, die niemand angefragt hat.
+</Tip>
 
 <Tip>
   Genie als integrierte verbundene App bedeutet, dass ein Schritt alles tun kann, was Genie AI selbst im Chat kann — ein Projekt erstellen, einen Folge-Prompt senden, eine Workspace-Einstellung ändern — als Teil einer Automatisierung, ohne Zugangsdaten einzurichten. Ein Schritt kann nur erreichen, was das Mitglied, dem der Agent gehört, auch durch eine direkte Anfrage an Genie AI erreichen könnte.
@@ -49,6 +60,10 @@ Aktuell stehen sieben Arten von Schritten zur Verfügung:
     Genie AI baut und bearbeitet die Schrittfolge für dich und kann zuerst eine **Vorschau** ausführen — einen Testlauf, der zeigt, was jeder Schritt tun würde, ganz ohne echte Nebeneffekte: keine wirklich versendete E-Mail, keine wirklich gesendete Anfrage, keine wirklich ausgeführte Abfrage. Nutze sie (oder lass Genie sie nutzen), um einen neuen oder geänderten Agenten zu prüfen, bevor du ihn endgültig speicherst.
   </Step>
 </Steps>
+
+<Tip>
+Wenn Genie AI einen Agenten für dich baut, zeigt der Chat schon während der Erstellung eine Karte mit seinem tatsächlichen Graphen — den Schritten und wie sie verbunden sind — statt nur einer einzeiligen Bestätigung. Und jeder Schritt, den Genie AIs Tools beim Arbeiten an einem Agenten ausführen, zeigt jetzt im Gesprächsverlauf ein Label in einfacher Sprache statt eines generischen „Arbeite daran".
+</Tip>
 
 ## Der visuelle Editor
 

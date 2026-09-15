@@ -22,6 +22,10 @@ Click the account row at the bottom of the workspace sidebar, choose **Workspace
 
 Click any row to open its full detail: a timeline of the turn's phases, the member's message, Genie's reasoning, every tool call with what it sent and got back, the final answer, and any error. The detail opens as a resizable panel — drag its edge to make it wider — or click its expand button (or a trace's row directly) for the same view as its own full page. Every id it shows — the member, the project, the conversation — is a link to that item, resolved to a human-readable name with the raw id underneath.
 
+## A readable name for every trace
+
+A trace is no longer identified only by a raw id — it's named `<workspace-slug>-<n>` (for example, `genie-demo-142`), a short counter unique to your workspace. That name is what you see in the table, the detail page's title and URL, and what Genie AI uses when it mentions a trace or when you ask it to open one. Renaming your workspace never breaks a link built on this, since only the number is actually resolved — and an old link built on the raw id still opens the same trace.
+
 ## Flaggings
 
 A trace's detail also shows what else noticed that turn: what the workspace's [PII rules](/workspaces/pii-rules) matched on it, what a [Guardrail](/workspaces/guardrails) intervened on, and what [Governance](/workspaces/governance) says about the project it ran against. Each section needs its own permission to view — PII detection, guardrails, or a Governance viewer role — and renders "hidden — needs `X`" rather than an empty list when you don't hold it, so an empty section always means nothing fired, never that you can't see it.
