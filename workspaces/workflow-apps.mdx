@@ -13,17 +13,28 @@ Most projects you build in Genie have a UI — pages someone opens and clicks ar
 
 A Genie Agent is a short sequence of **steps**. Each step does one thing, and a later step can use an earlier step's result — for example, the AI step can use the email address the database step just looked up. You don't wire this up by hand: Genie figures out the order automatically from what you type.
 
-Seven kinds of step are available today:
+Ten kinds of step are available today:
 
 | Step | What it does |
 |---|---|
-| **Database** | Runs one query against your workspace's Genie Cloud database |
+| **Database** | Runs one query against a Genie Cloud database — the agent's own bound project by default, or any other Genie App in your workspace |
 | **HTTP** | Calls an external URL — send a webhook, hit a third-party API |
 | **AI** | Asks Genie's AI to do something as one step in the flow — summarize, draft a message, make a decision |
-| **Edge function** | Runs one of your own project's custom backend functions, for real code or anything the other step kinds can't do |
+| **Edge function** | Runs a deployed backend function — the agent's own bound project by default, or any other Genie App in your workspace |
 | **Connected app** | Calls a tool on one of your workspace's [connected integrations](/workspaces/integrations) — Linear, Notion, Outlook, and more — or on **Genie itself**, always available as a built-in connected app with nothing to set up |
 | **Notification** | Pushes a notification into the Genie app, to whoever ran the agent or to the agent's owner |
+| **Web search** | Searches the live web and returns the results as data — titles, links, snippets — for a later step to use |
+| **Read a webpage** | Reads one page through Genie's safe page reader (the same one Genie AI uses in chat) and returns its text |
+| **Compliance check** | Checks a value against your workspace's [PII rules](/workspaces/pii-rules) and/or [Guardrails](/workspaces/guardrails) before it goes any further in the flow |
 | **Another agent** | Calls a Genie Agent you've already built, so you can compose smaller flows into bigger ones |
+
+<Tip>
+A **Database** or **Edge function** step doesn't have to stay on the agent's own bound project — point it at any other Genie App in your workspace instead, to read or write that app's own database or call its own backend functions. Pick the target project from the field's picker in the editor, or just tell Genie AI which app you mean.
+</Tip>
+
+<Tip>
+A **Web search** step returns the raw results, not a written summary — add an **AI** step after it if you want Genie to summarize or act on what it found. That keeps a scheduled search from quietly spending AI credits on a summary nobody asked for.
+</Tip>
 
 <Tip>
 Genie as a built-in connected app means a step can do anything Genie AI itself can do in chat — create a project, send a follow-up prompt, change a workspace setting — as part of an automation, with no credentials to connect. A step can only reach what the member who owns the agent could reach by asking Genie AI directly.
@@ -49,6 +60,10 @@ Genie as a built-in connected app means a step can do anything Genie AI itself c
     Genie AI builds and edits the sequence of steps for you, and can run a **preview** first — a dry run that shows you what each step would do with no real side effects: no email actually sent, no request actually made, no query actually run. Use it (or ask Genie to use it) to check a new or changed agent before you save it for real.
   </Step>
 </Steps>
+
+<Tip>
+When Genie AI builds an agent for you, the chat shows a card with its actual graph — the steps and how they connect — right as it's being created, not just a one-line confirmation. And every step Genie AI's tools take while working on an agent now shows a plain-language label in the transcript instead of a generic "Working on it".
+</Tip>
 
 ## The visual editor
 
