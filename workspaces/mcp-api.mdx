@@ -46,7 +46,7 @@ Restart Claude Desktop and open any conversation. Claude will prompt you to auth
 
 ## Available tools
 
-The Genie MCP Server provides tools across twenty-six categories.
+The Genie MCP Server provides tools across twenty-seven categories.
 
 ### Workspace management
 
@@ -54,19 +54,20 @@ Read and update your workspace, members, invitations, settings, and billing.
 
 | Tool | What it does |
 |---|---|
-| `get_workspace_info` | Name, member count, settings, and creation date |
+| `get_workspace_info` | Name, member count, icon, accent color, settings, and creation date |
 | `list_workspace_members` | Members with roles and join dates — a member can hold more than one role, so `roles` lists the full set and `role` the strongest one |
 | `list_workspace_invites` | Pending invite links with expiry and remaining uses |
 | `invite_workspace_member` | Create a shareable invite link for a given role |
 | `revoke_workspace_invite` | Cancel a pending invite |
 | `update_workspace_member_role` | Change a member's role |
 | `remove_workspace_member` | Remove a member immediately |
-| `update_workspace` | Rename the workspace or update its description |
+| `update_workspace` | Rename the workspace, update its description, or set its icon and accent color |
 | `update_workspace_settings` | Toggle activity log or project access control |
 | `get_workspace_billing` | Subscription plan, status, and billing period |
 | `get_workspace_credits` | Current credit balance |
 | `get_credit_usage` | Credit consumption, optionally broken down by project, member, or day, and sortable by spend or date |
 | `get_recent_workspace_activity` | Activity log with filters and pagination |
+| `get_workspace_activity_stats` | Aggregated trend KPIs — events and active members per day, and the busiest actions — the same figures the Activity page's insights panel charts |
 | `list_workspaces` | All workspaces the authenticated user belongs to |
 | `list_user_workspaces` | Same list, with the currently-connected workspace marked |
 | `create_workspace` | Create a new workspace, owned by you. Independent of the currently connected workspace — it appears in your workspace list right away |
@@ -79,7 +80,8 @@ Browse projects, create new ones from prompts, and manage the full project lifec
 | Tool | What it does |
 |---|---|
 | `list_latest_projects` | 10 most recently updated projects |
-| `search_projects` | Full-text search with sort options (`recentlyEdited`, `bestMatch`, etc.) |
+| `search_projects` | Full-text search with sort options (`recentlyEdited`, `bestMatch`, etc.); pass `favorites_only` to search just your [favorites](/workspaces/overview#recent-projects) |
+| `set_project_favorite` | Star or unstar a project as one of your personal favorites |
 | `get_project` | Full details: name, description, visibility, deployment URL, credit usage |
 | `create_project` | Create a project from a natural-language prompt and start the first build |
 | `send_followup_prompt` | Send a follow-up instruction to an existing project |
@@ -299,9 +301,9 @@ Manage the MCP server integrations (Linear, GitHub, Notion, Stripe, etc.) that p
 
 | Tool | What it does |
 |---|---|
-| `list_workspace_mcp_servers` | All configured integrations — name, URL, status, auth type (no credentials returned) |
+| `list_workspace_mcp_servers` | All configured integrations — name, URL, status, auth type, and whether its credentials are shared or per-member (no credentials returned) |
 | `add_workspace_mcp_server` | Add a new MCP server integration |
-| `update_workspace_mcp_server` | Edit name, URL, transport, or rotate a bearer token |
+| `update_workspace_mcp_server` | Edit name, URL, transport, rotate a bearer token, or switch it between [shared and per-member credentials](/workspaces/integrations#shared-vs-personal-connections) |
 | `toggle_workspace_mcp_server` | Enable or disable a server without removing it |
 | `delete_workspace_mcp_server` | Permanently remove a server and its stored credentials |
 | `test_workspace_mcp_server_connection` | Open a test connection and list the tools it exposes |
@@ -341,10 +343,20 @@ Configure guardrails on the workspace chat agent, for paid workspaces. See [Guar
 
 | Tool | What it does |
 |---|---|
-| `get_guardrails` | Read whether guardrails are enabled, the per-category content-filter strength, denied topics, profanity filter, blocked words, and custom blocked message |
+| `get_guardrails` | Read whether guardrails are enabled, the per-category content-filter strength, denied topics, profanity filter, blocked words, custom blocked message, and the [attachment-scanning](/workspaces/guardrails#scanning-attachments) switches |
 | `list_guardrail_events` | List recent messages a guardrail blocked — who, where, which category or topic fired. Never the message text |
-| `update_guardrails` | Partial update to the guardrail configuration, applied live. Omitted fields keep their current value; topic and word lists replace the whole list. At least one protection must stay active |
+| `update_guardrails` | Partial update to the guardrail configuration, applied live — including whether to scan attached images and whether to block attachments guardrails can't check at all. Omitted fields keep their current value; topic and word lists replace the whole list. At least one protection must stay active |
 | `set_guardrails_enabled` | Turn guardrail enforcement on or off. Enabling with no saved configuration starts from the protective defaults |
+
+### Security alerts
+
+Summarize recent PII and Guardrails blocks, and manage your own email alert subscription — the tools behind the Activity page's Security alerts panel. See [Activity log](/workspaces/overview#activity-log) for the panel itself.
+
+| Tool | What it does |
+|---|---|
+| `get_workspace_security_alerts` | Summary of recent PII and Guardrails blocks. Each source (PII, Guardrails) is included only if you can already see its underlying log |
+| `get_my_security_alert_subscription` | Whether you're currently subscribed to get emailed when a new block happens |
+| `set_my_security_alert_subscription` | Turn your own email alert subscription on or off — you can only manage your own subscription, never another member's |
 
 ### Workspace Tracing
 

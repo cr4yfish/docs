@@ -4,6 +4,22 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="17. September 2026" description="Wöchentliches Release">
+
+Deckt ab, was am 15./16. September dazukam. Der [Genie MCP Server](/de/workspaces/mcp-api) zieht in fünf Bereichen mit der Web-App gleich — Projekte favorisieren, Sicherheitswarnungen und Aktivitäts-Trendwerte sind jetzt auch über einen externen KI-Client erreichbar — und zwei Zuverlässigkeitsfehler im Workspace-Chat sind behoben.
+
+## Updates
+
+- **Der Genie MCP Server kann jetzt Projekte favorisieren, Sicherheitswarnungen lesen, dein Benachrichtigungsabo verwalten und Aktivitäts-Trendwerte lesen.** Fünf neue Tools — `set_project_favorite`, `get_workspace_security_alerts`, `get_my_security_alert_subscription`, `set_my_security_alert_subscription` und `get_workspace_activity_stats` — bringen einen externen KI-Client (Claude Desktop, Cursor oder deinen eigenen) in jedem dieser Bereiche auf den Stand der Web-App. Siehe [Verfügbare Tools](/de/workspaces/mcp-api#verfügbare-tools).
+- **Ein paar bestehende MCP-Tools haben Felder dazubekommen, die ihre Web-App-Pendants schon hatten.** `update_workspace` kann jetzt Icon und Akzentfarbe setzen, `update_workspace_mcp_server` kann einen Konnektor zwischen geteilten und persönlichen Zugangsdaten umschalten, und `update_guardrails` kann das Scannen von Anhängen ein- oder ausschalten — alle drei nahmen diese Felder über MCP zuvor entgegen, ohne sie anzuwenden. Siehe [Verfügbare Tools](/de/workspaces/mcp-api#verfügbare-tools).
+
+## Fixes
+
+- **Behebt, dass manche Workspace-Chat-Gespräche dauerhaft mit einem „cannot be modified"-Fehler bei jeder späteren Runde hängen blieben** — am reproduzierbarsten direkt nachdem Genie AI mitten im Gespräch ein Projekt erstellt hatte. Das Gespräch erholt sich jetzt, und spätere Runden laufen normal durch.
+- **Behebt, dass Genie AIs Antwort mit einem Stream-Fehler abbrach, wenn sie deine verbundenen Gmail- oder Microsoft-365-Tools nachschlug**, während du einen Genie-Agent-Schritt gebaut hast.
+
+</Update>
+
 <Update label="15. September 2026" description="Wöchentliches Release">
 
 Deckt ab, was am 14. September dazukam. Eine blockierte Nachricht liest sich jetzt als ruhiger Hinweis statt als Fehler, mit einer optionalen E-Mail-Benachrichtigung für Admins; Guardrails können jetzt auch Bilder prüfen; die Aktivitätsseite bekommt eine Sicherheitswarnungen-Zusammenfassung und CSV/PDF-Export; Projekte bekommen ein persönliches Favoriten-Regal; und Genie Agents wie Integrationen bekommen neue Fähigkeiten dazu — darunter Gmail, drei neue Schrittarten und KI-generierte Titelbilder.

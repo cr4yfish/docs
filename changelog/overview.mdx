@@ -4,6 +4,22 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="September 17, 2026" description="Weekly release">
+
+Covers what shipped September 15–16. The [Genie MCP Server](/workspaces/mcp-api) catches up to the web app in five places — favoriting a project, Security alerts, and Activity trend stats are all reachable from an external AI client now — and two workspace chat reliability bugs are fixed.
+
+## Updates
+
+- **The Genie MCP Server can now favorite projects, read Security alerts, manage your alert subscription, and read Activity trend stats.** Five new tools — `set_project_favorite`, `get_workspace_security_alerts`, `get_my_security_alert_subscription`, `set_my_security_alert_subscription`, and `get_workspace_activity_stats` — bring an external AI client (Claude Desktop, Cursor, or your own) to parity with the web app in each of those areas. See [Available tools](/workspaces/mcp-api#available-tools).
+- **A few existing MCP tools grew fields their web-app counterparts already had.** `update_workspace` can now set an icon and accent color, `update_workspace_mcp_server` can switch a connector between shared and per-member credentials, and `update_guardrails` can turn attachment scanning on or off — all three previously accepted those fields over MCP without applying them. See [Available tools](/workspaces/mcp-api#available-tools).
+
+## Fixes
+
+- **Fixed some workspace chat conversations getting stuck for good with a "cannot be modified" error on every later turn** — most reproducible right after Genie AI created a project mid-conversation. The conversation now recovers and later turns go through normally.
+- **Fixed Genie AI's reply cutting out with a stream error when it looked up your connected Gmail or Microsoft 365 tools while building a Genie Agent step.**
+
+</Update>
+
 <Update label="September 15, 2026" description="Weekly release">
 
 Covers what shipped on September 14. A blocked message now reads as a calm notice instead of an error, with an opt-in email alert for admins; Guardrails can check attached images too; the Activity page adds a Security alerts summary and CSV/PDF export; projects get a personal Favorites shelf; and Genie Agents and Integrations both grew new capabilities — Gmail, three new step kinds, and AI-generated cover pictures among them.
