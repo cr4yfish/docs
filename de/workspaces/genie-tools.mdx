@@ -1,0 +1,88 @@
+---
+title: "Genie Tools: kleine interne Apps, beschrieben statt gebaut"
+description: "Ein Genie Tool ist eine kleine interne App — eine Tabelle, ein Formular, eine Kennzahl, ein Button — die du Genie AI im Chat beschreibst und die direkt in deinem Workspace angezeigt wird. Kein Code, keine separate Datenbank: Sie liest und schreibt in den eigenen Tabellen deines Workspace."
+---
+
+Neben Genie Apps und Genie Agents kann ein Workspace auch **Genie Tools** enthalten — kleine interne Apps mit eigener Oberfläche, die du aber nicht baust oder bereitstellst. Du beschreibst Genie AI, was du möchtest („eine Tabelle mit Bestellungen und ein Formular, um eine hinzuzufügen"), und Genie zeigt es dir live an — direkt im Chat und auf einer eigenen Seite in deinem Workspace.
+
+<Note>
+Öffne **Tools** in der Workspace-Seitenleiste, um alle Genie Tools im Workspace zu sehen, oder öffne eines direkt über seine eigene Seite unter `/workspace/<dein-workspace>/tools`.
+</Note>
+
+## Der Unterschied zu einer App oder einem Agent
+
+| | Genie App | Genie Agent | Genie Tool |
+|---|---|---|---|
+| Was es ist | Generierter, bereitgestellter Code | Eine Abfolge von Schritten, dauerhaft ausgeführt | Eine Beschreibung, live angezeigt |
+| Läuft, wenn | jemand sie besucht | ein Trigger auslöst oder du ihn ausführst | jemand es öffnet oder etwas darin anklickt |
+| Hat eine Oberfläche | Ja, eine eigene | Nein — siehe [Genie Agents](/de/workspaces/workflow-apps) | Ja, gezeichnet aus Genies eigenen Komponenten |
+| Wo die Daten liegen | In seiner eigenen Genie-Cloud-Datenbank | Wo auch immer es liest oder schreibt | In den eigenen Tabellen deines Workspace — kein Genie-Cloud-Projekt nötig |
+
+Kurz gesagt: Ein **Agent** läuft von allein und hat keine Oberfläche; ein **Tool** hat eine Oberfläche und läuft nur, wenn jemand es öffnet. Beide können genau dieselben Daten lesen und schreiben — ein Genie Agent kann nachts neue Zeilen in eine Workspace-Tabelle schreiben, und ein Genie Tool kann sie am nächsten Morgen anzeigen, ohne dass dafür irgendetwas zwischen beiden verdrahtet werden muss.
+
+## Ein Tool bauen
+
+Es gibt keinen separaten formularbasierten Baukasten — Genie AI ist der Weg, ein Genie Tool zu erstellen und zu ändern, im selben Gespräch, das du auch für alles andere in Genie nutzt:
+
+- „Baue mir ein Tool mit einer Tabelle für Bestellungen und einem Formular, um eine hinzuzufügen"
+- „Füge einen Button hinzu, der die ausgewählte Bestellung als versendet markiert"
+- „Zeige oben auf der Seite eine laufende Gesamtsumme der Bestellungen"
+
+Genie AI zeigt das Tool schon während des Bauens direkt im Chat in Aktion — eine live funktionierende Tabelle, ein funktionierendes Formular — nicht nur eine Beschreibung dessen, was gemacht wurde. Sobald du zufrieden bist, wird es gespeichert und erscheint auf der **Tools**-Seite für jeden im Workspace zum Öffnen.
+
+<Tip>
+Weil es keinen separaten Editor gibt, ist das Ändern eines Tools immer ein Gespräch: „füge eine Spalte für die Telefonnummer des Kunden hinzu" oder „entferne den Löschen-Button, ich möchte nicht, dass jemand aus Versehen Bestellungen löscht."
+</Tip>
+
+## Was ein Genie Tool anzeigen kann
+
+Die Seite eines Tools setzt sich aus einer kleinen Auswahl an Bausteinen zusammen, die Genie AI für dich auswählt und anordnet:
+
+| Baustein | Zeigt |
+|---|---|
+| Text | Ein oder zwei Zeilen geschriebenen Inhalts |
+| Kennzahl | Eine einzelne Zahl oder einen Wert mit Beschriftung |
+| Tabelle | Datenzeilen, mit den Spalten, die du möchtest |
+| Rohdaten | Ein beliebiges Ergebnis, lesbar formatiert |
+| Formular | Felder, die beim Absenden eine Aktion auslösen — eine Zeile hinzufügen, eine aktualisieren, was auch immer du beschreibst |
+| Button | Löst eine Aktion ohne Eingabe aus — etwas als erledigt markieren, eine Zusammenfassung verschicken |
+
+Jeder Baustein behandelt seine Zwischenzustände selbst: Eine Tabelle zeigt beim Laden ein Platzhalter-Skelett, sagt klar, wenn sie leer ist, und wenn etwas fehlschlägt, wird der Rest der Seite trotzdem angezeigt — mit dem Fehler direkt neben dem, was kaputt war. Ein defekter Baustein macht nie das ganze Tool leer.
+
+## Wo die Daten liegen
+
+Die Daten eines Genie Tools liegen in den eigenen Tabellen deines Workspace — einem schemalosen Ort für Datensätze, für den weder eine Genie App noch eine Genie-Cloud-Datenbank nötig ist. Bittest du Genie AI um „ein Tool mit einer Tabelle für Leads", legt sie die Tabelle beim ersten Schreibvorgang an; es gibt kein Schema, das du vorab entwerfen musst, und ein neues Feld später hinzuzufügen ist genauso einfach ein Gespräch wie die Anfrage nach dem Tool selbst.
+
+Dieselben Workspace-Tabellen stehen auch als Schritt innerhalb eines [Genie Agent](/de/workspaces/workflow-apps) zur Verfügung — ein Agent kann also nachts Leads sammeln und einfügen, und ein Genie Tool kann sie am nächsten Morgen auflisten, beide lesen und schreiben genau dieselben Zeilen.
+
+<Note>
+Ein Genie Tool läuft immer mit **deinem eigenen** Zugriff — es zu öffnen, oder es von jemand anderem öffnen zu lassen, gibt niemals fremde Daten oder Zugangsdaten preis. Liest ein Tool aus einer deiner verbundenen Integrationen, geschieht das mit deiner eigenen Verbindung — genauso, als hättest du Genie AI direkt danach gefragt.
+</Note>
+
+## Limits
+
+| Limit | Wert |
+|---|---|
+| Seiten pro Tool | 10 |
+| Bausteine pro Seite | 30 |
+| Felder pro Formular | 20 |
+| Spalten pro Tabellen-Baustein | 30 |
+| Gelesene Zeilen pro Abfrage | 200 |
+| Geänderte Zeilen pro Schreibvorgang | 100 |
+| Workspace-Tabellen pro Workspace | 100 |
+| Zeilen pro Workspace-Tabelle | 10.000 |
+
+<Tip>
+Bitte Genie AI zum Beispiel um „liste unsere Genie Tools auf" oder „füge der Leads-Tabelle eine Zeile hinzu" — sie kann Tools und ihre zugrunde liegenden Tabellen in deinem Auftrag lesen, bauen, ausführen und bearbeiten, genau wie du es auf der Tools-Seite selbst könntest.
+</Tip>
+
+## Verwandte Seiten
+
+<CardGroup cols={2}>
+  <Card title="Genie Agents" icon="workflow" href="/de/workspaces/workflow-apps">
+    Backend-Automatisierungen, die dieselben Datenknoten wie ein Genie Tool nutzen, einschließlich Workspace-Tabellen.
+  </Card>
+  <Card title="Workspaces-Übersicht" icon="house" href="/de/workspaces/overview">
+    Finde dich in deinem Workspace und seiner Seitenleiste zurecht.
+  </Card>
+</CardGroup>

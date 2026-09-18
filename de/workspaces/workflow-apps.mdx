@@ -13,11 +13,12 @@ Die meisten Projekte, die du in Genie baust, haben eine Oberfläche — Seiten, 
 
 Ein Genie Agent ist eine kurze Abfolge von **Schritten**. Jeder Schritt erledigt eine Sache, und ein späterer Schritt kann das Ergebnis eines früheren nutzen — zum Beispiel kann der KI-Schritt die E-Mail-Adresse verwenden, die der Datenbank-Schritt gerade nachgeschlagen hat. Das musst du nicht selbst verdrahten: Genie ermittelt die Reihenfolge automatisch aus dem, was du eingibst.
 
-Aktuell stehen zehn Arten von Schritten zur Verfügung:
+Aktuell stehen elf Arten von Schritten zur Verfügung:
 
 | Schritt | Was er tut |
 |---|---|
 | **Datenbank** | Führt eine Abfrage gegen eine Genie-Cloud-Datenbank aus — standardmäßig das an den Agenten gebundene Projekt, oder jede andere Genie App in deinem Workspace |
+| **Workspace-Tabelle** | Liest oder schreibt Zeilen in einer der eigenen Tabellen deines Workspace — kein Genie-Cloud-Projekt nötig. Dieselben Tabellen, die ein [Genie Tool](/de/workspaces/genie-tools) anzeigen kann |
 | **HTTP** | Ruft eine externe URL auf — sendet einen Webhook, spricht eine externe API an |
 | **KI** | Bittet Genies KI, als ein Schritt im Ablauf etwas zu erledigen — zusammenfassen, einen Text entwerfen, eine Entscheidung treffen |
 | **Edge Function** | Führt eine bereitgestellte Backend-Funktion aus — standardmäßig die des an den Agenten gebundenen Projekts, oder die jeder anderen Genie App in deinem Workspace |
@@ -143,5 +144,8 @@ Ein KI-Schritt verbraucht Credits genauso wie eine Nachricht im Chat. Schritte, 
   </Card>
   <Card title="Workspaces-Übersicht" icon="house" href="/de/workspaces/overview">
     Finde dich im Workspace und seiner Seitenleiste zurecht.
+  </Card>
+  <Card title="Genie Tools" icon="layout-grid" href="/de/workspaces/genie-tools">
+    Kleine interne Apps, die dieselben Workspace-Tabellen nutzen wie ein Datenbank-Schritt.
   </Card>
 </CardGroup>

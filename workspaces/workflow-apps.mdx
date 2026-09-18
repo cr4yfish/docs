@@ -13,11 +13,12 @@ Most projects you build in Genie have a UI — pages someone opens and clicks ar
 
 A Genie Agent is a short sequence of **steps**. Each step does one thing, and a later step can use an earlier step's result — for example, the AI step can use the email address the database step just looked up. You don't wire this up by hand: Genie figures out the order automatically from what you type.
 
-Ten kinds of step are available today:
+Eleven kinds of step are available today:
 
 | Step | What it does |
 |---|---|
 | **Database** | Runs one query against a Genie Cloud database — the agent's own bound project by default, or any other Genie App in your workspace |
+| **Workspace table** | Reads or writes rows in one of your workspace's own tables — no Genie Cloud project needed. The same tables a [Genie Tool](/workspaces/genie-tools) can show |
 | **HTTP** | Calls an external URL — send a webhook, hit a third-party API |
 | **AI** | Asks Genie's AI to do something as one step in the flow — summarize, draft a message, make a decision |
 | **Edge function** | Runs a deployed backend function — the agent's own bound project by default, or any other Genie App in your workspace |
@@ -143,5 +144,8 @@ An AI step draws credits the same way sending a message in chat does. Steps that
   </Card>
   <Card title="Workspaces overview" icon="house" href="/workspaces/overview">
     Find your way around the workspace and its sidebar.
+  </Card>
+  <Card title="Genie Tools" icon="layout-grid" href="/workspaces/genie-tools">
+    Small internal apps that share the same workspace tables a Database step can query.
   </Card>
 </CardGroup>

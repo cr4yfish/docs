@@ -92,6 +92,7 @@
                   "workspaces/governance",
                   "workspaces/tracing",
                   "workspaces/workflow-apps",
+                  "workspaces/genie-tools",
                   "workspaces/mcp-api",
                   "workspaces/api-keys"
                 ]
@@ -210,6 +211,7 @@
                   "de/workspaces/governance",
                   "de/workspaces/tracing",
                   "de/workspaces/workflow-apps",
+                  "de/workspaces/genie-tools",
                   "de/workspaces/mcp-api",
                   "de/workspaces/api-keys"
                 ]

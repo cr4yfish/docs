@@ -4,6 +4,25 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="September 18, 2026" description="Weekly release">
+
+Covers what shipped September 16–17. Workspaces gain a third kind of app — [Genie Tools](/workspaces/genie-tools), small internal apps described to Genie AI rather than built — backed by new workspace tables that are also usable as a step inside a Genie Agent. The Knowledge base gets nested folders, whole-folder uploads, and citations on the answers that use it, and you can now connect your own Google Drive.
+
+## Updates
+
+- **Genie Tools: small internal apps, described not built.** Ask Genie AI for a table, a form, a stat, or a button, and it renders live in the chat and on its own page — a table of orders with a form to add one, for example — reading and writing your workspace's own tables, no Genie Cloud project required. See [Genie Tools](/workspaces/genie-tools).
+- **Genie Agents get a new Workspace table step**, reading and writing the exact same tables a Genie Tool shows — an agent can gather data overnight and a tool can display it the next morning, nothing to wire up between the two. See [What a Genie Agent is](/workspaces/workflow-apps#what-a-genie-agent-is).
+- **Connect your own Google Drive.** Like Gmail, each member connects their own account, and Genie can search files, browse folders, and read Docs, Sheets, and Slides on their behalf. See [Available preset integrations](/workspaces/integrations#available-preset-integrations).
+- **Knowledge folders can now hold sub-folders**, and you can upload a whole folder at once — Genie recreates its structure inside Knowledge automatically. See [Knowledge base](/workspaces/overview#knowledge-base).
+- **A connected Google Drive is browsable right inside the Knowledge page** — search across the whole drive and import any file Genie can read straight into your knowledge base. See [Cloud drives](/workspaces/overview#cloud-drives).
+- **Genie AI's answers now cite the knowledge documents they draw on**, with a clickable citation on each statement and a Sources list under the answer, so you can open (or download) exactly what it read. See [Knowledge base](/workspaces/overview#knowledge-base).
+
+## Fixes
+
+- **Fixed some workspace chats getting permanently stuck after an interactive card (like a confirmation prompt) went unanswered** — later turns could fail outright, or the card itself could stop responding to clicks with no visible error.
+
+</Update>
+
 <Update label="September 17, 2026" description="Weekly release">
 
 Covers what shipped September 15–16. The [Genie MCP Server](/workspaces/mcp-api) catches up to the web app in five places — favoriting a project, Security alerts, and Activity trend stats are all reachable from an external AI client now — and two workspace chat reliability bugs are fixed.
