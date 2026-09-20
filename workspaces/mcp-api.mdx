@@ -192,7 +192,7 @@ Material a team wants every build to respect — brand guidelines, tone of voice
 | `search_workspace_documents` | Search inside documents' text (hybrid semantic + keyword) and get back matching passages |
 | `read_workspace_document` | Read one document's full text in bounded, pageable slices |
 | `add_workspace_documents` | File one or more documents (up to 10 per call) for the workspace or a project |
-| `update_workspace_document` | Retitle, re-describe, or move a document between scopes — and between folders, via `folder` |
+| `update_workspace_document` | Retitle, re-describe, move a document between scopes, move it between folders via `folder`, or rewrite its full text in place via `text` (re-indexed immediately; refused on a document mirrored in from a connected cloud drive — edit it at the source instead) |
 | `delete_workspace_document` | Permanently delete a document and its search index |
 | `list_workspace_document_folders` | The workspace's filing folders, each with how many documents it holds and how much room is left before the 200-per-folder cap |
 | `create_workspace_document_folder` | Create a folder. Names are unique per workspace, case-insensitively |
