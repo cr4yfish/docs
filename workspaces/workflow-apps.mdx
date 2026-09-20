@@ -88,13 +88,20 @@ Before you commit to a change, you can run a real test to see exactly what an ag
   Genie AI can test a step on your behalf too — just ask it to test a step while you're describing changes to your agent in chat.
 </Tip>
 
+## Run results
+
+Every run gets a results page of its own: the outcome, and every step that produced it, in the order it ran, each with its status, how long it took, and what it produced. An AI step's answer renders as formatted text rather than raw markdown. Open it on a run still in progress and it follows along as each step finishes.
+
+A notify step links here by default — choose **This run's results** or **a page inside Genie** from the step's settings to point it somewhere else.
+
 ## Managing an agent
 
-The **Genie Agents** page lists every agent in your workspace — as cards or as a table, whichever you'd rather browse (switch between them from the view toggle; your choice is remembered). Each agent's row menu (**⋯**) gives you:
+The **Genie Agents** page lists every agent in your workspace — as cards or as a table, whichever you'd rather browse (switch between them from the view toggle; your choice is remembered). Each agent's settings menu (**⋯**) — on its card, its row, and the editor toolbar — gives you:
 
 - **Rename** — change its display name. This never changes its underlying identifier, so any published tool or webhook URL built on it keeps working.
 - **Pause / Resume** — pause stops it from starting any new run (on a schedule, a webhook, or another agent calling it) until you resume it; it never interrupts a run already in progress.
-- **Recent runs** — see its run history and what happened on each one.
+- **Share** — private to its creator by default; the owner can share it with the whole workspace or with specific people, the same three states as a [workspace chat](/workspaces/overview#workspace-chats-are-private-by-default). A member it's shared with can open, edit, and delete it just like the owner can — only the owner can change who it's shared with.
+- **Recent runs** — see its run history, what happened on each one, and open any run's own [results page](#run-results).
 - **Delete** — permanently removes the agent, every version of it, and its whole run history. This can't be undone — pause it instead if you just want it to stop.
 
 ## Triggers

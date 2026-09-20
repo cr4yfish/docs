@@ -4,6 +4,24 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="September 20, 2026" description="Weekly release">
+
+Covers what shipped September 19. The headline is sharing: a workspace chat can now be shared with just the teammates who need it instead of the whole workspace, and Genie Agents and Genie Tools — private to their creator by default for the first time — follow that same private / selected-people / everyone model, from a settings menu that's now consistent on every card. Genie Agents also get a results page for every run, and Genie AI can rewrite a knowledge document's text in place.
+
+## Updates
+
+- **Share a workspace chat with just the teammates who need it, not the whole workspace.** The chat settings menu now offers **Private**, **Everyone in the workspace**, or **Only selected people** — picked from a member search. In a shared chat, every message now shows who sent it, with their name and avatar next to their turns. See [Workspace chats are private by default](/workspaces/overview#workspace-chats-are-private-by-default).
+- **Genie Agents and Genie Tools are private to their creator by default, and share the same way chats do.** Previously any workspace member could open, edit, or delete any agent or tool; now only the owner can, until they share it with the whole workspace or specific people. Every card gets the same settings menu (⋯) for renaming, pausing, sharing, and deleting, wherever that card appears. See [Managing an agent](/workspaces/workflow-apps#managing-an-agent) and [Genie Tools](/workspaces/genie-tools).
+- **Genie Agents get a results page for every run.** See the outcome and every step that produced it — status, duration, and what each one output — with an AI step's answer rendered as formatted text instead of raw markdown. A notify step links here by default now. See [Testing an agent](/workspaces/workflow-apps#testing-an-agent).
+- **Pin your most-used chats.** Drag a chat onto the top of the sidebar list to pin it, or use the new chat settings menu — pinned chats lead the list under their own heading, ahead of everything else. See [Workspace chats are private by default](/workspaces/overview#workspace-chats-are-private-by-default).
+- **Genie AI — and the API and MCP Server — can now rewrite a knowledge document's text in place**, not just its title or description. Ask Genie AI to update a document and it's re-indexed immediately, so search and future builds see the new version right away. See [Knowledge base](/workspaces/overview#knowledge-base).
+
+## Fixes
+
+- **Fixed the project settings dialog's tabs not scrolling when a tab had a lot of content (like a long member list)** — some rows were unreachable, and on a narrow screen the tab content could get pushed out of the dialog entirely.
+
+</Update>
+
 <Update label="September 18, 2026" description="Weekly release">
 
 Covers what shipped September 16–17. Workspaces gain a third kind of app — [Genie Tools](/workspaces/genie-tools), small internal apps described to Genie AI rather than built — backed by new workspace tables that are also usable as a step inside a Genie Agent. The Knowledge base gets nested folders, whole-folder uploads, and citations on the answers that use it, and you can now connect your own Google Drive.

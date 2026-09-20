@@ -88,13 +88,20 @@ Bevor du eine Änderung endgültig machst, kannst du einen echten Test ausführe
   Genie AI kann auch in deinem Auftrag einen Schritt testen — bitte sie einfach darum, während du im Chat Änderungen an deinem Agenten beschreibst.
 </Tip>
 
+## Lauf-Ergebnisse
+
+Jeder Lauf bekommt eine eigene Ergebnisseite: das Ergebnis und jeden Schritt, der dazu geführt hat, in der Reihenfolge, in der er lief, jeweils mit Status, Dauer und dem, was er ausgegeben hat. Die Antwort eines KI-Schritts wird als formatierter Text statt als rohes Markdown angezeigt. Öffne sie bei einem noch laufenden Lauf, und sie zieht mit, sobald jeder Schritt fertig ist.
+
+Ein Benachrichtigen-Schritt verlinkt standardmäßig hierhin — wähle in den Einstellungen des Schritts **Die Ergebnisse dieses Laufs** oder **eine Seite in Genie**, um woanders hinzuzeigen.
+
 ## Einen Agenten verwalten
 
-Die Seite **Genie Agents** listet jeden Agenten in deinem Workspace auf — als Karten oder als Tabelle, je nachdem, wie du lieber durchsiehst (wechsle über den Ansicht-Umschalter; deine Wahl wird gemerkt). Das Zeilenmenü (**⋯**) jedes Agenten bietet:
+Die Seite **Genie Agents** listet jeden Agenten in deinem Workspace auf — als Karten oder als Tabelle, je nachdem, wie du lieber durchsiehst (wechsle über den Ansicht-Umschalter; deine Wahl wird gemerkt). Das Einstellungsmenü (**⋯**) jedes Agenten — auf seiner Karte, seiner Zeile und in der Editor-Werkzeugleiste — bietet:
 
 - **Umbenennen** — ändert seinen Anzeigenamen. Das ändert nie seinen zugrundeliegenden Bezeichner, sodass jedes darauf aufbauende veröffentlichte Tool oder jede Webhook-URL weiter funktioniert.
 - **Pausieren / Fortsetzen** — Pausieren verhindert, dass er einen neuen Lauf startet (per Zeitplan, Webhook oder Aufruf durch einen anderen Agenten), bis du ihn fortsetzt; ein bereits laufender Lauf wird dadurch nie unterbrochen.
-- **Letzte Läufe** — sieh dir seine Lauf-Historie an und was bei jedem Lauf passiert ist.
+- **Teilen** — standardmäßig privat für die erstellende Person; sie kann ihn mit dem ganzen Workspace oder mit bestimmten Personen teilen, dieselben drei Zustände wie bei einem [Workspace-Chat](/de/workspaces/overview#workspace-chats-sind-standardmäßig-privat). Ein Mitglied, mit dem er geteilt wurde, kann ihn genauso öffnen, bearbeiten und löschen wie die besitzende Person — nur sie kann ändern, mit wem er geteilt ist.
+- **Letzte Läufe** — sieh dir seine Lauf-Historie an, was bei jedem Lauf passiert ist, und öffne die eigene [Ergebnisseite](#lauf-ergebnisse) jedes Laufs.
 - **Löschen** — entfernt den Agenten dauerhaft, jede Version davon und seine gesamte Lauf-Historie. Das lässt sich nicht rückgängig machen — pausiere ihn stattdessen, wenn er nur aufhören soll zu laufen.
 
 ## Auslöser

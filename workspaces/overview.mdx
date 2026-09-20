@@ -257,6 +257,8 @@ Before building or updating a project, Genie AI automatically checks the knowled
 
 Within either scope, documents can also be sorted into **folders**, which can now hold sub-folders of their own — a filing layer for finding things, separate from scope, which decides what Genie AI can use. A "Brand" folder can hold both a workspace-wide document and one project's own copy deck, and filing something into or out of a folder never changes what Genie finds when it searches. Create, rename, or delete folders from the chip rail above the document list, or drag one into another to nest it; each holds up to 200 documents directly, and deleting a folder never deletes what's in it or below it — those documents just become unfiled.
 
+Ask Genie AI to update a document and it can rewrite its full text in place, not just retitle or re-describe it — the new text is re-indexed immediately, so search and the next build see it right away. The same is available through the [Genie MCP Server](/workspaces/mcp-api#available-tools) and the workspace API. A document mirrored in from a connected cloud drive can't be rewritten this way, since the next sync would overwrite the edit — change it at the source instead.
+
 ### Cloud drives
 
 A **Cloud drives** panel at the bottom of the Knowledge page shows where each member stands with Google Drive or Microsoft 365/OneDrive — not connected yet, or connected and ready to browse. Once you've connected your own Google Drive (see [Available preset integrations](/workspaces/integrations#available-preset-integrations)), it appears as its own place inside the Knowledge browser: search across the whole drive, open folders, and click **Import into knowledge** on any file Genie can read (Docs, Sheets, Slides, or a plain text upload) to file a copy as a knowledge document, citable like any other.
@@ -271,7 +273,9 @@ Don't want to type your prompt? Tap the microphone icon in any Genie chat compos
 
 ### Workspace chats are private by default
 
-A conversation with the workspace AI is visible only to the person who started it — nobody else in the workspace, including admins, can open or write to it by default. To bring a teammate into a conversation, share it with the workspace from the chat; once shared, every member can read and reply to it. Browsing your **Recent chats** still only shows your own conversations by default, whether or not you've shared any of them, so this doesn't flood your list with everyone else's threads. If you ever need help from Genie support with a conversation, they can access it to assist you, even if it hasn't been shared.
+A conversation with the workspace AI is visible only to the person who started it — nobody else in the workspace, including admins, can open or write to it by default. Share it from the chat's settings menu to bring others in, either with **Everyone in the workspace** or with **Only selected people**, picked from a member search. In a shared chat, every message shows who sent it — name and avatar next to their turns — so a multi-author conversation stays readable. Browsing your **Recent chats** still only shows your own conversations by default, whether or not you've shared any of them, so this doesn't flood your list with everyone else's threads. If you ever need help from Genie support with a conversation, they can access it to assist you, even if it hasn't been shared.
+
+Drag any chat from the sidebar onto the **Pinned** dropzone at the top of the list to pin it — drop a pinned chat there again to unpin it — or use **Pin chat** from the same settings menu. Pinned chats lead the list under their own heading, ahead of the usual date groups, everywhere your chats are listed.
 
 ### The command palette
 

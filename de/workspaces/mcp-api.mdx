@@ -192,7 +192,7 @@ Material, das ein Team von jedem Build respektiert haben will — Markenrichtlin
 | `search_workspace_documents` | Durchsuche den Text der Dokumente (hybrid, semantisch + Stichwort) und erhalte passende Textstellen zurück |
 | `read_workspace_document` | Lies den vollständigen Text eines Dokuments in begrenzten, seitenweise abrufbaren Abschnitten |
 | `add_workspace_documents` | Lege ein oder mehrere Dokumente ab (bis zu 10 pro Aufruf) für den Workspace oder ein Projekt |
-| `update_workspace_document` | Benenne um, beschreibe neu, oder verschiebe ein Dokument zwischen Geltungsbereichen — und zwischen Ordnern, über `folder` |
+| `update_workspace_document` | Benenne um, beschreibe neu, verschiebe ein Dokument zwischen Geltungsbereichen, verschiebe es über `folder` zwischen Ordnern, oder überschreibe seinen ganzen Text direkt über `text` (sofort neu indexiert; wird bei einem aus einem verbundenen Cloud-Speicher gespiegelten Dokument abgelehnt — ändere es stattdessen an der Quelle) |
 | `delete_workspace_document` | Lösche ein Dokument und seinen Suchindex dauerhaft |
 | `list_workspace_document_folders` | Die Ablage-Ordner des Workspace, jeweils mit der Zahl abgelegter Dokumente und wie viel Platz vor der 200er-Grenze pro Ordner bleibt |
 | `create_workspace_document_folder` | Lege einen Ordner an. Namen sind pro Workspace eindeutig, ohne Berücksichtigung von Groß-/Kleinschreibung |
