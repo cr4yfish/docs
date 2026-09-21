@@ -1,0 +1,76 @@
+---
+title: "Genie on WhatsApp, Slack, and Teams"
+description: "Message Genie directly from WhatsApp, Slack, or Microsoft Teams — link your own account, or connect a channel for your whole workspace."
+---
+
+Genie runs as a bot on WhatsApp, Slack, and Microsoft Teams. Link your own account once and you can message Genie from your phone or your team chat exactly as you would in the app — with the same workspace tools and the same conversation history.
+
+<Note>
+Chat channels are managed from **Settings → Integrations**, alongside your other connected apps.
+</Note>
+
+## Link your own account
+
+This is the default way in, and any member can do it — no admin needed.
+
+<Steps>
+  <Step title="Open Integrations">
+    From your workspace, open **Settings → Integrations** and find **Use Genie from your chat apps**.
+  </Step>
+  <Step title="Generate a code">
+    Click to generate a one-time linking code, or just ask Genie AI directly: *"let me use you from WhatsApp."* The code is shown once and stays valid for 15 minutes.
+  </Step>
+  <Step title="Send it to the Genie bot">
+    Send the code as a message to the Genie bot on the platform you want to link — WhatsApp, Slack, or Teams. Where the platform supports it, the panel links you straight to the chat.
+  </Step>
+  <Step title="Start chatting">
+    Genie confirms the link and replies naming your workspace. From then on, every message you send that bot is a turn in your workspace, run as you.
+  </Step>
+</Steps>
+
+Your linked account is yours to remove at any time from the same **Integrations** panel. Each platform account can only be linked to one workspace at a time, and leaving a workspace also removes its link.
+
+## Connect a channel for the whole workspace
+
+Instead of, or alongside, personal links, an owner or admin can connect an account that belongs to the workspace itself — a support WhatsApp number customers write to, for example — answered as one fixed member or by a [Genie Agent](/workspaces/workflow-apps).
+
+<Steps>
+  <Step title="Open Integrations">
+    Open **Settings → Integrations** and add a chat channel the same way you'd add any other connected app.
+  </Step>
+  <Step title="Choose a platform and connect">
+    Connect a WhatsApp Business number, a Slack workspace install, or a Teams tenant. Credentials are encrypted and never shown again after saving.
+  </Step>
+  <Step title="Pick who answers, and who can write in">
+    Choose whether the channel is answered by Genie AI or by a specific [Genie Agent](/workspaces/workflow-apps), and optionally restrict it to an allowlist of senders.
+  </Step>
+</Steps>
+
+<Note>
+A workspace channel handled by a Genie Agent starts one run of that agent per incoming message, and replies with whatever the agent's run produces.
+</Note>
+
+Once a channel is connected, any member can also ask Genie AI to send a message through it — for example, *"text this customer on WhatsApp that their order shipped."*
+
+## Who a message runs as
+
+If you've linked your own account, your messages are always yours — even inside a shared inbox your workspace also connected. Otherwise, a message on a workspace channel runs as that channel's fixed member or agent, if the sender is allowed to write in. If neither applies, you get a short reply once an hour explaining how to link your account.
+
+## Your conversation history
+
+Everything you exchange with Genie over a chat channel lands in an ordinary workspace chat conversation, visible from **Recent chats** in the sidebar like any other — so a teammate with access can read it, and it's there the next time you write in. On WhatsApp specifically, that workspace conversation is the only history Genie has of the thread, since WhatsApp itself doesn't expose past messages.
+
+<Tip>
+Ask Genie AI things like *"let me use you from Slack"* or *"who's linked their WhatsApp to this workspace?"* — it can create a link code and manage links and channels on your behalf, the same as you can from Settings.
+</Tip>
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Connect MCP integrations to your workspace" icon="plug" href="/workspaces/integrations">
+    Connect Linear, GitHub, Notion, and other tools to your workspace.
+  </Card>
+  <Card title="Genie Agents" icon="workflow" href="/workspaces/workflow-apps">
+    Have a workspace chat channel answered by a Genie Agent instead of Genie AI.
+  </Card>
+</CardGroup>

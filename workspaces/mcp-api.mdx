@@ -308,6 +308,23 @@ Manage the MCP server integrations (Linear, GitHub, Notion, Stripe, etc.) that p
 | `delete_workspace_mcp_server` | Permanently remove a server and its stored credentials |
 | `test_workspace_mcp_server_connection` | Open a test connection and list the tools it exposes |
 
+### Workspace chat channels
+
+Manage [Genie on WhatsApp, Slack, and Teams](/workspaces/chat-channels) — connecting the workspace's own accounts, linking your personal one, and sending messages through either.
+
+| Tool | What it does |
+|---|---|
+| `list_chat_channels` | The workspace's own connected chat accounts — platform, who answers, sender allowlist, and setup info |
+| `list_chat_channel_threads` | Who has written in on a channel, with message counts and the workspace chat each maps to |
+| `create_chat_channel` | Connect a channel to the workspace (a WhatsApp number, a Slack install, a Teams tenant). Only owners and admins |
+| `set_chat_channel` | Rename a channel, change who answers it, edit its sender allowlist, or pause/resume it. Only owners and admins |
+| `remove_chat_channel` | Disconnect a channel and delete its stored credentials. Only owners and admins |
+| `send_chat_channel_message` | Send a message from a workspace channel to a real person outside the workspace |
+| `create_chat_link_code` | Mint a one-time code to link your own WhatsApp, Slack, or Teams account. Valid 15 minutes, shown once |
+| `list_chat_identity_links` | Chat accounts linked to the workspace — your own by default, or everyone's for an owner or admin |
+| `set_chat_identity_link` | Anchor a linked chat account to one project, or clear the anchor |
+| `unlink_chat_identity` | Disconnect a linked chat account |
+
 ### PII rules
 
 Inspect and manage the workspace PII detection rules. Only workspace owners and admins can make changes. See [Workspace PII rules](/workspaces/pii-rules) for a full guide.
@@ -514,12 +531,16 @@ Role-based access is enforced on every tool call.
 | Read guardrail configuration and blocked-message log | Owner, admin, or a role granted `security.guardrails.view` |
 | Change guardrail configuration | Owner, admin, or a role granted `security.guardrails.manage` |
 | Read workspace-wide Genie AI traces | Owner, admin, or a role granted `security.tracing.view` |
+| Connect, edit, or remove a workspace chat channel | Owner or admin |
+| Create a link code, or view/manage your own linked chat account | Any member |
+| Send a message through a workspace chat channel | Any member |
 
 ---
 
 ## Related pages
 
 - [Connect MCP integrations to your workspace](/workspaces/integrations)
+- [Genie on WhatsApp, Slack, and Teams](/workspaces/chat-channels)
 - [Workspace PII rules](/workspaces/pii-rules)
 - [Workspace guardrails](/workspaces/guardrails)
 - [Governance](/workspaces/governance)

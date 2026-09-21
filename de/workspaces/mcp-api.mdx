@@ -308,6 +308,23 @@ Verwalte die MCP-Server-Integrationen (Linear, GitHub, Notion, Stripe usw.), die
 | `delete_workspace_mcp_server` | Entferne dauerhaft einen Server und seine gespeicherten Zugangsdaten |
 | `test_workspace_mcp_server_connection` | Öffne eine Testverbindung und liste die bereitgestellten Tools auf |
 
+### Workspace-Chat-Kanäle
+
+Verwalte [Genie auf WhatsApp, Slack und Teams](/de/workspaces/chat-channels) — die eigenen Konten des Workspace verbinden, dein persönliches Konto verknüpfen und über beide Nachrichten senden.
+
+| Tool | Was es tut |
+|---|---|
+| `list_chat_channels` | Die eigenen verbundenen Chat-Konten des Workspace — Plattform, wer antwortet, Absender-Zulassungsliste und Setup-Infos |
+| `list_chat_channel_threads` | Wer auf einem Kanal geschrieben hat, mit Nachrichtenzahl und dem zugehörigen Workspace-Chat |
+| `create_chat_channel` | Verbinde einen Kanal mit dem Workspace (eine WhatsApp-Nummer, eine Slack-Installation, ein Teams-Tenant). Nur Eigentümer:innen und Admins |
+| `set_chat_channel` | Benenne einen Kanal um, ändere, wer antwortet, bearbeite seine Absender-Zulassungsliste, oder pausiere/reaktiviere ihn. Nur Eigentümer:innen und Admins |
+| `remove_chat_channel` | Trenne einen Kanal und lösche seine gespeicherten Zugangsdaten. Nur Eigentümer:innen und Admins |
+| `send_chat_channel_message` | Sende von einem Workspace-Kanal aus eine Nachricht an eine echte Person außerhalb des Workspace |
+| `create_chat_link_code` | Erzeuge einen einmaligen Code, um dein eigenes WhatsApp-, Slack- oder Teams-Konto zu verknüpfen. Gültig 15 Minuten, nur einmal angezeigt |
+| `list_chat_identity_links` | Mit dem Workspace verknüpfte Chat-Konten — standardmäßig deine eigenen, oder alle für Eigentümer:innen und Admins |
+| `set_chat_identity_link` | Verankere ein verknüpftes Chat-Konto an einem Projekt, oder hebe die Verankerung auf |
+| `unlink_chat_identity` | Trenne ein verknüpftes Chat-Konto |
+
 ### PII-Regeln
 
 Überprüfe und verwalte die Workspace-PII-Erkennungsregeln. Nur Workspace-Eigentümer:innen und Admins können Änderungen vornehmen. Siehe [Workspace-PII-Regeln](/de/workspaces/pii-rules) für eine vollständige Anleitung.
@@ -514,12 +531,16 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Guardrail-Konfiguration und Protokoll blockierter Nachrichten lesen | Eigentümer:in, Admin, oder eine Rolle mit `security.guardrails.view` |
 | Guardrail-Konfiguration ändern | Eigentümer:in, Admin, oder eine Rolle mit `security.guardrails.manage` |
 | Workspaceweite Genie-AI-Traces lesen | Eigentümer:in, Admin, oder eine Rolle mit `security.tracing.view` |
+| Einen Workspace-Chat-Kanal verbinden, bearbeiten oder entfernen | Eigentümer:in oder Admin |
+| Einen Verknüpfungscode erstellen, oder das eigene verknüpfte Chat-Konto einsehen/verwalten | Jedes Mitglied |
+| Über einen Workspace-Chat-Kanal eine Nachricht senden | Jedes Mitglied |
 
 ---
 
 ## Verwandte Seiten
 
 - [MCP-Integrationen mit deinem Workspace verbinden](/de/workspaces/integrations)
+- [Genie auf WhatsApp, Slack und Teams](/de/workspaces/chat-channels)
 - [Workspace-PII-Regeln](/de/workspaces/pii-rules)
 - [Workspace-Guardrails](/de/workspaces/guardrails)
 - [Governance](/de/workspaces/governance)
