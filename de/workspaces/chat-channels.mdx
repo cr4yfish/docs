@@ -1,0 +1,76 @@
+---
+title: "Genie auf WhatsApp, Slack und Teams"
+description: "Schreib Genie direkt über WhatsApp, Slack oder Microsoft Teams — verknüpfe dein eigenes Konto, oder verbinde einen Kanal für deinen ganzen Workspace."
+---
+
+Genie läuft als Bot auf WhatsApp, Slack und Microsoft Teams. Verknüpfe einmal dein eigenes Konto, und du kannst Genie von deinem Handy oder deinem Team-Chat aus schreiben, genau wie in der App — mit denselben Workspace-Tools und derselben Gesprächshistorie.
+
+<Note>
+Chat-Kanäle werden über **Einstellungen → Integrationen** verwaltet, zusammen mit deinen anderen verbundenen Apps.
+</Note>
+
+## Dein eigenes Konto verknüpfen
+
+Das ist der Standardweg hinein, und jedes Mitglied kann das tun — kein Admin nötig.
+
+<Steps>
+  <Step title="Integrationen öffnen">
+    Öffne in deinem Workspace **Einstellungen → Integrationen** und finde **Genie über deine Chat-Apps nutzen**.
+  </Step>
+  <Step title="Einen Code erzeugen">
+    Klicke, um einen einmaligen Verknüpfungscode zu erzeugen, oder bitte Genie AI direkt: *„lass mich dich über WhatsApp nutzen."* Der Code wird nur einmal angezeigt und ist 15 Minuten lang gültig.
+  </Step>
+  <Step title="Den Code an den Genie-Bot senden">
+    Schick den Code als Nachricht an den Genie-Bot auf der Plattform, die du verknüpfen möchtest — WhatsApp, Slack oder Teams. Wo die Plattform es unterstützt, führt dich das Panel direkt in den Chat.
+  </Step>
+  <Step title="Loslegen">
+    Genie bestätigt die Verknüpfung und antwortet mit dem Namen deines Workspace. Von da an ist jede Nachricht, die du diesem Bot schickst, ein Beitrag in deinem Workspace, ausgeführt als du.
+  </Step>
+</Steps>
+
+Dein verknüpftes Konto kannst du jederzeit über dasselbe **Integrationen**-Panel wieder entfernen. Jedes Plattformkonto lässt sich nur mit einem Workspace gleichzeitig verknüpfen, und beim Verlassen eines Workspace wird auch dessen Verknüpfung entfernt.
+
+## Einen Kanal für den ganzen Workspace verbinden
+
+Statt — oder zusätzlich zu — persönlichen Verknüpfungen kann ein:e Eigentümer:in oder Admin ein Konto verbinden, das dem Workspace selbst gehört — zum Beispiel eine Support-WhatsApp-Nummer, an die Kund:innen schreiben —, das von einer festen Person oder einem [Genie Agent](/de/workspaces/workflow-apps) beantwortet wird.
+
+<Steps>
+  <Step title="Integrationen öffnen">
+    Öffne **Einstellungen → Integrationen** und füge einen Chat-Kanal genauso hinzu wie jede andere verbundene App.
+  </Step>
+  <Step title="Plattform wählen und verbinden">
+    Verbinde eine WhatsApp-Business-Nummer, eine Slack-Installation oder ein Teams-Tenant. Zugangsdaten werden verschlüsselt gespeichert und nach dem Speichern nie wieder angezeigt.
+  </Step>
+  <Step title="Festlegen, wer antwortet und wer schreiben darf">
+    Wähle, ob der Kanal von Genie AI oder von einem bestimmten [Genie Agent](/de/workspaces/workflow-apps) beantwortet wird, und schränke optional ein, welche Absender:innen schreiben dürfen.
+  </Step>
+</Steps>
+
+<Note>
+Ein von einem Genie Agent bedienter Workspace-Kanal startet pro eingehender Nachricht einen Lauf dieses Agents und antwortet mit dem, was dieser Lauf ausgibt.
+</Note>
+
+Sobald ein Kanal verbunden ist, kann jedes Mitglied Genie AI auch bitten, darüber eine Nachricht zu senden — zum Beispiel *„schreib dieser Kundin auf WhatsApp, dass ihre Bestellung versendet wurde."*
+
+## Als wer eine Nachricht läuft
+
+Hast du dein eigenes Konto verknüpft, gehören deine Nachrichten immer dir — selbst innerhalb eines gemeinsamen Postfachs, das dein Workspace ebenfalls verbunden hat. Andernfalls läuft eine Nachricht auf einem Workspace-Kanal als dessen feste Person oder als dessen Agent, sofern die absendende Person schreiben darf. Trifft nichts davon zu, bekommst du höchstens einmal pro Stunde eine kurze Antwort, die erklärt, wie du dein Konto verknüpfst.
+
+## Deine Gesprächshistorie
+
+Alles, was du mit Genie über einen Chat-Kanal austauschst, landet in einem ganz normalen Workspace-Chat, sichtbar unter **Letzte Chats** in der Seitenleiste wie jeder andere — sodass ein Teammitglied mit Zugriff mitlesen kann, und die Historie beim nächsten Schreiben da ist. Bei WhatsApp im Besonderen ist dieser Workspace-Chat die einzige Historie, die Genie von diesem Gespräch hat, da WhatsApp selbst keine vergangenen Nachrichten offenlegt.
+
+<Tip>
+Bitte Genie AI zum Beispiel *„lass mich dich über Slack nutzen"* oder *„wer hat sein WhatsApp mit diesem Workspace verknüpft?"* — sie kann in deinem Namen einen Verknüpfungscode erstellen sowie Verknüpfungen und Kanäle verwalten, genau wie du es selbst in den Einstellungen tun kannst.
+</Tip>
+
+## Verwandte Seiten
+
+<CardGroup cols={2}>
+  <Card title="MCP-Integrationen mit deinem Workspace verbinden" icon="plug" href="/de/workspaces/integrations">
+    Verbinde Linear, GitHub, Notion und andere Tools mit deinem Workspace.
+  </Card>
+  <Card title="Genie Agents" icon="workflow" href="/de/workspaces/workflow-apps">
+    Lass einen Workspace-Chat-Kanal von einem Genie Agent statt von Genie AI beantworten.
+  </Card>
+</CardGroup>
