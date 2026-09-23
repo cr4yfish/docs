@@ -42,12 +42,26 @@ Die Seite eines Tools setzt sich aus einer kleinen Auswahl an Bausteinen zusamme
 |---|---|
 | Text | Ein oder zwei Zeilen geschriebenen Inhalts |
 | Kennzahl | Eine einzelne Zahl oder einen Wert mit Beschriftung |
+| Diagramm | Ein Linien-, Balken- oder Kreisdiagramm, gezeichnet aus einer Tabelle oder den Daten eines anderen Bausteins |
+| KPI | Eine Zahl mit Trendlinie und einem Vergleich gegen ein anderes Segment |
+| Vergleich | Zwei oder mehr Segmente deiner Daten nebeneinander, mit hervorgehobenen Unterschieden |
+| Anomalien | Ausreißer, leere Felder und doppelte Zeilen, automatisch in einer Tabelle gefunden |
+| Insights | Eine von der KI verfasste Zusammenfassung dessen, was in einer Tabelle auffällt |
 | Tabelle | Datenzeilen, mit den Spalten, die du möchtest |
+| Import | Lade eine oder mehrere Tabellenkalkulationen — von deinem Gerät oder direkt aus deiner [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank) — in eine Workspace-Tabelle hoch. Spalten werden automatisch zugeordnet, Genie AI springt nur bei einer Überschrift ein, die sie nicht selbst zuordnen kann |
+| Dateien | Die bereits in eine Tabelle importierten Dateien, einzeln oder alle zusammen entfernbar |
+| Export | Eine ganze Tabelle als CSV, Excel oder PDF herunterladen |
 | Rohdaten | Ein beliebiges Ergebnis, lesbar formatiert |
-| Formular | Felder, die beim Absenden eine Aktion auslösen — eine Zeile hinzufügen, eine aktualisieren, was auch immer du beschreibst. Ein Feld kann auch ein Datei-Upload sein, nur für diese eine Übermittlung aufbewahrt oder direkt in deiner [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank) abgelegt |
+| Formular | Felder, die beim Absenden eine Aktion auslösen — eine Zeile hinzufügen, eine aktualisieren, was auch immer du beschreibst. Ein Feld kann auch ein Datei-Upload beliebigen Typs sein, nur für diese eine Übermittlung aufbewahrt oder direkt in deiner [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank) abgelegt — direkt abgelegt, oder aus einem Knowledge-Ordner ausgewählt |
 | Button | Löst eine Aktion ohne Eingabe aus — etwas als erledigt markieren, eine Zusammenfassung verschicken |
 
 Jeder Baustein behandelt seine Zwischenzustände selbst: Eine Tabelle zeigt beim Laden ein Platzhalter-Skelett, sagt klar, wenn sie leer ist, und wenn etwas fehlschlägt, wird der Rest der Seite trotzdem angezeigt — mit dem Fehler direkt neben dem, was kaputt war. Ein defekter Baustein macht nie das ganze Tool leer.
+
+## Seiten, und ein Formular, das eins nach dem anderen fragt
+
+Ein Tool mit viel Inhalt ist keine einzige lange Scroll-Seite: Eine Seite, die sowohl lang ist als auch verschiedene Aufgaben mischt — Daten importieren, verwalten, ein Diagramm lesen —, wird automatisch in fokussierte Seiten aufgeteilt, typischerweise **Dashboard**, **Import**, **Verwalten** und **Analyse**, jede nur mit den Bausteinen, die sie braucht. Die gerade geöffnete Seite steht in der URL des Tools, sodass ein Link auf eine bestimmte Seite zeigen kann, und ein Tool behält bis zu 10 Seiten (siehe [Limits](#limits)).
+
+Eine Seite kann auch als **Formular** laufen: Statt eines langen Formular-Bausteins wird sie Frage für Frage mit einer Fortschrittsanzeige gezeichnet und endet nach dem Absenden auf einem Dankeschön-Bildschirm — dieselbe Form wie ein Typeform.
 
 ## Wo die Daten liegen
 
@@ -70,7 +84,7 @@ Ein Genie Tool läuft immer mit **deinem eigenen** Zugriff — es zu öffnen, od
 | Gelesene Zeilen pro Abfrage | 200 |
 | Geänderte Zeilen pro Schreibvorgang | 100 |
 | Workspace-Tabellen pro Workspace | 100 |
-| Zeilen pro Workspace-Tabelle | 10.000 |
+| Zeilen pro Workspace-Tabelle | 500.000 |
 
 <Tip>
 Bitte Genie AI zum Beispiel um „liste unsere Genie Tools auf" oder „füge der Leads-Tabelle eine Zeile hinzu" — sie kann Tools und ihre zugrunde liegenden Tabellen in deinem Auftrag lesen, bauen, ausführen und bearbeiten, genau wie du es auf der Tools-Seite selbst könntest.

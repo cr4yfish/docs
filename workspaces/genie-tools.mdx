@@ -42,12 +42,26 @@ A tool's page is built from a small set of building blocks, and Genie AI picks a
 |---|---|
 | Text | A line or two of written content |
 | Stat | One number or value with a label |
+| Chart | A line, bar, or pie chart drawn from a table or another block's data |
+| KPI | One number with a trend line and a comparison against another segment |
+| Compare | Two or more segments of your data side by side, with the differences highlighted |
+| Anomalies | Outliers, empty fields, and duplicate rows found automatically in a table |
+| Insights | An AI-written summary of what stands out in a table |
 | Table | Rows of data, with the columns you want |
+| Import | Upload one or more spreadsheets — from your device, or straight from your [knowledge base](/workspaces/overview#knowledge-base) — into a workspace table. Columns are matched automatically, with Genie AI stepping in only for a heading it can't place on its own |
+| Files | The files already imported into a table, each removable on its own or all at once |
+| Export | Download a whole table as CSV, Excel, or PDF |
 | Raw data | Any result, formatted for reading |
-| Form | Fields that run an action when submitted — add a row, update one, anything you describe. A field can also be a file upload, kept just for that one submission or filed straight into your [knowledge base](/workspaces/overview#knowledge-base) |
+| Form | Fields that run an action when submitted — add a row, update one, anything you describe. A field can also be a file upload of any type, kept just for that one submission or filed straight into your [knowledge base](/workspaces/overview#knowledge-base) — dropped directly, or picked from a knowledge folder |
 | Button | Runs an action with no input needed — mark something done, send a digest |
 
 Every block handles the in-between states on its own: a table shows a loading skeleton while it fetches, says plainly when it's empty, and if something fails, the rest of the page still renders with the failure named next to whatever broke — one bad block never blanks the whole tool.
+
+## Pages, and a form that asks one thing at a time
+
+A tool with a lot going on isn't one long scroll: a page that's both long and mixing different jobs — importing data, managing it, reading a chart — is automatically split into focused pages, typically **Dashboard**, **Upload**, **Manage**, and **Analytics**, each carrying just the blocks it needs. The page you're on is part of the tool's URL, so a link to a tool can point at one specific page, and a tool keeps up to 10 pages (see [Limits](#limits)).
+
+A page can also run as a **form**: instead of one long form block, it's drawn one question at a time with a progress line, ending on a thank-you screen once it's submitted — the same shape as a typeform.
 
 ## Where the data lives
 
@@ -70,7 +84,7 @@ A Genie Tool always runs using **your own** access — opening one, or having so
 | Rows returned per read | 200 |
 | Rows changed per write | 100 |
 | Workspace tables per workspace | 100 |
-| Rows per workspace table | 10,000 |
+| Rows per workspace table | 500,000 |
 
 <Tip>
 Ask Genie AI things like *"list our Genie Tools"* or *"add a row to the leads table"* — it can read, build, run, and edit tools and their underlying tables on your behalf, the same as you can from the Tools page.

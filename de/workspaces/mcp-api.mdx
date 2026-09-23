@@ -198,6 +198,11 @@ Material, das ein Team von jedem Build respektiert haben will — Markenrichtlin
 | `create_workspace_document_folder` | Lege einen Ordner an. Namen sind pro Workspace eindeutig, ohne Berücksichtigung von Groß-/Kleinschreibung |
 | `update_workspace_document_folder` | Benenne einen Ordner um. Die darin enthaltenen Dokumente bleiben unverändert |
 | `delete_workspace_document_folder` | Lösche einen Ordner. Die darin enthaltenen Dokumente werden **nicht** gelöscht — sie werden unabgelegt und bleiben durchsuchbar; das Ergebnis nennt, wie viele |
+| `list_knowledge_sources` | Wo die verbundenen [Cloud-Speicher](/de/workspaces/overview#cloud-speicher) (Google Drive, OneDrive) des anfragenden Mitglieds stehen: auf diesem Deployment nicht verfügbar, nicht verbunden, oder verbunden und durchsuchbar |
+| `browse_knowledge_source` | Durchsuche die Ordner und Dateien eines verbundenen Cloud-Speichers, seitenweise, um die ID einer zu importierenden Datei zu finden |
+| `import_knowledge_source_file` | Importiere eine Datei aus einem verbundenen Cloud-Speicher als Wissensdokument, in einem gewählten Geltungsbereich und Ordner |
+
+Wie die Tools oben laufen auch die drei Cloud-Speicher-Tools als das anfragende Mitglied und erreichen ausschließlich dessen eigene Speicherverbindung — nie die einer anderen Person.
 
 **Ordner stehen quer zum Geltungsbereich.** Der Geltungsbereich entscheidet, welche Projekte ein Dokument *nutzen* dürfen; ein Ordner entscheidet nur, wo ein Mensch es *findet*, und kein Suchpfad liest ihn aus — ein Dokument abzulegen oder den Ordner zu löschen, in dem es liegt, ändert nie, was eine Suche zurückgibt. `list_workspace_documents`, `add_workspace_documents` und `update_workspace_document` akzeptieren jeweils einen `folder` (Name, ID oder `unfiled`), adressierbar per Name, da das ist, was ein Client tatsächlich sieht. Ein Ordner fasst höchstens 200 Dokumente, für MCP, den In-App-Agenten und den Browser auf dieselbe Weise durchgesetzt.
 
@@ -508,6 +513,7 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Ein workspaceweites Wissensdokument lesen oder schreiben | Jedes Mitglied |
 | Ein projektbezogenes Wissensdokument lesen oder schreiben | Jeder mit Bearbeitungszugriff auf das Projekt — enger als reiner Ansichtszugriff, da ein öffentliches Projekt niemals interne Team-Materialien preisgeben darf |
 | Einen Wissensdokument-Ordner anlegen, umbenennen oder löschen | Jedes Mitglied |
+| Eine Datei aus einem verbundenen Cloud-Speicher durchsuchen oder importieren | Jedes Mitglied, über die eigene Speicherverbindung |
 | Die eigenen Genie-KI-Ausführungsspuren des verbundenen Nutzers durchsuchen | Jeder verbundene Nutzer |
 | Die Screenshots eines Projekts einsehen oder seine Live-Konsolenprotokolle durchsuchen | Jedes Mitglied (das das Projekt einsehen kann) |
 | Den Hauptchat eines Projekts lesen oder festlegen | Jedes Mitglied |

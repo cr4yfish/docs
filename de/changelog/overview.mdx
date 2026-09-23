@@ -4,6 +4,71 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="23. September 2026" description="Wöchentliches Release">
+
+Deckt ab, was am 22. September dazukam. Der Knowledge-Uploader zieht mit dem gleich, was Teams tatsächlich vorliegen haben: PDFs — auch gescannte, automatisch per OCR gelesen — lassen sich jetzt direkt hochladen, und ein Dokument lässt sich allein über seinen Dateinamen finden, nicht nur über das, was darin steht. Auch die Spracheingabe erreicht jetzt die eigenen Formulare von Genie Tools.
+
+## Updates
+
+- **Lade PDFs direkt in deine Wissensdatenbank hoch.** Kein Umweg mehr über den Chat — leg ein PDF genau wie jedes andere Dokument in den Uploader. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank).
+- **Ein gescanntes PDF ohne Textebene wird jetzt automatisch per OCR gelesen** statt abgelehnt, sodass ein Ordner voller Scans genauso hochlädt wie ein Ordner gewöhnlicher Dokumente. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank).
+- **Genie AI findet ein Wissensdokument jetzt auch über seinen Dateinamen oder seine Beschreibung**, nicht nur über das, was darin geschrieben steht — nützlich für eine Tabelle mit Kennzahlen oder einen gescannten Vertrag mit wenig durchsuchbarem Text. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank).
+- **Spracheingabe funktioniert jetzt auch in den eigenen Formularfeldern eines Genie Tools**, genau wie schon im Chat. Siehe [Sprechen statt tippen](/de/workspaces/overview#sprechen-statt-tippen).
+
+## Fixes
+
+- **Behebt, dass das Onboarding manchmal nicht abschloss, wenn währenddessen ein neuer Build live ging** — „Erneut versuchen" konnte sich endlos wiederholen, statt durchzulaufen.
+- **Behebt, dass die Karte „[Integration] verbinden?" im Chat auf Englisch erschien, obwohl das Gespräch sonst auf Deutsch lief.**
+- **Behebt, dass ein Genie Tool manchmal Rohdaten statt einer formatierten Tabelle zeigte**, und eine Aktion führt den KI-Schritt eines anderen Bausteins nicht mehr unnötig erneut aus. Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Genie Tools zeigt Workspace-Mitgliedern keine internen Fehlerdetails mehr (wie einen Knotennamen oder Dateipfad), wenn ein Baustein fehlschlägt** — nur noch eine klare Meldung, das Detail bleibt für Admins weiterhin einsehbar. Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Genie Agents: Ein Schritt, der keine Ausgabe erzeugt, wird jetzt korrekt als fehlgeschlagener Schritt gemeldet**, statt als stiller Erfolg mit leerem Ergebnis. Siehe [Genie Agents](/de/workspaces/workflow-apps).
+
+</Update>
+
+<Update label="22. September 2026" description="Wöchentliches Release">
+
+Deckt ab, was am 21. September dazukam. Genie Tools werden zu echten Mehrseiten-Apps — inklusive eines Formularmodus, der eine Frage nach der anderen stellt — und können jetzt Dateien direkt aus deiner Wissensdatenbank importieren. Ein Genie Tool oder Genie Agent lässt sich außerdem in einer Canvas neben dem Chat öffnen, statt im Gesprächsverlauf vorbeizuscrollen, die Befehlspalette bekommt ein komplett neues Erscheinungsbild, und die Workspace-Einstellungen wählen jetzt eine ganze Farbpalette statt eines einzelnen Akzents.
+
+## Updates
+
+- **Genie Tools legen sich jetzt als Mehrseiten-Apps an.** Ein Tool mit viel Inhalt teilt sich automatisch in fokussierte Seiten auf — typischerweise Dashboard, Import, Verwalten und Analyse — statt einer einzigen langen Scroll-Seite, und eine Seite kann auch als **Formular** laufen: eine Frage nach der anderen, mit Fortschrittsanzeige und einem Dankeschön-Bildschirm am Ende. Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Der Import-Baustein und die Dateifelder eines Genie Tools können jetzt direkt aus deiner Wissensdatenbank auswählen**, nicht nur von der Festplatte, und die Konfiguration eines Tools kann festlegen, welcher Ordner oder welche Dokumente beim Öffnen der Seite bereits geladen sind. Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Die Tabellen-Bausteine von Genie Tools verarbeiten jetzt bis zu 500.000 Zeilen** (vorher 50.000). Aus dem alten Alles-in-einem-Import-Baustein sind drei fokussierte geworden — Import, Dateien und Export — dazu vier neue Analyse-Bausteine: KPI, Vergleich, Anomalien und Insights. Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Öffne ein Genie Tool oder einen Genie Agent in einer Canvas neben dem Chat**, statt im Gesprächsverlauf vorbeizuscrollen — was du gerade baust oder ansiehst, dockt rechts an, mit einem Button zum Wechseln oder Schließen. Siehe [Workspace-KI](/de/workspaces/overview#ein-genie-tool-oder-ein-agent-neben-dem-chat-öffnen).
+- **Genie AI kann ein Wissensdokument jetzt als Karte direkt im Chat zeigen**, mit Aktionen zum Ansehen oder Herunterladen, statt es in der Antwort nur zu nennen. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank).
+- **Der Genie-MCP-Server kann jetzt Dateien aus einem verbundenen Cloud-Speicher durchsuchen und als Wissensdokument importieren** und zieht damit für einen externen KI-Client mit der Web-App-Knowledge-Seite gleich. Siehe [Verfügbare Tools](/de/workspaces/mcp-api#verfügbare-tools).
+- **Die Befehlspalette (⌘K / Strg+K) hat ein komplett neues Erscheinungsbild** — ein einzelnes Suchfeld bündig am oberen Rand und Ergebniszeilen in voller Breite mit farbcodierten Icons statt des alten Panels mit fester Höhe. Siehe [Die Befehlspalette](/de/workspaces/overview#die-befehlspalette).
+- **Wähle eine ganze Akzentpalette für deinen Workspace, nicht nur eine Farbe** — sie bemalt jetzt jeden tageszeitabhängigen Verlauf im gesamten Workspace, nicht nur das Badge im Umschalter. Siehe [Workspace-Profil](/de/workspaces/overview#workspace-profil).
+
+## Fixes
+
+- **Behebt, dass mehrstufige Abläufe (etwa das Anlegen eines neuen Workspace) beim Wechsel zwischen Schritten in die falsche Richtung animierten oder sichtbar die Höhe änderten.**
+
+</Update>
+
+<Update label="21. September 2026" description="Wöchentliches Release">
+
+Deckt ab, was am 20. September dazukam. Genie Tools werden zu einem ernsthaften Datenwerkzeug — importiere Tabellenkalkulationen direkt in eine Workspace-Tabelle mit Spaltenzuordnung, exportiere jede Tabelle als CSV, Excel oder PDF, und zeichne ein Diagramm aus einer einzigen Zeile Beschreibung. Genie Agents und Genie Tools bekommen außerdem eigene Berechtigungskategorien in benutzerdefinierten Rollen, und Wissensdokumente zeigen jetzt, ob sie es in den Suchindex geschafft haben.
+
+## Updates
+
+- **Importiere Tabellenkalkulationen direkt in die Workspace-Tabelle eines Genie Tools.** Leg eine oder mehrere Dateien ab, oder gleich einen ganzen Ordner, und Spalten werden automatisch der Tabelle zugeordnet — Genie AI springt nur bei einer Überschrift ein, die sie nicht selbst zuordnen kann. Eine Dateiliste zeigt alles, was du importiert hast, einzeln oder komplett entfernbar. Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Exportiere die Tabelle eines Genie Tools als CSV, Excel oder PDF.** Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Ein neuer Diagramm-Baustein für Genie Tools** verwandelt eine Tabelle — oder die Daten eines beliebigen anderen Bausteins — mit einer einzigen Zeile Beschreibung in ein Linien-, Balken- oder Kreisdiagramm. Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Das Datei-Upload-Feld eines Genie Tools nimmt jetzt jeden Dateityp an**, über eine echte Drag-and-Drop-Zone statt einer festen Bild-/Dokument-Positivliste. Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Genie Agents und Genie Tools bekommen eigene Berechtigungskategorien in benutzerdefinierten Rollen** — ein Workspace kann jetzt getrennt von Genie Apps einschränken, wer das eine oder andere ansehen, bauen, bearbeiten, löschen oder ausführen darf. Siehe [Benutzerdefinierte Rollen](/de/workspaces/members#benutzerdefinierte-rollen).
+- **Wissensdokumente zeigen ihren Suchindex-Status**, mit einer Aktion **Indexierung wiederholen**, falls der semantische Index beim ersten Versuch nicht aufgebaut werden konnte. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank).
+- **Lade jeden Dateityp als Projekt-Asset hoch**, nicht nur Bilder und Videos, und leg gleich einen ganzen Ordner ab. Siehe [Bilder und Videos zu deiner App hinzufügen](/de/projects/overview#bilder-und-videos-zu-deiner-app-hinzufügen).
+
+## Fixes
+
+- **Behebt, dass Genie Agents bei unzureichenden Credits mit einer unlesbaren Fehlermeldung pausierten** — die Meldung ist jetzt klar formuliert, die richtige Wallet wird belastet, und der Agent läuft nach dem Aufladen automatisch weiter.
+- **Behebt, dass die Nachricht einer Kollegin oder eines Kollegen in einem geteilten Workspace-Chat in deiner eigenen Nachrichtenfarbe statt in ihrer eigenen erschien.**
+- **Behebt, dass von dir erstellte Workspaces im Workspace-Umschalter manchmal unter „Andere" statt unter „Eigene" auftauchten.**
+- **Der Genie-MCP-Server lässt den:die einzige:n Eigentümer:in eines Workspace nicht mehr aus Versehen die eigene Eigentümer-Rolle entfernen.**
+
+</Update>
+
 <Update label="20. September 2026" description="Wöchentliches Release">
 
 Deckt ab, was am 19. September dazukam. Im Mittelpunkt steht Teilen: Ein Workspace-Chat lässt sich jetzt mit genau den Teammitgliedern teilen, die ihn brauchen, statt mit dem ganzen Workspace — und Genie Agents sowie Genie Tools, erstmals standardmäßig privat für ihre Ersteller:innen, folgen demselben Modell aus privat / ausgewählten Personen / allen. Dafür gibt es jetzt auf jeder Karte dasselbe Menü. Genie Agents bekommen außerdem eine Ergebnisseite für jeden Lauf, und Genie AI kann den Text eines Wissensdokuments direkt überschreiben.

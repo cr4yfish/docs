@@ -70,10 +70,10 @@ Workspace settings and your personal settings share one navigation, reached from
 
 ### Workspace profile
 
-The **General** settings page is where an owner or admin edits the workspace itself: its name, description, a logo, and an accent color — saved together and shown everywhere the workspace is named, from the sidebar switcher to the mobile drawer. Leave either one unset and the badge falls back to the workspace's initial on a default background, same as before.
+The **General** settings page is where an owner or admin edits the workspace itself: its name, description, a logo, and an accent palette — saved together and shown everywhere the workspace is named, from the sidebar switcher to the mobile drawer. The palette is a full set of colors, not one swatch: it paints every time-of-day gradient throughout the workspace, not just the switcher badge. Leave a logo or palette unset and the badge falls back to the workspace's initial on a default background, with gradients following the default time-of-day rotation, same as before.
 
 <Tip>
-Ask Genie AI to do it for you instead — *"set our workspace logo to this image"* or *"make our accent color a deep green"* — from the **Ask Genie AI** button on the General settings page.
+Ask Genie AI to do it for you instead — *"set our workspace logo to this image"* or *"switch our accent palette to something warmer"* — from the **Ask Genie AI** button on the General settings page.
 </Tip>
 
 ### Recent projects
@@ -224,6 +224,10 @@ Genie doesn't always reply with plain text. When it makes more sense to offer yo
 
 If a card needs an answer before Genie AI can continue — confirming an action, or reviewing a project it's about to create — you can minimize it instead of answering right away or canceling it outright. Tap it again anytime to bring it back; nothing about the request is lost while it's collapsed.
 
+### Open a Genie Tool or Agent beside the chat
+
+On the full chat page, building or opening a [Genie Tool](/workspaces/genie-tools) or [Genie Agent](/workspaces/workflow-apps) no longer just scrolls past in the transcript — its card docks to a canvas on the right, with the conversation keeping the left. If more than one is open, a button on each card's header switches the canvas to show it instead; closing the canvas (or that button on the docked card) folds it back into the conversation. On a phone or a narrower window, cards stay inline in the transcript as before.
+
 ### Always replies in your language
 
 Genie AI answers in whatever language you write to it in — regardless of your account's interface language — and keeps writing in that language for the rest of the conversation, including any cards it shows you and the project briefs it authors on your behalf. If you switch languages mid-conversation, Genie follows along from your very next message.
@@ -251,9 +255,11 @@ Open **Knowledge** in the workspace sidebar to browse and manage documents at bo
 
 The browser is shaped like a familiar file manager: folders and unfiled documents sit at the root, opening a folder shows what's inside it, and a breadcrumb walks you back up — nothing is ever listed in two places at once. Search drops the folder view entirely and searches everything at once, so finding a document never depends on remembering where it was filed. Switch between a list or grid layout (remembered for next time), sort any column, and drag a document straight onto a folder to file it — or onto the **Knowledge** breadcrumb to take it back out — instead of opening the move dialog.
 
-Upload plain text, Markdown, CSV, JSON, YAML, XML, HTML, source files, Word (`.docx`), or Excel (`.xlsx`) files — up to 10 MB each. PDFs and images aren't accepted directly in the uploader, since their text can't be extracted in the browser; send them to Genie AI in chat instead and ask it to file them for you. You can also upload a whole folder at once — Genie recreates its structure as knowledge folders, skipping anything it can't read rather than failing the whole upload.
+Upload plain text, Markdown, CSV, JSON, YAML, XML, HTML, source files, Word (`.docx`), Excel (`.xlsx`), or PDF files — up to 10 MB each. A scanned PDF with no text layer is read automatically with OCR instead of being rejected. Images still aren't accepted directly in the uploader, since their content can't be extracted in the browser; send one to Genie AI in chat instead and ask it to file it for you. You can also upload a whole folder at once — Genie recreates its structure as knowledge folders, skipping anything it can't read rather than failing the whole upload.
 
-Before building or updating a project, Genie AI automatically checks the knowledge base that applies to it — the workspace-wide documents plus anything filed just for that project — and carries what it finds into the build. When it does, its answer marks exactly which passage each statement came from with a small citation — click one to open the source document at that passage, or open the **Sources** list under the answer to see (and download) every document it drew on.
+Each document shows its own search-index status — indexed, keyword-only if the semantic index failed to build, or not yet indexed — with a **Retry indexing** action right there when it needs one.
+
+Before building or updating a project, Genie AI automatically checks the knowledge base that applies to it — the workspace-wide documents plus anything filed just for that project — and carries what it finds into the build. When it does, its answer marks exactly which passage each statement came from with a small citation — click one to open the source document at that passage, or open the **Sources** list under the answer to see (and download) every document it drew on. Genie AI can also find a document by its filename or description alone, not only by what's written inside it — useful for a document whose content is mostly figures or a scan, like a spreadsheet of numbers or a signed contract. Ask it to show or open one directly and it renders as a card right in the chat, with actions to view or download it, instead of just naming it in the reply.
 
 Within either scope, documents can also be sorted into **folders**, which can now hold sub-folders of their own — a filing layer for finding things, separate from scope, which decides what Genie AI can use. A "Brand" folder can hold both a workspace-wide document and one project's own copy deck, and filing something into or out of a folder never changes what Genie finds when it searches. Create, rename, or delete folders from the chip rail above the document list, or drag one into another to nest it; each holds up to 200 documents directly, and deleting a folder never deletes what's in it or below it — those documents just become unfiled.
 
@@ -271,7 +277,7 @@ Ask Genie AI things like *"file our brand guidelines as a knowledge document"* o
 
 ### Talk instead of type
 
-Don't want to type your prompt? Tap the microphone icon in any Genie chat composer, or next to the **Get started** button on the workspace dashboard, to dictate instead. Your words appear in the composer as you speak, rather than arriving all at once when you stop, and dictation recognizes Genie- and product-specific terms — like "Genie Cloud" or "MCP" — instead of mishearing them. The microphone stays available even after you've started typing, and even while a response is still streaming in or an earlier conversation is still loading, so you can dictate a correction or an addition onto a draft without clearing the box first; tap it again to stop recording, or it stops on its own after five minutes. Genie transcribes what you said so you can review or edit it before sending — nothing is submitted automatically. Voice input is available in the workspace chat, a project's chat panel, the workspace dashboard, and the command palette's **Ask Genie**, on any browser that supports microphone recording.
+Don't want to type your prompt? Tap the microphone icon in any Genie chat composer, or next to the **Get started** button on the workspace dashboard, to dictate instead. Your words appear in the composer as you speak, rather than arriving all at once when you stop, and dictation recognizes Genie- and product-specific terms — like "Genie Cloud" or "MCP" — instead of mishearing them. The microphone stays available even after you've started typing, and even while a response is still streaming in or an earlier conversation is still loading, so you can dictate a correction or an addition onto a draft without clearing the box first; tap it again to stop recording, or it stops on its own after five minutes. Genie transcribes what you said so you can review or edit it before sending — nothing is submitted automatically. Voice input is available in the workspace chat, a project's chat panel, the workspace dashboard, a [Genie Tool](/workspaces/genie-tools)'s own form fields, and the command palette's **Ask Genie**, on any browser that supports microphone recording.
 
 ### Workspace chats are private by default
 
