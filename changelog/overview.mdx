@@ -4,6 +4,71 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="September 23, 2026" description="Weekly release">
+
+Covers what shipped September 22. The knowledge base uploader catches up to what people actually have on hand: PDFs — including scanned ones, read automatically with OCR — can now be uploaded directly, and a document can be found by its filename alone, not just what's written inside it. Voice dictation also reaches Genie Tools' own forms.
+
+## Updates
+
+- **Upload PDFs directly to your knowledge base.** No more routing them through chat first — drop a PDF into the uploader like any other document. See [Knowledge base](/workspaces/overview#knowledge-base).
+- **A scanned PDF with no text layer is now read automatically with OCR** instead of being rejected, so a folder of scans uploads the same way a folder of ordinary documents does. See [Knowledge base](/workspaces/overview#knowledge-base).
+- **Genie AI can now find a knowledge document by its filename or description**, not only by what's written inside it — useful for a spreadsheet of figures or a scanned contract with little body text to search. See [Knowledge base](/workspaces/overview#knowledge-base).
+- **Voice dictation now works in a Genie Tool's own form fields**, the same as it already does in chat. See [Talk instead of type](/workspaces/overview#talk-instead-of-type).
+
+## Fixes
+
+- **Fixed onboarding sometimes failing to finish if a new build landed mid-flow** — "Try again" could loop forever instead of completing.
+- **Fixed the "Connect [integration]?" chat card showing in English inside an otherwise German conversation.**
+- **Fixed a Genie Tool sometimes showing raw data instead of a formatted table**, and an action no longer needlessly re-runs another block's AI step when it doesn't need to. See [Genie Tools](/workspaces/genie-tools).
+- **Genie Tools no longer shows internal error detail (like a node name or file path) to workspace members when a block fails** — just a plain message, with the detail still available to admins. See [Genie Tools](/workspaces/genie-tools).
+- **Genie Agents: a step that produces no output is now correctly reported as a failed step**, instead of a silent success with a blank result. See [Genie Agents](/workspaces/workflow-apps).
+
+</Update>
+
+<Update label="September 22, 2026" description="Weekly release">
+
+Covers what shipped September 21. Genie Tools become true multi-page apps — including a one-question-at-a-time form mode — and can now import files straight from your knowledge base. A Genie Tool or Genie Agent can also open in a canvas beside the chat instead of scrolling past in the transcript, the command palette gets a full visual redesign, and workspace settings now pick a whole color palette instead of a single accent.
+
+## Updates
+
+- **Genie Tools now lay out as multi-page apps.** A tool with a lot going on splits itself into focused pages — typically Dashboard, Upload, Manage, and Analytics — instead of one long scroll, and a page can also run as a **form**: one question at a time, with a progress line and a thank-you screen at the end. See [Genie Tools](/workspaces/genie-tools).
+- **A Genie Tool's import block and file fields can now pull straight from your knowledge base**, not just from disk, and a tool's own config can pre-select which folder or documents load when the page opens. See [Genie Tools](/workspaces/genie-tools).
+- **Genie Tools' spreadsheet blocks now handle up to 500,000 rows** (up from 50,000). The old all-in-one import block is now three focused ones — Import, Files, and Export — alongside four new analysis blocks: KPI, Compare, Anomalies, and Insights. See [Genie Tools](/workspaces/genie-tools).
+- **Open a Genie Tool or Genie Agent in a canvas beside the chat**, instead of scrolling past it in the transcript — the one you're building or viewing docks to the right, with a button to switch to another or close it. See [Workspace AI](/workspaces/overview#open-a-genie-tool-or-agent-beside-the-chat).
+- **Genie AI can show a knowledge document as a card right in the chat**, with actions to view or download it, instead of just naming it in its reply. See [Knowledge base](/workspaces/overview#knowledge-base).
+- **The Genie MCP Server can now browse and import files from a connected cloud drive as knowledge documents**, bringing an external AI client to parity with the web app's Knowledge page. See [Available tools](/workspaces/mcp-api#available-tools).
+- **The command palette (⌘K / Ctrl+K) got a full visual redesign** — a single search field flush to the top, and full-width result rows with color-coded icons in place of the old fixed-height panel. See [The command palette](/workspaces/overview#the-command-palette).
+- **Pick a whole accent palette for your workspace, not just one color** — it now paints every time-of-day gradient throughout the workspace, not only the sidebar switcher badge. See [Workspace profile](/workspaces/overview#workspace-profile).
+
+## Fixes
+
+- **Fixed multi-step flows (like creating a new workspace) animating in the wrong direction, or visibly changing height, when moving between steps.**
+
+</Update>
+
+<Update label="September 21, 2026" description="Weekly release">
+
+Covers what shipped September 20. Genie Tools becomes a serious data tool — import spreadsheets straight into a workspace table with column matching, export any table as CSV, Excel, or PDF, and draw a chart from one line of description. Genie Agents and Genie Tools also get their own permission categories in custom roles, and knowledge documents now show whether they made it into the search index.
+
+## Updates
+
+- **Import spreadsheets straight into a Genie Tool's workspace table.** Drop one or several files, or a whole folder, and columns are matched to the table automatically — Genie AI steps in only for a heading it can't place on its own. A files list shows everything you've imported, removable one at a time or all at once. See [Genie Tools](/workspaces/genie-tools).
+- **Export a Genie Tool's table as CSV, Excel, or PDF.** See [Genie Tools](/workspaces/genie-tools).
+- **A new chart block for Genie Tools** turns a table — or any other block's data — into a line, bar, or pie chart with one line of description. See [Genie Tools](/workspaces/genie-tools).
+- **A Genie Tool's file upload field now takes any file type**, through a real drag-and-drop zone instead of a fixed image/document allowlist. See [Genie Tools](/workspaces/genie-tools).
+- **Genie Agents and Genie Tools get their own permission categories in custom roles** — a workspace can now restrict who may view, build, edit, delete, or run either, separately from Genie Apps. See [Custom roles](/workspaces/members#custom-roles).
+- **Knowledge documents show their search-index status**, with a **Retry indexing** action if the semantic index failed to build the first time. See [Knowledge base](/workspaces/overview#knowledge-base).
+- **Upload any file type as a project asset**, not just images and video, and drop a whole folder at once. See [Adding images and videos to your app](/projects/overview#adding-images-and-videos-to-your-app).
+
+## Fixes
+
+- **Fixed Genie Agents pausing on insufficient credits with an unreadable error** — the message is now plain, the right wallet is billed, and the agent resumes automatically once you top up credits.
+- **Fixed a teammate's message in a shared workspace chat showing in your own message color instead of theirs.**
+- **Fixed workspaces you created sometimes appearing under "Others" instead of "Own" in the workspace switcher.**
+- **The Genie MCP Server no longer lets a workspace's sole owner accidentally remove their own owner role.**
+
+</Update>
+
 <Update label="September 20, 2026" description="Weekly release">
 
 Covers what shipped September 19. The headline is sharing: a workspace chat can now be shared with just the teammates who need it instead of the whole workspace, and Genie Agents and Genie Tools — private to their creator by default for the first time — follow that same private / selected-people / everyone model, from a settings menu that's now consistent on every card. Genie Agents also get a results page for every run, and Genie AI can rewrite a knowledge document's text in place.

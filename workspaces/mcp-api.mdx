@@ -198,6 +198,11 @@ Material a team wants every build to respect — brand guidelines, tone of voice
 | `create_workspace_document_folder` | Create a folder. Names are unique per workspace, case-insensitively |
 | `update_workspace_document_folder` | Rename a folder. The documents in it are untouched |
 | `delete_workspace_document_folder` | Delete a folder. The documents in it are **not** deleted — they become unfiled and stay searchable; the result says how many |
+| `list_knowledge_sources` | Where the calling member's connected [cloud drives](/workspaces/overview#cloud-drives) (Google Drive, OneDrive) stand: not available on this deployment, not connected, or connected and browsable |
+| `browse_knowledge_source` | Browse a connected cloud drive's folders and files, paginated, to find the id of a file to import |
+| `import_knowledge_source_file` | Import a file from a connected cloud drive as a knowledge document, at a chosen scope and folder |
+
+Like the tools above, the three cloud-drive tools run as the connected member and only ever reach that member's own drive connection — never anyone else's.
 
 **Folders are orthogonal to scope.** Scope decides which projects may *use* a document; a folder only decides where a human *finds* it, and no retrieval path reads it — filing a document, or deleting the folder it's in, never changes what a search returns. `list_workspace_documents`, `add_workspace_documents`, and `update_workspace_document` each accept a `folder` (a name, an id, or `unfiled`), addressable by name since that's what a client actually sees. A folder holds at most 200 documents, enforced the same way for MCP, the in-app agent, and the browser.
 
@@ -508,6 +513,7 @@ Role-based access is enforced on every tool call.
 | Read or write a workspace-wide knowledge document | Any member |
 | Read or write a project-scoped knowledge document | Anyone with edit access to that project — tighter than plain view access, since a public project must never expose its team's internal material |
 | Create, rename, or delete a knowledge-document folder | Any member |
+| Browse or import a file from a connected cloud drive as a knowledge document | Any member, using their own drive connection |
 | Search the connected user's own Genie AI run traces | Any connected user |
 | View a project's screenshots or search its live console logs | Any member (who can view the project) |
 | Read or set a project's main workspace chat | Any member |
