@@ -13,7 +13,7 @@ Die meisten Projekte, die du in Genie baust, haben eine Oberfläche — Seiten, 
 
 Ein Genie Agent ist eine kurze Abfolge von **Schritten**. Jeder Schritt erledigt eine Sache, und ein späterer Schritt kann das Ergebnis eines früheren nutzen — zum Beispiel kann der KI-Schritt die E-Mail-Adresse verwenden, die der Datenbank-Schritt gerade nachgeschlagen hat. Das musst du nicht selbst verdrahten: Genie ermittelt die Reihenfolge automatisch aus dem, was du eingibst.
 
-Aktuell stehen elf Arten von Schritten zur Verfügung:
+Aktuell stehen zwölf Arten von Schritten zur Verfügung:
 
 | Schritt | Was er tut |
 |---|---|
@@ -28,6 +28,7 @@ Aktuell stehen elf Arten von Schritten zur Verfügung:
 | **Webseite lesen** | Liest eine Seite über Genies sicheren Seitenleser (denselben, den Genie AI im Chat verwendet) und liefert ihren Text zurück |
 | **Compliance-Prüfung** | Prüft einen Wert gegen die [PII-Regeln](/de/workspaces/pii-rules) und/oder [Guardrails](/de/workspaces/guardrails) deines Workspace, bevor er im Ablauf weitergeht |
 | **Ein anderer Agent** | Ruft einen Genie Agent auf, den du bereits gebaut hast, sodass du kleinere Abläufe zu größeren zusammensetzen kannst |
+| **Wenn / sonst** | Verzweigt den Ablauf — prüft frühere Ergebnisse mit UND / ODER / NICHT und führt je nachdem unterschiedliche Schritte aus. Siehe [Verzweigen](#verzweigen) |
 
 <Tip>
 Ein **Datenbank**- oder **Edge-Function**-Schritt muss nicht beim an den Agenten gebundenen Projekt bleiben — richte ihn stattdessen auf jede andere Genie App in deinem Workspace aus, um deren eigene Datenbank zu lesen oder zu beschreiben oder ihre eigenen Backend-Funktionen aufzurufen. Wähle das Zielprojekt über die Auswahl des Feldes im Editor, oder sag Genie AI einfach, welche App du meinst.
@@ -74,6 +75,16 @@ Um das Ergebnis eines früheren Schritts in einem Feld zu verwenden — einem KI
 
 <Tip>
   Im Hintergrund gibt es immer nur einen Agenten, nicht zwei konkurrierende Kopien. Was auch immer du auf der Arbeitsfläche änderst, sieht Genie AI beim nächsten Gespräch mit dir — und was Genie AI ändert, zeigt die Arbeitsfläche beim nächsten Öffnen.
+</Tip>
+
+## Verzweigen
+
+Ein **Wenn/sonst**-Schritt prüft eine oder mehrere Regeln gegen frühere Ergebnisse und kommt auf **ja (dann)** oder **nein (sonst)** — verknüpfe seine Regeln mit **UND** (alle müssen zutreffen), **ODER** (mindestens eine) oder **NICHT** (keine darf zutreffen). Zieh vom **Dann**- oder **Sonst**-Punkt des Schritts auf einen anderen Schritt, um ihn an diesen Zweig zu binden, oder wähle den Zweig stattdessen direkt unter **Läuft** in den Einstellungen dieses Schritts.
+
+Ein Schritt, dessen Zweig nicht genommen wurde, wird übersprungen, nicht als fehlgeschlagen gewertet — sein Ergebnis zeigt **Zweig nicht genommen**. Ein Schritt an der Stelle, an der beide Zweige wieder zusammenlaufen (einer, der selbst keinen Zweig trägt), läuft unabhängig davon, welche Seite tatsächlich lief.
+
+<Tip>
+Bitte Genie AI, die Verzweigung für dich einzurichten — z. B. „schick die Benachrichtigung nur, wenn die Zeilenzahl über null liegt" — und sie richtet den Wenn/sonst-Schritt und die Bindung gemeinsam ein.
 </Tip>
 
 ## Einen Agenten testen

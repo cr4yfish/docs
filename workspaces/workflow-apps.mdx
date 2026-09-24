@@ -13,7 +13,7 @@ Most projects you build in Genie have a UI — pages someone opens and clicks ar
 
 A Genie Agent is a short sequence of **steps**. Each step does one thing, and a later step can use an earlier step's result — for example, the AI step can use the email address the database step just looked up. You don't wire this up by hand: Genie figures out the order automatically from what you type.
 
-Eleven kinds of step are available today:
+Twelve kinds of step are available today:
 
 | Step | What it does |
 |---|---|
@@ -28,6 +28,7 @@ Eleven kinds of step are available today:
 | **Read a webpage** | Reads one page through Genie's safe page reader (the same one Genie AI uses in chat) and returns its text |
 | **Compliance check** | Checks a value against your workspace's [PII rules](/workspaces/pii-rules) and/or [Guardrails](/workspaces/guardrails) before it goes any further in the flow |
 | **Another agent** | Calls a Genie Agent you've already built, so you can compose smaller flows into bigger ones |
+| **If / else** | Branches the flow — test earlier results with AND / OR / NOT, then run different steps depending on whether they hold. See [Branching](#branching) |
 
 <Tip>
 A **Database** or **Edge function** step doesn't have to stay on the agent's own bound project — point it at any other Genie App in your workspace instead, to read or write that app's own database or call its own backend functions. Pick the target project from the field's picker in the editor, or just tell Genie AI which app you mean.
@@ -74,6 +75,16 @@ To use an earlier step's output inside a field — an AI prompt, a database quer
 
 <Tip>
   There's only ever one agent behind the scenes, not two competing copies. Whatever you change on the canvas, Genie AI sees the next time you talk to it — and whatever Genie AI changes, the canvas reflects the next time you open it.
+</Tip>
+
+## Branching
+
+An **If / else** step tests one or more rules against earlier results and comes out **yes (then)** or **no (else)** — combine its rules with **AND** (all must hold), **OR** (any one), or **NOT** (none may hold). Drag from the step's **Then** or **Else** dot onto another step to gate it on that branch, or pick the branch from **Runs** in that step's own settings instead.
+
+A step whose branch wasn't taken is skipped, not failed — its result shows **Branch not taken**. A step placed where both branches rejoin (one that doesn't itself carry a branch) runs regardless of which side actually ran.
+
+<Tip>
+Ask Genie AI to add the branch for you — *"only send the notification if the row count is over zero"* — and it sets up the If/else step and the gate together.
 </Tip>
 
 ## Testing an agent
