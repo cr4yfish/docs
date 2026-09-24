@@ -4,6 +4,24 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="September 24, 2026" description="Weekly release">
+
+Covers what shipped September 23. Genie Agents can branch: a new If/else step tests earlier results with AND, OR, or NOT, and any step can be set to run only on the branch that follows. The knowledge base also reaches OneDrive and SharePoint as a source alongside Google Drive, and every document now carries the date it's about, not just the day it was uploaded.
+
+## Updates
+
+- **Genie Agents can branch.** A new If/else step tests one or more rules against earlier results — combined with AND, OR, or NOT — and any step can be set to run only if that branch's answer was yes or no. See [Branching](/workspaces/workflow-apps#branching).
+- **OneDrive and SharePoint join Google Drive as a knowledge base source.** Browse your OneDrive or any SharePoint site you follow, import a file directly, or keep a whole library or folder in sync the same way you already can with a Drive folder. See [Cloud drives](/workspaces/overview#cloud-drives).
+- **Every knowledge document now carries the date it's about**, separate from its upload day — worked out automatically from the file name, title, or a connected drive's last-modified time, and correctable from the document's Rename or move dialog or by asking Genie AI. See [Knowledge base](/workspaces/overview#knowledge-base).
+- **A simple Genie Agent (no branching) now draws as a clean top-to-bottom stack on the chat canvas**, instead of the sideways grid the editor uses. See [Open a Genie Tool or Agent beside the chat](/workspaces/overview#open-a-genie-tool-or-agent-beside-the-chat).
+
+## Fixes
+
+- **Fixed accepting a workspace invite when every seat is taken showing a generic error page** — it now shows a clear "workspace is full" message, and a single-use invite is no longer burned on a failed acceptance.
+- **Fixed the agent canvas beside the chat not following a later edit** — renaming a Genie Agent or changing its steps in a later message now updates the docked canvas, instead of leaving it showing the agent's original version.
+
+</Update>
+
 <Update label="September 23, 2026" description="Weekly release">
 
 Covers what shipped September 22. The knowledge base uploader catches up to what people actually have on hand: PDFs — including scanned ones, read automatically with OCR — can now be uploaded directly, and a document can be found by its filename alone, not just what's written inside it. Voice dictation also reaches Genie Tools' own forms.
