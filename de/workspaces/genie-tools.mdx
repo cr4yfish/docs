@@ -57,6 +57,10 @@ Die Seite eines Tools setzt sich aus einer kleinen Auswahl an Bausteinen zusamme
 
 Jeder Baustein behandelt seine Zwischenzustände selbst: Eine Tabelle zeigt beim Laden ein Platzhalter-Skelett, sagt klar, wenn sie leer ist, und wenn etwas fehlschlägt, wird der Rest der Seite trotzdem angezeigt — mit dem Fehler direkt neben dem, was kaputt war. Ein defekter Baustein macht nie das ganze Tool leer.
 
+Ein **Tabellen**-Baustein ist durchsuchbar und sortierbar, mit fixierten Kopfzeilen, damit eine lange Liste lesbar bleibt — und wo das Tool es aktiviert, lässt eine Checkbox-Spalte Zeilen auswählen, um sie gemeinsam zu bearbeiten, etwa nur die ausgewählten zu exportieren. Eine Zelle mit einem einzelnen Link wird als anklickbares Vorschaubild für ein Bild, als benannter Download-Link für eine Datei oder als einfacher Link für alles andere angezeigt — statt als reiner Text.
+
+Uploads — in einen **Import**-Baustein, ein Datei-Feld in einem **Formular**, oder aus deiner [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank) ausgewählt — nehmen Dateien bis zu 200 MB entgegen. Große Dateien werden automatisch komprimiert, damit alles zügig bleibt; bitte Genie AI, diese Komprimierung für ein bestimmtes Datei-Feld stärker oder schwächer einzustellen, falls die Standardeinstellung nicht zu dem passt, was du hochlädst.
+
 ## Seiten, und ein Formular, das eins nach dem anderen fragt
 
 Ein Tool mit viel Inhalt ist keine einzige lange Scroll-Seite: Eine Seite, die sowohl lang ist als auch verschiedene Aufgaben mischt — Daten importieren, verwalten, ein Diagramm lesen —, wird automatisch in fokussierte Seiten aufgeteilt, typischerweise **Dashboard**, **Import**, **Verwalten** und **Analyse**, jede nur mit den Bausteinen, die sie braucht. Die gerade geöffnete Seite steht in der URL des Tools, sodass ein Link auf eine bestimmte Seite zeigen kann, und ein Tool behält bis zu 10 Seiten (siehe [Limits](#limits)).

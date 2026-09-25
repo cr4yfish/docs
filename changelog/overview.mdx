@@ -4,6 +4,23 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="September 25, 2026" description="Weekly release">
+
+Covers what shipped September 24, plus a knowledge-access feature from a day earlier that the docs missed. Genie AI can now build a structured model of your knowledge base — entities and the relationships between them — and admins can fence a folder off to just the people who should see it. Genie Tools tables and uploads both get more capable, and the Genie MCP Server catches up on workspace administration.
+
+## Updates
+
+- **Genie AI builds a structured model of your knowledge base.** Turn on automatic reading (owners and admins, from the Knowledge page) and Genie reads every document to find the entities in it — people, organisations, decisions, terms, and more — and the relationships between them, each traceable back to the passage it came from. Browse the result in the new **Classes and relations** panel on the Knowledge page, or ask Genie AI to review what it found, merge duplicate entities, or re-read everything from scratch. See [Knowledge base](/workspaces/overview#knowledge-model).
+- **Restrict a knowledge folder to specific people or roles.** Owners and admins can fence off a folder — an "access area" — so only chosen roles, groups, or individual members can read or add to what's inside it; everyone else doesn't see that it exists. Manage areas from workspace settings → **Knowledge access**. See [Knowledge base](/workspaces/overview#access-areas).
+- **Genie Tools tables and uploads get more capable.** Every table now has search, sortable columns, and sticky headers, and a tool can turn on selectable rows for bulk actions like exporting just what you checked. Uploads — into an Import block, a form's file field, or your knowledge base — now take files up to 200 MB, with large ones compressed automatically, and a cell holding a single link renders as a clickable thumbnail or download link instead of raw text. See [Genie Tools](/workspaces/genie-tools).
+- **Genie MCP Server catches up on workspace administration.** External AI clients connected via the Genie MCP Server can now manage custom roles and permissions, create and manage workspace API keys, and set up knowledge access areas — plus check your own per-integration connection status and a knowledge document's cover picture. See [Genie MCP Server](/workspaces/mcp-api).
+
+## Fixes
+
+- **Fixed Genie AI sometimes replying with only a tool result or card and no words alongside it.** It now always gives a conversational answer alongside whatever it did.
+
+</Update>
+
 <Update label="September 24, 2026" description="Weekly release">
 
 Covers what shipped September 23. Genie Agents can branch: a new If/else step tests earlier results with AND, OR, or NOT, and any step can be set to run only on the branch that follows. The knowledge base also reaches OneDrive and SharePoint as a source alongside Google Drive, and every document now carries the date it's about, not just the day it was uploaded.

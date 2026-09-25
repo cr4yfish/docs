@@ -57,6 +57,10 @@ A tool's page is built from a small set of building blocks, and Genie AI picks a
 
 Every block handles the in-between states on its own: a table shows a loading skeleton while it fetches, says plainly when it's empty, and if something fails, the rest of the page still renders with the failure named next to whatever broke — one bad block never blanks the whole tool.
 
+A **Table** block is searchable and sortable, with sticky headers so a long list stays readable — and where the tool turns it on, a checkbox column lets you select rows to act on together, like exporting just the ones you picked. A cell holding a single link renders as a clickable thumbnail for an image, a named download link for a file, or a plain link for anything else, instead of raw text.
+
+Uploads — into an **Import** block, a file field in a **Form**, or picked from your [knowledge base](/workspaces/overview#knowledge-base) — take files up to 200 MB. Anything large is compressed automatically to keep things fast; ask Genie AI to turn that compression up or down for a specific file field if the default doesn't suit what you're uploading.
+
 ## Pages, and a form that asks one thing at a time
 
 A tool with a lot going on isn't one long scroll: a page that's both long and mixing different jobs — importing data, managing it, reading a chart — is automatically split into focused pages, typically **Dashboard**, **Upload**, **Manage**, and **Analytics**, each carrying just the blocks it needs. The page you're on is part of the tool's URL, so a link to a tool can point at one specific page, and a tool keeps up to 10 pages (see [Limits](#limits)).

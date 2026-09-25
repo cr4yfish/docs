@@ -279,6 +279,28 @@ Beyond importing files one at a time, you can also keep a whole folder **in sync
 Ask Genie AI things like *"file our brand guidelines as a knowledge document"* or *"what do we have on file about the payments API?"* — it can search, read, add, retitle, move, delete, and file knowledge documents into folders on your behalf, the same as you can from the Knowledge page.
 </Tip>
 
+### Knowledge model
+
+Beyond search and citations, Genie AI can also build a structured model of what your knowledge base actually talks about — the **entities** in it (a person, an organisation, a contract, a decision) and the **relationships** between them, each one traceable back to the exact passage it came from.
+
+Turn on **Read documents automatically** at the bottom of the Knowledge page (owners and admins only, off by default) and Genie reads every document in the workspace and proposes the entities, values, and links it finds — new and changed documents are picked up automatically from then on. Everyone in the workspace can browse the result in the **Classes and relations** panel further down the same page: the kinds of things being tracked (people, organisations, decisions, terms, and any custom class an admin adds), how many properties each has, and how many entities you can see. Open a class to see its entities, each marked **Proposed** until confirmed, and **Partly hidden** where a document you can't read says more about it.
+
+<Tip>
+Ask Genie AI things like *"what do we know about Acme Corp?"* or *"merge these two duplicate contacts"* — reviewing what extraction found, confirming, merging, or splitting entities, and asking questions about the model all happen through chat with Genie AI rather than a dedicated review page.
+</Tip>
+
+Admins can also create and edit classes and relationship types themselves — name, description, properties, and which classes a relationship connects — from the same panel, and can re-read every document from scratch or reset the model entirely if it needs a clean start.
+
+### Access areas
+
+By default, every workspace member can see every knowledge folder. If a folder holds something more sensitive — HR records, one client's own files — an owner or admin can fence it into an **access area** from workspace settings → **Knowledge access**: create an area, decide whether it's open to every member by default or only to people you grant, then add the roles, groups, or individual members who should reach it and put the folder into it. Anyone outside an area's reach doesn't just lose access to the folder — they don't see that it exists at all.
+
+An area can grant **read** access (see and use what's inside) or **write** access (also add, move, and delete documents in it). Moving a folder into or out of an area, or changing who reaches it, applies to everything inside it, including sub-folders.
+
+<Tip>
+Prefer granting a role or a group over naming individual members one at a time — it's easier to review and update later, and you can create a group specifically to hold an access grant.
+</Tip>
+
 ### Talk instead of type
 
 Don't want to type your prompt? Tap the microphone icon in any Genie chat composer, or next to the **Get started** button on the workspace dashboard, to dictate instead. Your words appear in the composer as you speak, rather than arriving all at once when you stop, and dictation recognizes Genie- and product-specific terms — like "Genie Cloud" or "MCP" — instead of mishearing them. The microphone stays available even after you've started typing, and even while a response is still streaming in or an earlier conversation is still loading, so you can dictate a correction or an addition onto a draft without clearing the box first; tap it again to stop recording, or it stops on its own after five minutes. Genie transcribes what you said so you can review or edit it before sending — nothing is submitted automatically. Voice input is available in the workspace chat, a project's chat panel, the workspace dashboard, a [Genie Tool](/workspaces/genie-tools)'s own form fields, and the command palette's **Ask Genie**, on any browser that supports microphone recording.

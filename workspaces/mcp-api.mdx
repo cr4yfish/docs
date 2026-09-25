@@ -46,7 +46,7 @@ Restart Claude Desktop and open any conversation. Claude will prompt you to auth
 
 ## Available tools
 
-The Genie MCP Server provides tools across twenty-seven categories.
+The Genie MCP Server provides tools across thirty-two categories.
 
 ### Workspace management
 
@@ -62,7 +62,7 @@ Read and update your workspace, members, invitations, settings, and billing.
 | `update_workspace_member_role` | Change a member's role |
 | `remove_workspace_member` | Remove a member immediately |
 | `update_workspace` | Rename the workspace, update its description, or set its icon and accent color |
-| `update_workspace_settings` | Toggle activity log or project access control |
+| `update_workspace_settings` | Toggle activity log, project access control, or automatic knowledge-base reading (entity/relation extraction — see [Knowledge model](/workspaces/overview#knowledge-model)) |
 | `get_workspace_billing` | Subscription plan, status, and billing period |
 | `get_workspace_credits` | Current credit balance |
 | `get_credit_usage` | Credit consumption, optionally broken down by project, member, or day, and sortable by spend or date |
@@ -72,6 +72,31 @@ Read and update your workspace, members, invitations, settings, and billing.
 | `list_user_workspaces` | Same list, with the currently-connected workspace marked |
 | `create_workspace` | Create a new workspace, owned by you. Independent of the currently connected workspace — it appears in your workspace list right away |
 | `invite_workspace_member_by_email` | Send a single-use invite directly to an email address. The invitee doesn't need an existing Genie account — they become a member once they accept |
+
+### Workspace roles and permissions
+
+Everything the **Roles & permissions** settings page can do — the four built-in roles (owner/admin/member/editor) and any custom role or group the workspace defines. Every write requires the `roles.manage` permission.
+
+| Tool | What it does |
+|---|---|
+| `list_workspace_roles` | Every role in the workspace — the four built-ins with their current permissions, and every custom role or group, each with a role id, base role, granted permissions, and member count |
+| `list_workspace_permissions` | The full permission catalog: what each one covers, and whether it's flagged sensitive (money, data, or the workspace itself) |
+| `create_workspace_role` | Create a custom role that narrows a built-in role — a permission the base role lacks is dropped, never granted — or a group with no permissions of its own, just a target for granting knowledge access areas |
+| `set_workspace_role_permissions` | Replace a role's whole permission set — send the complete list it should end up with, not just what changed |
+| `update_workspace_role` | Rename a custom role, change its description, or move it to a different base role |
+| `reset_builtin_workspace_role` | Drop a workspace's customisation of a built-in role, restoring the shipped defaults |
+| `delete_workspace_role` | Delete a custom role — everyone holding it falls back to the built-in role it inherited from |
+
+### Workspace API keys
+
+Manage the bearer-token keys that let your own code call Genie AI over HTTP — see [Workspace API keys](/workspaces/api-keys). Owner or admin only.
+
+| Tool | What it does |
+|---|---|
+| `list_workspace_api_keys` | List the workspace's keys with a masked prefix and recent usage (requests, tokens, credits). Secrets are never returned |
+| `create_workspace_api_key` | Mint a new key and return its plaintext secret — shown exactly once, the same as the settings dialog |
+| `set_workspace_api_key` | Rename a key, pause or resume it, or change its rate limit |
+| `revoke_workspace_api_key` | Permanently revoke a key. Irreversible |
 
 ### Projects
 
@@ -194,6 +219,9 @@ Material a team wants every build to respect — brand guidelines, tone of voice
 | `add_workspace_documents` | File one or more documents (up to 10 per call) for the workspace or a project |
 | `update_workspace_document` | Retitle, re-describe, move a document between scopes, move it between folders via `folder`, or rewrite its full text in place via `text` (re-indexed immediately; refused on a document mirrored in from a connected cloud drive — edit it at the source instead) |
 | `delete_workspace_document` | Permanently delete a document and its search index |
+| `reindex_workspace_document` | Repair a document stuck at keyword-only or failed search indexing, or bring it onto the current embedding spec. Safe to call on any document — never changes its text |
+| `get_document_cover_image` | Read a document's cover picture — whether one exists, is being drawn right now, or the last attempt's outcome |
+| `regenerate_document_cover_image` | Draw a new cover picture for a document, replacing whatever is there. Runs in the background |
 | `list_workspace_document_folders` | The workspace's filing folders, each with how many documents it holds and how much room is left before the 200-per-folder cap |
 | `create_workspace_document_folder` | Create a folder. Names are unique per workspace, case-insensitively |
 | `update_workspace_document_folder` | Rename a folder. The documents in it are untouched |
@@ -205,6 +233,19 @@ Material a team wants every build to respect — brand guidelines, tone of voice
 Like the tools above, the three cloud-drive tools run as the connected member and only ever reach that member's own drive connection — never anyone else's.
 
 **Folders are orthogonal to scope.** Scope decides which projects may *use* a document; a folder only decides where a human *finds* it, and no retrieval path reads it — filing a document, or deleting the folder it's in, never changes what a search returns. `list_workspace_documents`, `add_workspace_documents`, and `update_workspace_document` each accept a `folder` (a name, an id, or `unfiled`), addressable by name since that's what a client actually sees. A folder holds at most 200 documents, enforced the same way for MCP, the in-app agent, and the browser.
+
+### Knowledge access areas
+
+Manage [access areas](/workspaces/overview#access-areas) — which folders are fenced off, and who reaches each one. Every write requires the workspace's knowledge-access-management permission.
+
+| Tool | What it does |
+|---|---|
+| `list_data_compartments` | Every access area: its default access (open to all members, or grantees only), who it's granted to, and which folders are in it |
+| `save_data_compartment` | Create an access area, or edit one by id |
+| `delete_data_compartment` | Delete an access area and its grants. Refused while any folder or document is still filed in it |
+| `grant_data_access` | Give a role, a group, or one member read or write access to an area |
+| `revoke_data_access` | Remove a grantee's access to an area |
+| `set_folder_compartment` | Put a folder into an access area, or take it out |
 
 ### Genie Cloud backend management
 
@@ -295,6 +336,7 @@ Send questions to the Genie workspace AI and browse past conversations. Every to
 | `search_workspace_chats` | Search across past messages. Own conversations by default; pass `scope: "workspace"` to include teammates' |
 | `search_agent_run_traces` | Fulltext-search the execution trace behind the connected user's own Genie AI conversations — the reasoning, every tool call, and the final answer, not just the visible chat text. Useful for questions like "why did that fail earlier" or "which turn called the deploy tool" |
 | `rename_workspace_chat` | Rename any conversation in the workspace, including one a teammate started |
+| `pin_workspace_chat` | Pin or unpin a conversation to the top of the chat history sidebar, ahead of the usual date groups |
 | `delete_workspace_chat` | Permanently delete any conversation in the workspace, including one a teammate started, and all its messages. Irreversible — check the conversation's `startedByUser` field first if you didn't start it yourself |
 | `get_project_chat_connection` | Show which workspace chat is a project's main conversation — the one where all the work on that project happens — how that was resolved, and which other projects share it |
 | `list_projects_sharing_chat` | List every project that uses a given workspace chat as its main conversation |
@@ -312,6 +354,15 @@ Manage the MCP server integrations (Linear, GitHub, Notion, Stripe, etc.) that p
 | `toggle_workspace_mcp_server` | Enable or disable a server without removing it |
 | `delete_workspace_mcp_server` | Permanently remove a server and its stored credentials |
 | `test_workspace_mcp_server_connection` | Open a test connection and list the tools it exposes |
+
+### Your connections
+
+Check where you personally stand with each of the workspace's integrations — separate from whether the workspace has the integration configured at all. See [shared vs. personal connections](/workspaces/integrations#shared-vs-personal-connections). Read-only, scoped to the calling user.
+
+| Tool | What it does |
+|---|---|
+| `list_my_connections` | Every workspace integration, and whether you've personally connected your own account to it |
+| `get_connection_status` | Detailed status for one integration — connected or not, and whether it's shared or per-member |
 
 ### Workspace chat channels
 
@@ -495,6 +546,9 @@ Role-based access is enforced on every tool call.
 | Invite or remove members, change roles | Owner or admin |
 | Update workspace name or settings | Owner or admin |
 | Manage MCP integrations | Owner or admin |
+| Check your own connection status for an integration | Any member |
+| Manage custom roles and permissions | Owner, admin, or a role granted `roles.manage` |
+| Create, edit, or revoke a workspace API key | Owner or admin |
 | Manage PII rules | Owner or admin |
 | Create, update, rename, archive, or delete projects | Any member |
 | Move a project in or out of the workspace | Owner, admin, or member (not editor) |
@@ -514,10 +568,12 @@ Role-based access is enforced on every tool call.
 | Read or write a project-scoped knowledge document | Anyone with edit access to that project — tighter than plain view access, since a public project must never expose its team's internal material |
 | Create, rename, or delete a knowledge-document folder | Any member |
 | Browse or import a file from a connected cloud drive as a knowledge document | Any member, using their own drive connection |
+| View or redraw a knowledge document's cover picture, or repair its search index | Any member (who can read the document) |
+| Manage knowledge access areas — create, edit, grant, or revoke | Owner, admin, or a role granted knowledge-access management |
 | Search the connected user's own Genie AI run traces | Any connected user |
 | View a project's screenshots or search its live console logs | Any member (who can view the project) |
 | Read or set a project's main workspace chat | Any member |
-| Read, rename, or delete a workspace chat (own or a teammate's) | Any member |
+| Read, rename, pin, or delete a workspace chat (own or a teammate's) | Any member |
 | Check what a project is doing right now (build, autofix, queue) | Any member (who can view the project) |
 | See who else has a project open right now | Any member (who can view the project) |
 | View or manage a project's prompt queue | Any member |

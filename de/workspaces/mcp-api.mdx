@@ -46,7 +46,7 @@ Starte Claude Desktop neu und öffne ein beliebiges Gespräch. Claude wird dich 
 
 ## Verfügbare Tools
 
-Der Genie MCP Server bietet Tools in siebenundzwanzig Kategorien.
+Der Genie MCP Server bietet Tools in zweiunddreißig Kategorien.
 
 ### Workspace-Verwaltung
 
@@ -62,7 +62,7 @@ Lese und aktualisiere deinen Workspace, Mitglieder, Einladungen, Einstellungen u
 | `update_workspace_member_role` | Ändere die Rolle eines Mitglieds |
 | `remove_workspace_member` | Entferne ein Mitglied sofort |
 | `update_workspace` | Benenne den Workspace um, aktualisiere seine Beschreibung oder setze sein Icon und seine Akzentfarbe |
-| `update_workspace_settings` | Schalte das Aktivitätsprotokoll oder die Projektzugangskontrolle um |
+| `update_workspace_settings` | Schalte das Aktivitätsprotokoll, die Projektzugangskontrolle oder das automatische Lesen der Wissensdatenbank um (Entitäten-/Beziehungs-Extraktion — siehe [Wissensmodell](/de/workspaces/overview#wissensmodell)) |
 | `get_workspace_billing` | Abonnement-Tarif, Status und Abrechnungszeitraum |
 | `get_workspace_credits` | Aktuelles Credit-Guthaben |
 | `get_credit_usage` | Credit-Verbrauch, optional aufgeschlüsselt nach Projekt, Mitglied oder Tag, sortierbar nach Verbrauch oder Datum |
@@ -72,6 +72,31 @@ Lese und aktualisiere deinen Workspace, Mitglieder, Einladungen, Einstellungen u
 | `list_user_workspaces` | Dieselbe Liste, mit dem aktuell verbundenen Workspace markiert |
 | `create_workspace` | Erstelle einen neuen Workspace, den du besitzt. Unabhängig vom aktuell verbundenen Workspace — er erscheint sofort in deiner Workspace-Liste |
 | `invite_workspace_member_by_email` | Sende eine einmalig nutzbare Einladung direkt an eine E-Mail-Adresse. Die eingeladene Person benötigt kein bestehendes Genie-Konto — sie wird nach Annahme Mitglied |
+
+### Workspace-Rollen und -Berechtigungen
+
+Alles, was die Einstellungsseite **Rollen & Berechtigungen** kann — die vier eingebauten Rollen (Owner/Admin/Member/Editor) sowie jede eigene Rolle oder Gruppe des Workspace. Jede Schreibaktion erfordert die Berechtigung `roles.manage`.
+
+| Tool | Was es tut |
+|---|---|
+| `list_workspace_roles` | Jede Rolle im Workspace — die vier eingebauten mit ihren aktuellen Berechtigungen sowie jede eigene Rolle oder Gruppe, jeweils mit Rollen-ID, Basisrolle, gewährten Berechtigungen und Mitgliederzahl |
+| `list_workspace_permissions` | Der vollständige Berechtigungskatalog: was jede abdeckt und ob sie als sensibel markiert ist (Geld, Daten oder der Workspace selbst) |
+| `create_workspace_role` | Erstelle eine eigene Rolle, die eine eingebaute Rolle einschränkt — eine Berechtigung, die die Basisrolle nicht hat, wird verworfen, nie hinzugefügt — oder eine Gruppe ohne eigene Berechtigungen, nur als Ziel für das Gewähren von Knowledge-Zugriffsbereichen |
+| `set_workspace_role_permissions` | Ersetze die gesamte Berechtigungsmenge einer Rolle — sende die vollständige Liste, die am Ende gelten soll, nicht nur das Geänderte |
+| `update_workspace_role` | Benenne eine eigene Rolle um, ändere ihre Beschreibung oder verschiebe sie auf eine andere Basisrolle |
+| `reset_builtin_workspace_role` | Verwirf die Anpassung einer eingebauten Rolle für diesen Workspace und stelle die mitgelieferten Standardwerte wieder her |
+| `delete_workspace_role` | Lösche eine eigene Rolle — alle, die sie halten, fallen auf die eingebaute Rolle zurück, von der sie abgeleitet war |
+
+### Workspace-API-Schlüssel
+
+Verwalte die Bearer-Token-Schlüssel, mit denen dein eigener Code Genie AI über HTTP aufrufen kann — siehe [Workspace-API-Schlüssel](/de/workspaces/api-keys). Nur Owner oder Admin.
+
+| Tool | Was es tut |
+|---|---|
+| `list_workspace_api_keys` | Liste die Schlüssel des Workspace mit maskiertem Präfix und aktueller Nutzung (Anfragen, Tokens, Credits) auf. Geheimnisse werden nie zurückgegeben |
+| `create_workspace_api_key` | Erstelle einen neuen Schlüssel und gib sein Klartext-Geheimnis zurück — wie im Einstellungsdialog nur genau einmal angezeigt |
+| `set_workspace_api_key` | Benenne einen Schlüssel um, pausiere oder reaktiviere ihn, oder ändere sein Rate-Limit |
+| `revoke_workspace_api_key` | Widerrufe einen Schlüssel dauerhaft. Nicht rückgängig zu machen |
 
 ### Projekte
 
@@ -194,6 +219,9 @@ Material, das ein Team von jedem Build respektiert haben will — Markenrichtlin
 | `add_workspace_documents` | Lege ein oder mehrere Dokumente ab (bis zu 10 pro Aufruf) für den Workspace oder ein Projekt |
 | `update_workspace_document` | Benenne um, beschreibe neu, verschiebe ein Dokument zwischen Geltungsbereichen, verschiebe es über `folder` zwischen Ordnern, oder überschreibe seinen ganzen Text direkt über `text` (sofort neu indexiert; wird bei einem aus einem verbundenen Cloud-Speicher gespiegelten Dokument abgelehnt — ändere es stattdessen an der Quelle) |
 | `delete_workspace_document` | Lösche ein Dokument und seinen Suchindex dauerhaft |
+| `reindex_workspace_document` | Repariere ein Dokument, das bei nur-Stichwort-Suche oder fehlgeschlagener Indexierung feststeckt, oder bringe es auf die aktuelle Embedding-Spec. Auf jedem Dokument gefahrlos aufrufbar — ändert nie dessen Text |
+| `get_document_cover_image` | Lies das Titelbild eines Dokuments — ob eines existiert, gerade gezeichnet wird, oder das Ergebnis des letzten Versuchs |
+| `regenerate_document_cover_image` | Zeichne ein neues Titelbild für ein Dokument, ersetzt, was vorhanden ist. Läuft im Hintergrund |
 | `list_workspace_document_folders` | Die Ablage-Ordner des Workspace, jeweils mit der Zahl abgelegter Dokumente und wie viel Platz vor der 200er-Grenze pro Ordner bleibt |
 | `create_workspace_document_folder` | Lege einen Ordner an. Namen sind pro Workspace eindeutig, ohne Berücksichtigung von Groß-/Kleinschreibung |
 | `update_workspace_document_folder` | Benenne einen Ordner um. Die darin enthaltenen Dokumente bleiben unverändert |
@@ -205,6 +233,19 @@ Material, das ein Team von jedem Build respektiert haben will — Markenrichtlin
 Wie die Tools oben laufen auch die drei Cloud-Speicher-Tools als das anfragende Mitglied und erreichen ausschließlich dessen eigene Speicherverbindung — nie die einer anderen Person.
 
 **Ordner stehen quer zum Geltungsbereich.** Der Geltungsbereich entscheidet, welche Projekte ein Dokument *nutzen* dürfen; ein Ordner entscheidet nur, wo ein Mensch es *findet*, und kein Suchpfad liest ihn aus — ein Dokument abzulegen oder den Ordner zu löschen, in dem es liegt, ändert nie, was eine Suche zurückgibt. `list_workspace_documents`, `add_workspace_documents` und `update_workspace_document` akzeptieren jeweils einen `folder` (Name, ID oder `unfiled`), adressierbar per Name, da das ist, was ein Client tatsächlich sieht. Ein Ordner fasst höchstens 200 Dokumente, für MCP, den In-App-Agenten und den Browser auf dieselbe Weise durchgesetzt.
+
+### Knowledge-Zugriffsbereiche
+
+Verwalte [Zugriffsbereiche](/de/workspaces/overview#zugriffsbereiche) — welche Ordner abgeschirmt sind und wer jeweils Zugriff hat. Jede Schreibaktion erfordert die Berechtigung zur Verwaltung des Knowledge-Zugriffs.
+
+| Tool | Was es tut |
+|---|---|
+| `list_data_compartments` | Jeder Zugriffsbereich: sein Standardzugriff (offen für alle Mitglieder, oder nur für Freigegebene), wem er gewährt wurde, und welche Ordner darin liegen |
+| `save_data_compartment` | Lege einen Zugriffsbereich an, oder bearbeite einen anhand seiner ID |
+| `delete_data_compartment` | Lösche einen Zugriffsbereich und seine Freigaben. Wird abgelehnt, solange noch ein Ordner oder Dokument darin abgelegt ist |
+| `grant_data_access` | Gewähre einer Rolle, einer Gruppe oder einem Mitglied Lese- oder Schreibzugriff auf einen Bereich |
+| `revoke_data_access` | Entziehe einer freigegebenen Person oder Gruppe den Zugriff auf einen Bereich |
+| `set_folder_compartment` | Lege einen Ordner in einen Zugriffsbereich, oder nimm ihn wieder heraus |
 
 ### Genie-Cloud-Backend-Verwaltung
 
@@ -295,6 +336,7 @@ Stelle Fragen an die Genie-Workspace-KI und durchsuche vergangene Gespräche. Je
 | `search_workspace_chats` | Suche in vergangenen Nachrichten. Standardmäßig eigene Gespräche; übergib `scope: "workspace"`, um die von Teammitgliedern einzuschließen |
 | `search_agent_run_traces` | Durchsuche per Volltextsuche die Ausführungsspur hinter den eigenen Genie-KI-Gesprächen des verbundenen Nutzers — die Begründung, jeden Tool-Aufruf und die endgültige Antwort, nicht nur den sichtbaren Chat-Text. Nützlich für Fragen wie „warum ist das vorhin fehlgeschlagen" oder „welcher Turn hat das Deploy-Tool aufgerufen" |
 | `rename_workspace_chat` | Benenne jedes Gespräch im Workspace um, auch eines, das ein Teammitglied begonnen hat |
+| `pin_workspace_chat` | Heftet ein Gespräch oben in der Chat-Verlauf-Seitenleiste an, oder löst die Anheftung — vor den üblichen Datumsgruppen |
 | `delete_workspace_chat` | Lösche jedes Gespräch im Workspace dauerhaft, auch eines, das ein Teammitglied begonnen hat, mitsamt allen Nachrichten. Unumkehrbar — prüfe das Feld `startedByUser` des Gesprächs zuerst, wenn du es nicht selbst begonnen hast |
 | `get_project_chat_connection` | Zeigt, welcher Workspace-Chat der Hauptchat eines Projekts ist — derjenige, in dem die gesamte Arbeit an diesem Projekt stattfindet —, wie das aufgelöst wurde und welche anderen Projekte ihn sich teilen |
 | `list_projects_sharing_chat` | Listet jedes Projekt auf, das einen bestimmten Workspace-Chat als Hauptchat nutzt |
@@ -312,6 +354,15 @@ Verwalte die MCP-Server-Integrationen (Linear, GitHub, Notion, Stripe usw.), die
 | `toggle_workspace_mcp_server` | Aktiviere oder deaktiviere einen Server, ohne ihn zu entfernen |
 | `delete_workspace_mcp_server` | Entferne dauerhaft einen Server und seine gespeicherten Zugangsdaten |
 | `test_workspace_mcp_server_connection` | Öffne eine Testverbindung und liste die bereitgestellten Tools auf |
+
+### Deine Verbindungen
+
+Prüfe, wie du persönlich bei jeder Integration des Workspace stehst — unabhängig davon, ob der Workspace die Integration überhaupt eingerichtet hat. Siehe [Geteilte vs. persönliche Verbindungen](/de/workspaces/integrations#geteilte-vs-persönliche-verbindungen). Nur lesend, beschränkt auf das anfragende Mitglied.
+
+| Tool | Was es tut |
+|---|---|
+| `list_my_connections` | Jede Integration des Workspace, und ob du dein eigenes Konto persönlich damit verbunden hast |
+| `get_connection_status` | Detaillierter Status für eine Integration — verbunden oder nicht, und ob gemeinsam oder pro Mitglied |
 
 ### Workspace-Chat-Kanäle
 
@@ -495,6 +546,9 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Mitglieder einladen oder entfernen, Rollen ändern | Eigentümer:in oder Admin |
 | Workspace-Name oder -Einstellungen aktualisieren | Eigentümer:in oder Admin |
 | MCP-Integrationen verwalten | Eigentümer:in oder Admin |
+| Den eigenen Verbindungsstatus für eine Integration prüfen | Jedes Mitglied |
+| Eigene Rollen und Berechtigungen verwalten | Eigentümer:in, Admin, oder eine Rolle mit `roles.manage` |
+| Einen Workspace-API-Schlüssel erstellen, bearbeiten oder widerrufen | Eigentümer:in oder Admin |
 | PII-Regeln verwalten | Eigentümer:in oder Admin |
 | Projekte erstellen, aktualisieren, umbenennen, archivieren oder löschen | Jedes Mitglied |
 | Ein Projekt in den Workspace verschieben oder daraus entfernen | Eigentümer:in, Admin oder Mitglied (nicht Editor) |
@@ -514,10 +568,12 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Ein projektbezogenes Wissensdokument lesen oder schreiben | Jeder mit Bearbeitungszugriff auf das Projekt — enger als reiner Ansichtszugriff, da ein öffentliches Projekt niemals interne Team-Materialien preisgeben darf |
 | Einen Wissensdokument-Ordner anlegen, umbenennen oder löschen | Jedes Mitglied |
 | Eine Datei aus einem verbundenen Cloud-Speicher durchsuchen oder importieren | Jedes Mitglied, über die eigene Speicherverbindung |
+| Das Titelbild eines Wissensdokuments ansehen oder neu zeichnen, oder seinen Suchindex reparieren | Jedes Mitglied (das das Dokument lesen kann) |
+| Knowledge-Zugriffsbereiche verwalten — anlegen, bearbeiten, gewähren oder entziehen | Eigentümer:in, Admin, oder eine Rolle mit Knowledge-Zugriffsverwaltung |
 | Die eigenen Genie-KI-Ausführungsspuren des verbundenen Nutzers durchsuchen | Jeder verbundene Nutzer |
 | Die Screenshots eines Projekts einsehen oder seine Live-Konsolenprotokolle durchsuchen | Jedes Mitglied (das das Projekt einsehen kann) |
 | Den Hauptchat eines Projekts lesen oder festlegen | Jedes Mitglied |
-| Einen Workspace-Chat lesen, umbenennen oder löschen (eigenen oder den eines Teammitglieds) | Jedes Mitglied |
+| Einen Workspace-Chat lesen, umbenennen, anheften oder löschen (eigenen oder den eines Teammitglieds) | Jedes Mitglied |
 | Prüfen, was ein Projekt gerade tut (Build, automatische Korrektur, Warteschlange) | Jedes Mitglied (das das Projekt einsehen kann) |
 | Sehen, wer sonst gerade ein Projekt geöffnet hat | Jedes Mitglied (das das Projekt einsehen kann) |
 | Die Prompt-Warteschlange eines Projekts einsehen oder verwalten | Jedes Mitglied |
