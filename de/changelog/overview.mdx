@@ -4,6 +4,23 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="25. September 2026" description="Wöchentliches Release">
+
+Deckt ab, was am 24. September dazukam, plus eine Knowledge-Zugriffsfunktion von einem Tag zuvor, die in den Docs fehlte. Genie AI kann jetzt ein strukturiertes Modell deiner Wissensdatenbank aufbauen — Entitäten und die Beziehungen zwischen ihnen —, und Admins können einen Ordner auf genau die Personen beschränken, die ihn sehen sollen. Tabellen und Uploads in Genie Tools werden leistungsfähiger, und der Genie-MCP-Server zieht bei der Workspace-Verwaltung nach.
+
+## Updates
+
+- **Genie AI baut ein strukturiertes Modell deiner Wissensdatenbank.** Aktiviere das automatische Lesen (Owner und Admins, auf der Knowledge-Seite) und Genie liest jedes Dokument, um die darin enthaltenen Entitäten zu finden — Personen, Organisationen, Entscheidungen, Begriffe und mehr — sowie die Beziehungen zwischen ihnen, jede bis zur Textstelle zurückverfolgbar, aus der sie stammt. Durchsuche das Ergebnis im neuen Panel **Klassen und Beziehungen** auf der Knowledge-Seite, oder bitte Genie AI, die Funde zu prüfen, doppelte Entitäten zusammenzuführen oder alles von Grund auf neu zu lesen. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensmodell).
+- **Beschränke einen Knowledge-Ordner auf bestimmte Personen oder Rollen.** Owner und Admins können einen Ordner in einen „Zugriffsbereich" einschließen, sodass nur ausgewählte Rollen, Gruppen oder einzelne Mitglieder lesen oder etwas hinzufügen können; alle anderen sehen nicht einmal, dass er existiert. Verwalte Bereiche über die Workspace-Einstellungen → **Knowledge-Zugriff**. Siehe [Wissensdatenbank](/de/workspaces/overview#zugriffsbereiche).
+- **Tabellen und Uploads in Genie Tools werden leistungsfähiger.** Jede Tabelle hat jetzt Suche, sortierbare Spalten und fixierte Kopfzeilen, und ein Tool kann auswählbare Zeilen für Sammelaktionen aktivieren, etwa um nur die angehakten Zeilen zu exportieren. Uploads — in einen Import-Baustein, das Datei-Feld eines Formulars oder deine Wissensdatenbank — nehmen jetzt Dateien bis 200 MB entgegen, große werden automatisch komprimiert, und eine Zelle mit einem einzelnen Link erscheint als anklickbares Vorschaubild oder Download-Link statt als reiner Text. Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Der Genie-MCP-Server zieht bei der Workspace-Verwaltung nach.** Externe KI-Clients, die über den Genie-MCP-Server verbunden sind, können jetzt eigene Rollen und Berechtigungen verwalten, Workspace-API-Schlüssel erstellen und verwalten und Knowledge-Zugriffsbereiche einrichten — dazu den eigenen Verbindungsstatus pro Integration und das Titelbild eines Wissensdokuments prüfen. Siehe [Genie MCP Server](/de/workspaces/mcp-api).
+
+## Fixes
+
+- **Behebt, dass Genie AI manchmal nur mit einem Tool-Ergebnis oder einer Karte antwortete, ohne begleitende Worte.** Sie gibt jetzt immer eine Antwort in Worten zusätzlich zu dem, was sie getan hat.
+
+</Update>
+
 <Update label="24. September 2026" description="Wöchentliches Release">
 
 Deckt ab, was am 23. September dazukam. Genie Agents können jetzt verzweigen: Ein neuer Wenn/sonst-Schritt prüft frühere Ergebnisse mit UND, ODER oder NICHT, und jeder Schritt lässt sich so einstellen, dass er nur auf dem passenden Zweig läuft. Die Wissensdatenbank erreicht außerdem OneDrive und SharePoint als Quelle neben Google Drive, und jedes Dokument trägt jetzt das Datum, um das es geht, nicht nur den Tag des Uploads.

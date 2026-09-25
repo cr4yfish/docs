@@ -276,6 +276,28 @@ Ein Panel **Cloud-Speicher** am Ende der Knowledge-Seite zeigt für jedes Mitgli
 Bitte Genie AI zum Beispiel *„lege unsere Markenrichtlinien als Wissensdokument ab"* oder *„was haben wir zur Zahlungs-API hinterlegt?"* — sie kann Wissensdokumente in deinem Namen suchen, lesen, hinzufügen, umbenennen, verschieben, löschen und in Ordner einsortieren, genau wie du es auf der Knowledge-Seite selbst tun kannst.
 </Tip>
 
+### Wissensmodell
+
+Über Suche und Zitate hinaus kann Genie AI auch ein strukturiertes Modell dessen aufbauen, worum es in deiner Wissensdatenbank eigentlich geht — die **Entitäten** darin (eine Person, eine Organisation, ein Vertrag, eine Entscheidung) und die **Beziehungen** zwischen ihnen, jede davon bis zur genauen Textstelle zurückverfolgbar, aus der sie stammt.
+
+Aktiviere **Dokumente automatisch lesen** am Ende der Knowledge-Seite (nur Owner und Admins, standardmäßig aus), und Genie liest jedes Dokument im Workspace und schlägt die gefundenen Entitäten, Werte und Verknüpfungen vor — neue und geänderte Dokumente werden ab dann automatisch erfasst. Jeder im Workspace kann das Ergebnis im Panel **Klassen und Beziehungen** weiter unten auf derselben Seite durchsuchen: die Arten von Dingen, die erfasst werden (Personen, Organisationen, Entscheidungen, Begriffe und jede von einem Admin hinzugefügte eigene Klasse), wie viele Eigenschaften jede hat und wie viele Entitäten du sehen kannst. Öffne eine Klasse, um ihre Entitäten zu sehen, jeweils mit dem Hinweis **Vorgeschlagen**, bis sie bestätigt sind, und **Teilweise verborgen**, wo ein Dokument, das du nicht lesen kannst, mehr dazu sagt.
+
+<Tip>
+Bitte Genie AI zum Beispiel *„was wissen wir über die Acme GmbH?"* oder *„führe diese beiden doppelten Kontakte zusammen"* — das Prüfen der Extraktionsergebnisse, das Zusammenführen oder Aufteilen von Entitäten und Fragen zum Modell laufen über den Chat mit Genie AI, nicht über eine eigene Übersichtsseite.
+</Tip>
+
+Admins können Klassen und Beziehungstypen auch selbst anlegen und bearbeiten — Name, Beschreibung, Eigenschaften und welche Klassen eine Beziehung verbindet — direkt im selben Panel, und können alle Dokumente von Grund auf neu lesen lassen oder das Modell komplett zurücksetzen, falls ein sauberer Neustart nötig ist.
+
+### Zugriffsbereiche
+
+Standardmäßig kann jedes Workspace-Mitglied jeden Knowledge-Ordner sehen. Enthält ein Ordner etwas Sensibleres — Personalunterlagen, die Dateien eines einzelnen Kunden —, kann ein Owner oder Admin ihn über die Workspace-Einstellungen → **Knowledge-Zugriff** in einen **Zugriffsbereich** einschließen: einen Bereich anlegen, festlegen, ob er standardmäßig für alle Mitglieder offen ist oder nur für von dir freigegebene Personen, und dann die Rollen, Gruppen oder einzelnen Mitglieder hinzufügen, die Zugriff haben sollen, und den Ordner in den Bereich legen. Wer außerhalb der Reichweite eines Bereichs steht, verliert nicht nur den Zugriff auf den Ordner — er sieht nicht einmal, dass er existiert.
+
+Ein Bereich kann **Lese**-Zugriff gewähren (das Enthaltene sehen und nutzen) oder **Schreib**-Zugriff (zusätzlich Dokumente darin hinzufügen, verschieben und löschen). Einen Ordner in einen Bereich zu legen oder herauszunehmen, oder festzulegen, wer ihn erreicht, gilt für alles darin, einschließlich Unterordner.
+
+<Tip>
+Gib lieber einer Rolle oder Gruppe Zugriff, statt einzelne Mitglieder nacheinander zu benennen — das lässt sich später leichter überprüfen und anpassen, und du kannst eine Gruppe eigens dafür anlegen, eine Zugriffsfreigabe zu halten.
+</Tip>
+
 ### Sprechen statt tippen
 
 Willst du deinen Prompt nicht tippen? Tippe auf das Mikrofon-Symbol in einem beliebigen Genie-Chat-Composer, oder neben dem **Loslegen**-Button auf dem Workspace-Dashboard, um stattdessen zu diktieren. Deine Worte erscheinen im Composer, während du sprichst, statt erst auf einmal, wenn du aufhörst, und die Diktierfunktion erkennt Genie- und produktspezifische Begriffe — wie „Genie Cloud" oder „MCP" — statt sie misszuverstehen. Das Mikrofon bleibt auch verfügbar, nachdem du zu tippen begonnen hast — und sogar während eine Antwort noch eintrifft oder eine ältere Unterhaltung noch lädt —, sodass du eine Korrektur oder Ergänzung zu einem Entwurf diktieren kannst, ohne das Feld vorher zu leeren; tippe erneut darauf, um die Aufnahme zu beenden, oder sie stoppt nach fünf Minuten automatisch. Genie transkribiert das Gesagte, sodass du es vor dem Senden prüfen oder bearbeiten kannst — nichts wird automatisch abgeschickt. Spracheingabe ist im Workspace-Chat, im Chat-Panel eines Projekts, auf dem Workspace-Dashboard, in den eigenen Formularfeldern eines [Genie Tools](/de/workspaces/genie-tools) und in der Befehlspalette unter **Genie fragen** verfügbar, auf jedem Browser, der Mikrofon-Aufnahmen unterstützt.
