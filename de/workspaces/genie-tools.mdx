@@ -28,7 +28,7 @@ Es gibt keinen separaten formularbasierten Baukasten — Genie AI ist der Weg, e
 - „Füge einen Button hinzu, der die ausgewählte Bestellung als versendet markiert"
 - „Zeige oben auf der Seite eine laufende Gesamtsumme der Bestellungen"
 
-Genie AI zeigt das Tool schon während des Bauens direkt im Chat in Aktion — eine live funktionierende Tabelle, ein funktionierendes Formular — nicht nur eine Beschreibung dessen, was gemacht wurde. Sobald du zufrieden bist, wird es gespeichert und erscheint auf der **Tools**-Seite — privat für dich, bis du es teilst, genau wie bei einem [Genie Agent](/de/workspaces/workflow-apps#einen-agenten-verwalten): öffne sein Einstellungsmenü (**⋯**) und wähle **Alle im Workspace** oder **Nur ausgewählte Personen**.
+Genie AI zeigt das Tool schon während des Bauens direkt im Chat in Aktion — eine live funktionierende Tabelle, ein funktionierendes Formular — nicht nur eine Beschreibung dessen, was gemacht wurde. Sobald du zufrieden bist, wird es gespeichert und erscheint auf der **Tools**-Seite — privat für dich, bis du es teilst, genau wie bei einem [Genie Agent](/de/workspaces/workflow-apps#einen-agenten-verwalten): öffne sein Einstellungsmenü (**⋯**) und wähle **Alle im Workspace** oder **Nur ausgewählte Personen**. Ein Button **Genie AI fragen** auf der eigenen Seite des Tools öffnet genau das Gespräch wieder, in dem du es gebaut oder zuletzt bearbeitet hast, statt bei null anzufangen.
 
 <Tip>
 Weil es keinen separaten Editor gibt, ist das Ändern eines Tools immer ein Gespräch: „füge eine Spalte für die Telefonnummer des Kunden hinzu" oder „entferne den Löschen-Button, ich möchte nicht, dass jemand aus Versehen Bestellungen löscht."
@@ -42,12 +42,20 @@ Die Seite eines Tools setzt sich aus einer kleinen Auswahl an Bausteinen zusamme
 |---|---|
 | Text | Ein oder zwei Zeilen geschriebenen Inhalts |
 | Kennzahl | Eine einzelne Zahl oder einen Wert mit Beschriftung |
-| Diagramm | Ein Linien-, Balken- oder Kreisdiagramm, gezeichnet aus einer Tabelle oder den Daten eines anderen Bausteins |
+| Summary | Bis zu sechs KPI-Karten über einer Tabelle auf einen Blick |
+| Diagramm | Ein Balken-, Linien-, Kreis-, Donut-, Rosen- oder Streudiagramm, gezeichnet aus einer Tabelle oder den Daten eines anderen Bausteins |
 | KPI | Eine Zahl mit Trendlinie und einem Vergleich gegen ein anderes Segment |
 | Vergleich | Zwei oder mehr Segmente deiner Daten nebeneinander, mit hervorgehobenen Unterschieden |
 | Anomalien | Ausreißer, leere Felder und doppelte Zeilen, automatisch in einer Tabelle gefunden |
 | Insights | Eine von der KI verfasste Zusammenfassung dessen, was in einer Tabelle auffällt |
 | Tabelle | Datenzeilen, mit den Spalten, die du möchtest |
+| Liste | Die Zeilen eines Knotens als Einträge — als einfache Liste, Kachel- oder Karten-Ansicht, Zeitleiste oder Posteingang-Ansicht |
+| Details | Alle Felder eines ausgewählten Datensatzes, mit Buttons, die darauf wirken (aktualisieren, löschen, was du beschreibst) |
+| Kalender, Kanban, Organigramm, Karte | Die Zeilen einer Tabelle als Monatskalender, Drag-and-Drop-Board, eingerücktes Organigramm oder Punkte auf einer Karte |
+| Kommentare | Verschachtelte Notizen zu dem Datensatz, der anderswo auf der Seite ausgewählt ist |
+| Spalten, Tabs | Fasst andere Bausteine nebeneinander oder hinter Reitern zusammen, für eine umfangreichere Seite |
+| Kopfzeile, Hero, CTA, Feature(s), Partner, Beiträge, Preise, Links | Statische Landingpage-Abschnitte — für ein Tool, das auch als kleine Marketing-Seite dient |
+| Custom Code | Sandboxed HTML, CSS und JavaScript, das Genie AI für eine Ansicht schreibt, die kein anderer Baustein abdeckt |
 | Import | Lade eine oder mehrere Tabellenkalkulationen — von deinem Gerät oder direkt aus deiner [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank) — in eine Workspace-Tabelle hoch. Spalten werden automatisch zugeordnet, Genie AI springt nur bei einer Überschrift ein, die sie nicht selbst zuordnen kann |
 | Dateien | Die bereits in eine Tabelle importierten Dateien, einzeln oder alle zusammen entfernbar |
 | Export | Eine ganze Tabelle als CSV, Excel oder PDF herunterladen |
@@ -60,6 +68,18 @@ Jeder Baustein behandelt seine Zwischenzustände selbst: Eine Tabelle zeigt beim
 Ein **Tabellen**-Baustein ist durchsuchbar und sortierbar, mit fixierten Kopfzeilen, damit eine lange Liste lesbar bleibt — und wo das Tool es aktiviert, lässt eine Checkbox-Spalte Zeilen auswählen, um sie gemeinsam zu bearbeiten, etwa nur die ausgewählten zu exportieren. Eine Zelle mit einem einzelnen Link wird als anklickbares Vorschaubild für ein Bild, als benannter Download-Link für eine Datei oder als einfacher Link für alles andere angezeigt — statt als reiner Text.
 
 Uploads — in einen **Import**-Baustein, ein Datei-Feld in einem **Formular**, oder aus deiner [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank) ausgewählt — nehmen Dateien bis zu 200 MB entgegen. Große Dateien werden automatisch komprimiert, damit alles zügig bleibt; bitte Genie AI, diese Komprimierung für ein bestimmtes Datei-Feld stärker oder schwächer einzustellen, falls die Standardeinstellung nicht zu dem passt, was du hochlädst.
+
+## Einen Datensatz auswählen
+
+Ein Klick auf eine Zeile in **Liste**, **Tabelle**, **Kalender**, **Kanban**, **Organigramm** oder **Karte** wählt ihren Datensatz für den Rest der Seite aus: Ein **Details**-Baustein zeigt alle Felder dieses Datensatzes, ein **Kommentare**-Baustein zeigt seinen Thread, ein **Formular** kann ihm `follows` und ihn direkt bearbeiten oder darauf einwirken, und jeder Baustein kann nur angezeigt werden, solange der ausgewählte Datensatz etwas Bestimmtes erfüllt. Eine **Liste** kann außerdem mit einer anderen `linked` sein — sie zeigt dann nur die Zeilen, die zu dem gerade Ausgewählten gehören, etwa die eigenen Aufgaben eines Projekts unter dem Projekt, zu dem sie gehören.
+
+Ein **Formular**, das einem ausgewählten Datensatz folgt, kann sich auch mit dessen aktuellen Werten **vorausfüllen** — zum Bearbeiten an Ort und Stelle statt nur zum Anlegen neuer Datensätze; nur die Felder, die du tatsächlich änderst, werden zurückgesendet, sodass ein Wert, den eine andere Aktion geändert hat, während das Formular offen war, nie mit einem veralteten Wert überschrieben wird.
+
+## Den Ablauf einer Seite gestalten
+
+Ein Formularfeld kann **bedingt** sein — nur gefragt, wenn eine frühere Antwort passt, sodass ein Formular verzweigen kann, ohne für jeden Pfad eine eigene Seite zu brauchen — oder **versteckt**, wobei es einen festen oder aus Vorlagen erzeugten Wert sendet, ohne überhaupt eine Frage zu stellen. Ein Feld kann außerdem mit einem **Standardwert** starten, und ein Auswahl- oder Mehrfachauswahlfeld kann seine Optionen direkt aus den Zeilen eines anderen Bausteins lesen, statt sie fest einzutippen.
+
+Fasse Bausteine mit **Spalten** (2–4 nebeneinander) oder **Tabs** zusammen, um eine umfangreiche Seite zu ordnen, und füge **statische Bausteine** hinzu — eine Kopfzeile, einen Hero-Bereich, eine Handlungsaufforderung, eine Feature-Liste, Partner-Logos, eine Preistabelle oder Link-Karten — für ein Tool, das gleichzeitig als kleine Landingpage dient. Ein **Custom-Code**-Baustein lässt Genie AI Sandboxed HTML, CSS und JavaScript für die seltene Ansicht schreiben, die keiner der obigen Bausteine abdeckt; er läuft isoliert vom Rest der Seite und kann weder auf deine Daten noch auf das Netzwerk zugreifen, außer worauf er ausdrücklich Zugriff bekommen hat.
 
 ## Seiten, und ein Formular, das eins nach dem anderen fragt
 

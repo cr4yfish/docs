@@ -28,6 +28,10 @@ A message sent through the API starts or continues an ordinary workspace chat �
 - Genie AI can search it later, the same as any other conversation.
 - It follows the same [workspace PII rules](/workspaces/pii-rules) as a message typed in the browser — a rule set to block still blocks a machine caller.
 
+## Scopes
+
+By default a key can only talk to Genie AI. For an integration that keeps an outside system in sync with your [knowledge model](/workspaces/overview#knowledge-model), a key can instead (or also) be scoped to feed that system's records into it, or to read its changes back out in order — pick the scope when you create the key, or ask Genie AI to rescope an existing one.
+
 ## The caller holds no state
 
 Your integration doesn't need to store or replay a transcript. Send one message; Genie keeps the conversation history on the workspace side.

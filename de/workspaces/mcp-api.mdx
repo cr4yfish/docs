@@ -46,7 +46,7 @@ Starte Claude Desktop neu und öffne ein beliebiges Gespräch. Claude wird dich 
 
 ## Verfügbare Tools
 
-Der Genie MCP Server bietet Tools in zweiunddreißig Kategorien.
+Der Genie MCP Server bietet Tools in dreiunddreißig Kategorien.
 
 ### Workspace-Verwaltung
 
@@ -220,6 +220,7 @@ Material, das ein Team von jedem Build respektiert haben will — Markenrichtlin
 | `update_workspace_document` | Benenne um, beschreibe neu, verschiebe ein Dokument zwischen Geltungsbereichen, verschiebe es über `folder` zwischen Ordnern, oder überschreibe seinen ganzen Text direkt über `text` (sofort neu indexiert; wird bei einem aus einem verbundenen Cloud-Speicher gespiegelten Dokument abgelehnt — ändere es stattdessen an der Quelle) |
 | `delete_workspace_document` | Lösche ein Dokument und seinen Suchindex dauerhaft |
 | `reindex_workspace_document` | Repariere ein Dokument, das bei nur-Stichwort-Suche oder fehlgeschlagener Indexierung feststeckt, oder bringe es auf die aktuelle Embedding-Spec. Auf jedem Dokument gefahrlos aufrufbar — ändert nie dessen Text |
+| `get_knowledge_index_status` | Der Indexierungsstatus des Workspace auf einen Blick — wie viele Dokumente vollständig durchsuchbar sind, noch indexiert werden, nur nach Stichwort durchsuchbar sind oder feststecken, und wie viele noch ihr Datum gelesen bekommen müssen — plus eine Liste der Dokumente, die am dringendsten Aufmerksamkeit brauchen |
 | `get_document_cover_image` | Lies das Titelbild eines Dokuments — ob eines existiert, gerade gezeichnet wird, oder das Ergebnis des letzten Versuchs |
 | `regenerate_document_cover_image` | Zeichne ein neues Titelbild für ein Dokument, ersetzt, was vorhanden ist. Läuft im Hintergrund |
 | `list_workspace_document_folders` | Die Ablage-Ordner des Workspace, jeweils mit der Zahl abgelegter Dokumente und wie viel Platz vor der 200er-Grenze pro Ordner bleibt |
@@ -246,6 +247,19 @@ Verwalte [Zugriffsbereiche](/de/workspaces/overview#zugriffsbereiche) — welche
 | `grant_data_access` | Gewähre einer Rolle, einer Gruppe oder einem Mitglied Lese- oder Schreibzugriff auf einen Bereich |
 | `revoke_data_access` | Entziehe einer freigegebenen Person oder Gruppe den Zugriff auf einen Bereich |
 | `set_folder_compartment` | Lege einen Ordner in einen Zugriffsbereich, oder nimm ihn wieder heraus |
+
+### Excel-Arbeitsmappen
+
+Erstelle, lies, durchsuche und bearbeite echte `.xlsx`-Dateien — dieselben Tools, die Genie AI im [Chat](/de/workspaces/overview#excel-arbeitsmappen) zur Verfügung stehen. Eine Arbeitsmappe ist ein Wissensdokument, daher laufen Umbenennen, Verschieben und Löschen über die Wissensdokument-Tools oben.
+
+| Tool | Was es tut |
+|---|---|
+| `list_workbooks` | Liste die Excel-Arbeitsmappen des Workspace, neueste zuerst |
+| `create_workbook` | Erstelle eine neue Arbeitsmappe — Blätter, Daten und Formeln in einem Aufruf, sofort berechnet |
+| `read_workbook` | Eine Übersicht aller Blätter, oder ein Ausschnitt eines Blatts als Raster, für eine große Arbeitsmappe seitenweise |
+| `find_in_workbook` | Finde Zellen, deren Wert oder Formel passt, mit den passenden Zeilen |
+| `edit_workbook` | Wende ein Bündel von Änderungen an — Zellen setzen, Zeilen/Spalten einfügen oder löschen, sortieren, zusammenführen, formatieren und mehr — gemeinsam gespeichert oder gar nicht |
+| `evaluate_workbook_formula` | Berechne eine oder mehrere Formeln anhand der aktuellen Werte der Arbeitsmappe, ohne zu speichern |
 
 ### Genie-Cloud-Backend-Verwaltung
 

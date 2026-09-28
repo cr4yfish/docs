@@ -13,7 +13,7 @@ Die meisten Projekte, die du in Genie baust, haben eine Oberfläche — Seiten, 
 
 Ein Genie Agent ist eine kurze Abfolge von **Schritten**. Jeder Schritt erledigt eine Sache, und ein späterer Schritt kann das Ergebnis eines früheren nutzen — zum Beispiel kann der KI-Schritt die E-Mail-Adresse verwenden, die der Datenbank-Schritt gerade nachgeschlagen hat. Das musst du nicht selbst verdrahten: Genie ermittelt die Reihenfolge automatisch aus dem, was du eingibst.
 
-Aktuell stehen zwölf Arten von Schritten zur Verfügung:
+Aktuell stehen sechzehn Arten von Schritten zur Verfügung:
 
 | Schritt | Was er tut |
 |---|---|
@@ -29,6 +29,10 @@ Aktuell stehen zwölf Arten von Schritten zur Verfügung:
 | **Compliance-Prüfung** | Prüft einen Wert gegen die [PII-Regeln](/de/workspaces/pii-rules) und/oder [Guardrails](/de/workspaces/guardrails) deines Workspace, bevor er im Ablauf weitergeht |
 | **Ein anderer Agent** | Ruft einen Genie Agent auf, den du bereits gebaut hast, sodass du kleinere Abläufe zu größeren zusammensetzen kannst |
 | **Wenn / sonst** | Verzweigt den Ablauf — prüft frühere Ergebnisse mit UND / ODER / NICHT und führt je nachdem unterschiedliche Schritte aus. Siehe [Verzweigen](#verzweigen) |
+| **Knowledge** | Durchsucht, listet, liest, legt ab, aktualisiert oder löscht Dokumente in der [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank) deines Workspace |
+| **Ontology** | Durchsucht, liest oder ändert das [Wissensmodell](/de/workspaces/overview#wissensmodell) deines Workspace — Entitäten, Beziehungen und Klassen |
+| **Schleife** | Wiederholt eine Reihe von Schritten über eine Liste, eine feste Anzahl von Malen oder solange eine Bedingung gilt. Siehe [Schleifen](#schleifen) |
+| **Variable** | Hält einen benannten Wert — eine laufende Summe, einen Zähler — über die Durchläufe einer Schleife hinweg. Siehe [Schleifen](#schleifen) |
 
 <Tip>
 Ein **Datenbank**- oder **Edge-Function**-Schritt muss nicht beim an den Agenten gebundenen Projekt bleiben — richte ihn stattdessen auf jede andere Genie App in deinem Workspace aus, um deren eigene Datenbank zu lesen oder zu beschreiben oder ihre eigenen Backend-Funktionen aufzurufen. Wähle das Zielprojekt über die Auswahl des Feldes im Editor, oder sag Genie AI einfach, welche App du meinst.
@@ -85,6 +89,16 @@ Ein Schritt, dessen Zweig nicht genommen wurde, wird übersprungen, nicht als fe
 
 <Tip>
 Bitte Genie AI, die Verzweigung für dich einzurichten — z. B. „schick die Benachrichtigung nur, wenn die Zeilenzahl über null liegt" — und sie richtet den Wenn/sonst-Schritt und die Bindung gemeinsam ein.
+</Tip>
+
+## Schleifen
+
+Ein **Schleife**-Schritt wiederholt die darin enthaltenen Schritte, in einer von drei Formen: **für jedes** Element einer Liste (etwa die Zeilen einer Datenbank-Abfrage), eine **feste Anzahl von Malen**, oder **solange** eine Bedingung gilt. Ein **Variable**-Schritt hält einen benannten Wert über die Durchläufe hinweg — eine laufende Summe, einen Zähler, eine gesammelte Liste —, mit sechs Möglichkeiten, ihn bei jedem Durchlauf zu ändern: setzen, addieren, subtrahieren, multiplizieren, dividieren oder anhängen. Zusammen reicht das für Dinge, die eine feste Schrittfolge nicht kann, etwa „addiere jede Bestellung über 100 €" oder „prüfe wiederholt, bis der Build fertig ist."
+
+Der Editor markiert die eigenen Schritte einer Schleife mit einem farbigen Punkt auf der Arbeitsfläche, sodass auf einen Blick klar ist, welche Schritte einmal und welche bei jedem Durchlauf laufen.
+
+<Tip>
+Bitte Genie AI zum Beispiel *„geh jede Zeile durch und addiere die Summe"* — sie richtet den Schleife- und den Variable-Schritt gemeinsam ein, genau wie bei jeder anderen Automatisierung.
 </Tip>
 
 ## Einen Agenten testen
@@ -148,6 +162,7 @@ Ein KI-Schritt verbraucht Credits genauso wie eine Nachricht im Chat. Schritte, 
 ## Grenzen
 
 - Bis zu **25 Schritte** pro Agent.
+- Ein Schleife-Schritt läuft eine begrenzte Anzahl von Durchläufen, und ein Lauf hat eine begrenzte Gesamtzahl an Schritten, sodass eine Schleife immer fertig wird, statt außer Kontrolle zu geraten.
 - Ein geplanter Agent wird mindestens alle 10 Minuten auf seinen nächsten Lauf geprüft — ein feinerer Zeitplan als das ist daher nicht sinnvoll, Genie akzeptiert keinen solchen.
 - Ein Agent, der einen anderen Agenten aufruft, hat eine begrenzte Verschachtelungstiefe, damit sich keiner über andere selbst in einer Schleife aufruft.
 

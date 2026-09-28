@@ -28,7 +28,7 @@ There's no separate form-based builder — Genie AI is how you create and change
 - *"Add a button that marks the selected order as shipped"*
 - *"Show a running total of orders at the top of the page"*
 
-Genie AI shows the tool working right in the chat as it builds it — a live table, a working form — not just a description of what it did. Once you're happy with it, it's saved and appears on the **Tools** page — private to you until you share it, the same as a [Genie Agent](/workspaces/workflow-apps#managing-an-agent): open its settings menu (**⋯**) and choose **Everyone in the workspace** or **Only selected people**.
+Genie AI shows the tool working right in the chat as it builds it — a live table, a working form — not just a description of what it did. Once you're happy with it, it's saved and appears on the **Tools** page — private to you until you share it, the same as a [Genie Agent](/workspaces/workflow-apps#managing-an-agent): open its settings menu (**⋯**) and choose **Everyone in the workspace** or **Only selected people**. An **Ask Genie AI** button on the tool's own page reopens the exact conversation you built or last edited it in, instead of starting a new one from scratch.
 
 <Tip>
 Because there's no separate editor, changing a tool is always a conversation: *"add a column for the customer's phone number"* or *"remove the delete button, I don't want anyone deleting orders by accident."*
@@ -42,12 +42,20 @@ A tool's page is built from a small set of building blocks, and Genie AI picks a
 |---|---|
 | Text | A line or two of written content |
 | Stat | One number or value with a label |
-| Chart | A line, bar, or pie chart drawn from a table or another block's data |
+| Summary | Up to six KPI cards over a table at a glance |
+| Chart | A bar, line, pie, donut, rose, or scatter chart drawn from a table or another block's data |
 | KPI | One number with a trend line and a comparison against another segment |
 | Compare | Two or more segments of your data side by side, with the differences highlighted |
 | Anomalies | Outliers, empty fields, and duplicate rows found automatically in a table |
 | Insights | An AI-written summary of what stands out in a table |
 | Table | Rows of data, with the columns you want |
+| List | A node's rows as items — a plain list, a grid or small cards, a timeline, or an inbox-style reading pane |
+| Details | One selected record's full fields, with buttons that act on it (update, delete, anything you describe) |
+| Calendar, Kanban, Org chart, Map | A table's rows drawn as a month calendar, a drag-to-move board, an indented org tree, or pins on a map |
+| Comments | Threaded notes on whichever record is selected elsewhere on the page |
+| Columns, Tabs | Group other blocks side by side or behind tabs, to lay out a busier page |
+| Header, Hero, CTA, Feature(s), Partners, Posts, Pricing, Links | Static landing-page sections — for a tool that's also a small marketing page |
+| Custom code | Sandboxed HTML, CSS, and JavaScript Genie AI writes for a view no other block covers |
 | Import | Upload one or more spreadsheets — from your device, or straight from your [knowledge base](/workspaces/overview#knowledge-base) — into a workspace table. Columns are matched automatically, with Genie AI stepping in only for a heading it can't place on its own |
 | Files | The files already imported into a table, each removable on its own or all at once |
 | Export | Download a whole table as CSV, Excel, or PDF |
@@ -60,6 +68,18 @@ Every block handles the in-between states on its own: a table shows a loading sk
 A **Table** block is searchable and sortable, with sticky headers so a long list stays readable — and where the tool turns it on, a checkbox column lets you select rows to act on together, like exporting just the ones you picked. A cell holding a single link renders as a clickable thumbnail for an image, a named download link for a file, or a plain link for anything else, instead of raw text.
 
 Uploads — into an **Import** block, a file field in a **Form**, or picked from your [knowledge base](/workspaces/overview#knowledge-base) — take files up to 200 MB. Anything large is compressed automatically to keep things fast; ask Genie AI to turn that compression up or down for a specific file field if the default doesn't suit what you're uploading.
+
+## Selecting a record
+
+Pressing a row in a **List**, **Table**, **Calendar**, **Kanban**, **Org chart**, or **Map** selects its record for the rest of the page: a **Details** block shows that record's full fields, a **Comments** block shows its thread, a **Form** can `follow` it to edit or act on it directly, and any block can be shown only while the selected record matches something specific. A **List** can also be `linked` to another one — showing only the rows that belong to whatever's selected, like a project's own tasks under the project it belongs to.
+
+A **Form** that follows a selected record can also **prefill** itself with that record's current values, for editing it in place rather than only creating new ones — only the fields you actually change are sent back, so a value another action changed while the form was open is never overwritten with a stale one.
+
+## Building a page's flow
+
+A form field can be **conditional** — asked only when an earlier answer matches, so a form can branch without a separate page for every path — or **hidden**, sending a fixed or templated value with no question asked at all. A field can also start with a **default** value, and a select or multiselect can read its options straight off another block's rows instead of a fixed list you type in.
+
+Group blocks with **Columns** (2–4 side by side) or **Tabs** to keep a busy page organized, and add **static blocks** — a header, hero, call to action, feature list, partner logos, a pricing table, or link cards — for a tool that doubles as a small landing page. A **Custom code** block lets Genie AI write sandboxed HTML, CSS, and JavaScript for the rare view none of the above blocks cover; it runs isolated from the rest of the page and can't reach your data or the network beyond what it was handed.
 
 ## Pages, and a form that asks one thing at a time
 
