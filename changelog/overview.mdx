@@ -4,6 +4,63 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="September 29, 2026" description="Weekly release">
+
+Covers what shipped September 28. The Genie MCP Server catches up with Excel workbooks and knowledge indexing status, and a workspace API key can now feed an outside system into your knowledge graph or read its changes back out.
+
+## Updates
+
+- **The Genie MCP Server can create, read, search, and edit Excel workbooks, and calculate formulas against one** — the same tools available in chat. See [Genie MCP Server](/workspaces/mcp-api#available-tools).
+- **The Genie MCP Server can also check your workspace's knowledge indexing status in one call**, listing exactly which documents still need attention. See [Genie MCP Server](/workspaces/mcp-api#available-tools).
+- **A workspace API key can now be scoped to feed an outside system's records into your knowledge graph, or to read its changes back out in order** — for integrations that keep Genie's knowledge model in sync with another system. See [Workspace API keys](/workspaces/api-keys#scopes).
+- **The Knowledge page gets a Class filter and an Indexing panel** showing how many documents are fully searchable, still indexing, or need a retry — and the date a document is about can now also be read straight from its text, not just its filename or upload time. See [Knowledge base](/workspaces/overview#knowledge-base).
+- **Similar result cards from Genie AI — several "Entity created" receipts in a row, say — now group into one compact, swipeable strip** instead of stacking vertically.
+- **The workspace activity log now includes knowledge-graph changes** — new entities, links, and merges — as their own category. See [Activity log](/workspaces/overview#activity-log).
+
+## Fixes
+
+- **Fixed Genie AI occasionally replying with only a result card and no words after a recent model upgrade** — replies stay short, never silent.
+- **Fixed the workspace chat getting stuck on a stale "failed" message after your browser tab was backgrounded** (switching apps on a phone, say) even though the response had actually finished — it now waits for the connection to come back instead of giving up early.
+- **Reorganized the utility-cost statement (Nebenkostenabrechnung) wizard** — the "switch tenant" action moved a step earlier, the repeated tenancy and period details now show once at the top instead of three times, and the compliance-check panel starts collapsed, fixing a layout jump when it opened automatically.
+
+</Update>
+
+<Update label="September 28, 2026" description="Weekly release">
+
+Covers what shipped September 27. Genie Tools' block catalogue triples in size — lists, calendars, kanban boards, org charts, maps, comments, and a sandboxed custom-code block join the tables and forms you already had, alongside new ways to lay a page out and three new chart types.
+
+## Updates
+
+- **Genie Tools can now show a list of records in five layouts** — a simple list, a grid, small cards, a timeline, or an inbox-style reading pane — plus a details view of one selected record, with buttons that update or delete it. See [Genie Tools](/workspaces/genie-tools).
+- **Four new blocks draw a table's rows as a calendar, a kanban board, an org chart, or a map** — press a card or a pin to select its record, and drag a kanban card to another column to move it. See [Genie Tools](/workspaces/genie-tools).
+- **A Comments block adds threaded notes on whichever record is selected elsewhere on the page, and a Summary block shows up to six KPI cards over a table at a glance.** See [Genie Tools](/workspaces/genie-tools).
+- **Lay a page out with Columns or Tabs, and add static sections** — a hero, a call to action, a pricing table, a partner logo strip — for a tool that's also a small landing page. See [Genie Tools](/workspaces/genie-tools).
+- **A form field can now be shown only when an earlier answer matches, start pre-filled with a value, or be hidden entirely and filled in automatically.** See [Genie Tools](/workspaces/genie-tools).
+- **Three new chart types — donut, rose, and scatter — join the existing bar, line, and pie.** See [Genie Tools](/workspaces/genie-tools).
+- **A Custom code block lets Genie AI write sandboxed HTML, CSS, and JavaScript for a view no other block covers.** See [Genie Tools](/workspaces/genie-tools).
+- **Reopen a Genie Tool's Ask Genie AI button and it picks up the exact conversation you built or last edited it in**, instead of starting a new one.
+
+## Fixes
+
+- **Fixed a table cell holding a markdown-style link showing the raw markdown instead of a clickable link.**
+
+</Update>
+
+<Update label="September 26, 2026" description="Weekly release">
+
+Covers what shipped September 25. Genie AI can now build and edit real Excel workbooks in chat, not just read them, and the knowledge model gets a review queue, a searchable entity view, and a live graph to browse it in. Genie Agents pick up Knowledge and Ontology steps and can loop over data.
+
+## Updates
+
+- **Genie AI can build and edit real Excel workbooks.** Ask it to build a budget spreadsheet, add a formula column, or tell you a total, and it hands back a working `.xlsx` file — not a markdown table — or edits one you've already uploaded in place: set cells, insert or delete rows and columns, sort, format, and more, all recalculated as it saves. See [Excel workbooks](/workspaces/overview#excel-workbooks).
+- **The knowledge model gets a dedicated place to review what it found.** New entities, relationships, and suggested classes now wait in a Review queue on the Knowledge page, where you confirm or reject them one at a time or all at once — alongside possible duplicate entities to merge. See [Knowledge model](/workspaces/overview#knowledge-model).
+- **Browse what Genie AI knows as an entity list or a live graph.** A new Entities view lets you search and filter by class, open any entity to see what's known about it, and step back through its timeline to see what was true on an earlier day; a new Graph view draws the same information as an interactive, live-updating map of everyone and everything connected. See [Knowledge model](/workspaces/overview#knowledge-model).
+- **Genie Agents can now search, read, and file knowledge documents, and read and edit the knowledge graph, as steps in an automation.** See [Genie Agents](/workspaces/workflow-apps).
+- **Genie Agents can loop.** A Loop step repeats a set of steps over a list, a fixed number of times, or while a condition holds, and a Variable step keeps a value — a running total, a counter — across each pass. See [Looping](/workspaces/workflow-apps#looping).
+- **Adding a step to a Genie Agent is now a search, not a scroll** — the editor's Add-step menu is a single searchable field instead of a long dropdown.
+
+</Update>
+
 <Update label="September 25, 2026" description="Weekly release">
 
 Covers what shipped September 24, plus a knowledge-access feature from a day earlier that the docs missed. Genie AI can now build a structured model of your knowledge base — entities and the relationships between them — and admins can fence a folder off to just the people who should see it. Genie Tools tables and uploads both get more capable, and the Genie MCP Server catches up on workspace administration.

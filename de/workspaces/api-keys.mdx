@@ -28,6 +28,10 @@ Eine über die API gesendete Nachricht startet oder setzt einen ganz normalen Wo
 - Genie AI kann es später durchsuchen, genau wie jedes andere Gespräch.
 - Es folgt denselben [Workspace-PII-Regeln](/de/workspaces/pii-rules) wie eine im Browser eingegebene Nachricht — eine auf Blockieren gesetzte Regel blockiert auch einen maschinellen Aufrufer.
 
+## Geltungsbereiche
+
+Standardmäßig kann ein Schlüssel nur mit Genie AI sprechen. Für eine Integration, die ein externes System mit deinem [Wissensmodell](/de/workspaces/overview#wissensmodell) synchron hält, kann ein Schlüssel stattdessen (oder zusätzlich) darauf ausgelegt werden, dessen Datensätze hineinzuspeisen oder dessen Änderungen der Reihe nach zurückzulesen — wähle den Geltungsbereich beim Anlegen des Schlüssels, oder bitte Genie AI, einen bestehenden umzustellen.
+
 ## Der Aufrufer speichert keinen Zustand
 
 Deine Integration muss keinen Gesprächsverlauf speichern oder erneut senden. Sende eine Nachricht — Genie behält den Gesprächsverlauf auf der Workspace-Seite.

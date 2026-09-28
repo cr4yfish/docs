@@ -46,7 +46,7 @@ Restart Claude Desktop and open any conversation. Claude will prompt you to auth
 
 ## Available tools
 
-The Genie MCP Server provides tools across thirty-two categories.
+The Genie MCP Server provides tools across thirty-three categories.
 
 ### Workspace management
 
@@ -220,6 +220,7 @@ Material a team wants every build to respect — brand guidelines, tone of voice
 | `update_workspace_document` | Retitle, re-describe, move a document between scopes, move it between folders via `folder`, or rewrite its full text in place via `text` (re-indexed immediately; refused on a document mirrored in from a connected cloud drive — edit it at the source instead) |
 | `delete_workspace_document` | Permanently delete a document and its search index |
 | `reindex_workspace_document` | Repair a document stuck at keyword-only or failed search indexing, or bring it onto the current embedding spec. Safe to call on any document — never changes its text |
+| `get_knowledge_index_status` | The workspace's indexing status at a glance — how many documents are fully searchable, still indexing, keyword-only, or stalled, and how many still need their date read — plus a list of the documents most needing attention |
 | `get_document_cover_image` | Read a document's cover picture — whether one exists, is being drawn right now, or the last attempt's outcome |
 | `regenerate_document_cover_image` | Draw a new cover picture for a document, replacing whatever is there. Runs in the background |
 | `list_workspace_document_folders` | The workspace's filing folders, each with how many documents it holds and how much room is left before the 200-per-folder cap |
@@ -246,6 +247,19 @@ Manage [access areas](/workspaces/overview#access-areas) — which folders are f
 | `grant_data_access` | Give a role, a group, or one member read or write access to an area |
 | `revoke_data_access` | Remove a grantee's access to an area |
 | `set_folder_compartment` | Put a folder into an access area, or take it out |
+
+### Excel workbooks
+
+Create, read, search, and edit real `.xlsx` files — the same tools available to Genie AI in [chat](/workspaces/overview#excel-workbooks). A workbook is a knowledge document, so renaming, moving, and deleting one uses the knowledge-document tools above.
+
+| Tool | What it does |
+|---|---|
+| `list_workbooks` | List the workspace's Excel workbooks, newest first |
+| `create_workbook` | Create a new workbook — sheets, data, and formulas in one call, calculated immediately |
+| `read_workbook` | An overview of every sheet, or one window of a sheet as a grid, paged for a large one |
+| `find_in_workbook` | Find cells whose value or formula matches, with the matching rows |
+| `edit_workbook` | Apply a batch of edits — set cells, insert/delete rows or columns, sort, merge, format, and more — saved together or not at all |
+| `evaluate_workbook_formula` | Calculate one or more formulas against the workbook's current values, without saving |
 
 ### Genie Cloud backend management
 

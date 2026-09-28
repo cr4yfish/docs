@@ -4,6 +4,63 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="29. September 2026" description="Wöchentliches Release">
+
+Deckt ab, was am 28. September dazukam. Der Genie-MCP-Server zieht bei Excel-Arbeitsmappen und dem Wissens-Indexierungsstatus nach, und ein Workspace-API-Schlüssel kann jetzt ein externes System in deinen Wissensgraphen einspeisen oder dessen Änderungen zurücklesen.
+
+## Updates
+
+- **Der Genie-MCP-Server kann Excel-Arbeitsmappen erstellen, lesen, durchsuchen und bearbeiten sowie Formeln darin berechnen** — dieselben Tools, die im Chat zur Verfügung stehen. Siehe [Genie-MCP-Server](/de/workspaces/mcp-api#verfügbare-tools).
+- **Der Genie-MCP-Server kann außerdem den Indexierungsstatus deines Workspace in einem Aufruf prüfen** und dabei genau die Dokumente auflisten, die noch Aufmerksamkeit brauchen. Siehe [Genie-MCP-Server](/de/workspaces/mcp-api#verfügbare-tools).
+- **Ein Workspace-API-Schlüssel kann jetzt so eingerichtet werden, dass er die Datensätze eines externen Systems in deinen Wissensgraphen einspeist oder dessen Änderungen der Reihe nach zurückliest** — für Integrationen, die Genies Wissensmodell mit einem anderen System abgleichen. Siehe [Workspace-API-Schlüssel](/de/workspaces/api-keys#geltungsbereiche).
+- **Die Knowledge-Seite bekommt einen Klasse-Filter und ein Indexierungs-Panel**, das zeigt, wie viele Dokumente vollständig durchsuchbar sind, noch indexiert werden oder eine Wiederholung brauchen — und das Datum, um das es in einem Dokument geht, kann jetzt auch direkt aus seinem Text gelesen werden, nicht nur aus Dateiname oder Upload-Zeitpunkt. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank).
+- **Ähnliche Ergebniskarten von Genie AI — etwa mehrere „Entität erstellt"-Belege hintereinander — fassen sich jetzt zu einem kompakten, wischbaren Streifen zusammen**, statt sich vertikal zu stapeln.
+- **Das Workspace-Aktivitätsprotokoll umfasst jetzt auch Änderungen am Wissensgraphen** — neue Entitäten, Verknüpfungen und Zusammenführungen — als eigene Kategorie. Siehe [Aktivitätsprotokoll](/de/workspaces/overview#aktivitätsprotokoll).
+
+## Fixes
+
+- **Genie AI antwortet nach einem kürzlichen Modell-Upgrade nicht mehr gelegentlich nur mit einer Ergebniskarte ohne Worte** — Antworten bleiben kurz, aber nie stumm.
+- **Der Workspace-Chat bleibt nicht mehr an einer veralteten „Fehlgeschlagen"-Meldung hängen, nachdem der Browser-Tab in den Hintergrund geriet** (etwa beim App-Wechsel auf dem Handy), obwohl die Antwort tatsächlich fertig war — er wartet jetzt, bis die Verbindung zurückkehrt, statt vorzeitig aufzugeben.
+- **Der Nebenkostenabrechnungs-Assistent wurde neu geordnet** — die Aktion „Mieter wechseln" ist einen Schritt früher gerückt, die wiederholten Mietverhältnis- und Zeitraum-Angaben stehen jetzt einmal oben statt dreifach, und das Compliance-Prüfungs-Panel startet eingeklappt, was einen Layout-Sprung beim automatischen Öffnen behebt.
+
+</Update>
+
+<Update label="28. September 2026" description="Wöchentliches Release">
+
+Deckt ab, was am 27. September dazukam. Der Baustein-Katalog von Genie Tools verdreifacht sich — Listen, Kalender, Kanban-Boards, Organigramme, Karten, Kommentare und ein Sandboxed-Custom-Code-Baustein gesellen sich zu den Tabellen und Formularen, die es schon gab, dazu neue Wege, eine Seite zu layouten, und drei neue Diagrammtypen.
+
+## Updates
+
+- **Genie Tools kann jetzt eine Liste von Datensätzen in fünf Layouts zeigen** — eine einfache Liste, ein Kachelraster, kleine Karten, eine Zeitleiste, oder eine Posteingang-Ansicht — dazu eine Detailansicht eines ausgewählten Datensatzes mit Buttons, die ihn aktualisieren oder löschen. Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Vier neue Bausteine zeichnen die Zeilen einer Tabelle als Kalender, Kanban-Board, Organigramm oder Karte** — ein Klick auf eine Karte oder einen Punkt wählt ihren Datensatz aus, und eine Kanban-Karte lässt sich in eine andere Spalte ziehen, um sie zu verschieben. Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Ein Kommentare-Baustein fügt Notiz-Threads zum jeweils ausgewählten Datensatz hinzu, und ein Summary-Baustein zeigt bis zu sechs KPI-Karten über einer Tabelle auf einen Blick.** Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Layoute eine Seite mit Spalten oder Tabs, und füge statische Abschnitte hinzu** — einen Hero-Bereich, eine Handlungsaufforderung, eine Preistabelle, eine Partner-Logoleiste — für ein Tool, das auch als kleine Landingpage dient. Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Ein Formularfeld kann jetzt nur angezeigt werden, wenn eine frühere Antwort passt, mit einem Wert vorausgefüllt starten, oder ganz versteckt und automatisch befüllt sein.** Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Drei neue Diagrammtypen — Donut, Rose und Streudiagramm — gesellen sich zu Balken, Linie und Kreis.** Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Ein Custom-Code-Baustein lässt Genie AI Sandboxed HTML, CSS und JavaScript für eine Ansicht schreiben, die kein anderer Baustein abdeckt.** Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Öffne den Genie-AI-fragen-Button eines Genie Tools erneut, und er knüpft am genauen Gespräch an, in dem du es gebaut oder zuletzt bearbeitet hast**, statt bei null anzufangen.
+
+## Fixes
+
+- **Eine Tabellenzelle mit einem Markdown-Link zeigt jetzt den anklickbaren Link statt des rohen Markdown-Textes.**
+
+</Update>
+
+<Update label="26. September 2026" description="Wöchentliches Release">
+
+Deckt ab, was am 25. September dazukam. Genie AI kann jetzt echte Excel-Arbeitsmappen im Chat bauen und bearbeiten, nicht nur lesen, und das Wissensmodell bekommt eine Prüfliste, eine durchsuchbare Entitäten-Ansicht und einen Live-Graphen zum Durchstöbern. Genie Agents bekommen Knowledge- und Ontology-Schritte und können über Daten iterieren.
+
+## Updates
+
+- **Genie AI kann echte Excel-Arbeitsmappen bauen und bearbeiten.** Bitte sie, eine Budget-Tabelle zu bauen, eine Formel-Spalte hinzuzufügen, oder eine Summe zu nennen, und sie liefert eine funktionierende `.xlsx`-Datei — keine Markdown-Tabelle — oder bearbeitet eine bereits hochgeladene direkt: Zellen setzen, Zeilen und Spalten einfügen oder löschen, sortieren, formatieren und mehr, alles beim Speichern neu berechnet. Siehe [Excel-Arbeitsmappen](/de/workspaces/overview#excel-arbeitsmappen).
+- **Das Wissensmodell bekommt einen eigenen Ort, um Gefundenes zu prüfen.** Neue Entitäten, Beziehungen und vorgeschlagene Klassen warten jetzt in einer Prüfliste auf der Knowledge-Seite, wo du sie einzeln oder alle auf einmal bestätigst oder verwirfst — dazu mögliche doppelte Entitäten zum Zusammenführen. Siehe [Wissensmodell](/de/workspaces/overview#wissensmodell).
+- **Durchstöbere, was Genie AI weiß, als Entitätenliste oder als Live-Graph.** Eine neue Entitäten-Ansicht lässt dich nach Namen suchen oder nach Klasse filtern, jede Entität öffnen, um zu sehen, was über sie bekannt ist, und im Zeitverlauf zurückgehen, um zu sehen, was an einem früheren Tag galt; ein neuer Graph zeichnet dieselbe Information als interaktive, live aktualisierte Karte aller Verbindungen. Siehe [Wissensmodell](/de/workspaces/overview#wissensmodell).
+- **Genie Agents können jetzt Wissensdokumente suchen, lesen und ablegen sowie den Wissensgraphen lesen und bearbeiten, als Schritte einer Automatisierung.** Siehe [Genie Agents](/de/workspaces/workflow-apps).
+- **Genie Agents können jetzt iterieren.** Ein Schleife-Schritt wiederholt eine Reihe von Schritten über eine Liste, eine feste Anzahl von Malen, oder solange eine Bedingung gilt, und ein Variable-Schritt hält einen Wert — eine laufende Summe, einen Zähler — über jeden Durchlauf hinweg. Siehe [Schleifen](/de/workspaces/workflow-apps#schleifen).
+- **Einen Schritt zu einem Genie Agent hinzuzufügen ist jetzt eine Suche, kein Scrollen** — das Menü „Schritt hinzufügen" im Editor ist ein einzelnes durchsuchbares Feld statt eines langen Dropdowns.
+
+</Update>
+
 <Update label="25. September 2026" description="Wöchentliches Release">
 
 Deckt ab, was am 24. September dazukam, plus eine Knowledge-Zugriffsfunktion von einem Tag zuvor, die in den Docs fehlte. Genie AI kann jetzt ein strukturiertes Modell deiner Wissensdatenbank aufbauen — Entitäten und die Beziehungen zwischen ihnen —, und Admins können einen Ordner auf genau die Personen beschränken, die ihn sehen sollen. Tabellen und Uploads in Genie Tools werden leistungsfähiger, und der Genie-MCP-Server zieht bei der Workspace-Verwaltung nach.
