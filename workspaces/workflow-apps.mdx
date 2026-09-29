@@ -26,6 +26,7 @@ Sixteen kinds of step are available today:
 | **Notification** | Pushes a notification into the Genie app, to whoever ran the agent or to the agent's owner |
 | **Web search** | Searches the live web and returns the results as data — titles, links, snippets — for a later step to use |
 | **Read a webpage** | Reads one page through Genie's safe page reader (the same one Genie AI uses in chat) and returns its text |
+| **Deep research** | Researches one question in depth and returns a cited report — a step that takes a few minutes and uses credits |
 | **Compliance check** | Checks a value against your workspace's [PII rules](/workspaces/pii-rules) and/or [Guardrails](/workspaces/guardrails) before it goes any further in the flow |
 | **Another agent** | Calls a Genie Agent you've already built, so you can compose smaller flows into bigger ones |
 | **If / else** | Branches the flow — test earlier results with AND / OR / NOT, then run different steps depending on whether they hold. See [Branching](#branching) |
@@ -113,9 +114,13 @@ Before you commit to a change, you can run a real test to see exactly what an ag
   Genie AI can test a step on your behalf too — just ask it to test a step while you're describing changes to your agent in chat.
 </Tip>
 
+**Re-run with the same data.** Once a run has finished, **Re-run with the same data** repeats it with the same input. Steps that only read — an AI, web search, deep research, or knowledge step, say — reuse what the earlier run found instead of running again, so retrying the one step that failed, or testing a notification, doesn't wait on (or pay for) the research in front of it a second time. Steps that write or send — a notification, a row insert, a connected-app action — always run again, and so does any step you've edited since. Genie AI can re-run a run for you too.
+
 ## Run results
 
 Every run gets a results page of its own: the outcome, and every step that produced it, in the order it ran, each with its status, how long it took, and what it produced. An AI step's answer renders as formatted text rather than raw markdown. Open it on a run still in progress and it follows along as each step finishes.
+
+Each agent also has a **Runs** page — its recent runs, newest first — one tap from the editor's toolbar. On the chat canvas, an agent shows its last five runs and how each step went in the picked run; tap a step to see what it does and ask Genie AI about it.
 
 A notify step links here by default — choose **This run's results** or **a page inside Genie** from the step's settings to point it somewhere else.
 

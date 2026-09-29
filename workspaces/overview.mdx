@@ -84,6 +84,8 @@ Below that, two more read-only previews follow the same shape: your most recent 
 
 Both an agent's card and a document's row carry a cover picture, generated automatically from its name and description so a list of agents or documents is no longer a wall of identical cards. It's generated the moment you create one, or the first time you open an older one that predates the feature — nothing to trigger yourself.
 
+If you own projects that aren't in any workspace, an **Unlisted** pill appears on the Projects page; tapping one of its cards adds that project to the current workspace instead of opening it, and the pill disappears once none are left. Genie AI can list and assign them too.
+
 Star a project from its card (or ask Genie AI to do it) to keep it close: favorited projects get their own shelf above the Projects grid, lead this dashboard preview, and can be filtered for with the **Favorites** pill on the Projects page. A favorite is personal — teammates keep separate shelves — and the feature only switches on once a workspace holds three or more projects, since below that the grid already shows everything at once.
 
 ### Activity log
@@ -153,6 +155,8 @@ When a question isn't answered by Genie's own knowledge or your workspace — a 
 <Note>
 Genie AI treats fetched page content as untrusted — it reads it for the answer, but won't follow instructions that happen to be written on the page.
 </Note>
+
+A web search shows up in the chat as a compact card: what was searched for and up to three sites it drew on, each a link, with the rest a tap away. Back-to-back searches share one strip instead of stacking.
 
 ### Genie tells you when it notices something wrong
 
@@ -298,6 +302,12 @@ Ask Genie AI things like *"what do we know about Acme Corp?"* or *"merge these t
 Admins can also create and edit classes and relationship types themselves — name, description, properties, and which classes a relationship connects — from the same panel, and can re-read every document from scratch or reset the model entirely if it needs a clean start.
 
 **Entities** is a searchable directory of everything the model knows: search by name or filter to one class, open an entity to see its card — its names, its properties, and every source document that mentions it — and drag the date scrubber back to see what was true on an earlier day, as links close and values change over time. **Graph** draws the same information as a live, interactive map — entities as nodes sized by how connected they are, relationships as edges between them — that updates on its own as the model changes, with a simpler 2D flowchart or list view for browsers or screens that can't render the 3D graph. Both link back to a source document on the exact passage that supports what they show, and respect the same [access areas](#access-areas) as the Documents view — an entity or link only a folder you can't reach cites simply isn't there for you.
+
+**Processes.** A class can carry a **lifecycle** — the stages its entities move through, like a contract going from *Draft* to *In review* to *Signed*. An admin defines the stages and the allowed moves between them (a move can ask for a reason, and can be limited to people who manage the model) in the class's editor; an entity then shows its current stage as a chip and a **stage panel** with its history. Each move is recorded with who made it and when it took effect, and a move can be dated in the past to record how things actually went. Genie AI can move an entity along its lifecycle for you.
+
+A new or reset workspace starts with a set of common relationship types — *works for*, *reports to*, *customer of*, *part of*, and so on — so the very first reading already records links. Anything they don't name stays a suggestion in its own words, which is what new relationship types are proposed from. **Confirm all** now confirms everything waiting in the review queue, not only the rows you can see, and can be stopped part-way.
+
+In the **Graph**, use the fullscreen button to give the map the whole screen, and **Hide unlinked** to drop entities with no drawn link and lighten the view. It shows up to 1,000 entities at a time. Web and email addresses in an entity's values are clickable, and Markdown documents open in a source's citation sheet fully formatted, with the cited passage highlighted.
 
 ### Access areas
 

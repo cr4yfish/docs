@@ -81,6 +81,8 @@ Darunter folgen zwei weitere reine Vorschauen im selben Stil: deine zuletzt verw
 
 Sowohl die Karte eines Agenten als auch die Zeile eines Dokuments tragen ein Titelbild, automatisch generiert aus Name und Beschreibung, sodass eine Liste von Agenten oder Dokumenten nicht mehr aus lauter identischen Karten besteht. Es entsteht in dem Moment, in dem du einen Agenten oder ein Dokument anlegst, oder beim ersten Öffnen eines älteren, das es von vor dieser Funktion gibt — du musst es nicht selbst anstoßen.
 
+Besitzt du Projekte, die in keinem Workspace liegen, erscheint auf der Projekte-Seite ein **Ohne Workspace**-Filter; ein Tipp auf eine seiner Karten fügt das Projekt dem aktuellen Workspace hinzu, statt es zu öffnen, und der Filter verschwindet, sobald keines mehr übrig ist. Genie AI kann sie ebenfalls auflisten und zuweisen.
+
 Markiere ein Projekt über einen Stern auf seiner Karte (oder bitte Genie AI darum) als Favorit, um es griffbereit zu halten: favorisierte Projekte bekommen ein eigenes Regal oberhalb des Projekte-Rasters, führen diese Dashboard-Vorschau an und lassen sich auf der Projekte-Seite über den Filter **Favoriten** auswählen. Ein Favorit ist persönlich — Teamkolleg:innen behalten eigene Regale — und die Funktion schaltet sich erst ab drei oder mehr Projekten im Workspace ein, weil das Raster darunter ohnehin schon alles auf einen Blick zeigt.
 
 ### Aktivitätsprotokoll
@@ -150,6 +152,8 @@ Wenn eine Frage weder aus Genies eigenem Wissen noch aus deinem Workspace zu bea
 <Note>
 Genie AI behandelt abgerufene Seiteninhalte als nicht vertrauenswürdig — sie liest sie für die Antwort, folgt aber keinen Anweisungen, die zufällig auf der Seite stehen.
 </Note>
+
+Eine Websuche erscheint im Chat als kompakte Karte: wonach gesucht wurde und bis zu drei Seiten, auf die sich die Antwort stützt — jede ein Link, der Rest einen Tipp entfernt. Aufeinanderfolgende Suchen teilen sich einen Streifen, statt sich zu stapeln.
 
 ### Genie sagt dir, wenn ihr etwas auffällt
 
@@ -295,6 +299,12 @@ Bitte Genie AI zum Beispiel *„was wissen wir über die Acme GmbH?"* oder *„f
 Admins können Klassen und Beziehungstypen auch selbst anlegen und bearbeiten — Name, Beschreibung, Eigenschaften und welche Klassen eine Beziehung verbindet — direkt im selben Panel, und können alle Dokumente von Grund auf neu lesen lassen oder das Modell komplett zurücksetzen, falls ein sauberer Neustart nötig ist.
 
 **Entitäten** ist ein durchsuchbares Verzeichnis von allem, was das Modell weiß: suche nach Namen oder filtere auf eine Klasse, öffne eine Entität, um ihre Karte zu sehen — ihre Namen, ihre Eigenschaften und jedes Quelldokument, das sie erwähnt —, und zieh den Datumsregler zurück, um zu sehen, was an einem früheren Tag galt, während Verknüpfungen enden und sich Werte im Lauf der Zeit ändern. **Graph** zeichnet dieselbe Information als lebendige, interaktive Karte — Entitäten als Knoten, deren Größe von ihrer Vernetzung abhängt, Beziehungen als Kanten dazwischen —, die sich von selbst aktualisiert, sobald sich das Modell ändert, mit einem einfacheren 2D-Flussdiagramm oder einer Liste für Browser oder Bildschirme, die den 3D-Graphen nicht darstellen können. Beide führen zu einem Quelldokument an genau der Textstelle zurück, die das Gezeigte belegt, und respektieren dieselben [Zugriffsbereiche](#zugriffsbereiche) wie die Dokumente-Ansicht — eine Entität oder Verknüpfung, die nur ein für dich unerreichbarer Ordner erwähnt, existiert für dich schlicht nicht.
+
+**Prozesse.** Eine Klasse kann einen **Lebenszyklus** tragen — die Phasen, die ihre Entitäten durchlaufen, etwa ein Vertrag von *Entwurf* über *In Prüfung* zu *Unterzeichnet*. Admins legen die Phasen und die erlaubten Übergänge dazwischen im Editor der Klasse fest (ein Übergang kann eine Begründung verlangen und auf Personen beschränkt sein, die das Modell verwalten); eine Entität zeigt dann ihre aktuelle Phase als Chip und in einem **Phasen-Panel** mit ihrem Verlauf. Jeder Übergang wird festgehalten — wer ihn gemacht hat und ab wann er galt —, und ein Übergang kann rückwirkend datiert werden, um festzuhalten, wie es tatsächlich lief. Genie AI kann eine Entität für dich durch ihren Lebenszyklus bewegen.
+
+Ein neuer oder zurückgesetzter Workspace startet mit einer Reihe gängiger Beziehungstypen — *arbeitet für*, *berichtet an*, *Kunde von*, *Teil von* und so weiter —, sodass schon das erste Lesen Verknüpfungen festhält. Was sie nicht benennen, bleibt ein Vorschlag in eigenen Worten, aus dem neue Beziehungstypen vorgeschlagen werden. **Alle bestätigen** bestätigt jetzt alles, was in der Prüfwarteschlange wartet, nicht nur die sichtbaren Zeilen, und lässt sich mittendrin stoppen.
+
+Im **Graph** gibt dir die Vollbild-Schaltfläche den ganzen Bildschirm für die Karte, und **Nicht verknüpfte ausblenden** entfernt Entitäten ohne gezeichnete Verknüpfung und macht die Ansicht leichter. Es werden bis zu 1.000 Entitäten gleichzeitig gezeigt. Web- und E-Mail-Adressen in den Werten einer Entität sind anklickbar, und Markdown-Dokumente öffnen sich im Zitat-Panel einer Quelle voll formatiert, mit hervorgehobener zitierter Passage.
 
 ### Zugriffsbereiche
 

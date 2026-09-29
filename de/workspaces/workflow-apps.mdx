@@ -26,6 +26,7 @@ Aktuell stehen sechzehn Arten von Schritten zur Verfügung:
 | **Benachrichtigung** | Sendet eine Benachrichtigung in die Genie-App, an die Person, die den Agenten ausgeführt hat, oder an den Eigentümer bzw. die Eigentümerin des Agenten |
 | **Websuche** | Durchsucht das lebende Web und liefert die Ergebnisse als Daten zurück — Titel, Links, Ausschnitte — für einen späteren Schritt |
 | **Webseite lesen** | Liest eine Seite über Genies sicheren Seitenleser (denselben, den Genie AI im Chat verwendet) und liefert ihren Text zurück |
+| **Deep Research** | Recherchiert eine Frage gründlich und liefert einen Bericht mit Quellenangaben — ein Schritt, der einige Minuten dauert und Credits verbraucht |
 | **Compliance-Prüfung** | Prüft einen Wert gegen die [PII-Regeln](/de/workspaces/pii-rules) und/oder [Guardrails](/de/workspaces/guardrails) deines Workspace, bevor er im Ablauf weitergeht |
 | **Ein anderer Agent** | Ruft einen Genie Agent auf, den du bereits gebaut hast, sodass du kleinere Abläufe zu größeren zusammensetzen kannst |
 | **Wenn / sonst** | Verzweigt den Ablauf — prüft frühere Ergebnisse mit UND / ODER / NICHT und führt je nachdem unterschiedliche Schritte aus. Siehe [Verzweigen](#verzweigen) |
@@ -113,9 +114,13 @@ Bevor du eine Änderung endgültig machst, kannst du einen echten Test ausführe
   Genie AI kann auch in deinem Auftrag einen Schritt testen — bitte sie einfach darum, während du im Chat Änderungen an deinem Agenten beschreibst.
 </Tip>
 
+**Mit denselben Daten erneut ausführen.** Ist ein Lauf beendet, wiederholt **Mit denselben Daten erneut ausführen** ihn mit derselben Eingabe. Schritte, die nur lesen — etwa ein KI-, Websuche-, Deep-Research- oder Knowledge-Schritt —, übernehmen, was der frühere Lauf gefunden hat, statt erneut zu laufen. So wartet der Wiederholungsversuch des einen fehlgeschlagenen Schritts oder ein Test einer Benachrichtigung nicht ein zweites Mal auf die vorgelagerte Recherche (und bezahlt sie auch nicht). Schritte, die schreiben oder senden — eine Benachrichtigung, ein Einfügen von Zeilen, eine Aktion einer verbundenen App —, laufen immer erneut, ebenso jeder Schritt, den du seitdem bearbeitet hast. Genie AI kann einen Lauf auch für dich erneut ausführen.
+
 ## Lauf-Ergebnisse
 
 Jeder Lauf bekommt eine eigene Ergebnisseite: das Ergebnis und jeden Schritt, der dazu geführt hat, in der Reihenfolge, in der er lief, jeweils mit Status, Dauer und dem, was er ausgegeben hat. Die Antwort eines KI-Schritts wird als formatierter Text statt als rohes Markdown angezeigt. Öffne sie bei einem noch laufenden Lauf, und sie zieht mit, sobald jeder Schritt fertig ist.
+
+Jeder Agent hat außerdem eine **Läufe**-Seite — seine letzten Läufe, neueste zuerst —, nur einen Tipp von der Werkzeugleiste des Editors entfernt. Auf der Chat-Canvas zeigt ein Agent seine letzten fünf Läufe und wie jeder Schritt im ausgewählten Lauf abgeschnitten hat; tippe auf einen Schritt, um zu sehen, was er tut, und Genie AI dazu zu fragen.
 
 Ein Benachrichtigen-Schritt verlinkt standardmäßig hierhin — wähle in den Einstellungen des Schritts **Die Ergebnisse dieses Laufs** oder **eine Seite in Genie**, um woanders hinzuzeigen.
 

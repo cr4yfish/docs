@@ -75,7 +75,15 @@ Ein Klick auf eine Zeile in **Liste**, **Tabelle**, **Kalender**, **Kanban**, **
 
 Ein **Formular**, das einem ausgewählten Datensatz folgt, kann sich auch mit dessen aktuellen Werten **vorausfüllen** — zum Bearbeiten an Ort und Stelle statt nur zum Anlegen neuer Datensätze; nur die Felder, die du tatsächlich änderst, werden zurückgesendet, sodass ein Wert, den eine andere Aktion geändert hat, während das Formular offen war, nie mit einem veralteten Wert überschrieben wird.
 
-## Den Ablauf einer Seite gestalten
+## Formulare hinter einer Schaltfläche und Datensatz-Panels
+
+Ein Formular muss nicht auf der Seite stehen. Eine **Tabelle**, **Liste**, ein **Kalender**, **Kanban**, **Organigramm** oder eine **Karte** kann ihre Formulare als Schaltflächen anbieten — ein **Hinzufügen** in der Kopfzeile oder als Erstes, was du siehst, wenn sie leer ist —, und das Formular öffnet sich in einem Dialog oder einem seitlichen Panel, je nachdem, was besser passt. So bleibt das Raster der Mittelpunkt der Seite. In einem **Kanban** startet eine aus einer Spalte hinzugefügte Karte in dieser Spalte, und in einem **Kalender** beginnt ein von einem Tag aus hinzugefügter Termin an diesem Tag.
+
+Öffnest du eine Zeile, öffnet sich ihr Datensatz als **Panel**: Die Felder des Datensatzes, sein Bearbeitungsformular, seine Kommentare und alles andere auf der Seite, das sich auf den ausgewählten Datensatz bezieht, sind dort gebündelt, statt in Karten unter dem Raster auf eine Auswahl zu warten. Das Absenden eines Formulars im Panel schließt es und bestätigt mit einer kurzen Meldung.
+
+Eine Seite, die deine [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank) liest, führt Schritte, die schreiben oder senden, nur über deren eigene Schaltfläche aus — das Öffnen oder Blättern der Seite löst nie einen aus.
+
+## Den Ablauf einer Seite gestalten## Den Ablauf einer Seite gestalten
 
 Ein Formularfeld kann **bedingt** sein — nur gefragt, wenn eine frühere Antwort passt, sodass ein Formular verzweigen kann, ohne für jeden Pfad eine eigene Seite zu brauchen — oder **versteckt**, wobei es einen festen oder aus Vorlagen erzeugten Wert sendet, ohne überhaupt eine Frage zu stellen. Ein Feld kann außerdem mit einem **Standardwert** starten, und ein Auswahl- oder Mehrfachauswahlfeld kann seine Optionen direkt aus den Zeilen eines anderen Bausteins lesen, statt sie fest einzutippen.
 
@@ -92,6 +100,10 @@ Eine Seite kann auch als **Formular** laufen: Statt eines langen Formular-Bauste
 Die Daten eines Genie Tools liegen in den eigenen Tabellen deines Workspace — einem schemalosen Ort für Datensätze, für den weder eine Genie App noch eine Genie-Cloud-Datenbank nötig ist. Bittest du Genie AI um „ein Tool mit einer Tabelle für Leads", legt sie die Tabelle beim ersten Schreibvorgang an; es gibt kein Schema, das du vorab entwerfen musst, und ein neues Feld später hinzuzufügen ist genauso einfach ein Gespräch wie die Anfrage nach dem Tool selbst.
 
 Dieselben Workspace-Tabellen stehen auch als Schritt innerhalb eines [Genie Agent](/de/workspaces/workflow-apps) zur Verfügung — ein Agent kann also nachts Leads sammeln und einfügen, und ein Genie Tool kann sie am nächsten Morgen auflisten, beide lesen und schreiben genau dieselben Zeilen.
+
+Eine Tabelle kann außerdem **auf die Zeilen einer anderen Tabelle verweisen** — etwa eine Aufgabe auf ihr Projekt. Bitte Genie AI, sie zu verknüpfen, und sie hält die Verknüpfung stimmig: Eine Aufgabe kann nur auf ein existierendes Projekt zeigen, ein Projekt mit noch verknüpften Aufgaben lässt sich nicht versehentlich löschen (oder, wenn du es lieber so willst, löscht das Löschen nur die Verknüpfungen), und Blöcke können den Namen des verknüpften Projekts direkt in der Zeile der Aufgabe zeigen und danach sortieren oder filtern.
+
+Auch große Tools bleiben schnell änderbar: Genie AI bearbeitet nur die Seiten und Blöcke, um die du gebeten hast, statt das ganze Tool neu zu schreiben, und lehnt eine Änderung ab, die eine zwischenzeitlich von jemand anderem gespeicherte Änderung überschreiben würde.
 
 <Note>
 Ein Genie Tool läuft immer mit **deinem eigenen** Zugriff — es zu öffnen, oder es von jemand anderem öffnen zu lassen, gibt niemals fremde Daten oder Zugangsdaten preis. Liest ein Tool aus einer deiner verbundenen Integrationen, geschieht das mit deiner eigenen Verbindung — genauso, als hättest du Genie AI direkt danach gefragt.
