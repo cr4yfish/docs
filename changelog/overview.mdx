@@ -10,6 +10,12 @@ Covers what shipped September 28. The Genie MCP Server catches up with Excel wor
 
 ## Updates
 
+- **Genie Agents can research a question in depth, and re-run a finished run with the same data.** A new **Deep research** step returns a cited report, and **Re-run with the same data** reuses what read-only steps already found so a retry doesn't wait on (or pay for) them again. Each agent also gets a **Runs** page, and on the chat canvas it shows its recent runs and how each step went. See [Genie Agents](/workspaces/workflow-apps).
+- **Genie Tools: forms can open from a button on a grid, and a row opens as a record sheet.** Add a card straight into a Kanban lane or onto a Calendar day; a record's details, edit form, and comments gather in one sheet. Tables can also link to each other's rows, and big tools are edited piecemeal instead of rewritten. See [Genie Tools](/workspaces/genie-tools#forms-behind-a-button-and-record-sheets).
+- **Classes in the knowledge model can have a lifecycle** — stages an entity moves through, each move recorded — and a new workspace starts with common relationship types. **Confirm all** now covers the whole review queue. See [Knowledge model](/workspaces/overview#knowledge-model).
+- **The knowledge Graph goes fullscreen, can hide unlinked entities, and draws up to 1,000.** Web and email addresses in entity values are clickable, and Markdown documents show formatted in a citation.
+- **Web searches in Genie AI's chat show as a compact source card**, and a chat tied to a project, agent, or tool opens right on it from the chat list.
+- **A new Unlisted filter on the Projects page** lists your projects that are in no workspace; tap one to add it to the current workspace. The Genie MCP Server's `search_projects` gets a matching `unlisted_only` option.
 - **The Genie MCP Server can create, read, search, and edit Excel workbooks, and calculate formulas against one** — the same tools available in chat. See [Genie MCP Server](/workspaces/mcp-api#available-tools).
 - **The Genie MCP Server can also check your workspace's knowledge indexing status in one call**, listing exactly which documents still need attention. See [Genie MCP Server](/workspaces/mcp-api#available-tools).
 - **A workspace API key can now be scoped to feed an outside system's records into your knowledge graph, or to read its changes back out in order** — for integrations that keep Genie's knowledge model in sync with another system. See [Workspace API keys](/workspaces/api-keys#scopes).

@@ -75,7 +75,15 @@ Pressing a row in a **List**, **Table**, **Calendar**, **Kanban**, **Org chart**
 
 A **Form** that follows a selected record can also **prefill** itself with that record's current values, for editing it in place rather than only creating new ones — only the fields you actually change are sent back, so a value another action changed while the form was open is never overwritten with a stale one.
 
-## Building a page's flow
+## Forms behind a button, and record sheets
+
+A form doesn't have to sit on the page. A **Table**, **List**, **Calendar**, **Kanban**, **Org chart**, or **Map** can offer its forms as buttons — an **Add** on its heading row, or the first thing you see when it's empty — and the form opens in a dialog or a side sheet, whichever suits it, so the grid stays the star of the page. On a **Kanban** a card added from a lane starts in that lane, and on a **Calendar** an event added from a day starts on that day.
+
+Opening a row opens its record as a **sheet**: the record's fields, its edit form, its comments, and anything else on the page that's about the selected record are gathered there instead of waiting in cards under the grid. Submitting a form in the sheet closes it and confirms with a short message.
+
+A page that reads your [knowledge base](/workspaces/overview#knowledge-base) runs steps that write or send only from their own button — opening or paging the page never triggers one.
+
+## Building a page's flow## Building a page's flow
 
 A form field can be **conditional** — asked only when an earlier answer matches, so a form can branch without a separate page for every path — or **hidden**, sending a fixed or templated value with no question asked at all. A field can also start with a **default** value, and a select or multiselect can read its options straight off another block's rows instead of a fixed list you type in.
 
@@ -92,6 +100,10 @@ A page can also run as a **form**: instead of one long form block, it's drawn on
 A Genie Tool's data lives in your workspace's own tables — a schemaless place to keep records that doesn't require a Genie App or a Genie Cloud database at all. Ask Genie AI for "a tool with a table of leads" and it creates the table the first time something is written to it; there's no schema to design up front, and adding a new field later is just as conversational as asking for the tool itself.
 
 These same workspace tables are also available as a step inside a [Genie Agent](/workspaces/workflow-apps) — so an agent can gather leads overnight and insert them, and a Genie Tool can list them the next morning, both reading and writing the exact same rows.
+
+A table can also **link to another table's rows** — a task pointing at its project, say. Ask Genie AI to link them and it keeps the link honest: a task can only point at a project that exists, a project that still has tasks can't be deleted by accident (or, if you prefer, deleting it just clears the links), and blocks can show the linked project's name right in the task's row and sort or filter by it.
+
+Big tools stay fast to change: Genie AI edits just the pages and blocks you asked about instead of rewriting the whole tool, and refuses an edit that would overwrite a change someone else saved in the meantime.
 
 <Note>
 A Genie Tool always runs using **your own** access — opening one, or having someone else open it, never hands out anyone else's data or credentials. If a tool reads from one of your connected integrations, it does so with your own connection, exactly as if you'd asked Genie AI for that information directly.
