@@ -4,6 +4,25 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="30. September 2026" description="Wöchentliches Release">
+
+Deckt ab, was am 29. September dazukam. Workspaces bekommen eine Secrets-Seite für die API-Schlüssel, die deine Agenten und Tools brauchen, und du kannst weitertippen, während Genie AI noch antwortet.
+
+## Updates
+
+- **Eine neue Secrets-Seite in den Workspace-Einstellungen speichert API-Schlüssel für deine Genie Agents und Genie Tools** — für den ganzen Workspace oder nur für einen Agenten oder ein Tool. Werte werden nie wieder angezeigt, und Genie AI fragt einen Wert auf einer Karte im Chat ab, sodass es ihn nie sieht. Ein Workspace-Secret kann außerdem mit deinen Genie Apps geteilt werden. Siehe [Secrets](/de/workspaces/secrets).
+- **Sende eine Nachricht, während Genie AI noch antwortet.** Sie wartet über dem Eingabefeld und geht als nächster Durchgang hinaus, wenn der aktuelle endet — auch wenn du den Tab geschlossen hast. Siehe [Eine Nachricht senden, während Genie noch antwortet](/de/workspaces/overview#eine-nachricht-senden-während-genie-noch-antwortet).
+- **Die Tabelle eines Genie Tools kann eine ganze Klasse deines Wissensmodells als seitenweises Raster mit Export zeigen.** Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Der Wissens-Graph nutzt die volle Seitenbreite, und die Karte einer Entität öffnet sich nur über der Karte, wenn du eine auswählst.** Siehe [Wissensmodell](/de/workspaces/overview#wissensmodell).
+- **Der Genie-MCP-Server kann die Namen der Secrets deines Workspace auflisten** (nie die Werte). Siehe [Genie-MCP-Server](/de/workspaces/mcp-api#workspace-secrets).
+- **Nebenkostenabrechnungen bekommen mehr Kontrolle**: Wähle die Einheiten direkt im Dialog von jeder Objekt- oder Einheitenseite aus, benenne eine Kostenzeile um oder überschreibe ihren Betrag in Schritt 3, gruppiere Kostenzeilen und behalte den Aufbau einer Einheit für das nächste Mal. Die Grundrisse eines Objekts erscheinen jetzt direkt in einer durchsuchbaren Liste.
+
+## Fixes
+
+- **Genie AI beantwortet die Anfrage nach einem nicht existierenden Tool mit einem Vorschlag statt mit einem Fehler**, und alte Chats mit einer stillgelegten Secret-Aktion öffnen sich weiterhin.
+
+</Update>
+
 <Update label="29. September 2026" description="Wöchentliches Release">
 
 Deckt ab, was am 28. September dazukam. Der Genie-MCP-Server zieht bei Excel-Arbeitsmappen und dem Wissens-Indexierungsstatus nach, und ein Workspace-API-Schlüssel kann jetzt ein externes System in deinen Wissensgraphen einspeisen oder dessen Änderungen zurücklesen.

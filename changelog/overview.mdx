@@ -4,6 +4,25 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="September 30, 2026" description="Weekly release">
+
+Covers what shipped September 29. Workspaces get a Secrets page for the API keys your agents and tools need, and you can now keep typing while Genie AI is still answering.
+
+## Updates
+
+- **A new Secrets page in Workspace settings stores API keys for your Genie Agents and Genie Tools** — for the whole workspace or for just one agent or tool. Values are never shown again, and Genie AI asks for one on a card in the chat so it never sees it. A workspace secret can also be shared with your Genie apps. See [Secrets](/workspaces/secrets).
+- **Send a message while Genie AI is still answering.** It waits above the input and goes out as the next turn when the current one ends — even if you've closed the tab. See [Send a message while Genie is still answering](/workspaces/overview#send-a-message-while-genie-is-still-answering).
+- **A Genie Tool's table can show a whole class of your knowledge model as a paged grid, with export.** See [Genie Tools](/workspaces/genie-tools).
+- **The knowledge Graph runs the full page width, and an entity's card opens over the map only when you pick one.** See [Knowledge model](/workspaces/overview#knowledge-model).
+- **The Genie MCP Server can list your workspace's secret names** (never values). See [Genie MCP Server](/workspaces/mcp-api#workspace-secrets).
+- **Utility-cost statements (Nebenkostenabrechnung) get more control**: pick the units right in the dialog from any property or unit page, rename or override a cost line's amount on step 3, group cost lines, and keep a unit's layout for next time. A property's floor plans now show inline in a browsable list.
+
+## Fixes
+
+- **Genie AI answers a request for a tool that doesn't exist with a suggestion instead of an error**, and old chats that used a retired secret action still open.
+
+</Update>
+
 <Update label="September 29, 2026" description="Weekly release">
 
 Covers what shipped September 28. The Genie MCP Server catches up with Excel workbooks and knowledge indexing status, and a workspace API key can now feed an outside system into your knowledge graph or read its changes back out.

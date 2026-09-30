@@ -158,7 +158,7 @@ Sind alle Auslöser aus (oder keiner gesetzt) und ruft nichts anderes diesen Age
 
 ## Geheimnisse bleiben aus dem Ablauf heraus
 
-Wenn ein Schritt einen API-Schlüssel oder ein anderes Zugangsdatum braucht — etwa einen `Authorization`-Header für einen Webhook —, wird es sicher gespeichert, genau wie Projekt-Geheimnisse, und der Schritt verweist nur namentlich darauf. Das Zugangsdatum selbst wird nie im Klartext in den Ablauf eingefügt oder dir (oder der KI) angezeigt.
+Wenn ein Schritt einen API-Schlüssel oder ein anderes Zugangsdatum braucht — etwa einen `Authorization`-Header für einen Webhook —, wird es sicher als [Workspace-Secret](/de/workspaces/secrets) gespeichert — für den ganzen Workspace oder nur für diesen Agenten —, und der Schritt verweist nur namentlich darauf. Das Zugangsdatum selbst wird nie im Klartext in den Ablauf eingefügt oder dir (oder der KI) angezeigt.
 
 ## Abrechnung
 

@@ -285,6 +285,14 @@ Browse the tables in a project's connected [Genie Cloud](/cloud/overview) databa
 | `get_project_database_table_preview` | Column definitions and up to 25 sample rows for one table |
 | `list_project_cloud_migrations` | List the tracked database migrations for a project — one entry per deployment, newest first, with how many statements it holds, how many a rollback could undo, and its status (applied / reverted / partly reverted). Also flags changes already applied in Supabase but not yet shipped with a deployment. Doesn't return SQL text, only the shape of the history — to undo a change, use `rollback_project_deployment` |
 
+### Workspace secrets
+
+See what [secrets](/workspaces/secrets) your workspace holds. Only the tool to list names exists here on purpose — a secret's value must never pass through an AI, so adding, replacing, deleting, and sharing stay on the Secrets settings page.
+
+| Tool | What it does |
+|---|---|
+| `list_secrets` | List the names of workspace, Genie Agent, and Genie Tool secrets with their scope and whether they're shared with apps — limited to the scopes your role can view. Values are never returned |
+
 ### Project secrets
 
 Manage the secrets available to a project's Genie Cloud Edge Functions. Only the project owner can use these tools.
@@ -598,6 +606,7 @@ Role-based access is enforced on every tool call.
 | List a project's deployed edge functions | Project owner |
 | Manage a project's scheduled jobs | Project owner |
 | Manage a project's Genie Cloud roles, sign-in providers, and access settings | Project owner |
+| View workspace secret names (never values) | Members who can view the relevant integrations, agents, or tools |
 | Manage a project's secrets | Project owner |
 | Manage a project's storage files | Project owner |
 | Read Genie pricing | Any member |

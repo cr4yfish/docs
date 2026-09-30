@@ -158,7 +158,7 @@ If every trigger is off (or none is set) and nothing else calls this agent, the 
 
 ## Secrets stay out of the flow
 
-If a step needs an API key or another credential — an `Authorization` header for a webhook, say — it's stored securely, the same way project secrets are, and the step refers to it by name. The credential itself is never pasted into the flow or shown back to you (or to the AI) in plain text.
+If a step needs an API key or another credential — an `Authorization` header for a webhook, say — it's stored securely as a [workspace secret](/workspaces/secrets) — for the whole workspace or for just this agent — and the step refers to it by name. The credential itself is never pasted into the flow or shown back to you (or to the AI) in plain text.
 
 ## Billing
 
