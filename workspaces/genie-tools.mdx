@@ -67,6 +67,8 @@ Every block handles the in-between states on its own: a table shows a loading sk
 
 A **Table** block is searchable and sortable, with sticky headers so a long list stays readable — and where the tool turns it on, a checkbox column lets you select rows to act on together, like exporting just the ones you picked. A cell holding a single link renders as a clickable thumbnail for an image, a named download link for a file, or a plain link for anything else, instead of raw text.
 
+A **Table** can also show a whole class of your [knowledge model](/workspaces/overview#knowledge-model) — say, every contract Genie found in your documents — as a paged grid, sorted by name or by when it was created. It shows the total count (or "5,000+" once it's past what's counted), locks a row whose source documents you can't all read, and links each entity to its full card. **Export** downloads the whole class, except when the class is too large to count, where the export is refused rather than cut short. A class grid has no search box or filters.
+
 Uploads — into an **Import** block, a file field in a **Form**, or picked from your [knowledge base](/workspaces/overview#knowledge-base) — take files up to 200 MB. Anything large is compressed automatically to keep things fast; ask Genie AI to turn that compression up or down for a specific file field if the default doesn't suit what you're uploading.
 
 ## Selecting a record
@@ -83,7 +85,7 @@ Opening a row opens its record as a **sheet**: the record's fields, its edit for
 
 A page that reads your [knowledge base](/workspaces/overview#knowledge-base) runs steps that write or send only from their own button — opening or paging the page never triggers one.
 
-## Building a page's flow## Building a page's flow
+## Building a page's flow
 
 A form field can be **conditional** — asked only when an earlier answer matches, so a form can branch without a separate page for every path — or **hidden**, sending a fixed or templated value with no question asked at all. A field can also start with a **default** value, and a select or multiselect can read its options straight off another block's rows instead of a fixed list you type in.
 

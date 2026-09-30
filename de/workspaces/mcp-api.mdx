@@ -285,6 +285,14 @@ Durchsuche die Tabellen der verbundenen [Genie-Cloud](/de/cloud/overview)-Datenb
 | `get_project_database_table_preview` | Spaltendefinitionen und bis zu 25 Beispielzeilen für eine Tabelle |
 | `list_project_cloud_migrations` | Liste die erfassten Datenbank-Migrationen eines Projekts auf — ein Eintrag pro Deployment, neueste zuerst, mit der Anzahl der enthaltenen Anweisungen, wie viele davon ein Rollback rückgängig machen könnte, und ihrem Status (angewendet / zurückgenommen / teilweise zurückgenommen). Kennzeichnet außerdem Änderungen, die bereits in Supabase angewendet, aber noch nicht mit einem Deployment ausgeliefert wurden. Enthält keinen SQL-Text, nur den Umriss des Verlaufs — um eine Änderung rückgängig zu machen, verwende `rollback_project_deployment` |
 
+### Workspace-Secrets
+
+Sieh, welche [Secrets](/de/workspaces/secrets) dein Workspace hält. Absichtlich gibt es hier nur das Tool zum Auflisten der Namen — der Wert eines Secrets darf nie durch eine KI laufen, daher bleiben Hinzufügen, Ersetzen, Löschen und Teilen auf der Secrets-Einstellungsseite.
+
+| Tool | Was es tut |
+|---|---|
+| `list_secrets` | Listet die Namen von Workspace-, Genie-Agent- und Genie-Tool-Secrets mit ihrem Geltungsbereich und dem Hinweis auf, ob sie mit Apps geteilt werden — begrenzt auf die Bereiche, die deine Rolle einsehen darf. Werte werden nie zurückgegeben |
+
 ### Projekt-Secrets
 
 Verwalte die Secrets, die den Genie-Cloud-Edge-Functions eines Projekts zur Verfügung stehen. Nur der Projektinhaber bzw. die Projektinhaberin kann diese Tools verwenden.
@@ -598,6 +606,7 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Bereitgestellte Edge Functions eines Projekts auflisten | Projektinhaber:in |
 | Geplante Jobs eines Projekts verwalten | Projektinhaber:in |
 | Genie-Cloud-Rollen, Anmeldeanbieter und Zugriffseinstellungen eines Projekts verwalten | Projektinhaber:in |
+| Namen von Workspace-Secrets einsehen (nie Werte) | Mitglieder, die die jeweiligen Integrationen, Agenten oder Tools einsehen dürfen |
 | Secrets eines Projekts verwalten | Projektinhaber:in |
 | Speicherdateien eines Projekts verwalten | Projektinhaber:in |
 | Genie-Preise lesen | Jedes Mitglied |

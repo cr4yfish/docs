@@ -67,6 +67,8 @@ Jeder Baustein behandelt seine Zwischenzustände selbst: Eine Tabelle zeigt beim
 
 Ein **Tabellen**-Baustein ist durchsuchbar und sortierbar, mit fixierten Kopfzeilen, damit eine lange Liste lesbar bleibt — und wo das Tool es aktiviert, lässt eine Checkbox-Spalte Zeilen auswählen, um sie gemeinsam zu bearbeiten, etwa nur die ausgewählten zu exportieren. Eine Zelle mit einem einzelnen Link wird als anklickbares Vorschaubild für ein Bild, als benannter Download-Link für eine Datei oder als einfacher Link für alles andere angezeigt — statt als reiner Text.
 
+Eine **Tabelle** kann auch eine ganze Klasse deines [Wissensmodells](/de/workspaces/overview#wissensmodell) zeigen — etwa jeden Vertrag, den Genie in deinen Dokumenten gefunden hat — als seitenweises Raster, sortiert nach Name oder Erstellungszeitpunkt. Sie zeigt die Gesamtanzahl (oder „5.000+“, sobald sie über die gezählte Grenze hinausgeht), sperrt eine Zeile, deren Quelldokumente du nicht alle lesen darfst, und verlinkt jede Entität auf ihre vollständige Karte. Der **Export** lädt die ganze Klasse herunter — außer bei einer Klasse, die zu groß zum Zählen ist: Dort wird der Export abgelehnt, statt abgeschnitten zu werden. Ein Klassen-Raster hat kein Suchfeld und keine Filter.
+
 Uploads — in einen **Import**-Baustein, ein Datei-Feld in einem **Formular**, oder aus deiner [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank) ausgewählt — nehmen Dateien bis zu 200 MB entgegen. Große Dateien werden automatisch komprimiert, damit alles zügig bleibt; bitte Genie AI, diese Komprimierung für ein bestimmtes Datei-Feld stärker oder schwächer einzustellen, falls die Standardeinstellung nicht zu dem passt, was du hochlädst.
 
 ## Einen Datensatz auswählen
@@ -83,7 +85,7 @@ Ein Formular muss nicht auf der Seite stehen. Eine **Tabelle**, **Liste**, ein *
 
 Eine Seite, die deine [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank) liest, führt Schritte, die schreiben oder senden, nur über deren eigene Schaltfläche aus — das Öffnen oder Blättern der Seite löst nie einen aus.
 
-## Den Ablauf einer Seite gestalten## Den Ablauf einer Seite gestalten
+## Den Ablauf einer Seite gestalten
 
 Ein Formularfeld kann **bedingt** sein — nur gefragt, wenn eine frühere Antwort passt, sodass ein Formular verzweigen kann, ohne für jeden Pfad eine eigene Seite zu brauchen — oder **versteckt**, wobei es einen festen oder aus Vorlagen erzeugten Wert sendet, ohne überhaupt eine Frage zu stellen. Ein Feld kann außerdem mit einem **Standardwert** starten, und ein Auswahl- oder Mehrfachauswahlfeld kann seine Optionen direkt aus den Zeilen eines anderen Bausteins lesen, statt sie fest einzutippen.
 

@@ -63,7 +63,7 @@ Die linke Seitenleiste ist die primäre Navigation für deinen Workspace.
 Zieh den rechten Rand der Seitenleiste, um sie in der Breite anzupassen, oder ganz nach links, um sie auf reine Icons einzuklappen — zieh den eingeklappten Rand wieder heraus, um sie erneut zu öffnen. Auf dem Mobilgerät öffnet sich der Workspace-Umschalter als unteres Drawer.
 </Tip>
 
-Workspace-Einstellungen und deine persönlichen Einstellungen teilen sich eine Navigation, erreichbar über die Kontozeile unten in der Seitenleiste: Wähle **Workspace-Einstellungen** (Allgemein, Mitglieder, Rollen, Integrationen, PII-Erkennung, Guardrails, Governance sowie — für Admins und Eigentümer — Aktivitäten, Tracing und Abrechnung) oder **Persönliche Einstellungen** (Erscheinungsbild, Anmeldemethoden, Benachrichtigungen). Beide ersetzen die Seitenleiste durch eine Einstellungs-Navigation mit einem Zurück-Pfeil zum Workspace. Siehe [Workspace-Mitglieder einladen und verwalten](/de/workspaces/members) für Rollen und [Kontoeinstellungen](/de/account/settings) für deine persönlichen Präferenzen.
+Workspace-Einstellungen und deine persönlichen Einstellungen teilen sich eine Navigation, erreichbar über die Kontozeile unten in der Seitenleiste: Wähle **Workspace-Einstellungen** (Allgemein, Mitglieder, Rollen, Integrationen, Secrets, PII-Erkennung, Guardrails, Governance sowie — für Admins und Eigentümer — Aktivitäten, Tracing und Abrechnung) oder **Persönliche Einstellungen** (Erscheinungsbild, Anmeldemethoden, Benachrichtigungen). Beide ersetzen die Seitenleiste durch eine Einstellungs-Navigation mit einem Zurück-Pfeil zum Workspace. Siehe [Workspace-Mitglieder einladen und verwalten](/de/workspaces/members) für Rollen und [Kontoeinstellungen](/de/account/settings) für deine persönlichen Präferenzen.
 
 ### Workspace-Profil
 
@@ -128,6 +128,10 @@ Sendest du diesen Folge-Prompt aus dem Chat des Projekts selbst, startet Genie d
 ### Genie AI reiht den Prompt eines beschäftigten Projekts ein
 
 Bittest du die Workspace-KI, ein bereits im Build befindliches Projekt zu aktualisieren, schlägt dein Prompt nicht mehr einfach fehl und bittet dich, es erneut zu versuchen — Genie reiht ihn in eine Warteschlange ein und sendet ihn automatisch, sobald sich der laufende Build beruhigt hat, mit einer kurzen Abklingzeit zwischen den Sendungen, damit ein Projekt nicht mit Builds direkt hintereinander getroffen wird. Bevor Genie etwas sendet, sagt dir die Bestätigungskarte klar, ob dein Prompt sofort einen Build startet oder sich einreiht — und, falls er sich einreiht, ungefähr, wann er gesendet wird. Bitte die Workspace-KI jederzeit, die Warteschlange eines Projekts zu prüfen, zu pausieren, neu zu ordnen oder zu leeren.
+
+### Eine Nachricht senden, während Genie noch antwortet
+
+Du musst nicht warten, bis Genie AI fertig ist. Während es antwortet, erscheint neben der Stopp-Schaltfläche eine Warteschlangen-Schaltfläche, sobald du etwas tippst — drücke sie oder die Eingabetaste, und deine Nachricht wartet als ausgegraute Sprechblase über dem Eingabefeld. Sie geht als nächster Durchgang hinaus, sobald der aktuelle endet (oder gestoppt wird), auch wenn du den Tab inzwischen geschlossen hast. Pro Chat kann nur eine Nachricht warten, und alle, die den Chat ansehen, sehen sie. Ihr:e Verfasser:in kann sie vor dem Senden wieder aus der Warteschlange nehmen, um den Text zurück ins Eingabefeld zu bekommen. Eine Nachricht, die abgelehnt würde — wegen der [PII-Regeln](/de/workspaces/pii-rules) oder [Guardrails](/de/workspaces/guardrails) deines Workspace —, wird sofort abgelehnt statt erst nach dem Warten.
 
 ### Läuft der Build noch?
 
@@ -304,7 +308,7 @@ Admins können Klassen und Beziehungstypen auch selbst anlegen und bearbeiten �
 
 Ein neuer oder zurückgesetzter Workspace startet mit einer Reihe gängiger Beziehungstypen — *arbeitet für*, *berichtet an*, *Kunde von*, *Teil von* und so weiter —, sodass schon das erste Lesen Verknüpfungen festhält. Was sie nicht benennen, bleibt ein Vorschlag in eigenen Worten, aus dem neue Beziehungstypen vorgeschlagen werden. **Alle bestätigen** bestätigt jetzt alles, was in der Prüfwarteschlange wartet, nicht nur die sichtbaren Zeilen, und lässt sich mittendrin stoppen.
 
-Im **Graph** gibt dir die Vollbild-Schaltfläche den ganzen Bildschirm für die Karte, und **Nicht verknüpfte ausblenden** entfernt Entitäten ohne gezeichnete Verknüpfung und macht die Ansicht leichter. Es werden bis zu 1.000 Entitäten gleichzeitig gezeigt. Web- und E-Mail-Adressen in den Werten einer Entität sind anklickbar, und Markdown-Dokumente öffnen sich im Zitat-Panel einer Quelle voll formatiert, mit hervorgehobener zitierter Passage.
+Der **Graph** nutzt die volle Seitenbreite. Wählst du eine Entität aus, schwebt ihre Karte über der rechten Seite der Karte, statt eine dauerhafte Spalte zu belegen; schließe sie mit ✕ oder Esc. Die Vollbild-Schaltfläche gibt dir den ganzen Bildschirm für die Karte, und **Nicht verknüpfte ausblenden** entfernt Entitäten ohne gezeichnete Verknüpfung und macht die Ansicht leichter. Es werden bis zu 1.000 Entitäten gleichzeitig gezeigt. Web- und E-Mail-Adressen in den Werten einer Entität sind anklickbar, und Markdown-Dokumente öffnen sich im Zitat-Panel einer Quelle voll formatiert, mit hervorgehobener zitierter Passage.
 
 ### Zugriffsbereiche
 

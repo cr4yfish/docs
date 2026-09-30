@@ -66,7 +66,7 @@ The left sidebar is the primary navigation hub for your workspace.
 Drag the sidebar's right edge to resize it, or all the way to the left to collapse it to icons only — drag the collapsed edge back out to reopen it. On mobile, the workspace switcher opens as a bottom drawer.
 </Tip>
 
-Workspace settings and your personal settings share one navigation, reached from the account row at the bottom of the sidebar: choose **Workspace settings** (General, Members, Roles, Integrations, PII Detection, Guardrails, Governance, and — for admins and owners — Activities, Tracing, and Billing) or **Personal settings** (Appearance, Sign-in methods, Notifications). Opening either replaces the sidebar with a settings navigation and a back arrow that returns you to the workspace. See [Invite and manage workspace members](/workspaces/members) for roles, and [Account settings](/account/settings) for your personal preferences.
+Workspace settings and your personal settings share one navigation, reached from the account row at the bottom of the sidebar: choose **Workspace settings** (General, Members, Roles, Integrations, Secrets, PII Detection, Guardrails, Governance, and — for admins and owners — Activities, Tracing, and Billing) or **Personal settings** (Appearance, Sign-in methods, Notifications). Opening either replaces the sidebar with a settings navigation and a back arrow that returns you to the workspace. See [Invite and manage workspace members](/workspaces/members) for roles, and [Account settings](/account/settings) for your personal preferences.
 
 ### Workspace profile
 
@@ -131,6 +131,10 @@ If you send that follow-up prompt from inside the project's own chat, Genie star
 ### Genie AI queues a busy project's prompt
 
 If you ask the workspace AI to update a project that's already building, your prompt no longer just fails and asks you to try again — Genie lines it up in a queue and sends it automatically once the current build settles, spacing sends out by a short cooldown so a project isn't hit with back-to-back builds. Before Genie sends anything, the confirmation card tells you plainly whether your prompt is starting a build right now or joining the queue — and, if it's queuing, roughly when it will go out. Ask the workspace AI anytime to check, pause, reorder, or clear a project's queue.
+
+### Send a message while Genie is still answering
+
+You don't have to wait for Genie AI to finish. While it's answering, a queue button appears beside the stop button as soon as you type — press it, or press Enter, and your message waits above the input as a greyed-out bubble. It goes out as the next turn the moment the current one finishes (or stops), even if you've closed the tab in the meantime. Only one message can wait per chat, and everyone viewing the chat sees it. Its author can un-queue it before it's sent to get the text back in the input. A message that would be refused — because of your workspace's [PII rules](/workspaces/pii-rules) or [guardrails](/workspaces/guardrails) — is refused right away instead of after the wait.
 
 ### Is it still building?
 
@@ -307,7 +311,7 @@ Admins can also create and edit classes and relationship types themselves — na
 
 A new or reset workspace starts with a set of common relationship types — *works for*, *reports to*, *customer of*, *part of*, and so on — so the very first reading already records links. Anything they don't name stays a suggestion in its own words, which is what new relationship types are proposed from. **Confirm all** now confirms everything waiting in the review queue, not only the rows you can see, and can be stopped part-way.
 
-In the **Graph**, use the fullscreen button to give the map the whole screen, and **Hide unlinked** to drop entities with no drawn link and lighten the view. It shows up to 1,000 entities at a time. Web and email addresses in an entity's values are clickable, and Markdown documents open in a source's citation sheet fully formatted, with the cited passage highlighted.
+The **Graph** runs the full width of the page. Pick an entity and its card floats over the right side of the map instead of taking a permanent column; close it with ✕ or Esc. Use the fullscreen button to give the map the whole screen, and **Hide unlinked** to drop entities with no drawn link and lighten the view. It shows up to 1,000 entities at a time. Web and email addresses in an entity's values are clickable, and Markdown documents open in a source's citation sheet fully formatted, with the cited passage highlighted.
 
 ### Access areas
 
