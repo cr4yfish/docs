@@ -52,6 +52,7 @@ Die Seite eines Tools setzt sich aus einer kleinen Auswahl an Bausteinen zusamme
 | Liste | Die Zeilen eines Knotens als Einträge — als einfache Liste, Kachel- oder Karten-Ansicht, Zeitleiste oder Posteingang-Ansicht |
 | Details | Alle Felder eines ausgewählten Datensatzes, mit Buttons, die darauf wirken (aktualisieren, löschen, was du beschreibst) |
 | Kalender, Kanban, Organigramm, Karte | Die Zeilen einer Tabelle als Monatskalender, Drag-and-Drop-Board, eingerücktes Organigramm oder Punkte auf einer Karte |
+| Übergänge | Wo eine Entität in ihrem [Prozess](/de/workspaces/overview#wissensmodell) steht, mit einer Schaltfläche für jeden Schritt, den sie jetzt machen kann — der Schritt wird mit dir als ausführender Person festgehalten |
 | Kommentare | Verschachtelte Notizen zu dem Datensatz, der anderswo auf der Seite ausgewählt ist |
 | Spalten, Tabs | Fasst andere Bausteine nebeneinander oder hinter Reitern zusammen, für eine umfangreichere Seite |
 | Kopfzeile, Hero, CTA, Feature(s), Partner, Beiträge, Preise, Links | Statische Landingpage-Abschnitte — für ein Tool, das auch als kleine Marketing-Seite dient |
@@ -84,6 +85,12 @@ Ein Formular muss nicht auf der Seite stehen. Eine **Tabelle**, **Liste**, ein *
 Öffnest du eine Zeile, öffnet sich ihr Datensatz als **Panel**: Die Felder des Datensatzes, sein Bearbeitungsformular, seine Kommentare und alles andere auf der Seite, das sich auf den ausgewählten Datensatz bezieht, sind dort gebündelt, statt in Karten unter dem Raster auf eine Auswahl zu warten. Das Absenden eines Formulars im Panel schließt es und bestätigt mit einer kurzen Meldung.
 
 Eine Seite, die deine [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank) liest, führt Schritte, die schreiben oder senden, nur über deren eigene Schaltfläche aus — das Öffnen oder Blättern der Seite löst nie einen aus.
+
+## Ein Tool aus einer Klasse deines Wissens
+
+Eine Klasse des [Wissensmodells](/de/workspaces/overview#wissensmodell) kann zum Tool werden, ohne dass es jemand beschreibt. Wähle **Als Tool öffnen** bei einer Klasse im Klassen-Panel der Ontologie, und Genie baut eine Listenseite — ein Raster der Entitäten der Klasse mit Seitenaufteilung — plus eine Datensatzseite für jede davon: ihre Karte, ihren Prozess, wenn die Klasse einen hat, und ein Bearbeitungsformular. Oder wähle **Mit Genie AI bauen** und bitte Genie AI, es weiter zu formen. Ein Formular auf so einer Seite kann seine Felder automatisch erfragen: ein Feld pro Eigenschaft der Klasse, so typisiert, wie die Klasse es definiert — eine später hinzugefügte Eigenschaft ist beim nächsten Laden im Formular. Alles läuft als du — was du im Wissensmodell nicht lesen oder bearbeiten kannst, kann das Tool auch nicht.
+
+Führt Genie AI eine Aktion eines Tools aus dem Chat aus, erscheint das Ergebnis als Karte mit der Aktion, dem Tool, den gesendeten Werten und der Antwort des Tools, samt Link zur Seite.
 
 ## Den Ablauf einer Seite gestalten
 

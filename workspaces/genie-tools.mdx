@@ -52,6 +52,7 @@ A tool's page is built from a small set of building blocks, and Genie AI picks a
 | List | A node's rows as items — a plain list, a grid or small cards, a timeline, or an inbox-style reading pane |
 | Details | One selected record's full fields, with buttons that act on it (update, delete, anything you describe) |
 | Calendar, Kanban, Org chart, Map | A table's rows drawn as a month calendar, a drag-to-move board, an indented org tree, or pins on a map |
+| Transitions | Where one entity is in its [process](/workspaces/overview#knowledge-model), with a button for each move it can make now — the move is recorded with you as the person who made it |
 | Comments | Threaded notes on whichever record is selected elsewhere on the page |
 | Columns, Tabs | Group other blocks side by side or behind tabs, to lay out a busier page |
 | Header, Hero, CTA, Feature(s), Partners, Posts, Pricing, Links | Static landing-page sections — for a tool that's also a small marketing page |
@@ -84,6 +85,12 @@ A form doesn't have to sit on the page. A **Table**, **List**, **Calendar**, **K
 Opening a row opens its record as a **sheet**: the record's fields, its edit form, its comments, and anything else on the page that's about the selected record are gathered there instead of waiting in cards under the grid. Submitting a form in the sheet closes it and confirms with a short message.
 
 A page that reads your [knowledge base](/workspaces/overview#knowledge-base) runs steps that write or send only from their own button — opening or paging the page never triggers one.
+
+## A tool from a class of your knowledge
+
+A [knowledge model](/workspaces/overview#knowledge-model) class can become a tool without anyone describing it. Choose **Open as tool** on a class in the Ontology's classes panel and Genie builds a list page — a paged grid of the class's entities — plus a record page for each one: its card, its process when the class has one, and an edit form. Or choose **Build with Genie AI** and ask Genie AI to shape it further. A form on such a page can ask for its fields automatically: one field per property of the class, typed the way the class defines it, so a property you add later is in the form on its next load. Everything runs as you — what you can't read or edit in the knowledge model, the tool can't either.
+
+When Genie AI presses one of a tool's actions from the chat, the result is a card naming the action, the tool, the values sent, and the tool's answer, with a link to the page.
 
 ## Building a page's flow
 
