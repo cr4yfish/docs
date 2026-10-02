@@ -148,6 +148,10 @@ An agent can hold more than one trigger at once — nightly *and* reachable by w
   Ask Genie AI things like *"run this every Monday at 9am"* or *"give me a webhook URL that triggers this agent"* — the same conversation that builds it also sets up how it starts.
 </Tip>
 
+### Start an agent from the knowledge model
+
+An agent can also start when something moves in your [knowledge model](/workspaces/overview#knowledge-model): when an entity changes stage in a class's process. In the Start panel choose **On a stage change**, then a class, and watch every move, one move, or a stay of a number of days in a stage. Each run is handed the record that moved, so its steps can use it — for example to draft an email about a contract that just reached *Signed*. You can change what a trigger watches in place, and ask Genie AI to set it up. On the process view, press **Create a Genie Agent** on a move to build one that already starts on it.
+
 ### Editing triggers from the canvas
 
 The editor's **Start** card names every real way the agent starts — its schedule as a plain sentence ("Every day at 02:00", "When something calls in", or "No schedule — this agent only runs when you press play"), plus when it fires next. Select it to open the **Start** panel, where you can add a trigger, retime or switch off an existing one, or remove it — no need to describe the change to Genie AI, though you still can. A schedule is built entirely from a cadence, a time, and day toggles rather than typed as a cron expression; anything the picker can't express opens under **Advanced** on its raw schedule instead of being silently rewritten.
@@ -169,7 +173,7 @@ An AI step draws credits the same way sending a message in chat does. Steps that
 - Up to **25 steps** per agent.
 - A Loop step runs a bounded number of iterations and a run has a bounded total number of steps, so a loop always finishes rather than running away.
 - A scheduled agent is checked for its next run at least every 10 minutes, so schedules finer than that aren't meaningful — Genie won't accept one.
-- An agent that calls another agent has a capped composition depth, so one can't be set up to call itself in a loop through others.
+- Agents can call agents that call agents, up to 5 levels deep. An agent can never end up inside its own call, directly or through others — Genie refuses to save such a loop, and the agent picker greys out agents that already call this one.
 
 ## Related pages
 
