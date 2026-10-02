@@ -148,7 +148,11 @@ Ein Agent kann mehrere Auslöser gleichzeitig haben — zum Beispiel nächtlich 
   Bitte Genie AI zum Beispiel: „Führe das jeden Montag um 9 Uhr aus" oder „Gib mir eine Webhook-URL, die diesen Agenten auslöst" — dasselbe Gespräch, das ihn baut, richtet auch ein, wie er startet.
 </Tip>
 
-### Auslöser direkt auf der Arbeitsfläche bearbeiten
+### Einen Agenten aus dem Wissensmodell starten
+
+Ein Agent kann auch starten, wenn sich in deinem [Wissensmodell](/de/workspaces/overview#wissensmodell) etwas bewegt: wenn eine Entität im Prozess einer Klasse die Phase wechselt. Wähle im Start-Panel **Bei einem Phasenwechsel**, dann eine Klasse, und beobachte jeden Übergang, einen bestimmten Übergang oder einen Verbleib von einer Anzahl Tagen in einer Phase. Jeder Lauf bekommt den Datensatz, der sich bewegt hat, sodass seine Schritte ihn nutzen können — etwa um eine E-Mail zu einem Vertrag zu entwerfen, der gerade *Unterzeichnet* erreicht hat. Du kannst ändern, was ein Auslöser beobachtet, direkt am Auslöser, und Genie AI bitten, ihn einzurichten. Klicke in der Prozessansicht bei einem Übergang auf **Genie Agent erstellen**, um einen Agenten zu bauen, der bereits mit diesem Übergang startet.
+
+Auslöser direkt auf der Arbeitsfläche bearbeiten
 
 Die **Start**-Karte des Editors nennt jeden echten Weg, wie der Agent startet — seinen Zeitplan als Klartext-Satz („Täglich um 02:00 Uhr", „Wenn etwas anruft" oder „Kein Zeitplan — dieser Agent läuft nur, wenn du auf Play drückst") sowie den nächsten Auslösezeitpunkt. Wähle sie aus, um das **Start**-Panel zu öffnen, in dem du einen Auslöser hinzufügen, einen bestehenden umplanen oder abschalten oder entfernen kannst — ganz ohne die Änderung Genie AI beschreiben zu müssen, auch wenn das weiterhin geht. Ein Zeitplan wird komplett aus einer Kadenz, einer Uhrzeit und Wochentag-Schaltern zusammengesetzt statt als Cron-Ausdruck eingetippt; alles, was sich mit den Reglern nicht abbilden lässt, öffnet unter **Erweitert** auf seinem rohen Zeitplan, statt still umgeschrieben zu werden.
 
@@ -169,7 +173,7 @@ Ein KI-Schritt verbraucht Credits genauso wie eine Nachricht im Chat. Schritte, 
 - Bis zu **25 Schritte** pro Agent.
 - Ein Schleife-Schritt läuft eine begrenzte Anzahl von Durchläufen, und ein Lauf hat eine begrenzte Gesamtzahl an Schritten, sodass eine Schleife immer fertig wird, statt außer Kontrolle zu geraten.
 - Ein geplanter Agent wird mindestens alle 10 Minuten auf seinen nächsten Lauf geprüft — ein feinerer Zeitplan als das ist daher nicht sinnvoll, Genie akzeptiert keinen solchen.
-- Ein Agent, der einen anderen Agenten aufruft, hat eine begrenzte Verschachtelungstiefe, damit sich keiner über andere selbst in einer Schleife aufruft.
+- Agenten können Agenten aufrufen, die wiederum Agenten aufrufen, bis zu 5 Ebenen tief. Ein Agent kann nie in seinem eigenen Aufruf landen, weder direkt noch über andere — Genie speichert eine solche Schleife nicht, und die Agentenauswahl graut Agenten aus, die diesen bereits aufrufen.
 
 ## Verwandte Seiten
 
