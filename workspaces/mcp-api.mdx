@@ -283,6 +283,21 @@ List and manage the guided starting points behind [Chat templates](/workspaces/o
 | `create_chat_template` | Add a template to the workspace's own library |
 | `update_chat_template` | Change one of the workspace's own templates |
 
+### Imported traces
+
+Read and sync the traces imported from [LiteLLM and Langdock](/workspaces/tracing#imported-traces-from-litellm-and-langdock). Reading needs the tracing permission; changing anything also needs the integrations permission. Imported content is treated as untrusted.
+
+| Tool | What it does |
+|---|---|
+| `list_imported_traces` | Imported traces, newest first, filtered by source, status, model, or user |
+| `get_imported_trace` | One imported trace in full |
+| `get_tracing_integrations` | The LiteLLM connection's state (never its key) and how the Langdock import works |
+| `sync_litellm_traces` | Run one LiteLLM sync now |
+| `set_litellm_tracing_enabled` | Pause or resume the LiteLLM connection |
+| `import_trace_log` | Import a small pasted log as Langdock traces |
+
+Connecting LiteLLM (URL and API key) is not available here, so a credential never passes through a model — do it on **Tracing → Integrations**.
+
 ### Genie Cloud backend management
 
 Manage a project's connected [Genie Cloud](/cloud/overview) backend: end-user roles, sign-in providers, and access settings. Only the project owner can use these tools.

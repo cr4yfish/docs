@@ -34,6 +34,23 @@ A trace's detail also shows what else noticed that turn: what the workspace's [P
 
 A message that [Guardrails](/workspaces/guardrails) or a [PII rule](/workspaces/pii-rules) refuses now shows up in Tracing as a **blocked** turn — which rule blocked it, and why — instead of vanishing without a trace. It's not counted as a failure (blocking a message on purpose isn't an outage), and a PII-blocked turn only ever stores the already-masked message, never what was actually typed.
 
+## Imported traces from LiteLLM and Langdock
+
+Tracing can also hold traces from tools **outside Genie**, so calls made through your LiteLLM proxy or your Langdock workspace sit next to Genie AI's own turns. Open **Tracing** and use the three tabs: **Genie AI**, **Imported**, and **Integrations**.
+
+- **LiteLLM** — on **Integrations**, enter your proxy's URL (self-hosted or hosted) and an API key. Genie tests the connection when you save, imports your spend logs when you press **Sync now**, and then syncs again every hour. A proxy admin key imports every request; a regular user's key imports only that user's. Disconnecting keeps what was already imported.
+- **Langdock** — export your usage from Langdock and drop the file on the Langdock card (CSV, TXT, LOG, JSON, or JSON lines, up to 4 MB). Uploading the same file twice adds nothing.
+
+The **Imported** tab lists each trace with its time, source, status, model, user, tokens, cost, and duration. It can look back up to 12 months, filter by source and status, and load older entries. Open one to see the full request and response and every field the source sent, including ones Genie has no column for. Very long texts are shortened, and the detail says so.
+
+<Note>
+Viewing imported traces needs the same **See Genie AI traces** permission. Connecting, syncing, uploading, or disconnecting also needs the **Manage integrations** permission. Costs are shown in the source's own currency (LiteLLM reports US dollars), not Genie credits.
+</Note>
+
+<Warning>
+Imported traces contain text that other people sent through your proxy. Genie AI treats it as untrusted data and never follows instructions found inside it.
+</Warning>
+
 ## Manage Tracing from workspace chat
 
 Ask the Genie workspace AI in plain language:
@@ -41,6 +58,9 @@ Ask the Genie workspace AI in plain language:
 - *"Which Genie AI turns failed in this workspace this week?"*
 - *"Open trace [id]"*
 - *"How many tokens did we use yesterday?"*
+- *"Sync my LiteLLM traces now"* or *"Import this log as Langdock traces"*
+
+For safety, Genie AI never asks for your LiteLLM API key or changes its URL — do that on the **Integrations** tab.
 
 <Tip>
 Every member already has access to their own past conversations via the [Genie MCP Server](/workspaces/mcp-api). Tracing — and its matching MCP tools — is the workspace-wide, admin view across every member's turns.

@@ -34,6 +34,23 @@ Die Detailansicht eines Traces zeigt auch, was diesem Durchlauf sonst noch aufge
 
 Eine Nachricht, die [Guardrails](/de/workspaces/guardrails) oder eine [PII-Regel](/de/workspaces/pii-rules) ablehnt, erscheint jetzt als **blockierter** Durchlauf in Tracing — welche Regel blockiert hat und warum —, statt spurlos zu verschwinden. Er zählt nicht als Fehlschlag (eine absichtlich blockierte Nachricht ist kein Ausfall), und ein PII-blockierter Durchlauf speichert immer nur die bereits maskierte Nachricht, nie das tatsächlich Eingetippte.
 
+## Importierte Traces von LiteLLM und Langdock
+
+Tracing kann auch Traces von Tools **außerhalb von Genie** aufnehmen, sodass Aufrufe über deinen LiteLLM-Proxy oder deinen Langdock-Workspace neben den eigenen Durchläufen der Genie AI stehen. Öffne **Tracing** und nutze die drei Tabs: **Genie AI**, **Importiert** und **Integrationen**.
+
+- **LiteLLM** — gib unter **Integrationen** die URL deines Proxys (selbst gehostet oder gehostet) und einen API-Schlüssel ein. Genie testet beim Speichern die Verbindung, importiert deine Spend-Logs mit **Jetzt synchronisieren** und synchronisiert danach jede Stunde erneut. Ein Proxy-Admin-Schlüssel importiert jede Anfrage; der Schlüssel eines normalen Nutzers nur dessen Anfragen. Beim Trennen bleibt das bereits Importierte erhalten.
+- **Langdock** — exportiere deine Nutzung aus Langdock und ziehe die Datei auf die Langdock-Karte (CSV, TXT, LOG, JSON oder JSON Lines, bis 4 MB). Dieselbe Datei zweimal hochzuladen fügt nichts hinzu.
+
+Der Tab **Importiert** listet jeden Trace mit Zeit, Quelle, Status, Modell, Nutzer, Tokens, Kosten und Dauer. Er reicht bis zu 12 Monate zurück, lässt sich nach Quelle und Status filtern und lädt ältere Einträge nach. Öffne einen Eintrag, um die vollständige Anfrage und Antwort sowie jedes Feld der Quelle zu sehen, auch solche, für die Genie keine eigene Spalte hat. Sehr lange Texte werden gekürzt, und die Detailansicht weist darauf hin.
+
+<Note>
+Importierte Traces einzusehen erfordert dieselbe Berechtigung **Genie-AI-Traces einsehen**. Verbinden, Synchronisieren, Hochladen oder Trennen erfordert zusätzlich die Berechtigung **Integrationen verwalten**. Kosten werden in der Währung der Quelle angezeigt (LiteLLM meldet US-Dollar), nicht in Genie-Credits.
+</Note>
+
+<Warning>
+Importierte Traces enthalten Text, den andere Personen über deinen Proxy gesendet haben. Genie AI behandelt ihn als nicht vertrauenswürdige Daten und befolgt keine Anweisungen darin.
+</Warning>
+
 ## Tracing über den Workspace-Chat verwalten
 
 Frag die Genie-Workspace-KI in natürlicher Sprache:
@@ -41,6 +58,9 @@ Frag die Genie-Workspace-KI in natürlicher Sprache:
 - *„Welche Genie-AI-Durchläufe sind diese Woche in diesem Workspace fehlgeschlagen?"*
 - *„Öffne Trace [id]"*
 - *„Wie viele Tokens haben wir gestern verbraucht?"*
+- *„Synchronisiere jetzt meine LiteLLM-Traces"* oder *„Importiere dieses Log als Langdock-Traces"*
+
+Aus Sicherheitsgründen fragt Genie AI nie nach deinem LiteLLM-API-Schlüssel und ändert dessen URL nicht — das erledigst du im Tab **Integrationen**.
 
 <Tip>
 Jedes Mitglied hat über den [Genie MCP Server](/de/workspaces/mcp-api) bereits Zugriff auf seine eigenen vergangenen Gespräche. Tracing — und die passenden MCP-Tools — ist die workspaceweite Admin-Ansicht über die Durchläufe aller Mitglieder hinweg.
