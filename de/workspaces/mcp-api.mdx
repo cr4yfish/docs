@@ -283,6 +283,21 @@ Liste die geführten Startpunkte hinter den [Chat-Vorlagen](/de/workspaces/overv
 | `create_chat_template` | Eine Vorlage zur eigenen Bibliothek des Workspaces hinzufügen |
 | `update_chat_template` | Eine eigene Vorlage des Workspaces ändern |
 
+### Importierte Traces
+
+Lies und synchronisiere die Traces, die von [LiteLLM und Langdock](/de/workspaces/tracing#importierte-traces-von-litellm-und-langdock) importiert wurden. Zum Lesen brauchst du die Tracing-Berechtigung; für jede Änderung zusätzlich die Integrations-Berechtigung. Importierte Inhalte gelten als nicht vertrauenswürdig.
+
+| Tool | Was es tut |
+|---|---|
+| `list_imported_traces` | Importierte Traces, neueste zuerst, filterbar nach Quelle, Status, Modell oder Nutzer |
+| `get_imported_trace` | Ein importierter Trace vollständig |
+| `get_tracing_integrations` | Zustand der LiteLLM-Verbindung (nie der Schlüssel) und wie der Langdock-Import funktioniert |
+| `sync_litellm_traces` | Eine LiteLLM-Synchronisierung jetzt ausführen |
+| `set_litellm_tracing_enabled` | Die LiteLLM-Verbindung pausieren oder fortsetzen |
+| `import_trace_log` | Ein kleines eingefügtes Log als Langdock-Traces importieren |
+
+Das Verbinden von LiteLLM (URL und API-Schlüssel) ist hier nicht möglich, damit ein Zugangsdatum nie durch ein Modell läuft — erledige es unter **Tracing → Integrationen**.
+
 ### Genie-Cloud-Backend-Verwaltung
 
 Verwalte das verbundene [Genie-Cloud](/de/cloud/overview)-Backend eines Projekts: Endnutzer-Rollen, Anmeldeanbieter und Zugriffseinstellungen. Nur der Projektinhaber bzw. die Projektinhaberin kann diese Tools verwenden.
