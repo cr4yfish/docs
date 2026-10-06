@@ -447,7 +447,7 @@ Inspect and manage the workspace PII detection rules. Only workspace owners and 
 | Tool | What it does |
 |---|---|
 | `list_workspace_pii_rules` | Built-in detectors and custom regex rules |
-| `list_workspace_pii_detections` | Recent censored detection log entries |
+| `list_workspace_pii_detections` | Recent censored detection log entries. Filter by source with `surface`: `all` (default), chats and Genie Agents, or the knowledge model's document reading |
 | `set_workspace_pii_rule` | Change a rule's action (`log`, `block`, `ignore`) or toggle it on/off |
 | `create_workspace_pii_rule` | Add a custom regex rule |
 | `update_workspace_pii_rule` | Edit an existing custom rule's label, pattern, confidence, or action |
