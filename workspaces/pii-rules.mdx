@@ -96,6 +96,16 @@ The **Detection log** section shows the 50 most recent rule matches. Each entry 
 
 Matched values are always shown as `[REDACTED]`. Only owners and admins can view the log.
 
+## Rules also apply when Genie reads your documents
+
+When [Read documents automatically](/workspaces/overview#knowledge-model) is on, the same rules run on everything Genie takes from a document before it is stored in the knowledge model:
+
+- **Block** — the match never reaches the knowledge model. In a quote or a value the match is masked with `*` and the rest of the text stays; a name, alias, or label that matches is dropped, so masked names can never merge into one entity.
+- **Log** — the value is stored as it is, and a censored entry is written to the detection log. A rule logs at most once per run, so a rule matching across thousands of documents doesn't flood the log.
+- **Ignore** — nothing happens.
+
+These entries show **Knowledge model** as their source. If Genie can't read your rules, it stores nothing from that document and tries again later.
+
 ## Manage rules from workspace chat
 
 You can read and update PII rules by asking the Genie workspace AI in plain language:

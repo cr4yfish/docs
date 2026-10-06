@@ -96,6 +96,16 @@ Der Abschnitt **Erkennungsprotokoll** zeigt die 50 aktuellsten Regelübereinstim
 
 Erkannte Werte werden immer als `[REDACTED]` angezeigt. Nur Eigentümer:innen und Admins können das Protokoll einsehen.
 
+## Regeln gelten auch, wenn Genie deine Dokumente liest
+
+Ist [Dokumente automatisch lesen](/de/workspaces/overview#wissensmodell) aktiv, laufen dieselben Regeln über alles, was Genie aus einem Dokument übernimmt, bevor es im Wissensmodell gespeichert wird:
+
+- **Block** — der Treffer gelangt nie ins Wissensmodell. In einem Zitat oder einem Wert wird der Treffer mit `*` maskiert und der übrige Text bleibt erhalten; ein passender Name, Alias oder eine passende Bezeichnung wird verworfen, damit maskierte Namen nie zu einer Entität verschmelzen.
+- **Log** — der Wert wird unverändert gespeichert und ein geschwärzter Eintrag im Erkennungsprotokoll angelegt. Eine Regel protokolliert höchstens einmal pro Durchlauf, damit eine Regel, die in Tausenden Dokumenten trifft, das Protokoll nicht überflutet.
+- **Ignore** — nichts passiert.
+
+Diese Einträge zeigen **Wissensmodell** als Quelle. Kann Genie deine Regeln nicht lesen, speichert es aus diesem Dokument nichts und versucht es später erneut.
+
 ## Regeln über den Workspace-Chat verwalten
 
 Du kannst PII-Regeln lesen und aktualisieren, indem du die Genie-Workspace-KI in natürlicher Sprache fragst:
