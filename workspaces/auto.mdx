@@ -1,0 +1,66 @@
+---
+title: "Auto: your own background agent"
+description: "Auto watches your workspaces in the background and leaves you suggestions you approve with one click. It sees only what you see, and nothing changes until you say so."
+---
+
+**Auto** is your own agent that works in the background. It looks at your workspaces for things worth your attention — an agent that keeps failing, documents waiting for review, an entity stuck in a stage — and leaves you **suggestions you approve or dismiss with one click**. Nothing Auto proposes changes a workspace until you approve it.
+
+Auto is **personal**: one Auto per person, with one switch, working in every workspace where you may use Genie AI.
+
+## Turn it on
+
+Open **Personal settings → Auto** (click the account row at the bottom of the sidebar). Auto starts **off** for everyone. Switch it on, and choose whether you want a push notification when it leaves something new. The page shows one workspace at a time; switch between them at the top.
+
+<Note>
+Auto picks up workspaces you join and drops the ones you leave or lose Genie AI access in, so there's nothing to maintain. It works in up to 25 workspaces, listed by name.
+</Note>
+
+## What Auto does
+
+Auto works in two steps:
+
+- **Quick check** — a free look at your workspace, three times a day, that spots things worth a closer look: agents that are still failing, documents that recently arrived, entities idle in a stage for two weeks or more, proposals waiting in the review queue, and chats whose latest answer failed. It uses no credits.
+- **Deep run** — when a quick check finds something new, Auto investigates with read-only tools and writes up suggestions. A deep run starts only when the workspace has the credits for it, at most three times a day, and is billed like a Genie AI chat turn. Something Auto has already looked at doesn't trigger another one until it changes. A failure that a later run has since fixed isn't reported.
+
+You can also run either by hand with **Quick check** and **Deep run** on the Auto page, up to ten times a day per workspace.
+
+## Suggestions
+
+A deep run leaves up to six suggestions. Each is one of three kinds:
+
+| Kind | What approving does |
+| --- | --- |
+| **Notice** | Closes it. It may link to the page it's about. |
+| **Ontology changes** | Applies up to 20 changes to your [knowledge model](/workspaces/overview#knowledge-model) as you — recording, linking, naming, advancing a stage. Auto never merges, splits, hides or deletes. In a workspace that stages ontology changes, they land in your draft instead. |
+| **Task** | Opens a new Genie AI chat that sends a prepared first-person request, so the work runs in front of you with every confirmation Genie AI normally asks for. |
+
+Every card shows exactly what approving does, in full — each ontology change with its details, or the task's whole text. Long text collapses. Suggestions you don't decide expire after 14 days, and one you dismiss stays quiet for 30. The page also keeps a history of recent decisions and runs.
+
+## It follows each workspace's rules
+
+A run in a workspace answers to that workspace alone:
+
+- It sees only what **you** can see there, including [access areas](/workspaces/overview#access-areas), and works only where your role lets you use Genie AI.
+- The workspace's [PII rules](/workspaces/pii-rules) apply to what Auto sends to the model.
+- The workspace's wallet pays when the workspace pays, and every deep run appears on the workspace's [Tracing](/workspaces/tracing) page.
+- Approved ontology changes are logged in the workspace's activity log as yours.
+- Nothing carries over from one workspace to another.
+
+## Ask Genie AI
+
+Genie AI can show you what Auto found, switch Auto or its push on or off, start a run, and dismiss a suggestion — try *"What did Auto find in this workspace?"* Approving is the one thing it won't do for you: it shows the suggestion in full on a confirmation card that you press yourself.
+
+## Notifications
+
+When a deep run leaves suggestions and push is on, you get *"Auto has suggestions for you — 2 new suggestions are waiting in Acme."* It names only the workspace and the count, never what Auto found. It's skipped if the Auto page is already open in front of you.
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Workspaces overview" icon="building" href="/workspaces/overview">
+    Find your way around the workspace and its sidebar.
+  </Card>
+  <Card title="Genie Agents" icon="workflow" href="/workspaces/workflow-apps">
+    The automations Auto keeps an eye on.
+  </Card>
+</CardGroup>

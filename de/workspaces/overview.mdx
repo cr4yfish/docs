@@ -45,20 +45,11 @@ Die linke Seitenleiste ist die primäre Navigation für deinen Workspace.
   <Card title="Genie" icon="house">
     Die Workspace-Startseite. Bringt dich von überall im Workspace zurück zum Dashboard.
   </Card>
-  <Card title="Vorlagen" icon="layout-template">
-    Geführte Startpunkte, die einen Genie-AI-Chat öffnen, der für eine Aufgabe bereits vorbereitet ist. Siehe [Chat-Vorlagen](#chat-vorlagen).
-  </Card>
   <Card title="Projekte" icon="folder-kanban">
-    Listet jedes Projekt im Workspace auf, auf das du Zugriff hast — mit Suche, Filtern und Seitennummerierung.
+    Alles, was dein Workspace baut, in einer Liste: [Genie Apps](/de/projects/overview), [Genie Agents](/de/workspaces/workflow-apps) und [Genie Tools](/de/workspaces/genie-tools), jeweils mit ihrer Art gekennzeichnet. Ein **Erstellen**-Menü startet für alle drei einen geführten Genie-AI-Chat. Siehe [Projektseite](#projektseite).
   </Card>
   <Card title="Bibliothek" icon="book-open">
-    Die Dokumente des Workspace, offen für alle Mitglieder. Siehe [Wissensdatenbank](#wissensdatenbank).
-  </Card>
-  <Card title="Ontologie" icon="network">
-    Das Wissensmodell, das Genie aus diesen Dokumenten aufbaut — für Workspace-Eigentümer und Admins. Siehe [Wissensmodell](#wissensmodell).
-  </Card>
-  <Card title="Genie Agents" icon="workflow">
-    Jeder [Genie Agent](/de/workspaces/workflow-apps) im Workspace — Backend-Automatisierungen ganz ohne eigene Oberfläche.
+    Die Dokumente des Workspace, offen für alle Mitglieder, plus ein Tab **Vorlagen** mit geführten Startpunkten. Siehe [Wissensdatenbank](#wissensdatenbank) und [Chat-Vorlagen](#chat-vorlagen).
   </Card>
   <Card title="Letzte Chats" icon="message-square">
     Dein Workspace-Chatverlauf füllt den Rest der Seitenleiste. Klicke auf eine Unterhaltung, um sie wieder zu öffnen — die gerade geöffnete markiert selbst ihren Platz in der Liste. Starte eine neue über das Genie-Eingabefeld auf dem Dashboard, die Befehlspalette, oder indem du in einem offenen Chat einfach etwas anderes fragst.
@@ -69,7 +60,7 @@ Die linke Seitenleiste ist die primäre Navigation für deinen Workspace.
 Zieh den rechten Rand der Seitenleiste, um sie in der Breite anzupassen, oder ganz nach links, um sie auf reine Icons einzuklappen — zieh den eingeklappten Rand wieder heraus, um sie erneut zu öffnen. Auf dem Mobilgerät öffnet sich der Workspace-Umschalter als unteres Drawer.
 </Tip>
 
-Workspace-Einstellungen und deine persönlichen Einstellungen teilen sich eine Navigation, erreichbar über die Kontozeile unten in der Seitenleiste: Wähle **Workspace-Einstellungen** (Allgemein, Mitglieder, Rollen, Integrationen, Secrets, PII-Erkennung, Guardrails, Governance sowie — für Admins und Eigentümer — Aktivitäten, Tracing und Abrechnung) oder **Persönliche Einstellungen** (Erscheinungsbild, Anmeldemethoden, Benachrichtigungen). Beide ersetzen die Seitenleiste durch eine Einstellungs-Navigation mit einem Zurück-Pfeil zum Workspace. Siehe [Workspace-Mitglieder einladen und verwalten](/de/workspaces/members) für Rollen und [Kontoeinstellungen](/de/account/settings) für deine persönlichen Präferenzen.
+Workspace-Einstellungen und deine persönlichen Einstellungen teilen sich eine Navigation, erreichbar über die Kontozeile unten in der Seitenleiste: Wähle **Workspace-Einstellungen** (Allgemein, Mitglieder, Rollen, Integrationen, Secrets, PII-Erkennung, Guardrails, Governance sowie — für Admins und Eigentümer — Aktivitäten, Tracing, Abrechnung und die Ontologie) oder **Persönliche Einstellungen** (Erscheinungsbild, Anmeldemethoden, Benachrichtigungen und [Auto](/de/workspaces/auto)). Beide ersetzen die Seitenleiste durch eine Einstellungs-Navigation mit einem Zurück-Pfeil zum Workspace. Siehe [Workspace-Mitglieder einladen und verwalten](/de/workspaces/members) für Rollen und [Kontoeinstellungen](/de/account/settings) für deine persönlichen Präferenzen.
 
 ### Workspace-Profil
 
@@ -78,6 +69,12 @@ Auf der Einstellungsseite **Allgemein** bearbeitet ein Eigentümer oder Admin de
 <Tip>
 Lass das stattdessen von Genie AI erledigen — *„setze unser Workspace-Logo auf dieses Bild"* oder *„wechsle unsere Akzentpalette zu etwas Wärmerem"* — über den **Genie AI fragen**-Button auf der Seite „Allgemein".
 </Tip>
+
+### Projektseite
+
+**Projekte** listet alles, was der Workspace baut — Genie Apps, Genie Agents und Genie Tools — in einem Raster. Jede Karte trägt ein Abzeichen mit ihrer Art, sodass Farbe nie der einzige Hinweis ist. Eine Werkzeugleiste enthält die Suche und drei Menüs: **Art** (Alle, Apps, Agents, Tools, jeweils mit Anzahl), **Bereich** (Alle im Workspace, Favoriten, Meine, Archiv, Nicht zugeordnet) und **Sortierung**. Du siehst nur die Arten, die deine Rolle ansehen darf. Die früheren Seiten für Genie Agents und Tools öffnen jetzt diese Seite mit vorgewählter Art; der Editor eines Agents und die Seite eines Tools funktionieren wie bisher.
+
+**Erstellen** im Seitenkopf öffnet ein Menü mit einem Eintrag pro Art, die du bauen darfst. Jeder startet einen neuen Genie-AI-Chat, der fragt, wovon du ausgehst, und dich durch den Bau führt. Genie Apps sind noch in der Beta, daher trägt dieser Eintrag eine Beta-Markierung.
 
 ### Zuletzt bearbeitete Projekte
 
@@ -243,9 +240,21 @@ Ein Genie Agent ohne Verzweigung wird auf der Canvas von oben nach unten gezeich
 
 ### Chat-Vorlagen
 
-Eine **Chat-Vorlage** startet einen Genie-AI-Chat, der bereits weiß, was du tun möchtest. Öffne **Vorlagen** in der Seitenleiste, direkt unter Genie, und klicke auf einer Karte auf **Chat starten**: Genie beginnt mit einer kurzen Nachricht und einer Auswahlkarte mit den Optionen der Vorlage und macht dann mit deiner Wahl weiter. Die erste Vorlage, **PowerPoint-Präsentation**, fragt, ob du eine neue Präsentation beginnen, eine aus deiner Wissensdatenbank bearbeiten oder eine hochladen möchtest.
+Eine **Chat-Vorlage** startet einen Genie-AI-Chat, der bereits weiß, was du tun möchtest. Öffne den Tab **Vorlagen** in der **Bibliothek** und klicke auf einer Karte auf **Chat starten**: Genie beginnt mit einer kurzen Nachricht und einer Auswahlkarte mit den Optionen der Vorlage und macht dann mit deiner Wahl weiter. Die erste Vorlage, **PowerPoint-Präsentation**, fragt, ob du eine neue Präsentation beginnen, eine aus deiner Wissensdatenbank bearbeiten oder eine hochladen möchtest.
 
 Die Seite hat zwei Bereiche: **Von Genie**, Vorlagen, die in jedem Workspace verfügbar sind, und **Dieser Workspace**, deine eigenen. Mitglieder erstellen und bearbeiten ihre eigenen, indem sie Genie AI darum bitten (*„erstelle eine Vorlage für wöchentliche Statusberichte"*) — jede Vorlage bekommt ein generiertes Titelbild und kann übersetzt werden, sodass jedes Mitglied sie in seiner Sprache sieht. Beim Löschen musst du im Chat bestätigen. Dieselben Vorlagen lassen sich über den [Genie MCP Server](/de/workspaces/mcp-api#chat-vorlagen) auflisten und verwalten.
+
+### Chats benennen sich selbst
+
+Ein neuer Chat benennt sich, sobald du seine erste Nachricht sendest: Ein kurzer Titel in deiner Sprache sowie ein Icon und eine Farbe erscheinen innerhalb weniger Sekunden im Chatverlauf und in der Chat-Kopfzeile — meist noch während die erste Antwort streamt. Benenne den Chat jederzeit um oder wähle ein anderes Aussehen (Klick auf sein Abzeichen), oder bitte Genie AI darum. Deine eigene Wahl wird nie überschrieben.
+
+### Tipp-Blase und Schrittliste
+
+Während Genie eine Antwort vorbereitet, hält eine Tipp-Blase mit drei bewegten Punkten den Platz der Antwort. Sobald Genie arbeitet, zeigt eine **Schritte**-Anzeige in einfacher Sprache, was passiert ist („Team ansehen", „App von innen ansehen"), mit Lade-, Erledigt- oder Fehlerstatus pro Schritt; sie bleibt eingeklappt, damit die Antwort im Vordergrund steht. Wenn Genie AI sich etwas für dich merkt oder vergisst, sagt eine kleine Karte, was.
+
+### Benachrichtigt werden, wenn Genie AI fertig ist
+
+Schließt du den Tab oder schaust weg, während Genie AI antwortet, bekommst du eine Push-Benachrichtigung, sobald die Antwort fertig ist: *„Genie AI ist fertig — Deine Antwort in Acme ist bereit."* Solange du zuschaust, wie die Antwort ankommt, wird nichts gesendet; auf einem zweiten Gerät, auf das du nicht schaust, kommt sie trotzdem an. Sie ist standardmäßig an; schalte sie unter **Persönliche Einstellungen → Benachrichtigungen** aus oder bitte Genie AI darum. Siehe [Kontoeinstellungen](/de/account/settings#push-benachrichtigungen).
 
 ### Antwortet immer in deiner Sprache
 
@@ -307,7 +316,7 @@ Genie AI kann PowerPoint-Folien lesen, erstellen und bearbeiten, nicht nur öffn
 ### Wissensmodell
 
 
-Über Suche und Zitate hinaus kann Genie AI auch ein strukturiertes Modell dessen aufbauen, worum es in deiner Wissensdatenbank eigentlich geht — die **Entitäten** darin (eine Person, eine Organisation, ein Vertrag, eine Entscheidung) und die **Beziehungen** zwischen ihnen, jede davon bis zur genauen Textstelle zurückverfolgbar, aus der sie stammt. Die Seite wechselt dafür zwischen drei Ansichten — **Dokumente**, **Entitäten** und **Graph** — über eine eigene Kopfzeile (Owner und Admins öffnen sie über **Ontologie** in der Seitenleiste; Mitglieder durchsuchen die Dokumente in der **Bibliothek**).
+Über Suche und Zitate hinaus kann Genie AI auch ein strukturiertes Modell dessen aufbauen, worum es in deiner Wissensdatenbank eigentlich geht — die **Entitäten** darin (eine Person, eine Organisation, ein Vertrag, eine Entscheidung) und die **Beziehungen** zwischen ihnen, jede davon bis zur genauen Textstelle zurückverfolgbar, aus der sie stammt. Die Seite wechselt dafür zwischen drei Ansichten — **Dokumente**, **Entitäten** und **Graph** — über eine eigene Kopfzeile (Owner und Admins öffnen sie über **Workspace-Einstellungen → Ontologie**; Mitglieder durchsuchen die Dokumente in der **Bibliothek**).
 
 Aktiviere **Dokumente automatisch lesen** am Ende der Dokumente-Ansicht (nur Owner und Admins, standardmäßig aus), und Genie liest jedes Dokument im Workspace und schlägt die gefundenen Entitäten, Werte und Verknüpfungen vor — neue und geänderte Dokumente werden ab dann automatisch erfasst. Jeder im Workspace kann das Ergebnis im Panel **Klassen und Beziehungen** weiter unten auf derselben Seite durchsuchen: die Arten von Dingen, die erfasst werden (Personen, Organisationen, Entscheidungen, Begriffe und jede von einem Admin hinzugefügte eigene Klasse), wie viele Eigenschaften jede hat und wie viele Entitäten du sehen kannst. Öffne eine Klasse, um ihre Entitäten zu sehen, jeweils mit dem Hinweis **Vorgeschlagen**, bis sie bestätigt sind, und **Teilweise verborgen**, wo ein Dokument, das du nicht lesen kannst, mehr dazu sagt.
 
@@ -359,6 +368,8 @@ Zieh einen Chat aus der Seitenleiste auf die **Angepinnt**-Ablagezone oben in de
 
 Drücke ⌘K (Mac) oder Ctrl+K (Windows) von überall in Genie, um die Befehlspalette zu öffnen — ein schneller Weg, um zu einem Projekt zu springen, eine Aktion auszuführen oder Genie eine Frage zu stellen, ohne die aktuelle Seite zu verlassen.
 
+Innerhalb eines Workspace durchsucht die Palette beim Tippen auch deine **Bibliothek**. Sie listet passende Entitäten aus dem Wissensmodell und bis zu fünf Dokumente — jeweils mit der passenden Textstelle — und **Alle Ergebnisse in der Bibliothek anzeigen** öffnet die vollständige Suche. Ein Dokument öffnet sich direkt an Ort und Stelle, ohne die aktuelle Seite zu verlassen.
+
 Wählst du **Genie fragen**, wechselt die Palette an Ort und Stelle in ein Chat-Fenster. Schließt du die Palette mitten im Gespräch, geht nichts verloren — die Unterhaltung wird gespeichert und erscheint unten in der Liste unter **Letzte Chats**. Öffnest du die Palette kurz nach dem Chatten erneut, wird das Gespräch automatisch wieder aufgenommen, sodass du sie schließen kannst, ohne den Faden zu verlieren.
 
 <Tip>
@@ -373,6 +384,9 @@ Wählst du **Genie fragen**, wechselt die Palette an Ort und Stelle in ein Chat-
   </Card>
   <Card title="Integrationen" icon="plug" href="/de/workspaces/integrations">
     Verbinde Linear, GitHub, Notion und mehr über MCP.
+  </Card>
+  <Card title="Auto" icon="sparkles" href="/de/workspaces/auto">
+    Dein eigener Hintergrund-Agent, der dir Vorschläge zur Freigabe hinterlässt.
   </Card>
   <Card title="PII-Regeln" icon="shield" href="/de/workspaces/pii-rules">
     Steuere, wie Genie sensible Daten im Chat behandelt.
