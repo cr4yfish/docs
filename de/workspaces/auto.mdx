@@ -1,0 +1,66 @@
+---
+title: "Auto: dein eigener Hintergrund-Agent"
+description: "Auto beobachtet deine Workspaces im Hintergrund und hinterlässt dir Vorschläge, die du mit einem Klick freigibst. Er sieht nur, was du siehst, und nichts ändert sich, bevor du es erlaubst."
+---
+
+**Auto** ist dein eigener Agent, der im Hintergrund arbeitet. Er schaut in deinen Workspaces nach Dingen, die deine Aufmerksamkeit verdienen — ein Agent, der immer wieder fehlschlägt, Dokumente, die auf Prüfung warten, eine Entität, die in einer Phase festhängt — und hinterlässt dir **Vorschläge, die du mit einem Klick freigibst oder verwirfst**. Nichts, was Auto vorschlägt, ändert einen Workspace, bevor du es freigibst.
+
+Auto ist **persönlich**: ein Auto pro Person, mit einem Schalter, in jedem Workspace, in dem du Genie AI nutzen darfst.
+
+## Einschalten
+
+Öffne **Persönliche Einstellungen → Auto** (klicke auf die Kontozeile unten in der Seitenleiste). Auto ist für alle zunächst **aus**. Schalte es ein und wähle, ob du eine Push-Benachrichtigung möchtest, wenn Auto etwas Neues hinterlässt. Die Seite zeigt jeweils einen Workspace; oben wechselst du zwischen ihnen.
+
+<Note>
+Auto erkennt Workspaces, denen du beitrittst, und lässt die weg, die du verlässt oder in denen du den Genie-AI-Zugriff verlierst — du musst nichts pflegen. Auto arbeitet in bis zu 25 Workspaces, nach Namen aufgelistet.
+</Note>
+
+## Was Auto tut
+
+Auto arbeitet in zwei Schritten:
+
+- **Schnellprüfung** — ein kostenloser Blick auf deinen Workspace, dreimal täglich, der Dinge findet, die einen genaueren Blick verdienen: Agents, die weiterhin fehlschlagen, kürzlich eingetroffene Dokumente, Entitäten, die zwei Wochen oder länger in einer Phase ruhen, Vorschläge in der Prüfwarteschlange und Chats, deren letzte Antwort fehlgeschlagen ist. Sie verbraucht keine Credits.
+- **Tiefenlauf** — findet eine Schnellprüfung etwas Neues, untersucht Auto es mit schreibgeschützten Werkzeugen und formuliert Vorschläge. Ein Tiefenlauf startet nur, wenn der Workspace die Credits dafür hat, höchstens dreimal täglich, und wird wie ein Genie-AI-Chatzug abgerechnet. Was Auto schon betrachtet hat, löst erst wieder einen Lauf aus, wenn es sich ändert. Ein Fehler, den ein späterer Lauf inzwischen behoben hat, wird nicht gemeldet.
+
+Beides kannst du auch von Hand mit **Schnellprüfung** und **Tiefenlauf** auf der Auto-Seite starten, bis zu zehnmal täglich pro Workspace.
+
+## Vorschläge
+
+Ein Tiefenlauf hinterlässt bis zu sechs Vorschläge. Jeder ist von einer von drei Arten:
+
+| Art | Was die Freigabe bewirkt |
+| --- | --- |
+| **Hinweis** | Schließt ihn. Er kann auf die Seite verlinken, um die es geht. |
+| **Ontologie-Änderungen** | Wendet bis zu 20 Änderungen an deinem [Wissensmodell](/de/workspaces/overview#wissensmodell) als du an — erfassen, verknüpfen, benennen, eine Phase vorrücken. Auto führt nie zusammen, teilt, blendet aus oder löscht. In einem Workspace, der Ontologie-Änderungen zwischenspeichert, landen sie stattdessen in deinem Entwurf. |
+| **Aufgabe** | Öffnet einen neuen Genie-AI-Chat, der eine vorbereitete Anfrage in der Ich-Form sendet, sodass die Arbeit vor deinen Augen läuft — mit jeder Bestätigung, die Genie AI sonst verlangt. |
+
+Jede Karte zeigt vollständig, was die Freigabe bewirkt — jede Ontologie-Änderung mit ihren Details oder den ganzen Text der Aufgabe. Langer Text lässt sich einklappen. Vorschläge, über die du nicht entscheidest, verfallen nach 14 Tagen; ein verworfener bleibt 30 Tage still. Die Seite führt außerdem einen Verlauf der letzten Entscheidungen und Läufe.
+
+## Auto folgt den Regeln jedes Workspace
+
+Ein Lauf in einem Workspace unterliegt allein den Regeln dieses Workspace:
+
+- Er sieht dort nur, was **du** sehen kannst, einschließlich [Zugriffsbereichen](/de/workspaces/overview#zugriffsbereiche), und arbeitet nur dort, wo deine Rolle dir Genie AI erlaubt.
+- Die [PII-Regeln](/de/workspaces/pii-rules) des Workspace gelten für das, was Auto an das Modell sendet.
+- Das Guthaben des Workspace zahlt, wenn der Workspace zahlt, und jeder Tiefenlauf erscheint auf der [Tracing](/de/workspaces/tracing)-Seite des Workspace.
+- Freigegebene Ontologie-Änderungen stehen im Aktivitätsprotokoll des Workspace als deine.
+- Nichts wird von einem Workspace in einen anderen übernommen.
+
+## Frag Genie AI
+
+Genie AI kann dir zeigen, was Auto gefunden hat, Auto oder seinen Push ein- und ausschalten, einen Lauf starten und einen Vorschlag verwerfen — probiere *„Was hat Auto in diesem Workspace gefunden?"* Das Freigeben ist das Einzige, was es nicht für dich übernimmt: Es zeigt den Vorschlag vollständig auf einer Bestätigungskarte, die du selbst bestätigst.
+
+## Benachrichtigungen
+
+Hinterlässt ein Tiefenlauf Vorschläge und Push ist an, erhältst du *„Auto hat Vorschläge für dich — 2 neue Vorschläge warten in Acme."* Sie nennt nur den Workspace und die Anzahl, nie, was Auto gefunden hat. Sie entfällt, wenn die Auto-Seite bereits vor dir geöffnet ist.
+
+## Verwandte Seiten
+
+<CardGroup cols={2}>
+  <Card title="Workspaces-Übersicht" icon="building" href="/de/workspaces/overview">
+    Finde dich im Workspace und seiner Seitenleiste zurecht.
+  </Card>
+  <Card title="Genie Agents" icon="workflow" href="/de/workspaces/workflow-apps">
+    Die Automatisierungen, die Auto im Blick behält.
+  </Card>
+</CardGroup>

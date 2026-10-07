@@ -45,23 +45,11 @@ The left sidebar is the primary navigation hub for your workspace.
   <Card title="Genie" icon="house">
     The workspace home. Returns you to the dashboard from anywhere inside the workspace.
   </Card>
-  <Card title="Templates" icon="layout-template">
-    Guided starting points that open a Genie AI chat already set up for a task. See [Chat templates](#chat-templates).
-  </Card>
   <Card title="Projects" icon="folder-kanban">
-    Lists every project in the workspace that you have access to, with search, filtering, and pagination.
+    Everything your workspace builds in one list: [Genie Apps](/projects/overview), [Genie Agents](/workspaces/workflow-apps) and [Genie Tools](/workspaces/genie-tools), each marked with its kind. A **Create** menu starts a guided Genie AI chat for any of the three. See [Projects page](#projects-page).
   </Card>
   <Card title="Library" icon="book-open">
-    The workspace's documents, open to every member. See [Knowledge base](#knowledge-base).
-  </Card>
-  <Card title="Ontology" icon="network">
-    The knowledge model Genie builds from those documents — for workspace owners and admins. See [Knowledge model](#knowledge-model).
-  </Card>
-  <Card title="Genie Agents" icon="workflow">
-    Every [Genie Agent](/workspaces/workflow-apps) in the workspace — backend automations with no screen of their own.
-  </Card>
-  <Card title="Tools" icon="layout-grid">
-    Every [Genie Tool](/workspaces/genie-tools) in the workspace — small internal apps described to Genie AI rather than built.
+    The workspace's documents, open to every member, plus a **Templates** tab with guided starting points. See [Knowledge base](#knowledge-base) and [Chat templates](#chat-templates).
   </Card>
   <Card title="Recent chats" icon="message-square">
     Your workspace chat history fills the rest of the sidebar. Click any conversation to reopen it — the one you currently have open marks its own place in the list. Start a new one from the dashboard's Genie input, the command palette, or by asking something else inside an open chat.
@@ -72,7 +60,7 @@ The left sidebar is the primary navigation hub for your workspace.
 Drag the sidebar's right edge to resize it, or all the way to the left to collapse it to icons only — drag the collapsed edge back out to reopen it. On mobile, the workspace switcher opens as a bottom drawer.
 </Tip>
 
-Workspace settings and your personal settings share one navigation, reached from the account row at the bottom of the sidebar: choose **Workspace settings** (General, Members, Roles, Integrations, Secrets, PII Detection, Guardrails, Governance, and — for admins and owners — Activities, Tracing, and Billing) or **Personal settings** (Appearance, Sign-in methods, Notifications). Opening either replaces the sidebar with a settings navigation and a back arrow that returns you to the workspace. See [Invite and manage workspace members](/workspaces/members) for roles, and [Account settings](/account/settings) for your personal preferences.
+Workspace settings and your personal settings share one navigation, reached from the account row at the bottom of the sidebar: choose **Workspace settings** (General, Members, Roles, Integrations, Secrets, PII Detection, Guardrails, Governance, and — for admins and owners — Activities, Tracing, Billing, and the Ontology) or **Personal settings** (Appearance, Sign-in methods, Notifications, and [Auto](/workspaces/auto)). Opening either replaces the sidebar with a settings navigation and a back arrow that returns you to the workspace. See [Invite and manage workspace members](/workspaces/members) for roles, and [Account settings](/account/settings) for your personal preferences.
 
 ### Workspace profile
 
@@ -81,6 +69,12 @@ The **General** settings page is where an owner or admin edits the workspace its
 <Tip>
 Ask Genie AI to do it for you instead — *"set our workspace logo to this image"* or *"switch our accent palette to something warmer"* — from the **Ask Genie AI** button on the General settings page.
 </Tip>
+
+### Projects page
+
+**Projects** lists everything the workspace builds — Genie Apps, Genie Agents and Genie Tools — in one grid. Each card carries a badge naming its kind, so colour is never the only hint. One toolbar line holds the search and three menus: **type** (All, Apps, Agents, Tools, each with its count), **scope** (All in workspace, Favorites, Mine, Archive, Unlisted) and **sort**. You only see the kinds your role may view. The old Genie Agents and Tools pages now open this page with their type preselected, and an agent's editor or a tool's page work as before.
+
+**Create** in the page header opens a menu with one entry per kind you may build. Each starts a new Genie AI chat that asks what you're starting from and guides you into building it. Genie Apps are still in beta, so that entry carries a Beta marker.
 
 ### Recent projects
 
@@ -246,9 +240,21 @@ A Genie Agent with no branching draws top to bottom on the canvas — start, eac
 
 ### Chat templates
 
-A **chat template** starts a Genie AI chat that already knows what you want to do. Open **Templates** in the sidebar, right under Genie, and press **Start chat** on a card: Genie opens with a short message and a choice card with the template's options, then carries on from your pick. The first template, **PowerPoint presentation**, asks whether you want to start a new deck, edit one from your knowledge base, or upload one.
+A **chat template** starts a Genie AI chat that already knows what you want to do. Open the **Templates** tab in the **Library** and press **Start chat** on a card: Genie opens with a short message and a choice card with the template's options, then carries on from your pick. The first template, **PowerPoint presentation**, asks whether you want to start a new deck, edit one from your knowledge base, or upload one.
 
 The page has two sections: **From Genie**, templates available in every workspace, and **This workspace**, your own. Members create and edit their own by asking Genie AI (*"make a template for weekly status reports"*) — each template gets a generated cover picture, and can be translated so every member sees it in their language. Deleting one asks you to confirm in the chat. The same templates can be listed and managed through the [Genie MCP Server](/workspaces/mcp-api#chat-templates).
+
+### Chats name themselves
+
+A new chat names itself as soon as you send its first message: a short title in your language, plus an icon and a colour, appear in the chat history and the chat header within a few seconds — usually while the first answer is still streaming. Rename the chat or pick another look at any time (click its badge), or ask Genie AI to do it. Your own choice is never overwritten.
+
+### Typing bubble and step list
+
+While Genie prepares an answer, a typing bubble with three moving dots holds the place of the reply. Once Genie starts working, a **steps** control shows what it did in plain language ("Checking your team", "Looking inside your app") with a loading, done or error state for each, and it stays collapsed so the answer stays in front. When Genie AI remembers or forgets something for you, a small card says what.
+
+### Get notified when Genie AI is done
+
+If you close the tab or look away while Genie AI is answering, you get a push notification when the answer is ready: *"Genie AI is done — Your answer in Acme is ready."* Nothing is sent while you're watching the answer arrive, and on a second device you're not looking at, the notification still arrives. It's on by default; switch it off under **Personal settings → Notifications**, or ask Genie AI to. See [Account settings](/account/settings#push-notifications).
 
 ### Always replies in your language
 
@@ -310,7 +316,7 @@ Genie AI can read, create, and edit PowerPoint decks, not just open them. Attach
 ### Knowledge model
 
 
-Beyond search and citations, Genie AI can also build a structured model of what your knowledge base actually talks about — the **entities** in it (a person, an organisation, a contract, a decision) and the **relationships** between them, each one traceable back to the exact passage it came from. The Knowledge page switches between three views of it — **Documents**, **Entities**, and **Graph** — from a header of its own (owners and admins open it from **Ontology** in the sidebar; members browse the documents in **Library**).
+Beyond search and citations, Genie AI can also build a structured model of what your knowledge base actually talks about — the **entities** in it (a person, an organisation, a contract, a decision) and the **relationships** between them, each one traceable back to the exact passage it came from. The Knowledge page switches between three views of it — **Documents**, **Entities**, and **Graph** — from a header of its own (owners and admins open it from **Workspace settings → Ontology**; members browse the documents in **Library**).
 
 Turn on **Read documents automatically** at the bottom of the Documents view (owners and admins only, off by default) and Genie reads every document in the workspace and proposes the entities, values, and links it finds — new and changed documents are picked up automatically from then on. Everyone in the workspace can browse the result in the **Classes and relations** panel further down the same page: the kinds of things being tracked (people, organisations, decisions, terms, and any custom class an admin adds), how many properties each has, and how many entities you can see. Open a class to see its entities, each marked **Proposed** until confirmed, and **Partly hidden** where a document you can't read says more about it.
 
@@ -362,6 +368,8 @@ Drag any chat from the sidebar onto the **Pinned** dropzone at the top of the li
 
 Press ⌘K (Mac) or Ctrl+K (Windows) from anywhere in Genie to open the command palette — a fast way to jump to a project, run an action, or start asking Genie a question without leaving the page you're on.
 
+Inside a workspace, the palette also searches your **Library** as you type. It lists matching entities from the knowledge model and up to five documents — each with the passage that matched — and **Show all results in the Library** opens the full search. Picking a document opens it right there, without leaving the page you're on.
+
 Choosing **Ask Genie** switches the palette into a chat window in place. If you close the palette mid-conversation, nothing is lost — the conversation is saved and reappears under **Recent chats** at the bottom of the list. Reopening the palette shortly after chatting picks the conversation back up automatically, so you can dismiss it without losing your place.
 
 <Tip>
@@ -376,6 +384,9 @@ Choosing **Ask Genie** switches the palette into a chat window in place. If you 
   </Card>
   <Card title="Integrations" icon="plug" href="/workspaces/integrations">
     Connect Linear, GitHub, Notion, and more via MCP.
+  </Card>
+  <Card title="Auto" icon="sparkles" href="/workspaces/auto">
+    Your own background agent that leaves suggestions for you to approve.
   </Card>
   <Card title="PII rules" icon="shield" href="/workspaces/pii-rules">
     Control how Genie handles sensitive data in chat.
