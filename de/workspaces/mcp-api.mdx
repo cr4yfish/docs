@@ -382,6 +382,17 @@ Trifft ein Folge-Prompt für ein Projekt ein, das bereits baut, reiht Genie ihn 
 | `set_prompt_queue_delay` | Ändere die Abklingzeit zwischen dem Abschluss eines Laufs und dem Senden des nächsten eingereihten Prompts |
 | `send_next_queued_prompt_now` | Überspringe die verbleibende Wartezeit und sende den nächsten eingereihten Prompt, sobald das Projekt frei ist. Setzt auch eine pausierte Warteschlange fort |
 
+### Workspace Auto
+
+Lies und steuere dein [Auto](/de/workspaces/auto) im verbundenen Workspace, mit denselben Aktionen wie Genie AI. Einen Vorschlag freizugeben ist hier nicht möglich; das bleibt eine Bestätigung, die du in Genie selbst drückst.
+
+| Tool | Was es tut |
+|---|---|
+| `read_workspace_auto` | Dein Auto in diesem Workspace: Schalter, nächste Prüfung, wartende und entschiedene Vorschläge, letzte Läufe |
+| `update_workspace_auto` | Auto und seine Push-Benachrichtigungen ein- oder ausschalten (persönlich, gilt für jeden Workspace) |
+| `start_workspace_auto_run` | Auto jetzt ausführen: `shallow` (kostenlose Prüfung) oder `full` (ein Modelllauf, abgerechnet wie ein Chatzug; abgelehnt, wenn beschäftigt, ratenbegrenzt oder ohne Credits) |
+| `dismiss_workspace_auto_output` | Einen wartenden Vorschlag verwerfen |
+
 ### Workspace-Chat
 
 Stelle Fragen an die Genie-Workspace-KI und durchsuche vergangene Gespräche. Jedes Tool hier wirkt auf jeden Chat im verbundenen Workspace, auch auf einen, den ein Teammitglied begonnen hat, nicht nur auf die eigenen des Aufrufers — `list_workspace_chats`/`search_workspace_chats` zeigen standardmäßig nur die eigenen Gespräche des Aufrufers, akzeptieren aber `scope: "workspace"`, um die aller anderen einzuschließen.
