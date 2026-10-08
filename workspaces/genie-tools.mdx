@@ -68,6 +68,8 @@ Every block handles the in-between states on its own: a table shows a loading sk
 
 A **Table** block is searchable and sortable, with sticky headers so a long list stays readable — and where the tool turns it on, a checkbox column lets you select rows to act on together, like exporting just the ones you picked. A cell holding a single link renders as a clickable thumbnail for an image, a named download link for a file, or a plain link for anything else, instead of raw text.
 
+A **JSON** block reads a value instead of dumping it: an object's fields as label and value pairs, nested values under their key, and a list of objects as titled cards. **Show raw JSON** switches to exactly what came back.
+
 A **Table** can also show a whole class of your [knowledge model](/workspaces/overview#knowledge-model) — say, every contract Genie found in your documents — as a paged grid, sorted by name or by when it was created. It shows the total count (or "5,000+" once it's past what's counted), locks a row whose source documents you can't all read, and links each entity to its full card. **Export** downloads the whole class, except when the class is too large to count, where the export is refused rather than cut short. A class grid has no search box or filters.
 
 Uploads — into an **Import** block, a file field in a **Form**, or picked from your [knowledge base](/workspaces/overview#knowledge-base) — take files up to 200 MB. Anything large is compressed automatically to keep things fast; ask Genie AI to turn that compression up or down for a specific file field if the default doesn't suit what you're uploading.
@@ -82,7 +84,7 @@ A **Form** that follows a selected record can also **prefill** itself with that 
 
 A form doesn't have to sit on the page. A **Table**, **List**, **Calendar**, **Kanban**, **Org chart**, or **Map** can offer its forms as buttons — an **Add** on its heading row, or the first thing you see when it's empty — and the form opens in a dialog or a side sheet, whichever suits it, so the grid stays the star of the page. On a **Kanban** a card added from a lane starts in that lane, and on a **Calendar** an event added from a day starts on that day.
 
-Opening a row opens its record as a **sheet**: the record's fields, its edit form, its comments, and anything else on the page that's about the selected record are gathered there instead of waiting in cards under the grid. Submitting a form in the sheet closes it and confirms with a short message.
+Opening a row opens its record as a **sheet**: the record's fields, its edit form, its comments, and anything else on the page that's about the selected record are gathered there instead of waiting in cards under the grid. Submitting a form in the sheet closes it and confirms with a short message. Every **Table** has a sheet, so a row whose cells cut a long value short can always be read in full.
 
 A page that reads your [knowledge base](/workspaces/overview#knowledge-base) runs steps that write or send only from their own button — opening or paging the page never triggers one.
 

@@ -382,6 +382,17 @@ When a follow-up prompt arrives for a project that's already building, Genie que
 | `set_prompt_queue_delay` | Change the cooldown between a run completing and the next queued prompt going out |
 | `send_next_queued_prompt_now` | Skip the remaining wait and send the next queued prompt as soon as the project is free. Also resumes a paused queue |
 
+### Workspace Auto
+
+Read and control your [Auto](/workspaces/auto) in the connected workspace, the same actions Genie AI has. Approving a suggestion isn't available here; it stays a confirmation you press in Genie.
+
+| Tool | What it does |
+|---|---|
+| `read_workspace_auto` | Your Auto in this workspace: switches, next check, waiting and decided suggestions, recent runs |
+| `update_workspace_auto` | Switch Auto and its push notifications on or off (personal, covers every workspace) |
+| `start_workspace_auto_run` | Run Auto now: `shallow` (free check) or `full` (a model run, charged like a chat turn; refused when busy, rate-limited or out of credits) |
+| `dismiss_workspace_auto_output` | Dismiss one waiting suggestion |
+
 ### Workspace chat
 
 Send questions to the Genie workspace AI and browse past conversations. Every tool here acts on any chat in the connected workspace, including one a teammate started, not just the caller's own — `list_workspace_chats`/`search_workspace_chats` default to the caller's own conversations, but accept a `scope: "workspace"` to include everyone's.

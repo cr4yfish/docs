@@ -57,7 +57,7 @@ The left sidebar is the primary navigation hub for your workspace.
 </CardGroup>
 
 <Tip>
-Drag the sidebar's right edge to resize it, or all the way to the left to collapse it to icons only — drag the collapsed edge back out to reopen it. On mobile, the workspace switcher opens as a bottom drawer.
+Drag the sidebar's right edge to resize it, or all the way to the left to collapse it to icons only — drag the collapsed edge back out to reopen it. Collapsed, the sidebar still lists your chats as icons — each with its own icon and colour, and the title in a tooltip. On mobile, the workspace switcher opens as a bottom drawer.
 </Tip>
 
 Workspace settings and your personal settings share one navigation, reached from the account row at the bottom of the sidebar: choose **Workspace settings** (General, Members, Roles, Integrations, Secrets, PII Detection, Guardrails, Governance, and — for admins and owners — Activities, Tracing, Billing, and the Ontology) or **Personal settings** (Appearance, Sign-in methods, Notifications, and [Auto](/workspaces/auto)). Opening either replaces the sidebar with a settings navigation and a back arrow that returns you to the workspace. See [Invite and manage workspace members](/workspaces/members) for roles, and [Account settings](/account/settings) for your personal preferences.
@@ -238,6 +238,18 @@ On the full chat page, building or opening a [Genie Tool](/workspaces/genie-tool
 
 A Genie Agent with no branching draws top to bottom on the canvas — start, each step, result, one per row — instead of the sideways grid the editor uses, so it reads cleanly in the canvas's tall, narrow column. An agent with a branch, or one you've hand-arranged in the editor, keeps the grid.
 
+When the chat has more than one thing on the canvas — a Genie Tool, a Genie Agent, the knowledge model — the canvas's bar shows one tab for each, in the order they arrived; switch with a click or the arrow keys. A Genie Tool or Agent that Genie AI is building or editing appears on the canvas while it happens.
+
+**Knowledge on the canvas.** When Genie AI works with your [knowledge model](#knowledge-model) in the chat, the entities it names or changes are drawn on the canvas as a small chart with their closest surroundings, following the newest step as the chat goes on. What Genie AI staged in a [draft](#drafts) is drawn in orange — dashed for entities, dotted for links — so you can tell it from what is already live.
+
+### In-app links open as chips
+
+When Genie AI points you to a page in your workspace — a run, a document, a tool — the link shows as a small chip with the destination's icon and a readable name instead of a long address. Click it to open the page. Links to other sites look as before.
+
+### Fix an integration from the chat
+
+Ask Genie AI to reconnect or repair an integration and it shows the integration as a card in the chat: its live status plus the same buttons as its row in settings — **Connect** or **Connect again** and, for owners and admins, **Start over**, **Check it works** and **Pause** / **Resume**. If you can't take a step yourself, the card says who can. See [Manage connected servers](/workspaces/integrations#manage-connected-servers).
+
 ### Chat templates
 
 A **chat template** starts a Genie AI chat that already knows what you want to do. Open the **Templates** tab in the **Library** and press **Start chat** on a card: Genie opens with a short message and a choice card with the template's options, then carries on from your pick. The first template, **PowerPoint presentation**, asks whether you want to start a new deck, edit one from your knowledge base, or upload one.
@@ -284,6 +296,10 @@ Open **Library** in the workspace sidebar to browse and manage documents at both
 The browser is shaped like a familiar file manager: folders and unfiled documents sit at the root, opening a folder shows what's inside it, and a breadcrumb walks you back up — nothing is ever listed in two places at once. Folders and files share one list, and your connected cloud drives sit at the bottom of it. Search drops the folder view entirely and searches everything at once, so finding a document never depends on remembering where it was filed — and each result shows small chips saying why it matched: the entities it is cited for, its name, its text, or a related topic. Switch between a list or grid layout (remembered for next time), sort any column, and drag a document straight onto a folder to file it — or onto the **Knowledge** breadcrumb to take it back out — instead of opening the move dialog. A search in the Library also looks through the knowledge model: the classes, entities, process stages, relationship types, and layers your query names appear as the first rows of the results, followed by the entities directly linked to them.
 
 Upload plain text, Markdown, CSV, JSON, YAML, XML, HTML, source files, Word (`.docx`), Excel (`.xlsx`), PowerPoint (`.pptx`), or PDF files — up to 10 MB each. A scanned PDF with no text layer is read automatically with OCR instead of being rejected. Images still aren't accepted directly in the uploader, since their content can't be extracted in the browser; send one to Genie AI in chat instead and ask it to file it for you. You can also upload a whole folder at once — Genie recreates its structure as knowledge folders, skipping anything it can't read rather than failing the whole upload.
+
+**Upload page.** **Upload** in the Library opens a page of its own. It shows how far the whole upload is — files waiting, uploading, filed and failed, with a progress bar — and lists every file as a row you can search, filter by status and sort. The upload keeps running if you go back to the Library, and a running upload shows on the **New** button. Folder uploads skip system files such as `._*`, `.DS_Store` and `Thumbs.db`.
+
+**Network drives.** Besides **Choose files** and **Choose a folder**, the upload page offers **Network drive**. An owner or admin connects an Amazon S3 bucket (or one folder in it) once with an AWS access key that can only list and read it; Genie checks the key against the bucket before saving it, and shows a read-only policy to create one. From then on every member can browse the drive, pick files to import, or keep a folder **in sync** like a cloud drive. Because everyone in the workspace can browse a network drive, connect only a folder every member may see — a synced folder from it can't be filed into a restricted [access area](#access-areas). Genie AI can read the drive and open the connect form in the chat.
 
 Each document shows its own search-index status — indexed, keyword-only if the semantic index failed to build, or not yet indexed — with a **Retry indexing** action right there when it needs one. Each document also shows the [knowledge model](#knowledge-model) class it belongs to as a small badge, and owners and admins get a **Class** filter chip alongside the scope filter to narrow the list to one class. The browser's folder, search, sort, and page all live in the page's address, so a link or a bookmark reopens exactly where you left it.
 
@@ -338,11 +354,22 @@ Admins can also create and edit classes and relationship types themselves — na
 
 **Link dates.** A link Genie reads from a document starts on that document's date, so the date scrubber no longer shows it before the document existed; a document with no date of its own leaves the start open. If an earlier document states the same link, the start moves back to that day, and a passage dated after a link ended proposes the pair as linked again from that day. Links Genie recorded earlier are dated in the background.
 
-A new or reset workspace starts with a set of common relationship types — *works for*, *reports to*, *customer of*, *part of*, and so on — so the very first reading already records links. Anything they don't name stays a suggestion in its own words, which is what new relationship types are proposed from. **Confirm all** now confirms everything waiting in the review queue, not only the rows you can see, and can be stopped part-way.
+A new or reset workspace starts with a set of common relationship types — *works for*, *reports to*, *customer of*, *part of*, and so on — so the very first reading already records links. Anything they don't name stays a suggestion in its own words, which is what new relationship types are proposed from. **Confirm all** now confirms everything waiting in the review queue, not only the rows you can see, and can be stopped part-way. It also accepts the suggestions the queue lists: possible duplicates are merged, suggested classes, properties and relationship types are created, and conditions documents state are set. Only the leftover rows of a split are left out, since each needs a place. The button sits at the top of the queue and its dialog lists what it will do.
 
 **Layers.** A large company's knowledge doesn't need to be one tangle. A **layer** is a named area of the model — Sales, Engineering, HR — so a team can look at its own part or at the whole while links still run between them. It is still one model: classes, entities, and links are filed in a layer (or in the shared core everyone builds on), and a view scoped to a layer lists its own entities first, plus the links that reach into other layers. Search says how many matches it left out of the layer and offers **Search all layers**. Who is who never depends on a layer: a new record that looks like one in another layer is offered as a merge instead of quietly standing beside it. Owners and admins manage layers; Genie AI can file things in them.
 
 The **Graph** runs the full width of the page. Pick an entity and its card floats over the right side of the map instead of taking a permanent column; close it with ✕ or Esc. Use the fullscreen button to give the map the whole screen, and **Hide unlinked** to drop entities with no drawn link and lighten the view. It shows up to 1,000 entities at a time. The page has no header band — controls float over the map as icon buttons (views, filters, legend, refresh), and anyone allowed to edit the model can change an entity's names, values, and look straight from its card. Web and email addresses in an entity's values are clickable, and Markdown documents open in a source's citation sheet fully formatted, with the cited passage highlighted.
+
+### Drafts
+
+In a workspace with **staging** on — the default for new workspaces; owners and admins switch it in the knowledge page's extraction panel — changes to the knowledge model don't land on the model everyone reads. They go into **your draft**: you, and Genie AI when it edits for you, see the live model with your changes on top, while everyone else keeps seeing it as it was. Reading documents, integrations and other automatic processes keep writing to the live model, called **main**.
+
+- **Pick where changes go** with the draft switcher in the knowledge views: **Main**, **My draft**, a shared draft or **New draft…**. A shared draft has a name ("Q3 reorg"); its owner adds members as editors or viewers.
+- **See what changed.** A banner shows the draft's name and how many changes and conflicts it holds, and entities, links and classes carry *New in draft*, *Changed in draft*, *Removed in draft* or *Conflict* badges. An entity's card lists each changed field, main's value beside the draft's. The **Drafts** page lists your drafts, drafts shared with you and — for people who can publish — drafts awaiting publication.
+- **Check and publish.** **Check against main** tries a draft without changing anything. Members with the *Publish knowledge changes to main* permission publish a draft, which applies its changes to main one by one, each as its author; everyone else uses **Request publish**. A publisher can also pick **Main** to edit live, for eight hours at a time.
+- **Conflicts.** When main changed something your draft also changed, you're told and choose **Revert own change**, **Swap to mainline** (take main's version) or **Keep mine**.
+
+Genie AI stages into your draft like you do. Anything that drops changes — reverting, swapping or discarding a draft — asks you to confirm on a card first.
 
 ### Access areas
 
