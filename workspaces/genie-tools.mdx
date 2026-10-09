@@ -72,6 +72,8 @@ A **JSON** block reads a value instead of dumping it: an object's fields as labe
 
 A **Table** can also show a whole class of your [knowledge model](/workspaces/overview#knowledge-model) — say, every contract Genie found in your documents — as a paged grid, sorted by name or by when it was created. It shows the total count (or "5,000+" once it's past what's counted), locks a row whose source documents you can't all read, and links each entity to its full card. **Export** downloads the whole class, except when the class is too large to count, where the export is refused rather than cut short. A class grid has no search box or filters.
 
+**Opening a page is faster the second time.** When a page's load asks Genie AI's model the same question about the same data, it reuses its own earlier answer, for up to a day, instead of asking again — so a page that summarizes reports doesn't wait on, or bill you for, the same answer on every open. The answer is fresh again as soon as the data it read changes, and pressing **Refresh**, **Retry** or running an action always asks again. Web searches and website downloads are never reused.
+
 Uploads — into an **Import** block, a file field in a **Form**, or picked from your [knowledge base](/workspaces/overview#knowledge-base) — take files up to 200 MB. Anything large is compressed automatically to keep things fast; ask Genie AI to turn that compression up or down for a specific file field if the default doesn't suit what you're uploading.
 
 ## Selecting a record
