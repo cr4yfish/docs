@@ -13,7 +13,7 @@ Governance is part of every workspace by default — there's nothing to turn on.
 
 Click the account row at the bottom of the workspace sidebar, choose **Workspace settings**, then open **Governance**.
 
-Governance has three tabs: **Projects**, **Integrations & Knowledge**, and **Compliance rules**.
+Governance has these tabs: **Projects**, **Integrations & Knowledge**, **Compliance rules** and **Spend**. The workspace's **PII Detection**, **Guardrails**, **Activities** and **Tracing** pages now live here too, as tabs of their own — see [PII rules](/workspaces/pii-rules), [Guardrails](/workspaces/guardrails) and [Tracing](/workspaces/tracing).
 
 ## Projects: review
 
@@ -56,6 +56,16 @@ Turn your organization's policies into automatic checks. Each rule is a plain-la
 Genie checks each project against every enabled rule by looking at its name, description, visibility, connected integrations, and what its most recently published version actually shipped — never the contents of your chat conversations. Checks run automatically every time a project publishes a new version, and you can also trigger them manually: **Run checks** on a single project, **Run checks on all projects** from the project list, or **Run on all projects** from a specific rule.
 
 A rule's own page shows analytics — how many times it's run, how often it's failed, and its results across projects over time.
+
+## Spend limits
+
+The **Spend** tab shows what Genie AI's model calls cost in this workspace — totals, the daily ceiling, recent runs and alerts. Every model call is checked against a hard limit **before** it runs: each run has its own budget, and rolling 24-hour ceilings cap what a person, the workspace and the whole platform can spend. A call that would cross a limit doesn't run, and what a run had done up to then is kept. When a limit stops something — a chat turn, an agent run, [Auto](/workspaces/auto) — it says which one, in plain words.
+
+- Open a run to see every call it made, with times, alerts and how it ended. A figure the provider didn't report is marked *estimated*.
+- Anyone who may see Governance sees the workspace's totals and runs. Members with Governance's manage permission also see who started each run and a per-member breakdown, and may stop anyone's run. Anyone can stop a run they started.
+- Ask Genie AI — *"How much did our agents spend this week?"* — and it reads the same data.
+
+Platform-wide figures aren't shown here, only the workspace's own.
 
 ## Who can access Governance
 

@@ -84,6 +84,16 @@ Wenn das benötigte Tool nicht in der Preset-Liste ist, kannst du jeden MCP-komp
   </Step>
 </Steps>
 
+## Jede REST-API verbinden
+
+Hat ein Dienst keinen MCP-Server, bitte Genie AI im Workspace-Chat, ihn zu verbinden — *„Verbinde unseren Shopify-Shop"* oder *„Verbinde unsere interne Bestellungs-API"*. Genie AI hält die **Operationen** der API fest (zum Beispiel *Bestellungen auflisten* und *Bestellung anlegen*) und fragt dich auf einer eigenen Karte nach dem API-Schlüssel, sodass der Schlüssel nie durch das Modell läuft. Das Ergebnis ist eine **Custom-API**-Integration, aufgelistet mit einem Abzeichen **Custom API**, und jede ihrer Operationen steht an drei Stellen bereit:
+
+- als **Schritt im Genie-Agents-Editor** — in der Schrittliste unter **Deine Integrationen**, eine Zeile pro Operation, etwa *Shop · Bestellungen auflisten*. Ihre Eingaben erscheinen als gewöhnliche Felder, das rohe JSON bleibt unter **Erweitert** verfügbar;
+- als **Werkzeug von Genie AI selbst**, sodass *„Liste meine offenen Bestellungen auf"* im Chat funktioniert;
+- über den [Genie MCP Server](/de/workspaces/mcp-api), für externe Clients.
+
+Öffne die Zeile der Integration, um ihre Version, ihre Operationen (Methode, Pfad, ob sie liest oder schreibt) und das erste Problem zu sehen, falls eine Änderung abgelehnt wurde, oder um **Mit Genie AI bearbeiten** oder **Spec-JSON kopieren** zu drücken. Jede Änderung wird als neue Version gespeichert, sodass eine frühere wiederhergestellt werden kann. Nur Owner und Admins können eine hinzufügen, und es gelten dieselben [Regeln zu Freigabe und Sicherheit](#sicherheit) wie für jede Integration.
+
 ## Authentifizierungstypen
 
 <Tabs>

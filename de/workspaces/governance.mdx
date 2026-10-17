@@ -13,7 +13,7 @@ Governance ist standardmäßig Teil jedes Workspaces — es gibt nichts zu aktiv
 
 Klicke auf die Kontozeile unten in der Workspace-Seitenleiste, wähle **Workspace-Einstellungen** und öffne dann **Governance**.
 
-Governance hat drei Tabs: **Projekte**, **Integrationen & Wissen** und **Compliance-Regeln**.
+Governance hat diese Tabs: **Projekte**, **Integrationen & Wissen**, **Compliance-Regeln** und **Ausgaben**. Die Seiten **PII-Erkennung**, **Guardrails**, **Aktivitäten** und **Tracing** des Workspace liegen jetzt ebenfalls hier, als eigene Tabs — siehe [PII-Regeln](/de/workspaces/pii-rules), [Guardrails](/de/workspaces/guardrails) und [Tracing](/de/workspaces/tracing).
 
 ## Projekte: Überprüfung
 
@@ -56,6 +56,16 @@ Verwandle die Richtlinien deiner Organisation in automatische Prüfungen. Jede R
 Genie prüft jedes Projekt gegen jede aktivierte Regel, indem es dessen Namen, Beschreibung, Sichtbarkeit, verbundene Integrationen und den Inhalt der zuletzt veröffentlichten Version betrachtet — niemals den Inhalt deiner Chat-Gespräche. Prüfungen laufen automatisch bei jeder Veröffentlichung einer neuen Projektversion, und du kannst sie auch manuell auslösen: **Prüfungen ausführen** für ein einzelnes Projekt, **Prüfungen für alle Projekte ausführen** aus der Projektliste, oder **Auf alle Projekte anwenden** von einer bestimmten Regel aus.
 
 Die eigene Seite einer Regel zeigt Analysen — wie oft sie gelaufen ist, wie oft sie fehlgeschlagen ist und ihre Ergebnisse über Projekte hinweg im Zeitverlauf.
+
+## Ausgabenlimits
+
+Der Tab **Ausgaben** zeigt, was die Modellaufrufe von Genie AI in diesem Workspace kosten — Summen, die tägliche Obergrenze, letzte Läufe und Warnungen. Jeder Modellaufruf wird **vor** seiner Ausführung gegen ein hartes Limit geprüft: Jeder Lauf hat ein eigenes Budget, und gleitende 24-Stunden-Obergrenzen begrenzen, was eine Person, der Workspace und die gesamte Plattform ausgeben können. Ein Aufruf, der ein Limit überschreiten würde, läuft nicht, und was ein Lauf bis dahin erledigt hat, bleibt erhalten. Stoppt ein Limit etwas — einen Chatzug, einen Agent-Lauf, [Auto](/de/workspaces/auto) —, sagt es in klaren Worten, welches.
+
+- Öffne einen Lauf, um jeden seiner Aufrufe mit Zeiten, Warnungen und seinem Ende zu sehen. Eine Zahl, die der Anbieter nicht gemeldet hat, ist als *geschätzt* markiert.
+- Wer Governance sehen darf, sieht die Summen und Läufe des Workspace. Mitglieder mit der Verwaltungsberechtigung für Governance sehen außerdem, wer jeden Lauf gestartet hat, und eine Aufschlüsselung pro Mitglied, und dürfen jeden Lauf stoppen. Jeder kann einen Lauf stoppen, den er selbst gestartet hat.
+- Frag Genie AI — *„Wie viel haben unsere Agents diese Woche ausgegeben?"* — und es liest dieselben Daten.
+
+Plattformweite Zahlen werden hier nicht gezeigt, nur die des Workspace selbst.
 
 ## Wer Zugriff auf Governance hat
 

@@ -1,58 +1,91 @@
 ---
-title: "Auto: your own background agent"
-description: "Auto watches your workspaces in the background and leaves you suggestions you approve with one click. It sees only what you see, and nothing changes until you say so."
+title: "Auto: your workspace's own background agent"
+description: "Auto watches your workspace in the background, hands work to the member best placed to do it, and makes on its own only the changes you allow. Members can give it goals to work on."
 ---
 
-**Auto** is your own agent that works in the background. It looks at your workspaces for things worth your attention — an agent that keeps failing, documents waiting for review, an entity stuck in a stage — and leaves you **suggestions you approve or dismiss with one click**. Nothing Auto proposes changes a workspace until you approve it.
+**Auto** is your workspace's own agent that works in the background. Three times a day it checks what changed, looks closer when something needs attention, **hands each piece of work to the member best placed to do it**, and makes on its own **exactly the changes your workspace allows it to make** — action by action. Everything else waits for a person to approve it.
 
-Auto is **personal**: one Auto per person, with one switch, working in every workspace where you may use Genie AI.
+Members can also give Auto **goals** — high-level tasks it works on by itself, run after run — and, when your workspace's managers allow it, Auto can **talk to Genie AI itself** to get things done.
+
+There is **one Auto per workspace**. It acts as itself, under its own name *Auto* — in the activity log and on the [Tracing](/workspaces/tracing) page — never as a person, and it never counts as a member or a seat.
 
 ## Turn it on
 
-Open **Personal settings → Auto** (click the account row at the bottom of the sidebar). Auto starts **off** for everyone. Switch it on, and choose whether you want a push notification when it leaves something new. The page shows one workspace at a time; switch between them at the top.
+Open **Workspace settings → Auto**. Auto starts **off** in every workspace. Owners and admins switch it on. The first time, a short introduction explains that Auto works as itself and answers to the person who turned it on.
+
+Everyone who uses Genie AI in the workspace can open the page: they see whether Auto is on, what it may do alone, and the work it left for them. Each member also has their own **Push notifications** switch on this page, to be told when Auto hands them work.
 
 <Note>
-Auto picks up workspaces you join and drops the ones you leave or lose Genie AI access in, so there's nothing to maintain. It works in up to 25 workspaces, listed by name.
+Managing Auto takes a role that holds everything Auto itself can do. If you are an admin on a custom role with fewer permissions, you take part in Auto like any member but can't change its settings.
 </Note>
 
 ## What Auto does
 
 Auto works in two steps:
 
-- **Quick check** — a free look at your workspace, three times a day, that spots things worth a closer look: agents that are still failing, documents that recently arrived, entities idle in a stage for two weeks or more, proposals waiting in the review queue, and chats whose latest answer failed. It uses no credits.
-- **Deep run** — when a quick check finds something new, Auto investigates with read-only tools and writes up suggestions. A deep run starts only when the workspace has the credits for it, at most three times a day, and is billed like a Genie AI chat turn. Something Auto has already looked at doesn't trigger another one until it changes. A failure that a later run has since fixed isn't reported.
+- **Quick check** — a free look at the workspace, three times a day, that spots things worth a closer look: agents that are still failing or were paused by the platform, documents that recently arrived, entities idle in a stage for two weeks or more, and proposals waiting in the review queue. It uses no credits.
+- **Deep run** — when a quick check finds something new, Auto investigates with read-only tools and writes up its findings. A deep run starts only when the workspace has the credits for it, at most three times a day, and is billed like a Genie AI chat turn. Something Auto has already looked at doesn't trigger another run until it changes, and a failure that a later run has fixed isn't reported.
 
-You can also run either by hand with **Quick check** and **Deep run** on the Auto page, up to ten times a day per workspace.
+Owners and admins can also start either by hand with **Quick check** and **Deep run**, up to ten times a day.
 
-## Suggestions
+## Work for the right person
 
-A deep run leaves up to six suggestions. Each is one of three kinds:
+A deep run leaves up to six pieces of work. Each has an **assignee** — for example the owner of a failing agent — who gets a notification and approves or dismisses it. Each is one of three kinds:
 
 | Kind | What approving does |
 | --- | --- |
 | **Notice** | Closes it. It may link to the page it's about. |
-| **Ontology changes** | Applies up to 20 changes to your [knowledge model](/workspaces/overview#knowledge-model) as you — recording, linking, naming, advancing a stage. Auto never merges, splits, hides or deletes. In a workspace that stages ontology changes, they land in your draft instead. |
-| **Task** | Opens a new Genie AI chat that sends a prepared first-person request, so the work runs in front of you with every confirmation Genie AI normally asks for. |
+| **Ontology changes** | Applies up to 20 changes to your [knowledge model](/workspaces/overview#knowledge-model) — recording, linking, naming, advancing a stage. Auto never merges, splits, hides or deletes. In a workspace that stages ontology changes, they land in the approver's draft instead. |
+| **Task** | Opens a new Genie AI chat that sends a prepared first-person request, so the work runs in front of the approver with every confirmation Genie AI normally asks for. |
 
-Every card shows exactly what approving does, in full — each ontology change with its details, or the task's whole text. Long text collapses. Suggestions you don't decide expire after 14 days, and one you dismiss stays quiet for 30. The page also keeps a history of recent decisions and runs.
+Every card shows exactly what approving does, in full, and the work waiting for you also leads the **Recommended** row on the workspace dashboard. Long text collapses. Work nobody decides expires after 14 days, and something dismissed stays quiet for 30. An owner or admin can switch off **Hand work to members**, which keeps all of Auto's work with the managers.
 
-## It follows each workspace's rules
+## Decide what Auto may do alone
+
+Open **What Auto may do** from the Auto page. For each kind of action, an owner or admin chooses one of three modes:
+
+| Mode | What Auto does |
+| --- | --- |
+| **Never** | Doesn't propose it at all. |
+| **Ask first** | Leaves it for its assignee to approve. This is the default. |
+| **On its own** | Does it right away, as itself. The history says *Applied by Auto without asking*, and the activity log names Auto. |
+
+The actions are grouped by what they do: recording what documents say, linking entries, processes, confirming and rejecting, shaping the knowledge model, tasks for Genie AI, and the twice-daily tidying of the knowledge model. **Every kind of change** sets them all at once, after a dialog that says what it will do. A change made of several actions applies alone only when *every* action in it is set to **On its own**. Members see the modes as read-only words.
+
+## Give Auto a goal
+
+A **goal** is a task you give Auto in plain words — *"Link every supplier contract to its supplier"* or *"Find out why Invoice sync keeps failing and get it fixed"*. Auto works on it **by itself, as you**, over several runs, until it is done, blocked or cancelled.
+
+- **As you.** A goal run sees only what you can see and can do only what you could do, and never more than the managers allowed Auto. Anything it can't do alone waits for you on the Auto page.
+- **Rhythm.** A goal starts right away when Auto is on and free, and Auto comes back three hours after each run, giving you time to decide what it left you. A goal given while Auto is off waits until a manager turns it on.
+- **Limits.** A goal gets at most 8 runs and a spending budget across all its runs; when either is used up, it is marked **blocked** with Auto's note. Each member can have 5 active goals and give 20 a day.
+- **Status.** A goal is *active*, *done*, *blocked* (Auto says what it needs) or *cancelled*. You can cancel yours at any time, and managers can cancel anyone's.
+
+The **Goals** section is first on the Auto page: the form, then every goal with its status, runs used, Auto's latest note and its history.
+
+## Talk to Genie AI itself
+
+When an owner or admin sets **Task for Genie AI** to **On its own** — after a dialog that says what that allows — Auto may hold conversations with Genie AI **in chats of its own**, over several turns, to get done what needs Genie AI's tools. The chats are listed under **Auto's chats with Genie AI** on the Auto page and open like any chat, and each turn appears on the Tracing page. A goal's chats are yours and appear in your chat history.
+
+Without that setting, a task Auto proposes is never sent unasked: it runs as your chat, with every confirmation card, once you approve it.
+
+## It follows the workspace's rules
 
 A run in a workspace answers to that workspace alone:
 
-- It sees only what **you** can see there, including [access areas](/workspaces/overview#access-areas), and works only where your role lets you use Genie AI.
+- It sees only what its role allows there, including [access areas](/workspaces/overview#access-areas), and nothing carries over from one workspace to another.
 - The workspace's [PII rules](/workspaces/pii-rules) apply to what Auto sends to the model.
-- The workspace's wallet pays when the workspace pays, and every deep run appears on the workspace's [Tracing](/workspaces/tracing) page.
-- Approved ontology changes are logged in the workspace's activity log as yours.
-- Nothing carries over from one workspace to another.
+- The workspace's wallet pays when the workspace pays, and every run appears on the workspace's [Tracing](/workspaces/tracing) page.
+- Changes Auto makes are logged in the activity log under its own name.
+- Everything it does is bounded by spending limits (see [Spend limits](/workspaces/governance#spend-limits)). When a limit stops Auto, the page says so.
 
 ## Ask Genie AI
 
-Genie AI can show you what Auto found, switch Auto or its push on or off, start a run, and dismiss a suggestion — try *"What did Auto find in this workspace?"* Approving is the one thing it won't do for you: it shows the suggestion in full on a confirmation card that you press yourself.
+Genie AI can show you what Auto found, give or cancel a goal, start a run, dismiss work, and turn Auto off or narrow what it may do — try *"What did Auto find in this workspace?"* Two things stay with you: **approving** work, and **letting Auto do more** on its own. Both are confirmation cards that show the details in full and that you press yourself. The same tools are available through the [Genie MCP Server](/workspaces/mcp-api).
 
 ## Notifications
 
-When a deep run leaves suggestions and push is on, you get *"Auto has suggestions for you — 2 new suggestions are waiting in Acme."* It names only the workspace and the count, never what Auto found. It's skipped if the Auto page is already open in front of you.
+When a deep run leaves work for you, you get *"Auto has work for you — 2 new items are waiting for you."* It lands in your [notification inbox](/account/settings#notification-inbox) and reaches you by push and email as your settings say. It names only the workspace and the count, never what Auto found. Changes Auto made itself notify nobody.
 
 ## Related pages
 
