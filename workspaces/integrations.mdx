@@ -84,6 +84,16 @@ If the tool you need is not in the preset list, you can connect any MCP-compatib
   </Step>
 </Steps>
 
+## Connect any REST API
+
+If a service has no MCP server, ask Genie AI in the workspace chat to connect it — *"Connect our Shopify shop"* or *"Connect our internal orders API"*. Genie AI writes down the API's **operations** (for example *List orders* and *Create order*) and asks you for the API key on a card of its own, so the key never passes through the model. The result is a **custom API** integration, listed with a **Custom API** badge, and each of its operations is available in three places:
+
+- as a **step in the Genie Agents editor** — under **Your integrations** in the add-step list, one row per operation such as *Shop · List orders*. Its inputs appear as ordinary fields, with the raw JSON still available under **Advanced**;
+- as a **tool of Genie AI itself**, so *"List my open orders"* works in chat;
+- through the [Genie MCP Server](/workspaces/mcp-api), for external clients.
+
+Open the integration's row to see its version, its operations (method, path, whether each reads or writes) and the first problem if a change was refused, or to press **Edit with Genie AI** or **Copy spec JSON**. Every change is saved as a new version, so an earlier one can be restored. Only owners and admins can add one, and the same [sharing and security rules](#security) as for any integration apply.
+
 ## Authentication types
 
 <Tabs>

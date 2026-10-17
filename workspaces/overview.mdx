@@ -60,7 +60,7 @@ The left sidebar is the primary navigation hub for your workspace.
 Drag the sidebar's right edge to resize it, or all the way to the left to collapse it to icons only — drag the collapsed edge back out to reopen it. Collapsed, the sidebar still lists your chats as icons — each with its own icon and colour, and the title in a tooltip. On mobile, the workspace switcher opens as a bottom drawer.
 </Tip>
 
-Workspace settings and your personal settings share one navigation, reached from the account row at the bottom of the sidebar: choose **Workspace settings** (General, Members, Roles, Integrations, Secrets, PII Detection, Guardrails, Governance, and — for admins and owners — Activities, Tracing, Billing, and the Ontology) or **Personal settings** (Appearance, Sign-in methods, Notifications, and [Auto](/workspaces/auto)). Opening either replaces the sidebar with a settings navigation and a back arrow that returns you to the workspace. See [Invite and manage workspace members](/workspaces/members) for roles, and [Account settings](/account/settings) for your personal preferences.
+Workspace settings and your personal settings share one navigation, reached from the account row at the bottom of the sidebar: choose **Workspace settings** (General, Members, Roles, Integrations, Secrets, Knowledge access, [Auto](/workspaces/auto), Governance — which also holds PII Detection, Guardrails, Activities, Tracing and Spend — and, for admins and owners, Billing and the Ontology) or **Personal settings** (Appearance, Sign-in methods, and Notifications). Opening either replaces the sidebar with a settings navigation and a back arrow that returns you to the workspace. See [Invite and manage workspace members](/workspaces/members) for roles, and [Account settings](/account/settings) for your personal preferences.
 
 ### Workspace profile
 
@@ -246,7 +246,19 @@ When the chat has more than one thing on the canvas — a Genie Tool, a Genie Ag
 
 **Charts and flowcharts.** Ask Genie AI for a chart — bars, lines, areas, pies, donuts or scatter plots — or a flowchart of a process or an approval path, and it draws one straight into the chat. It can chart rows you paste, a workspace table, the numbers behind a Genie Tool, a Genie Agent's latest run, or what the knowledge model holds (entities per class, process stages, a class's values), always within what you may see. On the full chat page every chart stacks on the canvas beside the conversation, and each one downloads as **PNG** or **PDF**. When a chart covers only part of the data, it says so under the figure.
 
-Press an entity — in the chart, or from a chip under it — and its full card opens over the chart's right side, the same panel as on the Graph page: its sources, its process, and, if you may edit the model, Edit, Look and Layer. The chart makes room for it, and **Ask Genie AI** buttons on the panel write into this chat's message box instead of opening the command palette. When the entities the chat named have no links among them, they show as detail cards instead of an empty chart. The canvas also follows a draft being published, so it shows what is live once the run finishes.
+Press an entity — in the chart, or from a chip under it — and its card opens as a panel **under** the chart, in your light or dark theme, folded to one row with its name, its class and its main values; press the row to unfold the rest — its sources, its process and, if you may edit the model, Edit and Layer. The chart gives up the room it takes, and **Ask Genie AI** buttons on the panel write into this chat's message box instead of opening the command palette. When the entities the chat named have no links among them, they show as detail cards instead of an empty chart. The canvas also follows a draft being published, so it shows what is live once the run finishes.
+
+**Workspace tables on the canvas.** When Genie AI reads or changes one of your [workspace tables](/workspaces/genie-tools), the table opens as its own tab on the canvas — 50 rows a page, searchable and sortable, with the rows it just changed highlighted. Press a row, or **Add row**, to edit it right there. A table's name in an answer is marked, and pressing it opens the table (in a sheet over the chat on a phone). A Genie Agent's table step shows its table's entries the same way in the agent editor.
+
+**Close and reopen canvas tabs.** Each tab has its own **✕**, and the canvas has one more to close it all. A closed tab comes back when Genie AI has something new for it, when you press a mark for it, or from **Show the canvas** in the chat header. When a chat is shared, each tab is shown only to those who may see what is in it.
+
+**Calculations you can check.** When Genie AI states a figure it worked out — a sum, a share, an average — press the figure to see the arithmetic step by step and where each input came from. A figure only quoted from a document or table is a citation instead.
+
+**Genie AI follows up on runs it started.** When Genie AI starts a Genie Agent from the chat, it comes back on its own when the run ends: a small note says the run finished or failed, with **Open run**, followed by a report of what the run did, which step failed and why, and what to do next. If you closed the tab, the usual "Genie AI is done" notification tells you.
+
+**Take another perspective.** Press **Work from this perspective** on an entity card — often a person — or ask Genie AI to, and the chat answers from that entity's point of view, for example *"what did Anna own?"* A pill over the chat shows it and clears it. It is a focus, not an identity: it never widens what you can see, and nobody's mailbox or connections are used.
+
+**Genie AI explains instead of going quiet.** Every answer comes with text, and when Genie AI can't or won't do something, it says why. A chat turn that [cost limits](/workspaces/governance#spend-limits) held back says so too.
 
 ### In-app links open as chips
 
@@ -411,9 +423,13 @@ In a workspace with **staging** on — the default for new workspaces; owners an
 
 Genie AI stages into your draft like you do. Anything that drops changes — reverting, swapping or discarding a draft — asks you to confirm on a card first. When Genie AI shows a draft on the chat canvas, it draws the draft's changes in orange, and a publish card waits for the publish to finish and tells Genie AI how it ended.
 
+**Where a document came from.** A document's details name how it got into the workspace and for whom — for example *Synced from Google Drive by Anna · 9 Oct 2026* — its last edit, and, for a synced drive file, the folder path and file name. A member who can't see a fenced folder never sees its path.
+
 ### Access areas
 
 By default, every workspace member can see every knowledge folder. If a folder holds something more sensitive — HR records, one client's own files — an owner or admin can fence it into an **access area** from workspace settings → **Knowledge access**: create an area, decide whether it's open to every member by default or only to people you grant, then add the roles, groups, or individual members who should reach it and put the folder into it. Anyone outside an area's reach doesn't just lose access to the folder — they don't see that it exists at all.
+
+Each area is one card on the **Knowledge access** page, with a one-line summary that opens onto three questions: **who can see it** (a **Private / Everyone** switch, every grant as a row you change in place, and one picker for groups, roles and people), **which folders are in it**, and **what the knowledge model learned from them** — the entities cited from the area, by class, and how many of their cards are invisible outside it. Creating an area asks only for a name, who can open it and an optional description. Genie AI can read the same summary.
 
 An area can grant **read** access (see and use what's inside) or **write** access (also add, move, and delete documents in it). Moving a folder into or out of an area, or changing who reaches it, applies to everything inside it, including sub-folders. If every document an entity is cited from moves into an area that isn't open to all members, its card follows: it becomes visible only to people who may read those documents, and anyone with permission can widen it again. This only ever tightens — a card is never opened up automatically, and one you set yourself is left alone.
 

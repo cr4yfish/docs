@@ -1,60 +1,91 @@
 ---
-title: "Auto: dein eigener Hintergrund-Agent"
-description: "Auto beobachtet deine Workspaces im Hintergrund und hinterlässt dir Vorschläge, die du mit einem Klick freigibst. Er sieht nur, was du siehst, und nichts ändert sich, bevor du es erlaubst."
+title: "Auto: der eigene Hintergrund-Agent deines Workspace"
+description: "Auto beobachtet deinen Workspace im Hintergrund, reicht Arbeit an das Mitglied weiter, das sie am besten erledigen kann, und nimmt von sich aus nur die Änderungen vor, die du erlaubst. Mitglieder können ihm Ziele geben."
 ---
 
-**Auto** ist dein eigener Agent, der im Hintergrund arbeitet. Er schaut in deinen Workspaces nach Dingen, die deine Aufmerksamkeit verdienen — ein Agent, der immer wieder fehlschlägt, Dokumente, die auf Prüfung warten, eine Entität, die in einer Phase festhängt — und hinterlässt dir **Vorschläge, die du mit einem Klick freigibst oder verwirfst**. Nichts, was Auto vorschlägt, ändert einen Workspace, bevor du es freigibst.
+**Auto** ist der eigene Agent deines Workspace, der im Hintergrund arbeitet. Dreimal täglich prüft er, was sich geändert hat, schaut genauer hin, wenn etwas Aufmerksamkeit braucht, **reicht jede Aufgabe an das Mitglied weiter, das sie am besten erledigen kann**, und nimmt von sich aus **genau die Änderungen vor, die dein Workspace ihm erlaubt** — Aktion für Aktion. Alles andere wartet darauf, dass eine Person es freigibt.
 
-Auto ist **persönlich**: ein Auto pro Person, mit einem Schalter, in jedem Workspace, in dem du Genie AI nutzen darfst.
+Mitglieder können Auto außerdem **Ziele** geben — übergeordnete Aufgaben, an denen er selbstständig arbeitet, Lauf um Lauf — und, wenn die Verwalter deines Workspace es erlauben, kann Auto **selbst mit Genie AI sprechen**, um Dinge zu erledigen.
+
+Es gibt **ein Auto pro Workspace**. Er handelt als er selbst, unter dem Namen *Auto* — im Aktivitätsprotokoll und auf der [Tracing](/de/workspaces/tracing)-Seite —, nie als Person, und er zählt weder als Mitglied noch als Platz.
 
 ## Einschalten
 
-Öffne **Persönliche Einstellungen → Auto** (klicke auf die Kontozeile unten in der Seitenleiste). Auto ist für alle zunächst **aus**. Schalte es ein und wähle, ob du eine Push-Benachrichtigung möchtest, wenn Auto etwas Neues hinterlässt. Die Seite zeigt jeweils einen Workspace; oben wechselst du zwischen ihnen.
+Öffne **Workspace-Einstellungen → Auto**. Auto ist in jedem Workspace zunächst **aus**. Owner und Admins schalten ihn ein. Beim ersten Mal erklärt eine kurze Einführung, dass Auto als er selbst arbeitet und sich vor der Person verantwortet, die ihn eingeschaltet hat.
 
-Die Seite öffnet mit einem Statusband, das sagt, ob Auto an ist, mit den Schaltern für Auto und Push. Darunter ist jeder Workspace eine Pille, die eine Zahl zeigt, solange Vorschläge warten. Ein Workspace liest sich als eine Zeitleiste von der Zukunft in die Vergangenheit: **Als Nächstes** (die nächste geplante Prüfung, die letzten Ergebnisse und die Start-Buttons), **Wartet auf dich** (die Vorschläge) und **Früher** (vergangene Läufe und entschiedene Vorschläge, nach Tag gruppiert).
+Alle, die Genie AI im Workspace nutzen, können die Seite öffnen: Sie sehen, ob Auto an ist, was er allein tun darf und welche Arbeit er für sie hinterlassen hat. Jedes Mitglied hat auf dieser Seite außerdem einen eigenen Schalter für **Push-Benachrichtigungen**, um informiert zu werden, wenn Auto ihm Arbeit übergibt.
 
 <Note>
-Auto erkennt Workspaces, denen du beitrittst, und lässt die weg, die du verlässt oder in denen du den Genie-AI-Zugriff verlierst — du musst nichts pflegen. Auto arbeitet in bis zu 25 Workspaces, nach Namen aufgelistet.
+Auto zu verwalten setzt eine Rolle voraus, die alles umfasst, was Auto selbst tun kann. Bist du Admin mit einer benutzerdefinierten Rolle mit weniger Berechtigungen, nimmst du an Auto teil wie jedes Mitglied, kannst aber seine Einstellungen nicht ändern.
 </Note>
 
 ## Was Auto tut
 
 Auto arbeitet in zwei Schritten:
 
-- **Schnellprüfung** — ein kostenloser Blick auf deinen Workspace, dreimal täglich, der Dinge findet, die einen genaueren Blick verdienen: Agents, die weiterhin fehlschlagen, kürzlich eingetroffene Dokumente, Entitäten, die zwei Wochen oder länger in einer Phase ruhen, Vorschläge in der Prüfwarteschlange und Chats, deren letzte Antwort fehlgeschlagen ist. Sie verbraucht keine Credits.
-- **Tiefenlauf** — findet eine Schnellprüfung etwas Neues, untersucht Auto es mit schreibgeschützten Werkzeugen und formuliert Vorschläge. Ein Tiefenlauf startet nur, wenn der Workspace die Credits dafür hat, höchstens dreimal täglich, und wird wie ein Genie-AI-Chatzug abgerechnet. Was Auto schon betrachtet hat, löst erst wieder einen Lauf aus, wenn es sich ändert. Ein Fehler, den ein späterer Lauf inzwischen behoben hat, wird nicht gemeldet.
+- **Schnellprüfung** — ein kostenloser Blick auf den Workspace, dreimal täglich, der Dinge findet, die einen genaueren Blick verdienen: Agents, die weiterhin fehlschlagen oder von der Plattform pausiert wurden, kürzlich eingetroffene Dokumente, Entitäten, die zwei Wochen oder länger in einer Phase ruhen, und Vorschläge in der Prüfwarteschlange. Sie verbraucht keine Credits.
+- **Tiefenlauf** — findet eine Schnellprüfung etwas Neues, untersucht Auto es mit schreibgeschützten Werkzeugen und hält seine Erkenntnisse fest. Ein Tiefenlauf startet nur, wenn der Workspace die Credits dafür hat, höchstens dreimal täglich, und wird wie ein Genie-AI-Chatzug abgerechnet. Was Auto schon betrachtet hat, löst erst wieder einen Lauf aus, wenn es sich ändert, und ein Fehler, den ein späterer Lauf behoben hat, wird nicht gemeldet.
 
-Beides kannst du auch von Hand mit **Schnellprüfung** und **Tiefenlauf** auf der Auto-Seite starten, bis zu zehnmal täglich pro Workspace.
+Owner und Admins können beides auch von Hand mit **Schnellprüfung** und **Tiefenlauf** starten, bis zu zehnmal täglich.
 
-## Vorschläge
+## Arbeit für die richtige Person
 
-Ein Tiefenlauf hinterlässt bis zu sechs Vorschläge. Jeder ist von einer von drei Arten:
+Ein Tiefenlauf hinterlässt bis zu sechs Arbeitsaufträge. Jeder hat eine **zuständige Person** — zum Beispiel den Owner eines fehlschlagenden Agents —, die benachrichtigt wird und ihn freigibt oder verwirft. Jeder ist von einer von drei Arten:
 
 | Art | Was die Freigabe bewirkt |
 | --- | --- |
 | **Hinweis** | Schließt ihn. Er kann auf die Seite verlinken, um die es geht. |
-| **Ontologie-Änderungen** | Wendet bis zu 20 Änderungen an deinem [Wissensmodell](/de/workspaces/overview#wissensmodell) als du an — erfassen, verknüpfen, benennen, eine Phase vorrücken. Auto führt nie zusammen, teilt, blendet aus oder löscht. In einem Workspace, der Ontologie-Änderungen zwischenspeichert, landen sie stattdessen in deinem [Entwurf](/de/workspaces/overview#wissensmodell). |
-| **Aufgabe** | Öffnet einen neuen Genie-AI-Chat, der eine vorbereitete Anfrage in der Ich-Form sendet, sodass die Arbeit vor deinen Augen läuft — mit jeder Bestätigung, die Genie AI sonst verlangt. |
+| **Ontologie-Änderungen** | Wendet bis zu 20 Änderungen an deinem [Wissensmodell](/de/workspaces/overview#wissensmodell) an — erfassen, verknüpfen, benennen, eine Phase vorrücken. Auto führt nie zusammen, teilt, blendet aus oder löscht. In einem Workspace, der Ontologie-Änderungen zwischenspeichert, landen sie stattdessen im Entwurf der freigebenden Person. |
+| **Aufgabe** | Öffnet einen neuen Genie-AI-Chat, der eine vorbereitete Anfrage in der Ich-Form sendet, sodass die Arbeit vor den Augen der freigebenden Person läuft — mit jeder Bestätigung, die Genie AI sonst verlangt. |
 
-Jede Karte zeigt vollständig, was die Freigabe bewirkt — jede Ontologie-Änderung mit ihren Details oder den ganzen Text der Aufgabe. Ontologie-Änderungen lesen sich in einfachen Worten — was mit welcher Entität oder Verknüpfung geschieht und welche Begründung in deinem Namen festgehalten wird —, die übrigen Details stehen unter **Details**. Die in einem Workspace wartenden Vorschläge stehen außerdem an der Spitze der Zeile **Empfohlen** auf dessen Dashboard, bis zu drei, und jeder öffnet die Auto-Seite. Langer Text lässt sich einklappen. Vorschläge, über die du nicht entscheidest, verfallen nach 14 Tagen; ein verworfener bleibt 30 Tage still. Die Seite führt außerdem einen Verlauf der letzten Entscheidungen und Läufe.
+Jede Karte zeigt vollständig, was die Freigabe bewirkt, und die auf dich wartende Arbeit steht außerdem an der Spitze der Zeile **Empfohlen** auf dem Workspace-Dashboard. Langer Text lässt sich einklappen. Arbeit, über die niemand entscheidet, verfällt nach 14 Tagen; Verworfenes bleibt 30 Tage still. Owner und Admins können **Arbeit an Mitglieder übergeben** ausschalten, dann bleibt alle Arbeit von Auto bei den Verwaltern.
 
-## Auto folgt den Regeln jedes Workspace
+## Entscheide, was Auto allein tun darf
+
+Öffne **Was Auto tun darf** auf der Auto-Seite. Für jede Art von Aktion wählt ein Owner oder Admin einen von drei Modi:
+
+| Modus | Was Auto tut |
+| --- | --- |
+| **Nie** | Schlägt sie gar nicht erst vor. |
+| **Erst fragen** | Überlässt sie der zuständigen Person zur Freigabe. Das ist der Standard. |
+| **Von allein** | Tut es sofort, als er selbst. Der Verlauf sagt *Von Auto ohne Rückfrage angewendet*, und das Aktivitätsprotokoll nennt Auto. |
+
+Die Aktionen sind danach gruppiert, was sie tun: festhalten, was Dokumente sagen, Einträge verknüpfen, Prozesse, bestätigen und ablehnen, das Wissensmodell formen, Aufgaben für Genie AI und das zweimal tägliche Aufräumen des Wissensmodells. **Jede Art von Änderung** stellt alle auf einmal ein, nach einem Dialog, der sagt, was es bewirkt. Eine Änderung aus mehreren Aktionen wird nur dann allein angewendet, wenn *jede* Aktion darin auf **Von allein** steht. Mitglieder sehen die Modi als schreibgeschützte Worte.
+
+## Gib Auto ein Ziel
+
+Ein **Ziel** ist eine Aufgabe, die du Auto in einfachen Worten gibst — *„Verknüpfe jeden Lieferantenvertrag mit seinem Lieferanten"* oder *„Finde heraus, warum die Rechnungssynchronisation immer wieder fehlschlägt, und behebe es"*. Auto arbeitet **selbstständig als du** daran, über mehrere Läufe, bis es erledigt, blockiert oder abgebrochen ist.
+
+- **Als du.** Ein Ziel-Lauf sieht nur, was du sehen kannst, und kann nur tun, was du tun könntest, nie mehr, als die Verwalter Auto erlaubt haben. Was er nicht allein tun kann, wartet auf der Auto-Seite auf dich.
+- **Rhythmus.** Ein Ziel startet sofort, wenn Auto an und frei ist, und Auto kommt drei Stunden nach jedem Lauf wieder, damit du Zeit hast, über das zu entscheiden, was er dir hinterlassen hat. Ein Ziel, das bei ausgeschaltetem Auto gegeben wird, wartet, bis ein Verwalter ihn einschaltet.
+- **Grenzen.** Ein Ziel bekommt höchstens 8 Läufe und ein Ausgabenbudget für alle seine Läufe zusammen; ist eines davon aufgebraucht, wird es mit der Notiz von Auto als **blockiert** markiert. Jedes Mitglied kann 5 aktive Ziele haben und 20 pro Tag geben.
+- **Status.** Ein Ziel ist *aktiv*, *erledigt*, *blockiert* (Auto sagt, was er braucht) oder *abgebrochen*. Du kannst deine jederzeit abbrechen, Verwalter die aller anderen.
+
+Der Abschnitt **Ziele** steht auf der Auto-Seite ganz oben: das Formular, dann jedes Ziel mit Status, verbrauchten Läufen, Autos jüngster Notiz und seinem Verlauf.
+
+## Mit Genie AI selbst sprechen
+
+Stellt ein Owner oder Admin **Aufgabe für Genie AI** auf **Von allein** — nach einem Dialog, der sagt, was das erlaubt —, darf Auto **in eigenen Chats** über mehrere Züge Gespräche mit Genie AI führen, um zu erledigen, was Genie AIs Werkzeuge braucht. Die Chats stehen auf der Auto-Seite unter **Autos Chats mit Genie AI** und öffnen sich wie jeder Chat, und jeder Zug erscheint auf der Tracing-Seite. Die Chats eines Ziels gehören dir und erscheinen in deinem Chatverlauf.
+
+Ohne diese Einstellung wird eine Aufgabe, die Auto vorschlägt, nie ungefragt gesendet: Sie läuft als dein Chat, mit jeder Bestätigungskarte, sobald du sie freigibst.
+
+## Auto folgt den Regeln des Workspace
 
 Ein Lauf in einem Workspace unterliegt allein den Regeln dieses Workspace:
 
-- Er sieht dort nur, was **du** sehen kannst, einschließlich [Zugriffsbereichen](/de/workspaces/overview#zugriffsbereiche), und arbeitet nur dort, wo deine Rolle dir Genie AI erlaubt.
+- Er sieht dort nur, was seine Rolle erlaubt, einschließlich [Zugriffsbereichen](/de/workspaces/overview#zugriffsbereiche), und nichts wird von einem Workspace in einen anderen übernommen.
 - Die [PII-Regeln](/de/workspaces/pii-rules) des Workspace gelten für das, was Auto an das Modell sendet.
-- Das Guthaben des Workspace zahlt, wenn der Workspace zahlt, und jeder Tiefenlauf erscheint auf der [Tracing](/de/workspaces/tracing)-Seite des Workspace.
-- Freigegebene Ontologie-Änderungen stehen im Aktivitätsprotokoll des Workspace als deine.
-- Nichts wird von einem Workspace in einen anderen übernommen.
+- Das Guthaben des Workspace zahlt, wenn der Workspace zahlt, und jeder Lauf erscheint auf der [Tracing](/de/workspaces/tracing)-Seite des Workspace.
+- Änderungen, die Auto vornimmt, stehen im Aktivitätsprotokoll unter seinem eigenen Namen.
+- Alles, was er tut, ist durch Ausgabenlimits begrenzt (siehe [Ausgabenlimits](/de/workspaces/governance#ausgabenlimits)). Stoppt ein Limit Auto, sagt die Seite es.
 
 ## Frag Genie AI
 
-Genie AI kann dir zeigen, was Auto gefunden hat, Auto oder seinen Push ein- und ausschalten, einen Lauf starten und einen Vorschlag verwerfen — probiere *„Was hat Auto in diesem Workspace gefunden?"* Das Freigeben ist das Einzige, was es nicht für dich übernimmt: Es zeigt den Vorschlag vollständig auf einer Bestätigungskarte, die du selbst bestätigst.
+Genie AI kann dir zeigen, was Auto gefunden hat, ein Ziel geben oder abbrechen, einen Lauf starten, Arbeit verwerfen und Auto ausschalten oder einschränken, was er tun darf — probiere *„Was hat Auto in diesem Workspace gefunden?"* Zwei Dinge bleiben bei dir: das **Freigeben** von Arbeit und **Auto mehr von allein tun zu lassen**. Beides sind Bestätigungskarten, die die Details vollständig zeigen und die du selbst bestätigst. Dieselben Werkzeuge stehen über den [Genie MCP Server](/de/workspaces/mcp-api) bereit.
 
 ## Benachrichtigungen
 
-Hinterlässt ein Tiefenlauf Vorschläge und Push ist an, erhältst du *„Auto hat Vorschläge für dich — 2 neue Vorschläge warten in Acme."* Sie nennt nur den Workspace und die Anzahl, nie, was Auto gefunden hat. Sie entfällt, wenn die Auto-Seite bereits vor dir geöffnet ist.
+Hinterlässt ein Tiefenlauf Arbeit für dich, erhältst du *„Auto hat Arbeit für dich — 2 neue Einträge warten auf dich."* Sie landet in deinem [Benachrichtigungs-Posteingang](/de/account/settings#benachrichtigungs-posteingang) und erreicht dich per Push und E-Mail, wie es deine Einstellungen sagen. Sie nennt nur den Workspace und die Anzahl, nie, was Auto gefunden hat. Änderungen, die Auto selbst vorgenommen hat, benachrichtigen niemanden.
 
 ## Verwandte Seiten
 
