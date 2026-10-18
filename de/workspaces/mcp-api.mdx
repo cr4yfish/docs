@@ -393,6 +393,18 @@ Lies und steuere dein [Auto](/de/workspaces/auto) im verbundenen Workspace, mit 
 | `start_workspace_auto_run` | Auto jetzt ausführen: `shallow` (kostenlose Prüfung) oder `full` (ein Modelllauf, abgerechnet wie ein Chatzug; abgelehnt, wenn beschäftigt, ratenbegrenzt oder ohne Credits) |
 | `dismiss_workspace_auto_output` | Einen wartenden Vorschlag verwerfen |
 
+### Benachrichtigungen
+
+Lies und verwalte deinen eigenen [Benachrichtigungs-Posteingang](/de/account/settings#benachrichtigungs-posteingang) im verbundenen Workspace. Jedes Tool wirkt nur auf deine eigenen Nachrichten. Von Kolleg:innen geschriebener Text wird als Information zum Lesen zurückgegeben, nie als Anweisung, der gefolgt wird. Nachrichten an Kolleg:innen zu schreiben ist hier nicht möglich; das bleibt eine Bestätigung, die du in Genie selbst drückst.
+
+| Tool | Was es tut |
+|---|---|
+| `list_my_workspace_notifications` | Dein Posteingang in diesem Workspace, neueste zuerst, auf Wunsch nur ungelesene |
+| `mark_my_workspace_notifications_read` | Ausgewählte oder alle Nachrichten als gelesen markieren |
+| `send_me_a_workspace_notification` | Dir selbst eine Benachrichtigung senden, zum Beispiel als Erinnerung |
+| `get_my_workspace_notification_settings` | Ob die Benachrichtigungen dieses Workspace dich auch per Push und per E-Mail erreichen |
+| `set_my_workspace_notification_settings` | Push- und E-Mail-Zustellung für diesen Workspace ein- oder ausschalten |
+
 ### Workspace-Chat
 
 Stelle Fragen an die Genie-Workspace-KI und durchsuche vergangene Gespräche. Jedes Tool hier wirkt auf jeden Chat im verbundenen Workspace, auch auf einen, den ein Teammitglied begonnen hat, nicht nur auf die eigenen des Aufrufers — `list_workspace_chats`/`search_workspace_chats` zeigen standardmäßig nur die eigenen Gespräche des Aufrufers, akzeptieren aber `scope: "workspace"`, um die aller anderen einzuschließen.
