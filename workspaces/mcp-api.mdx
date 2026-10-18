@@ -393,6 +393,18 @@ Read and control your [Auto](/workspaces/auto) in the connected workspace, the s
 | `start_workspace_auto_run` | Run Auto now: `shallow` (free check) or `full` (a model run, charged like a chat turn; refused when busy, rate-limited or out of credits) |
 | `dismiss_workspace_auto_output` | Dismiss one waiting suggestion |
 
+### Notifications
+
+Read and manage your own [notification inbox](/account/settings#notification-inbox) in the connected workspace. Every tool acts only on your own messages. Text written by colleagues is returned as information to read, never as instructions to follow. Writing to colleagues isn't available here; that stays a confirmation you press in Genie.
+
+| Tool | What it does |
+|---|---|
+| `list_my_workspace_notifications` | Your inbox in this workspace, newest first, optionally only unread |
+| `mark_my_workspace_notifications_read` | Mark chosen messages, or all of them, as read |
+| `send_me_a_workspace_notification` | Send yourself a notification, for example a reminder |
+| `get_my_workspace_notification_settings` | Whether this workspace's notifications also reach you by push and by email |
+| `set_my_workspace_notification_settings` | Switch push and email delivery for this workspace on or off |
+
 ### Workspace chat
 
 Send questions to the Genie workspace AI and browse past conversations. Every tool here acts on any chat in the connected workspace, including one a teammate started, not just the caller's own — `list_workspace_chats`/`search_workspace_chats` default to the caller's own conversations, but accept a `scope: "workspace"` to include everyone's.
