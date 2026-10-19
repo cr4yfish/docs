@@ -94,6 +94,8 @@ Hat ein Dienst keinen MCP-Server, bitte Genie AI im Workspace-Chat, ihn zu verbi
 
 Öffne die Zeile der Integration, um ihre Version, ihre Operationen (Methode, Pfad, ob sie liest oder schreibt) und das erste Problem zu sehen, falls eine Änderung abgelehnt wurde, oder um **Mit Genie AI bearbeiten** oder **Spec-JSON kopieren** zu drücken. Jede Änderung wird als neue Version gespeichert, sodass eine frühere wiederhergestellt werden kann. Nur Owner und Admins können eine hinzufügen, und es gelten dieselben [Regeln zu Freigabe und Sicherheit](#sicherheit) wie für jede Integration.
 
+**Operationen aus einem OpenAPI-Dokument importieren.** Veröffentlicht die API eine OpenAPI-3-Beschreibung, gib Genie AI den Link — *„Importiere die Operationen von https://api.example.com/openapi.json"*. Genie AI listet auf, was das Dokument anbietet, du wählst die gewünschten Operationen, und sie werden genau so übernommen, wie das Dokument sie beschreibt (Pfad-, Query- und Header-Eingaben, JSON-Body) und als eine neue Version gespeichert. Operationen, die sich nicht originalgetreu übernehmen lassen, werden übersprungen, und Genie AI sagt dir, warum. Eine Operation, die du schon hast, wird nur überschrieben, wenn du es verlangst. Das Dokument muss über HTTPS im öffentlichen Internet erreichbar sein, und sehr große Dokumente werden nur bis zu einer Größengrenze gelesen.
+
 ## Authentifizierungstypen
 
 <Tabs>
