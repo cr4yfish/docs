@@ -94,6 +94,8 @@ If a service has no MCP server, ask Genie AI in the workspace chat to connect it
 
 Open the integration's row to see its version, its operations (method, path, whether each reads or writes) and the first problem if a change was refused, or to press **Edit with Genie AI** or **Copy spec JSON**. Every change is saved as a new version, so an earlier one can be restored. Only owners and admins can add one, and the same [sharing and security rules](#security) as for any integration apply.
 
+**Import operations from an OpenAPI document.** If the API publishes an OpenAPI 3 description, give Genie AI its link — *"Import the operations from https://api.example.com/openapi.json"*. Genie AI lists what the document offers, you pick the operations you want, and they are converted exactly as the document describes them (path, query and header inputs, JSON body) and saved as one new version. Operations that can't be converted faithfully are skipped, and Genie AI tells you why. An operation you already have is only overwritten when you ask for it. The document must be reachable over HTTPS on the public internet, and very large documents are read only up to a size limit.
+
 ## Authentication types
 
 <Tabs>
