@@ -41,7 +41,7 @@ Covers what shipped October 16. Auto becomes your workspace's own agent with goa
 
 - **Auto works for the whole workspace.** One Auto per workspace, acting under its own name, hands each piece of work to the member best placed to do it and does on its own only the actions you set to **On its own**. Members can give it **goals** to work on by itself as them, and managers can let it talk to Genie AI in chats of its own. See [Auto](/workspaces/auto).
 - **Notification inbox.** A mail-style inbox in the account menu, with an unread count on your avatar, delivery by push and email per workspace, and a composer for colleagues. See [Notification inbox](/account/settings#notification-inbox).
-- **Tables on the canvas.** A workspace table Genie AI uses opens beside the chat with its rows editable, its name is marked in answers, and a Genie Agent's table step shows its entries. See [Chat](/workspaces/overview).
+- **Tables on the canvas.** A workspace table Genie AI uses opens beside the chat with its rows editable, its name is marked in answers, and a Genie Agent's table step shows its entries. See [Chat](/workspaces/overview#open-a-genie-tool-or-agent-beside-the-chat).
 - **Calculations you can check.** Press a worked-out figure in an answer to see the arithmetic and where each input came from.
 - **Follow-ups on agent runs.** Genie AI reports back on its own when a Genie Agent it started finishes or fails.
 - **Work from an entity's perspective.** Pin a chat to a person or any entity and it answers from that point of view, without widening what you can see.
@@ -205,7 +205,7 @@ Covers what shipped October 8. The knowledge flowchart gets a light mode, the ch
 ## Updates
 
 - **Light mode for the knowledge flowchart**, on the Graph page and on the chat canvas. See [Knowledge model](/workspaces/overview#knowledge-model).
-- **Open an entity's card on the chat canvas.** Press an entity in the chart to see its sources, process and edit options beside the chat; **Ask Genie AI** writes into the chat's message box. Entities with no links among them show as detail cards, and the canvas follows a draft you publish. See [Open a Genie Tool or Agent beside the chat](/workspaces/overview).
+- **Open an entity's card on the chat canvas.** Press an entity in the chart to see its sources, process and edit options beside the chat; **Ask Genie AI** writes into the chat's message box. Entities with no links among them show as detail cards, and the canvas follows a draft you publish. See [Open a Genie Tool or Agent beside the chat](/workspaces/overview#open-a-genie-tool-or-agent-beside-the-chat).
 - **Genie Tool pages open faster.** A page that asks Genie AI's model the same question about unchanged data reuses its answer for up to a day; **Refresh** always asks again. See [Genie Tools](/workspaces/genie-tools).
 - **Property management:** paper that is not a receipt is reported as its own block in a statement, and receipts filed under a unit count in its receipt list.
 
@@ -218,7 +218,7 @@ Covers what shipped October 6–7, plus Auto in the MCP Server on October 8. Cha
 ## Updates
 
 - **Drafts for the knowledge model.** In a workspace with staging on (the default for new workspaces), your and Genie AI's changes go into your own draft instead of the model everyone reads. Review them, check them against main, and publish — or resolve a conflict with **Revert own change**, **Swap to mainline** or **Keep mine**. See [Drafts](/workspaces/overview#drafts).
-- **Knowledge on the chat canvas.** The entities Genie AI names or changes are drawn beside the chat, and anything it staged in a draft shows in orange. With more than one thing on the canvas, tabs switch between them, and tools and agents appear while Genie AI builds them. See [Open a Genie Tool or Agent beside the chat](/workspaces/overview).
+- **Knowledge on the chat canvas.** The entities Genie AI names or changes are drawn beside the chat, and anything it staged in a draft shows in orange. With more than one thing on the canvas, tabs switch between them, and tools and agents appear while Genie AI builds them. See [Open a Genie Tool or Agent beside the chat](/workspaces/overview#open-a-genie-tool-or-agent-beside-the-chat).
 - **A page of its own for uploads.** Upload files or folders in the Library with a progress overview and a searchable table of every file; the upload keeps running while you browse. See [Knowledge base](/workspaces/overview#knowledge-base).
 - **Network drives: Amazon S3.** Connect a bucket once and every member can browse it, import files and keep a folder in sync. Genie AI can read the drive too. See [Knowledge base](/workspaces/overview#knowledge-base).
 - **Confirm all accepts every suggestion** in the knowledge model's review queue — duplicates, suggested classes and relationship types, and conditions — not only entities and links. See [Knowledge model](/workspaces/overview#knowledge-model).
@@ -454,7 +454,7 @@ Covers what shipped September 23. Genie Agents can branch: a new If/else step te
 - **OneDrive and SharePoint join Google Drive as a knowledge base source.** Browse your OneDrive or any SharePoint site you follow, import a file directly, or keep a whole library or folder in sync the same way you already can with a Drive folder. See [Cloud drives](/workspaces/overview#cloud-drives).
 - **Synced folders now hold onto a document when its file moves or disappears**, instead of losing track of it: move a file between two folders you sync and it stays the same knowledge document, and remove one from its source and the document sticks around — marked **Removed from the drive** — for 7 days in case it comes back, instead of being deleted right away. See [Cloud drives](/workspaces/overview#cloud-drives).
 - **Every knowledge document now carries the date it's about**, separate from its upload day — worked out automatically from the file name, title, or a connected drive's last-modified time, and correctable from the document's Rename or move dialog or by asking Genie AI. See [Knowledge base](/workspaces/overview#knowledge-base).
-- **A simple Genie Agent (no branching) now draws as a clean top-to-bottom stack on the chat canvas**, instead of the sideways grid the editor uses. See [Open a Genie Tool or Agent beside the chat](/workspaces/overview).
+- **A simple Genie Agent (no branching) now draws as a clean top-to-bottom stack on the chat canvas**, instead of the sideways grid the editor uses. See [Open a Genie Tool or Agent beside the chat](/workspaces/overview#open-a-genie-tool-or-agent-beside-the-chat).
 
 ## Fixes
 
@@ -493,7 +493,7 @@ Covers what shipped September 21. Genie Tools become true multi-page apps — in
 - **Genie Tools now lay out as multi-page apps.** A tool with a lot going on splits itself into focused pages — typically Dashboard, Upload, Manage, and Analytics — instead of one long scroll, and a page can also run as a **form**: one question at a time, with a progress line and a thank-you screen at the end. See [Genie Tools](/workspaces/genie-tools).
 - **A Genie Tool's import block and file fields can now pull straight from your knowledge base**, not just from disk, and a tool's own config can pre-select which folder or documents load when the page opens. See [Genie Tools](/workspaces/genie-tools).
 - **Genie Tools' spreadsheet blocks now handle up to 500,000 rows** (up from 50,000). The old all-in-one import block is now three focused ones — Import, Files, and Export — alongside four new analysis blocks: KPI, Compare, Anomalies, and Insights. See [Genie Tools](/workspaces/genie-tools).
-- **Open a Genie Tool or Genie Agent in a canvas beside the chat**, instead of scrolling past it in the transcript — the one you're building or viewing docks to the right, with a button to switch to another or close it. See [Workspace AI](/workspaces/overview).
+- **Open a Genie Tool or Genie Agent in a canvas beside the chat**, instead of scrolling past it in the transcript — the one you're building or viewing docks to the right, with a button to switch to another or close it. See [Workspace AI](/workspaces/overview#open-a-genie-tool-or-agent-beside-the-chat).
 - **Genie AI can show a knowledge document as a card right in the chat**, with actions to view or download it, instead of just naming it in its reply. See [Knowledge base](/workspaces/overview#knowledge-base).
 - **The Genie MCP Server can now browse and import files from a connected cloud drive as knowledge documents**, bringing an external AI client to parity with the web app's Knowledge page. See [Available tools](/workspaces/mcp-api#available-tools).
 - **The command palette (⌘K / Ctrl+K) got a full visual redesign** — a single search field flush to the top, and full-width result rows with color-coded icons in place of the old fixed-height panel. See [The command palette](/workspaces/overview#the-command-palette).
