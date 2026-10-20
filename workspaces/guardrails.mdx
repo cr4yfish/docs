@@ -17,6 +17,10 @@ Click the account row at the bottom of the workspace sidebar, choose **Workspace
 
 Toggle **Guardrail protection** on. If nothing has been configured yet, Genie starts from a set of protective defaults that you can adjust from there. At least one protection must stay active at all times — an empty guardrail configuration can't be saved.
 
+## Choose a provider
+
+Guardrails are judged by **Amazon Bedrock Guardrails** (the default) or **Google Model Armor**. Pick one at the top of the page; both judge every message before Genie AI answers and show a blocked message the same way. Model Armor covers harmful-content strengths and manipulation attempts only. Off-limits topics, blocked words, the profanity filter and **Check images** stay in your settings but are marked as not supported while Model Armor is selected, and they don't count as protection. Switch back at any time and your earlier settings apply again.
+
 ## What you can configure
 
 ### Harmful content
