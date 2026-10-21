@@ -24,10 +24,10 @@ Sixteen kinds of step are available today:
 | **Edge function** | Runs a deployed backend function — the agent's own bound project by default, or any other Genie App in your workspace |
 | **Connected app** | Calls a tool on one of your workspace's [connected integrations](/workspaces/integrations) — Linear, Notion, Outlook, and more — or on **Genie itself**, always available as a built-in connected app with nothing to set up |
 | **Notification** | Pushes a notification into the Genie app, to whoever ran the agent or to the agent's owner |
-| **Web search** | Searches the live web and returns the results as data — titles, links, snippets — for a later step to use |
+| **Web search** | Searches the live web. **Quick** returns the results as data — titles, links, snippets — for a later step to use; **Deep** researches one question in a loop and returns a cited report, a step that takes minutes and uses credits. A time limit (up to 20 minutes) bounds a deep search, and hitting it keeps what was found |
 | **Read a webpage** | Reads one page through Genie's safe page reader (the same one Genie AI uses in chat) and returns its text |
-| **Deep research** | Researches one question in depth and returns a cited report — a step that takes a few minutes and uses credits |
 | **Compliance check** | Checks a value against your workspace's [PII rules](/workspaces/pii-rules) and/or [Guardrails](/workspaces/guardrails) before it goes any further in the flow |
+| **Genie Tool** | Uses one page of a [Genie Tool](/workspaces/genie-tools) in your workspace — opens it, presses a button or submits its form, or reads a grid — and returns what it showed or did. It runs as the person who started the agent, so it only reaches tools and data they may use |
 | **Another agent** | Calls a Genie Agent you've already built, so you can compose smaller flows into bigger ones |
 | **If / else** | Branches the flow — test earlier results with AND / OR / NOT, then run different steps depending on whether they hold. See [Branching](#branching) |
 | **Knowledge** | Searches, lists, reads, files, updates, or deletes documents in your workspace's [knowledge base](/workspaces/overview#knowledge-base) |
@@ -40,7 +40,7 @@ A **Database** or **Edge function** step doesn't have to stay on the agent's own
 </Tip>
 
 <Tip>
-A **Web search** step returns the raw results, not a written summary — add an **AI** step after it if you want Genie to summarize or act on what it found. That keeps a scheduled search from quietly spending AI credits on a summary nobody asked for.
+A **Web search** step set to **Quick** returns the raw results, not a written summary — add an **AI** step after it if you want Genie to summarize or act on what it found. That keeps a scheduled search from quietly spending AI credits on a summary nobody asked for.
 </Tip>
 
 <Tip>
@@ -114,7 +114,7 @@ Before you commit to a change, you can run a real test to see exactly what an ag
   Genie AI can test a step on your behalf too — just ask it to test a step while you're describing changes to your agent in chat.
 </Tip>
 
-**Re-run with the same data.** Once a run has finished, **Re-run with the same data** repeats it with the same input. Steps that only read — an AI, web search, deep research, or knowledge step, say — reuse what the earlier run found instead of running again, so retrying the one step that failed, or testing a notification, doesn't wait on (or pay for) the research in front of it a second time. Steps that write or send — a notification, a row insert, a connected-app action — always run again, and so does any step you've edited since. Genie AI can re-run a run for you too.
+**Re-run with the same data.** Once a run has finished, **Re-run with the same data** repeats it with the same input. Steps that only read — an AI, web search (quick or deep), or knowledge step, say — reuse what the earlier run found instead of running again, so retrying the one step that failed, or testing a notification, doesn't wait on (or pay for) the research in front of it a second time. Steps that write or send — a notification, a row insert, a connected-app action — always run again, and so does any step you've edited since. Genie AI can re-run a run for you too.
 
 ## Run results
 

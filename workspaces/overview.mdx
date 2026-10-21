@@ -242,6 +242,8 @@ When the chat has more than one thing on the canvas — a Genie Tool, a Genie Ag
 
 **Knowledge on the canvas.** When Genie AI works with your [knowledge model](#knowledge-model) in the chat, the entities it names or changes are drawn on the canvas as a small chart with their closest surroundings, following the newest step as the chat goes on. What Genie AI staged in a [draft](#drafts) is drawn in orange — dashed for entities, dotted for links — so you can tell it from what is already live. A layer picker on top of the canvas switches which [layer](#knowledge-model) the chart shows, and the canvas only opens when you click it.
 
+**A sheet that stays out of the way.** Click a card on the canvas and its details open folded, as a slim pill with the entity's name, class and values, so the chart you clicked into stays in view. Click the card again, or drag the grip, to unfold it to half the canvas or nearly all of it; **Esc** steps back down and then closes it. Entities that aren't linked to anything are drawn as a grid of larger cards, two columns on a wide canvas and one on a narrow one, each listing up to six values. Tabs you have already opened keep their place — the chart, a PDF page or a table's search is exactly as you left it when you switch back.
+
 **Open a document beside the chat.** Ask to see the slides or where a document says something and Genie AI opens the file itself on the canvas, with the passage highlighted. On a phone, the card's **View** opens it instead. Clicking a highlighted name in an answer opens that entity on the canvas on a desktop, with its questions and **Not this** at the top of its panel. A Genie Agent shows on the canvas as a short list of steps, like an automation, with what each step uses shown as chips.
 
 **Charts and flowcharts.** Ask Genie AI for a chart — bars, lines, areas, pies, donuts or scatter plots — or a flowchart of a process or an approval path, and it draws one straight into the chat. It can chart rows you paste, a workspace table, the numbers behind a Genie Tool, a Genie Agent's latest run, or what the knowledge model holds (entities per class, process stages, a class's values), always within what you may see. On the full chat page every chart stacks on the canvas beside the conversation, and each one downloads as **PNG** or **PDF**. When a chart covers only part of the data, it says so under the figure.
@@ -414,6 +416,10 @@ The **Graph** runs the full width of the page. Pick an entity and its card float
 
 **Table rows.** Notes, tasks and logs in your workspace's tables are read for the names they mention, with nothing to set up. An entity's card lists them under **Mentioned in**, and Genie AI sees the links when it reads the table. A grid in a [Genie Tool](/workspaces/genie-tools) gets a **Mentions** column once its rows hold free text: press **Not this one** on a chip to take a name off a row, or ask Genie AI to link words it couldn't decide — both stay put on later reads. Editing this takes permission to edit the knowledge model.
 
+**What a value names.** Open the version history of a text value on an entity's card to see which other entities that text names, with the link to each — dashed while it is only proposed. **Look up** (or **Look up again**) reads the value now and offers a link to every entity it names that isn't linked yet; Genie AI can do the same. A value that names a linked entity ranks above one that doesn't, and an address value such as *Hauptstr. 2, 22763 Hamburg* offers a link to places the model records at that address, like *Bürohaus Hauptstraße 2*.
+
+**Big merges run in the background.** Merging or splitting an entity with a great many links no longer has to fit in one step: the decision is made at once and the links move in the background, up to 200,000 rows. The entity's card shows a **Merging · 61%** chip while it runs, and an entity being moved can't be merged or split again until it is done.
+
 ### Drafts
 
 In a workspace with **staging** on — the default for new workspaces; owners and admins switch it in the knowledge page's extraction panel — changes to the knowledge model don't land on the model everyone reads. They go into **your draft**: you, and Genie AI when it edits for you, see the live model with your changes on top, while everyone else keeps seeing it as it was. Reading documents, integrations and other automatic processes keep writing to the live model, called **main**.
@@ -435,6 +441,8 @@ Each area is one card on the **Knowledge access** page, with a one-line summary 
 
 An area can grant **read** access (see and use what's inside) or **write** access (also add, move, and delete documents in it). Moving a folder into or out of an area, or changing who reaches it, applies to everything inside it, including sub-folders. If every document an entity is cited from moves into an area that isn't open to all members, its card follows: it becomes visible only to people who may read those documents, and anyone with permission can widen it again. This only ever tightens — a card is never opened up automatically, and one you set yourself is left alone.
 
+**Personal areas.** Some things belong to one member alone — their own [synced mailbox](/workspaces/integrations#sync-your-own-mailbox), for example. Those land in a **personal area** that Genie creates for that member: no other member can read, change or add to it, and it can't be shared or relabelled. The workspace's owners and admins can still read it, but they can't write in it. When its owner leaves the workspace, the area is held, never opened to anyone else.
+
 <Tip>
 Prefer granting a role or a group over naming individual members one at a time — it's easier to review and update later, and you can create a group specifically to hold an access grant.
 </Tip>
@@ -446,6 +454,8 @@ Don't want to type your prompt? Tap the microphone icon in any Genie chat compos
 ### Workspace chats are private by default
 
 A conversation with the workspace AI is visible only to the person who started it — nobody else in the workspace, including admins, can open or write to it by default. Share it from the chat's settings menu to bring others in, either with **Everyone in the workspace** or with **Only selected people**, picked from a member search. In a shared chat, every message shows who sent it — name and avatar next to their turns — so a multi-author conversation stays readable. Browsing your **Recent chats** still only shows your own conversations by default, whether or not you've shared any of them, so this doesn't flood your list with everyone else's threads. If you ever need help from Genie support with a conversation, they can access it to assist you, even if it hasn't been shared.
+
+**Delete a chat.** Choose **Delete chat** in a chat's settings menu and confirm. You can always delete a chat you started; deleting one a teammate started — and shared with you — needs the permission to delete chats, which owners and admins have by default. A teammate's private chat can't be reached at all. Deleting is permanent and removes the thread for everyone it was shared with, and an answer still being written in it is stopped.
 
 Drag any chat from the sidebar onto the **Pinned** dropzone at the top of the list to pin it — drop a pinned chat there again to unpin it — or use **Pin chat** from the same settings menu. Pinned chats lead the list under their own heading, ahead of the usual date groups, everywhere your chats are listed.
 

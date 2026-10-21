@@ -419,7 +419,7 @@ Send questions to the Genie workspace AI and browse past conversations. Every to
 | `search_agent_run_traces` | Fulltext-search the execution trace behind the connected user's own Genie AI conversations — the reasoning, every tool call, and the final answer, not just the visible chat text. Useful for questions like "why did that fail earlier" or "which turn called the deploy tool" |
 | `rename_workspace_chat` | Rename any conversation in the workspace, including one a teammate started |
 | `pin_workspace_chat` | Pin or unpin a conversation to the top of the chat history sidebar, ahead of the usual date groups |
-| `delete_workspace_chat` | Permanently delete any conversation in the workspace, including one a teammate started, and all its messages. Irreversible — check the conversation's `startedByUser` field first if you didn't start it yourself |
+| `delete_workspace_chat` | Permanently delete a conversation in the workspace — your own, or one a teammate started and shared, and all its messages. Irreversible — check the conversation's `startedByUser` field first if you didn't start it yourself. Deleting a teammate's chat needs the permission to delete chats (owners and admins have it by default); a teammate's private chat can't be reached |
 | `get_project_chat_connection` | Show which workspace chat is a project's main conversation — the one where all the work on that project happens — how that was resolved, and which other projects share it |
 | `list_projects_sharing_chat` | List every project that uses a given workspace chat as its main conversation |
 | `connect_project_chat` | Make a workspace chat a project's main conversation. Keeps an existing connection by default — pass `replace: true` to switch it |
@@ -655,7 +655,8 @@ Role-based access is enforced on every tool call.
 | Search the connected user's own Genie AI run traces | Any connected user |
 | View a project's screenshots or search its live console logs | Any member (who can view the project) |
 | Read or set a project's main workspace chat | Any member |
-| Read, rename, pin, or delete a workspace chat (own or a teammate's) | Any member |
+| Read, rename or pin a workspace chat (own or a teammate's), or delete your own | Any member |
+| Delete a chat a teammate started | Members with the permission to delete chats (owners and admins) |
 | Check what a project is doing right now (build, autofix, queue) | Any member (who can view the project) |
 | See who else has a project open right now | Any member (who can view the project) |
 | View or manage a project's prompt queue | Any member |
