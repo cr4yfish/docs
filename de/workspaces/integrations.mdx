@@ -122,6 +122,17 @@ Hast du dein eigenes Konto noch nicht verbunden, steht dir dieser Konnektor einf
 
 Ein Eigentümer oder Admin kann einen Konnektor später über dessen **Bearbeiten**-Formular („Wer meldet sich an") zwischen gemeinsam und pro Mitglied umschalten — ohne ihn zu entfernen und neu hinzuzufügen. Beim Umschalten wird ein bestehendes Zugangsdatum nie mitgenommen: Alle, die unter der alten Einstellung verbunden waren, müssen sich unter der neuen (erneut) verbinden.
 
+## Das eigene Postfach synchronisieren
+
+Jedes Mitglied kann sein **eigenes** Outlook- oder Gmail-Postfach in die Wissensbasis spiegeln, damit Genie AI aus der eigenen Post antworten kann. Öffne **Einstellungen → Integrationen** und suche die Karte **Mein Postfach**: Sie hat eine Zeile pro Postfach mit seinem Zustand und dem nächsten Schritt — dein Konto **verbinden** (ein Owner oder Admin muss die Integration zuerst hinzufügen, falls sie fehlt), **Synchronisierung starten**, **Pausieren**, **Fortsetzen**, **Erneut versuchen** nach einem fehlgeschlagenen Lauf oder **Beenden**. Genie AI kann denselben Zustand zeigen und startet, pausiert oder beendet eine Synchronisierung nur, wenn du die Karte drückst, die sie anbietet.
+
+- **Nur deine eigene Post, die letzten 90 Tage.** Eine Synchronisierung liest das Postfach der Person, die sie gestartet hat — nie das von jemand anderem — und beginnt 90 Tage zurück. Postfachordner werden nicht kopiert: Jede Nachricht wird ein Dokument in einem einzigen Fach, und eine Nachricht, die du zwischen Ordnern verschiebst, bleibt dasselbe Dokument.
+- **Nur für dich sichtbar.** Die Post landet in deinem eigenen **persönlichen Zugriffsbereich**: Andere Mitglieder sehen sie nicht und auch nicht, dass es sie gibt. Die Owner und Admins des Workspaces können sie weiterhin lesen. Verlässt du den Workspace, wird dein Bereich eingefroren statt für andere geöffnet.
+- **Nicht alles ist Wissen.** Newsletter und Mailinglisten, automatische Mails, Kalendereinladungen und No-Reply-Absender werden übersprungen, bevor etwas gelesen wird, und erscheinen in der Dateiliste der Synchronisierung als *Kein Wissen*. Spam, Gelöschte Elemente, Entwürfe und ähnliche Ordner werden nie gelesen.
+- **Beenden behält das Abgelegte.** Bereits gelesene Post bleibt in deinem Bereich; ein erneuter Start legt sie ein zweites Mal ab.
+
+Post wird wie jedes Dokument in die Wissensbasis gelesen und zählt daher zu denselben Limits und denselben Credits wie andere synchronisierte Dateien.
+
 ## Verbundene Server verwalten
 
 Jeder verbundene Server erscheint als Zeile in der Liste **Verbundene Server**, mit einem Status in einfacher Sprache — verbunden, bereit, noch nicht verbunden, funktioniert nicht, pro Mitglied oder pausiert — statt roher Verbindungsdetails. Fehlt nur noch die Anmeldung, sitzt ein **Verbinden**-Button direkt in der Zeile statt in einem Menü. In der Zeile kannst du:

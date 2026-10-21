@@ -24,10 +24,10 @@ Aktuell stehen sechzehn Arten von Schritten zur Verfügung:
 | **Edge Function** | Führt eine bereitgestellte Backend-Funktion aus — standardmäßig die des an den Agenten gebundenen Projekts, oder die jeder anderen Genie App in deinem Workspace |
 | **Verbundene App** | Ruft ein Tool einer der [verbundenen Integrationen](/de/workspaces/integrations) deines Workspaces auf — Linear, Notion, Outlook und mehr — oder **Genie selbst**, immer verfügbar als integrierte verbundene App, ganz ohne Einrichtung |
 | **Benachrichtigung** | Sendet eine Benachrichtigung in die Genie-App, an die Person, die den Agenten ausgeführt hat, oder an den Eigentümer bzw. die Eigentümerin des Agenten |
-| **Websuche** | Durchsucht das lebende Web und liefert die Ergebnisse als Daten zurück — Titel, Links, Ausschnitte — für einen späteren Schritt |
+| **Websuche** | Durchsucht das lebende Web. **Schnell** liefert die Ergebnisse als Daten zurück — Titel, Links, Ausschnitte — für einen späteren Schritt; **Tief** recherchiert eine Frage in einer Schleife und liefert einen Bericht mit Quellenangaben, ein Schritt, der Minuten dauert und Credits verbraucht. Ein Zeitlimit (bis zu 20 Minuten) begrenzt eine tiefe Suche, und beim Erreichen bleibt erhalten, was gefunden wurde |
 | **Webseite lesen** | Liest eine Seite über Genies sicheren Seitenleser (denselben, den Genie AI im Chat verwendet) und liefert ihren Text zurück |
-| **Deep Research** | Recherchiert eine Frage gründlich und liefert einen Bericht mit Quellenangaben — ein Schritt, der einige Minuten dauert und Credits verbraucht |
 | **Compliance-Prüfung** | Prüft einen Wert gegen die [PII-Regeln](/de/workspaces/pii-rules) und/oder [Guardrails](/de/workspaces/guardrails) deines Workspace, bevor er im Ablauf weitergeht |
+| **Genie Tool** | Nutzt eine Seite eines [Genie Tools](/workspaces/genie-tools) in deinem Workspace — öffnet sie, drückt eine Schaltfläche oder sendet ihr Formular ab oder liest ein Raster — und liefert zurück, was sie gezeigt oder getan hat. Der Schritt läuft als die Person, die den Agenten gestartet hat, und erreicht daher nur Tools und Daten, die sie nutzen darf |
 | **Ein anderer Agent** | Ruft einen Genie Agent auf, den du bereits gebaut hast, sodass du kleinere Abläufe zu größeren zusammensetzen kannst |
 | **Wenn / sonst** | Verzweigt den Ablauf — prüft frühere Ergebnisse mit UND / ODER / NICHT und führt je nachdem unterschiedliche Schritte aus. Siehe [Verzweigen](#verzweigen) |
 | **Knowledge** | Durchsucht, listet, liest, legt ab, aktualisiert oder löscht Dokumente in der [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank) deines Workspace |
@@ -40,7 +40,7 @@ Ein **Datenbank**- oder **Edge-Function**-Schritt muss nicht beim an den Agenten
 </Tip>
 
 <Tip>
-Ein **Websuche**-Schritt liefert die rohen Ergebnisse, keine geschriebene Zusammenfassung — füge danach einen **KI**-Schritt hinzu, wenn Genie das Gefundene zusammenfassen oder darauf reagieren soll. So verbraucht eine geplante Suche nicht heimlich KI-Credits für eine Zusammenfassung, die niemand angefragt hat.
+Ein **Websuche**-Schritt auf **Schnell** liefert die rohen Ergebnisse, keine geschriebene Zusammenfassung — füge danach einen **KI**-Schritt hinzu, wenn Genie das Gefundene zusammenfassen oder darauf reagieren soll. So verbraucht eine geplante Suche nicht heimlich KI-Credits für eine Zusammenfassung, die niemand angefragt hat.
 </Tip>
 
 <Tip>
@@ -114,7 +114,7 @@ Bevor du eine Änderung endgültig machst, kannst du einen echten Test ausführe
   Genie AI kann auch in deinem Auftrag einen Schritt testen — bitte sie einfach darum, während du im Chat Änderungen an deinem Agenten beschreibst.
 </Tip>
 
-**Mit denselben Daten erneut ausführen.** Ist ein Lauf beendet, wiederholt **Mit denselben Daten erneut ausführen** ihn mit derselben Eingabe. Schritte, die nur lesen — etwa ein KI-, Websuche-, Deep-Research- oder Knowledge-Schritt —, übernehmen, was der frühere Lauf gefunden hat, statt erneut zu laufen. So wartet der Wiederholungsversuch des einen fehlgeschlagenen Schritts oder ein Test einer Benachrichtigung nicht ein zweites Mal auf die vorgelagerte Recherche (und bezahlt sie auch nicht). Schritte, die schreiben oder senden — eine Benachrichtigung, ein Einfügen von Zeilen, eine Aktion einer verbundenen App —, laufen immer erneut, ebenso jeder Schritt, den du seitdem bearbeitet hast. Genie AI kann einen Lauf auch für dich erneut ausführen.
+**Mit denselben Daten erneut ausführen.** Ist ein Lauf beendet, wiederholt **Mit denselben Daten erneut ausführen** ihn mit derselben Eingabe. Schritte, die nur lesen — etwa ein KI-, Websuche- (schnell oder tief) oder Knowledge-Schritt —, übernehmen, was der frühere Lauf gefunden hat, statt erneut zu laufen. So wartet der Wiederholungsversuch des einen fehlgeschlagenen Schritts oder ein Test einer Benachrichtigung nicht ein zweites Mal auf die vorgelagerte Recherche (und bezahlt sie auch nicht). Schritte, die schreiben oder senden — eine Benachrichtigung, ein Einfügen von Zeilen, eine Aktion einer verbundenen App —, laufen immer erneut, ebenso jeder Schritt, den du seitdem bearbeitet hast. Genie AI kann einen Lauf auch für dich erneut ausführen.
 
 ## Lauf-Ergebnisse
 

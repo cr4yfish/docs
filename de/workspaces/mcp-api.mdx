@@ -419,7 +419,7 @@ Stelle Fragen an die Genie-Workspace-KI und durchsuche vergangene Gespräche. Je
 | `search_agent_run_traces` | Durchsuche per Volltextsuche die Ausführungsspur hinter den eigenen Genie-KI-Gesprächen des verbundenen Nutzers — die Begründung, jeden Tool-Aufruf und die endgültige Antwort, nicht nur den sichtbaren Chat-Text. Nützlich für Fragen wie „warum ist das vorhin fehlgeschlagen" oder „welcher Turn hat das Deploy-Tool aufgerufen" |
 | `rename_workspace_chat` | Benenne jedes Gespräch im Workspace um, auch eines, das ein Teammitglied begonnen hat |
 | `pin_workspace_chat` | Heftet ein Gespräch oben in der Chat-Verlauf-Seitenleiste an, oder löst die Anheftung — vor den üblichen Datumsgruppen |
-| `delete_workspace_chat` | Lösche jedes Gespräch im Workspace dauerhaft, auch eines, das ein Teammitglied begonnen hat, mitsamt allen Nachrichten. Unumkehrbar — prüfe das Feld `startedByUser` des Gesprächs zuerst, wenn du es nicht selbst begonnen hast |
+| `delete_workspace_chat` | Lösche ein Gespräch im Workspace dauerhaft — dein eigenes oder eines, das ein Teammitglied begonnen und geteilt hat — mitsamt allen Nachrichten. Unumkehrbar — prüfe das Feld `startedByUser` des Gesprächs zuerst, wenn du es nicht selbst begonnen hast. Das Chat-Löschen eines Teammitglieds braucht die Berechtigung zum Löschen von Chats (Owner und Admins haben sie standardmäßig); der private Chat eines Teammitglieds ist nicht erreichbar |
 | `get_project_chat_connection` | Zeigt, welcher Workspace-Chat der Hauptchat eines Projekts ist — derjenige, in dem die gesamte Arbeit an diesem Projekt stattfindet —, wie das aufgelöst wurde und welche anderen Projekte ihn sich teilen |
 | `list_projects_sharing_chat` | Listet jedes Projekt auf, das einen bestimmten Workspace-Chat als Hauptchat nutzt |
 | `connect_project_chat` | Macht einen Workspace-Chat zum Hauptchat eines Projekts. Behält eine bestehende Verbindung standardmäßig bei — übergib `replace: true`, um sie zu wechseln |
@@ -655,7 +655,8 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Die eigenen Genie-KI-Ausführungsspuren des verbundenen Nutzers durchsuchen | Jeder verbundene Nutzer |
 | Die Screenshots eines Projekts einsehen oder seine Live-Konsolenprotokolle durchsuchen | Jedes Mitglied (das das Projekt einsehen kann) |
 | Den Hauptchat eines Projekts lesen oder festlegen | Jedes Mitglied |
-| Einen Workspace-Chat lesen, umbenennen, anheften oder löschen (eigenen oder den eines Teammitglieds) | Jedes Mitglied |
+| Einen Workspace-Chat lesen, umbenennen oder anheften (eigenen oder den eines Teammitglieds) oder den eigenen löschen | Jedes Mitglied |
+| Einen Chat löschen, den ein Teammitglied begonnen hat | Mitglieder mit der Berechtigung zum Löschen von Chats (Owner und Admins) |
 | Prüfen, was ein Projekt gerade tut (Build, automatische Korrektur, Warteschlange) | Jedes Mitglied (das das Projekt einsehen kann) |
 | Sehen, wer sonst gerade ein Projekt geöffnet hat | Jedes Mitglied (das das Projekt einsehen kann) |
 | Die Prompt-Warteschlange eines Projekts einsehen oder verwalten | Jedes Mitglied |
