@@ -56,6 +56,28 @@ Once a channel is connected, any member can also ask Genie AI to send a message 
 
 If you've linked your own account, your messages are always yours — even inside a shared inbox your workspace also connected. Otherwise, a message on a workspace channel runs as that channel's fixed member or agent, if the sender is allowed to write in. If neither applies, you get a short reply once an hour explaining how to link your account.
 
+### Colleagues run as themselves
+
+On a Slack channel answered by Genie AI, a colleague who never linked an account still runs as themselves, not as the person who installed the channel. This works when Slack has confirmed their email address, they belong to the Slack workspace that installed Genie, and exactly one member of your workspace has that same address verified. Guests from other organisations never match this way. Two members sharing one address match nobody.
+
+Slack and Teams channels answered by Genie AI answer **members only**: someone who is neither linked nor matched gets the linking reply instead of an answer, so nobody reads another member's memories or chats by asking in a shared channel. If a member's Slack address differs from their Genie one, they link with a code as usual. Teams can't look up addresses yet, so on Teams every member links with a code.
+
+When several people write in one thread, each message runs as its own author and keeps that person's own conversation history.
+
+<Note>
+Owners may need to reinstall the Slack app once to grant the new permissions for reading confirmed email addresses and voice clips.
+</Note>
+
+## Replies and voice messages
+
+Genie's answer arrives as one formatted message. Long answers are split to fit the platform's limit. Anything the app would normally show as a card is turned into plain text:
+
+- A question with options is written out as a numbered list. Reply with your choice and Genie continues.
+- Something only the app can finish, like a secure action or a password field, becomes a link to the chat.
+- An agent or tool Genie built or edited comes with a link to its page.
+
+You can also send a **voice message**: a Slack audio clip or a WhatsApp voice note is transcribed and used as your message, up to two clips per message. Transcription is billed as usual to the person the message runs as. Images and other files aren't read yet.
+
 ## Your conversation history
 
 Everything you exchange with Genie over a chat channel lands in an ordinary workspace chat conversation, visible from **Recent chats** in the sidebar like any other — so a teammate with access can read it, and it's there the next time you write in. On WhatsApp specifically, that workspace conversation is the only history Genie has of the thread, since WhatsApp itself doesn't expose past messages.
