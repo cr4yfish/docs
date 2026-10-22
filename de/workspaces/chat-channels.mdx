@@ -56,6 +56,28 @@ Sobald ein Kanal verbunden ist, kann jedes Mitglied Genie AI auch bitten, darüb
 
 Hast du dein eigenes Konto verknüpft, gehören deine Nachrichten immer dir — selbst innerhalb eines gemeinsamen Postfachs, das dein Workspace ebenfalls verbunden hat. Andernfalls läuft eine Nachricht auf einem Workspace-Kanal als dessen feste Person oder als dessen Agent, sofern die absendende Person schreiben darf. Trifft nichts davon zu, bekommst du höchstens einmal pro Stunde eine kurze Antwort, die erklärt, wie du dein Konto verknüpfst.
 
+### Kolleg:innen laufen als sie selbst
+
+In einem Slack-Kanal, den Genie AI beantwortet, läuft auch eine Kolleg:in ohne verknüpftes Konto als sie selbst und nicht als die Person, die den Kanal installiert hat. Das klappt, wenn Slack ihre E-Mail-Adresse bestätigt hat, sie zum Slack-Workspace gehört, der Genie installiert hat, und genau ein Mitglied deines Workspace dieselbe Adresse verifiziert hat. Gäste anderer Organisationen werden so nie zugeordnet. Teilen sich zwei Mitglieder eine Adresse, wird niemand zugeordnet.
+
+Slack- und Teams-Kanäle, die Genie AI beantwortet, antworten **nur Mitgliedern**: Wer weder verknüpft noch zugeordnet ist, bekommt statt einer Antwort den Hinweis zum Verknüpfen, sodass niemand durch eine Frage im gemeinsamen Kanal die Erinnerungen oder Chats eines anderen Mitglieds liest. Weicht die Slack-Adresse eines Mitglieds von der bei Genie ab, verknüpft es sich wie gewohnt mit einem Code. Teams kann Adressen noch nicht nachschlagen, deshalb verknüpfen sich dort alle Mitglieder mit einem Code.
+
+Schreiben mehrere Personen in einem Thread, läuft jede Nachricht als ihre eigene Autor:in und behält deren eigenen Gesprächsverlauf.
+
+<Note>
+Inhaber:innen müssen die Slack-App eventuell einmal neu installieren, um die neuen Berechtigungen zum Lesen bestätigter E-Mail-Adressen und von Sprachclips zu erteilen.
+</Note>
+
+## Antworten und Sprachnachrichten
+
+Genies Antwort kommt als eine formatierte Nachricht an. Lange Antworten werden passend zum Limit der Plattform aufgeteilt. Was die App sonst als Karte zeigt, wird zu Text:
+
+- Eine Frage mit Optionen steht als nummerierte Liste da. Antworte mit deiner Wahl, und Genie macht weiter.
+- Was nur die App abschließen kann, etwa eine sichere Aktion oder ein Passwortfeld, wird zu einem Link auf den Chat.
+- Ein Agent oder Tool, das Genie gebaut oder geändert hat, kommt mit einem Link auf seine Seite.
+
+Du kannst auch eine **Sprachnachricht** schicken: Ein Slack-Audioclip oder eine WhatsApp-Sprachnachricht wird transkribiert und als deine Nachricht verwendet, bis zu zwei Clips pro Nachricht. Die Transkription wird wie gewohnt der Person berechnet, als die die Nachricht läuft. Bilder und andere Dateien werden noch nicht gelesen.
+
 ## Deine Gesprächshistorie
 
 Alles, was du mit Genie über einen Chat-Kanal austauschst, landet in einem ganz normalen Workspace-Chat, sichtbar unter **Letzte Chats** in der Seitenleiste wie jeder andere — sodass ein Teammitglied mit Zugriff mitlesen kann, und die Historie beim nächsten Schreiben da ist. Bei WhatsApp im Besonderen ist dieser Workspace-Chat die einzige Historie, die Genie von diesem Gespräch hat, da WhatsApp selbst keine vergangenen Nachrichten offenlegt.

@@ -76,6 +76,8 @@ When Genie AI builds an agent for you, the chat shows a card with its actual gra
 
 Select an agent from the **Genie Agents** page to reach its editor — a canvas showing every step and how they connect. You can connect two steps by clicking one step's output and then the step that should use it, rename a step, or remove one.
 
+Saving never overwrites a newer version. If Genie AI, a revert or another tab saved while you were editing, your draft stays on screen and the editor offers to load the newer version.
+
 To use an earlier step's output inside a field — an AI prompt, a database query, a URL — click the **+** next to the field's label. A nested picker lets you drill into a step and pick exactly the value you want, which then appears as a chip right inside the field, wherever you placed it. Click a chip to swap it for a different value, or choose **Write it myself** to edit the raw text directly.
 
 <Tip>
@@ -97,6 +99,8 @@ Ask Genie AI to add the branch for you — *"only send the notification if the r
 A **Loop** step repeats the steps inside it, in one of three shapes: **for each** item of a list (a database query's rows, say), a **fixed number of times**, or **while** a condition keeps holding. A **Variable** step holds a named value across the passes — a running total, a counter, a collected list — with six ways to change it each time through: set, add, subtract, multiply, divide, or append. Together they're enough to do things a fixed sequence of steps can't, like "add up every order over €100" or "keep checking until the build finishes."
 
 The editor marks a loop's own steps with a coloured dot on the canvas, so it's clear at a glance which steps run once and which run every pass.
+
+A run takes at most 500 steps in total, counting every pass. A loop that can't fit its passes into what's left fails before its first pass and says so, rather than stopping half-way. A loop with stop rules may end early, so it only fails if it reaches that limit with its rules still holding.
 
 <Tip>
 Ask Genie AI things like *"loop over every row and add up the total"* — it sets up the Loop and Variable steps together, the same as describing any other automation.

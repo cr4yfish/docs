@@ -76,6 +76,8 @@ Wenn Genie AI einen Agenten für dich baut, zeigt der Chat schon während der Er
 
 Wähle einen Agenten auf der Seite **Genie Agents** aus, um zu seinem Editor zu gelangen — eine Arbeitsfläche, die jeden Schritt und seine Verbindungen zeigt. Du kannst zwei Schritte verbinden, indem du auf die Ausgabe des einen und dann auf den Schritt klickst, der sie nutzen soll, einen Schritt umbenennen oder entfernen.
 
+Speichern überschreibt nie eine neuere Version. Hat Genie AI, ein Zurücksetzen oder ein anderer Tab gespeichert, während du bearbeitet hast, bleibt dein Entwurf auf dem Bildschirm und der Editor bietet an, die neuere Version zu laden.
+
 Um das Ergebnis eines früheren Schritts in einem Feld zu verwenden — einem KI-Prompt, einer Datenbankabfrage, einer URL — klicke auf das **+** neben der Feldbeschriftung. Eine verschachtelte Auswahl lässt dich in einen Schritt eintauchen und genau den Wert wählen, den du brauchst; er erscheint dann als Chip direkt im Feld, an der Stelle, an der du ihn platziert hast. Klicke auf einen Chip, um ihn gegen einen anderen Wert zu tauschen, oder wähle **Selbst schreiben**, um den Rohtext direkt zu bearbeiten.
 
 <Tip>
@@ -97,6 +99,8 @@ Bitte Genie AI, die Verzweigung für dich einzurichten — z. B. „schick die B
 Ein **Schleife**-Schritt wiederholt die darin enthaltenen Schritte, in einer von drei Formen: **für jedes** Element einer Liste (etwa die Zeilen einer Datenbank-Abfrage), eine **feste Anzahl von Malen**, oder **solange** eine Bedingung gilt. Ein **Variable**-Schritt hält einen benannten Wert über die Durchläufe hinweg — eine laufende Summe, einen Zähler, eine gesammelte Liste —, mit sechs Möglichkeiten, ihn bei jedem Durchlauf zu ändern: setzen, addieren, subtrahieren, multiplizieren, dividieren oder anhängen. Zusammen reicht das für Dinge, die eine feste Schrittfolge nicht kann, etwa „addiere jede Bestellung über 100 €" oder „prüfe wiederholt, bis der Build fertig ist."
 
 Der Editor markiert die eigenen Schritte einer Schleife mit einem farbigen Punkt auf der Arbeitsfläche, sodass auf einen Blick klar ist, welche Schritte einmal und welche bei jedem Durchlauf laufen.
+
+Ein Lauf macht insgesamt höchstens 500 Schritte, jeden Durchlauf mitgezählt. Eine Schleife, deren Durchläufe nicht in den Rest passen, schlägt vor dem ersten Durchlauf fehl und sagt das, statt auf halbem Weg zu stoppen. Eine Schleife mit Stopp-Regeln kann früher enden und schlägt deshalb nur fehl, wenn sie dieses Limit erreicht, während ihre Regeln noch gelten.
 
 <Tip>
 Bitte Genie AI zum Beispiel *„geh jede Zeile durch und addiere die Summe"* — sie richtet den Schleife- und den Variable-Schritt gemeinsam ein, genau wie bei jeder anderen Automatisierung.
