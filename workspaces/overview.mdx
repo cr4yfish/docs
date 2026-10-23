@@ -420,6 +420,16 @@ The **Graph** runs the full width of the page. Pick an entity and its card float
 
 **Big merges run in the background.** Merging or splitting an entity with a great many links no longer has to fit in one step: the decision is made at once and the links move in the background, up to 200,000 rows. The entity's card shows a **Merging · 61%** chip while it runs, and an entity being moved can't be merged or split again until it is done.
 
+**Classes as a table.** **Classes and relations** lists classes as a searchable table that loads a page at a time, so it stays quick with hundreds of classes. Each row shows how many properties the class has, how many of its entities you can see, and its process as a row of stages. Press a row to open the class in a side sheet with its properties, process, relationship types and entities. The **Ontology** page in **Workspace settings** now holds settings only.
+
+**Names that mean the same.** Genie also compares names by meaning, not just spelling, and proposes a merge when two names in one class clearly refer to the same thing. Like every duplicate, it waits in the review queue for a person to decide. On the **Ontology** settings, owners and admins can **pause** the AI duplicate check and give it a **daily budget**; once the budget is used up the check waits until the next day.
+
+**Confirm from the card.** Press **Confirm** on a proposed entity's own card, in the app or on the chat canvas, to accept it without opening the review queue. With drafts on, the confirmation lands in your draft.
+
+**Link yourself to your own Person.** Questions like *"who is my manager?"* need a starting point. Ask Genie AI *"who am I in the knowledge model?"*, pick your card from the suggestions and press **Link to me**. Only you can set or see this link, and nobody else can set it for you. Genie AI never assumes a card is yours just because it carries your email address.
+
+**Better answers from your documents.** Genie AI's document search now re-ranks its best matches, so the passages that actually answer the question come first. When it answers from an entity's page, the claims carry the same numbered source markers as document answers, and a marker opens the document with the passage highlighted.
+
 ### Drafts
 
 In a workspace with **staging** on — the default for new workspaces; owners and admins switch it in the knowledge page's extraction panel — changes to the knowledge model don't land on the model everyone reads. They go into **your draft**: you, and Genie AI when it edits for you, see the live model with your changes on top, while everyone else keeps seeing it as it was. Reading documents, integrations and other automatic processes keep writing to the live model, called **main**.
@@ -441,7 +451,7 @@ Each area is one card on the **Knowledge access** page, with a one-line summary 
 
 An area can grant **read** access (see and use what's inside) or **write** access (also add, move, and delete documents in it). Moving a folder into or out of an area, or changing who reaches it, applies to everything inside it, including sub-folders. If every document an entity is cited from moves into an area that isn't open to all members, its card follows: it becomes visible only to people who may read those documents, and anyone with permission can widen it again. This only ever tightens — a card is never opened up automatically, and one you set yourself is left alone.
 
-**Personal areas.** Some things belong to one member alone — their own [synced mailbox](/workspaces/integrations#sync-your-own-mailbox), for example. Those land in a **personal area** that Genie creates for that member: no other member can read, change or add to it, and it can't be shared or relabelled. The workspace's owners and admins can still read it, but they can't write in it. When its owner leaves the workspace, the area is held, never opened to anyone else.
+**Personal areas.** Some things belong to one member alone — their own [synced mailbox](/workspaces/integrations#sync-your-own-mailbox), for example. Those land in a **personal area** that Genie creates for that member: no other member can read, change or add to it, and it can't be shared or relabelled. The workspace's owners and admins can still read it, but they can't write in it. When its owner leaves the workspace, the area is held, never opened to anyone else. A mirror of your own Google Drive or OneDrive is private by default too: when you set up a synced folder, the choice of who may see it starts at **Only me**, and sharing it with every member or an access area is a choice you make. A private mirror stays private; to share it, stop it and set up a shared one.
 
 <Tip>
 Prefer granting a role or a group over naming individual members one at a time — it's easier to review and update later, and you can create a group specifically to hold an access grant.

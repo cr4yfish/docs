@@ -84,6 +84,10 @@ Um das Ergebnis eines früheren Schritts in einem Feld zu verwenden — einem KI
   Im Hintergrund gibt es immer nur einen Agenten, nicht zwei konkurrierende Kopien. Was auch immer du auf der Arbeitsfläche änderst, sieht Genie AI beim nächsten Gespräch mit dir — und was Genie AI ändert, zeigt die Arbeitsfläche beim nächsten Öffnen.
 </Tip>
 
+**Einen Schritt finden.** Drücke auf einer großen Arbeitsfläche **⌘K** (Strg+K) oder **/** außerhalb eines Textfelds, um die Schritte nach Namen zu durchsuchen. Wähle einen aus, und die Arbeitsfläche gleitet zu ihm und öffnet sein Panel. Die Suchschaltfläche in der Werkzeugleiste der Arbeitsfläche öffnet dieselbe Suche auf dem Smartphone.
+
+**Rahmen.** Fasse Schritte unter einem Namen zusammen, damit eine volle Arbeitsfläche lesbar bleibt. Wähle im Panel eines Schritts unter **Gezeichnet in** die Option **einen neuen Rahmen** oder verschiebe den Schritt in einen vorhandenen. Ein Rahmen lässt sich zu einer einzelnen Karte einklappen, umbenennen, an seinem Reiter verschieben oder auflösen. Rahmen ändern nur, wie die Arbeitsfläche aussieht, nie, wie der Agent läuft. Während eines Laufs zeigt ein eingeklappter Rahmen seinen aussagekräftigsten Status, sodass ein Fehler darin nie verborgen bleibt.
+
 ## Verzweigen
 
 Ein **Wenn/sonst**-Schritt prüft eine oder mehrere Regeln gegen frühere Ergebnisse und kommt auf **ja (dann)** oder **nein (sonst)** — verknüpfe seine Regeln mit **UND** (alle müssen zutreffen), **ODER** (mindestens eine) oder **NICHT** (keine darf zutreffen). Zieh vom **Dann**- oder **Sonst**-Punkt des Schritts auf einen anderen Schritt, um ihn an diesen Zweig zu binden, oder wähle den Zweig stattdessen direkt unter **Läuft** in den Einstellungen dieses Schritts.
@@ -125,6 +129,8 @@ Bevor du eine Änderung endgültig machst, kannst du einen echten Test ausführe
 Jeder Lauf bekommt eine eigene Ergebnisseite: das Ergebnis und jeden Schritt, der dazu geführt hat, in der Reihenfolge, in der er lief, jeweils mit Status, Dauer und dem, was er ausgegeben hat. Die Antwort eines KI-Schritts wird als formatierter Text statt als rohes Markdown angezeigt. Öffne sie bei einem noch laufenden Lauf, und sie zieht mit, sobald jeder Schritt fertig ist.
 
 Jeder Agent hat außerdem eine **Läufe**-Seite — seine letzten Läufe, neueste zuerst —, nur einen Tipp von der Werkzeugleiste des Editors entfernt. Auf der Chat-Canvas zeigt ein Agent seine letzten fünf Läufe und wie jeder Schritt im ausgewählten Lauf abgeschnitten hat; tippe auf einen Schritt, um zu sehen, was er tut, und Genie AI dazu zu fragen.
+
+**Schritte eines aufgerufenen Agenten.** Ruft ein Schritt einen anderen Agenten auf, zeigt seine Zeile in den Lauf-Ergebnissen eine Pille wie *28 Schritte darin · 1 fehlgeschlagen*. Öffne sie, um die eigenen Schritte des aufgerufenen Agenten mit Status, Dauer und eventuellem Fehler zu sehen, und öffne darin weitere Aufrufe. Schritte eines Agenten, den du nicht sehen darfst, bleiben verborgen. Genie AI kann dieselben Schritte lesen, wenn du nach einem Lauf fragst.
 
 Ein Benachrichtigen-Schritt verlinkt standardmäßig hierhin — wähle in den Einstellungen des Schritts **Die Ergebnisse dieses Laufs** oder **eine Seite in Genie**, um woanders hinzuzeigen.
 

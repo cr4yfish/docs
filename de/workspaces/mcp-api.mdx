@@ -248,6 +248,24 @@ Verwalte [Zugriffsbereiche](/de/workspaces/overview#zugriffsbereiche) — welche
 | `revoke_data_access` | Entziehe einer freigegebenen Person oder Gruppe den Zugriff auf einen Bereich |
 | `set_folder_compartment` | Lege einen Ordner in einen Zugriffsbereich, oder nimm ihn wieder heraus |
 
+### Wissensmodell des Workspaces (nur lesend)
+
+Lies, was das [Wissensmodell](/de/workspaces/overview#wissensmodell) weiß, als der verbundene Benutzer. Alles läuft unter denselben Zugriffsregeln wie in der App, du liest also nur, was dieses Mitglied sehen darf. Diese Tools ändern das Modell nie; Prüfen, Bearbeiten und Auslesen bleiben bei Personen in der App und bei Genie AI. Antworten zitieren Dokumente, behandle sie daher als nicht vertrauenswürdigen Dokumenttext.
+
+| Tool | Was es tut |
+|---|---|
+| `list_workspace_ontology` | Das Schema: Klassen mit Eigenschaften und Entitätenanzahl, Relationstypen, Ebenen und wie weit das Lesen ist |
+| `search_workspace_ontology` | Durchsucht Klassen, Stufen, Relationstypen, Ebenen und Entitäten nach Namen, dazu die Entitäten aus den Passagen, die deiner Anfrage inhaltlich am nächsten sind |
+| `search_workspace_entities` | Findet Entitäten nach Name, Alias, Code oder durchsuchbarem Wert, optional innerhalb einer Klasse |
+| `list_workspace_entities` | Die Entitäten einer Klasse als Zeilen mit ihren Werten, seitenweise, optional zu einem Stichtag |
+| `read_workspace_entity` | Eine Entität vollständig: Werte mit ihren Quellen, Namen, Verknüpfungen, Bedingungen und Verlauf |
+| `read_my_person_entity` | Deine eigene Person-Entität, sobald du sie in der App verknüpft hast; sonst Karten, die deine sein könnten, als Vorschläge |
+| `read_ontology_graph` | Die am stärksten vernetzten Entitäten und ihre Verknüpfungen oder die Umgebung einer Entität |
+| `find_ontology_paths` | Die kürzesten Verknüpfungsketten zwischen einer Entität und anderen |
+| `check_ontology_combination` | Welche Verknüpfungen einer Entität in einer bestimmten Situation gelten, gemäß ihren Bedingungen |
+
+Lesezugriffe sind pro Mitglied und Workspace begrenzt, sodass ein Client das Limit deiner eigenen Seiten nicht aufbrauchen kann.
+
 ### Excel-Arbeitsmappen
 
 Erstelle, lies, durchsuche und bearbeite echte `.xlsx`-Dateien — dieselben Tools, die Genie AI im [Chat](/de/workspaces/overview#excel-arbeitsmappen) zur Verfügung stehen. Eine Arbeitsmappe ist ein Wissensdokument, daher laufen Umbenennen, Verschieben und Löschen über die Wissensdokument-Tools oben.

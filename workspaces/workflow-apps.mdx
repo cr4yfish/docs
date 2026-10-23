@@ -84,6 +84,10 @@ To use an earlier step's output inside a field — an AI prompt, a database quer
   There's only ever one agent behind the scenes, not two competing copies. Whatever you change on the canvas, Genie AI sees the next time you talk to it — and whatever Genie AI changes, the canvas reflects the next time you open it.
 </Tip>
 
+**Find a step.** On a large canvas, press **⌘K** (Ctrl+K), or **/** outside a text field, to search the steps by name. Pick one and the canvas glides to it and opens its panel. The search button in the canvas toolbar opens the same search on a phone.
+
+**Frames.** Group steps under a name to keep a busy canvas readable. Choose **a new frame** under **Drawn in** in a step's panel, or move the step into an existing one. A frame can be collapsed into a single card, renamed, moved by its tab or ungrouped. Frames only change how the canvas looks, never how the agent runs. During a run, a collapsed frame shows its most telling status, so a failure inside is never hidden.
+
 ## Branching
 
 An **If / else** step tests one or more rules against earlier results and comes out **yes (then)** or **no (else)** — combine its rules with **AND** (all must hold), **OR** (any one), or **NOT** (none may hold). Drag from the step's **Then** or **Else** dot onto another step to gate it on that branch, or pick the branch from **Runs** in that step's own settings instead.
@@ -125,6 +129,8 @@ Before you commit to a change, you can run a real test to see exactly what an ag
 Every run gets a results page of its own: the outcome, and every step that produced it, in the order it ran, each with its status, how long it took, and what it produced. An AI step's answer renders as formatted text rather than raw markdown. Open it on a run still in progress and it follows along as each step finishes.
 
 Each agent also has a **Runs** page — its recent runs, newest first — one tap from the editor's toolbar. On the chat canvas, an agent shows its last five runs and how each step went in the picked run; tap a step to see what it does and ask Genie AI about it.
+
+**Steps of a called agent.** When a step calls another agent, its row in the run results shows a pill such as *28 steps inside · 1 failed*. Open it to see the called agent's own steps with their status, duration and any error, and open further calls inside it. Steps of an agent you may not see stay hidden. Genie AI can read the same steps when you ask about a run.
 
 A notify step links here by default — choose **This run's results** or **a page inside Genie** from the step's settings to point it somewhere else.
 
