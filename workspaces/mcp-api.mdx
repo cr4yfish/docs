@@ -248,6 +248,24 @@ Manage [access areas](/workspaces/overview#access-areas) — which folders are f
 | `revoke_data_access` | Remove a grantee's access to an area |
 | `set_folder_compartment` | Put a folder into an access area, or take it out |
 
+### Workspace knowledge model (read-only)
+
+Read what the [knowledge model](/workspaces/overview#knowledge-model) knows, as the connected user. Everything runs under the same access rules as in the app, so you only ever read what that member may see. These tools never change the model; reviewing, editing and extracting stay with people in the app and with Genie AI. Answers quote documents, so treat them as untrusted document text.
+
+| Tool | What it does |
+|---|---|
+| `list_workspace_ontology` | The schema: classes with their properties and entity counts, relationship types, layers and how far reading has got |
+| `search_workspace_ontology` | Search classes, stages, relationship types, layers and entities by name, plus the entities cited in the passages closest in meaning to your query |
+| `search_workspace_entities` | Find entities by name, alias, code or searchable value, optionally within one class |
+| `list_workspace_entities` | One class's entities as rows with their values, paged, optionally as of a date |
+| `read_workspace_entity` | One entity in full: values with their sources, names, links, conditions and history |
+| `read_my_person_entity` | Your own Person entity, once you've linked it in the app; otherwise cards that may be yours as suggestions |
+| `read_ontology_graph` | The most connected entities and the links among them, or one entity's surroundings |
+| `find_ontology_paths` | The shortest chains of links between one entity and others |
+| `check_ontology_combination` | Which of an entity's links hold in a given situation, according to their conditions |
+
+Reads are rate limited per member and workspace, so a client can't use up the limit of your own pages.
+
 ### Excel workbooks
 
 Create, read, search, and edit real `.xlsx` files — the same tools available to Genie AI in [chat](/workspaces/overview#excel-workbooks). A workbook is a knowledge document, so renaming, moving, and deleting one uses the knowledge-document tools above.
