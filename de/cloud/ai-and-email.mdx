@@ -17,8 +17,8 @@ Wenn Genie Cloud für dein Projekt bereitgestellt wird, fügt Genie deinem Proje
   <Card title="KI-Text (OpenAI & Anthropic)" icon="sparkles">
     Erzeuge Texte, Zusammenfassungen, Chat-Antworten und andere KI-Inhalte — und lies Bilder, PDFs oder Tabellen, die du ihr gibst. Bereitgestellt über OpenAI oder Anthropics Claude-Modelle via Genie.
   </Card>
-  <Card title="Bilderzeugung (Replicate)" icon="image">
-    Erzeuge ein Bild aus einem Prompt oder bearbeite ein vorhandenes Bild — zum Beispiel den Hintergrund oder Stil eines Fotos ändern. Frag nach einem Logo oder Schriftzug, und Genie rendert den tatsächlich gewünschten Schriftzug, statt Text wegzulassen. Bereitgestellt über Googles Bildmodell via Replicate.
+  <Card title="Bilderzeugung" icon="image">
+    Erzeuge ein Bild aus einem Prompt oder bearbeite ein vorhandenes Bild — zum Beispiel den Hintergrund oder Stil eines Fotos ändern. Frag nach einem Logo oder Schriftzug, und Genie rendert den tatsächlich gewünschten Schriftzug, statt Text wegzulassen. Bereitgestellt über Googles Bildmodell und Genies Generierungsdienst, der jedes Bild außerhalb der Anfrage erzeugt und das Ergebnis speichert — ein langsames Modell lässt deine App also nie in ein Timeout laufen.
   </Card>
   <Card title="E-Mail (Resend)" icon="mail">
     Versende transaktionale E-Mails — Bestätigungen, Benachrichtigungen, Nachrichten aus Kontaktformularen — über Resend.
@@ -34,11 +34,15 @@ In deinem **Secrets**-Tab erscheinen die folgenden Einträge, bereits ausgefüll
 |---|---|
 | `OPENAI_API_KEY` | KI-Texterstellung |
 | `ANTHROPIC_API_KEY` | KI-Texterstellung (Claude-Modelle) |
-| `REPLICATE_API_TOKEN` | Bilderzeugung und -bearbeitung |
+| `REPLICATE_API_TOKEN` | Nur in Projekten, die vor dem 23. Oktober 2026 erstellt wurden — neue Projekte erhalten ihn nicht (siehe unten) |
 | `RESEND_API_KEY` | E-Mail-Versand |
 | `HF_TOKEN` | Hugging-Face-Modellinferenz |
 
-Außerdem siehst du passende Einträge `OPENAI_BASE_URL`, `ANTHROPIC_BASE_URL`, `REPLICATE_BASE_URL`, `RESEND_BASE_URL` und `HF_ENDPOINT`. Diese weisen deine App an, Anfragen über Genie zu leiten. Lass sie unverändert, es sei denn, du wechselst zu deinem eigenen Schlüssel (siehe [Eigene Schlüssel verwenden](#eigene-schl%C3%BCssel-verwenden) weiter unten).
+Außerdem siehst du passende Einträge `OPENAI_BASE_URL`, `ANTHROPIC_BASE_URL`, `RESEND_BASE_URL` und `HF_ENDPOINT` (in älteren Projekten zusätzlich `REPLICATE_BASE_URL`). Diese weisen deine App an, Anfragen über Genie zu leiten. Lass sie unverändert, es sei denn, du wechselst zu deinem eigenen Schlüssel (siehe [Eigene Schlüssel verwenden](#eigene-schl%C3%BCssel-verwenden) weiter unten).
+
+<Note>
+  **Die Bilderzeugung läuft nicht mehr über ein Replicate-Relay.** Neue Projekte erhalten weder `REPLICATE_API_TOKEN` noch `REPLICATE_BASE_URL`; Genie baut Bildfunktionen stattdessen auf seinem Generierungsdienst auf, ganz ohne Einrichtung von deiner Seite. Früher erstellte Projekte behalten diese beiden Einträge als gewöhnliche Secrets, aber das alte Relay antwortet jetzt mit **410 Gone** und leitet nichts weiter. Hast du deinen eigenen Replicate-Token gespeichert, funktioniert er weiter und deine App spricht direkt mit Replicate.
+</Note>
 
 <Tip>
   Beschreibe einfach, was du möchtest — „fasse jedes Support-Ticket zusammen", „erzeuge ein Hero-Bild von einem Sonnenuntergang über Bergen", „ändere den Hintergrund dieses Fotos zu einem Strand", „gestalte einen Schriftzug-Logo mit dem Text Nova Studio", „beantworte Fragen zu diesem hochgeladenen PDF", „schick mir eine E-Mail, wenn jemand das Formular absendet" — und Genie baut die Funktion mit diesen eingebauten Zugangsdaten. API-Schlüssel musst du gar nicht erwähnen.
@@ -46,11 +50,11 @@ Außerdem siehst du passende Einträge `OPENAI_BASE_URL`, `ANTHROPIC_BASE_URL`, 
 
 ## Wie es funktioniert
 
-Deine App hält niemals einen echten OpenAI-, Anthropic-, Replicate- oder Resend-Schlüssel. Stattdessen sind die von Genie eingesetzten Zugangsdaten **projektspezifische Zugriffstoken**, die auf Genies sicheren Relay-Dienst zeigen. Wenn deine App eine Anfrage stellt:
+Deine App hält niemals einen echten OpenAI-, Anthropic- oder Resend-Schlüssel. Stattdessen sind die von Genie eingesetzten Zugangsdaten **projektspezifische Zugriffstoken**, die auf Genies sicheren Relay-Dienst zeigen. Wenn deine App eine Anfrage stellt:
 
 <Steps>
   <Step title="Deine App ruft den Dienst auf">
-    Dein generierter Code ruft OpenAI, Anthropic, Replicate, Resend oder Hugging Face ganz normal auf und verwendet dabei die eingesetzten Zugangsdaten.
+    Dein generierter Code ruft OpenAI, Anthropic, Resend oder Hugging Face ganz normal auf und verwendet dabei die eingesetzten Zugangsdaten.
   </Step>
   <Step title="Genie authentifiziert und leitet weiter">
     Die Anfrage erreicht Genie, das prüft, ob sie zu deinem Projekt gehört, und leitet sie dann mit Genies eigenem Anbieter-Schlüssel an den echten Anbieter weiter.
@@ -66,7 +70,7 @@ Durch dieses Design bleiben die echten Anbieter-Schlüssel auf Genies Seite — 
 
 Jede Anfrage, die deine App über die eingebauten Zugangsdaten stellt, wird **erfasst** — Anbieter, Endpunkt, Status und Zeitverhalten — damit Genie den Dienst überwachen und die Nutzung deinem Projekt zuordnen kann.
 
-**KI-Text (OpenAI oder Anthropic) sowie Bild-, Video- oder Audioerzeugung (Replicate) verringern deine [Credits](/de/billing/credits).** Eine erfolgreiche Anfrage wird zum gleichen Satz pro Modell abgerechnet, mit dem auch dein Projekt-Chat abgerechnet wird, und erscheint in deinem Kontoauszug als `Genie proxy · <Anbieter> · <Modell>`. Die Nutzung deiner laufenden App findest du unter **Projekteinstellungen → Nutzung** — eine tagesgenaue Aufschlüsselung mit einem 7/30/90-Tage-Umschalter — oder in deinem [Kontoverlauf](/de/billing/credits#deine-aktuelle-nutzung-prüfen).
+**KI-Text (OpenAI oder Anthropic) sowie Bilderzeugung verringern deine [Credits](/de/billing/credits).** Eine erfolgreiche Anfrage wird zum gleichen Satz pro Modell abgerechnet, mit dem auch dein Projekt-Chat abgerechnet wird, und erscheint in deinem Kontoauszug als `Genie proxy · <Anbieter> · <Modell>`. Die Nutzung deiner laufenden App findest du unter **Projekteinstellungen → Nutzung** — eine tagesgenaue Aufschlüsselung mit einem 7/30/90-Tage-Umschalter — oder in deinem [Kontoverlauf](/de/billing/credits#deine-aktuelle-nutzung-prüfen).
 
 E-Mail (Resend) und Hugging-Face-Inferenz werden noch nicht gemessen und verringern derzeit keine Credits.
 
@@ -107,7 +111,7 @@ Manche leistungsfähigeren Modelle — darunter bestimmte Claude-Modelle — sin
 
 ### Bildmodell
 
-Die eingebauten Replicate-Zugangsdaten sind auf eine kleine Auswahl von Genie-ausgewählten Bildmodellen beschränkt (Googles nano-banana-Familie, sowohl für die Erzeugung neuer Bilder als auch für die Bearbeitung vorhandener Bilder). Wenn deine App ein Modell außerhalb dieser Auswahl anfordert, wird die Anfrage abgelehnt. Um ein anderes Bildmodell zu nutzen, [verwende deinen eigenen Replicate-Schlüssel](#eigene-schl%C3%BCssel-verwenden).
+Die eingebaute Bilderzeugung ist auf eine kleine Auswahl von Genie-ausgewählten Bildmodellen beschränkt (Googles nano-banana-Familie, sowohl für die Erzeugung neuer Bilder als auch für die Bearbeitung vorhandener Bilder). Wenn deine App ein Modell außerhalb dieser Auswahl anfordert, wird die Anfrage abgelehnt. Um ein anderes Bildmodell zu nutzen, [verwende deinen eigenen Replicate-Schlüssel](#eigene-schl%C3%BCssel-verwenden).
 
 ### Tabellen-Anhänge
 
@@ -161,7 +165,7 @@ Nach dem Wechsel gehen die Anfragen für diesen Anbieter direkt von deiner App z
 | KI-Anfragen scheitern mit einem Fehler „ungültiges Modell" | Deine App hat ein Modell angefragt, das die eingebauten Zugangsdaten nicht erlauben | Stelle die Funktion auf Genies Standardmodell um oder [verwende deinen eigenen OpenAI- oder Anthropic-Schlüssel](#eigene-schl%C3%BCssel-verwenden) |
 | Eine Bild- oder PDF-Anfrage wird mit einem Fehler zu nicht unterstützter Eingabe abgelehnt | Das von deiner App angefragte Modell ist nicht dafür konfiguriert, diese Art von Eingabe zu akzeptieren | Stelle die Funktion auf Genies Standardmodell um, das beides liest, oder [verwende deinen eigenen OpenAI-Schlüssel](#eigene-schl%C3%BCssel-verwenden) |
 | Ein Tabellen-Anhang wird abgelehnt, statt gelesen zu werden | Die Datei ist keine gültige `.xlsx`-Arbeitsmappe oder überschreitet die Größen- oder Tabellenblatt-Grenzen | Verkleinere die Datei auf eine unterstützte Größe oder sende die Daten stattdessen als CSV oder reinen Text |
-| Bilderzeugung oder -bearbeitung scheitert mit einem Modell-Fehler | Deine App hat ein Bildmodell außerhalb der eingebauten Replicate-Allowlist angefragt | Stelle die Funktion auf ein unterstütztes Modell um oder [verwende deinen eigenen Replicate-Schlüssel](#eigene-schl%C3%BCssel-verwenden) |
+| Bilderzeugung oder -bearbeitung scheitert mit einem Modell-Fehler | Deine App hat ein Bildmodell außerhalb der eingebauten Auswahl angefragt | Stelle die Funktion auf ein unterstütztes Modell um oder [verwende deinen eigenen Replicate-Schlüssel](#eigene-schl%C3%BCssel-verwenden) |
 | E-Mail wird mit einem Absender-/Domain-Fehler abgelehnt | Die App sendet von einer anderen Adresse als `noreply@email.genie-app.de` | Verwende die eingebaute Absenderadresse oder deinen eigenen Resend-Schlüssel mit verifizierter Domain |
 | Ein Dienst funktioniert nach dem Bearbeiten eines Secrets nicht mehr | Die eingebauten Zugangsdaten wurden versehentlich geändert oder gelöscht | Führe im **Cloud**-Tab „Bootstrap erneut ausführen" aus, um die eingebauten Werte wiederherzustellen, oder füge einen gültigen eigenen Schlüssel ein |
 | Anfragen scheitern bei hoher Last | Du hast das Limit pro Projekt erreicht | Reduziere das Anfragevolumen, verwende deinen eigenen Schlüssel oder kontaktiere den Support, um das Limit anzuheben |

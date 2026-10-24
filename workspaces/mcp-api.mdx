@@ -60,7 +60,7 @@ Read and update your workspace, members, invitations, settings, and billing.
 | `invite_workspace_member` | Create a shareable invite link for a given role |
 | `revoke_workspace_invite` | Cancel a pending invite |
 | `update_workspace_member_role` | Change a member's role |
-| `remove_workspace_member` | Remove a member immediately |
+| `remove_workspace_member` | Remove a member immediately. The workspace's owner of record can't be removed (or demoted below Admin) until they've handed the workspace on — see [Transfer ownership](/workspaces/members#transfer-ownership) |
 | `update_workspace` | Rename the workspace, update its description, or set its icon and accent color |
 | `update_workspace_settings` | Toggle activity log, project access control, or automatic knowledge-base reading (entity/relation extraction — see [Knowledge model](/workspaces/overview#knowledge-model)) |
 | `get_workspace_billing` | Subscription plan, status, and billing period |
@@ -259,7 +259,7 @@ Read what the [knowledge model](/workspaces/overview#knowledge-model) knows, as 
 | `search_workspace_entities` | Find entities by name, alias, code or searchable value, optionally within one class |
 | `list_workspace_entities` | One class's entities as rows with their values, paged, optionally as of a date |
 | `read_workspace_entity` | One entity in full: values with their sources, names, links, conditions and history |
-| `read_my_person_entity` | Your own Person entity, once you've linked it in the app; otherwise cards that may be yours as suggestions |
+| `read_my_person_entity` | Your own Person entity, once you've linked it in the app. Card suggestions need your signed-in app session, so over MCP an unlinked answer comes with none — do the linking in the app |
 | `read_ontology_graph` | The most connected entities and the links among them, or one entity's surroundings |
 | `find_ontology_paths` | The shortest chains of links between one entity and others |
 | `check_ontology_combination` | Which of an entity's links hold in a given situation, according to their conditions |

@@ -60,7 +60,7 @@ Lese und aktualisiere deinen Workspace, Mitglieder, Einladungen, Einstellungen u
 | `invite_workspace_member` | Erstelle einen teilbaren Einlade-Link für eine bestimmte Rolle |
 | `revoke_workspace_invite` | Breche eine ausstehende Einladung ab |
 | `update_workspace_member_role` | Ändere die Rolle eines Mitglieds |
-| `remove_workspace_member` | Entferne ein Mitglied sofort |
+| `remove_workspace_member` | Entferne ein Mitglied sofort. Der Hauptverantwortliche des Workspace kann nicht entfernt (oder unter Admin herabgestuft) werden, bevor er den Workspace weitergegeben hat — siehe [Eigentümerschaft übertragen](/de/workspaces/members#eigent%C3%BCmerschaft-%C3%BCbertragen) |
 | `update_workspace` | Benenne den Workspace um, aktualisiere seine Beschreibung oder setze sein Icon und seine Akzentfarbe |
 | `update_workspace_settings` | Schalte das Aktivitätsprotokoll, die Projektzugangskontrolle oder das automatische Lesen der Wissensdatenbank um (Entitäten-/Beziehungs-Extraktion — siehe [Wissensmodell](/de/workspaces/overview#wissensmodell)) |
 | `get_workspace_billing` | Abonnement-Tarif, Status und Abrechnungszeitraum |
@@ -259,7 +259,7 @@ Lies, was das [Wissensmodell](/de/workspaces/overview#wissensmodell) weiß, als 
 | `search_workspace_entities` | Findet Entitäten nach Name, Alias, Code oder durchsuchbarem Wert, optional innerhalb einer Klasse |
 | `list_workspace_entities` | Die Entitäten einer Klasse als Zeilen mit ihren Werten, seitenweise, optional zu einem Stichtag |
 | `read_workspace_entity` | Eine Entität vollständig: Werte mit ihren Quellen, Namen, Verknüpfungen, Bedingungen und Verlauf |
-| `read_my_person_entity` | Deine eigene Person-Entität, sobald du sie in der App verknüpft hast; sonst Karten, die deine sein könnten, als Vorschläge |
+| `read_my_person_entity` | Deine eigene Person-Entität, sobald du sie in der App verknüpft hast. Kartenvorschläge brauchen deine angemeldete App-Sitzung; über MCP kommt eine unverknüpfte Antwort daher ohne Vorschläge — verknüpfe in der App |
 | `read_ontology_graph` | Die am stärksten vernetzten Entitäten und ihre Verknüpfungen oder die Umgebung einer Entität |
 | `find_ontology_paths` | Die kürzesten Verknüpfungsketten zwischen einer Entität und anderen |
 | `check_ontology_combination` | Welche Verknüpfungen einer Entität in einer bestimmten Situation gelten, gemäß ihren Bedingungen |

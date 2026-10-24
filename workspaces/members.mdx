@@ -15,7 +15,7 @@ Genie has four workspace roles. Each role inherits all the permissions of the ro
 
 <CardGroup cols={2}>
   <Card title="Owner" icon="crown">
-    Full control over the workspace. Owners can manage all members — including promoting someone else to owner — change any setting, and delete the workspace. There is always at least one owner and an owner cannot leave the workspace without transferring ownership first.
+    Full control over the workspace. Owners can manage all members — including promoting someone else to owner — change any setting, and delete the workspace. There is always at least one owner and an owner cannot leave the workspace without transferring ownership first. One owner is the workspace's **owner of record** — the person who created it or was handed it — and that person must hand it on before leaving.
   </Card>
   <Card title="Admin" icon="shield">
     Can manage members (except other owners), toggle workspace settings, enable or disable the activity log, and manage MCP integrations. Admins always have access to all projects regardless of project-level access control.
@@ -134,5 +134,15 @@ Removing a member is immediate and cannot be undone from the UI. To restore acce
 If you are a member, admin, or editor (but not the sole owner), you can leave a workspace yourself. Open your own row in the members table and click **Leave workspace** at the bottom of the side panel.
 
 <Warning>
-If you are the only owner of a workspace, you cannot leave until you transfer ownership to another member.
+If you are the workspace's owner of record, you cannot leave until you transfer ownership to another member.
 </Warning>
+
+### Transfer ownership
+
+The workspace's owner of record can hand it on to another member. Open that member's row in the members table and press **Transfer ownership**, or ask Genie AI — it shows a card naming the person it found, and you confirm it there.
+
+- **The new owner** gets the built-in Owner role.
+- **You** keep your roles and can then leave or be removed like any other member.
+- **Billing does not move.** The subscription and payment details stay as they are until someone changes them under Billing; the transfer tells you so.
+- **The owner of record can't be removed or demoted below Admin** — from the web app, Genie AI or the [MCP API](/workspaces/mcp-api) — until they've handed the workspace on. A custom-role change that would leave them without an Owner or Admin role is refused.
+

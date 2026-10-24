@@ -4,6 +4,30 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="October 24, 2026" description="Weekly release">
+
+Covers what shipped October 23. A workspace's owner can now hand it on cleanly, Person cards show which colleague they are, and image generation moves onto Genie's own generation service.
+
+## New features
+
+- **Transfer ownership.** The workspace's owner of record can hand it to another member from the members table or by asking Genie AI. Until they do, they can't leave, be removed or be demoted below Admin. See [Transfer ownership](/workspaces/members#transfer-ownership).
+- **See who a Person card is.** When members link themselves to their own Person, the card shows a small tag — **You** on your own card, the colleague's name on theirs — and Genie AI can name them. See [Knowledge model](/workspaces/overview#knowledge-model).
+- **Told to Genie AI.** An entity Genie AI recorded from a chat lists that chat among its sources; the member who told it can open the chat.
+
+## Updates
+
+- **Image generation on Genie's generation service.** New projects no longer get `REPLICATE_API_TOKEN`; the old Replicate relay answers 410 Gone. Your own Replicate token keeps working. See [Built-in AI, images, and email](/cloud/ai-and-email).
+- **Calmer chat.** Messages and the first turn ease in slowly, the side canvas grows in a beat after the card that asked for it, and going back to a chat that is still running no longer shows a message twice.
+- **More reliable mailbox estimates.** Outlook mailboxes are counted within their time limit, and a paused or stopped sync says so.
+- **Better merge proposals.** Names that differ by a long number, like *DIN 14661* and *DIN 14461-1*, are no longer proposed as duplicates.
+- **Leaving cleans up.** A departed member's synced mailbox and drive mirrors are removed; their documents stay in the held personal area.
+- **Narrowed roles open their own settings pages.** A custom role sees each settings page it has permission for.
+- **Paid workspaces stay out of tracing.** Conversations from paid workspaces are no longer sent to Genie's LLM observability provider.
+- **MCP honours the owner of record.** Removing or demoting the owner of record through MCP is refused, the same as in the app.
+
+</Update>
+
+
 <Update label="October 23, 2026" description="Weekly release">
 
 Covers what shipped October 22. Genie can link you to your own person in the knowledge model, the model can be read from MCP clients, and Genie Agents get frames and a find-a-step search.
