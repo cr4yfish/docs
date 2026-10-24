@@ -15,7 +15,7 @@ Genie hat vier Workspace-Rollen. Jede Rolle erbt alle Berechtigungen der darunte
 
 <CardGroup cols={2}>
   <Card title="Eigentümer" icon="crown">
-    Volle Kontrolle über den Workspace. Eigentümer können alle Mitglieder verwalten — einschließlich der Beförderung anderer zu Eigentümern — jede Einstellung ändern und den Workspace löschen. Es gibt immer mindestens einen Eigentümer, und ein Eigentümer kann den Workspace nicht verlassen, ohne zuvor die Eigentümerschaft zu übertragen.
+    Volle Kontrolle über den Workspace. Eigentümer können alle Mitglieder verwalten — einschließlich der Beförderung anderer zu Eigentümern — jede Einstellung ändern und den Workspace löschen. Es gibt immer mindestens einen Eigentümer, und ein Eigentümer kann den Workspace nicht verlassen, ohne zuvor die Eigentümerschaft zu übertragen. Ein Eigentümer ist der **Hauptverantwortliche** des Workspace — die Person, die ihn erstellt hat oder an die er übergeben wurde — und diese Person muss ihn vor dem Verlassen weitergeben.
   </Card>
   <Card title="Admin" icon="shield">
     Kann Mitglieder verwalten (außer andere Eigentümer), Workspace-Einstellungen umschalten, das Aktivitätsprotokoll aktivieren oder deaktivieren und MCP-Integrationen verwalten. Admins haben unabhängig von projekteigenen Zugriffsrechten immer Zugriff auf alle Projekte.
@@ -134,5 +134,15 @@ Das Entfernen eines Mitglieds ist sofortig und kann über die UI nicht rückgän
 Wenn du Mitglied, Admin oder Editor bist (aber nicht der einzige Eigentümer), kannst du einen Workspace selbst verlassen. Öffne deine eigene Zeile in der Mitgliedertabelle und klicke unten im Seitenpanel auf **Workspace verlassen**.
 
 <Warning>
-Wenn du der einzige Eigentümer eines Workspace bist, kannst du ihn nicht verlassen, bis du die Eigentümerschaft an ein anderes Mitglied überträgst.
+Wenn du der Hauptverantwortliche eines Workspace bist, kannst du ihn nicht verlassen, bis du die Eigentümerschaft an ein anderes Mitglied überträgst.
 </Warning>
+
+### Eigentümerschaft übertragen
+
+Der Hauptverantwortliche eines Workspace kann ihn an ein anderes Mitglied übergeben. Öffne die Zeile dieses Mitglieds in der Mitgliedertabelle und klicke auf **Eigentümerschaft übertragen**, oder frage Genie AI — es zeigt eine Karte mit der gefundenen Person, die du dort bestätigst.
+
+- **Der neue Eigentümer** erhält die eingebaute Rolle Eigentümer.
+- **Du** behältst deine Rollen und kannst den Workspace danach wie jedes andere Mitglied verlassen oder entfernt werden.
+- **Die Abrechnung wandert nicht mit.** Abo und Zahlungsdaten bleiben unverändert, bis jemand sie unter Abrechnung ändert; die Übertragung weist darauf hin.
+- **Der Hauptverantwortliche kann nicht entfernt oder unter Admin herabgestuft werden** — weder in der Web-App noch über Genie AI oder die [MCP-API](/de/workspaces/mcp-api) —, bevor er den Workspace weitergegeben hat. Eine Änderung an einer benutzerdefinierten Rolle, die ihn ohne Eigentümer- oder Admin-Rolle ließe, wird abgelehnt.
+

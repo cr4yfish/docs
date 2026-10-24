@@ -4,6 +4,30 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="24. Oktober 2026" description="Wöchentliches Release">
+
+Umfasst, was am 23. Oktober ausgeliefert wurde. Der Eigentümer eines Workspace kann ihn jetzt sauber weitergeben, Personenkarten zeigen, welcher Kollege dahintersteckt, und die Bilderzeugung zieht auf Genies eigenen Generierungsdienst um.
+
+## Neue Funktionen
+
+- **Eigentümerschaft übertragen.** Der Hauptverantwortliche eines Workspace kann ihn aus der Mitgliedertabelle oder per Genie AI an ein anderes Mitglied übergeben. Bis dahin kann er weder austreten noch entfernt oder unter Admin herabgestuft werden. Siehe [Eigentümerschaft übertragen](/de/workspaces/members#eigent%C3%BCmerschaft-%C3%BCbertragen).
+- **Sehen, wer eine Personenkarte ist.** Verknüpfen sich Mitglieder mit ihrer eigenen Person, zeigt die Karte ein kleines Etikett — **Du** auf deiner eigenen, der Name des Kollegen auf seiner — und Genie AI kann sie nennen. Siehe [Wissensmodell](/de/workspaces/overview#wissensmodell).
+- **Genie AI gesagt.** Eine Entität, die Genie AI aus einem Chat erfasst hat, führt diesen Chat unter ihren Quellen; das Mitglied, das es gesagt hat, kann den Chat öffnen.
+
+## Updates
+
+- **Bilderzeugung auf Genies Generierungsdienst.** Neue Projekte erhalten kein `REPLICATE_API_TOKEN` mehr; das alte Replicate-Relay antwortet mit 410 Gone. Dein eigener Replicate-Token funktioniert weiter. Siehe [Eingebaute KI, Bilder und E-Mail](/de/cloud/ai-and-email).
+- **Ruhigerer Chat.** Nachrichten und der erste Beitrag blenden langsam ein, die seitliche Arbeitsfläche wächst einen Moment nach der Karte, die sie angefordert hat, und wer zu einem noch laufenden Chat zurückkehrt, sieht keine Nachricht mehr doppelt.
+- **Zuverlässigere Postfach-Schätzungen.** Outlook-Postfächer werden innerhalb ihres Zeitlimits gezählt, und eine pausierte oder gestoppte Synchronisierung sagt das.
+- **Bessere Merge-Vorschläge.** Namen, die sich in einer langen Zahl unterscheiden, etwa *DIN 14661* und *DIN 14461-1*, werden nicht mehr als Duplikate vorgeschlagen.
+- **Austritt räumt auf.** Die synchronisierten Postfach- und Laufwerk-Spiegelungen eines ausgeschiedenen Mitglieds werden entfernt; seine Dokumente bleiben im eingefrorenen persönlichen Bereich.
+- **Eingeschränkte Rollen öffnen ihre eigenen Einstellungsseiten.** Eine benutzerdefinierte Rolle sieht jede Einstellungsseite, für die sie die Berechtigung hat.
+- **Bezahlte Workspaces bleiben außerhalb des Tracings.** Unterhaltungen aus bezahlten Workspaces werden nicht mehr an Genies LLM-Observability-Anbieter gesendet.
+- **MCP beachtet den Hauptverantwortlichen.** Das Entfernen oder Herabstufen des Hauptverantwortlichen über MCP wird abgelehnt, genau wie in der App.
+
+</Update>
+
+
 <Update label="23. Oktober 2026" description="Wöchentliches Release">
 
 Umfasst, was am 22. Oktober ausgeliefert wurde. Genie kann dich mit deiner eigenen Person im Wissensmodell verknüpfen, das Modell lässt sich aus MCP-Clients lesen, und Genie Agents bekommen Rahmen und eine Schrittsuche.
