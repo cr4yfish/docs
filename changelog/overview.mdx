@@ -4,6 +4,24 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="October 26, 2026" description="Weekly release">
+
+Covers what shipped October 24 and 25. Genie AI now asks you to confirm changes that decide who can access what, paid workspaces keep their AI calls on EU routes, and Confirm all is more careful with merges.
+
+## New features
+
+- **Confirmation cards for access changes.** When you ask Genie AI to assign roles, change what a role grants, reset or delete a role, create or change an API key, delete a document, or change knowledge access, it shows a card that spells out the change and waits for you to press it. See [Confirmation cards](/workspaces/overview#confirmation-cards).
+
+## Updates
+
+- **MCP no longer changes access.** The MCP tools for assigning roles, changing what roles grant, minting or resuming API keys and granting knowledge access are gone; make those changes in the app. Reading and the narrowing edits stay. See [Changes that stay in the app](/workspaces/mcp-api#changes-that-stay-in-the-app).
+- **Paid workspaces stay in the EU.** A paid workspace's AI calls only run on EU-served models. If a model isn't set up for EU processing, the chat says so and asks an admin instead of falling back to another route, and held documents are read once it is fixed.
+- **Safer Confirm all.** It merges only the pairs Genie rated *Likely the same*; every other duplicate pair stays in the review queue for a person.
+- **Paid workspaces stay out of shared learning.** Bug sightings from paid workspaces' projects are no longer added to Genie's shared knowledge of common problems.
+
+</Update>
+
+
 <Update label="October 24, 2026" description="Weekly release">
 
 Covers what shipped October 23. A workspace's owner can now hand it on cleanly, Person cards show which colleague they are, and image generation moves onto Genie's own generation service.

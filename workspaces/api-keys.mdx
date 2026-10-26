@@ -13,7 +13,7 @@ A workspace can mint API keys that let your own software talk to **Genie AI** �
 
 Click the account row at the bottom of the workspace sidebar, choose **Workspace settings**, then open **API keys**. Creating, renaming, rescoping, and revoking keys is restricted to workspace **owners and admins**.
 
-You can also manage keys by asking Genie AI directly in chat — it can list your keys, create a new one, rename or rescope an existing one, and revoke one, the same as using the settings page:
+You can also manage keys by asking Genie AI directly in chat — it can list your keys, create a new one, rename or rescope an existing one, and revoke one, the same as using the settings page. Creating a key, or changing one, shows a [confirmation card](/workspaces/overview#confirmation-cards) first, and nothing happens until you press it:
 
 - *"List my workspace API keys"*
 - *"Create an API key for our support bot"*
@@ -76,7 +76,7 @@ If your integration wants to render the answer as it's generated instead of wait
 
 ## The credential
 
-An API key looks like `gnw_...` and is shown to you **only once**, at the moment you create it — in the settings page dialog, or in Genie AI's reply if you asked it to create the key for you. Copy it somewhere safe immediately; if you lose it, there's no way to retrieve it again and you'll need to create a new key.
+An API key looks like `gnw_...` and is shown to you **only once**, at the moment you create it — in the settings page dialog, or on the confirmation card if you asked Genie AI to create the key for you (it is never in the chat text). Copy it somewhere safe immediately; if you lose it, there's no way to retrieve it again and you'll need to create a new key.
 
 <Warning>
   Treat a workspace API key like a password. Never commit it to source control or paste it somewhere it could be exposed — anyone holding it can act as Genie AI in your workspace. Your key itself is never stored in plaintext by Genie, only a one-way hash, so even Genie can't show it to you again after creation.
