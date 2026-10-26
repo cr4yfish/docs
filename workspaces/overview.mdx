@@ -382,7 +382,7 @@ Beyond search and citations, Genie AI can also build a structured model of what 
 
 Turn on **Read documents automatically** at the bottom of the Documents view (owners and admins only, off by default) and Genie reads every document in the workspace and proposes the entities, values, and links it finds — new and changed documents are picked up automatically from then on. Everyone in the workspace can browse the result in the **Classes and relations** panel further down the same page: the kinds of things being tracked (people, organisations, decisions, terms, and any custom class an admin adds), how many properties each has, and how many entities you can see. Open a class to see its entities, each marked **Proposed** until confirmed, and **Partly hidden** where a document you can't read says more about it.
 
-New entities, links, and classes don't apply themselves — they wait in the **Review queue** below the classes panel until someone with permission decides. Confirm or reject a proposed entity or link one at a time, or use **Confirm all** to accept everything currently listed at once (it runs in the background, and the queue shows exact counts) — or pick one kind from its menu, such as only entities or only duplicates; a possible duplicate is offered as a **merge** (with a reason), and a class or relationship Genie thinks your workspace needs is offered as a suggestion you can create or dismiss.
+New entities, links, and classes don't apply themselves — they wait in the **Review queue** below the classes panel until someone with permission decides. Confirm or reject a proposed entity or link one at a time, or use **Confirm all** to accept what is currently listed at once (it runs in the background, and the queue shows exact counts; possible duplicates are only merged when Genie rates them *Likely the same*, and every other pair stays for a person to decide) — or pick one kind from its menu, such as only entities or only duplicates; a possible duplicate is offered as a **merge** (with a reason), and a class or relationship Genie thinks your workspace needs is offered as a suggestion you can create or dismiss.
 
 <Tip>
 Documents that failed or were skipped are listed under **Needs attention**; **Try all again** reads them once more. Genie AI can also find how two entities are connected — every chain of links between them — when you ask *"how is Anna connected to Acme?"*. Possible duplicates tell near names apart: *Kampagne A* and *Kampagne B*, or a 2008 and a 2012 edition, aren't offered as one.
@@ -458,6 +458,10 @@ An area can grant **read** access (see and use what's inside) or **write** acces
 <Tip>
 Prefer granting a role or a group over naming individual members one at a time — it's easier to review and update later, and you can create a group specifically to hold an access grant.
 </Tip>
+
+### Confirmation cards
+
+Some changes decide who can do or read what, so Genie AI never makes them on its own. When you ask it to — assign a member's roles, change what a role grants or its base role, reset or delete a role, create an API key or change one, delete a document, delete an access area, grant or revoke access, or move a folder between areas — it shows a **confirmation card** that spells out the change: who or what is affected and who gains or loses access. Nothing happens until you press the button on the card, and the change then follows the same permission checks as the matching settings page. A new API key's secret appears on its card once, and nowhere else. Where nobody reads the answer as it is produced — [Workspace Auto](/workspaces/auto), or an external MCP client — Genie AI doesn't offer these changes at all; make them in settings instead.
 
 ### Talk instead of type
 

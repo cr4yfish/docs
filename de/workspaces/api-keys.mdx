@@ -13,7 +13,7 @@ Ein Workspace kann API-Schlüssel erstellen, mit denen deine eigene Software per
 
 Klicke auf die Kontozeile unten in der Workspace-Seitenleiste, wähle **Workspace-Einstellungen** und öffne dann **API-Schlüssel**. Erstellen, Umbenennen, Neu-Skopieren und Widerrufen von Schlüsseln ist auf **Inhaber:innen und Admins** des Workspace beschränkt.
 
-Du kannst Schlüssel auch verwalten, indem du Genie AI direkt im Chat darum bittest — sie kann deine Schlüssel auflisten, einen neuen erstellen, einen bestehenden umbenennen oder neu skopieren und einen widerrufen, genauso wie über die Einstellungsseite:
+Du kannst Schlüssel auch verwalten, indem du Genie AI direkt im Chat darum bittest — sie kann deine Schlüssel auflisten, einen neuen erstellen, einen bestehenden umbenennen oder neu skopieren und einen widerrufen, genauso wie über die Einstellungsseite. Einen Schlüssel zu erstellen oder zu ändern zeigt zuerst eine [Bestätigungskarte](/de/workspaces/overview#best%C3%A4tigungskarten), und es passiert nichts, bis du sie drückst:
 
 - *„Liste meine Workspace-API-Schlüssel auf"*
 - *„Erstelle einen API-Schlüssel für unseren Support-Bot"*
@@ -76,7 +76,7 @@ Wenn deine Integration die Antwort anzeigen möchte, während sie generiert wird
 
 ## Der Zugangsschlüssel
 
-Ein API-Schlüssel sieht aus wie `gnw_...` und wird dir **nur einmal** angezeigt — im Moment der Erstellung, im Dialog der Einstellungsseite oder in Genie AIs Antwort, wenn du sie gebeten hast, den Schlüssel für dich zu erstellen. Kopiere ihn sofort an einen sicheren Ort — verlierst du ihn, gibt es keine Möglichkeit, ihn erneut abzurufen, und du musst einen neuen Schlüssel erstellen.
+Ein API-Schlüssel sieht aus wie `gnw_...` und wird dir **nur einmal** angezeigt — im Moment der Erstellung, im Dialog der Einstellungsseite oder auf der Bestätigungskarte, wenn du Genie AI gebeten hast, den Schlüssel für dich zu erstellen (im Chattext steht er nie). Kopiere ihn sofort an einen sicheren Ort — verlierst du ihn, gibt es keine Möglichkeit, ihn erneut abzurufen, und du musst einen neuen Schlüssel erstellen.
 
 <Warning>
   Behandle einen Workspace-API-Schlüssel wie ein Passwort. Committe ihn niemals in die Versionsverwaltung und füge ihn nirgendwo ein, wo er offengelegt werden könnte — wer ihn besitzt, kann in deinem Workspace als Genie AI agieren. Dein Schlüssel selbst wird von Genie nie im Klartext gespeichert, nur ein Einweg-Hash — selbst Genie kann ihn dir nach der Erstellung nicht erneut anzeigen.

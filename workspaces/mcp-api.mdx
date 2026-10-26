@@ -59,7 +59,6 @@ Read and update your workspace, members, invitations, settings, and billing.
 | `list_workspace_invites` | Pending invite links with expiry and remaining uses |
 | `invite_workspace_member` | Create a shareable invite link for a given role |
 | `revoke_workspace_invite` | Cancel a pending invite |
-| `update_workspace_member_role` | Change a member's role |
 | `remove_workspace_member` | Remove a member immediately. The workspace's owner of record can't be removed (or demoted below Admin) until they've handed the workspace on — see [Transfer ownership](/workspaces/members#transfer-ownership) |
 | `update_workspace` | Rename the workspace, update its description, or set its icon and accent color |
 | `update_workspace_settings` | Toggle activity log, project access control, or automatic knowledge-base reading (entity/relation extraction — see [Knowledge model](/workspaces/overview#knowledge-model)) |
@@ -75,17 +74,14 @@ Read and update your workspace, members, invitations, settings, and billing.
 
 ### Workspace roles and permissions
 
-Everything the **Roles & permissions** settings page can do — the four built-in roles (owner/admin/member/editor) and any custom role or group the workspace defines. Every write requires the `roles.manage` permission.
+Everything the **Roles & permissions** settings page can do — the four built-in roles (owner/admin/member/editor) and any custom role or group the workspace defines. Every write requires the `roles.manage` permission. Over MCP you can read roles, create one and rename one; assigning and changing what roles grant is made in the app (see [Changes that stay in the app](#changes-that-stay-in-the-app)).
 
 | Tool | What it does |
 |---|---|
 | `list_workspace_roles` | Every role in the workspace — the four built-ins with their current permissions, and every custom role or group, each with a role id, base role, granted permissions, and member count |
 | `list_workspace_permissions` | The full permission catalog: what each one covers, and whether it's flagged sensitive (money, data, or the workspace itself) |
 | `create_workspace_role` | Create a custom role that narrows a built-in role — a permission the base role lacks is dropped, never granted — or a group with no permissions of its own, just a target for granting knowledge access areas |
-| `set_workspace_role_permissions` | Replace a role's whole permission set — send the complete list it should end up with, not just what changed |
-| `update_workspace_role` | Rename a custom role, change its description, or move it to a different base role |
-| `reset_builtin_workspace_role` | Drop a workspace's customisation of a built-in role, restoring the shipped defaults |
-| `delete_workspace_role` | Delete a custom role — everyone holding it falls back to the built-in role it inherited from |
+| `update_workspace_role` | Rename a custom role or change its description |
 
 ### Workspace API keys
 
@@ -94,8 +90,7 @@ Manage the bearer-token keys that let your own code call Genie AI over HTTP — 
 | Tool | What it does |
 |---|---|
 | `list_workspace_api_keys` | List the workspace's keys with a masked prefix and recent usage (requests, tokens, credits). Secrets are never returned |
-| `create_workspace_api_key` | Mint a new key and return its plaintext secret — shown exactly once, the same as the settings dialog |
-| `set_workspace_api_key` | Rename a key, pause or resume it, or change its rate limit |
+| `set_workspace_api_key` | Rename a key or pause it. Resuming it and changing its rate limit are made in the app |
 | `revoke_workspace_api_key` | Permanently revoke a key. Irreversible |
 
 ### Projects
@@ -242,11 +237,11 @@ Manage [access areas](/workspaces/overview#access-areas) — which folders are f
 | Tool | What it does |
 |---|---|
 | `list_data_compartments` | Every access area: its default access (open to all members, or grantees only), who it's granted to, and which folders are in it |
-| `save_data_compartment` | Create an access area, or edit one by id |
-| `delete_data_compartment` | Delete an access area and its grants. Refused while any folder or document is still filed in it |
-| `grant_data_access` | Give a role, a group, or one member read or write access to an area |
-| `revoke_data_access` | Remove a grantee's access to an area |
-| `set_folder_compartment` | Put a folder into an access area, or take it out |
+| `save_data_compartment` | Create an access area, or rename, describe or close one by id. Opening one to every member is made in the app |
+
+### Changes that stay in the app
+
+Anything that could widen who may do or read what is made in the app, not over MCP: an outside client's tool approval is no stand-in for a person pressing the change, because text its model read — a document, an email, a page — could have asked for it. Over MCP you can read all of it and make the narrowing or neutral edits above; the rest — assigning a member's roles, changing what a role grants or its base role, resetting or deleting a role, minting an API key or resuming one, changing its rate limit, granting or revoking knowledge access, deleting an access area, moving a folder between areas — is done in the matching settings page, or by asking Genie AI in the workspace chat, which shows a confirmation card you press. See [Confirmation cards](/workspaces/overview#confirmation-cards).
 
 ### Workspace knowledge model (read-only)
 
