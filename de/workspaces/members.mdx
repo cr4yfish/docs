@@ -32,6 +32,8 @@ Genie hat vier Workspace-Rollen. Jede Rolle erbt alle Berechtigungen der darunte
 
 Die vier eingebauten Rollen oben sind ein Ausgangspunkt, keine Obergrenze — Eigentümer und Admins können **benutzerdefinierte Rollen** erstellen, die genau eingrenzen, was eine Rolle darf, ausgewählt aus einem Katalog feingranularer Berechtigungen, gruppiert nach Bereich (Projekte, [Genie Agents](/de/workspaces/workflow-apps), [Genie Tools](/de/workspaces/genie-tools), Mitglieder, Rollen, Integrationen, Abrechnung, Sicherheit und mehr) — Genie Agents und Genie Tools haben jeweils eigene Berechtigungen zum Ansehen, Erstellen, Bearbeiten, Löschen und Ausführen, getrennt von denen einer Genie App.
 
+Das Löschen eines Projekts und das Löschen eines Wissensdokuments haben jeweils eine eigene Berechtigung, und die Rolle Editor hat keine von beiden — egal, ob das Löschen aus der App, von Genie AI oder über MCP kommt. Die Sync-Ansicht der Bibliothek folgt der Integrations-Berechtigung und die Ontologie-Seite der Berechtigung zur Verwaltung des Wissensmodells statt der Rolle Eigentümer oder Admin selbst, sodass eine benutzerdefinierte Rolle beides bekommen kann.
+
 Eine benutzerdefinierte Rolle **erbt** immer eine der eingebauten Rollen als Basis und kann dieser Basis nur Berechtigungen wegnehmen — nie welche hinzufügen, die die Basis nicht hat. Eine auf **Mitglied** aufgebaute benutzerdefinierte Rolle kann zum Beispiel die Fähigkeit behalten, Projekte zu erstellen und zu bearbeiten, aber den Zugriff auf die Abrechnung oder die Möglichkeit verlieren, andere Mitglieder zu entfernen — sie kann aber nie eine nur für Eigentümer vorgesehene Berechtigung wie das Löschen des Workspace erhalten.
 
 <Tip>

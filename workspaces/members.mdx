@@ -32,6 +32,8 @@ Genie has four workspace roles. Each role inherits all the permissions of the ro
 
 The four built-in roles above are a starting point, not a ceiling — owners and admins can create **custom roles** that narrow exactly what a role is allowed to do, picked from a catalog of granular permissions grouped by area (projects, [Genie Agents](/workspaces/workflow-apps), [Genie Tools](/workspaces/genie-tools), members, roles, integrations, billing, security, and more) — Genie Agents and Genie Tools each get their own view / create / edit / delete / run permissions, separate from a Genie App's.
 
+Deleting a project and deleting a knowledge document each have a permission of their own, and the Editor role holds neither — whether the delete comes from the app, Genie AI or MCP. The Library's Sync view follows the integrations permission and the Ontology page the knowledge-model management permission rather than the Owner or Admin role itself, so a custom role can be given either.
+
 A custom role always **inherits** one of the built-in roles as its base, and can only take permissions away from that base — never add ones the base role doesn't have. So a custom role built on **Member** can, for example, keep the ability to create and edit projects while losing access to billing or the ability to remove other members, but it can never be granted something an Owner-only permission like deleting the workspace.
 
 <Tip>
