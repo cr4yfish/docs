@@ -122,6 +122,8 @@ If you haven't connected your own account yet, that connector simply isn't avail
 
 An owner or admin can switch a connector between shared and per-member later, from its **Edit** form ("Who signs in") — no need to remove it and add it again. Switching direction never carries an existing credential across: everyone connected under the old setting needs to (re)connect under the new one.
 
+**Microsoft 365 also takes personal accounts.** When a member connects Microsoft 365, **Connect** asks whether it is a **Work or school account** or a **Personal Microsoft account** (Outlook.com, Hotmail, a personal OneDrive). A personal account reaches its own mail and OneDrive but not SharePoint sites, so SharePoint search isn't offered for it. Personal accounts only connect on per-member connectors that aren't pinned to a tenant — a shared connector, or one pinned to your organization's directory, accepts work or school accounts only.
+
 ## Sync your own mailbox
 
 Every member can mirror their **own** Outlook or Gmail mailbox into the knowledge base, so Genie AI can answer from their mail. Open **Settings → Integrations** and find the **My mailbox** card: it has one row per mailbox, each showing its state and the next step — **Connect** your account (an owner or admin has to add the integration first if it isn't there), **Start syncing**, **Pause**, **Resume**, **Try again** after a failed run, or **Stop**. Genie AI can show the same state, and starts, pauses or stops a sync only when you press the card it offers.
