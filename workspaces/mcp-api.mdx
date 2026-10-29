@@ -213,7 +213,7 @@ Material a team wants every build to respect — brand guidelines, tone of voice
 | `read_workspace_document` | Read one document's full text in bounded, pageable slices |
 | `add_workspace_documents` | File one or more documents (up to 10 per call) for the workspace or a project |
 | `update_workspace_document` | Retitle, re-describe, move a document between scopes, move it between folders via `folder`, or rewrite its full text in place via `text` (re-indexed immediately; refused on a document mirrored in from a connected cloud drive — edit it at the source instead) |
-| `delete_workspace_document` | Permanently delete a document and its search index |
+| `delete_workspace_document` | Permanently delete a document and its search index. Set `also_delete_ontology` to also delete the knowledge-model entities only this document supports (needs the knowledge-model edit permission as well); a very large purge may answer partly done — call again to finish |
 | `reindex_workspace_document` | Repair a document stuck at keyword-only or failed search indexing, or bring it onto the current embedding spec. Safe to call on any document — never changes its text |
 | `get_knowledge_index_status` | The workspace's indexing status at a glance — how many documents are fully searchable, still indexing, keyword-only, or stalled, and how many still need their date read — plus a list of the documents most needing attention |
 | `get_document_cover_image` | Read a document's cover picture — whether one exists, is being drawn right now, or the last attempt's outcome |
