@@ -232,6 +232,12 @@ Genie doesn't always reply with plain text. When it makes more sense to offer yo
 
 If a card needs an answer before Genie AI can continue — confirming an action, or reviewing a project it's about to create — you can minimize it instead of answering right away or canceling it outright. Tap it again anytime to bring it back; nothing about the request is lost while it's collapsed.
 
+### Figures inside answers
+
+For a few headline numbers or a short comparison, Genie AI draws a small card right in its answer instead of a full chart: **tiles** for key figures (a label, a value and an optional detail) or **horizontal bars** for comparing values, optionally in groups. Tiles sit side by side where there is room and stack on a phone. Bars start at zero and are drawn only when the numbers can honestly be compared — a range such as *5–10 M €* or values in different units are printed without bars rather than guessed.
+
+Press **Table view** to see the numbers behind a card, or **Download** to save it as a **PDF**, an **Excel** file or an **image**. Numbers follow your language's format, so `553100` reads `553.100` in German and `553,100` in English. Figures appear only once Genie AI has finished writing them, so you never see a half-drawn card.
+
 ### Open a Genie Tool or Agent beside the chat
 
 On the full chat page, building or opening a [Genie Tool](/workspaces/genie-tools) or [Genie Agent](/workspaces/workflow-apps) no longer just scrolls past in the transcript — its card docks to a canvas on the right, with the conversation keeping the left. If more than one is open, a button on each card's header switches the canvas to show it instead; closing the canvas (or that button on the docked card) folds it back into the conversation. On a phone or a narrower window, cards stay inline in the transcript as before. Any Genie Agent action Genie AI takes in the chat — not just building one — opens that agent on the canvas.
@@ -310,9 +316,9 @@ Ask *"what do you remember about this project?"* to see what's recorded. If a re
 
 ### Workspace brand
 
-A workspace has one **brand**: a logo (with an optional version for dark backgrounds), up to four role colors — primary, secondary, accent and neutral — plus up to eight named extra colors, a heading font, a body font, and notes with do's and don'ts. Owners and admins set it in **Workspace settings → Brand**, where a live preview shows a slide, an app, a sheet and a chart as you edit; a custom role can be given the *Manage brand guidelines* permission to hand it to a design lead. Or just ask Genie AI — *"our brand green is #0f6b5c, headings in Fraunces"*.
+A workspace has one **brand**: a logo (with an optional version for dark backgrounds), up to four role colors — primary, secondary, accent and neutral — plus up to eight named extra colors, a heading font, a body font, and notes with do's and don'ts. Owners and admins set it in **Workspace settings → General**, beside the workspace name, with a **Fonts & usage notes** drill-in, where a live preview shows a slide, an app, a sheet and a chart as you edit; a custom role can be given the *Manage brand guidelines* permission to hand it to a design lead. Or just ask Genie AI — *"our brand green is #0f6b5c, headings in Fraunces"*.
 
-Everything Genie AI makes in the workspace then follows the brand. New [PowerPoint decks](#powerpoint-presentations) come out in your colors, fonts and logo; new Excel workbooks carry your colors and fonts; charts and [Genie Tools](/workspaces/genie-tools) take your accent colors; design mock-ups lead with them; and a new app starts from them — unless the app already has its own style guide, which wins. Colors stay readable: where a brand color wouldn't read on its background, Genie deepens or lightens it just enough instead of using it as it is. A workspace that hasn't set a brand works exactly as before.
+Everything Genie AI makes in the workspace then follows the brand. New [PowerPoint decks](#powerpoint-presentations) come out in your colors, fonts and logo; new Excel workbooks carry your colors and fonts; charts and [Genie Tools](/workspaces/genie-tools) take your accent colors; design mock-ups lead with them; and a new app starts from them — unless the app already has its own style guide, which wins. Colors stay readable: where a brand color wouldn't read on its background, Genie deepens or lightens it just enough instead of using it as it is. A workspace that hasn't set a brand works exactly as before. The logo and primary color you set here are also the workspace's own badge and color.
 
 ### Knowledge base
 
@@ -453,6 +459,15 @@ The **Graph** runs the full width of the page. Pick an entity and its card float
 **Link yourself to your own Person.** Questions like *"who is my manager?"* need a starting point. Ask Genie AI *"who am I in the knowledge model?"*, pick your card from the suggestions and press **Link to me**. Only you can set this link — nobody else, not even an owner or admin, can set or change it for you — and Genie AI never assumes a card is yours just because it carries your email address. Everyone who can see the card sees who it is: a small tag after the card's name reads **You** on your own card and the member's name on a colleague's (**+N** when several members share one), and Genie AI can name them too, as that member's own unverified claim. The link never publishes your email address. Leaving the workspace removes it, so a re-invite starts unlinked.
 
 **Better answers from your documents.** Genie AI's document search now re-ranks its best matches, so the passages that actually answer the question come first. When it answers from an entity's page, the claims carry the same numbered source markers as document answers, and a marker opens the document with the passage highlighted.
+
+### World knowledge
+
+Genie can also bring in knowledge from outside your workspace, so you don't have to type what is already public.
+
+- **Facts for your entities.** Tell Genie AI what a class *is* — for example "a city" or "a company" — and its entities are matched to the public record of that thing in the background. "Hamburg" on a card becomes the city, not the other Hamburgs. A matching **World knowledge** section appears on the entity's card with a picture, a short description, a **Source ↗** link and the facts that are public, such as country, population, headquarters or website. Where a property of your class was empty, Genie fills it once from the matched item and marks the value with a small globe; a value you clear or edit is never overwritten.
+- **Careful matching.** A match is made only when the name fits exactly and the item is the right kind of thing. When several candidates are plausible, the entity is left **ambiguous** instead of guessing, because a wrong match would put another thing's facts on your card.
+- **You always decide.** Under **Not this? Change** on the card, say that the entity is not in world knowledge, or look it up again. Genie AI can pin a specific item for you.
+- **Start from a reference ontology.** Owners and admins can adopt classes from established industry models such as FIBO (financial industry) when starting or extending the knowledge model, rather than building every class by hand.
 
 ### Drafts
 
