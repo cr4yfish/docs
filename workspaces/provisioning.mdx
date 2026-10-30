@@ -1,0 +1,76 @@
+---
+title: "Provisioning: let your identity provider manage members"
+description: "Connect Microsoft Entra ID, Okta or any SCIM 2.0 directory so people are added to your workspace, kept up to date and removed automatically — only on domains you have verified."
+---
+
+Instead of typing invites, an owner or admin can connect the company's identity provider — Microsoft Entra ID, Okta or any SCIM 2.0 client. The directory then adds people to the workspace, keeps their names and groups current, and removes them when they leave the company.
+
+<Note>
+  Only **owners** and **admins** can open **Workspace settings → Provisioning**.
+</Note>
+
+## What you get
+
+<CardGroup cols={2}>
+  <Card title="Verified domains only" icon="shield-check">
+    Provisioning works only for email domains your workspace has proven it controls. Nobody outside those domains can be pulled in.
+  </Card>
+  <Card title="Roles from groups" icon="users">
+    Map a directory group to **Admin**, **Member** or **Editor**, and everyone in it gets that role.
+  </Card>
+  <Card title="Clean offboarding" icon="user-minus">
+    When someone is deactivated in the directory, they lose access to the workspace and their projects here move to the workspace owner.
+  </Card>
+  <Card title="Ask Genie AI" icon="sparkles">
+    Genie AI can read the setup, add and verify a domain, and propose a group role — you confirm that one on a card.
+  </Card>
+</CardGroup>
+
+## Set it up
+
+<Steps>
+  <Step title="Add and verify your domain">
+    Under **Workspace settings → Provisioning**, press **Add domain** and enter, for example, `contoso.com`. Genie shows a TXT record to publish at your DNS provider. Once it is live, press **Verify**. A domain can be verified by one workspace only, and each domain (such as `eu.contoso.com`) needs its own record.
+  </Step>
+  <Step title="Create a provisioning key">
+    On the [API keys](/workspaces/api-keys) page, create a key with the **Provision members (SCIM)** permission. The key acts as the person who created it, so it can only add, change or remove people that person could manage. Create it as the **owner** if the directory should also manage admins.
+  </Step>
+  <Step title="Connect your identity provider">
+    In Microsoft Entra ID, open your enterprise application → **Provisioning** → **Automatic**. Paste the tenant URL shown on the Provisioning page and use the key as the secret token. The default attribute mappings work as they are; provisioning groups is optional.
+  </Step>
+  <Step title="Map groups to roles (optional)">
+    Under **Group roles**, give a provisioned group a role. Granting more access than before asks you to confirm first.
+  </Step>
+</Steps>
+
+## How people join
+
+A person in the directory becomes a member once they match a Genie account that has the same **verified** email address. If that account already exists, they join straight away; otherwise they join the moment they sign up or sign in with that address. The workspace's seat limit still applies — if it is full, they wait.
+
+New members get the role their groups give them, or **Member** if none applies.
+
+## Roles from groups
+
+- A group grants nothing until you map it to a role. **Owner** can never be given this way.
+- Someone in several mapped groups gets the strongest role (Admin over Member over Editor).
+- Leaving every mapped group returns a person to **Member** — if a group mapping gave them their role before.
+- Someone no mapping ever touched keeps the role a person gave them. Owners are never changed.
+
+## When someone leaves
+
+When the directory deactivates or deletes a person, Genie removes them from the workspace, including their project, knowledge and connector access, and hands the projects they owned here to the workspace owner. The owner of the workspace cannot be removed this way — hand the workspace on first. Their Genie account, personal workspace and anything they have elsewhere stay untouched, and reactivating them in the directory brings the same account back.
+
+<Warning>
+  If no Genie account holds a deactivated person's address, there is nobody to remove. The Provisioning page counts these entries and links to **Members** so you can finish by hand.
+</Warning>
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Invite and manage members" icon="users" href="/workspaces/members">
+    Roles, custom roles and manual invites.
+  </Card>
+  <Card title="Workspace API keys" icon="key-round" href="/workspaces/api-keys">
+    Create the key your identity provider uses.
+  </Card>
+</CardGroup>

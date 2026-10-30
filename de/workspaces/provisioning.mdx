@@ -1,0 +1,76 @@
+---
+title: "Provisionierung: Mitglieder über deinen Identity Provider verwalten"
+description: "Verbinde Microsoft Entra ID, Okta oder ein beliebiges SCIM-2.0-Verzeichnis, damit Personen automatisch zu deinem Workspace hinzugefügt, aktuell gehalten und wieder entfernt werden — nur für Domains, die du verifiziert hast."
+---
+
+Statt Einladungen zu tippen, können Owner und Admins den Identity Provider des Unternehmens verbinden — Microsoft Entra ID, Okta oder einen beliebigen SCIM-2.0-Client. Das Verzeichnis fügt dann Personen zum Workspace hinzu, hält Namen und Gruppen aktuell und entfernt sie, wenn sie das Unternehmen verlassen.
+
+<Note>
+  Nur **Owner** und **Admins** können **Workspace-Einstellungen → Provisionierung** öffnen.
+</Note>
+
+## Das bekommst du
+
+<CardGroup cols={2}>
+  <Card title="Nur verifizierte Domains" icon="shield-check">
+    Provisionierung funktioniert nur für E-Mail-Domains, deren Kontrolle dein Workspace nachgewiesen hat. Niemand außerhalb dieser Domains kann hineingezogen werden.
+  </Card>
+  <Card title="Rollen aus Gruppen" icon="users">
+    Ordne eine Verzeichnisgruppe **Admin**, **Mitglied** oder **Editor** zu, und alle darin erhalten diese Rolle.
+  </Card>
+  <Card title="Sauberes Offboarding" icon="user-minus">
+    Wird jemand im Verzeichnis deaktiviert, verliert die Person den Zugriff auf den Workspace und ihre Projekte hier gehen an den Workspace-Owner.
+  </Card>
+  <Card title="Frag Genie AI" icon="sparkles">
+    Genie AI kann die Einrichtung lesen, eine Domain hinzufügen und verifizieren und eine Gruppenrolle vorschlagen — diese bestätigst du auf einer Karte.
+  </Card>
+</CardGroup>
+
+## Einrichten
+
+<Steps>
+  <Step title="Domain hinzufügen und verifizieren">
+    Drücke unter **Workspace-Einstellungen → Provisionierung** auf **Domain hinzufügen** und gib zum Beispiel `contoso.com` ein. Genie zeigt dir einen TXT-Eintrag, den du bei deinem DNS-Anbieter veröffentlichst. Sobald er aktiv ist, drücke **Verifizieren**. Eine Domain kann nur von einem Workspace verifiziert werden, und jede Domain (etwa `eu.contoso.com`) braucht einen eigenen Eintrag.
+  </Step>
+  <Step title="Provisionierungs-Schlüssel erstellen">
+    Erstelle auf der Seite [API-Schlüssel](/de/workspaces/api-keys) einen Schlüssel mit der Berechtigung **Mitglieder provisionieren (SCIM)**. Der Schlüssel handelt als die Person, die ihn erstellt hat, und kann nur Personen hinzufügen, ändern oder entfernen, die diese Person verwalten könnte. Erstelle ihn als **Owner**, wenn das Verzeichnis auch Admins verwalten soll.
+  </Step>
+  <Step title="Identity Provider verbinden">
+    Öffne in Microsoft Entra ID deine Unternehmensanwendung → **Provisionierung** → **Automatisch**. Füge die Mandanten-URL von der Provisionierungsseite ein und nutze den Schlüssel als geheimes Token. Die Standard-Attributzuordnungen funktionieren unverändert; die Provisionierung von Gruppen ist optional.
+  </Step>
+  <Step title="Gruppen Rollen zuordnen (optional)">
+    Gib unter **Gruppenrollen** einer provisionierten Gruppe eine Rolle. Gibt eine Zuordnung mehr Zugriff als zuvor, wirst du zuerst um Bestätigung gebeten.
+  </Step>
+</Steps>
+
+## Wie Personen beitreten
+
+Eine Person im Verzeichnis wird Mitglied, sobald sie zu einem Genie-Konto mit derselben **verifizierten** E-Mail-Adresse passt. Existiert das Konto bereits, tritt sie sofort bei; sonst im Moment der Registrierung oder Anmeldung mit dieser Adresse. Das Sitzplatz-Limit des Workspaces gilt weiterhin — ist er voll, wartet die Person.
+
+Neue Mitglieder erhalten die Rolle, die ihre Gruppen ihnen geben, sonst **Mitglied**.
+
+## Rollen aus Gruppen
+
+- Eine Gruppe vergibt nichts, bis du ihr eine Rolle zuordnest. **Owner** lässt sich so nie vergeben.
+- Wer in mehreren zugeordneten Gruppen ist, erhält die stärkste Rolle (Admin vor Mitglied vor Editor).
+- Wer alle zugeordneten Gruppen verlässt, wird wieder **Mitglied** — sofern eine Gruppenzuordnung ihm die Rolle zuvor gegeben hatte.
+- Wen keine Zuordnung je berührt hat, behält die Rolle, die eine Person ihm gegeben hat. Owner werden nie verändert.
+
+## Wenn jemand geht
+
+Deaktiviert oder löscht das Verzeichnis eine Person, entfernt Genie sie aus dem Workspace, samt Projekt-, Wissens- und Konnektor-Zugriff, und übergibt die hier besessenen Projekte an den Workspace-Owner. Der Owner des Workspaces kann so nicht entfernt werden — übergib den Workspace zuerst. Genie-Konto, persönlicher Workspace und alles, was die Person anderswo hat, bleiben unberührt; wird sie im Verzeichnis reaktiviert, kehrt dasselbe Konto zurück.
+
+<Warning>
+  Hält kein Genie-Konto die Adresse einer deaktivierten Person, gibt es niemanden zu entfernen. Die Provisionierungsseite zählt diese Einträge und verlinkt auf **Mitglieder**, damit du es von Hand abschließt.
+</Warning>
+
+## Verwandte Seiten
+
+<CardGroup cols={2}>
+  <Card title="Mitglieder einladen und verwalten" icon="users" href="/de/workspaces/members">
+    Rollen, benutzerdefinierte Rollen und manuelle Einladungen.
+  </Card>
+  <Card title="Workspace-API-Schlüssel" icon="key-round" href="/de/workspaces/api-keys">
+    Erstelle den Schlüssel, den dein Identity Provider nutzt.
+  </Card>
+</CardGroup>

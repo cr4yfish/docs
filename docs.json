@@ -86,6 +86,7 @@
                 "pages": [
                   "workspaces/overview",
                   "workspaces/members",
+                  "workspaces/provisioning",
                   "workspaces/integrations",
                   "workspaces/secrets",
                   "workspaces/auto",
@@ -208,6 +209,7 @@
                 "pages": [
                   "de/workspaces/overview",
                   "de/workspaces/members",
+                  "de/workspaces/provisioning",
                   "de/workspaces/integrations",
                   "de/workspaces/secrets",
                   "de/workspaces/auto",
