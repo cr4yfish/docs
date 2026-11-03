@@ -56,6 +56,8 @@ Read and update your workspace, members, invitations, settings, and billing.
 |---|---|
 | `get_workspace_info` | Name, member count, icon, accent color, settings, and creation date |
 | `list_workspace_members` | Members with roles and join dates — a member can hold more than one role, so `roles` lists the full set and `role` the strongest one. `isWorkspaceOwner` is true for the owner of record only |
+| `get_workspace_teams` | The workspace's [teams](/workspaces/members#teams) and your own. Always allowed for your own team |
+| `set_workspace_member_team` | Put a member on a team. Your own team is always yours to change; moving someone else needs permission to manage settings. Editing a team's starter kit stays in the app |
 | `list_workspace_invites` | Pending invite links with expiry and remaining uses |
 | `invite_workspace_member` | Create a shareable invite link for a given role |
 | `revoke_workspace_invite` | Cancel a pending invite |
@@ -208,7 +210,7 @@ Material a team wants every build to respect — brand guidelines, tone of voice
 
 | Tool | What it does |
 |---|---|
-| `list_workspace_documents` | List knowledge documents, paginated and filterable by title/description/filename. `scope`: `workspace`, `project`, `effective` (workspace + one project — what actually applies when building it), or `all` (default) |
+| `list_workspace_documents` | List knowledge documents, paginated and filterable by title/description/filename. `scope`: `workspace`, `project`, `effective` (workspace + one project — what actually applies when building it), or `all` (default). Also narrows by `source` (uploaded, or from a drive or mailbox), `type` and `changed` (7d, 30d or 365d), and, with `folder`, `include_subfolders` |
 | `search_workspace_documents` | Search inside documents' text (hybrid semantic + keyword) and get back matching passages |
 | `read_workspace_document` | Read one document's full text in bounded, pageable slices; a truncated page returns `nextOffset`, where the next page starts |
 | `add_workspace_documents` | File one or more documents (up to 10 per call) for the workspace or a project |
