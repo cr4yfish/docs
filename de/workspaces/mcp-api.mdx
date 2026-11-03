@@ -56,6 +56,8 @@ Lese und aktualisiere deinen Workspace, Mitglieder, Einladungen, Einstellungen u
 |---|---|
 | `get_workspace_info` | Name, Mitgliederzahl, Icon, Akzentfarbe, Einstellungen und Erstellungsdatum |
 | `list_workspace_members` | Mitglieder mit Rollen und Beitrittsdaten — ein Mitglied kann mehr als eine Rolle halten, `roles` listet die vollständige Menge, `role` die stärkste davon. `isWorkspaceOwner` ist nur für den Hauptverantwortlichen wahr |
+| `get_workspace_teams` | Die [Teams](/de/workspaces/members#teams) des Workspaces und dein eigenes. Dein eigenes Team ist immer erlaubt |
+| `set_workspace_member_team` | Ordne ein Mitglied einem Team zu. Dein eigenes Team darfst du immer ändern; andere zu verschieben erfordert die Berechtigung, Einstellungen zu verwalten. Das Starter-Kit eines Teams bearbeitest du weiterhin in der App |
 | `list_workspace_invites` | Ausstehende Einlade-Links mit Ablaufdatum und verbleibenden Nutzungen |
 | `invite_workspace_member` | Erstelle einen teilbaren Einlade-Link für eine bestimmte Rolle |
 | `revoke_workspace_invite` | Breche eine ausstehende Einladung ab |
@@ -208,7 +210,7 @@ Material, das ein Team von jedem Build respektiert haben will — Markenrichtlin
 
 | Tool | Was es tut |
 |---|---|
-| `list_workspace_documents` | Liste Wissensdokumente, paginiert und filterbar nach Titel/Beschreibung/Dateiname. `scope`: `workspace`, `project`, `effective` (Workspace + ein Projekt — was beim Bauen tatsächlich gilt) oder `all` (Standard) |
+| `list_workspace_documents` | Liste Wissensdokumente, paginiert und filterbar nach Titel/Beschreibung/Dateiname. `scope`: `workspace`, `project`, `effective` (Workspace + ein Projekt — was beim Bauen tatsächlich gilt) oder `all` (Standard). Lässt sich außerdem eingrenzen mit `source` (hochgeladen oder aus einem Laufwerk bzw. Postfach), `type` und `changed` (7d, 30d oder 365d) sowie, mit `folder`, `include_subfolders` |
 | `search_workspace_documents` | Durchsuche den Text der Dokumente (hybrid, semantisch + Stichwort) und erhalte passende Textstellen zurück |
 | `read_workspace_document` | Lies den vollständigen Text eines Dokuments in begrenzten, seitenweise abrufbaren Abschnitten; eine gekürzte Seite liefert `nextOffset`, den Start der nächsten Seite |
 | `add_workspace_documents` | Lege ein oder mehrere Dokumente ab (bis zu 10 pro Aufruf) für den Workspace oder ein Projekt |
