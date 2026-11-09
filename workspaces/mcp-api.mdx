@@ -241,6 +241,15 @@ Manage [access areas](/workspaces/overview#access-areas) — which folders are f
 | `list_data_compartments` | Every access area: its default access (open to all members, or grantees only), who it's granted to, and which folders are in it |
 | `save_data_compartment` | Create an access area, or rename, describe or close one by id. Opening one to every member is made in the app |
 
+### Who has access
+
+See who can reach an item and why, and what is shared beyond its owner — through the same rules as the app. Read-only; lists are changed in the app.
+
+| Tool | What it does |
+|---|---|
+| `get_access` | General access, each person, role or group on the item with their level, who always has Full access, and your own level with the reasons, for an agent, tool, chat, saved view, app, access area, or a knowledge-model area, class, relation, process or property. An item you can't see answers "not found" |
+| `list_shared` | What is shared beyond its owner, one kind at a time (agents, tools, chats, saved views, access areas), optionally narrowed to everyone, groups or people, or to your own. Only among items you can see; members only. Up to 50 a call — pass the returned `nextCursor` back until it is empty, even when a page comes back with no rows |
+
 ### Changes that stay in the app
 
 Anything that could widen who may do or read what is made in the app, not over MCP: an outside client's tool approval is no stand-in for a person pressing the change, because text its model read — a document, an email, a page — could have asked for it. Over MCP you can read all of it and make the narrowing or neutral edits above; the rest — assigning a member's roles, changing what a role grants or its base role, resetting or deleting a role, minting an API key or resuming one, changing its rate limit, granting or revoking knowledge access, deleting an access area, moving a folder between areas — is done in the matching settings page, or by asking Genie AI in the workspace chat, which shows a confirmation card you press. See [Confirmation cards](/workspaces/overview#confirmation-cards).

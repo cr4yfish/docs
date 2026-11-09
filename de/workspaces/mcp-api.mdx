@@ -241,6 +241,15 @@ Verwalte [Zugriffsbereiche](/de/workspaces/overview#zugriffsbereiche) — welche
 | `list_data_compartments` | Jeder Zugriffsbereich: sein Standardzugriff (offen für alle Mitglieder, oder nur für Freigegebene), wem er gewährt wurde, und welche Ordner darin liegen |
 | `save_data_compartment` | Lege einen Zugriffsbereich an, oder benenne, beschreibe oder schließe einen anhand seiner ID. Ihn für alle Mitglieder zu öffnen geschieht in der App |
 
+### Wer Zugriff hat
+
+Sieh, wer ein Objekt erreichen kann und warum, und was über den Eigentümer hinaus geteilt ist — nach denselben Regeln wie in der App. Nur lesend; Listen werden in der App geändert.
+
+| Tool | Was es tut |
+|---|---|
+| `get_access` | Allgemeiner Zugriff, jede Person, Rolle oder Gruppe auf dem Objekt mit ihrer Stufe, wer immer Vollzugriff hat, und deine eigene Stufe samt Begründung — für einen Agenten, ein Tool, einen Chat, eine gespeicherte Ansicht, eine App, einen Zugriffsbereich oder einen Bereich, eine Klasse, Beziehung, einen Prozess oder eine Eigenschaft des Wissensmodells. Ein Objekt, das du nicht sehen kannst, antwortet „nicht gefunden“ |
+| `list_shared` | Was über den Eigentümer hinaus geteilt ist, jeweils eine Art (Agenten, Tools, Chats, gespeicherte Ansichten, Zugriffsbereiche), optional eingegrenzt auf alle, Gruppen oder Personen oder auf deine eigenen. Nur unter Objekten, die du sehen kannst; nur für Mitglieder. Bis zu 50 pro Aufruf — gib den zurückgegebenen `nextCursor` weiter, bis er leer ist, auch wenn eine Seite ohne Zeilen zurückkommt |
+
 ### Änderungen, die in der App bleiben
 
 Alles, was erweitern könnte, wer was tun oder lesen darf, wird in der App vorgenommen, nicht über MCP: Die Tool-Freigabe eines externen Clients ersetzt nicht, dass eine Person die Änderung bestätigt, denn Text, den sein Modell gelesen hat — ein Dokument, eine E-Mail, eine Seite — könnte darum gebeten haben. Über MCP kannst du all das lesen und die einschränkenden oder neutralen Änderungen oben vornehmen; der Rest — die Rollen eines Mitglieds zuweisen, ändern, was eine Rolle gewährt, oder ihre Basisrolle, eine Rolle zurücksetzen oder löschen, einen API-Schlüssel erstellen oder wieder aktivieren, sein Rate-Limit ändern, Knowledge-Zugriff gewähren oder entziehen, einen Zugriffsbereich löschen, einen Ordner zwischen Bereichen verschieben — geschieht auf der passenden Einstellungsseite oder indem du Genie AI im Workspace-Chat darum bittest, das eine Bestätigungskarte zeigt, die du drückst. Siehe [Bestätigungskarten](/de/workspaces/overview#best%C3%A4tigungskarten).
