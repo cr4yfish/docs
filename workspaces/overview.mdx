@@ -520,13 +520,35 @@ Prefer granting a role or a group over naming individual members one at a time �
 
 ### Who can see this
 
-Access also lives on the thing itself, and stays out of the way until something is restricted. Nothing shows on an item that is open to everyone; once an item is restricted, a small **lock** marks it — on an entity's values, a class's properties, agent cards, a tool's bar and the current folder. Press the lock (or **⋯ → Who can see this**) to open the access sheet:
+Access also lives on the thing itself, and stays out of the way until something is restricted. Nothing shows on an item that is open to everyone; once an item is restricted, a small **lock** marks it — on an entity's values, a class's properties, agent cards, a tool's bar and the current folder. Press the lock (or **⋯ → Who can see this**) to open the same dialog as the **Share** button ([Share an item](#share-an-item)), or see the quick summary below:
 
 - **Only some people.** Turn it on and the item is limited to the people and groups you list, each removable with ✕, and **+ Add** to search for more. A new entry starts at the lowest level that kind of item offers. Turn it off to give the item back its usual openness. **Done** saves the whole list; if someone else changed it meanwhile, Genie tells you and offers a reload instead of overwriting.
 - **More.** Opens the full panel: levels in plain words (View, Use, Edit, Full access), a **Why?** beside each person that explains where their access comes from, what reaches the item from above, and the people who always have access (such as an agent's owner).
 - **Settings → Access.** See what one member, role or group reaches, by kind, and where each piece of access comes from.
 
 A member's role still sets a ceiling: a person listed with more than their role allows is shown as limited by it. Restricted values — a salary property, say — are gone for everyone else everywhere they would appear: the Graph, entity cards, a tool's grid, Genie AI and MCP. A chat you can only read greys out its message box, and an agent you have only seen cannot be run by you. Genie AI can read and change these lists on your behalf, always through a [confirmation card](#confirmation-cards).
+
+### Share an item
+
+Every page that shows one item — a chat, a Genie Tool, a Genie Agent, a saved view, a class in the knowledge model, an access area — has a labelled **Share** button. Beside it, a small mark shows who has the item right now: the faces of the first people listed, a building when everyone in the workspace has it, a lock when only you do. A knowledge-model entity follows its class, so its button reads **Access** and opens a read-only view.
+
+The **Share** dialog works like sharing a document:
+
+1. **One search** finds people, groups, roles and area groups. Pick a result and it joins the list at the lowest level that kind of item offers.
+2. **People with access** each have a level menu — View, Use, Edit or Full access — with **Remove** in it. A person whose role caps what they get is shown as limited.
+3. **General access** is either **Invite only** or everyone in the workspace at a level you choose.
+4. **Copy link** copies the item's own page. Copying never widens access: only the people on the list can open it.
+5. **Done** closes the dialog; once you've changed something it becomes **Cancel** and **Save**. If someone else changed the list meanwhile, Genie shows the current list instead of overwriting it.
+
+On a phone the dialog opens as a bottom sheet. Someone who can only read an item sees who may change it, with no Save.
+
+**Connected to this chat.** Sharing a chat can bring along what sits on its canvas and the apps it is connected to. Nothing is selected for you. Only items you may share have a checkbox; the others say what governs them (an app is shared inside the app, a document follows its access area) or that you should ask the owner. Before you save, each item shows exactly what it will get — people who can read the chat may view an item, people who can write in it may use it, and nobody receives Edit or Full access this way. It only ever raises access and never removes a line. It is a one-time copy: people added to the chat later aren't added to the items. If an item would open to the whole workspace, Genie asks first, and each item answers on its own.
+
+**Area groups.** An admin can tie a group to a knowledge-model area under **Settings → Roles & groups** (the group's page, or the *Ontology area* field when creating one). Sharing with that area then means sharing with the group, and the share search shows it as *Area group for &lt;area&gt;*. Tying a group to an area grants it nothing on the area itself, and an archived area can't be newly tied.
+
+**Share many at once.** On the **Projects** page, **Select** puts a checkbox on every agent and tool of the page. A bar at the bottom selects the whole page and opens one sheet for up to 50 items. Add a person, a group or everyone — or remove one — and Genie first shows who gains access, who already has as much or more, and what a removal leaves in place. Adding never lowers someone's existing level, and sharing with everyone asks once more. Afterwards every item reports its own result, with **Retry** where it failed and **Undo all** to put each saved item back exactly as it was. Ask Genie AI to *"share these agents with Sales"* and it prepares the same change as one [confirmation card](#confirmation-cards). Items that are not yours to share are skipped and counted.
+
+If a list is closer to an item than a group or area, the closer list wins, so a folder or document you restrict directly isn't reopened by the area around it.
 
 ### Confirmation cards
 

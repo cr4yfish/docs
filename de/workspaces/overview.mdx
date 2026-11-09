@@ -520,13 +520,35 @@ Gib lieber einer Rolle oder Gruppe Zugriff, statt einzelne Mitglieder nacheinand
 
 ### Wer das sehen kann
 
-Zugriff gibt es auch direkt am Objekt, und er hält sich zurück, bis etwas eingeschränkt ist. Bei Dingen, die für alle offen sind, wird nichts angezeigt; sobald etwas eingeschränkt ist, markiert ein kleines **Schloss** es — an den Werten einer Entität, den Eigenschaften einer Klasse, Agent-Karten, der Leiste eines Tools und am aktuellen Ordner. Klicke auf das Schloss (oder **⋯ → Wer das sehen kann**), um das Zugriffsfenster zu öffnen:
+Zugriff gibt es auch direkt am Objekt, und er hält sich zurück, bis etwas eingeschränkt ist. Bei Dingen, die für alle offen sind, wird nichts angezeigt; sobald etwas eingeschränkt ist, markiert ein kleines **Schloss** es — an den Werten einer Entität, den Eigenschaften einer Klasse, Agent-Karten, der Leiste eines Tools und am aktuellen Ordner. Klicke auf das Schloss (oder **⋯ → Wer das sehen kann**), um denselben Dialog wie bei der Schaltfläche **Teilen** zu öffnen ([Ein Objekt teilen](#ein-objekt-teilen)), oder sieh dir die Kurzfassung unten an:
 
 - **Nur bestimmte Personen.** Schalte es ein, und das Objekt ist auf die Personen und Gruppen beschränkt, die du auflistest — jede lässt sich mit ✕ entfernen, mit **+ Hinzufügen** suchst du weitere. Ein neuer Eintrag beginnt mit der niedrigsten Stufe, die diese Art von Objekt anbietet. Schalte es aus, damit das Objekt wieder so offen ist wie üblich. **Fertig** speichert die ganze Liste; hat jemand sie zwischenzeitlich geändert, sagt Genie das und bietet ein Neuladen an, statt zu überschreiben.
 - **Mehr.** Öffnet das vollständige Panel: Stufen in einfachen Worten (Ansehen, Nutzen, Bearbeiten, Vollzugriff), neben jeder Person ein **Warum?**, das erklärt, woher ihr Zugriff kommt, was von oben auf das Objekt wirkt und wer immer Zugriff hat (etwa die Eigentümerin oder der Eigentümer eines Agents).
 - **Einstellungen → Zugriff.** Sieh, was ein Mitglied, eine Rolle oder eine Gruppe erreicht, nach Art sortiert und mit der Herkunft jedes Zugriffs.
 
 Die Rolle eines Mitglieds setzt weiterhin eine Obergrenze: Wer mit mehr aufgeführt ist, als die Rolle erlaubt, wird als dadurch begrenzt angezeigt. Eingeschränkte Werte — etwa eine Gehaltseigenschaft — fehlen für alle anderen überall, wo sie sonst erscheinen würden: im Graph, auf Entitätskarten, im Raster eines Tools, in Genie AI und in MCP. Ein Chat, den du nur lesen darfst, graut sein Nachrichtenfeld aus, und einen Agent, den du nur sehen darfst, kannst du nicht ausführen. Genie AI kann diese Listen in deinem Auftrag lesen und ändern, immer über eine [Bestätigungskarte](#bestätigungskarten).
+
+### Ein Objekt teilen
+
+Jede Seite, die ein einzelnes Objekt zeigt — einen Chat, ein Genie Tool, einen Genie Agent, eine gespeicherte Ansicht, eine Klasse im Wissensmodell, einen Zugriffsbereich — hat eine beschriftete Schaltfläche **Teilen**. Daneben zeigt eine kleine Markierung, wer das Objekt gerade hat: die Gesichter der ersten aufgeführten Personen, ein Gebäude, wenn alle im Workspace Zugriff haben, ein Schloss, wenn nur du es hast. Eine Entität im Wissensmodell folgt ihrer Klasse; ihre Schaltfläche heißt daher **Zugriff** und öffnet eine reine Leseansicht.
+
+Der Dialog **Teilen** funktioniert wie das Teilen eines Dokuments:
+
+1. **Eine Suche** findet Personen, Gruppen, Rollen und Bereichsgruppen. Wähle ein Ergebnis, und es kommt auf der niedrigsten Stufe, die diese Art von Objekt kennt, in die Liste.
+2. **Personen mit Zugriff** haben jeweils ein Stufenmenü — Ansehen, Nutzen, Bearbeiten oder Vollzugriff — mit **Entfernen** darin. Wird jemandes Zugriff durch seine Rolle begrenzt, wird das angezeigt.
+3. **Allgemeiner Zugriff** ist entweder **Nur auf Einladung** oder alle im Workspace auf einer Stufe deiner Wahl.
+4. **Link kopieren** kopiert die eigene Seite des Objekts. Kopieren erweitert den Zugriff nie: Nur Personen auf der Liste können es öffnen.
+5. **Fertig** schließt den Dialog; sobald du etwas geändert hast, wird daraus **Abbrechen** und **Speichern**. Hat jemand anderes die Liste inzwischen geändert, zeigt Genie die aktuelle Liste, statt sie zu überschreiben.
+
+Auf dem Smartphone öffnet sich der Dialog als Bottom Sheet. Wer ein Objekt nur lesen darf, sieht, wer es ändern darf, und kann nicht speichern.
+
+**Mit diesem Chat verbunden.** Beim Teilen eines Chats kannst du mitnehmen, was auf seiner Arbeitsfläche liegt, sowie die Apps, mit denen er verbunden ist. Nichts ist vorausgewählt. Nur Objekte, die du teilen darfst, haben ein Kontrollkästchen; bei den anderen steht, was sie regelt (eine App wird in der App selbst geteilt, ein Dokument folgt seinem Zugriffsbereich) oder dass du die Eigentümerin bzw. den Eigentümer fragen sollst. Vor dem Speichern zeigt jedes Objekt genau, was es bekommt — wer den Chat lesen darf, darf ein Objekt ansehen, wer darin schreiben darf, darf es nutzen, und niemand erhält auf diesem Weg Bearbeiten oder Vollzugriff. Der Zugriff wird nur erhöht, nie wird eine Zeile entfernt. Es ist eine einmalige Kopie: Wer später zum Chat hinzukommt, wird nicht zu den Objekten hinzugefügt. Würde ein Objekt für den ganzen Workspace geöffnet, fragt Genie vorher nach, und jedes Objekt meldet sein Ergebnis einzeln.
+
+**Bereichsgruppen.** Admins können unter **Workspace-Einstellungen → Rollen & Gruppen** eine Gruppe mit einem Bereich des Wissensmodells verknüpfen (auf der Seite der Gruppe oder im Feld *Ontologie-Bereich* beim Anlegen). Das Teilen mit diesem Bereich bedeutet dann das Teilen mit der Gruppe, und die Suche zeigt sie als *Bereichsgruppe für &lt;Bereich&gt;*. Die Verknüpfung gewährt der Gruppe selbst nichts auf dem Bereich, und ein archivierter Bereich lässt sich nicht neu verknüpfen.
+
+**Viele auf einmal teilen.** Auf der Seite **Projekte** setzt **Auswählen** ein Kontrollkästchen auf jeden Agenten und jedes Tool der Seite. Eine Leiste unten wählt die ganze Seite aus und öffnet ein einziges Blatt für bis zu 50 Objekte. Füge eine Person, eine Gruppe oder alle hinzu — oder entferne eine — und Genie zeigt zuerst, wer Zugriff bekommt, wer schon gleich viel oder mehr hat und was eine Entfernung bestehen lässt. Hinzufügen senkt nie die bestehende Stufe, und das Teilen mit allen fragt noch einmal nach. Danach meldet jedes Objekt sein eigenes Ergebnis, mit **Wiederholen**, wo es fehlschlug, und **Alles rückgängig**, das jedes gespeicherte Objekt genau zurücksetzt. Bitte Genie AI, *„diese Agenten mit Vertrieb zu teilen“*, und sie bereitet dieselbe Änderung als eine [Bestätigungskarte](#bestätigungskarten) vor. Objekte, die du nicht teilen darfst, werden übersprungen und gezählt.
+
+Liegt eine Liste näher am Objekt als eine Gruppe oder ein Bereich, gilt die nähere Liste — ein Ordner oder Dokument, das du direkt einschränkst, wird also nicht durch den Bereich darum herum wieder geöffnet.
 
 ### Bestätigungskarten
 
