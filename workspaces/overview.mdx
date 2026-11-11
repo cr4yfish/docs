@@ -520,11 +520,17 @@ Prefer granting a role or a group over naming individual members one at a time �
 
 ### Who can see this
 
-Access also lives on the thing itself, and stays out of the way until something is restricted. Nothing shows on an item that is open to everyone; once an item is restricted, a small **lock** marks it — on an entity's values, a class's properties, agent cards, a tool's bar and the current folder. Press the lock (or **⋯ → Who can see this**) to open the same dialog as the **Share** button ([Share an item](#share-an-item)), or see the quick summary below:
+Access also lives on the thing itself, and stays out of the way until something is restricted. Nothing shows on an item that is open to everyone; once an item is restricted, a small **lock** marks it — on an entity's values, a class's properties and relations, a process, an area in the knowledge model's list of areas, agent cards, a tool's bar and the current folder. Press the lock (or **⋯ → Who can see this**) to open the same dialog as the **Share** button ([Share an item](#share-an-item)), or see the quick summary below:
 
 - **Only some people.** Turn it on and the item is limited to the people and groups you list, each removable with ✕, and **+ Add** to search for more. A new entry starts at the lowest level that kind of item offers. Turn it off to give the item back its usual openness. **Done** saves the whole list; if someone else changed it meanwhile, Genie tells you and offers a reload instead of overwriting.
 - **More.** Opens the full panel: levels in plain words (View, Use, Edit, Full access), a **Why?** beside each person that explains where their access comes from, what reaches the item from above, and the people who always have access (such as an agent's owner).
-- **Settings → Access.** See what one member, role or group reaches, by kind, and where each piece of access comes from.
+- **Settings → Access.** Four views, each row opening the same Share dialog:
+  - **People** — what one member, role or group reaches, by kind, and where each piece of access comes from. Seeing another member's report needs the *See members* permission.
+  - **Shared** — every agent, tool, chat, saved view and access area shared beyond its owner. Pick a kind and who it's shared with (anyone, everyone, groups or people).
+  - **Me** — what reaches you, and what you shared.
+  - **Access areas** — the fenced sets of folders and documents.
+
+  Only what you can see is listed, so items others keep private never show up. Genie AI and [MCP](/workspaces/mcp-api#who-has-access) read the same lists.
 
 A member's role still sets a ceiling: a person listed with more than their role allows is shown as limited by it. Restricted values — a salary property, say — are gone for everyone else everywhere they would appear: the Graph, entity cards, a tool's grid, Genie AI and MCP. A chat you can only read greys out its message box, and an agent you have only seen cannot be run by you. Genie AI can read and change these lists on your behalf, always through a [confirmation card](#confirmation-cards).
 
@@ -544,7 +550,7 @@ On a phone the dialog opens as a bottom sheet. Someone who can only read an item
 
 **Connected to this chat.** Sharing a chat can bring along what sits on its canvas and the apps it is connected to. Nothing is selected for you. Only items you may share have a checkbox; the others say what governs them (an app is shared inside the app, a document follows its access area) or that you should ask the owner. Before you save, each item shows exactly what it will get — people who can read the chat may view an item, people who can write in it may use it, and nobody receives Edit or Full access this way. It only ever raises access and never removes a line. It is a one-time copy: people added to the chat later aren't added to the items. If an item would open to the whole workspace, Genie asks first, and each item answers on its own.
 
-**Area groups.** An admin can tie a group to a knowledge-model area under **Settings → Roles & groups** (the group's page, or the *Ontology area* field when creating one). Sharing with that area then means sharing with the group, and the share search shows it as *Area group for &lt;area&gt;*. Tying a group to an area grants it nothing on the area itself, and an archived area can't be newly tied.
+**Area groups.** An admin can tie a group to a knowledge-model area under **Settings → Roles & groups** (the group's page, or the *Ontology area* field when creating one). Sharing with that area then means sharing with the group, and the share search shows it as *Area group for &lt;area&gt;*. Tying a group to an area grants it nothing on the area itself, and an archived area can't be newly tied. In the knowledge model, each area shows its share-with group; the name links to the group for people who may view roles.
 
 **Share many at once.** On the **Projects** page, **Select** puts a checkbox on every agent and tool of the page. A bar at the bottom selects the whole page and opens one sheet for up to 50 items. Add a person, a group or everyone — or remove one — and Genie first shows who gains access, who already has as much or more, and what a removal leaves in place. Adding never lowers someone's existing level, and sharing with everyone asks once more. Afterwards every item reports its own result, with **Retry** where it failed and **Undo all** to put each saved item back exactly as it was. Ask Genie AI to *"share these agents with Sales"* and it prepares the same change as one [confirmation card](#confirmation-cards). Items that are not yours to share are skipped and counted.
 
