@@ -260,7 +260,7 @@ Read what the [knowledge model](/workspaces/overview#knowledge-model) knows, as 
 
 | Tool | What it does |
 |---|---|
-| `list_workspace_ontology` | The schema: classes with their properties and entity counts, relationship types, layers and how far reading has got |
+| `list_workspace_ontology` | The schema: classes with their properties and entity counts, relationship types and layers. Pass `status: true` to also get how far reading has got, which documents failed, how many proposals wait for review and, for owners and admins, Auto's upkeep — it counts as one more report against your rate limit |
 | `search_workspace_ontology` | Search classes, stages, relationship types, layers and entities by name, plus the entities cited in the passages closest in meaning to your query |
 | `search_workspace_entities` | Find entities by name, alias, code or searchable value, optionally within one class |
 | `list_workspace_entities` | One class's entities as rows with their values, paged, optionally as of a date |
