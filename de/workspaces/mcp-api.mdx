@@ -58,10 +58,10 @@ Lese und aktualisiere deinen Workspace, Mitglieder, Einladungen, Einstellungen u
 | `list_workspace_members` | Mitglieder mit Rollen und Beitrittsdaten — ein Mitglied kann mehr als eine Rolle halten, `roles` listet die vollständige Menge, `role` die stärkste davon. `isWorkspaceOwner` ist nur für den Hauptverantwortlichen wahr |
 | `get_workspace_teams` | Die [Teams](/de/workspaces/members#teams) des Workspaces und dein eigenes. Dein eigenes Team ist immer erlaubt |
 | `set_workspace_member_team` | Ordne ein Mitglied einem Team zu. Dein eigenes Team darfst du immer ändern; andere zu verschieben erfordert die Berechtigung, Einstellungen zu verwalten. Das Starter-Kit eines Teams bearbeitest du weiterhin in der App |
-| `list_workspace_invites` | Ausstehende Einlade-Links mit Ablaufdatum und verbleibenden Nutzungen |
+| `list_workspace_invites` | Einladungen, die noch gültig sind (die neuesten 50), mit Rolle, Ablaufdatum, verbleibenden Nutzungen und ob sie persönlich sind — die Adresse der eingeladenen Person und der Einladungscode werden nie zurückgegeben. Erfordert die Berechtigung, Mitglieder einzuladen |
 | `invite_workspace_member` | Erstelle einen teilbaren Einlade-Link für eine bestimmte Rolle |
 | `revoke_workspace_invite` | Breche eine ausstehende Einladung ab |
-| `remove_workspace_member` | Entferne ein Mitglied sofort. Der Hauptverantwortliche des Workspace kann nicht entfernt (oder unter Admin herabgestuft) werden, bevor er den Workspace weitergegeben hat — siehe [Eigentümerschaft übertragen](/de/workspaces/members#eigent%C3%BCmerschaft-%C3%BCbertragen) |
+| `remove_workspace_member` | Entferne ein Mitglied sofort, zusammen mit seinem Zugriff auf die Projekte des Workspace — wird es erneut eingeladen, beginnt es ohne ihn. Der Hauptverantwortliche des Workspace kann nicht entfernt (oder unter Admin herabgestuft) werden, bevor er den Workspace weitergegeben hat — siehe [Eigentümerschaft übertragen](/de/workspaces/members#eigent%C3%BCmerschaft-%C3%BCbertragen) |
 | `update_workspace` | Benenne den Workspace um, aktualisiere seine Beschreibung oder setze sein Icon und seine Akzentfarbe |
 | `update_workspace_settings` | Schalte das Aktivitätsprotokoll, die Projektzugangskontrolle oder das automatische Lesen der Wissensdatenbank um (Entitäten-/Beziehungs-Extraktion — siehe [Wissensmodell](/de/workspaces/overview#wissensmodell)) |
 | `get_workspace_billing` | Abonnement-Tarif, Status und Abrechnungszeitraum |
