@@ -28,6 +28,9 @@ Auto works in two steps:
 
 Owners and admins can also start either by hand with **Quick check** and **Deep run**, up to ten times a day.
 
+- **A failed agent run brings the next check forward.** When a [Genie Agent](/workspaces/workflow-apps) run fails for a new reason, Auto doesn't wait for its next scheduled check: a quick check follows within about 15 minutes. That happens at most once between two scheduled checks, and an agent Auto already knows is failing doesn't wake it again. New documents are still read at the next scheduled check.
+- **Deep runs remember.** Each deep run is told what its last runs concluded and what became of the work they left — approved, applied, dismissed or failed — so it can follow up on what it said was still open and doesn't propose again what someone just turned down.
+
 ## Work for the right person
 
 A deep run leaves up to six pieces of work. Each has an **assignee** — for example the owner of a failing agent — who gets a notification and approves or dismisses it. Each is one of three kinds:
@@ -52,16 +55,30 @@ Open **What Auto may do** from the Auto page. For each kind of action, an owner 
 
 The actions are grouped by what they do: recording what documents say, linking entries, processes, confirming and rejecting, shaping the knowledge model, tasks for Genie AI, and the twice-daily tidying of the knowledge model. **Every kind of change** sets them all at once, after a dialog that says what it will do. A change made of several actions applies alone only when *every* action in it is set to **On its own**. Members see the modes as read-only words.
 
+## Standing instructions
+
+Owners and admins can tell Auto in their own words what to pay attention to, what to leave alone and how to write — for example *"Ignore the Archive folder"* or *"Keep notes short and in German"*. Open **What Auto may do** and use **Standing instructions**, below **Hand work to members**. The text holds up to 2,000 characters, and every member can read it there.
+
+Auto's deep runs read the instructions as your managers' wishes. They can steer what Auto looks at and how it writes, but never what it is allowed to do: that stays with the modes above. A goal run doesn't use them, since a goal is its owner's own request.
+
+Because instructions affect every later run, Genie AI can't write them unasked: it shows the full text on a confirmation card that a manager presses. Genie AI can clear them directly. The activity log records that they changed, not what they say.
+
 ## Give Auto a goal
 
 A **goal** is a task you give Auto in plain words — *"Link every supplier contract to its supplier"* or *"Find out why Invoice sync keeps failing and get it fixed"*. Auto works on it **by itself, as you**, over several runs, until it is done, blocked or cancelled.
 
 - **As you.** A goal run sees only what you can see and can do only what you could do, and never more than the managers allowed Auto. Anything it can't do alone waits for you on the Auto page.
-- **Rhythm.** A goal starts right away when Auto is on and free, and Auto comes back three hours after each run, giving you time to decide what it left you. A goal given while Auto is off waits until a manager turns it on.
-- **Limits.** A goal gets at most 8 runs and a spending budget across all its runs; when either is used up, it is marked **blocked** with Auto's note. Each member can have 5 active goals and give 20 a day.
+- **Rhythm.** A goal starts right away when Auto is on and free. A goal given while Auto is off waits until a manager turns it on. After each run, Auto comes back:
+  - **when you have decided** — if the run left you work, the goal waits for your answer instead of the clock and goes on within about a quarter of an hour of your last decision. If you don't decide, Auto looks again after 24 hours.
+  - **when it said it would** — if nothing waits for you, Auto picks its own follow-up (for example after an agent's next run), between 20 minutes and 24 hours later, or after three hours by default.
+- **Limits.** A goal gets at most 8 runs and a spending budget across all its runs; when either is used up, it is marked **blocked** with Auto's note. You can give as many goals as you like: they queue, and a workspace runs up to 12 goal runs a day.
 - **Status.** A goal is *active*, *done*, *blocked* (Auto says what it needs) or *cancelled*. You can cancel yours at any time, and managers can cancel anyone's.
 
-The **Goals** section is first on the Auto page: the form, then every goal with its status, runs used, Auto's latest note and its history.
+The **Goals** section is first on the Auto page: the form, then every goal with its status, runs used, when Auto looks next — or *Waiting for your decision*, with when Auto looks anyway — Auto's latest note and its history.
+
+## Auto's face
+
+Auto has a small round face at the top of its page. Its mood shows what Auto is doing, so you can tell at a glance: asleep while Auto is off, reading during a deep run, holding a magnifying glass during a quick check, sweeping while it tidies the knowledge model, waving a flag on a goal run, and holding an envelope when work waits for you. Its eyes follow your pointer, and you can poke it. With reduced motion turned on in your system, it stays still and only shows its mood.
 
 ## Talk to Genie AI itself
 
@@ -81,7 +98,7 @@ A run in a workspace answers to that workspace alone:
 
 ## Ask Genie AI
 
-Genie AI can show you what Auto found, give or cancel a goal, start a run, dismiss work, and turn Auto off or narrow what it may do — try *"What did Auto find in this workspace?"* Two things stay with you: **approving** work, and **letting Auto do more** on its own. Both are confirmation cards that show the details in full and that you press yourself. The same tools are available through the [Genie MCP Server](/workspaces/mcp-api).
+Genie AI can show you what Auto found, give or cancel a goal, start a run, dismiss work, clear the standing instructions, and turn Auto off or narrow what it may do — try *"What did Auto find in this workspace?"* Two things stay with you: **approving** work, and **letting Auto do more** on its own. Both are confirmation cards that show the details in full and that you press yourself. The same tools are available through the [Genie MCP Server](/workspaces/mcp-api).
 
 ## Notifications
 

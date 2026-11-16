@@ -28,6 +28,9 @@ Auto arbeitet in zwei Schritten:
 
 Owner und Admins können beides auch von Hand mit **Schnellprüfung** und **Tiefenlauf** starten, bis zu zehnmal täglich.
 
+- **Ein fehlgeschlagener Agent-Lauf holt die nächste Prüfung vor.** Schlägt ein Lauf eines [Genie Agent](/de/workspaces/workflow-apps) aus einem neuen Grund fehl, wartet Auto nicht auf seine nächste geplante Prüfung: Innerhalb von etwa 15 Minuten folgt eine Schnellprüfung. Das geschieht höchstens einmal zwischen zwei geplanten Prüfungen, und ein Agent, von dem Auto schon weiß, dass er fehlschlägt, weckt ihn nicht erneut. Neue Dokumente liest Auto weiterhin bei der nächsten geplanten Prüfung.
+- **Tiefenläufe erinnern sich.** Jeder Tiefenlauf erfährt, was seine letzten Läufe festgestellt haben und was aus der Arbeit wurde, die sie hinterlassen haben — freigegeben, angewendet, verworfen oder fehlgeschlagen —, damit er an dem dranbleiben kann, was er als offen bezeichnet hat, und nicht erneut vorschlägt, was jemand gerade abgelehnt hat.
+
 ## Arbeit für die richtige Person
 
 Ein Tiefenlauf hinterlässt bis zu sechs Arbeitsaufträge. Jeder hat eine **zuständige Person** — zum Beispiel den Owner eines fehlschlagenden Agents —, die benachrichtigt wird und ihn freigibt oder verwirft. Jeder ist von einer von drei Arten:
@@ -52,16 +55,30 @@ Jede Karte zeigt vollständig, was die Freigabe bewirkt, und die auf dich warten
 
 Die Aktionen sind danach gruppiert, was sie tun: festhalten, was Dokumente sagen, Einträge verknüpfen, Prozesse, bestätigen und ablehnen, das Wissensmodell formen, Aufgaben für Genie AI und das zweimal tägliche Aufräumen des Wissensmodells. **Jede Art von Änderung** stellt alle auf einmal ein, nach einem Dialog, der sagt, was es bewirkt. Eine Änderung aus mehreren Aktionen wird nur dann allein angewendet, wenn *jede* Aktion darin auf **Von allein** steht. Mitglieder sehen die Modi als schreibgeschützte Worte.
 
+## Feste Anweisungen
+
+Owner und Admins können Auto in eigenen Worten sagen, worauf er achten, was er in Ruhe lassen und wie er schreiben soll — zum Beispiel *„Ignoriere den Ordner Archiv"* oder *„Halte Notizen kurz und auf Deutsch"*. Öffne **Was Auto tun darf** und nutze **Feste Anweisungen** unter **Arbeit an Mitglieder übergeben**. Der Text umfasst bis zu 2.000 Zeichen, und jedes Mitglied kann ihn dort lesen.
+
+Autos Tiefenläufe lesen die Anweisungen als Wünsche eurer Verwalter. Sie können lenken, was Auto sich ansieht und wie er schreibt, aber nie, was er tun darf: Das bleibt bei den Modi oben. Ein Ziel-Lauf nutzt sie nicht, denn ein Ziel ist der eigene Auftrag seines Besitzers.
+
+Weil Anweisungen in jeden späteren Lauf eingehen, kann Genie AI sie nicht ungefragt schreiben: Es zeigt den vollständigen Text auf einer Bestätigungskarte, die ein Verwalter selbst bestätigt. Löschen kann Genie AI sie direkt. Das Aktivitätsprotokoll hält fest, dass sie geändert wurden, nicht was darin steht.
+
 ## Gib Auto ein Ziel
 
 Ein **Ziel** ist eine Aufgabe, die du Auto in einfachen Worten gibst — *„Verknüpfe jeden Lieferantenvertrag mit seinem Lieferanten"* oder *„Finde heraus, warum die Rechnungssynchronisation immer wieder fehlschlägt, und behebe es"*. Auto arbeitet **selbstständig als du** daran, über mehrere Läufe, bis es erledigt, blockiert oder abgebrochen ist.
 
 - **Als du.** Ein Ziel-Lauf sieht nur, was du sehen kannst, und kann nur tun, was du tun könntest, nie mehr, als die Verwalter Auto erlaubt haben. Was er nicht allein tun kann, wartet auf der Auto-Seite auf dich.
-- **Rhythmus.** Ein Ziel startet sofort, wenn Auto an und frei ist, und Auto kommt drei Stunden nach jedem Lauf wieder, damit du Zeit hast, über das zu entscheiden, was er dir hinterlassen hat. Ein Ziel, das bei ausgeschaltetem Auto gegeben wird, wartet, bis ein Verwalter ihn einschaltet.
-- **Grenzen.** Ein Ziel bekommt höchstens 8 Läufe und ein Ausgabenbudget für alle seine Läufe zusammen; ist eines davon aufgebraucht, wird es mit der Notiz von Auto als **blockiert** markiert. Jedes Mitglied kann 5 aktive Ziele haben und 20 pro Tag geben.
+- **Rhythmus.** Ein Ziel startet sofort, wenn Auto an und frei ist. Ein Ziel, das bei ausgeschaltetem Auto gegeben wird, wartet, bis ein Verwalter ihn einschaltet. Nach jedem Lauf kommt Auto wieder:
+  - **wenn du entschieden hast** — hat der Lauf dir Arbeit hinterlassen, wartet das Ziel auf deine Antwort statt auf die Uhr und geht etwa eine Viertelstunde nach deiner letzten Entscheidung weiter. Entscheidest du nicht, sieht Auto nach 24 Stunden wieder nach.
+  - **wenn er es angekündigt hat** — wartet nichts auf dich, wählt Auto selbst, wann er wieder nachsieht (zum Beispiel nach dem nächsten Lauf eines Agents), zwischen 20 Minuten und 24 Stunden später, standardmäßig nach drei Stunden.
+- **Grenzen.** Ein Ziel bekommt höchstens 8 Läufe und ein Ausgabenbudget für alle seine Läufe zusammen; ist eines davon aufgebraucht, wird es mit der Notiz von Auto als **blockiert** markiert. Du kannst so viele Ziele geben, wie du möchtest: Sie stehen in einer Warteschlange, und ein Workspace führt bis zu 12 Ziel-Läufe pro Tag aus.
 - **Status.** Ein Ziel ist *aktiv*, *erledigt*, *blockiert* (Auto sagt, was er braucht) oder *abgebrochen*. Du kannst deine jederzeit abbrechen, Verwalter die aller anderen.
 
-Der Abschnitt **Ziele** steht auf der Auto-Seite ganz oben: das Formular, dann jedes Ziel mit Status, verbrauchten Läufen, Autos jüngster Notiz und seinem Verlauf.
+Der Abschnitt **Ziele** steht auf der Auto-Seite ganz oben: das Formular, dann jedes Ziel mit Status, verbrauchten Läufen, wann Auto als Nächstes nachsieht — oder *Wartet auf deine Entscheidung*, mit dem Zeitpunkt, zu dem Auto trotzdem nachsieht —, Autos jüngster Notiz und seinem Verlauf.
+
+## Autos Gesicht
+
+Auto hat oben auf seiner Seite ein kleines rundes Gesicht. Seine Stimmung zeigt, was Auto gerade tut, sodass du es auf einen Blick erkennst: Es schläft, solange Auto aus ist, liest während eines Tiefenlaufs, hält bei einer Schnellprüfung eine Lupe, fegt, während es das Wissensmodell aufräumt, schwenkt bei einem Ziel-Lauf eine Fahne und hält einen Umschlag, wenn Arbeit auf dich wartet. Seine Augen folgen deinem Mauszeiger, und du kannst es anstupsen. Ist in deinem System „Bewegung reduzieren" eingeschaltet, bleibt es still und zeigt nur seine Stimmung.
 
 ## Mit Genie AI selbst sprechen
 
@@ -81,7 +98,7 @@ Ein Lauf in einem Workspace unterliegt allein den Regeln dieses Workspace:
 
 ## Frag Genie AI
 
-Genie AI kann dir zeigen, was Auto gefunden hat, ein Ziel geben oder abbrechen, einen Lauf starten, Arbeit verwerfen und Auto ausschalten oder einschränken, was er tun darf — probiere *„Was hat Auto in diesem Workspace gefunden?"* Zwei Dinge bleiben bei dir: das **Freigeben** von Arbeit und **Auto mehr von allein tun zu lassen**. Beides sind Bestätigungskarten, die die Details vollständig zeigen und die du selbst bestätigst. Dieselben Werkzeuge stehen über den [Genie MCP Server](/de/workspaces/mcp-api) bereit.
+Genie AI kann dir zeigen, was Auto gefunden hat, ein Ziel geben oder abbrechen, einen Lauf starten, Arbeit verwerfen, die festen Anweisungen löschen und Auto ausschalten oder einschränken, was er tun darf — probiere *„Was hat Auto in diesem Workspace gefunden?"* Zwei Dinge bleiben bei dir: das **Freigeben** von Arbeit und **Auto mehr von allein tun zu lassen**. Beides sind Bestätigungskarten, die die Details vollständig zeigen und die du selbst bestätigst. Dieselben Werkzeuge stehen über den [Genie MCP Server](/de/workspaces/mcp-api) bereit.
 
 ## Benachrichtigungen
 
