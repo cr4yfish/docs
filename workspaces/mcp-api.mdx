@@ -416,6 +416,9 @@ Read and control your [Auto](/workspaces/auto) in the connected workspace, the s
 | `update_workspace_auto` | Switch Auto and its push notifications on or off (personal, covers every workspace) |
 | `start_workspace_auto_run` | Run Auto now: `shallow` (free check) or `full` (a model run, charged like a chat turn; refused when busy, rate-limited or out of credits) |
 | `dismiss_workspace_auto_output` | Dismiss one waiting suggestion |
+| `read_workspace_auto_goals` | Goals in this workspace, a page at a time (pass `nextCursor` back as `cursor`), with each goal's status, latest note and whether it waits for its owner's decision |
+| `give_workspace_auto_goal` | Give Auto a [goal](/workspaces/auto#give-auto-a-goal); it runs as you |
+| `cancel_workspace_auto_goal` | Cancel one of your active goals (owners and admins can cancel anyone's) |
 
 ### Notifications
 

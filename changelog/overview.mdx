@@ -4,6 +4,28 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="November 16, 2026" description="Weekly release">
+
+Covers what shipped November 15. Genie AI can run code, and Auto reacts faster and remembers more.
+
+## New features
+
+- **Genie AI can run code.** For jobs with many steps, Genie AI writes a short JavaScript or Python program that calls its tools in an isolated sandbox, as you, and brings back only the result. Attach a large `.xlsx` file and it can compute over the whole file with pandas and hand back a new workbook. See [Genie AI can run code](/workspaces/overview#genie-ai-can-run-code).
+- **Standing instructions for Auto.** Owners and admins can tell Auto's deep runs what to watch, what to leave alone and how to write. See [Standing instructions](/workspaces/auto#standing-instructions).
+- **Auto's face.** A small face on the Auto page shows at a glance what Auto is doing. See [Auto's face](/workspaces/auto#autos-face).
+
+## Updates
+
+- **Goals wait for your decision.** When a goal run leaves you work, Auto goes on shortly after you decide instead of every three hours, and the goal shows *Waiting for your decision*. When nothing waits, Auto picks its own follow-up time. You can now give as many goals as you like; they queue. See [Give Auto a goal](/workspaces/auto#give-auto-a-goal).
+- **Auto reacts to failing agents.** A Genie Agent run that fails for a new reason brings Auto's next quick check forward, and deep runs now remember what their last runs found and what became of their work.
+- **Goals over MCP.** `read_workspace_auto_goals`, `give_workspace_auto_goal` and `cancel_workspace_auto_goal` are now listed. See [MCP API](/workspaces/mcp-api#workspace-auto).
+- **Reference classes first.** Asked to build a knowledge model, Genie AI now searches the reference ontologies first and offers the matches before writing its own classes. See [World knowledge](/workspaces/overview#world-knowledge).
+- **The canvas reopens where you left it.** A chat's canvas opens on the tab you last viewed, and the knowledge model tab keeps the map, layer and class you picked.
+- **Fewer false alarms about search.** Genie AI no longer reports search as broken when a search simply finds nothing.
+
+</Update>
+
+
 <Update label="November 15, 2026" description="Weekly release">
 
 Covers what shipped November 14–15. Long recordings in Safari get lighter.
