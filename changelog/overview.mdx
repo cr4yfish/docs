@@ -4,6 +4,22 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="November 17, 2026" description="Weekly release">
+
+Covers what shipped November 16–17. Python data packages are always there, and Auto's standing instructions reach MCP.
+
+## Updates
+
+- **Python data packages are always on.** Programs Genie AI runs always have pandas, NumPy, openpyxl and XlsxWriter. Genie installs and updates them by itself, so nobody has to set anything up. See [Genie AI can run code](/workspaces/overview#genie-ai-can-run-code).
+- **Standing instructions over MCP.** `read_workspace_auto` now returns the managers' standing instructions, and `update_workspace_auto` can clear them with `clear_instructions: true`. Writing them stays a confirmation card in Genie. See [MCP API](/workspaces/mcp-api#workspace-auto).
+
+## Fixes
+
+- **Clearer MCP tool descriptions.** Some MCP tool descriptions pointed at actions that exist only inside Genie. They now say that the action is done in the app.
+
+</Update>
+
+
 <Update label="November 16, 2026" description="Weekly release">
 
 Covers what shipped November 15. Genie AI can run code, and Auto reacts faster and remembers more.

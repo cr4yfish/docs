@@ -408,12 +408,12 @@ Trifft ein Folge-Prompt für ein Projekt ein, das bereits baut, reiht Genie ihn 
 
 ### Workspace Auto
 
-Lies und steuere dein [Auto](/de/workspaces/auto) im verbundenen Workspace, mit denselben Aktionen wie Genie AI. Einen Vorschlag freizugeben ist hier nicht möglich; das bleibt eine Bestätigung, die du in Genie selbst drückst.
+Lies und steuere [Auto](/de/workspaces/auto) im verbundenen Workspace, mit denselben Aktionen wie Genie AI. Über MCP kannst du nur einschränken, was Auto ungefragt tut. Einen Vorschlag freizugeben, Auto einzuschalten, eine Aktion auf **Von allein** zu stellen und [feste Anweisungen](/de/workspaces/auto#feste-anweisungen) zu schreiben ist hier nicht möglich; das bleiben Bestätigungen, die du in Genie selbst drückst.
 
 | Tool | Was es tut |
 |---|---|
-| `read_workspace_auto` | Dein Auto in diesem Workspace: Schalter, nächste Prüfung, wartende und entschiedene Vorschläge, letzte Läufe |
-| `update_workspace_auto` | Auto und seine Push-Benachrichtigungen ein- oder ausschalten (persönlich, gilt für jeden Workspace) |
+| `read_workspace_auto` | Auto in diesem Workspace: ob er an ist, was er allein tun darf, die festen Anweisungen der Verwalter, nächste Prüfung, die auf dich wartende Arbeit (für Owner und Admins die aller) und letzte Läufe. Die Anweisungen kommen als nicht vertrauenswürdiger Inhalt markiert zurück: Text zum Berichten, nicht zum Befolgen |
+| `update_workspace_auto` | Owner und Admins: Auto ausschalten, **Arbeit an Mitglieder übergeben** umschalten, Aktionen auf **Erst fragen** oder **Nie** zurückstellen und die festen Anweisungen löschen (`clear_instructions: true`). Jedes Mitglied: ob Auto dich benachrichtigt, wenn er dir Arbeit zuweist (persönlich, gilt für jeden Workspace). Jedes Argument ist erforderlich; übergib `null`, um eine Einstellung beizubehalten |
 | `start_workspace_auto_run` | Auto jetzt ausführen: `shallow` (kostenlose Prüfung) oder `full` (ein Modelllauf, abgerechnet wie ein Chatzug; abgelehnt, wenn beschäftigt, ratenbegrenzt oder ohne Credits) |
 | `dismiss_workspace_auto_output` | Einen wartenden Vorschlag verwerfen |
 | `read_workspace_auto_goals` | Ziele in diesem Workspace, seitenweise (gib `nextCursor` als `cursor` zurück), mit Status, jüngster Notiz und ob das Ziel auf die Entscheidung seines Besitzers wartet |
