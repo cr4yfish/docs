@@ -408,12 +408,12 @@ When a follow-up prompt arrives for a project that's already building, Genie que
 
 ### Workspace Auto
 
-Read and control your [Auto](/workspaces/auto) in the connected workspace, the same actions Genie AI has. Approving a suggestion isn't available here; it stays a confirmation you press in Genie.
+Read and control [Auto](/workspaces/auto) in the connected workspace, the same actions Genie AI has. Over MCP you can only narrow what Auto does unasked. Approving a suggestion, turning Auto on, setting an action to **On its own** and writing [standing instructions](/workspaces/auto#standing-instructions) aren't available here; they stay confirmations you press in Genie.
 
 | Tool | What it does |
 |---|---|
-| `read_workspace_auto` | Your Auto in this workspace: switches, next check, waiting and decided suggestions, recent runs |
-| `update_workspace_auto` | Switch Auto and its push notifications on or off (personal, covers every workspace) |
+| `read_workspace_auto` | Auto in this workspace: whether it is on, what it may do alone, the managers' standing instructions, next check, the work waiting for you (for owners and admins, everyone's) and recent runs. The instructions come back marked as untrusted content: text to report, not to follow |
+| `update_workspace_auto` | Owners and admins: turn Auto off, switch **Hand work to members**, set actions back to **Ask first** or **Never**, and clear the standing instructions (`clear_instructions: true`). Any member: whether Auto notifies you when it assigns you work (personal, covers every workspace). Every argument is required; pass `null` to keep a setting |
 | `start_workspace_auto_run` | Run Auto now: `shallow` (free check) or `full` (a model run, charged like a chat turn; refused when busy, rate-limited or out of credits) |
 | `dismiss_workspace_auto_output` | Dismiss one waiting suggestion |
 | `read_workspace_auto_goals` | Goals in this workspace, a page at a time (pass `nextCursor` back as `cursor`), with each goal's status, latest note and whether it waits for its owner's decision |

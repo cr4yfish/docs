@@ -391,7 +391,7 @@ For work that takes many steps — *"find every open invoice older than 30 days 
 
 - **Only what you could do.** Every tool call from code runs as you, with your permissions, exactly as if Genie AI called it directly. Actions that need you in person — confirmation cards, deleting, changing roles — can't be run from code.
 - **Isolated.** Each run gets a fresh sandbox with no internet access and no stored state, thrown away when it ends.
-- **Whole spreadsheets.** Attach an `.xlsx` file and Genie AI can hand the whole file to a Python program (with pandas) instead of paging through its rows — up to 5 files of 100 MB each per run. A program can write new `.xlsx` files, which Genie AI can turn into workbook documents you open and download (up to 10 MB each).
+- **Whole spreadsheets.** Attach an `.xlsx` file and Genie AI can hand the whole file to a Python program (with pandas) instead of paging through its rows — up to 5 files of 100 MB each per run. The data packages (pandas, NumPy, openpyxl, XlsxWriter) are always installed, so there is nothing to set up; because a run has no internet access, a program can't install others. A program can write new `.xlsx` files, which Genie AI can turn into workbook documents you open and download (up to 10 MB each).
 - **Bounded.** By default a chat turn gets two minutes of run time and 50 tool calls from code across all its runs. Sandbox time is covered by your workspace's [spend limits](/workspaces/governance#spend-limits).
 
 ### Excel workbooks

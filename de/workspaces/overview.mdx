@@ -391,7 +391,7 @@ Für Aufgaben mit vielen Schritten — *„finde jede offene Rechnung, die älte
 
 - **Nur, was du auch könntest.** Jeder Werkzeugaufruf aus dem Code läuft als du, mit deinen Berechtigungen, genau so, als hätte Genie AI ihn direkt gemacht. Aktionen, die dich persönlich brauchen — Bestätigungskarten, Löschen, Rollenwechsel —, lassen sich aus Code nicht ausführen.
 - **Isoliert.** Jeder Lauf bekommt eine frische Sandbox ohne Internetzugang und ohne gespeicherten Zustand, die nach dem Lauf verworfen wird.
-- **Ganze Tabellen.** Hängst du eine `.xlsx`-Datei an, kann Genie AI die ganze Datei an ein Python-Programm (mit pandas) übergeben, statt ihre Zeilen seitenweise zu lesen — bis zu 5 Dateien mit je 100 MB pro Lauf. Ein Programm kann neue `.xlsx`-Dateien schreiben, die Genie AI zu Arbeitsmappen-Dokumenten macht, die du öffnen und herunterladen kannst (bis zu 10 MB pro Datei).
+- **Ganze Tabellen.** Hängst du eine `.xlsx`-Datei an, kann Genie AI die ganze Datei an ein Python-Programm (mit pandas) übergeben, statt ihre Zeilen seitenweise zu lesen — bis zu 5 Dateien mit je 100 MB pro Lauf. Die Datenpakete (pandas, NumPy, openpyxl, XlsxWriter) sind immer installiert, du musst also nichts einrichten; weil ein Lauf keinen Internetzugang hat, kann ein Programm keine weiteren installieren. Ein Programm kann neue `.xlsx`-Dateien schreiben, die Genie AI zu Arbeitsmappen-Dokumenten macht, die du öffnen und herunterladen kannst (bis zu 10 MB pro Datei).
 - **Begrenzt.** Standardmäßig bekommt ein Chat-Zug über alle seine Läufe zwei Minuten Laufzeit und 50 Werkzeugaufrufe aus Code. Die Sandbox-Zeit fällt unter die [Ausgabenlimits](/de/workspaces/governance#ausgabenlimits) deines Workspace.
 
 ### Excel-Arbeitsmappen
