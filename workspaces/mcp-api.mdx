@@ -56,8 +56,8 @@ Read and update your workspace, members, invitations, settings, and billing.
 |---|---|
 | `get_workspace_info` | Name, member count, icon, accent color, settings, and creation date |
 | `list_workspace_members` | Members with roles and join dates — a member can hold more than one role, so `roles` lists the full set and `role` the strongest one. `isWorkspaceOwner` is true for the owner of record only |
-| `get_workspace_teams` | The workspace's [teams](/workspaces/members#teams) and your own. Always allowed for your own team |
-| `set_workspace_member_team` | Put a member on a team. Your own team is always yours to change; moving someone else needs permission to manage settings. Editing a team's starter kit stays in the app |
+| `get_workspace_teams` | The workspace's [teams](/workspaces/members#teams), the teams you are on and your home team. Pass `membersOf` to list one team's people (needs permission to see members) |
+| `set_workspace_member_team` | Set a member's home team, among the teams they are on. Your own is always yours to change; someone else's needs permission to manage settings. Adding people to a team and editing its starter kit stay in the app |
 | `list_workspace_invites` | Invites that still work (newest 50) with role, expiry, remaining uses and whether each is personal — the invitee's address and the invite code are never returned. Needs permission to invite members |
 | `invite_workspace_member` | Create a shareable invite link for a given role |
 | `revoke_workspace_invite` | Cancel a pending invite |
@@ -76,7 +76,7 @@ Read and update your workspace, members, invitations, settings, and billing.
 
 ### Workspace roles and permissions
 
-Everything the **Roles & permissions** settings page can do — the four built-in roles (owner/admin/member/editor) and any custom role or group the workspace defines. Every write requires the `roles.manage` permission. Over MCP you can read roles, create one and rename one; assigning and changing what roles grant is made in the app (see [Changes that stay in the app](#changes-that-stay-in-the-app)).
+Everything the **Access → Roles** settings page can do — the four built-in roles (owner/admin/member/editor) and any custom role or group the workspace defines. Every write requires the `roles.manage` permission. Over MCP you can read roles, create one and rename one; assigning and changing what roles grant is made in the app (see [Changes that stay in the app](#changes-that-stay-in-the-app)).
 
 | Tool | What it does |
 |---|---|
@@ -247,12 +247,33 @@ See who can reach an item and why, and what is shared beyond its owner — throu
 
 | Tool | What it does |
 |---|---|
-| `get_access` | General access, each person, role or group on the item with their level, who always has Full access, and your own level with the reasons, for an agent, tool, chat, saved view, app, access area, or a knowledge-model area, class, relation, process or property. An item you can't see answers "not found" |
+| `get_access` | General access, each person, role or team on the item with their level, who always has Full access, and your own level with the reasons, for an agent, tool, chat, saved view, app, access area, or a knowledge-model area, class, relation, process or property. For a class or area, pass `key: 'entities'` to read who sees its records. An item you can't see answers "not found" |
 | `list_shared` | What is shared beyond its owner, one kind at a time (agents, tools, chats, saved views, access areas), optionally narrowed to everyone, groups or people, or to your own. Only among items you can see; members only. Up to 50 a call — pass the returned `nextCursor` back until it is empty, even when a page comes back with no rows |
 
 ### Changes that stay in the app
 
-Anything that could widen who may do or read what is made in the app, not over MCP: an outside client's tool approval is no stand-in for a person pressing the change, because text its model read — a document, an email, a page — could have asked for it. Over MCP you can read all of it and make the narrowing or neutral edits above; the rest — assigning a member's roles, changing what a role grants or its base role, resetting or deleting a role, minting an API key or resuming one, changing its rate limit, granting or revoking knowledge access, deleting an access area, moving a folder between areas — is done in the matching settings page, or by asking Genie AI in the workspace chat, which shows a confirmation card you press. See [Confirmation cards](/workspaces/overview#confirmation-cards).
+Anything that could widen who may do or read what is made in the app, not over MCP: an outside client's tool approval is no stand-in for a person pressing the change, because text its model read — a document, an email, a page — could have asked for it. Over MCP you can read all of it and make the narrowing or neutral edits above; the rest — assigning a member's roles, changing what a role grants or its base role, resetting or deleting a role, minting an API key or resuming one, changing its rate limit, granting or revoking knowledge access, deleting an access area, moving a folder between areas, putting people on a team, changing who reads a workspace table, the Set up access flow, saving or removing a record sync — is done in the matching settings page, or by asking Genie AI in the workspace chat, which shows a confirmation card you press. See [Confirmation cards](/workspaces/overview#confirmation-cards).
+
+### Workspace tables (read-only)
+
+Read the [workspace tables](/workspaces/genie-tools#where-the-data-lives) behind your Genie Tools, as the connected user: only tables that member may read are listed. Calls are rate-limited, and table content is user data, so treat it as untrusted text. Writing rows and changing who reads a table stay in the app.
+
+| Tool | What it does |
+|---|---|
+| `list_workspace_tables` | The tables you may read, with row counts, links to other tables and what each table's access follows |
+| `read_workspace_table` | Rows of one table, up to 200 a page, with filters, search, sort and offset |
+| `aggregate_workspace_table` | Sum, average, min, max, count, distinct, standard deviation, median or quartiles of a column, optionally grouped |
+| `find_workspace_table_anomalies` | Outliers, non-numeric values in number fields, and duplicate rows |
+| `get_workspace_table_access` | Who reads and who writes one table |
+
+### Record sync (read-only)
+
+See the [record syncs](/workspaces/overview#sync-records-from-a-business-app) that copy a business app's records into the knowledge model. Needs permission to view integrations; setting up, changing and removing a sync stay in the app or with Genie AI.
+
+| Tool | What it does |
+|---|---|
+| `list_record_syncs` | The workspace's record syncs with their status and schedule |
+| `get_record_sync` | One sync: its kinds of records, how far each got, and any problem |
 
 ### Workspace knowledge model (read-only)
 

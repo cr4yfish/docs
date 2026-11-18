@@ -27,7 +27,7 @@ Sixteen kinds of step are available today:
 | **Web search** | Searches the live web. **Quick** returns the results as data — titles, links, snippets — for a later step to use; **Deep** researches one question in a loop and returns a cited report, a step that takes minutes and uses credits. A time limit (up to 20 minutes) bounds a deep search, and hitting it keeps what was found |
 | **Read a webpage** | Reads one page through Genie's safe page reader (the same one Genie AI uses in chat) and returns its text |
 | **Compliance check** | Checks a value against your workspace's [PII rules](/workspaces/pii-rules) and/or [Guardrails](/workspaces/guardrails) before it goes any further in the flow |
-| **Genie Tool** | Uses one page of a [Genie Tool](/workspaces/genie-tools) in your workspace — opens it, presses a button or submits its form, or reads a grid — and returns what it showed or did. It runs as the person who started the agent, so it only reaches tools and data they may use |
+| **Genie Tool** | Uses one page of a [Genie Tool](/workspaces/genie-tools) in your workspace — opens it, presses a button or submits its form, or reads a grid — and returns what it showed or did. It runs as the person who started the agent, so it only reaches tools and data they may use. On an agent that runs as one member, a Genie Tool step started by someone else is refused |
 | **Another agent** | Calls a Genie Agent you've already built, so you can compose smaller flows into bigger ones |
 | **If / else** | Branches the flow — test earlier results with AND / OR / NOT, then run different steps depending on whether they hold. See [Branching](#branching) |
 | **Knowledge** | Searches, lists, reads, files, updates, or deletes documents in your workspace's [knowledge base](/workspaces/overview#knowledge-base) |
@@ -131,6 +131,10 @@ Every run gets a results page of its own: the outcome, and every step that produ
 Each agent also has a **Runs** page — its recent runs, newest first — one tap from the editor's toolbar. On the chat canvas, an agent shows its last five runs and how each step went in the picked run; tap a step to see what it does and ask Genie AI about it.
 
 **Steps of a called agent.** When a step calls another agent, its row in the run results shows a pill such as *28 steps inside · 1 failed*. Open it to see the called agent's own steps with their status, duration and any error, and open further calls inside it. Steps of an agent you may not see stay hidden. Genie AI can read the same steps when you ask about a run.
+
+**Who can read a run.** A run someone started by hand is readable in full by that person, the agent's owner and people with Full access; others who can view the agent see a locked row with who started it, when and how it went, and *This run's result is not shared with you*. Runs started by a schedule, webhook, channel or stage change follow the agent's **Who reads automatic runs** setting: everyone who can view the agent (the default) or only the owner and Full access. People with Full access change it; Genie AI can only narrow it. Runs from before this setting keep how they were shared.
+
+**Agents that run as one member.** When someone else starts such an agent by hand, it still uses that member's integrations and credits, but reads knowledge, the knowledge model and tables as the person who started it.
 
 A notify step links here by default — choose **This run's results** or **a page inside Genie** from the step's settings to point it somewhere else.
 

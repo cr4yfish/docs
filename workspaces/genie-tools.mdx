@@ -122,6 +122,8 @@ These same workspace tables are also available as a step inside a [Genie Agent](
 
 A table can also **link to another table's rows** — a task pointing at its project, say. Ask Genie AI to link them and it keeps the link honest: a task can only point at a project that exists, a project that still has tasks can't be deleted by accident (or, if you prefer, deleting it just clears the links), and blocks can show the linked project's name right in the task's row and sort or filter by it.
 
+**Who reads a table.** A table is read by every member, by the people who may use one Genie Tool (View reads, Use also writes), or by the people who see a class's records — then a restricted property becomes a hidden column. A table a tool creates follows that tool from its first row; older tables stay open to every member. Change it from the tool's settings → **Data** (*Tables this tool keeps*) or from the table itself: the **Who reads "&lt;table&gt;"?** dialog shows how many people read it now and after, and warns when a change widens access. Choosing another tool or a class is done by asking Genie AI, through a confirmation card. Only people with Full access on both what the table follows now and what it will follow can change it. Linked tables must follow the same thing; **Remove this table's links…** clears the conflict. A table whose tool or class was deleted can't be read by anyone until an admin picks again.
+
 Big tools stay fast to change: Genie AI edits just the pages and blocks you asked about instead of rewriting the whole tool, and refuses an edit that would overwrite a change someone else saved in the meantime.
 
 <Note>
