@@ -46,7 +46,7 @@ Ein Mitglied ist nicht auf eine einzige Rolle beschränkt. Gib jemandem zum Beis
 
 <Steps>
   <Step title="Rollen öffnen">
-    Klicke auf die Kontozeile unten in der Seitenleiste, wähle **Workspace-Einstellungen** und öffne dann **Rollen**.
+    Klicke auf die Kontozeile unten in der Seitenleiste, wähle **Workspace-Einstellungen**, öffne **Zugriff** und dann **Rollen**.
   </Step>
   <Step title="Rolle erstellen">
     Klicke auf **Neue Rolle** und wähle, auf welcher eingebauten Rolle sie basiert. Das legt die Obergrenze für jede Berechtigung fest, die sie halten kann.
@@ -69,7 +69,7 @@ Du kannst neue Mitglieder einladen, indem du einen teilbaren Einladungslink gene
 
 <Steps>
   <Step title="Einladungen öffnen">
-    Klicke auf der Workspace-Startseite auf die Kontozeile unten in der Seitenleiste, wähle **Workspace-Einstellungen**, öffne **Mitglieder** und klicke dann auf **+ Einladen**. Das öffnet die Seite **Einladungen**.
+    Klicke auf der Workspace-Startseite auf die Kontozeile unten in der Seitenleiste, wähle **Workspace-Einstellungen**, öffne **Zugriff** → **Personen** und klicke dann auf **+ Einladen**. Das öffnet die Seite **Einladungen**.
   </Step>
   <Step title="Einladung konfigurieren">
     Fülle die drei Felder unter **Neue Einladung** aus:
@@ -90,15 +90,41 @@ Du kannst neue Mitglieder einladen, indem du einen teilbaren Einladungslink gene
 Erstelle einen Link mit hohem **Max. Nutzungen**-Wert für offenes Team-Onboarding (zum Beispiel zum Teilen eines Workspace-Links in einem firmenweiten Slack-Kanal) und einen Link mit **Max. Nutzungen = 1** für einmalige externe Einladungen.
 </Tip>
 
+## Die Zugriffsseite
+
+**Workspace-Einstellungen → Zugriff** ist der eine Ort für alles darüber, wer im Workspace ist und worauf er zugreift. Sie ersetzt die getrennten Seiten Mitglieder, Teams, Rollen, Knowledge-Zugriff und Provisionierung; alte Links landen weiter auf der richtigen Seite. Sie hat vier Gruppen, und du siehst nur die Zeilen, die deine Berechtigungen erlauben:
+
+| Gruppe | Seiten |
+|---|---|
+| **Personen und Teams** | **Teams** — jedes Mitglied sieht sie. **Personen** — einladen, entfernen und die Rollen jeder Person sehen |
+| **Was Personen dürfen** | **[Rollen](#benutzerdefinierte-rollen)** — das Höchste, was eine Person im Workspace tun darf |
+| **Worauf Personen zugreifen** | **Wer worauf zugreift** — alles Geteilte, nach Element, nach Person und für dich. **[Zugriffsbereiche](/de/workspaces/overview#zugriffsbereiche)** — wer welche Dokumente lesen darf |
+| **Einrichtung** | **[Verzeichnisabgleich](/de/workspaces/provisioning)** — lass das Firmenverzeichnis Personen hinzufügen und entfernen |
+
+Die eigene Seite einer Person (**Zugriff → Personen** → eine Person) zeigt ihre Rolle, die Teams, in denen sie ist, und worauf sie zugreift — gruppiert nach *Über &lt;Team&gt;*, *Als alle* und dem, was direkt mit ihr geteilt wurde.
+
+### Zugriff einrichten
+
+Eine geführte Einrichtung bringt Personen, Teams und Zugriff eines neuen Workspaces in einem Zug in Ordnung. Owner und Admins, die Mitglieder und Dokumentzugriff verwalten dürfen, finden sie unter **Zugriff → Zugriff einrichten**. Es gibt zwei Wege:
+
+- **Firmenverzeichnis** — Personen, deine verifizierte Domain, die Verzeichnisverbindung, Teams, worauf jedes Team zugreift, Prüfen.
+- **Von Hand** — Personen, Einladungen, Teams, worauf jedes Team zugreift, Prüfen.
+
+Die Einrichtung speichert laufend und hat keinen Speichern-Button: Schließe sie und mach später weiter, auf einem anderen Gerät, oder lass einen anderen Admin sie abschließen — die Zugriffsseite zeigt **Einrichtung fortsetzen**, bis sie fertig ist. Domains, Teams, wer in ihnen ist, und Einladungen gelten sofort. Worauf jedes Team und alle zugreifen, bleibt ein Entwurf, bis du **Starten** drückst: Genie schlägt **Bearbeiten** vor, und *Später entscheiden* ändert nichts. **Prüfen** listet zuerst, wer Zugriff verlieren würde, dann, wer welchen gewinnt und was bleibt, und lässt dich den Workspace so sehen, wie eine Person ihn sieht. **Starten** wendet genau an, was Prüfen gezeigt hat. Ist schon jemand anderes in der Einrichtung, siehst du, wer, und kannst **Übernehmen**. Genie AI kann dich durch dieselbe Einrichtung führen und startet sie nur über eine [Bestätigungskarte](/de/workspaces/overview#bestätigungskarten).
+
 ## Teams
 
-Ein Unternehmens-Workspace vereint Menschen aus verschiedenen Abteilungen, und jede braucht einen anderen Einstieg. Mit **Teams** gibt ein Eigentümer oder Admin jeder Abteilung ein eigenes Starterpaket. Öffne **Workspace-Einstellungen → Teams**, lege ein Team an und lege fest:
+Ein Team sind die Personen einer Abteilung, ihr Bereich im [Wissensmodell](/de/workspaces/overview#wissensmodell) und ihr Starterpaket. Öffne **Workspace-Einstellungen → Zugriff → Teams**, um eines anzulegen und seine Seite zu öffnen:
 
-- **Erste Fragen** — bis zu sechs, angezeigt unter **Frag zum Beispiel** auf dem leeren Bildschirm eines neuen Chats, vor den allgemeinen Vorschlägen.
-- **Vorlagen** — bis zu acht [Chat-Vorlagen](/de/workspaces/overview#chat-vorlagen), die auf der Workspace-Startseite und in der Vorlagengalerie zuerst erscheinen.
-- **Ein Wissensbereich** — jedes Team erhält einen eigenen [Bereich](/de/workspaces/overview#wissensmodell), benannt nach dem Team. Die Modell-Seite öffnet sich auf dem Bereich deines Teams.
+- **Personen** — wer im Team ist. In einem Team zu sein ist Zugriff: Alles, was mit dem Team geteilt wird, erreicht seine Personen, und eine Person kann in mehreren Teams sein. Wer Rollen zuweisen darf, fügt hier Personen hinzu oder entfernt sie (mit **Rückgängig**), aber nie jemanden, dessen Zugriff über dem eigenen liegt. Niemand kann sich selbst in ein Team setzen.
+- **Starterpaket** — bis zu sechs **erste Fragen**, angezeigt unter **Frag zum Beispiel** auf dem leeren Bildschirm eines neuen Chats, und bis zu acht [Chat-Vorlagen](/de/workspaces/overview#chat-vorlagen), die auf der Workspace-Startseite und in der Vorlagengalerie zuerst erscheinen.
+- **Wissen** — jedes Team erhält einen eigenen [Bereich](/de/workspaces/overview#wissensmodell), benannt nach dem Team. Der Tab zeigt die Bereiche, auf die das Team zugreift; öffne einen, um seine Klassen und Eigenschaften zu sehen, jede mit einer Stufe, die du ändern kannst, und **Wer hierauf zugreift**.
+- **Auch geteilt mit** — wie viele Tools, Agenten und Quellen das Team erreicht.
+- **Team löschen** — die Bestätigung sagt, wer was verliert.
 
-Mitglieder wählen ihr Team selbst. Ein Team ändert nur, was zuerst vorgeschlagen wird, nie, was jemand lesen darf: Der Zugriff bleibt bei Rollen und [Zugriffsbereichen](/de/workspaces/overview#zugriffsbereiche). Ein Workspace kann bis zu 20 Teams haben, und Genie AI kann sie für dich lesen und bearbeiten.
+**Dein Heimat-Team** ist das deiner Teams, von dem du startest: Es bestimmt das Starterpaket, das du siehst, und den Bereich, auf dem sich die Modell-Seite öffnet. Du wählst es unter den Teams, in denen du bist; es öffnet selbst nichts.
+
+Wenn du etwas teilst, wähle lieber ein Team, statt Personen einzeln zu nennen — wer später ins Team kommt, erhält dasselbe. Eine [Verzeichnisgruppe](/de/workspaces/provisioning#rollen-und-teams-aus-gruppen) kann die Personen eines Teams mit deinem Identity Provider abgleichen. Ein Workspace kann bis zu 20 Teams haben, und Genie AI kann Teams lesen und dein Heimat-Team für dich setzen.
 
 ## Gleichzeitig am selben Projekt arbeiten
 
@@ -110,7 +136,7 @@ Ein Workspace-Projekt unterstützt jeweils nur eine aktiv bearbeitende Person. W
 
 ## Bestehende Mitglieder verwalten
 
-Um die Rolle eines Mitglieds anzusehen oder zu ändern, klicke auf die Kontozeile unten in der Seitenleiste, wähle **Workspace-Einstellungen** und öffne dann **Mitglieder**.
+Um die Rolle eines Mitglieds anzusehen oder zu ändern, klicke auf die Kontozeile unten in der Seitenleiste, wähle **Workspace-Einstellungen** und öffne dann **Zugriff** → **Personen**.
 
 ### Ein Mitglied finden
 

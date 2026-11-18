@@ -56,8 +56,8 @@ Lese und aktualisiere deinen Workspace, Mitglieder, Einladungen, Einstellungen u
 |---|---|
 | `get_workspace_info` | Name, Mitgliederzahl, Icon, Akzentfarbe, Einstellungen und Erstellungsdatum |
 | `list_workspace_members` | Mitglieder mit Rollen und Beitrittsdaten — ein Mitglied kann mehr als eine Rolle halten, `roles` listet die vollständige Menge, `role` die stärkste davon. `isWorkspaceOwner` ist nur für den Hauptverantwortlichen wahr |
-| `get_workspace_teams` | Die [Teams](/de/workspaces/members#teams) des Workspaces und dein eigenes. Dein eigenes Team ist immer erlaubt |
-| `set_workspace_member_team` | Ordne ein Mitglied einem Team zu. Dein eigenes Team darfst du immer ändern; andere zu verschieben erfordert die Berechtigung, Einstellungen zu verwalten. Das Starter-Kit eines Teams bearbeitest du weiterhin in der App |
+| `get_workspace_teams` | Die [Teams](/de/workspaces/members#teams) des Workspaces, die Teams, in denen du bist, und dein Heimat-Team. Mit `membersOf` listest du die Personen eines Teams (erfordert die Berechtigung, Mitglieder zu sehen) |
+| `set_workspace_member_team` | Setze das Heimat-Team eines Mitglieds, unter den Teams, in denen es ist. Dein eigenes darfst du immer ändern; das eines anderen erfordert die Berechtigung, Einstellungen zu verwalten. Personen in ein Team setzen und sein Starter-Kit bearbeiten bleiben in der App |
 | `list_workspace_invites` | Einladungen, die noch gültig sind (die neuesten 50), mit Rolle, Ablaufdatum, verbleibenden Nutzungen und ob sie persönlich sind — die Adresse der eingeladenen Person und der Einladungscode werden nie zurückgegeben. Erfordert die Berechtigung, Mitglieder einzuladen |
 | `invite_workspace_member` | Erstelle einen teilbaren Einlade-Link für eine bestimmte Rolle |
 | `revoke_workspace_invite` | Breche eine ausstehende Einladung ab |
@@ -76,7 +76,7 @@ Lese und aktualisiere deinen Workspace, Mitglieder, Einladungen, Einstellungen u
 
 ### Workspace-Rollen und -Berechtigungen
 
-Alles, was die Einstellungsseite **Rollen & Berechtigungen** kann — die vier eingebauten Rollen (Owner/Admin/Member/Editor) sowie jede eigene Rolle oder Gruppe des Workspace. Jede Schreibaktion erfordert die Berechtigung `roles.manage`. Über MCP kannst du Rollen lesen, eine anlegen und eine umbenennen; Zuweisen und Ändern dessen, was Rollen gewähren, geschieht in der App (siehe [Änderungen, die in der App bleiben](#%C3%A4nderungen-die-in-der-app-bleiben)).
+Alles, was die Einstellungsseite **Zugriff → Rollen** kann — die vier eingebauten Rollen (Owner/Admin/Member/Editor) sowie jede eigene Rolle oder Gruppe des Workspace. Jede Schreibaktion erfordert die Berechtigung `roles.manage`. Über MCP kannst du Rollen lesen, eine anlegen und eine umbenennen; Zuweisen und Ändern dessen, was Rollen gewähren, geschieht in der App (siehe [Änderungen, die in der App bleiben](#%C3%A4nderungen-die-in-der-app-bleiben)).
 
 | Tool | Was es tut |
 |---|---|
@@ -247,12 +247,33 @@ Sieh, wer ein Objekt erreichen kann und warum, und was über den Eigentümer hin
 
 | Tool | Was es tut |
 |---|---|
-| `get_access` | Allgemeiner Zugriff, jede Person, Rolle oder Gruppe auf dem Objekt mit ihrer Stufe, wer immer Vollzugriff hat, und deine eigene Stufe samt Begründung — für einen Agenten, ein Tool, einen Chat, eine gespeicherte Ansicht, eine App, einen Zugriffsbereich oder einen Bereich, eine Klasse, Beziehung, einen Prozess oder eine Eigenschaft des Wissensmodells. Ein Objekt, das du nicht sehen kannst, antwortet „nicht gefunden“ |
+| `get_access` | Allgemeiner Zugriff, jede Person, Rolle oder jedes Team auf dem Objekt mit ihrer Stufe, wer immer Vollzugriff hat, und deine eigene Stufe samt Begründung — für einen Agenten, ein Tool, einen Chat, eine gespeicherte Ansicht, eine App, einen Zugriffsbereich oder einen Bereich, eine Klasse, Beziehung, einen Prozess oder eine Eigenschaft des Wissensmodells. Für eine Klasse oder einen Bereich liest `key: 'entities'`, wer die Einträge sieht. Ein Objekt, das du nicht sehen kannst, antwortet „nicht gefunden“ |
 | `list_shared` | Was über den Eigentümer hinaus geteilt ist, jeweils eine Art (Agenten, Tools, Chats, gespeicherte Ansichten, Zugriffsbereiche), optional eingegrenzt auf alle, Gruppen oder Personen oder auf deine eigenen. Nur unter Objekten, die du sehen kannst; nur für Mitglieder. Bis zu 50 pro Aufruf — gib den zurückgegebenen `nextCursor` weiter, bis er leer ist, auch wenn eine Seite ohne Zeilen zurückkommt |
 
 ### Änderungen, die in der App bleiben
 
-Alles, was erweitern könnte, wer was tun oder lesen darf, wird in der App vorgenommen, nicht über MCP: Die Tool-Freigabe eines externen Clients ersetzt nicht, dass eine Person die Änderung bestätigt, denn Text, den sein Modell gelesen hat — ein Dokument, eine E-Mail, eine Seite — könnte darum gebeten haben. Über MCP kannst du all das lesen und die einschränkenden oder neutralen Änderungen oben vornehmen; der Rest — die Rollen eines Mitglieds zuweisen, ändern, was eine Rolle gewährt, oder ihre Basisrolle, eine Rolle zurücksetzen oder löschen, einen API-Schlüssel erstellen oder wieder aktivieren, sein Rate-Limit ändern, Knowledge-Zugriff gewähren oder entziehen, einen Zugriffsbereich löschen, einen Ordner zwischen Bereichen verschieben — geschieht auf der passenden Einstellungsseite oder indem du Genie AI im Workspace-Chat darum bittest, das eine Bestätigungskarte zeigt, die du drückst. Siehe [Bestätigungskarten](/de/workspaces/overview#best%C3%A4tigungskarten).
+Alles, was erweitern könnte, wer was tun oder lesen darf, wird in der App vorgenommen, nicht über MCP: Die Tool-Freigabe eines externen Clients ersetzt nicht, dass eine Person die Änderung bestätigt, denn Text, den sein Modell gelesen hat — ein Dokument, eine E-Mail, eine Seite — könnte darum gebeten haben. Über MCP kannst du all das lesen und die einschränkenden oder neutralen Änderungen oben vornehmen; der Rest — die Rollen eines Mitglieds zuweisen, ändern, was eine Rolle gewährt, oder ihre Basisrolle, eine Rolle zurücksetzen oder löschen, einen API-Schlüssel erstellen oder wieder aktivieren, sein Rate-Limit ändern, Knowledge-Zugriff gewähren oder entziehen, einen Zugriffsbereich löschen, einen Ordner zwischen Bereichen verschieben, Personen in ein Team setzen, ändern, wer eine Workspace-Tabelle liest, die Einrichtung über Zugriff einrichten, eine Datensatz-Synchronisierung speichern oder entfernen — geschieht auf der passenden Einstellungsseite oder indem du Genie AI im Workspace-Chat darum bittest, das eine Bestätigungskarte zeigt, die du drückst. Siehe [Bestätigungskarten](/de/workspaces/overview#best%C3%A4tigungskarten).
+
+### Workspace-Tabellen (nur lesend)
+
+Lies die [Workspace-Tabellen](/de/workspaces/genie-tools#wo-die-daten-liegen) hinter deinen Genie Tools als verbundener Nutzer: Gelistet werden nur Tabellen, die dieses Mitglied lesen darf. Aufrufe sind ratenbegrenzt, und Tabelleninhalte sind Nutzerdaten — behandle sie als nicht vertrauenswürdigen Text. Zeilen schreiben und ändern, wer eine Tabelle liest, bleiben in der App.
+
+| Tool | Was es tut |
+|---|---|
+| `list_workspace_tables` | Die Tabellen, die du lesen darfst, mit Zeilenzahl, Verknüpfungen zu anderen Tabellen und dem, wonach sich der Zugriff jeder Tabelle richtet |
+| `read_workspace_table` | Zeilen einer Tabelle, bis zu 200 pro Seite, mit Filtern, Suche, Sortierung und Offset |
+| `aggregate_workspace_table` | Summe, Durchschnitt, Minimum, Maximum, Anzahl, eindeutige Werte, Standardabweichung, Median oder Quartile einer Spalte, optional gruppiert |
+| `find_workspace_table_anomalies` | Ausreißer, nicht-numerische Werte in Zahlenfeldern und doppelte Zeilen |
+| `get_workspace_table_access` | Wer eine Tabelle liest und wer in sie schreibt |
+
+### Datensatz-Synchronisierung (nur lesend)
+
+Sieh dir die [Synchronisierungen](/de/workspaces/overview#einträge-aus-einer-business-app-synchronisieren) an, die die Einträge einer Business-App ins Wissensmodell kopieren. Erfordert die Berechtigung, Integrationen zu sehen; Einrichten, Ändern und Entfernen bleiben in der App oder bei Genie AI.
+
+| Tool | Was es tut |
+|---|---|
+| `list_record_syncs` | Die Datensatz-Synchronisierungen des Workspaces mit Status und Zeitplan |
+| `get_record_sync` | Eine Synchronisierung: ihre Arten von Einträgen, wie weit jede ist, und etwaige Probleme |
 
 ### Workspace-Wissensmodell (nur lesend)
 

@@ -46,7 +46,7 @@ A member isn't limited to holding one role. Give someone **Editor** plus a custo
 
 <Steps>
   <Step title="Open Roles">
-    Click the account row at the bottom of the sidebar, choose **Workspace settings**, then open **Roles**.
+    Click the account row at the bottom of the sidebar, choose **Workspace settings**, open **Access**, then **Roles**.
   </Step>
   <Step title="Create a role">
     Click **New role** and pick which built-in role it's based on. This sets the ceiling for every permission it can hold.
@@ -69,7 +69,7 @@ You can invite new members by generating a shareable invite link. Each invite li
 
 <Steps>
   <Step title="Open Invitations">
-    From the workspace home, click the account row at the bottom of the sidebar, choose **Workspace settings**, open **Members**, then click **+ Invite**. This opens the **Invitations** page.
+    From the workspace home, click the account row at the bottom of the sidebar, choose **Workspace settings**, open **Access** → **People**, then click **+ Invite**. This opens the **Invitations** page.
   </Step>
   <Step title="Configure the invite">
     Fill in the three fields under **New Invitation**:
@@ -90,15 +90,41 @@ You can invite new members by generating a shareable invite link. Each invite li
 Create a link with a high **Max Uses** count for open team onboarding (for example, when sharing a workspace link in a company-wide Slack channel), and a link with **Max Uses = 1** for one-off external invites.
 </Tip>
 
+## The Access page
+
+**Workspace settings → Access** is one place for everything about who is in the workspace and what they reach. It replaces the separate Members, Teams, Roles, Knowledge access and Provisioning pages; old links still land on the right page. It has four groups, and you only see the rows your permissions allow:
+
+| Group | Pages |
+|---|---|
+| **People and teams** | **Teams** — every member sees it. **People** — invite, remove and see each person's roles |
+| **What people may do** | **[Roles](#custom-roles)** — the most a person may do anywhere in the workspace |
+| **What people reach** | **Who reaches what** — everything shared, by item, by person and for you. **[Access areas](/workspaces/overview#access-areas)** — who can read which documents |
+| **Setup** | **[Directory sync](/workspaces/provisioning)** — let your company directory add and remove people |
+
+A person's own page (**Access → People** → a person) shows their role, the teams they are on, and what they reach — grouped by *Through &lt;team&gt;*, *As everyone* and what was shared with them directly.
+
+### Set up access
+
+A guided setup gets a new workspace's people, teams and access right in one go. Owners and admins who may manage members and document access find it under **Access → Set up access**. It offers two paths:
+
+- **Company directory** — people, your verified domain, the directory connection, teams, what each team reaches, review.
+- **By hand** — people, invites, teams, what each team reaches, review.
+
+The setup saves as you go and has no Save button: close it and pick it up later, on another device, or let another admin finish it — the Access page shows **Continue setup** until it's done. Domains, teams, who is on them and invites take effect right away. What each team and everyone may reach stays a draft until you press **Start**: Genie suggests **Edit**, and *Decide later* changes nothing. **Review** lists who would lose access first, then who gains and what stays, and lets you see the workspace as one person would. **Start** applies exactly what Review showed. If someone else is already in the setup, you see who and can **Take over**. Genie AI can walk you through the same setup and starts it only through a [confirmation card](/workspaces/overview#confirmation-cards).
+
 ## Teams
 
-A company workspace holds people from different departments, and each wants a different start. **Teams** let an owner or admin give each department its own starter kit. Open **Workspace settings → Teams** and create a team, then set:
+A team is a department's people, its area of the [knowledge model](/workspaces/overview#knowledge-model) and its starter kit. Open **Workspace settings → Access → Teams** to create one and open its page:
 
-- **First questions** — up to six, shown under **Try asking** on a new chat's empty screen, ahead of the general suggestions.
-- **Templates** — up to eight [chat templates](/workspaces/overview#chat-templates), shown first on the workspace home and in the template gallery.
-- **A knowledge area** — every team gets an [area](/workspaces/overview#knowledge-model) of its own, named after it. The Model page opens on the area of your team.
+- **People** — who is on the team. Being on a team is access: anything shared with the team reaches its people, and a person can be on several teams. People with permission to assign roles add and remove people here (with **Undo**), but never someone whose access is above their own. Nobody can put themselves on a team.
+- **Starter kit** — up to six **first questions**, shown under **Try asking** on a new chat's empty screen, and up to eight [chat templates](/workspaces/overview#chat-templates), shown first on the workspace home and in the template gallery.
+- **Knowledge** — every team gets an [area](/workspaces/overview#knowledge-model) of its own, named after it. The tab shows the areas the team reaches; open one to see its classes and properties, each with a level you can change and **Who reaches this**.
+- **Also shared with** — how many tools, agents and sources the team reaches.
+- **Delete team** — the confirmation says who loses what.
 
-Members pick their own team. A team only changes what is suggested first, never what anyone can read: access stays with roles and [access areas](/workspaces/overview#access-areas). A workspace can have up to 20 teams, and Genie AI can read and edit them for you.
+**Your home team** is the one of your teams you start from: it picks the starter kit you see and the area the Model page opens on. You choose it among the teams you are on; it opens nothing by itself.
+
+When you share an item, prefer a team over naming people one by one — whoever joins the team later gets the same. A [directory group](/workspaces/provisioning#roles-and-teams-from-groups) can keep a team's people in step with your identity provider. A workspace can have up to 20 teams, and Genie AI can read teams and set your home team for you.
 
 ## Working in the same project at once
 
@@ -110,7 +136,7 @@ A workspace project supports one active editor at a time. If you open a project 
 
 ## Manage existing members
 
-To view or change a member's role, click the account row at the bottom of the sidebar, choose **Workspace settings**, then open **Members**.
+To view or change a member's role, click the account row at the bottom of the sidebar, choose **Workspace settings**, then open **Access** → **People**.
 
 ### Find a member
 
