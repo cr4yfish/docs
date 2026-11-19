@@ -6,7 +6,7 @@ description: "Verbinde Microsoft Entra ID, Okta oder ein beliebiges SCIM-2.0-Ver
 Statt Einladungen zu tippen, können Owner und Admins den Identity Provider des Unternehmens verbinden — Microsoft Entra ID, Okta oder einen beliebigen SCIM-2.0-Client. Das Verzeichnis fügt dann Personen zum Workspace hinzu, hält Namen und Gruppen aktuell und entfernt sie, wenn sie das Unternehmen verlassen.
 
 <Note>
-  Nur **Owner** und **Admins** können **Workspace-Einstellungen → Zugriff → Verzeichnisabgleich** öffnen.
+  Nur **Owner** und **Admins** können den Verzeichnisabgleich öffnen. Er liegt unter **Workspace-Einstellungen → Zugriff**: Öffne oben die Statuszeile und drücke in ihrer Zeile **Verzeichnis** auf **Verwalten**. Alte Links auf die Seite Verzeichnisabgleich landen dort.
 </Note>
 
 ## Das bekommst du
@@ -30,13 +30,13 @@ Statt Einladungen zu tippen, können Owner und Admins den Identity Provider des 
 
 <Steps>
   <Step title="Domain hinzufügen und verifizieren">
-    Drücke unter **Workspace-Einstellungen → Zugriff → Verzeichnisabgleich** auf **Domain hinzufügen** und gib zum Beispiel `contoso.com` ein. Genie zeigt dir einen TXT-Eintrag, den du bei deinem DNS-Anbieter veröffentlichst. Sobald er aktiv ist, drücke **Verifizieren**. Eine Domain kann nur von einem Workspace verifiziert werden, und jede Domain (etwa `eu.contoso.com`) braucht einen eigenen Eintrag.
+    Drücke in den Einstellungen des Verzeichnisabgleichs (**Workspace-Einstellungen → Zugriff** → Statuszeile → **Verzeichnis** → **Verwalten**) auf **Domain hinzufügen** und gib zum Beispiel `contoso.com` ein. Genie zeigt dir einen TXT-Eintrag, den du bei deinem DNS-Anbieter veröffentlichst. Sobald er aktiv ist, drücke **Verifizieren**. Eine Domain kann nur von einem Workspace verifiziert werden, und jede Domain (etwa `eu.contoso.com`) braucht einen eigenen Eintrag.
   </Step>
   <Step title="Provisionierungs-Schlüssel erstellen">
     Erstelle auf der Seite [API-Schlüssel](/de/workspaces/api-keys) einen Schlüssel mit der Berechtigung **Mitglieder provisionieren (SCIM)**. Der Schlüssel handelt als die Person, die ihn erstellt hat, und kann nur Personen hinzufügen, ändern oder entfernen, die diese Person verwalten könnte. Erstelle ihn als **Owner**, wenn das Verzeichnis auch Admins verwalten soll.
   </Step>
   <Step title="Identity Provider verbinden">
-    Öffne in Microsoft Entra ID deine Unternehmensanwendung → **Provisionierung** → **Automatisch**. Füge die Mandanten-URL von der Seite Verzeichnisabgleich ein und nutze den Schlüssel als geheimes Token. Die Standard-Attributzuordnungen funktionieren unverändert; die Provisionierung von Gruppen ist optional.
+    Öffne in Microsoft Entra ID deine Unternehmensanwendung → **Provisionierung** → **Automatisch**. Füge die Mandanten-URL aus den Einstellungen des Verzeichnisabgleichs ein und nutze den Schlüssel als geheimes Token. Die Standard-Attributzuordnungen funktionieren unverändert; die Provisionierung von Gruppen ist optional.
   </Step>
   <Step title="Gruppen Rollen zuordnen (optional)">
     Gib unter **Gruppenrollen** einer provisionierten Gruppe eine Rolle. Gibt eine Zuordnung mehr Zugriff als zuvor, wirst du zuerst um Bestätigung gebeten.
@@ -56,16 +56,37 @@ Neue Mitglieder erhalten die Rolle, die ihre Gruppen ihnen geben, sonst **Mitgli
 - Wer alle zugeordneten Gruppen verlässt, wird wieder **Mitglied** — sofern eine Gruppenzuordnung ihm die Rolle zuvor gegeben hatte.
 - Wen keine Zuordnung je berührt hat, behält die Rolle, die eine Person ihm gegeben hat. Owner werden nie verändert.
 
-Eine Verzeichnisgruppe kann auch ein [Team](/de/workspaces/members#teams) füllen — statt einer Rolle, zusätzlich oder keins von beiden. Wer der Gruppe beitritt, kommt ins Team, und wer sie verlässt, wird herausgenommen; Personen, die jemand von Hand ins Team gesetzt hat, bleiben. Admins kommen auf diesem Weg nur in ein Team, wenn der Owner es eingerichtet hat. Derzeit verknüpfst du eine Gruppe mit einem Team, indem du Genie AI darum bittest; es zeigt eine Bestätigungskarte und kann ein neues Team mit dem Namen der Gruppe anlegen. Die Seite **Verzeichnisabgleich** zeigt, welches Team jede Gruppe füllt.
+Eine Verzeichnisgruppe kann auch ein [Team](/de/workspaces/members#teams) füllen — statt einer Rolle, zusätzlich oder keins von beiden. Wer der Gruppe beitritt, kommt ins Team, und wer sie verlässt, wird herausgenommen; Personen, die jemand von Hand ins Team gesetzt hat, bleiben. Admins kommen auf diesem Weg nur in ein Team, wenn der Owner es eingerichtet hat. Eine neue Gruppe, die dein Verzeichnis sendet, erscheint in der Statuszeile der Zugriffsseite unter **Teams**: Drücke **Zum Team machen**, um ein Team mit ihrem Namen anzulegen, oder **Kein Team**, um nicht mehr gefragt zu werden (mit **Rückgängig**). Du kannst auch Genie AI bitten, eine Gruppe mit einem Team zu verknüpfen; es zeigt eine Bestätigungskarte. Die Einstellungen des Verzeichnisabgleichs zeigen, welches Team jede Gruppe füllt.
 
 Wenn du lieber geführt wirst, geht [Zugriff einrichten](/de/workspaces/members#zugriff-einrichten) Domain, Verzeichnis und Teams in einem Ablauf durch.
+
+## Nichts ändert sich, bis du einschaltest
+
+Verbindest du ein Verzeichnis während [Zugriff einrichten](/de/workspaces/members#zugriff-einrichten), bevor es jemanden gesendet hat, wird der Abgleich **angehalten**. Das Verzeichnis sendet Personen und Gruppen, und Genie zählt sie — aber niemand tritt bei, keine Rolle und kein Team wird gegeben oder genommen, und niemand wird entfernt, bis du am Ende der Einrichtung **Einschalten** drückst.
+
+- **Die Prüfung sagt dir vorher,** wie viele Personen hereinkommen, wie viele Entfernungen ausgeführt werden, welche Gruppen ihre Teams füllen, welche Mitglieder deinem Verzeichnis nicht zugeordnet werden konnten (sie bleiben) und ob deine Sitzplätze reichen.
+- **Das Einschalten läuft im Hintergrund.** Es zeigt seinen Fortschritt, du kannst die Seite verlassen, und **Fortsetzen** nimmt es wieder auf, wenn es mittendrin stehen geblieben ist. Es sagt auch, was es nicht tun konnte — zum Beispiel die Entfernung des Owners oder eines Admins, die der Provisionierungs-Schlüssel nicht vornehmen darf.
+- **Nie eingeschaltet?** Was das Verzeichnis gesendet hat, wird 30 Tage nach seiner Ankunft gelöscht.
+
+Ein Verzeichnis, das bereits lief, oder eines, das du ohne die Einrichtung verbindest, ist sofort aktiv, wie oben beschrieben.
+
+## Den Abgleich im Blick behalten
+
+Nach der Einrichtung zeigt die Statuszeile unter **Workspace-Einstellungen → Zugriff**, wie es dem Abgleich geht — siehe [Die Statuszeile](/de/workspaces/members#die-statuszeile):
+
+- **Verzeichnis** sagt, wann die letzte Änderung ankam, oder dass die Synchronisierung **gestoppt** ist, weil der Provisionierungs-Schlüssel pausiert, abgelaufen oder widerrufen ist oder sein Ersteller keine Mitglieder mehr verwalten darf. Solange sie gestoppt ist, behalten im Verzeichnis entfernte Personen ihren Zugriff hier — entferne sie von Hand, wenn sie gegangen sind.
+- **Personen** listet, was dich braucht: einen Owner oder Admin, den dein Verzeichnis entfernen wollte, Entfernungen, die noch nicht durchgegangen sind, und Personen, die auf einen freien Sitzplatz warten.
+
+## Das Verzeichnis entscheiden lassen
+
+Standardmäßig verwalten das Verzeichnis und die Personen in Genie die Mitglieder gemeinsam: Du kannst weiterhin jemanden von Hand einladen oder ein Team ändern. Der Owner kann unter **Zugriff → Regeln** die Regel **Das Verzeichnis entscheidet über Personen und Teams** einschalten. Ab dann wird in Genie niemand mehr eingeladen, entfernt oder in ein Team gesetzt — das macht nur noch das Verzeichnis. Siehe [Regeln für den ganzen Workspace](/de/workspaces/members#regeln-für-den-ganzen-workspace).
 
 ## Wenn jemand geht
 
 Deaktiviert oder löscht das Verzeichnis eine Person, entfernt Genie sie aus dem Workspace, samt Projekt-, Wissens- und Konnektor-Zugriff, und übergibt die hier besessenen Projekte an den Workspace-Owner. Der Owner des Workspaces kann so nicht entfernt werden — übergib den Workspace zuerst. Genie-Konto, persönlicher Workspace und alles, was die Person anderswo hat, bleiben unberührt; wird sie im Verzeichnis reaktiviert, kehrt dasselbe Konto zurück.
 
 <Warning>
-  Hält kein Genie-Konto die Adresse einer deaktivierten Person, gibt es niemanden zu entfernen. Die Seite Verzeichnisabgleich zählt diese Einträge und verlinkt auf **Personen**, damit du es von Hand abschließt.
+  Hält kein Genie-Konto die Adresse einer deaktivierten Person, gibt es niemanden zu entfernen. Die Einstellungen des Verzeichnisabgleichs zählen diese Einträge und verlinken auf die Personenliste, damit du es von Hand abschließt.
 </Warning>
 
 ## Verwandte Seiten

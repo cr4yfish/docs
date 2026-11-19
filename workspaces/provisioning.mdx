@@ -6,7 +6,7 @@ description: "Connect Microsoft Entra ID, Okta or any SCIM 2.0 directory so peop
 Instead of typing invites, an owner or admin can connect the company's identity provider — Microsoft Entra ID, Okta or any SCIM 2.0 client. The directory then adds people to the workspace, keeps their names and groups current, and removes them when they leave the company.
 
 <Note>
-  Only **owners** and **admins** can open **Workspace settings → Access → Directory sync**.
+  Only **owners** and **admins** can open directory sync. It lives on **Workspace settings → Access**: open the status line on top and press **Manage** on its **Directory** line. Old links to the Directory sync page land there.
 </Note>
 
 ## What you get
@@ -30,13 +30,13 @@ Instead of typing invites, an owner or admin can connect the company's identity 
 
 <Steps>
   <Step title="Add and verify your domain">
-    Under **Workspace settings → Access → Directory sync**, press **Add domain** and enter, for example, `contoso.com`. Genie shows a TXT record to publish at your DNS provider. Once it is live, press **Verify**. A domain can be verified by one workspace only, and each domain (such as `eu.contoso.com`) needs its own record.
+    In the directory sync settings (**Workspace settings → Access** → status line → **Directory** → **Manage**), press **Add domain** and enter, for example, `contoso.com`. Genie shows a TXT record to publish at your DNS provider. Once it is live, press **Verify**. A domain can be verified by one workspace only, and each domain (such as `eu.contoso.com`) needs its own record.
   </Step>
   <Step title="Create a provisioning key">
     On the [API keys](/workspaces/api-keys) page, create a key with the **Provision members (SCIM)** permission. The key acts as the person who created it, so it can only add, change or remove people that person could manage. Create it as the **owner** if the directory should also manage admins.
   </Step>
   <Step title="Connect your identity provider">
-    In Microsoft Entra ID, open your enterprise application → **Provisioning** → **Automatic**. Paste the tenant URL shown on the Directory sync page and use the key as the secret token. The default attribute mappings work as they are; provisioning groups is optional.
+    In Microsoft Entra ID, open your enterprise application → **Provisioning** → **Automatic**. Paste the tenant URL shown in the directory sync settings and use the key as the secret token. The default attribute mappings work as they are; provisioning groups is optional.
   </Step>
   <Step title="Map groups to roles (optional)">
     Under **Group roles**, give a provisioned group a role. Granting more access than before asks you to confirm first.
@@ -56,16 +56,37 @@ New members get the role their groups give them, or **Member** if none applies.
 - Leaving every mapped group returns a person to **Member** — if a group mapping gave them their role before.
 - Someone no mapping ever touched keeps the role a person gave them. Owners are never changed.
 
-A directory group can also fill a [team](/workspaces/members#teams) — instead of a role, as well as one, or neither. People who join the group are put on the team and people who leave it are taken off; people someone added to the team by hand stay. Admins are put on a team this way only when the owner set it up. Today you link a group to a team by asking Genie AI, which shows a confirmation card and can create a new team named after the group. The **Directory sync** page shows which team each group fills.
+A directory group can also fill a [team](/workspaces/members#teams) — instead of a role, as well as one, or neither. People who join the group are put on the team and people who leave it are taken off; people someone added to the team by hand stay. Admins are put on a team this way only when the owner set it up. A new group your directory sends shows up on the Access page's status line under **Teams**: press **Make it a team** to create a team named after it, or **Not a team** to stop being asked (with **Undo**). You can also ask Genie AI to link a group to a team, which shows a confirmation card. The directory sync settings show which team each group fills.
 
 If you prefer to be guided, [Set up access](/workspaces/members#set-up-access) walks through the domain, the directory and teams in one flow.
+
+## Nothing changes until you turn on
+
+When you connect a directory during [Set up access](/workspaces/members#set-up-access), before it has sent anyone, the sync is **held**. The directory sends people and groups, and Genie counts them — but nobody joins, no role or team is given or taken, and nobody is removed until you press **Turn on** at the end of the setup.
+
+- **The review tells you first** how many people get in, how many removals are made, which groups fill their teams, which members could not be matched to your directory (they stay), and whether your seats are enough.
+- **Turning on runs in the background.** It shows its progress, you can leave the page, and **Continue** picks it up if it stopped part-way. It also says what it could not do — for example a removal of the owner or an admin that the provisioning key may not make.
+- **Never turned on?** What the directory sent is deleted 30 days after it arrived.
+
+A directory that was already running, or one you connect without the setup, is live right away, as described above.
+
+## Keep an eye on the sync
+
+After the setup, the status line on **Workspace settings → Access** shows how the sync is doing — see [The status line](/workspaces/members#the-status-line):
+
+- **Directory** says when the last change arrived, or that the sync is **stopped** because the provisioning key is paused, expired or revoked, or its creator may no longer manage members. While it is stopped, people removed in the directory keep their access here — remove them by hand if they have left.
+- **People** lists what needs you: an owner or admin your directory asked to remove, removals that have not gone through yet, and people waiting for a free seat.
+
+## Let the directory decide
+
+By default the directory and the people in Genie both manage members: you can still invite someone by hand or change a team. An owner can turn on the rule **The directory decides people and teams** under **Access → Rules**. From then on nobody is invited, removed or put on a team in Genie — only the directory does that. See [Rules for the whole workspace](/workspaces/members#rules-for-the-whole-workspace).
 
 ## When someone leaves
 
 When the directory deactivates or deletes a person, Genie removes them from the workspace, including their project, knowledge and connector access, and hands the projects they owned here to the workspace owner. The owner of the workspace cannot be removed this way — hand the workspace on first. Their Genie account, personal workspace and anything they have elsewhere stay untouched, and reactivating them in the directory brings the same account back.
 
 <Warning>
-  If no Genie account holds a deactivated person's address, there is nobody to remove. The Directory sync page counts these entries and links to **People** so you can finish by hand.
+  If no Genie account holds a deactivated person's address, there is nobody to remove. The directory sync settings count these entries and link to the people list so you can finish by hand.
 </Warning>
 
 ## Related pages
