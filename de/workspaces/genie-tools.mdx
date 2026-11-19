@@ -28,7 +28,9 @@ Es gibt keinen separaten formularbasierten Baukasten — Genie AI ist der Weg, e
 - „Füge einen Button hinzu, der die ausgewählte Bestellung als versendet markiert"
 - „Zeige oben auf der Seite eine laufende Gesamtsumme der Bestellungen"
 
-Genie AI zeigt das Tool schon während des Bauens direkt im Chat in Aktion — eine live funktionierende Tabelle, ein funktionierendes Formular — nicht nur eine Beschreibung dessen, was gemacht wurde. Sobald du zufrieden bist, wird es gespeichert und erscheint auf der **Tools**-Seite — privat für dich, bis du es teilst, genau wie bei einem [Genie Agent](/de/workspaces/workflow-apps#einen-agenten-verwalten): öffne sein Einstellungsmenü (**⋯**) und wähle **Alle im Workspace** oder **Nur ausgewählte Personen**. Ein Button **Genie AI fragen** auf der eigenen Seite des Tools öffnet genau das Gespräch wieder, in dem du es gebaut oder zuletzt bearbeitet hast, statt bei null anzufangen.
+Genie AI zeigt das Tool schon während des Bauens direkt im Chat in Aktion — eine live funktionierende Tabelle, ein funktionierendes Formular — nicht nur eine Beschreibung dessen, was gemacht wurde. Sobald du zufrieden bist, wird es gespeichert und erscheint auf der **Tools**-Seite — privat für dich, bis du es teilst, genau wie bei einem [Genie Agent](/de/workspaces/workflow-apps#einen-agenten-verwalten): drücke **Teilen** und wähle, wer es bekommt.
+
+**Ein Tool öffnet sich als das Tool, und sonst nichts.** Ein Tool öffnet sich in einem eigenen Browser-Tab: oben sein Symbol, sein Name und seine Beschreibung, darunter das Tool über die ganze Breite. Es gibt keine Werkzeugleiste darum herum. Wer das Tool bearbeiten darf, bekommt darüber eine schmale Leiste mit **Teilen** und **Bearbeiten** — **Bearbeiten** öffnet genau das Genie-AI-Gespräch wieder, in dem du es gebaut oder zuletzt geändert hast, mit dem Tool neben dem Chat, statt bei null anzufangen. Alle anderen sehen das Tool und keine Bedienelemente, die sie nicht nutzen könnten. Die Canvas neben dem Chat zeichnet ein Tool genau so wie seine eigene Seite.
 
 <Tip>
 Weil es keinen separaten Editor gibt, ist das Ändern eines Tools immer ein Gespräch: „füge eine Spalte für die Telefonnummer des Kunden hinzu" oder „entferne den Löschen-Button, ich möchte nicht, dass jemand aus Versehen Bestellungen löscht."
@@ -57,7 +59,7 @@ Die Seite eines Tools setzt sich aus einer kleinen Auswahl an Bausteinen zusamme
 | Kommentare | Verschachtelte Notizen zu dem Datensatz, der anderswo auf der Seite ausgewählt ist |
 | Spalten, Tabs | Fasst andere Bausteine nebeneinander oder hinter Reitern zusammen, für eine umfangreichere Seite |
 | Kopfzeile, Hero, CTA, Feature(s), Partner, Beiträge, Preise, Links | Statische Landingpage-Abschnitte — für ein Tool, das auch als kleine Marketing-Seite dient |
-| Callout | Ein getönter Hinweis über dem, worauf er sich bezieht — ein gerade ausgelieferter Release, ein Vorbehalt zu den Zahlen darunter |
+| Callout | Ein ruhiger Hinweis über dem, worauf er sich bezieht — ein gerade ausgelieferter Release, ein Vorbehalt zu den Zahlen darunter — mit optionalem Titel und einem kleinen Zeichen in seinem Ton (eine Warnung, ein Haken oder eine Notiz) |
 | Custom Code | Sandboxed HTML, CSS und JavaScript, das Genie AI für eine Ansicht schreibt, die kein anderer Baustein abdeckt |
 | Import | Lade eine oder mehrere Tabellenkalkulationen — von deinem Gerät oder direkt aus deiner [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank) — in eine Workspace-Tabelle hoch. Spalten werden automatisch zugeordnet, Genie AI springt nur bei einer Überschrift ein, die sie nicht selbst zuordnen kann |
 | Dateien | Die bereits in eine Tabelle importierten Dateien, einzeln oder alle zusammen entfernbar |
@@ -110,7 +112,9 @@ Ein Raster über eine der Tabellen deines Workspace bekommt eine Spalte **Erwäh
 
 ## Seiten, und ein Formular, das eins nach dem anderen fragt
 
-Ein Tool mit viel Inhalt ist keine einzige lange Scroll-Seite: Eine Seite, die sowohl lang ist als auch verschiedene Aufgaben mischt — Daten importieren, verwalten, ein Diagramm lesen —, wird automatisch in fokussierte Seiten aufgeteilt, typischerweise **Dashboard**, **Import**, **Verwalten** und **Analyse**, jede nur mit den Bausteinen, die sie braucht. Die gerade geöffnete Seite steht in der URL des Tools, sodass ein Link auf eine bestimmte Seite zeigen kann, und ein Tool behält bis zu 10 Seiten (siehe [Limits](#limits)). Ab sechs Seiten erscheinen die Seiten des Tools in einem Workspace in der Workspace-Seitenleiste unter einer einzelnen Zeile **Zurück**, statt in einer Leiste über dem Tool.
+Ein Tool mit viel Inhalt ist keine einzige lange Scroll-Seite: Eine Seite, die sowohl lang ist als auch verschiedene Aufgaben mischt — Daten importieren, verwalten, ein Diagramm lesen —, wird automatisch in fokussierte Seiten aufgeteilt, typischerweise **Dashboard**, **Import**, **Verwalten** und **Analyse**, jede nur mit den Bausteinen, die sie braucht. Die gerade geöffnete Seite steht in der URL des Tools, sodass ein Link auf eine bestimmte Seite zeigen kann, und ein Tool behält bis zu 10 Seiten (siehe [Limits](#limits)). Ein Tool mit mehr als einer Seite listet seine Seiten in der Workspace-Seitenleiste, solange es geöffnet ist, gruppiert nach Ansichten, Aktionen und Einstellungen, mit einem kleinen Link **Zur Workspace-Startseite** am unteren Ende. Auf dem Handy liegen die Seiten in der Schublade des Workspace, die du mit dem Seitenleisten-Button öffnest. Ein Tool mit einer Seite listet nichts — sein Kopf nennt es bereits.
+
+Ein Tool, das vollständig aus eigenem Code besteht — jede Seite ein Code-Baustein —, bekommt den ganzen Bildschirm und zeichnet Kopf und Layout selbst; seine Seiten erscheinen trotzdem in der Workspace-Seitenleiste.
 
 Eine Seite kann auch als **Formular** laufen: Statt eines langen Formular-Bausteins wird sie Frage für Frage mit einer Fortschrittsanzeige gezeichnet und endet nach dem Absenden auf einem Dankeschön-Bildschirm — dieselbe Form wie ein Typeform.
 

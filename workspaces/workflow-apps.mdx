@@ -128,6 +128,8 @@ Before you commit to a change, you can run a real test to see exactly what an ag
 
 Every run gets a results page of its own: the outcome, and every step that produced it, in the order it ran, each with its status, how long it took, and what it produced. An AI step's answer renders as formatted text rather than raw markdown. Open it on a run still in progress and it follows along as each step finishes.
 
+**The steps are one line.** The steps run top to bottom along one line: a step that ran has a check, the one running is lit with a **Now** pill, and a failed step is red with its error right under it. Steps not reached yet, skipped or on a branch not taken are hollow and dashed, and each says which in words. A long run folds around the step that matters — the one running, else the one that failed — and keeps the rest behind *N earlier steps* and *N more steps*. An agent on the chat canvas and an entity's [process](/workspaces/overview#knowledge-model) are drawn the same way.
+
 Each agent also has a **Runs** page — its recent runs, newest first — one tap from the editor's toolbar. On the chat canvas, an agent shows its last five runs and how each step went in the picked run; tap a step to see what it does and ask Genie AI about it.
 
 **Steps of a called agent.** When a step calls another agent, its row in the run results shows a pill such as *28 steps inside · 1 failed*. Open it to see the called agent's own steps with their status, duration and any error, and open further calls inside it. Steps of an agent you may not see stay hidden. Genie AI can read the same steps when you ask about a run.

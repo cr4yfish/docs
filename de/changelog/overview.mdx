@@ -4,6 +4,35 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="19. November 2026" description="Wöchentliches Release">
+
+Umfasst, was am 18. November erschienen ist. Die Zugriffsseite passt auf einen Bildschirm, du kannst per E-Mail einladen, und ein Genie Tool öffnet sich als das Tool und sonst nichts.
+
+## Neue Funktionen
+
+- **Zugriff auf einem Bildschirm.** Die Zugriffsseite ist jetzt eine Statuszeile und zwei Tabs, **Teams & Personen** und **Bereiche**. Zeilen öffnen sich an Ort und Stelle, statt auf weitere Seiten zu führen. Siehe [Die Zugriffsseite](/de/workspaces/members#die-zugriffsseite).
+- **Bereiche.** Ein Bereich deines Wissensmodells beantwortet zwei Fragen: wer seine Datensätze sieht und wer sein Modell gestaltet. **Wer genau** nennt jede Person mit dem Grund, und **Quellen** ordnet die Dokumente einer Quelle einem Bereich zu. Siehe [Bereiche](/de/workspaces/members#bereiche).
+- **Eine Statuszeile, die bleibt.** Nach der Einrichtung sagt eine Zeile *Alles in Ordnung* oder was dich braucht: neue Verzeichnisgruppen, Bereiche ohne Daten, ein gestoppter Abgleich. Siehe [Die Statuszeile](/de/workspaces/members#die-statuszeile).
+- **Nichts ändert sich, bis du einschaltest.** Ein während der Einrichtung verbundenes Verzeichnis zählt Personen zunächst nur. Niemand tritt bei oder geht, bis du **Einschalten** drückst — nach einer Prüfung dessen, was passieren wird. Siehe [Provisionierung](/de/workspaces/provisioning#nichts-ändert-sich-bis-du-einschaltest).
+- **Regeln für den ganzen Workspace.** Der Eigentümer kann das Firmenverzeichnis über Personen und Teams entscheiden lassen und das Teilen auf Teams beschränken. Siehe [Regeln](/de/workspaces/members#regeln-für-den-ganzen-workspace).
+- **Per E-Mail einladen.** **Einladen** auf der Mitglieder-Seite sendet jetzt persönliche Einladungen an mehrere Adressen auf einmal, neben den Einladungslinks. Siehe [Personen einladen](/de/workspaces/members#personen-in-deinen-workspace-einladen).
+
+## Aktualisierungen
+
+- **Mitglieder als Tabelle.** Mitglieder hat wieder eine eigene Zeile in den Einstellungen. Eine Zeile öffnet die Person in einem großen Dialog mit ihren Rollen, und der Link dorthin lässt sich teilen. Siehe [Bestehende Mitglieder verwalten](/de/workspaces/members#bestehende-mitglieder-verwalten).
+- **Tools öffnen sich als das Tool.** Ein Genie Tool öffnet sich in einem eigenen Tab ohne Werkzeugleiste darum herum. Wer bearbeiten darf, bekommt eine schmale Leiste mit **Teilen** und **Bearbeiten**; die Seiten eines Tools liegen in der Workspace-Seitenleiste. Siehe [Ein Tool bauen](/de/workspaces/genie-tools#ein-tool-bauen).
+- **Ruhigere Tool-Bausteine.** Ein Callout ist jetzt ein ruhiger Hinweis mit optionalem Titel, und ein Rechner zeigt sein Hauptergebnis als eine große Zahl.
+- **Prozesse und Läufe als eine Linie.** Der Prozess einer Entität und die Schritte eines Agenten-Laufs werden von oben nach unten an einer Linie gezeichnet — mit dem, was erledigt ist, was gerade passiert und was als Nächstes kommt. Siehe [Lauf-Ergebnisse](/de/workspaces/workflow-apps#lauf-ergebnisse).
+- **Anhang-Galerie.** Bilder, die du in einem Chat gesendet hast, erscheinen als Vorschau-Galerie, die sich aufklappen lässt und in der Lightbox öffnet.
+- **Zugriffsregeln über MCP.** `get_workspace_access_rules` liest die zwei Workspace-Regeln. Die Tools für Einladungen, Entfernungen und Projektmitglieder nennen jetzt die Regel, wenn sie sie ablehnt, und `invite_workspace_member_by_email` zählt zu deinen täglichen Einladungs-E-Mails. Siehe [MCP API](/de/workspaces/mcp-api#workspace-verwaltung).
+
+## Fixes
+
+- **Abgebrochene Verbindungen werden benannt.** Bricht die Verbindung zum KI-Modell mitten in einer Antwort ab, sagt der Chat das jetzt und lässt dich es erneut versuchen, statt einen allgemeinen Fehler zu zeigen.
+
+</Update>
+
+
 <Update label="18. November 2026" description="Wöchentliches Release">
 
 Umfasst, was am 17. November erschienen ist. Zugriff bekommt ein Zuhause, Teams geben jetzt Zugriff, und Business-Apps synchronisieren ihre Einträge in dein Wissen.

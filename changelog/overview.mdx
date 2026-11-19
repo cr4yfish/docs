@@ -4,6 +4,35 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="November 19, 2026" description="Weekly release">
+
+Covers what shipped November 18. The Access page fits on one screen, you can invite by email, and a Genie Tool opens as the tool and nothing else.
+
+## New features
+
+- **Access on one screen.** The Access page is now a status line and two tabs, **Teams & people** and **Areas**. Rows open in place instead of leading to more pages. See [The Access page](/workspaces/members#the-access-page).
+- **Areas.** An area of your knowledge model answers two questions: who sees its records and who shapes its model. **See who** names every person with the reason, and **Sources** files a source's documents under an area. See [Areas](/workspaces/members#areas).
+- **A status line that stays.** After setup, one line says *Everything is in order* or what needs you: new directory groups, areas without data, a stopped sync. See [The status line](/workspaces/members#the-status-line).
+- **Nothing changes until you turn on.** A directory connected during setup only counts people at first. Nobody joins or leaves until you press **Turn on**, after a review of what it will do. See [Provisioning](/workspaces/provisioning#nothing-changes-until-you-turn-on).
+- **Rules for the whole workspace.** The owner can let the company directory decide people and teams, and can limit sharing to teams. See [Rules](/workspaces/members#rules-for-the-whole-workspace).
+- **Invite by email.** **Invite** on the Members page now sends personal invites to several addresses at once, beside invite links. See [Invite people](/workspaces/members#invite-people-to-your-workspace).
+
+## Updates
+
+- **Members as a table.** Members has its own row in settings again. A row opens that person in a large dialog with their roles, and the link to it can be shared. See [Manage existing members](/workspaces/members#manage-existing-members).
+- **Tools open as the tool.** A Genie Tool opens in its own tab with no toolbar around it. Editors get a slim bar with **Share** and **Edit**; a tool's pages sit in the workspace sidebar. See [Building one](/workspaces/genie-tools#building-one).
+- **Calmer tool blocks.** A callout is now a quiet note with an optional title, and a calculator shows its main result as one large number.
+- **Processes and runs as one line.** An entity's process and an agent run's steps are drawn top to bottom on one line, with what is done, what is happening now and what comes next. See [Run results](/workspaces/workflow-apps#run-results).
+- **Attachment gallery.** Images you sent in a chat show as a thumbnail gallery that unfolds and opens in the lightbox.
+- **Access rules over MCP.** `get_workspace_access_rules` reads the two workspace rules. Invite, removal and project-member tools now name the rule when it refuses them, and `invite_workspace_member_by_email` counts toward your daily invite emails. See [MCP API](/workspaces/mcp-api#workspace-management).
+
+## Fixes
+
+- **Dropped connections are named.** When the connection to the AI model drops in the middle of an answer, the chat now says so and lets you retry, instead of showing a generic error.
+
+</Update>
+
+
 <Update label="November 18, 2026" description="Weekly release">
 
 Covers what shipped November 17. Access gets one home, teams now give access, and business apps sync their records into your knowledge.

@@ -59,9 +59,10 @@ Read and update your workspace, members, invitations, settings, and billing.
 | `get_workspace_teams` | The workspace's [teams](/workspaces/members#teams), the teams you are on and your home team. Pass `membersOf` to list one team's people (needs permission to see members) |
 | `set_workspace_member_team` | Set a member's home team, among the teams they are on. Your own is always yours to change; someone else's needs permission to manage settings. Adding people to a team and editing its starter kit stay in the app |
 | `list_workspace_invites` | Invites that still work (newest 50) with role, expiry, remaining uses and whether each is personal — the invitee's address and the invite code are never returned. Needs permission to invite members |
-| `invite_workspace_member` | Create a shareable invite link for a given role |
+| `invite_workspace_member` | Create a shareable invite link for a given role. Refused, naming the rule, while the directory decides people and teams |
+| `get_workspace_access_rules` | Read the workspace's two [access rules](/workspaces/members#rules-for-the-whole-workspace): `directoryDecides` (the company directory decides people and teams, so nobody is invited or removed here) and `teamsOnly` (share with teams or everyone, never one person). Any member; read-only — changing a rule is the owner's, in the app |
 | `revoke_workspace_invite` | Cancel a pending invite |
-| `remove_workspace_member` | Remove a member immediately, along with their access to the workspace's projects — invited back, they start without it. The workspace's owner of record can't be removed (or demoted below Admin) until they've handed the workspace on — see [Transfer ownership](/workspaces/members#transfer-ownership) |
+| `remove_workspace_member` | Remove a member immediately, along with their access to the workspace's projects — invited back, they start without it. Refused while the directory decides people and teams. The workspace's owner of record can't be removed (or demoted below Admin) until they've handed the workspace on — see [Transfer ownership](/workspaces/members#transfer-ownership) |
 | `update_workspace` | Rename the workspace, update its description, or set its icon and accent color |
 | `update_workspace_settings` | Toggle activity log, project access control, or automatic knowledge-base reading (entity/relation extraction — see [Knowledge model](/workspaces/overview#knowledge-model)) |
 | `get_workspace_billing` | Subscription plan, status, and billing period |
@@ -72,7 +73,7 @@ Read and update your workspace, members, invitations, settings, and billing.
 | `list_workspaces` | All workspaces the authenticated user belongs to |
 | `list_user_workspaces` | Same list, with the currently-connected workspace marked |
 | `create_workspace` | Create a new workspace, owned by you. Independent of the currently connected workspace — it appears in your workspace list right away |
-| `invite_workspace_member_by_email` | Send a single-use invite directly to an email address. The invitee doesn't need an existing Genie account — they become a member once they accept |
+| `invite_workspace_member_by_email` | Send a single-use invite directly to an email address. The invitee doesn't need an existing Genie account — they become a member once they accept. Takes one plain address. Each email counts toward your daily invite emails, the same count the app's Invite dialog uses; past it, the tool says so and points to `invite_workspace_member` |
 
 ### Workspace roles and permissions
 
@@ -124,7 +125,7 @@ Browse projects, create new ones from prompts, and manage the full project lifec
 | `delete_project` | Permanently delete a project |
 | `update_project` | Rename, update description, change visibility, or toggle remixing |
 | `list_project_members` | Members explicitly granted access (when project access control is on) |
-| `add_project_member` / `remove_project_member` | Grant or revoke a member's access to a specific project |
+| `add_project_member` / `remove_project_member` | Grant or revoke a member's access to a specific project. While the workspace shares with teams only, adding a single person is refused, naming the rule |
 | `rename_project` | Rename a project (a focused alternative to `update_project`) |
 | `add_project_to_workspace` | Move one of your personal projects into the connected workspace |
 | `remove_project_from_workspace` | Remove a project from the workspace without deleting it — it becomes a personal project again |
