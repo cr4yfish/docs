@@ -52,7 +52,7 @@ Die linke Seitenleiste ist die primäre Navigation für deinen Workspace.
     Die Dokumente des Workspace, offen für alle Mitglieder, plus ein Tab **Vorlagen** mit geführten Startpunkten. Siehe [Wissensdatenbank](#wissensdatenbank) und [Chat-Vorlagen](#chat-vorlagen).
   </Card>
   <Card title="Letzte Chats" icon="message-square">
-    Dein Workspace-Chatverlauf füllt den Rest der Seitenleiste. Klicke auf eine Unterhaltung, um sie wieder zu öffnen — die gerade geöffnete markiert selbst ihren Platz in der Liste. Starte eine neue über das Genie-Eingabefeld auf dem Dashboard, die Befehlspalette, oder indem du in einem offenen Chat einfach etwas anderes fragst.
+    Dein Workspace-Chatverlauf füllt den Rest der Seitenleiste. Klicke auf eine Unterhaltung, um sie wieder zu öffnen — die gerade geöffnete markiert selbst ihren Platz in der Liste. Starte eine neue über das Genie-Eingabefeld auf dem Dashboard, die Befehlspalette, oder indem du in einem offenen Chat einfach etwas anderes fragst. Ein Chat, der mit einer Genie App, einem Agent oder einem Tool verbunden ist, trägt ein farbiges Abzeichen mit dem Icon dieser Art, und eine **+N**-Pille zählt seine weiteren Verbindungen; ein Klick auf die Zeile öffnet den Chat zusammen mit dem, was das Abzeichen zeigt. Jeder andere Chat zeigt ein schlichtes Chat-Icon.
   </Card>
 </CardGroup>
 
@@ -60,7 +60,7 @@ Die linke Seitenleiste ist die primäre Navigation für deinen Workspace.
 Zieh den rechten Rand der Seitenleiste, um sie in der Breite anzupassen, oder ganz nach links, um sie auf reine Icons einzuklappen — zieh den eingeklappten Rand wieder heraus, um sie erneut zu öffnen. Eingeklappt listet die Seitenleiste deine Chats weiterhin als Icons — jeweils mit eigenem Icon und eigener Farbe, der Titel erscheint in einem Tooltip. Auf dem Mobilgerät öffnet sich der Workspace-Umschalter als unteres Drawer.
 </Tip>
 
-Workspace-Einstellungen und deine persönlichen Einstellungen teilen sich eine Navigation, erreichbar über die Kontozeile unten in der Seitenleiste: Wähle **Workspace-Einstellungen** (Allgemein, [Zugriff](/de/workspaces/members#die-zugriffsseite) — Personen, Teams, Rollen, Zugriffsbereiche und Verzeichnisabgleich an einem Ort —, Integrationen, Secrets, [Marke](#workspace-marke), [Auto](/de/workspaces/auto), Governance — das auch PII-Erkennung, Guardrails, Aktivitäten, Tracing und Ausgaben enthält — sowie, für Admins und Eigentümer, Abrechnung und die Ontologie) oder **Persönliche Einstellungen** (Erscheinungsbild, Anmeldemethoden und Benachrichtigungen). Beide ersetzen die Seitenleiste durch eine Einstellungs-Navigation mit einem Zurück-Pfeil zum Workspace. Siehe [Workspace-Mitglieder einladen und verwalten](/de/workspaces/members) für Rollen und [Kontoeinstellungen](/de/account/settings) für deine persönlichen Präferenzen.
+Workspace-Einstellungen und deine persönlichen Einstellungen teilen sich eine Navigation, erreichbar über die Kontozeile unten in der Seitenleiste: Wähle **Workspace-Einstellungen** (Allgemein, [Zugriff](/de/workspaces/members#die-zugriffsseite) — Personen, Teams, Rollen, Zugriffsbereiche und Verzeichnisabgleich an einem Ort —, Integrationen, Secrets, [Marke](#workspace-marke), [Auto](/de/workspaces/auto), Governance — das auch PII-Erkennung, Guardrails, Aktivitäten, Tracing und Ausgaben enthält — sowie, für Admins und Eigentümer, Abrechnung und die Ontologie) oder **Persönliche Einstellungen** (Erscheinungsbild, Anmeldemethoden und Benachrichtigungen). Beide ersetzen die Seitenleiste durch eine Einstellungs-Navigation mit einem Zurück-Pfeil zum Workspace. Die Navigation führt zuerst die Abschnitte des Workspace auf — Workspace, Wissen & KI, Verbindungen, Verwaltung — und zuletzt deine persönlichen Seiten. Siehe [Workspace-Mitglieder einladen und verwalten](/de/workspaces/members) für Rollen und [Kontoeinstellungen](/de/account/settings) für deine persönlichen Präferenzen.
 
 ### Workspace-Profil
 
@@ -294,7 +294,7 @@ Die Seite hat zwei Bereiche: **Von Genie**, Vorlagen, die in jedem Workspace ver
 
 ### Chats benennen sich selbst
 
-Ein neuer Chat benennt sich, sobald du seine erste Nachricht sendest: Ein kurzer Titel in deiner Sprache sowie ein Icon und eine Farbe erscheinen innerhalb weniger Sekunden im Chatverlauf und in der Chat-Kopfzeile — meist noch während die erste Antwort streamt. Benenne den Chat jederzeit um oder wähle ein anderes Aussehen (Klick auf sein Abzeichen), oder bitte Genie AI darum. Deine eigene Wahl wird nie überschrieben.
+Ein neuer Chat benennt sich, sobald du seine erste Nachricht sendest: Ein kurzer Titel in deiner Sprache erscheint innerhalb weniger Sekunden im Chatverlauf und in der Chat-Kopfzeile, in der Kopfzeile mit einem Icon und einer Farbe daneben — meist noch während die erste Antwort streamt. Benenne den Chat jederzeit um oder wähle ein anderes Aussehen (Klick auf sein Abzeichen in der Kopfzeile, oder Rechtsklick auf den Chat in der Seitenleiste zum Umbenennen), oder bitte Genie AI darum. Deine eigene Wahl wird nie überschrieben.
 
 ### Tipp-Blase und Schrittliste
 
@@ -605,6 +605,8 @@ Eine Unterhaltung mit der Workspace-KI ist nur für die Person sichtbar, die sie
 **Einen Chat löschen.** Wähle im Einstellungsmenü eines Chats **Chat löschen** und bestätige. Einen Chat, den du begonnen hast, kannst du immer löschen; einen, den ein Teammitglied begonnen und mit dir geteilt hat, kannst du nur mit der Berechtigung zum Löschen von Chats löschen, die Owner und Admins standardmäßig haben. Der private Chat eines Teammitglieds ist gar nicht erreichbar. Löschen ist endgültig, entfernt den Verlauf für alle, mit denen er geteilt wurde, und eine noch laufende Antwort darin wird gestoppt.
 
 Zieh einen Chat aus der Seitenleiste auf die **Angepinnt**-Ablagezone oben in der Liste, um ihn anzupinnen — zieh einen angepinnten Chat erneut dorthin, um ihn wieder zu lösen — oder nutze **Chat anpinnen** im selben Einstellungsmenü. Angepinnte Chats führen die Liste unter einer eigenen Überschrift an, vor den üblichen Datumsgruppen, überall, wo deine Chats aufgelistet werden.
+
+**Zeilenmenü und schnelles Umbenennen.** Jeder Chat in der Seitenleiste hat am Ende ein **⋯** — sichtbar, wenn du über die Zeile fährst oder sie fokussierst, und auf Touch-Geräten immer. Es öffnet das Einstellungsmenü des Chats: **Umbenennen**, anpinnen oder lösen, wer diesen Chat sehen kann, und löschen. Mit einem Rechtsklick auf eine Zeile benennst du sie an Ort und Stelle um: Tippe den neuen Namen und drücke **Enter** oder klicke daneben, um zu speichern, **Esc** bricht ab. In einem geteilten Chat, den du nur lesen kannst, werden Umbenennen und Anpinnen abgelehnt, und die Zeile springt in ihren vorherigen Zustand zurück.
 
 ### Die Befehlspalette
 

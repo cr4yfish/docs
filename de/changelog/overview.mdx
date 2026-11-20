@@ -4,6 +4,29 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="20. November 2026" description="Wöchentliches Release">
+
+Umfasst, was am 19. November erschienen ist. Der Chatverlauf bekommt ein Zeilenmenü, schnelles Umbenennen und Abzeichen für das, was ein Chat gebaut hat, und die Einstellungen öffnen sich beim Workspace.
+
+## Neue Funktionen
+
+- **Zeilenmenü im Chatverlauf.** Jeder Chat in der Seitenleiste hat ein **⋯** mit Umbenennen, Anpinnen, Sichtbarkeit und Löschen. Mit einem Rechtsklick benennst du einen Chat an Ort und Stelle um. Siehe [Workspace-Chats](/de/workspaces/overview#workspace-chats-sind-standardmäßig-privat).
+- **Abzeichen für das, was ein Chat gebaut hat.** Ein Chat, der mit einer Genie App, einem Agent oder einem Tool verbunden ist, trägt ein farbiges Abzeichen mit dem Icon dieser Art, und eine **+N**-Pille zählt seine weiteren Verbindungen. Chats ohne Verbindung zeigen ein schlichtes Chat-Icon. Siehe [Seitenleiste](/de/workspaces/overview#seitenleiste).
+
+## Aktualisierungen
+
+- **Einstellungen öffnen sich beim Workspace.** Die Einstellungs-Navigation führt jetzt zuerst die Abschnitte des Workspace und zuletzt deine persönlichen Seiten auf und scrollt zu der Seite, auf der du bist. **Tarif & Credits** erscheint nur mit einem bezahlten persönlichen Tarif. Siehe [Kontoeinstellungen](/de/account/settings#die-drei-seiten).
+- **Keine Suchzeile in der Seitenleiste.** Die Zeilen der Seitenleiste sind jetzt nur noch Orte, zu denen du gehst. Die Suche bleibt auf **⌘K** (Strg+K) oder, auf dem Handy, auf der Suchschaltfläche in der oberen Leiste. Siehe [Die Befehlspalette](/de/workspaces/overview#die-befehlspalette).
+- **Luftigerer Chatverlauf.** Die Datumsgruppen im Chatverlauf haben mehr Abstand, sodass sich eine lange Liste leichter überfliegen lässt.
+- **Umbenennen und Anpinnen über MCP.** `rename_workspace_chat` kann auch Icon und Farbe eines Chats setzen. Sowohl dieses Tool als auch `pin_workspace_chat` geben jetzt einen Fehler zurück, wenn du den Chat nur lesen kannst. Siehe [MCP API](/de/workspaces/mcp-api#workspace-chat).
+
+## Fixes
+
+- **Umbenennen und Anpinnen sagen, wenn nichts gespeichert wurde.** Das Umbenennen oder Anpinnen eines geteilten Chats, den du nur lesen kannst, sah bisher so aus, als hätte es funktioniert. Jetzt erscheint ein Fehler, und die Zeile springt zurück.
+
+</Update>
+
+
 <Update label="19. November 2026" description="Wöchentliches Release">
 
 Umfasst, was am 18. November erschienen ist. Die Zugriffsseite passt auf einen Bildschirm, du kannst per E-Mail einladen, und ein Genie Tool öffnet sich als das Tool und sonst nichts.

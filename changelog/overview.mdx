@@ -4,6 +4,29 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="November 20, 2026" description="Weekly release">
+
+Covers what shipped November 19. The chat history gets a row menu, quick rename and badges for what a chat built, and settings open on the workspace.
+
+## New features
+
+- **Row menu in the chat history.** Every chat in the sidebar has a **⋯** with rename, pin, who can see it and delete. Right-click a chat to rename it in place. See [Workspace chats](/workspaces/overview#workspace-chats-are-private-by-default).
+- **Badges for what a chat built.** A chat connected to a Genie App, Agent or Tool wears a coloured badge with that kind's icon, and a **+N** pill counts its other connections. Chats connected to nothing show a plain chat icon. See [Sidebar](/workspaces/overview#sidebar).
+
+## Updates
+
+- **Settings open on the workspace.** The settings navigation now lists the workspace's sections first and your personal pages last, and it scrolls to the page you are on. **Plan & credits** shows only with a paid personal plan. See [Account settings](/account/settings#the-three-pages).
+- **No Search row in the sidebar.** The sidebar's rows are now only places you go. Search stays on **⌘K** (Ctrl+K), or the search button in the top bar on a phone. See [The command palette](/workspaces/overview#the-command-palette).
+- **Roomier chat history.** Date groups in the chat history have more room between them, so a long list is easier to skim.
+- **Rename and pin over MCP.** `rename_workspace_chat` can also set a chat's icon and colour. Both it and `pin_workspace_chat` now return an error for a chat you can only read. See [MCP API](/workspaces/mcp-api#workspace-chat).
+
+## Fixes
+
+- **Rename and pin say when nothing was saved.** Renaming or pinning a shared chat you can only read used to look like it worked. It now shows an error and puts the row back.
+
+</Update>
+
+
 <Update label="November 19, 2026" description="Weekly release">
 
 Covers what shipped November 18. The Access page fits on one screen, you can invite by email, and a Genie Tool opens as the tool and nothing else.
@@ -554,7 +577,7 @@ Covers what shipped October 14. Genie AI draws charts and flowcharts in the chat
 
 ## New features
 
-- **Charts and flowcharts in the chat.** Ask for a chart or a process flowchart; it stacks on the canvas and downloads as PNG or PDF. See [Chat](/workspaces/overview#workspace-ai).
+- **Charts and flowcharts in the chat.** Ask for a chart or a process flowchart; it stacks on the canvas and downloads as PNG or PDF. See [Chat](/workspaces/overview#workspace-chat).
 - **Open a document beside the chat.** Genie AI shows the file itself with the passage highlighted.
 - **Why files failed.** The sync and knowledge-model progress pages name the step that went wrong, with **Try failed files again** and **Try all again**. See [Cloud drives](/workspaces/overview#cloud-drives).
 - **Ontology tab** in the Library, with the knowledge model's figures at a glance, and **former names** for entities that were renamed. See [Knowledge model](/workspaces/overview#knowledge-model).
@@ -1689,7 +1712,7 @@ This update adds built-in embeddings for retrieval and semantic search, gives th
 
 ## Updates
 
-- **The workspace AI's live build-status card now shows a counting-down ETA, progress, and how many parallel agents are working** — the same detail you'd see on the project's own build view. See [Workspace AI](/workspaces/overview#workspace-ai).
+- **The workspace AI's live build-status card now shows a counting-down ETA, progress, and how many parallel agents are working** — the same detail you'd see on the project's own build view. See [Workspace AI](/workspaces/overview#workspace-chat).
 - **Sending a follow-up prompt from inside that project's own chat now starts the build automatically** once you confirm, instead of requiring you to press send again.
 - **The public status page now also monitors Genie's built-in AI API** (text and image generation), alongside the core build pipeline it already tracked.
 
@@ -1765,7 +1788,7 @@ This update brings live build-status tracking to new projects created from chat,
 
 ## Updates
 
-- **Watch a brand-new project build live from chat.** Ask the workspace AI to create a new project with an opening prompt — *"create a customer support ticketing tool with a Kanban board"* — and you now watch it build live in the same status card used for follow-up prompts (queued → building → complete), instead of seeing a static "created" message. See [Workspace AI](/workspaces/overview#workspace-ai).
+- **Watch a brand-new project build live from chat.** Ask the workspace AI to create a new project with an opening prompt — *"create a customer support ticketing tool with a Kanban board"* — and you now watch it build live in the same status card used for follow-up prompts (queued → building → complete), instead of seeing a static "created" message. See [Workspace AI](/workspaces/overview#workspace-chat).
 
 ## Fixes
 
@@ -1854,7 +1877,7 @@ This update lets you ask Genie AI what it remembers about you (and have it forge
 ## New features
 
 - **Ask Genie AI what it remembers — or to forget something.** Genie already picks up context about you as you chat. Now you can ask directly — "what do you remember about me?" — and it searches everything it's picked up, not just the most recent items. If something's wrong, ask it to forget and the memory is deleted. See [Workspace AI](/workspaces/overview#genie-remembers-your-preferences).
-- **Workspace AI can check for a known fix.** Describe a bug you're running into and the workspace AI checks whether the same issue has already been solved on another project, surfacing a fix that's known to work instead of guessing. See [Workspace AI](/workspaces/overview#workspace-ai).
+- **Workspace AI can check for a known fix.** Describe a bug you're running into and the workspace AI checks whether the same issue has already been solved on another project, surfacing a fix that's known to work instead of guessing. See [Workspace AI](/workspaces/overview#workspace-chat).
 
 ## Fixes
 
@@ -1869,7 +1892,7 @@ This update makes Genie's chat answers more interactive, adds a live status card
 ## New features
 
 - **Interactive answers in chat.** When Genie AI offers you a choice, it now renders a clickable card — a confirm button, a single-pick list, or a checklist with your own note — instead of a paragraph you have to answer in your own words. See [Interactive answers](/workspaces/overview#interactive-answers).
-- **Live build status from Genie AI.** Ask the workspace AI to update an existing project and a status card tracks the build right in the chat (Sent → Building → Live), with a link to open the project once it's ready. See [Workspace AI](/workspaces/overview#workspace-ai).
+- **Live build status from Genie AI.** Ask the workspace AI to update an existing project and a status card tracks the build right in the chat (Sent → Building → Live), with a link to open the project once it's ready. See [Workspace AI](/workspaces/overview#workspace-chat).
 
 ## Updates
 
