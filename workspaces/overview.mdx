@@ -52,7 +52,7 @@ The left sidebar is the primary navigation hub for your workspace.
     The workspace's documents, open to every member, plus a **Templates** tab with guided starting points. See [Knowledge base](#knowledge-base) and [Chat templates](#chat-templates).
   </Card>
   <Card title="Recent chats" icon="message-square">
-    Your workspace chat history fills the rest of the sidebar. Click any conversation to reopen it — the one you currently have open marks its own place in the list. Start a new one from the dashboard's Genie input, the command palette, or by asking something else inside an open chat.
+    Your workspace chat history fills the rest of the sidebar. Click any conversation to reopen it — the one you currently have open marks its own place in the list. Start a new one from the dashboard's Genie input, the command palette, or by asking something else inside an open chat. A chat that is connected to a Genie App, Agent or Tool wears a coloured badge with that kind's icon, and a **+N** pill counts its other connections; clicking the row opens the chat together with what the badge shows. Every other chat shows a plain chat icon.
   </Card>
 </CardGroup>
 
@@ -60,7 +60,7 @@ The left sidebar is the primary navigation hub for your workspace.
 Drag the sidebar's right edge to resize it, or all the way to the left to collapse it to icons only — drag the collapsed edge back out to reopen it. Collapsed, the sidebar still lists your chats as icons — each with its own icon and colour, and the title in a tooltip. On mobile, the workspace switcher opens as a bottom drawer.
 </Tip>
 
-Workspace settings and your personal settings share one navigation, reached from the account row at the bottom of the sidebar: choose **Workspace settings** (General, [Access](/workspaces/members#the-access-page) — people, teams, roles, access areas and directory sync in one place — Integrations, Secrets, [Brand](#workspace-brand), [Auto](/workspaces/auto), Governance — which also holds PII Detection, Guardrails, Activities, Tracing and Spend — and, for admins and owners, Billing and the Ontology) or **Personal settings** (Appearance, Sign-in methods, and Notifications). Opening either replaces the sidebar with a settings navigation and a back arrow that returns you to the workspace. See [Invite and manage workspace members](/workspaces/members) for roles, and [Account settings](/account/settings) for your personal preferences.
+Workspace settings and your personal settings share one navigation, reached from the account row at the bottom of the sidebar: choose **Workspace settings** (General, [Access](/workspaces/members#the-access-page) — people, teams, roles, access areas and directory sync in one place — Integrations, Secrets, [Brand](#workspace-brand), [Auto](/workspaces/auto), Governance — which also holds PII Detection, Guardrails, Activities, Tracing and Spend — and, for admins and owners, Billing and the Ontology) or **Personal settings** (Appearance, Sign-in methods, and Notifications). Opening either replaces the sidebar with a settings navigation and a back arrow that returns you to the workspace. The navigation lists the workspace's sections first — Workspace, Knowledge & AI, Connections, Administration — and your personal pages last. See [Invite and manage workspace members](/workspaces/members) for roles, and [Account settings](/account/settings) for your personal preferences.
 
 ### Workspace profile
 
@@ -294,7 +294,7 @@ The page has two sections: **From Genie**, templates available in every workspac
 
 ### Chats name themselves
 
-A new chat names itself as soon as you send its first message: a short title in your language, plus an icon and a colour, appear in the chat history and the chat header within a few seconds — usually while the first answer is still streaming. Rename the chat or pick another look at any time (click its badge), or ask Genie AI to do it. Your own choice is never overwritten.
+A new chat names itself as soon as you send its first message: a short title in your language appears in the chat history and the chat header within a few seconds, with an icon and a colour beside it in the header — usually while the first answer is still streaming. Rename the chat or pick another look at any time (click its badge in the header, or right-click the chat in the sidebar to rename it), or ask Genie AI to do it. Your own choice is never overwritten.
 
 ### Typing bubble and step list
 
@@ -605,6 +605,8 @@ A conversation with the workspace AI is visible only to the person who started i
 **Delete a chat.** Choose **Delete chat** in a chat's settings menu and confirm. You can always delete a chat you started; deleting one a teammate started — and shared with you — needs the permission to delete chats, which owners and admins have by default. A teammate's private chat can't be reached at all. Deleting is permanent and removes the thread for everyone it was shared with, and an answer still being written in it is stopped.
 
 Drag any chat from the sidebar onto the **Pinned** dropzone at the top of the list to pin it — drop a pinned chat there again to unpin it — or use **Pin chat** from the same settings menu. Pinned chats lead the list under their own heading, ahead of the usual date groups, everywhere your chats are listed.
+
+**Row menu and quick rename.** Every chat in the sidebar has a **⋯** at its end — shown when you hover or focus the row, and always on touch screens. It opens the chat's settings menu: **Rename**, pin or unpin, who can see this chat, and delete. Right-click a row to rename it in place: type the new name and press **Enter** or click away to save, **Esc** to cancel. In a shared chat you can only read, renaming and pinning are refused and the row goes back to how it was.
 
 ### The command palette
 
