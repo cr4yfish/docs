@@ -4,6 +4,35 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="21. November 2026" description="Wöchentliches Release">
+
+Umfasst, was am 20. November erschienen ist. Rollen gehen in Teams auf, ein neuer Einrichtungsassistent führt Schritt für Schritt hinein, und jede Verbindung liegt jetzt in der Bibliothek.
+
+## Neue Funktionen
+
+- **Teams entscheiden, was Personen dürfen.** Ein Team sagt jetzt, was seine Personen zusätzlich zu dem dürfen, was alle dürfen, welche Daten es hat und wer sie außerdem sieht. **Alle** und **Admins** sind immer da, und eine Person bekommt nur kleine eigene Ausnahmen. Die **Workspace-Einstellungen** haben dafür zwei Seiten, **Teams** und **Personen**, die die Zugriffsseite ersetzen. Siehe [Personen und Teams](/de/workspaces/members).
+- **Eine Seite pro Team und ein geführter Ablauf.** Jedes Team öffnet sich auf einer eigenen Seite — Darf, seine Daten, wer sie sieht, wer sein Modell ändern darf, was es außerdem sieht, Personen, Starterpaket. **Neues Team** und **Team bearbeiten** fragen eine Frage pro Bildschirm und speichern nach einer Prüfung alles auf einmal. Siehe [Ein Team anlegen oder bearbeiten](/de/workspaces/members#ein-team-anlegen-oder-bearbeiten).
+- **Eine Seite pro Person.** Personen listet alle mit ihren Teams; die Seite einer Person zeigt ihre Teams und woher jedes kommt, was sie darf und womit sie arbeitet, und ihre Ausnahmen. Entfernen, Verlassen und Eigentümerschaft übertragen liegen jetzt dort. Siehe [Die Seite einer Person](/de/workspaces/members#die-seite-einer-person).
+- **Teams, die Teams verwalten.** Ein Team kann die Personen nur der Teams hinzufügen und entfernen dürfen, die du auswählst. Siehe [Wer die Personen eines Teams verwaltet](/de/workspaces/members#wer-die-personen-eines-teams-verwaltet).
+- **Daten ohne Team.** Daten, die keinem Team gehören, erscheinen auf der Teams-Seite, und das Löschen eines Teams fragt, wohin seine Daten gehen. Nichts bewegt sich, bis du entscheidest. Siehe [Daten ohne Team](/de/workspaces/members#daten-ohne-team).
+- **Der Einrichtungsassistent.** Neue Workspaces und neue Personen bekommen einen Assistenten, der einen Schritt auf einmal zeigt — Daten verbinden, in die Ontologie lesen, Personen und Teams einrichten — mit den echten Bildschirmen direkt darin. Verlasse ihn jederzeit; **Einrichtung fortsetzen** auf der Startseite und **Einrichtung** im Kontomenü bringen dich zurück. Siehe [Der Einrichtungsassistent](/de/workspaces/setup-guide).
+- **Onboarding-Fragen von Teams.** Ein Team kann Personen, die dazukommen, ein paar Fragen stellen, etwa *Für welche Kunden arbeitest du?*. Die Antworten gehören nur der Person und helfen Genie AI, ihr besser zu antworten. Siehe [Team-Fragen](/de/workspaces/setup-guide#team-fragen).
+
+## Aktualisierungen
+
+- **Integrationen sind in die Bibliothek umgezogen.** **Einstellungen → Integrationen** gibt es nicht mehr: Jede Verbindung steht auf der Seite **Quellen** der Bibliothek, und **Quelle hinzufügen** listet jeden Connector, jede Chat-App (Slack, Microsoft Teams, WhatsApp) und **MCP-Server**. Alte Links landen auf Quellen. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank) und [MCP-Integrationen](/de/workspaces/integrations).
+- **Einladungen geben, was alle dürfen.** Der Einladen-Dialog wählt keine Rolle mehr: Personen werden nach dem Beitritt in Teams gesetzt. Vorher verschickte Einladungen gelten weiter so, wie sie verschickt wurden. Siehe [Personen einladen](/de/workspaces/members#personen-in-deinen-workspace-einladen).
+- **Rollen werden Teams.** Bestehende benutzerdefinierte Rollen stehen als *Teams, die Rollen waren* in der Liste, ohne Änderung für ihre Personen. **Ein volles Team daraus machen** gibt einem davon Daten und ein Starterpaket. Neue Rollen lassen sich nicht mehr anlegen. Siehe [Teams, die Rollen waren](/de/workspaces/members#teams-die-rollen-waren).
+- **Genie AI bietet nur an, was du ändern darfst.** Aktionen in den Einstellungen, die deine Teams nicht erlauben, werden nicht mehr angeboten; Genie AI sagt stattdessen, dass ein Owner oder Admin sie ändern kann. Siehe [Workspace-KI](/de/workspaces/overview#was-du-fragen-kannst).
+- **Team-Fragen über MCP.** Vier neue Tools lesen und ändern die Onboarding-Fragen eines Teams und deine eigenen Antworten. Beide Einladungs-Tools geben jetzt, was alle dürfen. Siehe [MCP API](/de/workspaces/mcp-api#team-onboarding-fragen).
+
+## Fixes
+
+- **Connector-Adressen bleiben bei den Admins.** Wer Integrationen nicht verwalten darf, sieht die Adresse eines Connectors und seinen Rohfehler nicht mehr — weder auf Quellen noch in Genie AI noch über `list_workspace_mcp_servers`.
+
+</Update>
+
+
 <Update label="20. November 2026" description="Wöchentliches Release">
 
 Umfasst, was am 19. November erschienen ist. Der Chatverlauf bekommt ein Zeilenmenü, schnelles Umbenennen und Abzeichen für das, was ein Chat gebaut hat, und die Einstellungen öffnen sich beim Workspace.
@@ -33,16 +62,16 @@ Umfasst, was am 18. November erschienen ist. Die Zugriffsseite passt auf einen B
 
 ## Neue Funktionen
 
-- **Zugriff auf einem Bildschirm.** Die Zugriffsseite ist jetzt eine Statuszeile und zwei Tabs, **Teams & Personen** und **Bereiche**. Zeilen öffnen sich an Ort und Stelle, statt auf weitere Seiten zu führen. Siehe [Die Zugriffsseite](/de/workspaces/members#die-zugriffsseite).
-- **Bereiche.** Ein Bereich deines Wissensmodells beantwortet zwei Fragen: wer seine Datensätze sieht und wer sein Modell gestaltet. **Wer genau** nennt jede Person mit dem Grund, und **Quellen** ordnet die Dokumente einer Quelle einem Bereich zu. Siehe [Bereiche](/de/workspaces/members#bereiche).
-- **Eine Statuszeile, die bleibt.** Nach der Einrichtung sagt eine Zeile *Alles in Ordnung* oder was dich braucht: neue Verzeichnisgruppen, Bereiche ohne Daten, ein gestoppter Abgleich. Siehe [Die Statuszeile](/de/workspaces/members#die-statuszeile).
+- **Zugriff auf einem Bildschirm.** Die Zugriffsseite ist jetzt eine Statuszeile und zwei Tabs, **Teams & Personen** und **Bereiche**. Zeilen öffnen sich an Ort und Stelle, statt auf weitere Seiten zu führen. Siehe [Die Zugriffsseite](/de/workspaces/members#teams).
+- **Bereiche.** Ein Bereich deines Wissensmodells beantwortet zwei Fragen: wer seine Datensätze sieht und wer sein Modell gestaltet. **Wer genau** nennt jede Person mit dem Grund, und **Quellen** ordnet die Dokumente einer Quelle einem Bereich zu. Siehe [Bereiche](/de/workspaces/members#die-seite-eines-teams).
+- **Eine Statuszeile, die bleibt.** Nach der Einrichtung sagt eine Zeile *Alles in Ordnung* oder was dich braucht: neue Verzeichnisgruppen, Bereiche ohne Daten, ein gestoppter Abgleich. Siehe [Die Statuszeile](/de/workspaces/members#personen).
 - **Nichts ändert sich, bis du einschaltest.** Ein während der Einrichtung verbundenes Verzeichnis zählt Personen zunächst nur. Niemand tritt bei oder geht, bis du **Einschalten** drückst — nach einer Prüfung dessen, was passieren wird. Siehe [Provisionierung](/de/workspaces/provisioning#nichts-ändert-sich-bis-du-einschaltest).
 - **Regeln für den ganzen Workspace.** Der Eigentümer kann das Firmenverzeichnis über Personen und Teams entscheiden lassen und das Teilen auf Teams beschränken. Siehe [Regeln](/de/workspaces/members#regeln-für-den-ganzen-workspace).
 - **Per E-Mail einladen.** **Einladen** auf der Mitglieder-Seite sendet jetzt persönliche Einladungen an mehrere Adressen auf einmal, neben den Einladungslinks. Siehe [Personen einladen](/de/workspaces/members#personen-in-deinen-workspace-einladen).
 
 ## Aktualisierungen
 
-- **Mitglieder als Tabelle.** Mitglieder hat wieder eine eigene Zeile in den Einstellungen. Eine Zeile öffnet die Person in einem großen Dialog mit ihren Rollen, und der Link dorthin lässt sich teilen. Siehe [Bestehende Mitglieder verwalten](/de/workspaces/members#bestehende-mitglieder-verwalten).
+- **Mitglieder als Tabelle.** Mitglieder hat wieder eine eigene Zeile in den Einstellungen. Eine Zeile öffnet die Person in einem großen Dialog mit ihren Rollen, und der Link dorthin lässt sich teilen. Siehe [Bestehende Mitglieder verwalten](/de/workspaces/members#personen).
 - **Tools öffnen sich als das Tool.** Ein Genie Tool öffnet sich in einem eigenen Tab ohne Werkzeugleiste darum herum. Wer bearbeiten darf, bekommt eine schmale Leiste mit **Teilen** und **Bearbeiten**; die Seiten eines Tools liegen in der Workspace-Seitenleiste. Siehe [Ein Tool bauen](/de/workspaces/genie-tools#ein-tool-bauen).
 - **Ruhigere Tool-Bausteine.** Ein Callout ist jetzt ein ruhiger Hinweis mit optionalem Titel, und ein Rechner zeigt sein Hauptergebnis als eine große Zahl.
 - **Prozesse und Läufe als eine Linie.** Der Prozess einer Entität und die Schritte eines Agenten-Laufs werden von oben nach unten an einer Linie gezeichnet — mit dem, was erledigt ist, was gerade passiert und was als Nächstes kommt. Siehe [Lauf-Ergebnisse](/de/workspaces/workflow-apps#lauf-ergebnisse).
@@ -62,7 +91,7 @@ Umfasst, was am 17. November erschienen ist. Zugriff bekommt ein Zuhause, Teams 
 
 ## Neue Funktionen
 
-- **Eine Zugriffsseite.** Personen, Teams, Rollen, Zugriffsbereiche und Verzeichnisabgleich liegen jetzt zusammen unter **Workspace-Einstellungen → Zugriff**. Alte Links landen weiter auf der richtigen Seite. Siehe [Die Zugriffsseite](/de/workspaces/members#die-zugriffsseite).
+- **Eine Zugriffsseite.** Personen, Teams, Rollen, Zugriffsbereiche und Verzeichnisabgleich liegen jetzt zusammen unter **Workspace-Einstellungen → Zugriff**. Alte Links landen weiter auf der richtigen Seite. Siehe [Die Zugriffsseite](/de/workspaces/members#teams).
 - **Teams geben Zugriff.** Alles, was mit einem Team geteilt wird, erreicht seine Personen, und eine Person kann in mehreren Teams sein. Wer Rollen zuweisen darf, fügt Personen zu Teams hinzu oder entfernt sie; dein **Heimat-Team** bestimmt dein Starterpaket. Siehe [Teams](/de/workspaces/members#teams).
 - **Zugriff einrichten.** Eine geführte Einrichtung für Personen, Teams und worauf jedes Team zugreift — von Hand oder aus deinem Firmenverzeichnis. Sie speichert laufend und zeigt vor dem Start, wer Zugriff verlieren würde. Siehe [Zugriff einrichten](/de/workspaces/members#zugriff-einrichten).
 - **Einträge aus Business-Apps synchronisieren.** Pipedrive, Jira, Notion, DATEV oder jede App mit einer API können ihre Einträge jede Stunde, alle 6 Stunden oder einmal täglich ins Wissensmodell kopieren. Siehe [Einträge aus einer Business-App synchronisieren](/de/workspaces/overview#einträge-aus-einer-business-app-synchronisieren).
@@ -357,7 +386,7 @@ Umfasst, was am 25. und 26. Oktober ausgeliefert wurde. Dein Workspace hat jetzt
 
 - **100-MB-Dateien, keine Ordnergrenzen.** Dokumente dürfen bis zu 100 MB groß sein und gehen direkt aus deinem Browser in den Speicher; du kannst eine Datei abbrechen oder eine fehlgeschlagene erneut versuchen. Ordner haben keine Tiefengrenze und fassen beliebig viele Dokumente, und ein Workspace kann beliebig viele Ordner haben. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank).
 - **Excel-Konvertierungen werden eingereiht.** Startest du eine Konvertierung, während andere laufen, wird sie nicht mehr abgelehnt: Sie wartet und startet von selbst.
-- **Löschen braucht eine eigene Berechtigung.** Editoren können Dokumente und Projekte nicht mehr löschen — weder in der App noch über Genie AI oder MCP. Die Sync-Ansicht der Bibliothek und die Ontologie-Seite folgen ihren eigenen Berechtigungen statt der Rolle Eigentümer oder Admin. Siehe [Benutzerdefinierte Rollen](/de/workspaces/members#benutzerdefinierte-rollen).
+- **Löschen braucht eine eigene Berechtigung.** Editoren können Dokumente und Projekte nicht mehr löschen — weder in der App noch über Genie AI oder MCP. Die Sync-Ansicht der Bibliothek und die Ontologie-Seite folgen ihren eigenen Berechtigungen statt der Rolle Eigentümer oder Admin. Siehe [Benutzerdefinierte Rollen](/de/workspaces/members#teams-die-rollen-waren).
 - **Gespeicherte Ansichten bleiben alle erhalten.** Die Bibliothek verwirft ältere gespeicherte Ansichten nicht mehr, und ihre Liste lädt seitenweise.
 - **Zuverlässigerer Chat.** Ist die Werkzeugsuche von Genie AI kurz nicht verfügbar, erreicht es trotzdem die Werkzeuge, die es braucht, etwa zum Bauen einer Präsentation.
 
@@ -1006,7 +1035,7 @@ Deckt ab, was am 20. September dazukam. Genie Tools werden zu einem ernsthaften 
 - **Exportiere die Tabelle eines Genie Tools als CSV, Excel oder PDF.** Siehe [Genie Tools](/de/workspaces/genie-tools).
 - **Ein neuer Diagramm-Baustein für Genie Tools** verwandelt eine Tabelle — oder die Daten eines beliebigen anderen Bausteins — mit einer einzigen Zeile Beschreibung in ein Linien-, Balken- oder Kreisdiagramm. Siehe [Genie Tools](/de/workspaces/genie-tools).
 - **Das Datei-Upload-Feld eines Genie Tools nimmt jetzt jeden Dateityp an**, über eine echte Drag-and-Drop-Zone statt einer festen Bild-/Dokument-Positivliste. Siehe [Genie Tools](/de/workspaces/genie-tools).
-- **Genie Agents und Genie Tools bekommen eigene Berechtigungskategorien in benutzerdefinierten Rollen** — ein Workspace kann jetzt getrennt von Genie Apps einschränken, wer das eine oder andere ansehen, bauen, bearbeiten, löschen oder ausführen darf. Siehe [Benutzerdefinierte Rollen](/de/workspaces/members#benutzerdefinierte-rollen).
+- **Genie Agents und Genie Tools bekommen eigene Berechtigungskategorien in benutzerdefinierten Rollen** — ein Workspace kann jetzt getrennt von Genie Apps einschränken, wer das eine oder andere ansehen, bauen, bearbeiten, löschen oder ausführen darf. Siehe [Benutzerdefinierte Rollen](/de/workspaces/members#teams-die-rollen-waren).
 - **Wissensdokumente zeigen ihren Suchindex-Status**, mit einer Aktion **Indexierung wiederholen**, falls der semantische Index beim ersten Versuch nicht aufgebaut werden konnte. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank).
 - **Lade jeden Dateityp als Projekt-Asset hoch**, nicht nur Bilder und Videos, und leg gleich einen ganzen Ordner ab. Siehe [Bilder und Videos zu deiner App hinzufügen](/de/projects/overview#bilder-und-videos-zu-deiner-app-hinzufügen).
 
@@ -1139,7 +1168,7 @@ Deckt ab, was seit dem 12. September dazukam. Die Schlagzeile ist eine produktwe
 ## Updates
 
 - **Ein Projekt heißt jetzt Genie App.** Jede Stelle, die bisher „Projekt" sagte — die Seitenleiste, das Dashboard, die Einstellungen und Genie AIs eigene Antworten —, sagt jetzt „Genie App" und stimmt damit mit dem Namen überein, den der Rest des Produkts (etwa die eigene Transaktions-E-Mail-Adresse der erzeugten App) bereits verwendete. An der Funktionsweise ändert sich nichts, nur der Name.
-- **Mitglieder können jetzt mehr als eine Rolle gleichzeitig halten.** Gib jemandem zum Beispiel **Editor** plus eine benutzerdefinierte Rolle **Billing Manager**, und die Person bekommt alles, was beide erlauben. Siehe [Mitglieder und Rollen](/de/workspaces/members#benutzerdefinierte-rollen).
+- **Mitglieder können jetzt mehr als eine Rolle gleichzeitig halten.** Gib jemandem zum Beispiel **Editor** plus eine benutzerdefinierte Rolle **Billing Manager**, und die Person bekommt alles, was beide erlauben. Siehe [Mitglieder und Rollen](/de/workspaces/members#teams-die-rollen-waren).
 - **Die Wissensdatenbank ist als vertrauter Dateibrowser neugestaltet.** Ordner und Dokumente verhalten sich jetzt wie in Drive: ein Breadcrumb zur Navigation, Listen- oder Kachelansicht, sortierbare Spalten und ein Dokument direkt auf einen Ordner ziehen, um es dort abzulegen. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank).
 - **Tracing zeigt mehr — und zeigt es besser.** Die Detailansicht eines Traces ist jetzt größenveränderbar, öffnet als eigene Vollbildseite, und jede darin gezeigte ID — Mitglied, Projekt, Gespräch — verlinkt zurück zu diesem Element. Jeder Trace zeigt jetzt außerdem seine **Markierungen**: was deine PII-Regeln, Guardrails und Governance-Regeln bei diesem Durchlauf bemerkt haben. Siehe [Tracing](/de/workspaces/tracing#markierungen).
 - **Genie Agents: Die Start-Karte zeigt — und bearbeitet — die echten Startbedingungen.** Sie nennt jetzt den tatsächlichen Zeitplan oder Webhook-Auslöser des Agenten statt einer generischen Beschreibung, und ihr Start-Panel lässt dich einen Auslöser hinzufügen, umplanen oder abschalten, ohne die Änderung Genie AI beschreiben zu müssen. Siehe [Genie Agents](/de/workspaces/workflow-apps#auslöser-direkt-auf-der-arbeitsfläche-bearbeiten).
@@ -1203,7 +1232,7 @@ Deckt ab, was am 9. September dazukam. Die Schlagzeile ist ein überarbeiteter W
 ## Updates
 
 - **Workspace- und persönliche Einstellungen sind jetzt eine Oberfläche.** Bisher waren es zwei unabhängige Bildschirme — Workspace-Einstellungen innerhalb des Workspace, persönliche Einstellungen als nackte Seite ohne Weg zurück. Öffne beide über das Kontomenü unten in der Seitenleiste und du bekommst dieselbe Navigation, mit der jeweils anderen Hälfte immer einen Klick entfernt. Siehe [Kontoeinstellungen](/de/account/settings).
-- **Benutzerdefinierte Rollen.** Über die vier eingebauten Rollen hinaus können Owner und Admins jetzt benutzerdefinierte Rollen bauen, die genau eingrenzen, was eine Rolle darf — Abrechnungszugriff entfernen, Mitgliederverwaltung behalten, das Löschen von Projekten streichen — aus einem Katalog feingranularer Berechtigungen. Siehe [Benutzerdefinierte Rollen](/de/workspaces/members#custom-roles).
+- **Benutzerdefinierte Rollen.** Über die vier eingebauten Rollen hinaus können Owner und Admins jetzt benutzerdefinierte Rollen bauen, die genau eingrenzen, was eine Rolle darf — Abrechnungszugriff entfernen, Mitgliederverwaltung behalten, das Löschen von Projekten streichen — aus einem Katalog feingranularer Berechtigungen. Siehe [Benutzerdefinierte Rollen](/de/workspaces/members#teams-die-rollen-waren).
 - **Eine einfachere Workspace-Seitenleiste.** Dein Chatverlauf ist jetzt der Hauptinhalt der Seitenleiste, und die gerade geöffnete Unterhaltung markiert dort selbst ihren Platz — ein separater „Genie AI"-Eintrag ist nicht mehr nötig. Zieh den Rand der Seitenleiste, um sie in der Breite anzupassen oder auf reine Icons einzuklappen, und zieh ihn wieder heraus, um sie erneut zu öffnen.
 - **Die Befehlspalette (⌘K) hat eine optische Auffrischung bekommen** — eine übersichtlichere Ergebnisliste ohne die zusätzliche Seitenleiste, die sie bisher zeigte.
 - **Workflow-Apps heißen jetzt Genie Agents.** Du kannst einen jetzt direkt über die **Genie Agents**-Seite bauen — gib ihm einen Namen und einen ersten Schritt und du landest direkt im Editor, ohne ihn erst Genie AI zu beschreiben. Benenne einen Agenten über sein Zeilenmenü um, pausiere/setze ihn fort oder lösche ihn, und wechsle zwischen Karten- und Tabellenansicht deiner Agenten. Siehe [Genie Agents](/de/workspaces/workflow-apps).

@@ -1,0 +1,74 @@
+---
+title: "Der Einrichtungsassistent"
+description: "Ein Schritt-für-Schritt-Assistent, der einen neuen Workspace verbindet, einlesen lässt und teilt — und neuen Personen sagt, in welchen Teams sie sind und was ihre Teams wissen möchten."
+---
+
+Der **Einrichtungsassistent** führt dich Schritt für Schritt durch die Einrichtung eines Workspace. Nimm die Schritte der Reihe nach oder in beliebiger Reihenfolge, verlasse ihn, wann du willst, und komm später zurück — nichts muss fertig werden. Nur **Über dich** kommt zuerst; alle anderen Schritte bleiben gelistet, aber gesperrt, bis du ihn gespeichert hast.
+
+Zwei Arten von Personen sehen ihn: wer einen neuen Workspace einrichtet, und die Personen, die eingeladen werden. Welche Schritte du bekommst, hängt davon ab, was du im Workspace darfst.
+
+## Die Schritte
+
+<Tabs>
+  <Tab title="Den Workspace einrichten">
+    Für Personen, die die Einstellungen des Workspace verwalten dürfen — meist der Eigentümer oder ein Admin, der ihn einrichtet.
+
+    1. **Über dich** — dein Name und, optional, was du machst.
+    2. **Daten verbinden** — das [Quelle hinzufügen](/de/workspaces/overview#wissensdatenbank) der Bibliothek, direkt im Schritt: Wähle E-Mail, Dateien, eine Business-App oder eine Datenbank und richte sie ein, ohne den Assistenten zu verlassen.
+    3. **In die Ontologie lesen** — der Schalter, mit dem Genie deine Daten in das [Wissensmodell](/de/workspaces/overview#wissensmodell) einliest. Der Schritt sagt, wo das Lesen steht, und bietet **Ontologie öffnen**, sobald es Einträge gibt.
+    4. **Personen und Teams** — derselbe Assistent [Zugriff einrichten](/de/workspaces/members#zugriff-einrichten) wie auf der Teams-Seite, direkt im Schritt. Teams und Einladungen sind Schritte dieses Assistenten.
+    5. **Fragen an neue Personen** — die [Onboarding-Fragen](#team-fragen) jedes Teams, direkt bearbeitbar.
+    6. **Erste Frage stellen** — öffnet Genie AI.
+    7. **Benachrichtigungen** — schalte Push-Benachrichtigungen auf diesem Gerät ein.
+  </Tab>
+  <Tab title="Einem Workspace beitreten">
+    Für alle anderen — Personen, die der Workspace eingeladen hat.
+
+    1. **Über dich** — dein Name.
+    2. **Deine Teams** — in welchen Teams du bist, was jedes dir erlaubt, und die Fragen deiner Teams, falls es welche gibt.
+    3. **Erste Frage stellen** — öffnet Genie AI.
+    4. **Benachrichtigungen** — schalte Push-Benachrichtigungen auf diesem Gerät ein.
+  </Tab>
+</Tabs>
+
+Ein Schritt ist erledigt, wenn der Workspace es sagt, nicht weil jemand ihn abgehakt hat: **Daten verbinden** ist erledigt, sobald Daten hereinkommen, **In die Ontologie lesen**, sobald das Wissensmodell seinen ersten Eintrag hat, und **Personen und Teams**, sobald der Zugriff eingerichtet ist. Verbindet also ein Admin Google Drive, ist der Schritt auch für jeden anderen Admin erledigt. Die übrigen Schritte sind erledigt, wenn du sie markierst.
+
+## Sich durch den Assistenten bewegen
+
+- **Ein Schritt auf einmal.** Die Liste der Schritte steht links (auf dem Handy hinter einem Button im Kopfbereich, etwa *2/7 · Daten verbinden*). Jede Zeile sagt, wo der Schritt steht — *Begonnen · Schritt 3 von 5*, *Wartet auf Daten*. Klicke auf eine Zeile, um zu ihr zu springen.
+- **Die Leiste unten** zeigt, wie weit du bist (*2 von 7 erledigt*), und enthält **Vorheriger Schritt**, **Später** und **Weiter:** mit dem Namen des nächsten Schritts. Auf dem letzten Schritt steht dort **Zum Workspace**.
+- **Später** stellt einen Schritt zurück und geht weiter. Ein zurückgestellter Schritt zeigt **Doch jetzt**.
+- **Der Schritt steht in der Adresse**, sodass ein Neuladen, ein Link oder der Zurück-Button deines Browsers auf dem richtigen Schritt landet.
+
+## Zurückkommen
+
+Verlässt du den Assistenten, landest du im Workspace. Zwei Wege führen zurück:
+
+- **Einrichtung fortsetzen** auf der Workspace-Startseite unter *Für dich*, solange der Assistent noch Schritte hat, die weder erledigt noch zurückgestellt sind — zum Beispiel *2 von 6 Kapiteln erledigt*.
+- **Einrichtung** im Kontomenü unten in der Seitenleiste, immer da, für alle. Nutze sie, um lange nach der Einrichtung noch etwas zu ändern.
+
+Der Assistent öffnet sich auf dem Schritt, den du zuletzt offen hattest.
+
+Genie AI kann dir sagen, was noch offen ist — frag *„Was ist noch einzurichten?"* — und einen Schritt für dich zurückstellen oder als erledigt markieren, mit einem Link zu jedem Schritt. **Über dich** lässt sich nur auf der Seite ausfüllen.
+
+## Team-Fragen
+
+Standardmäßig fragt dich der Beitritt zu einem Workspace nichts außer deinem Namen: **Deine Teams** sagt dir nur, in welchen Teams du bist und was sie dir erlauben. Ein Team, das von neuen Personen etwas wissen möchte — *Für welche Kunden arbeitest du?* —, kann **Onboarding-Fragen** hinzufügen.
+
+<Steps>
+  <Step title="Ein Admin schreibt die Fragen">
+    Auf der Seite eines Teams (**Workspace-Einstellungen → Teams** → das Team → **Onboarding-Fragen**) oder im Schritt **Fragen an neue Personen** des Einrichtungsassistenten, der jedes Team listet. Jedes Team kann einige Fragen stellen; der Editor zeigt, wie viele noch gehen. Wird eine Frage entfernt, werden auch die Antworten darauf entfernt.
+  </Step>
+  <Step title="Neue Personen beantworten sie">
+    In **Deine Teams** bekommt jedes Team, das etwas fragt, eine eigene Gruppe von Feldern. Nichts ist Pflicht: Beantworte, was du möchtest, und drücke **Speichern und weiter**. Deine Antworten kannst du später im selben Schritt ändern.
+  </Step>
+  <Step title="Genie AI nutzt die Antworten">
+    Wenn du Genie AI etwas fragst, kennt es deine Antworten und nutzt sie — zum Beispiel, um sich auf die Kunden zu konzentrieren, die du genannt hast.
+  </Step>
+</Steps>
+
+**Deine Antworten gehören dir.** Nur du kannst sie lesen — nicht der Admin des Teams und nicht der Eigentümer des Workspace. Sie sind Informationen über dich für Genie AI, kein Formular, das deine Firma einsammelt, und sie geben dir nie Zugriff auf etwas. Du bekommst nur die Fragen der Teams, in denen du jetzt bist; verlässt du ein Team, gelten seine Fragen und deine Antworten darauf nicht mehr, und wer den Workspace verlässt, dessen Antworten werden gelöscht.
+
+Bearbeiten zwei Admins gleichzeitig die Fragen desselben Teams, wird das zweite Speichern mit *Jemand anderes hat diese Fragen geändert. Nichts wurde gespeichert.* abgelehnt und bietet **Aktuelle Fragen laden** an — so löscht niemand Antworten auf eine Frage, die er nicht gesehen hat.
+
+Genie AI kann die Fragen eines Teams lesen und ändern (für Personen, die die Einstellungen des Workspace verwalten dürfen) und deine eigenen Antworten lesen oder speichern. Dieselben Tools stehen [MCP-Clients](/de/workspaces/mcp-api#team-onboarding-fragen) zur Verfügung.

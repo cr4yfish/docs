@@ -1,75 +1,140 @@
 ---
-title: "Workspace-Mitglieder einladen und verwalten"
-description: "Füge Teamkolleg:innen über einen Einladungslink oder per E-Mail zu deinem Workspace hinzu, weise ihnen die richtige Rolle zu, ändere Rollen später und entferne Mitglieder bei Bedarf."
+title: "Personen und Teams"
+description: "Lade Personen in deinen Workspace ein, setze sie in Teams und lass jedes Team entscheiden, was seine Personen dürfen und mit welchen Daten sie arbeiten."
 ---
 
-Jeder Workspace hat eine Mitgliederliste, die festlegt, wer auf Projekte zugreifen kann und was er tun darf. Eigentümer und Admins steuern die Liste: Sie können neue Personen einladen, Rollen anpassen und Mitglieder jederzeit entfernen. Reguläre Mitglieder und Editoren können den Workspace sehen und in Projekten arbeiten, aber keine anderen Mitglieder oder Workspace-Einstellungen verwalten.
+**Personen sind in Teams. Ein Team sagt, was seine Personen dürfen und mit welchen Daten sie arbeiten.** Für eine Person gibt es keine Rolle mehr auszuwählen: Alle im Workspace dürfen dieselben grundlegenden Dinge, und ihre Teams fügen den Rest hinzu. Zwei Teams sind immer da:
 
-<Note>
-Nur **Eigentümer** und **Admins** können die **Workspace-Einstellungen** öffnen und Workspace-Mitglieder verwalten. Wenn du sie im Kontomenü unten in der Seitenleiste nicht siehst, wende dich an die Workspace-Eigentümerin.
-</Note>
+- **Alle** — jede Person im Workspace. Niemand wird von Hand hinzugefügt oder entfernt. Die Seite sagt, was jede Person darf, und enthält die **gemeinsamen Daten**.
+- **Admins** — die Personen, die alles dürfen, außer den Workspace zu löschen, und die alle Daten sehen. Eine von ihnen ist der **Eigentümer** des Workspace.
 
-## Rollen auf einen Blick
-
-Genie hat vier Workspace-Rollen. Jede Rolle erbt alle Berechtigungen der darunterliegenden Rollen.
-
-<CardGroup cols={2}>
-  <Card title="Eigentümer" icon="crown">
-    Volle Kontrolle über den Workspace. Eigentümer können alle Mitglieder verwalten — einschließlich der Beförderung anderer zu Eigentümern — jede Einstellung ändern und den Workspace löschen. Es gibt immer mindestens einen Eigentümer, und ein Eigentümer kann den Workspace nicht verlassen, ohne zuvor die Eigentümerschaft zu übertragen. Ein Eigentümer ist der **Hauptverantwortliche** des Workspace — die Person, die ihn erstellt hat oder an die er übergeben wurde — und diese Person muss ihn vor dem Verlassen weitergeben.
-  </Card>
-  <Card title="Admin" icon="shield">
-    Kann Mitglieder verwalten (außer andere Eigentümer), Workspace-Einstellungen umschalten, das Aktivitätsprotokoll aktivieren oder deaktivieren und MCP-Integrationen verwalten. Admins haben unabhängig von projekteigenen Zugriffsrechten immer Zugriff auf alle Projekte.
-  </Card>
-  <Card title="Mitglied" icon="user">
-    Kann neue Projekte erstellen, alle Projekte bearbeiten, auf die er Zugriff hat, und normal zusammenarbeiten. Wenn Projekt-Zugriffskontrolle aktiviert ist, müssen Mitglieder explizit von einem Admin oder Eigentümer zu einzelnen Projekten eingeladen werden.
-  </Card>
-  <Card title="Editor" icon="pencil">
-    Kann Projekte bearbeiten, zu denen er bereits eingeladen wurde, aber keine neuen Projekte erstellen. Diese Rolle eignet sich für externe Mitarbeitende oder Auftragnehmer, die an bestimmten Projekten arbeiten sollen, ohne weitergehenden Zugriff.
-  </Card>
-</CardGroup>
+Beides findest du unter **Workspace-Einstellungen → Personen und Zugriff**, mit zwei Seiten: **Teams** und **Personen**. Teams kann jedes Mitglied öffnen. Personen öffnet sich für alle, die Personen sehen oder einladen dürfen.
 
 <Tip>
-  Du nutzt Microsoft Entra ID, Okta oder ein anderes SCIM-Verzeichnis? Lass es Personen für dich hinzufügen und entfernen — siehe [Provisionierung](/de/workspaces/provisioning).
+  Du nutzt Microsoft Entra ID, Okta oder ein anderes SCIM-Verzeichnis? Lass es Personen für dich hinzufügen und entfernen — siehe [Provisioning](/de/workspaces/provisioning).
 </Tip>
 
-## Benutzerdefinierte Rollen
+## Teams
 
-Die vier eingebauten Rollen oben sind ein Ausgangspunkt, keine Obergrenze — Eigentümer und Admins können **benutzerdefinierte Rollen** erstellen, die genau eingrenzen, was eine Rolle darf, ausgewählt aus einem Katalog feingranularer Berechtigungen, gruppiert nach Bereich (Projekte, [Genie Agents](/de/workspaces/workflow-apps), [Genie Tools](/de/workspaces/genie-tools), Mitglieder, Rollen, Integrationen, Abrechnung, Sicherheit und mehr) — Genie Agents und Genie Tools haben jeweils eigene Berechtigungen zum Ansehen, Erstellen, Bearbeiten, Löschen und Ausführen, getrennt von denen einer Genie App.
+**Workspace-Einstellungen → Teams** listet oben **Alle** und **Admins**, dann jedes Team. Jede Zeile sagt, wie viele Personen darin sind (und ob du dabei bist), woher seine Personen kommen — hier hinzugefügt oder aus Microsoft 365 —, was es zusätzlich zu allen darf (*Nichts zusätzlich*, *Plus Abrechnung* …) und seine Daten (*Eigene Daten · von 2 weiteren Teams gesehen*, *Sieht alle Daten* …). Die Suche findet ein Team über seinen Namen, über etwas, das es darf, über eine Klasse seiner Daten oder über eine Quelle.
 
-Das Löschen eines Projekts und das Löschen eines Wissensdokuments haben jeweils eine eigene Berechtigung, und die Rolle Editor hat keine von beiden — egal, ob das Löschen aus der App, von Genie AI oder über MCP kommt. Die Sync-Ansicht der Bibliothek folgt der Integrations-Berechtigung und die Ontologie-Seite der Berechtigung zur Verwaltung des Wissensmodells statt der Rolle Eigentümer oder Admin selbst, sodass eine benutzerdefinierte Rolle beides bekommen kann.
+Ein Abschnitt **Braucht dich** erscheint, wenn es etwas zu entscheiden gibt: neue Gruppen aus deinem Verzeichnis (**Zum Team machen** oder **Kein Team**), [Daten ohne Team](#daten-ohne-team) oder die erreichte Höchstzahl an Teams.
 
-Eine benutzerdefinierte Rolle **erbt** immer eine der eingebauten Rollen als Basis und kann dieser Basis nur Berechtigungen wegnehmen — nie welche hinzufügen, die die Basis nicht hat. Eine auf **Mitglied** aufgebaute benutzerdefinierte Rolle kann zum Beispiel die Fähigkeit behalten, Projekte zu erstellen und zu bearbeiten, aber den Zugriff auf die Abrechnung oder die Möglichkeit verlieren, andere Mitglieder zu entfernen — sie kann aber nie eine nur für Eigentümer vorgesehene Berechtigung wie das Löschen des Workspace erhalten.
+Jedes Mitglied sieht jedes Team und seinen Namen — Teamnamen sind nicht geheim. Was du in einem Team siehst, folgt deinen Berechtigungen: Ein Abschnitt, den du nicht lesen darfst, sagt stattdessen, wem er gezeigt wird.
 
-<Tip>
-Ein Mitglied ist nicht auf eine einzige Rolle beschränkt. Gib jemandem zum Beispiel **Editor** plus eine benutzerdefinierte Rolle **Billing Manager**, und die Person bekommt alles, was beide erlauben — die stärkste gehaltene Rolle entscheidet über den Gesamtstatus (ist eine Eigentümer-Rolle darunter, ist die Person weiterhin Eigentümerin), und jede weitere Rolle fügt nur zusätzliche Berechtigungen hinzu. Siehe [Die Rolle eines Mitglieds ändern](#die-rolle-eines-mitglieds-ändern).
-</Tip>
+### Die Seite eines Teams
 
-<Steps>
-  <Step title="Rollen öffnen">
-    Klicke auf die Kontozeile unten in der Seitenleiste, wähle **Workspace-Einstellungen**, öffne **Zugriff** und dann **Rollen**.
-  </Step>
-  <Step title="Rolle erstellen">
-    Klicke auf **Neue Rolle** und wähle, auf welcher eingebauten Rolle sie basiert. Das legt die Obergrenze für jede Berechtigung fest, die sie halten kann.
-  </Step>
-  <Step title="Berechtigungen wählen">
-    Entferne das Häkchen bei allem, was diese Rolle nicht haben soll. Eine Berechtigung, die von einer anderen abhängt (zum Beispiel hängt das Entfernen eines Mitglieds davon ab, die Mitgliederliste sehen zu können), wird automatisch mitgeregelt. Alles oberhalb der Obergrenze der Basisrolle ist gesperrt und zeigt an, aus welcher Rolle sie stammt.
-  </Step>
-  <Step title="Zuweisen">
-    Gib der Rolle einen Namen und speichere sie, dann weise sie einem Mitglied über dessen Zeile in der Mitgliedertabelle zu — genauso, wie du eine eingebaute Rolle zuweisen würdest.
-  </Step>
-</Steps>
+Ein Team öffnet sich auf einer eigenen Seite, von oben nach unten zu lesen. Jeder Abschnitt hat einen Button **Ändern**, der den [geführten Ablauf](#ein-team-anlegen-oder-bearbeiten) genau bei dieser Frage öffnet.
 
-<Note>
-Das Löschen einer benutzerdefinierten Rolle entzieht den Personen, die sie hatten, keinen Zugriff — sie fallen automatisch auf die zugrundeliegende eingebaute Rolle zurück.
-</Note>
+| Abschnitt | Was er zeigt |
+|---|---|
+| **Darf** | Was die Personen des Teams zusätzlich zu dem dürfen, was alle dürfen. Eine Zeile mit **Sieht alle Daten** macht sie für die Datenbank zu Admins |
+| **Seine Daten** | Die eigenen Klassen und Datensätze des Teams im [Wissensmodell](/de/workspaces/overview#wissensmodell). Ein Team kann auch keine eigenen Daten haben |
+| **Seine Dateien** | Die Quellen, die bei den Daten des Teams abgelegt sind, mit wer jede sieht |
+| **Wer seine Daten sieht** | Andere Teams, die die Daten des Teams sehen, mit **Darf ansehen** oder **Darf bearbeiten**, die Admins und ob alle anderen sie sehen. **Alle ansehen** listet jede Person mit dem Grund |
+| **Wer sein Modell ändern darf** | Teams, die die Klassen, Eigenschaften und Prozesse der Daten ändern dürfen — getrennt davon, ihre Datensätze zu sehen |
+| **Sieht auch** | Daten anderer Teams, die dieses Team sieht, und die gemeinsamen Daten |
+| **Personen** | Die ersten Personen im Team. **Alle ansehen** öffnet sie auf der Personen-Seite |
+| **Verwaltet von** | Wer Personen zum Team hinzufügen und daraus entfernen darf |
+| **Onboarding-Fragen** | Was das Team Personen fragt, die dazukommen — siehe [Team-Fragen](/de/workspaces/setup-guide#team-fragen) |
+| **Starterpaket** | Bis zu sechs **erste Fragen**, angezeigt unter **Frag zum Beispiel** auf dem leeren Bildschirm eines neuen Chats, und bis zu acht [Chat-Vorlagen](/de/workspaces/overview#chat-vorlagen), die auf der Workspace-Startseite zuerst erscheinen |
+
+Die Seite von **Alle** zeigt, wie viele Personen im Workspace sind, was jede Person darf, und die gemeinsamen Daten. Die Seite von **Admins** listet, wer Admin ist, und sagt, dass Admins alles dürfen außer den Workspace zu löschen.
+
+### Ein Team anlegen oder bearbeiten
+
+**Neues Team** und **Team bearbeiten** öffnen denselben geführten Ablauf: eine Frage pro Bildschirm, mit einem Fortschrittsbalken. Beim Bearbeiten ist der Zähler ein Menü, das zu jeder Frage springt, und **Speichern und schließen** steht auf jedem Bildschirm.
+
+1. **Wie heißt das Team?**
+2. **Wer ist im Team?** Personen, die du auswählst, eine Gruppe aus Microsoft 365 oder noch niemand.
+3. **Was dürfen die Personen in diesem Team zusätzlich zu dem, was alle dürfen?** Wähle aus Gruppen wie Apps, Agenten und Tools, Wissen, Governance ansehen, Abrechnung oder Workspace-Einstellungen. Eine Gruppe mit Teilen fragt auf dem nächsten Bildschirm, welche Teile. Kreuzt du etwas an, das Personen für die Datenbank zu Admins macht, warnt dich derselbe Bildschirm und sagt, wie viele Personen es betrifft.
+4. **Hat das Team eigene Daten?**
+5. **Wer sieht seine Daten außerdem?** Niemand sonst, einige Teams (jeweils mit **Darf ansehen** oder **Darf bearbeiten**) oder alle.
+6. **Wer darf sein Datenmodell ändern?** Nur Admins, das Team selbst oder andere Teams.
+7. **Welche Daten anderer Teams sieht es?**
+8. **Was soll ein neuer Chat ihnen zuerst vorschlagen?** Das Starterpaket.
+9. **Prüfen.** Jede Änderung als vorher → nachher, mit wen sie betrifft, und ein **Speichern**.
+
+Vor dem letzten Bildschirm wird nichts gespeichert. Deine Antworten bleiben als Entwurf im Browser, sodass ein Neuladen oder Zurück auf derselben Frage landet. Beim Speichern wendet Genie zuerst alles an, was Zugriff wegnimmt, dann das Team selbst, dann alles, was etwas gibt — so endet eine fehlgeschlagene Entfernung nie mit mehr Zugriff als vorher. Landet nur ein Teil, listet der letzte Bildschirm, was noch fehlt, und **Erneut versuchen** sendet nur das. Eine Zeile, die jemand anderes inzwischen geändert hat, wird gemeldet, nicht überschrieben.
+
+Du kannst nie geben, was du selbst nicht darfst, und niemand kann sich selbst in ein Team setzen. Ein Team, das dein Verzeichnis füllt, kann nichts bekommen, was seine Personen für die Datenbank zu Admins macht.
+
+### Wer die Personen eines Teams verwaltet
+
+Wer Teams verwalten darf, ändert, wer in einem beliebigen Team ist. Du kannst ein Team auch nur einige Teams verwalten lassen: Kreuzt du im Ablauf **Teams und ihre Personen verwalten** an, wähle **Jedes Team** oder **Teams, die ich auswähle**. Ein Team, das zum Beispiel Vertrieb verwaltet, kann Personen zu Vertrieb hinzufügen und daraus entfernen — und sonst nichts. Der Abschnitt **Verwaltet von** des Teams zeigt, wer das ist.
+
+### Daten ohne Team
+
+Daten im Wissensmodell, die kein Team hält, erscheinen für Owner und Admins auf der Teams-Seite: *2 Datenbestände gehören keinem Team*. Öffne einen, um zu entscheiden, wem er gehört — einem bestehenden Team, einem neuen Team oder allen. Der letzte Bildschirm sagt, welche Teams und wie viele Personen ihn gewinnen oder verlieren, bevor sich etwas bewegt. Große Bestände ziehen im Hintergrund um und lassen sich anhalten, fortsetzen oder stoppen. Bis du entscheidest, werden die Daten genau wie vorher gesehen.
+
+### Ein Team löschen
+
+**⋯ → Löschen** auf der Seite eines Teams fragt, was mit den Daten des Teams passiert, bevor das Team geht: an ein anderes Team oder an alle übergeben. Ein Team zu löschen löscht nie Daten, und die Bestätigung sagt, wie viele Personen verlieren, was das Team ihnen erlaubt hat. Dateien in Zugriffsbereichen aus der Zeit vor den Teams stehen auf der Teams-Seite unter **Dateien von vor den Teams**.
+
+### Teams, die Rollen waren
+
+Benutzerdefinierte Rollen aus der Zeit vor den Teams stehen unter **Teams, die Rollen waren**, markiert mit *War eine Rolle*. Ihre Personen behalten, was sie hatten — nichts wird hinter jemandes Rücken umgewandelt. Ein solches Team hat Darf und Personen, aber keine Daten und kein Starterpaket. Drücke **Ein volles Team daraus machen**, um ihm beides zu geben; die Bestätigung sagt vorher, was sich ändert, auch dass seine Personen danach mindestens dürfen, was alle dürfen. Neue Rollen lassen sich nicht mehr anlegen: Eine neue Zusammenstellung dessen, was Personen dürfen, ist ein neues Team.
+
+### Dein Heimat-Team
+
+**Dein Heimat-Team** ist das deiner Teams, von dem du startest: Es bestimmt das Starterpaket, mit dem sich ein neuer Chat öffnet. Du wählst es auf deiner eigenen Seite unter **Personen**. Es öffnet selbst nichts.
+
+Wenn du etwas teilst, wähle lieber ein Team, statt Personen einzeln zu nennen — wer später ins Team kommt, erhält dasselbe. Eine [Verzeichnisgruppe](/de/workspaces/provisioning#rollen-und-teams-aus-gruppen) kann die Personen eines Teams mit deinem Identity Provider abgleichen. Genie AI kann Teams lesen, ändern, wer in einem ist und was es darf, Daten ohne Team übergeben und dein Heimat-Team setzen — jede Änderung über eine [Bestätigungskarte](/de/workspaces/overview#bestätigungskarten).
+
+## Personen
+
+**Workspace-Einstellungen → Personen** listet alle im Workspace, 50 auf einmal, mit Suche. Jede Zeile nennt die Teams der Person. **Alle ansehen** bei einem Team öffnet die Liste gefiltert auf dieses Team, mit einem Chip, der den Filter entfernt. Oben sagt eine Zeile, woher die Personen kommen — aus deinem Firmenverzeichnis oder aus Einladungen hier —, mit **Verwalten** für den [Verzeichnisabgleich](/de/workspaces/provisioning); **Regeln** und **Einladen** stehen neben dem Titel. Was dich braucht, steht ebenfalls dort: ein Owner oder Admin, den dein Verzeichnis entfernen wollte, und Personen, die auf einen freien Sitzplatz warten.
+
+Wer nur einladen darf, sieht die Einladungen, nicht die Liste der Personen.
+
+### Die Seite einer Person
+
+Eine Person öffnet sich auf einer eigenen Seite. Die eigene Seite kann jede Person öffnen.
+
+| Abschnitt | Was er zeigt |
+|---|---|
+| **Teams** | Jedes Team, in dem sie ist, und woher das kommt — *Aus Microsoft 365* oder *Hier hinzugefügt von …* mit Datum. **Zu einem Team hinzufügen** und **Entfernen**, wo du darfst. Auf deiner eigenen Seite dein **Heimat-Team** |
+| **Darf** | Was alle dürfen, dann eine Zeile pro Team, das etwas hinzufügt, *über Team …*. Nur lesbar: Geändert wird es am Team |
+| **Arbeitet mit** | Die Daten ihrer Teams, was diese Teams außerdem sehen, und die gemeinsamen Daten, jeweils mit Stufe. Nur lesbar |
+| **Ausnahmen** | Was mit dieser Person allein geteilt ist — eine Klasse, Eigenschaft, Beziehung, ein Prozess oder eine Quelle. Eine Zeile öffnet den Teilen-Dialog des Elements |
+| **Aus der Zeit davor** | Was die Seiten nicht mehr anbieten, etwa eine alte Editor-Zuweisung (*Darf weniger als alle*) mit **Anheben** |
+
+Eine Person bekommt nie eigene Berechtigungen oder die ganzen Daten eines Teams: Die bekommt sie über Teams. Nur kleine Ausnahmen nennen eine Person. Die eigene synchronisierte Mail und das eigene Laufwerk einer Person bleiben privat und stehen nicht auf diesen Seiten.
+
+### Jemanden entfernen
+
+Öffne die Person und wähle im Menü **Entfernen**. Sie verliert sofort den Zugriff auf den Workspace und alle seine Projekte.
+
+<Warning>
+Das Entfernen ist sofort wirksam und kann über die UI nicht rückgängig gemacht werden. Um den Zugriff wiederherzustellen, lade die Person erneut ein.
+</Warning>
+
+Solange die Regel [Das Verzeichnis entscheidet über Personen und Teams](#regeln-für-den-ganzen-workspace) eingeschaltet ist, werden Personen stattdessen in deinem Firmenverzeichnis entfernt.
+
+### Einen Workspace verlassen
+
+Wenn du nicht der Hauptverantwortliche des Workspace bist, kannst du ihn auf deiner eigenen Seite unter **Personen** selbst verlassen.
+
+<Warning>
+Wenn du der Hauptverantwortliche eines Workspace bist, kannst du ihn nicht verlassen, bis du die Eigentümerschaft an jemand anderen überträgst.
+</Warning>
+
+### Eigentümerschaft übertragen
+
+Der Hauptverantwortliche eines Workspace kann ihn weitergeben. Öffne die Seite der Person und drücke **Eigentümerschaft übertragen**, oder frage Genie AI — es zeigt eine Karte mit der gefundenen Person, die du dort bestätigst.
+
+- **Der neue Eigentümer** wird Eigentümer des Workspace.
+- **Du** behältst deine Teams und kannst den Workspace danach wie alle anderen verlassen oder entfernt werden.
+- **Die Abrechnung wandert nicht mit.** Abo und Zahlungsdaten bleiben unverändert, bis jemand sie unter Abrechnung ändert; die Übertragung weist darauf hin.
+- **Der Hauptverantwortliche kann nicht entfernt werden** — weder in der Web-App noch über Genie AI oder die [MCP-API](/de/workspaces/mcp-api) —, bevor er den Workspace weitergegeben hat.
 
 ## Personen in deinen Workspace einladen
 
-Öffne **Workspace-Einstellungen → Mitglieder** und drücke **Einladen**. Der Dialog bietet zwei Wege:
+Öffne **Workspace-Einstellungen → Personen** und drücke **Einladen**. **Eine Einladung gibt, was alle dürfen — nicht mehr.** Setze Personen in Teams, nachdem sie beigetreten sind: Ihre Teams entscheiden den Rest. Der Dialog bietet zwei Wege:
 
 <Tabs>
   <Tab title="Per E-Mail">
-    Gib eine oder mehrere E-Mail-Adressen ein — getrennt durch Kommas, Semikolons oder Zeilenumbrüche —, wähle eine Rolle für alle und drücke **Einladungen senden**.
+    Gib eine oder mehrere E-Mail-Adressen ein — getrennt durch Kommas, Semikolons oder Zeilenumbrüche — und drücke **Einladungen senden**.
 
     - Jede Adresse bekommt ihre eigene persönliche Einladung und ihre eigene E-Mail. Die Einladung gilt 7 Tage und nur für diese Adresse.
     - Danach sagt der Dialog pro Adresse, wie es lief: gesendet, bereits Mitglied (nichts wird gesendet) oder erstellt, aber nicht zugestellt — dann kopierst du den Link dieser Einladung und schickst ihn selbst.
@@ -78,99 +143,44 @@ Das Löschen einer benutzerdefinierten Rolle entzieht den Personen, die sie hatt
   <Tab title="Per Link">
     Erstelle einen teilbaren Link und schicke ihn über einen beliebigen Kanal:
 
-    - **Rolle** — die Rolle, die die eingeladene Person beim Annehmen erhält: Editor, Mitglied, Admin oder Eigentümer.
     - **Max. Nutzungen** — wie viele Personen den Link nutzen können, bevor er abläuft. Standard ist 1.
-    - **Gültig (Tage)** — wie viele Tage der Link aktiv bleibt. Standard ist 7.
+    - **Gültig für** — wie viele Tage der Link aktiv bleibt. Standard ist 7.
 
-    Wenn jemand den Link öffnet und auf **Workspace beitreten** klickt, wird die Person sofort mit der gewählten Rolle hinzugefügt.
+    Wenn jemand den Link öffnet und auf **Workspace beitreten** klickt, wird die Person sofort hinzugefügt.
   </Tab>
 </Tabs>
 
-Jede Einladung, die noch gültig ist — auch die per E-Mail gesendeten —, steht auf der Mitglieder-Seite unter **Einladungslinks**, bis sie angenommen wird oder abläuft.
+Jede Einladung, die noch gültig ist — auch die per E-Mail gesendeten —, steht unter **Einladungslinks**, bis sie angenommen wird oder abläuft. Einladungen, die verschickt wurden, bevor Teams die Rollen ersetzt haben, gelten weiter so, wie sie verschickt wurden.
 
 <Tip>
 Erstelle einen Link mit hohem **Max. Nutzungen**-Wert für offenes Team-Onboarding (zum Beispiel zum Teilen eines Workspace-Links in einem firmenweiten Slack-Kanal) und lade bestimmte Personen per E-Mail ein.
 </Tip>
 
 <Note>
-Solange die Regel [Das Verzeichnis entscheidet über Personen und Teams](#regeln-für-den-ganzen-workspace) eingeschaltet ist, wird hier niemand eingeladen: Die Mitglieder-Seite blendet **Einladen** aus, und Personen werden in deinem Firmenverzeichnis hinzugefügt.
+Solange die Regel [Das Verzeichnis entscheidet über Personen und Teams](#regeln-für-den-ganzen-workspace) eingeschaltet ist, wird hier niemand eingeladen: Die Personen-Seite blendet **Einladen** aus, und Personen werden in deinem Firmenverzeichnis hinzugefügt.
 </Note>
 
-## Die Zugriffsseite
+Neue Personen gehen durch einen kurzen [Einrichtungsassistenten](/de/workspaces/setup-guide), der ihnen sagt, in welchen Teams sie sind, und die Onboarding-Fragen ihrer Teams stellt.
 
-**Workspace-Einstellungen → Zugriff** zeigt auf einem Bildschirm, wer im Workspace ist und worauf er zugreift: *Personen sind in Teams. Teams haben Zugriff auf Bereiche.* Nichts führt auf eine eigene Seite — eine Zeile öffnet sich an Ort und Stelle, und eine längere Liste öffnet sich in einem Panel mit Suche. Alte Links auf die Seiten Teams, Personen, Wer worauf zugreift, Zugriffsbereiche und Verzeichnisabgleich landen hier an der richtigen Stelle.
+## Zugriff einrichten
 
-| Teil | Was er zeigt |
-|---|---|
-| **Statuszeile** | Für Owner und Admins, ganz oben. Während der Einrichtung enthält sie die [Einrichtung](#zugriff-einrichten); danach ist sie eine Zeile — *Alles in Ordnung*, *3 Sachen brauchen dich* oder *Die Verzeichnis-Synchronisierung ist gestoppt* —, die sich zu den Details öffnet. Siehe [Die Statuszeile](#die-statuszeile) |
-| **Teams & Personen** | Ein Umschalter zwischen der Teamliste und der Personenliste. Ein [Team](#teams) öffnet sich zu seinen Personen, seinem Starterpaket und dem, worauf es zugreift. Eine Person öffnet sich zu ihrer Rolle, den Teams, in denen sie ist, und dem, worauf sie zugreift — gruppiert nach *Über &lt;Team&gt;*, *Als alle* und dem, was direkt mit ihr geteilt wurde, dazu das, was sie selbst geteilt hat |
-| **Bereiche** | Die Bereiche deines Wissensmodells. Ein Bereich öffnet sich zu den Fragen, wer seine Daten sieht und wer sein Modell gestaltet. Siehe [Bereiche](#bereiche) |
-
-Was du siehst, folgt deinen Berechtigungen. Jedes Mitglied kann die Seite öffnen und sieht die Teams, sein eigenes Heimat-Team und die Bereiche mit dem, was es dort bekommt und über welches Team. Die vollständigen Listen erfordern die Berechtigung, Mitglieder und Rollen zu sehen, und die Statuszeile ist für Owner und Admins.
-
-**Mitglieder** hat eine eigene Zeile in der Seitenleiste der Einstellungen, direkt neben Zugriff — siehe [Bestehende Mitglieder verwalten](#bestehende-mitglieder-verwalten). [Rollen](#benutzerdefinierte-rollen) legen weiterhin fest, was eine Person im Workspace höchstens tun darf; ein Team gibt Zugriff, nie Berechtigungen.
-
-### Die Statuszeile
-
-Ist die Einrichtung abgeschlossen, sagt die Statuszeile, was gerade gilt und was eine Entscheidung braucht. Öffne sie, um vier Zeilen zu sehen:
-
-- **Verzeichnis** — ob dein Firmenverzeichnis verbunden ist und wann seine letzte Änderung ankam, dass seit einigen Tagen nichts angekommen ist oder dass die Synchronisierung gestoppt ist, weil kein Verzeichnis-Schlüssel mehr funktioniert. **Verwalten** öffnet die Einstellungen des [Verzeichnisabgleichs](/de/workspaces/provisioning).
-- **Personen** — wie viele Mitglieder aus dem Verzeichnis kamen und wie viele hier eingeladen wurden, wer sich noch nicht angemeldet hat und wer diese Woche beigetreten ist, gegangen ist oder das Team gewechselt hat. Sie listet auch, was dich braucht: einen Owner oder Admin, den dein Verzeichnis entfernen wollte (ein Verzeichnis entfernt diese nie von selbst), und Personen, die auf einen freien Sitzplatz warten.
-- **Teams** — neue Verzeichnisgruppen, die noch kein Team sind, jede mit **Zum Team machen** oder **Kein Team**.
-- **Bereiche** — Bereiche, die noch keine Datensätze und keine Quelle haben, jeder mit einem Link, um eine hinzuzufügen, und Personen, die in keinem Team sind.
-
-Jede Zeile wird für sich gelesen: Kann eine nicht geladen werden, sagt sie das mit **Erneut versuchen**, während die anderen bleiben. Genie AI kann denselben Status lesen.
-
-### Bereiche
-
-Ein **Bereich** ist ein Teil deines [Wissensmodells](/de/workspaces/overview#wissensmodell): seine Klassen, die Datensätze dieser Klassen und die Dateien der Quellen, die ihm hinzugefügt wurden. Öffne den Tab **Bereiche** und wähle einen Bereich, um zwei Fragen zu beantworten:
-
-- **Wer seine Datensätze sieht** — Teams und Personen, jeweils mit **Darf ansehen** oder **Darf bearbeiten**. **Alle anderen** haben entweder **Kein Zugriff** oder **Darf ansehen**. Owner und Admins sehen immer alles. **Wer genau** listet jede Person, die den Bereich erreicht, mit dem Grund dafür.
-- **Wer das Modell gestaltet** — wer die Klassen, Eigenschaften und Prozesse des Bereichs ändern darf. Das ist vom Sehen getrennt: Dein Daten-Team kann das Vertriebsmodell gestalten, ohne einen einzigen Vertriebs-Datensatz zu lesen.
-
-Ein paar Dinge, die du wissen solltest:
-
-- **Änderungen werden Zeile für Zeile gespeichert.** Eine Entfernung bleibt mit **Rückgängig** auf ihrer Zeile, bis du den Bereich schließt. Ein Team aus seinem eigenen Bereich zu entfernen oder einen Bereich für alle anderen weiter zu öffnen, fragt dich zuerst.
-- **Kein Zugriff verbirgt Datensätze und Dateien, nie Namen.** Alle sehen weiterhin, welche Klassen es gibt.
-- **Ausnahmen** listet, wo eine Klasse oder eine Eigenschaft etwas anderes sagt als ihr Bereich — weiter geöffnet, enger gefasst oder eine eingeschränkte Eigenschaft. Ändere sie mit dem eigenen **Teilen**-Button des Elements in Knowledge ([Ein Objekt teilen](/de/workspaces/overview#ein-objekt-teilen)).
-- **Quellen.** Das Panel **Quellen** eines Bereichs listet die Quellen, deren Dateien zu ihm gehören: wer jede sieht, ob sie gerade gelesen wird und was Genie aus ihr gelernt hat. **Quelle hinzufügen** ordnet eine verbundene Quelle dem Bereich zu — für alle, die die Daten des Bereichs sehen, oder nur für sein Team. Dateien, die vorher jedes Mitglied sehen konnte, werden eine nach der anderen geschlossen; bis eine Datei umgezogen ist, sieht sie weiterhin, wer sie vorher sah, und das Panel zeigt den Fortschritt.
-- **Bestehende Zugriffsbereiche bleiben, wie sie sind.** [Zugriffsbereiche](/de/workspaces/overview#zugriffsbereiche), die du für Ordner angelegt hast, stehen unter den Bereichen als *Bereiche nur mit Dateien*, mit ihrem eigenen Editor. Nichts wird von selbst zusammengeführt.
-
-Genie AI kann lesen, wer einen Bereich erreicht und welche Quellen er hat, und ändert das nur über eine [Bestätigungskarte](/de/workspaces/overview#bestätigungskarten).
-
-### Zugriff einrichten
-
-Eine geführte Einrichtung bringt Personen, Teams und Zugriff eines neuen Workspaces in einem Zug in Ordnung. Owner und Admins, die Mitglieder und Dokumentzugriff verwalten dürfen, starten sie über die Statuszeile der Zugriffsseite. Es gibt zwei Wege:
+Eine geführte Einrichtung bringt Personen, Teams und Zugriff eines neuen Workspaces in einem Zug in Ordnung. Owner und Admins, die Mitglieder und Dokumentzugriff verwalten dürfen, starten sie oben auf der Teams-Seite oder als Schritt **Zugriff einrichten** des [Einrichtungsassistenten](/de/workspaces/setup-guide). Es gibt zwei Wege:
 
 - **Firmenverzeichnis** — Personen, deine verifizierte Domain, die Verzeichnisverbindung, Teams, worauf jedes Team zugreift, Prüfen.
 - **Von Hand** — Personen, Einladungen, Teams, worauf jedes Team zugreift, Prüfen.
 
-Die Einrichtung speichert laufend und hat keinen Speichern-Button: Schließe sie und mach später weiter, auf einem anderen Gerät, oder lass einen anderen Admin sie abschließen — die Statuszeile zeigt **Einrichtung fortsetzen**, bis sie fertig ist. Domains, Teams, wer in ihnen ist, und Einladungen gelten sofort. Worauf jedes Team und alle zugreifen, bleibt ein Entwurf, bis du **Starten** drückst: Genie schlägt **Bearbeiten** vor, und *Später entscheiden* ändert nichts. **Prüfen** listet zuerst, wer Zugriff verlieren würde, dann, wer welchen gewinnt und was bleibt, und lässt dich den Workspace so sehen, wie eine Person ihn sieht. **Starten** wendet genau an, was Prüfen gezeigt hat. Ist schon jemand anderes in der Einrichtung, siehst du, wer, und kannst **Übernehmen**. Genie AI kann dich durch dieselbe Einrichtung führen und startet sie nur über eine [Bestätigungskarte](/de/workspaces/overview#bestätigungskarten).
+Die Einrichtung speichert laufend und hat keinen Speichern-Button: Schließe sie und mach später weiter, auf einem anderen Gerät, oder lass einen anderen Admin sie abschließen. Domains, Teams, wer in ihnen ist, und Einladungen gelten sofort. Worauf jedes Team und alle zugreifen, bleibt ein Entwurf, bis du **Starten** drückst: Genie schlägt **Bearbeiten** vor, und *Später entscheiden* ändert nichts. **Prüfen** listet zuerst, wer Zugriff verlieren würde, dann, wer welchen gewinnt und was bleibt, und lässt dich den Workspace so sehen, wie eine Person ihn sieht. **Starten** wendet genau an, was Prüfen gezeigt hat. Ist schon jemand anderes in der Einrichtung, siehst du, wer, und kannst **Übernehmen**. Genie AI kann dich durch dieselbe Einrichtung führen und startet sie nur über eine [Bestätigungskarte](/de/workspaces/overview#bestätigungskarten).
 
-**Mit einem Verzeichnis ändert sich nichts, bis du einschaltest.** Verbindest du während der Einrichtung ein Firmenverzeichnis, sendet es sofort Personen und Gruppen, damit sie gezählt werden können — aber niemand tritt bei, bekommt eine Rolle oder ein Team oder wird entfernt, bis du **Einschalten** drückst. Vorher sagt die Prüfung, wie viele Personen hereinkommen, wie viele Entfernungen aus deinem Verzeichnis ausgeführt werden, welche Gruppen ihre Teams füllen, welche Mitglieder dein Verzeichnis nicht zuordnen konnte (sie bleiben) und ob deine Sitzplätze reichen. Das Einschalten läuft im Hintergrund mit einem Fortschrittsbalken; du kannst die Seite verlassen, und **Fortsetzen** nimmt es wieder auf, wenn es mittendrin stehen geblieben ist. Wird der Zugriff nie eingeschaltet, wird das, was das Verzeichnis gesendet hat, nach 30 Tagen wieder gelöscht. Ein Verzeichnis, das schon vor der Einrichtung lief, wird nicht angehalten — es arbeitet weiter wie bisher.
+**Mit einem Verzeichnis ändert sich nichts, bis du einschaltest.** Verbindest du während der Einrichtung ein Firmenverzeichnis, sendet es sofort Personen und Gruppen, damit sie gezählt werden können — aber niemand tritt bei, bekommt ein Team oder wird entfernt, bis du **Einschalten** drückst. Vorher sagt die Prüfung, wie viele Personen hereinkommen, wie viele Entfernungen aus deinem Verzeichnis ausgeführt werden, welche Gruppen ihre Teams füllen, welche Mitglieder dein Verzeichnis nicht zuordnen konnte (sie bleiben) und ob deine Sitzplätze reichen. Das Einschalten läuft im Hintergrund mit einem Fortschrittsbalken; du kannst die Seite verlassen, und **Fortsetzen** nimmt es wieder auf, wenn es mittendrin stehen geblieben ist. Wird der Zugriff nie eingeschaltet, wird das, was das Verzeichnis gesendet hat, nach 30 Tagen wieder gelöscht. Ein Verzeichnis, das schon vor der Einrichtung lief, wird nicht angehalten — es arbeitet weiter wie bisher.
 
-### Regeln für den ganzen Workspace
+## Regeln für den ganzen Workspace
 
-Die Statuszeile hat einen Button **Regeln** mit zwei Schaltern für den ganzen Workspace. Nur der Eigentümer des Workspace kann sie ändern; jeder fragt zuerst und zeigt, wer betroffen ist.
+**Regeln** auf der Personen-Seite hat zwei Schalter für den ganzen Workspace. Nur der Eigentümer des Workspace kann sie ändern; jeder fragt zuerst und zeigt, wer betroffen ist.
 
-- **Das Verzeichnis entscheidet über Personen und Teams.** Solange die Regel eingeschaltet ist, wird hier niemand eingeladen oder entfernt, kein Team angelegt und nicht geändert, wer in einem Team ist — das alles macht dein Firmenverzeichnis. Das Einschalten entfernt die Mitglieder, die hier hinzugefügt wurden und nicht in deinem Verzeichnis sind; die Bestätigung nennt sie vorher. Eigentümer und Admins bleiben, und hier angelegte Teams bleiben, gesperrt. Die Projekte der entfernten Personen gehen an den Eigentümer des Workspace, und ein späteres Ausschalten der Regel bringt niemanden zurück. Selbst verlassen kannst du einen Workspace weiterhin. Die Regel braucht ein verbundenes Verzeichnis.
+- **Das Verzeichnis entscheidet über Personen und Teams.** Solange die Regel eingeschaltet ist, wird hier niemand eingeladen oder entfernt, kein Team angelegt und nicht geändert, wer in einem Team ist — das alles macht dein Firmenverzeichnis. Was ein Team darf, seine Daten und sein Starterpaket bleiben änderbar. Das Einschalten entfernt die Mitglieder, die hier hinzugefügt wurden und nicht in deinem Verzeichnis sind; die Bestätigung nennt sie vorher. Eigentümer und Admins bleiben, und hier angelegte Teams bleiben, gesperrt. Die Projekte der entfernten Personen gehen an den Eigentümer des Workspace, und ein späteres Ausschalten der Regel bringt niemanden zurück. Selbst verlassen kannst du einen Workspace weiterhin. Die Regel braucht ein verbundenes Verzeichnis.
 - **Nur mit Teams teilen.** Solange die Regel eingeschaltet ist, nennen Teilen-Listen Teams und alle, nie eine einzelne Person — in jedem Teilen-Dialog, in der Mitgliederliste eines Projekts und für Genie AI. Zeilen, die bereits eine Person nennen, bleiben, bis jemand sie entfernt.
 
 Genie AI kann beide Regeln lesen und ändert eine nur über eine [Bestätigungskarte](/de/workspaces/overview#bestätigungskarten). MCP-Clients können sie [lesen](/de/workspaces/mcp-api#workspace-verwaltung).
-
-## Teams
-
-Ein Team sind die Personen einer Abteilung, ihr Bereich im [Wissensmodell](/de/workspaces/overview#wissensmodell) und ihr Starterpaket. Öffne **Workspace-Einstellungen → Zugriff**; unter **Teams & Personen** legst du mit **Neues Team** ein Team an und öffnest eines an Ort und Stelle, direkt in der Liste:
-
-- **Personen** — wer im Team ist. In einem Team zu sein ist Zugriff: Alles, was mit dem Team geteilt wird, erreicht seine Personen, und eine Person kann in mehreren Teams sein. Wer Rollen zuweisen darf, fügt hier Personen hinzu oder entfernt sie (mit **Rückgängig**), aber nie jemanden, dessen Zugriff über dem eigenen liegt. Niemand kann sich selbst in ein Team setzen.
-- **Starterpaket** — bis zu sechs **erste Fragen**, angezeigt unter **Frag zum Beispiel** auf dem leeren Bildschirm eines neuen Chats, und bis zu acht [Chat-Vorlagen](/de/workspaces/overview#chat-vorlagen), die auf der Workspace-Startseite und in der Vorlagengalerie zuerst erscheinen.
-- **Wissen** — jedes Team erhält einen eigenen [Bereich](/de/workspaces/overview#wissensmodell), benannt nach dem Team. Der Tab zeigt die Bereiche, auf die das Team zugreift; öffne einen, um seine Klassen und Eigenschaften zu sehen, jede mit einer Stufe, die du ändern kannst, und **Wer hierauf zugreift**.
-- **Auch geteilt mit** — wie viele Tools, Agenten und Quellen das Team erreicht.
-- **Team löschen** — die Bestätigung sagt, wer was verliert.
-
-**Dein Heimat-Team** ist das deiner Teams, von dem du startest: Es bestimmt das Starterpaket, das du siehst, und den Bereich, auf dem sich die Modell-Seite öffnet. Du wählst es unter den Teams, in denen du bist; es öffnet selbst nichts.
-
-Wenn du etwas teilst, wähle lieber ein Team, statt Personen einzeln zu nennen — wer später ins Team kommt, erhält dasselbe. Eine [Verzeichnisgruppe](/de/workspaces/provisioning#rollen-und-teams-aus-gruppen) kann die Personen eines Teams mit deinem Identity Provider abgleichen. Ein Workspace kann bis zu 20 Teams haben, und Genie AI kann Teams lesen und dein Heimat-Team für dich setzen.
 
 ## Gleichzeitig am selben Projekt arbeiten
 
@@ -179,62 +189,3 @@ Ein Workspace-Projekt unterstützt jeweils nur eine aktiv bearbeitende Person. W
 <Tip>
   Du musst niemanden bitten, „loszulassen" — die Sperre wird automatisch aufgehoben, kurz nachdem die andere Person nicht mehr aktiv arbeitet, und du kannst tippen, sobald das Projekt frei ist.
 </Tip>
-
-## Bestehende Mitglieder verwalten
-
-Um die Rollen eines Mitglieds anzusehen oder zu ändern, klicke auf die Kontozeile unten in der Seitenleiste, wähle **Workspace-Einstellungen** und öffne dann **Mitglieder**.
-
-### Ein Mitglied finden
-
-Die Mitgliedertabelle zeigt jede Person mit ihren Rollen und auf breiteren Bildschirmen, wann sie beigetreten ist und wie viele Berechtigungen ihre Rollen geben. Nutze die Suchleiste darüber, um nach Name oder E-Mail-Adresse zu filtern. Du kannst auch über die Tab-Buttons nach Rolle filtern: **Alle**, **Eigentümer**, **Admin**, **Mitglied** oder **Editor**.
-
-### Die Rollen eines Mitglieds ändern
-
-<Steps>
-  <Step title="Mitglied öffnen">
-    Klicke irgendwo auf die Zeile eines Mitglieds. Ein großer Dialog öffnet sich — auf dem Handy bildschirmfüllend — mit der Person oben, ihren Rollen in der Hauptspalte und daneben der Übertragung der Eigentümerschaft und **Mitglied entfernen**. Das geöffnete Mitglied steht in der Adresse der Seite: Du kannst einer Kollegin den Link schicken, und der Zurück-Button deines Browsers schließt den Dialog.
-  </Step>
-  <Step title="Rollen des Mitglieds wählen">
-    Füge unter **Rollen** jede Rolle hinzu, die dieses Mitglied haben soll, oder entferne sie — eine eingebaute Rolle, eine benutzerdefinierte Rolle oder mehrere gleichzeitig. Der Zugriff ist die Summe aller Rollen. Die verfügbaren Optionen hängen von deiner eigenen Rolle ab: Nur Eigentümer können die Rolle „Eigentümer" an jemand anderen vergeben.
-  </Step>
-  <Step title="Speichern">
-    Klicke auf **Rollen speichern**; der Button bleibt deaktiviert, bis sich etwas geändert hat. Die Änderung wird sofort wirksam, und der Dialog bleibt bei diesem Mitglied. Schließt du den Dialog mit ungespeicherten Rollenänderungen, fragt Genie nach, bevor sie verworfen werden.
-  </Step>
-</Steps>
-
-Du kannst Genie AI auch bitten, Rollen zu ändern. Sie zeigt eine [Bestätigungskarte](/de/workspaces/overview#best%C3%A4tigungskarten) mit den Rollen des Mitglieds jetzt und danach und wendet die Änderung erst an, wenn du sie drückst.
-
-### Ein Mitglied entfernen
-
-<Steps>
-  <Step title="Mitglied öffnen">
-    Klicke auf die Zeile des Mitglieds, um seinen Dialog zu öffnen.
-  </Step>
-  <Step title="Entfernen">
-    Klicke auf **Mitglied entfernen** und bestätige die Aktion. Das Mitglied verliert sofort den Zugriff auf den Workspace und alle Projekte.
-  </Step>
-</Steps>
-
-<Warning>
-Das Entfernen eines Mitglieds ist sofortig und kann über die UI nicht rückgängig gemacht werden. Um den Zugriff wiederherzustellen, musst du die Person erneut einladen.
-</Warning>
-
-Solange die Regel [Das Verzeichnis entscheidet über Personen und Teams](#regeln-für-den-ganzen-workspace) eingeschaltet ist, ist **Mitglied entfernen** ausgeblendet: Personen werden in deinem Firmenverzeichnis entfernt.
-
-### Einen Workspace verlassen
-
-Wenn du Mitglied, Admin oder Editor bist (aber nicht der einzige Eigentümer), kannst du einen Workspace selbst verlassen. Öffne deine eigene Zeile in der Mitgliedertabelle und klicke im Dialog auf **Workspace verlassen**.
-
-<Warning>
-Wenn du der Hauptverantwortliche eines Workspace bist, kannst du ihn nicht verlassen, bis du die Eigentümerschaft an ein anderes Mitglied überträgst.
-</Warning>
-
-### Eigentümerschaft übertragen
-
-Der Hauptverantwortliche eines Workspace kann ihn an ein anderes Mitglied übergeben. Öffne die Zeile dieses Mitglieds in der Mitgliedertabelle und klicke auf **Eigentümerschaft übertragen**, oder frage Genie AI — es zeigt eine Karte mit der gefundenen Person, die du dort bestätigst.
-
-- **Der neue Eigentümer** erhält die eingebaute Rolle Eigentümer.
-- **Du** behältst deine Rollen und kannst den Workspace danach wie jedes andere Mitglied verlassen oder entfernt werden.
-- **Die Abrechnung wandert nicht mit.** Abo und Zahlungsdaten bleiben unverändert, bis jemand sie unter Abrechnung ändert; die Übertragung weist darauf hin.
-- **Der Hauptverantwortliche kann nicht entfernt oder unter Admin herabgestuft werden** — weder in der Web-App noch über Genie AI oder die [MCP-API](/de/workspaces/mcp-api) —, bevor er den Workspace weitergegeben hat. Eine Änderung an einer benutzerdefinierten Rolle, die ihn ohne Eigentümer- oder Admin-Rolle ließe, wird abgelehnt.
-

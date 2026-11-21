@@ -6,7 +6,7 @@ description: "Verbinde Microsoft Entra ID, Okta oder ein beliebiges SCIM-2.0-Ver
 Statt Einladungen zu tippen, können Owner und Admins den Identity Provider des Unternehmens verbinden — Microsoft Entra ID, Okta oder einen beliebigen SCIM-2.0-Client. Das Verzeichnis fügt dann Personen zum Workspace hinzu, hält Namen und Gruppen aktuell und entfernt sie, wenn sie das Unternehmen verlassen.
 
 <Note>
-  Nur **Owner** und **Admins** können den Verzeichnisabgleich öffnen. Er liegt unter **Workspace-Einstellungen → Zugriff**: Öffne oben die Statuszeile und drücke in ihrer Zeile **Verzeichnis** auf **Verwalten**. Alte Links auf die Seite Verzeichnisabgleich landen dort.
+  Nur **Owner** und **Admins** können den Verzeichnisabgleich öffnen. Er liegt unter **Workspace-Einstellungen → Personen**: Drücke **Verwalten** in der Zeile oben, die sagt, woher die Personen kommen. Alte Links auf die Seite Verzeichnisabgleich landen dort.
 </Note>
 
 ## Das bekommst du
@@ -30,7 +30,7 @@ Statt Einladungen zu tippen, können Owner und Admins den Identity Provider des 
 
 <Steps>
   <Step title="Domain hinzufügen und verifizieren">
-    Drücke in den Einstellungen des Verzeichnisabgleichs (**Workspace-Einstellungen → Zugriff** → Statuszeile → **Verzeichnis** → **Verwalten**) auf **Domain hinzufügen** und gib zum Beispiel `contoso.com` ein. Genie zeigt dir einen TXT-Eintrag, den du bei deinem DNS-Anbieter veröffentlichst. Sobald er aktiv ist, drücke **Verifizieren**. Eine Domain kann nur von einem Workspace verifiziert werden, und jede Domain (etwa `eu.contoso.com`) braucht einen eigenen Eintrag.
+    Drücke in den Einstellungen des Verzeichnisabgleichs (**Workspace-Einstellungen → Personen** → **Verwalten**) auf **Domain hinzufügen** und gib zum Beispiel `contoso.com` ein. Genie zeigt dir einen TXT-Eintrag, den du bei deinem DNS-Anbieter veröffentlichst. Sobald er aktiv ist, drücke **Verifizieren**. Eine Domain kann nur von einem Workspace verifiziert werden, und jede Domain (etwa `eu.contoso.com`) braucht einen eigenen Eintrag.
   </Step>
   <Step title="Provisionierungs-Schlüssel erstellen">
     Erstelle auf der Seite [API-Schlüssel](/de/workspaces/api-keys) einen Schlüssel mit der Berechtigung **Mitglieder provisionieren (SCIM)**. Der Schlüssel handelt als die Person, die ihn erstellt hat, und kann nur Personen hinzufügen, ändern oder entfernen, die diese Person verwalten könnte. Erstelle ihn als **Owner**, wenn das Verzeichnis auch Admins verwalten soll.
@@ -56,7 +56,7 @@ Neue Mitglieder erhalten die Rolle, die ihre Gruppen ihnen geben, sonst **Mitgli
 - Wer alle zugeordneten Gruppen verlässt, wird wieder **Mitglied** — sofern eine Gruppenzuordnung ihm die Rolle zuvor gegeben hatte.
 - Wen keine Zuordnung je berührt hat, behält die Rolle, die eine Person ihm gegeben hat. Owner werden nie verändert.
 
-Eine Verzeichnisgruppe kann auch ein [Team](/de/workspaces/members#teams) füllen — statt einer Rolle, zusätzlich oder keins von beiden. Wer der Gruppe beitritt, kommt ins Team, und wer sie verlässt, wird herausgenommen; Personen, die jemand von Hand ins Team gesetzt hat, bleiben. Admins kommen auf diesem Weg nur in ein Team, wenn der Owner es eingerichtet hat. Eine neue Gruppe, die dein Verzeichnis sendet, erscheint in der Statuszeile der Zugriffsseite unter **Teams**: Drücke **Zum Team machen**, um ein Team mit ihrem Namen anzulegen, oder **Kein Team**, um nicht mehr gefragt zu werden (mit **Rückgängig**). Du kannst auch Genie AI bitten, eine Gruppe mit einem Team zu verknüpfen; es zeigt eine Bestätigungskarte. Die Einstellungen des Verzeichnisabgleichs zeigen, welches Team jede Gruppe füllt.
+Eine Verzeichnisgruppe kann auch ein [Team](/de/workspaces/members#teams) füllen — statt einer Rolle, zusätzlich oder keins von beiden. Ein Team, das dein Verzeichnis füllt, kann nichts bekommen, was seine Personen für die Datenbank zu Admins macht. Wer der Gruppe beitritt, kommt ins Team, und wer sie verlässt, wird herausgenommen; Personen, die jemand von Hand ins Team gesetzt hat, bleiben. Admins kommen auf diesem Weg nur in ein Team, wenn der Owner es eingerichtet hat. Eine neue Gruppe, die dein Verzeichnis sendet, erscheint auf der Teams-Seite unter **Braucht dich**: Drücke **Zum Team machen**, um ein Team mit ihrem Namen anzulegen, oder **Kein Team**, um nicht mehr gefragt zu werden (mit **Rückgängig**). Du kannst auch Genie AI bitten, eine Gruppe mit einem Team zu verknüpfen; es zeigt eine Bestätigungskarte. Die Einstellungen des Verzeichnisabgleichs zeigen, welches Team jede Gruppe füllt.
 
 Wenn du lieber geführt wirst, geht [Zugriff einrichten](/de/workspaces/members#zugriff-einrichten) Domain, Verzeichnis und Teams in einem Ablauf durch.
 
@@ -72,14 +72,14 @@ Ein Verzeichnis, das bereits lief, oder eines, das du ohne die Einrichtung verbi
 
 ## Den Abgleich im Blick behalten
 
-Nach der Einrichtung zeigt die Statuszeile unter **Workspace-Einstellungen → Zugriff**, wie es dem Abgleich geht — siehe [Die Statuszeile](/de/workspaces/members#die-statuszeile):
+Nach der Einrichtung zeigt der obere Teil von **Workspace-Einstellungen → Personen**, wie es dem Abgleich geht — siehe [Personen](/de/workspaces/members#personen):
 
 - **Verzeichnis** sagt, wann die letzte Änderung ankam, oder dass die Synchronisierung **gestoppt** ist, weil der Provisionierungs-Schlüssel pausiert, abgelaufen oder widerrufen ist oder sein Ersteller keine Mitglieder mehr verwalten darf. Solange sie gestoppt ist, behalten im Verzeichnis entfernte Personen ihren Zugriff hier — entferne sie von Hand, wenn sie gegangen sind.
 - **Personen** listet, was dich braucht: einen Owner oder Admin, den dein Verzeichnis entfernen wollte, Entfernungen, die noch nicht durchgegangen sind, und Personen, die auf einen freien Sitzplatz warten.
 
 ## Das Verzeichnis entscheiden lassen
 
-Standardmäßig verwalten das Verzeichnis und die Personen in Genie die Mitglieder gemeinsam: Du kannst weiterhin jemanden von Hand einladen oder ein Team ändern. Der Owner kann unter **Zugriff → Regeln** die Regel **Das Verzeichnis entscheidet über Personen und Teams** einschalten. Ab dann wird in Genie niemand mehr eingeladen, entfernt oder in ein Team gesetzt — das macht nur noch das Verzeichnis. Siehe [Regeln für den ganzen Workspace](/de/workspaces/members#regeln-für-den-ganzen-workspace).
+Standardmäßig verwalten das Verzeichnis und die Personen in Genie die Mitglieder gemeinsam: Du kannst weiterhin jemanden von Hand einladen oder ein Team ändern. Der Owner kann unter **Personen → Regeln** die Regel **Das Verzeichnis entscheidet über Personen und Teams** einschalten. Ab dann wird in Genie niemand mehr eingeladen, entfernt oder in ein Team gesetzt — das macht nur noch das Verzeichnis. Siehe [Regeln für den ganzen Workspace](/de/workspaces/members#regeln-für-den-ganzen-workspace).
 
 ## Wenn jemand geht
 
@@ -92,8 +92,8 @@ Deaktiviert oder löscht das Verzeichnis eine Person, entfernt Genie sie aus dem
 ## Verwandte Seiten
 
 <CardGroup cols={2}>
-  <Card title="Mitglieder einladen und verwalten" icon="users" href="/de/workspaces/members">
-    Rollen, benutzerdefinierte Rollen und manuelle Einladungen.
+  <Card title="Personen und Teams" icon="users" href="/de/workspaces/members">
+    Teams, Personen und manuelle Einladungen.
   </Card>
   <Card title="Workspace-API-Schlüssel" icon="key-round" href="/de/workspaces/api-keys">
     Erstelle den Schlüssel, den dein Identity Provider nutzt.

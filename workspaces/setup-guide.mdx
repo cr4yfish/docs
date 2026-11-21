@@ -1,0 +1,74 @@
+---
+title: "The setup guide"
+description: "A step-by-step guide that gets a new workspace connected, read and shared — and tells new people which teams they are on and what their teams want to know."
+---
+
+The **setup guide** walks you through getting a workspace ready, one step at a time. Take the steps in order or in any order, leave whenever you like and come back later — nothing has to be finished. Only **About you** comes first; every other step stays listed but locked until you've saved it.
+
+Two kinds of people see it: whoever sets up a new workspace, and the people they invite. Which steps you get depends on what you may do in the workspace.
+
+## The steps
+
+<Tabs>
+  <Tab title="Setting up the workspace">
+    For people who may manage the workspace's settings — usually the owner or an admin setting it up.
+
+    1. **About you** — your name and, optionally, what you do.
+    2. **Connect data** — the Library's own [Add a source](/workspaces/overview#knowledge-base), right inside the step: pick mail, files, a business app or a database and set it up without leaving the guide.
+    3. **Reading into the ontology** — the switch that lets Genie read your data into the [knowledge model](/workspaces/overview#knowledge-model). The step says where reading stands and offers **Open the ontology** once there are entries.
+    4. **People and teams** — the same [Set up access](/workspaces/members#set-up-access) wizard as on the Teams page, right inside the step. Teams and invitations are steps of that wizard.
+    5. **What new people are asked** — every team's [onboarding questions](#team-questions), editable in place.
+    6. **Ask your first question** — opens Genie AI.
+    7. **Notifications** — turn on push notifications on this device.
+  </Tab>
+  <Tab title="Joining a workspace">
+    For everyone else — people the workspace invited.
+
+    1. **About you** — your name.
+    2. **Your teams** — which teams you are on, what each lets you do, and the questions your teams ask, if any.
+    3. **Ask your first question** — opens Genie AI.
+    4. **Notifications** — turn on push notifications on this device.
+  </Tab>
+</Tabs>
+
+A step is done when the workspace says so, not because someone ticked it: **Connect data** is done once data is coming in, **Reading into the ontology** once the knowledge model has its first entry, and **People and teams** once access has been set up. So when one admin connects Google Drive, the step reads done for every other admin too. The remaining steps are done when you mark them.
+
+## Moving through it
+
+- **One step at a time.** The list of steps sits on the left (on a phone, behind a button in the header such as *2/7 · Connect data*). Each row says where that step stands — *Started · step 3 of 5*, *Waiting for data*. Click any row to jump to it.
+- **The bar at the bottom** shows how far along you are (*2 of 7 done*) and holds **Previous step**, **Later** and **Next:** with the name of the next step. On the last step it reads **To the workspace**.
+- **Later** puts a step off and moves on. A step you put off reads **Take it up again**.
+- **The step is in the address**, so a reload, a link or your browser's Back button lands on the right step.
+
+## Coming back to it
+
+You land in the workspace when you leave the guide. Two ways lead back:
+
+- **Continue setup** on the workspace home, under *For you*, as long as the guide still has steps that aren't done or put off — for example *2 of 6 chapters done*.
+- **Setup guide** in the account menu at the bottom of the sidebar, always there for everyone. Use it to change something long after setup.
+
+The guide opens on the step you last had open.
+
+Genie AI can tell you what is left — ask *"What's left to set up?"* — and can put a step off or mark it done for you, with a link to each step. **About you** can only be filled in on the page.
+
+## Team questions
+
+By default, joining a workspace asks you nothing beyond your name: **Your teams** just tells you which teams you are on and what they let you do. A team that wants to know something from the people who join it — *Which clients do you work on?* — can add **onboarding questions**.
+
+<Steps>
+  <Step title="An admin writes the questions">
+    On a team's page (**Workspace settings → Teams** → the team → **Onboarding questions**), or in the setup guide's step **What new people are asked**, which lists every team. Each team can ask a few questions; the editor shows how many are left. Removing a question also removes the answers given to it.
+  </Step>
+  <Step title="New people answer them">
+    In **Your teams**, each team that asks something gets its own group of fields. Nothing is required: answer what you like and press **Save and continue**. You can change your answers later in the same step.
+  </Step>
+  <Step title="Genie AI uses the answers">
+    When you ask Genie AI something, it knows what you answered and uses it — for example, to focus on the clients you named.
+  </Step>
+</Steps>
+
+**Your answers are yours.** Only you can read them — not the team's admin and not the workspace owner. They are information about you for Genie AI, not a form your company collects, and they never give you access to anything. You are only asked the questions of teams you are on now; when you leave a team, its questions and your answers to them no longer apply, and leaving the workspace deletes your answers.
+
+If two admins edit the same team's questions at the same time, the second save is refused with *Someone else changed these questions. Nothing was saved.* and offers **Load the current questions** — so nobody deletes answers to a question they haven't seen.
+
+Genie AI can read and change a team's questions (for people who may manage the workspace's settings) and read or save your own answers. The same tools are available to [MCP clients](/workspaces/mcp-api#team-onboarding-questions).
