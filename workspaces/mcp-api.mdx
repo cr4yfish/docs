@@ -59,7 +59,7 @@ Read and update your workspace, members, invitations, settings, and billing.
 | `get_workspace_teams` | The workspace's [teams](/workspaces/members#teams), the teams you are on and your home team. Pass `membersOf` to list one team's people (needs permission to see members) |
 | `set_workspace_member_team` | Set a member's home team, among the teams they are on. Your own is always yours to change; someone else's needs permission to manage settings. Adding people to a team and editing its starter kit stay in the app |
 | `list_workspace_invites` | Invites that still work (newest 50) with role, expiry, remaining uses and whether each is personal — the invitee's address and the invite code are never returned. Needs permission to invite members |
-| `invite_workspace_member` | Create a shareable invite link for a given role. Refused, naming the rule, while the directory decides people and teams |
+| `invite_workspace_member` | Create a shareable invite link. An invitation gives what everyone may do, so any role other than `member` is refused — people are put on teams after they join. Refused, naming the rule, while the directory decides people and teams |
 | `get_workspace_access_rules` | Read the workspace's two [access rules](/workspaces/members#rules-for-the-whole-workspace): `directoryDecides` (the company directory decides people and teams, so nobody is invited or removed here) and `teamsOnly` (share with teams or everyone, never one person). Any member; read-only — changing a rule is the owner's, in the app |
 | `revoke_workspace_invite` | Cancel a pending invite |
 | `remove_workspace_member` | Remove a member immediately, along with their access to the workspace's projects — invited back, they start without it. Refused while the directory decides people and teams. The workspace's owner of record can't be removed (or demoted below Admin) until they've handed the workspace on — see [Transfer ownership](/workspaces/members#transfer-ownership) |
@@ -73,18 +73,29 @@ Read and update your workspace, members, invitations, settings, and billing.
 | `list_workspaces` | All workspaces the authenticated user belongs to |
 | `list_user_workspaces` | Same list, with the currently-connected workspace marked |
 | `create_workspace` | Create a new workspace, owned by you. Independent of the currently connected workspace — it appears in your workspace list right away |
-| `invite_workspace_member_by_email` | Send a single-use invite directly to an email address. The invitee doesn't need an existing Genie account — they become a member once they accept. Takes one plain address. Each email counts toward your daily invite emails, the same count the app's Invite dialog uses; past it, the tool says so and points to `invite_workspace_member` |
+| `invite_workspace_member_by_email` | Send a single-use invite directly to an email address. The invitee doesn't need an existing Genie account — they become a member once they accept. Takes one plain address. Each email counts toward your daily invite emails, the same count the app's Invite dialog uses; past it, the tool says so and points to `invite_workspace_member`. Like the link, it gives what everyone may do and refuses any other role |
 
 ### Workspace roles and permissions
 
-Everything the **Access → Roles** settings page can do — the four built-in roles (owner/admin/member/editor) and any custom role or group the workspace defines. Every write requires the `roles.manage` permission. Over MCP you can read roles, create one and rename one; assigning and changing what roles grant is made in the app (see [Changes that stay in the app](#changes-that-stay-in-the-app)).
+Roles are [teams](/workspaces/members#teams) now: these tools read the built-in roles (owner/admin/member/editor), the [teams that were roles](/workspaces/members#teams-that-were-roles) and the groups behind teams. Every write requires the `roles.manage` permission. Over MCP you can read roles, create a group and rename one; assigning and changing what roles grant is made in the app (see [Changes that stay in the app](#changes-that-stay-in-the-app)).
 
 | Tool | What it does |
 |---|---|
 | `list_workspace_roles` | Every role in the workspace — the four built-ins with their current permissions, and every custom role or group, each with a role id, base role, granted permissions, and member count |
 | `list_workspace_permissions` | The full permission catalog: what each one covers, and whether it's flagged sensitive (money, data, or the workspace itself) |
-| `create_workspace_role` | Create a custom role that narrows a built-in role — a permission the base role lacks is dropped, never granted — or a group with no permissions of its own, just a target for granting knowledge access areas |
+| `create_workspace_role` | Create a group with no permissions of its own, just a target for granting knowledge access areas. A new role is refused (`roles_are_teams`): a new set of things people may do is a new team, made in the app |
 | `update_workspace_role` | Rename a custom role or change its description |
+
+### Team onboarding questions
+
+The questions a team asks people who join it, and your own answers — see [Team questions](/workspaces/setup-guide#team-questions).
+
+| Tool | What it does |
+|---|---|
+| `get_team_onboarding_questions` | Every team's onboarding questions, with their ids. Any member |
+| `set_team_onboarding_questions` | Replace one team's whole list of questions. Pass the question ids you read; if the list changed in the meantime, nothing is saved, so nobody deletes answers to a question they haven't seen. Needs permission to manage the workspace's settings |
+| `get_my_team_questions` | The questions your teams ask you, with your own answers. Never another person's answers |
+| `answer_my_team_questions` | Save or change your own answers. Only questions a team you are on asks are accepted; an empty answer removes one |
 
 ### Workspace API keys
 
@@ -479,7 +490,7 @@ Manage the MCP server integrations (Linear, GitHub, Notion, Stripe, etc.) that p
 
 | Tool | What it does |
 |---|---|
-| `list_workspace_mcp_servers` | All configured integrations — name, URL, status, auth type, and whether its credentials are shared or per-member (no credentials returned) |
+| `list_workspace_mcp_servers` | All configured integrations — name, status, auth type, and whether its credentials are shared or per-member (no credentials returned). The URL is included only for people who may manage integrations, since some server addresses carry a key |
 | `add_workspace_mcp_server` | Add a new MCP server integration |
 | `update_workspace_mcp_server` | Edit name, URL, transport, rotate a bearer token, or switch it between [shared and per-member credentials](/workspaces/integrations#shared-vs-personal-connections) |
 | `toggle_workspace_mcp_server` | Enable or disable a server without removing it |

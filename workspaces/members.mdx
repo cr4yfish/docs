@@ -1,75 +1,140 @@
 ---
-title: "Invite and manage workspace members"
-description: "Add teammates to your workspace via invite link or email, assign them the right role, change roles later, and remove members when needed."
+title: "People and teams"
+description: "Invite people to your workspace, put them on teams, and let each team decide what its people may do and which data they work with."
 ---
 
-Every workspace has a members list that determines who can access projects and what they can do. Owners and admins control the list: they can invite new people, adjust roles, and remove members at any time. Regular members and editors can see the workspace and work in projects, but they cannot manage other members or workspace settings.
+**People are on teams. A team says what its people may do and what data they work with.** There are no roles to pick for a person any more: everyone in the workspace may do the same basic things, and their teams add the rest. Two teams are always there:
 
-<Note>
-Only **owners** and **admins** can open **Workspace settings** and manage workspace members. If you do not see it under the account menu at the bottom of the sidebar, contact your workspace owner.
-</Note>
+- **Everyone** — every person in the workspace. Nobody is added or removed by hand. Its page says what every person may do and holds the **shared data**.
+- **Admins** — the people who may do everything, except deleting the workspace, and who see all data. One of them is the workspace's **owner**.
 
-## Roles at a glance
-
-Genie has four workspace roles. Each role inherits all the permissions of the roles below it.
-
-<CardGroup cols={2}>
-  <Card title="Owner" icon="crown">
-    Full control over the workspace. Owners can manage all members — including promoting someone else to owner — change any setting, and delete the workspace. There is always at least one owner and an owner cannot leave the workspace without transferring ownership first. One owner is the workspace's **owner of record** — the person who created it or was handed it — and that person must hand it on before leaving.
-  </Card>
-  <Card title="Admin" icon="shield">
-    Can manage members (except other owners), toggle workspace settings, enable or disable the activity log, and manage MCP integrations. Admins always have access to all projects regardless of project-level access control.
-  </Card>
-  <Card title="Member" icon="user">
-    Can create new projects, edit any project they have access to, and collaborate normally. When project access control is enabled, members must be explicitly invited to individual projects by an admin or owner.
-  </Card>
-  <Card title="Editor" icon="pencil">
-    Can edit projects they have already been invited to, but cannot create new projects. This role is suited for external collaborators or contractors who should work on specific projects without broader access.
-  </Card>
-</CardGroup>
+Both live under **Workspace settings → People and access**, which has two pages: **Teams** and **People**. Every member can open Teams. People opens for whoever may see or invite people.
 
 <Tip>
   Using Microsoft Entra ID, Okta or another SCIM directory? Let it add and remove people for you — see [Provisioning](/workspaces/provisioning).
 </Tip>
 
-## Custom roles
+## Teams
 
-The four built-in roles above are a starting point, not a ceiling — owners and admins can create **custom roles** that narrow exactly what a role is allowed to do, picked from a catalog of granular permissions grouped by area (projects, [Genie Agents](/workspaces/workflow-apps), [Genie Tools](/workspaces/genie-tools), members, roles, integrations, billing, security, and more) — Genie Agents and Genie Tools each get their own view / create / edit / delete / run permissions, separate from a Genie App's.
+**Workspace settings → Teams** lists **Everyone** and **Admins** at the top, then every team. Each row says how many people are on it (and whether you are), where its people come from — added here or from Microsoft 365 — what it may do on top of everyone (*Nothing extra*, *Plus billing* …) and its data (*Own data · seen by 2 more teams*, *Sees all data* …). Search finds a team by its name, by something it may do, by a class of its data or by a source.
 
-Deleting a project and deleting a knowledge document each have a permission of their own, and the Editor role holds neither — whether the delete comes from the app, Genie AI or MCP. The Library's Sync view follows the integrations permission and the Ontology page the knowledge-model management permission rather than the Owner or Admin role itself, so a custom role can be given either.
+A **Needs you** section appears when there is something to decide: new groups from your directory (**Make it a team** or **Not a team**), [data without a team](#data-without-a-team), or the team limit reached.
 
-A custom role always **inherits** one of the built-in roles as its base, and can only take permissions away from that base — never add ones the base role doesn't have. So a custom role built on **Member** can, for example, keep the ability to create and edit projects while losing access to billing or the ability to remove other members, but it can never be granted something an Owner-only permission like deleting the workspace.
+Every member sees every team and its name — team names are not secret. What you see inside a team follows your permissions: a section you may not read says who it is shown to instead.
 
-<Tip>
-A member isn't limited to holding one role. Give someone **Editor** plus a custom **Billing Manager** role, for example, and they get everything either one allows — the strongest role they hold decides their overall standing (an owner among their roles still makes them an owner), and every other role only adds permissions on top of that. See [Change a member's role](#change-a-members-role).
-</Tip>
+### A team's page
 
-<Steps>
-  <Step title="Open Roles">
-    Click the account row at the bottom of the sidebar, choose **Workspace settings**, open **Access**, then **Roles**.
-  </Step>
-  <Step title="Create a role">
-    Click **New role** and pick which built-in role it's based on. This sets the ceiling for every permission it can hold.
-  </Step>
-  <Step title="Choose permissions">
-    Untick anything you want this role not to have. A permission that depends on another (for example, removing a member depends on being able to see the member list) is handled automatically. Anything above the base role's ceiling is locked and shows which role it comes from.
-  </Step>
-  <Step title="Assign it">
-    Give the role a name and save it, then assign it to a member from their row in the members table the same way you'd assign a built-in role.
-  </Step>
-</Steps>
+A team opens on a page of its own, read top to bottom. Each section has one **Change** button that opens the [guided flow](#create-or-edit-a-team) at exactly that question.
 
-<Note>
-Deleting a custom role doesn't remove access from the people who had it — they drop back to its base built-in role automatically.
-</Note>
+| Section | What it shows |
+|---|---|
+| **May do** | What the team's people may do on top of what everyone may do. A line marked **Sees all data** makes them admins for the database |
+| **Its data** | The team's own classes and records in the [knowledge model](/workspaces/overview#knowledge-model). A team can also keep no data of its own |
+| **Its files** | The sources filed with the team's data, with who sees each |
+| **Who sees its data** | Other teams that see the team's data, at **Can view** or **Can edit**, Admins, and whether everyone else sees it. **See all** lists every person, with the reason |
+| **Who may change its model** | Teams that may change the data's classes, properties and processes — separate from seeing its records |
+| **Also sees** | Other teams' data this team is shown, and the shared data |
+| **People** | The first people on the team. **See all** opens them on the People page |
+| **Managed by** | Who may add and remove the team's people |
+| **Onboarding questions** | What the team asks people who join it — see [Team questions](/workspaces/setup-guide#team-questions) |
+| **Starter kit** | Up to six **first questions**, shown under **Try asking** on a new chat's empty screen, and up to eight [chat templates](/workspaces/overview#chat-templates), shown first on the workspace home |
+
+**Everyone**'s page shows how many people are in the workspace, what every person may do and the shared data. **Admins**' page lists who the admins are and says they may do everything except delete the workspace.
+
+### Create or edit a team
+
+**New team** and **Edit team** open the same guided flow: one question a screen, with a progress bar. In edit mode the counter is a menu that jumps to any question, and **Save and close** is on every screen.
+
+1. **What is the team called?**
+2. **Who is on it?** People you pick, a group from Microsoft 365, or nobody yet.
+3. **What may its people do, on top of what everyone may do?** Pick from groups such as Apps, Agents and tools, Knowledge, See governance, Billing or Workspace settings. A group with parts asks which parts on the next screen. Ticking something that makes people admins for the database warns you on that screen, with how many people it affects.
+4. **Does it keep data of its own?**
+5. **Who else sees its data?** Nobody else, some teams (each at **Can view** or **Can edit**), or everyone.
+6. **Who may change its model?** Only admins, the team itself, or other teams.
+7. **Which other teams' data does it see?**
+8. **What should a new chat suggest to them first?** The starter kit.
+9. **Review.** Every change as before → after, with who it affects, and one **Save**.
+
+Nothing is saved before the last screen. Your answers are kept in the browser as a draft, so a reload or Back lands on the same question. When you save, Genie first applies everything that takes access away, then the team itself, then everything that gives — so a failed removal never ends with more access than before. If only part of a save lands, the last screen lists what is left and **Try again** sends only that. A line someone else changed in the meantime is reported, not overwritten.
+
+You can never give what you may not do yourself, and nobody can put themselves on a team. A team your directory fills can't be given anything that makes its people admins for the database.
+
+### Who manages a team's people
+
+People who may manage teams change who is on any team. You can also let a team manage only some teams: when you tick **Manage teams and their people** in the flow, choose **Every team** or **Teams I pick**. A team that manages Sales, for example, can add and remove Sales's people — and nothing else. The team's **Managed by** section shows who that is.
+
+### Data without a team
+
+Data in the knowledge model that no team holds shows up on the Teams page for owners and admins: *2 sets of data belong to no team*. Open one to decide whose it is — an existing team's, a new team's, or everyone's. The last screen says which teams and how many people gain or lose it before anything moves. Large sets move in the background and can be paused, resumed or stopped. Until you decide, the data is seen exactly as before.
+
+### Delete a team
+
+**⋯ → Delete** on a team's page asks what happens to the team's data before the team goes: hand it to another team or to everyone. Deleting a team never deletes data, and the confirmation says how many people lose what the team let them do. Files kept in access areas from before teams are listed under **Files from before teams** on the Teams page.
+
+### Teams that were roles
+
+Custom roles from before teams are listed under **Teams that were roles**, tagged *Was a role*. Their people keep what they had — nothing is converted behind anyone's back. Such a team has May do and People, but no data or starter kit. Press **Make it a full team** to give it those; the confirmation says what changes first, including that its people then may do at least what everyone may do. New roles can't be created any more: a new set of things people may do is a new team.
+
+### Your home team
+
+**Your home team** is the one of your teams you start from: it picks the starter kit a new chat opens with. Choose it on your own page under **People**. It opens nothing by itself.
+
+When you share an item, prefer a team over naming people one by one — whoever joins the team later gets the same. A [directory group](/workspaces/provisioning#roles-and-teams-from-groups) can keep a team's people in step with your identity provider. Genie AI can read teams, change who is on one and what it may do, hand over data without a team, and set your home team — every change through a [confirmation card](/workspaces/overview#confirmation-cards).
+
+## People
+
+**Workspace settings → People** lists everyone in the workspace, 50 at a time, with search. Each row names the person's teams. Open a team's **See all** to see the list filtered to that team, with a chip that removes the filter. At the top, a line says where people come from — your company directory or invites here — with **Manage** for [directory sync](/workspaces/provisioning); **Rules** and **Invite** sit beside the title. What needs you is listed there too: an owner or admin your directory asked to remove, and people waiting for a free seat.
+
+Someone who may only invite sees the invitations, not the list of people.
+
+### A person's page
+
+A person opens on a page of their own. Everyone can open their own page.
+
+| Section | What it shows |
+|---|---|
+| **Teams** | Each team they are on, and where that comes from — *From Microsoft 365* or *Added here by …* with the date. **Add to a team** and **Remove** where you may. On your own page, your **home team** |
+| **May do** | What everyone may do, then one line per team that adds something, *through Team …*. Read-only: it is changed on the team |
+| **Works with** | The data of their teams, what those teams also see, and the shared data, each with its level. Read-only |
+| **Exceptions** | Things shared with this person alone — one class, property, relation, process or source. A row opens that item's Share dialog |
+| **From before** | What the pages no longer offer, such as an old Editor assignment (*May do less than everyone*) with **Lift** |
+
+A person never gets permissions of their own or a team's whole data: they get those through teams. Only small exceptions name a person. A person's own synced mail and drive stay private and are not on these pages.
+
+### Remove someone
+
+Open the person and choose **Remove** from the menu. They lose access to the workspace and all its projects immediately.
+
+<Warning>
+Removing someone is immediate and cannot be undone from the UI. To restore access, invite them again.
+</Warning>
+
+While the rule [The directory decides people and teams](#rules-for-the-whole-workspace) is on, people are removed in your company directory instead.
+
+### Leave a workspace
+
+Unless you are the workspace's owner of record, you can leave a workspace yourself from your own page under **People**.
+
+<Warning>
+If you are the workspace's owner of record, you cannot leave until you transfer ownership to someone else.
+</Warning>
+
+### Transfer ownership
+
+The workspace's owner of record can hand it on. Open the person's page and press **Transfer ownership**, or ask Genie AI — it shows a card naming the person it found, and you confirm it there.
+
+- **The new owner** becomes the workspace's owner.
+- **You** keep your teams and can then leave or be removed like anyone else.
+- **Billing does not move.** The subscription and payment details stay as they are until someone changes them under Billing; the transfer tells you so.
+- **The owner of record can't be removed** — from the web app, Genie AI or the [MCP API](/workspaces/mcp-api) — until they've handed the workspace on.
 
 ## Invite people to your workspace
 
-Open **Workspace settings → Members** and press **Invite**. The dialog offers two ways to invite:
+Open **Workspace settings → People** and press **Invite**. **An invitation gives what everyone may do — nothing else.** Put people on teams after they join: their teams decide the rest. The dialog offers two ways to invite:
 
 <Tabs>
   <Tab title="By email">
-    Enter one or several email addresses — separated by commas, semicolons or new lines — pick one role for all of them, and press **Send invitations**.
+    Enter one or several email addresses — separated by commas, semicolons or new lines — and press **Send invitations**.
 
     - Each address gets its own personal invite and its own email. The invite works for 7 days, and only for that address.
     - Afterwards the dialog says per address how it went: sent, already a member (nothing is sent), or made but not delivered — then copy that invite's link and send it yourself.
@@ -78,99 +143,44 @@ Open **Workspace settings → Members** and press **Invite**. The dialog offers 
   <Tab title="By link">
     Create a shareable link and send it through any channel:
 
-    - **Role** — the role the invited person receives when they accept: Editor, Member, Admin, or Owner.
-    - **Max Uses** — how many people can use the link before it expires. Default is 1.
-    - **Valid (days)** — how many days the link stays active. Default is 7.
+    - **Max uses** — how many people can use the link before it expires. Default is 1.
+    - **Valid for** — how many days the link stays active. Default is 7.
 
-    When someone opens the link and clicks **Join Workspace**, they are added immediately with the role you chose.
+    When someone opens the link and clicks **Join Workspace**, they are added immediately.
   </Tab>
 </Tabs>
 
-Every invite that still works — emailed ones included — is listed under **Invite links** on the Members page until it is accepted or expires.
+Every invite that still works — emailed ones included — is listed under **Invite links** until it is accepted or expires. Invitations sent before teams replaced roles still work as they were sent.
 
 <Tip>
-Create a link with a high **Max Uses** count for open team onboarding (for example, when sharing a workspace link in a company-wide Slack channel), and invite by email for specific people.
+Create a link with a high **Max uses** count for open team onboarding (for example, when sharing a workspace link in a company-wide Slack channel), and invite by email for specific people.
 </Tip>
 
 <Note>
-While the rule [The directory decides people and teams](#rules-for-the-whole-workspace) is on, nobody is invited here: the Members page hides **Invite**, and people are added in your company directory.
+While the rule [The directory decides people and teams](#rules-for-the-whole-workspace) is on, nobody is invited here: the People page hides **Invite**, and people are added in your company directory.
 </Note>
 
-## The Access page
+New people go through a short [setup guide](/workspaces/setup-guide) that tells them which teams they are on and asks their teams' onboarding questions.
 
-**Workspace settings → Access** shows who is in the workspace and what they reach on one screen: *People are on teams. Teams have access to areas.* Nothing leads to a separate page — a row opens in place, and a longer list opens in a panel with search. Old links to the Teams, People, Who reaches what, Access areas and Directory sync pages land in the right place here.
+## Set up access
 
-| Part | What it shows |
-|---|---|
-| **Status line** | For owners and admins, on top. During setup it holds the [setup](#set-up-access); afterwards it is one line — *Everything is in order*, *3 things need you* or *The directory sync is stopped* — that opens into the details. See [The status line](#the-status-line) |
-| **Teams & people** | A switch between the team list and the people list. A [team](#teams) opens into its people, its starter kit and what it reaches. A person opens into their role, the teams they are on and what they reach — grouped by *Through &lt;team&gt;*, *As everyone* and what was shared with them directly, plus what they shared themselves |
-| **Areas** | The areas of your knowledge model. An area opens into who sees its data and who shapes its model. See [Areas](#areas) |
-
-What you see follows your permissions. Every member can open the page and sees the teams, their own home team and the areas with what they get there and through which team. The full lists need permission to see members and roles, and the status line is for owners and admins.
-
-**Members** has its own row in the settings sidebar, right beside Access — see [Manage existing members](#manage-existing-members). [Roles](#custom-roles) still set the most a person may do anywhere in the workspace; a team gives access, never permissions.
-
-### The status line
-
-Once the setup is done, the status line says what is true right now and what needs a decision. Open it to see four lines:
-
-- **Directory** — whether your company directory is connected and when its last change arrived, that nothing has arrived for some days, or that the sync is stopped because no directory key works any more. **Manage** opens the [directory sync](/workspaces/provisioning) settings.
-- **People** — how many members came from the directory and how many were invited here, who has not signed in yet, and who joined, left or changed team this week. It also lists what needs you: an owner or admin your directory asked to remove (a directory never removes those by itself), and people waiting for a free seat.
-- **Teams** — new directory groups that are not a team yet, each with **Make it a team** or **Not a team**.
-- **Areas** — areas that have no records and no source yet, each with a link to add one, and people who are on no team.
-
-Each line reads on its own: if one can't be loaded, it says so with **Retry** while the others stay. Genie AI can read the same status.
-
-### Areas
-
-An **area** is a part of your [knowledge model](/workspaces/overview#knowledge-model): its classes, the records of those classes, and the files of the sources added to it. Open the **Areas** tab and pick an area to answer two questions:
-
-- **Who sees its records** — teams and people, each at **Can view** or **Can edit**. **Everyone else** is either **No access** or **Can view**. Owners and admins always see everything. **See who** lists every person who reaches the area, with the reason for each.
-- **Who shapes the model** — who may change the area's classes, properties and processes. This is separate from seeing: your data team can shape the Sales model without reading a single Sales record.
-
-A few things worth knowing:
-
-- **Changes save line by line.** A removal stays on its line with **Undo** until you close the area. Removing a team from its own area, or opening an area wider for everyone else, asks you first.
-- **No access hides records and files, never names.** Everyone still sees which classes exist.
-- **Exceptions inside** lists where a class or a property says something else than its area — opened wider, narrowed, or a restricted property. Change those with the item's own **Share** button in Knowledge ([Share an item](/workspaces/overview#share-an-item)).
-- **Sources.** An area's **Sources** panel lists the sources whose files belong to it: who sees each one, whether it is being read, and what Genie learned from it. **Add a source** files a connected source under the area — for everyone who sees the area's data, or only for its team. Files that every member could see before are closed one at a time; until a file is moved, whoever saw it still does, and the panel shows the progress.
-- **Existing access areas stay as they are.** [Access areas](/workspaces/overview#access-areas) you made for folders show under the areas as *files only*, with their own editor. Nothing is merged automatically.
-
-Genie AI can read who reaches an area and its sources, and changes them only through a [confirmation card](/workspaces/overview#confirmation-cards).
-
-### Set up access
-
-A guided setup gets a new workspace's people, teams and access right in one go. Owners and admins who may manage members and document access start it from the status line on the Access page. It offers two paths:
+A guided setup gets a new workspace's people, teams and access right in one go. Owners and admins who may manage members and document access start it from the top of the Teams page, or as the **Set up access** step of the [setup guide](/workspaces/setup-guide). It offers two paths:
 
 - **Company directory** — people, your verified domain, the directory connection, teams, what each team reaches, review.
 - **By hand** — people, invites, teams, what each team reaches, review.
 
-The setup saves as you go and has no Save button: close it and pick it up later, on another device, or let another admin finish it — the status line shows **Continue setup** until it's done. Domains, teams, who is on them and invites take effect right away. What each team and everyone may reach stays a draft until you press **Start**: Genie suggests **Edit**, and *Decide later* changes nothing. **Review** lists who would lose access first, then who gains and what stays, and lets you see the workspace as one person would. **Start** applies exactly what Review showed. If someone else is already in the setup, you see who and can **Take over**. Genie AI can walk you through the same setup and starts it only through a [confirmation card](/workspaces/overview#confirmation-cards).
+The setup saves as you go and has no Save button: close it and pick it up later, on another device, or let another admin finish it. Domains, teams, who is on them and invites take effect right away. What each team and everyone may reach stays a draft until you press **Start**: Genie suggests **Edit**, and *Decide later* changes nothing. **Review** lists who would lose access first, then who gains and what stays, and lets you see the workspace as one person would. **Start** applies exactly what Review showed. If someone else is already in the setup, you see who and can **Take over**. Genie AI can walk you through the same setup and starts it only through a [confirmation card](/workspaces/overview#confirmation-cards).
 
-**With a directory, nothing changes until you turn on.** When you connect a company directory during the setup, it starts sending people and groups right away so they can be counted — but nobody joins, gets a role or a team, or is removed until you press **Turn on**. Before that, the review says how many people get in, how many removals from your directory are made, which groups fill their teams, which members your directory could not match (they stay), and whether your seats are enough. Turning on runs in the background with a progress bar; you can leave the page, and **Continue** picks it up if it stopped part-way. If access is never turned on, what the directory sent is deleted again after 30 days. A directory that was already running before the setup is not held — it keeps working as before.
+**With a directory, nothing changes until you turn on.** When you connect a company directory during the setup, it starts sending people and groups right away so they can be counted — but nobody joins, gets a team or is removed until you press **Turn on**. Before that, the review says how many people get in, how many removals from your directory are made, which groups fill their teams, which members your directory could not match (they stay), and whether your seats are enough. Turning on runs in the background with a progress bar; you can leave the page, and **Continue** picks it up if it stopped part-way. If access is never turned on, what the directory sent is deleted again after 30 days. A directory that was already running before the setup is not held — it keeps working as before.
 
-### Rules for the whole workspace
+## Rules for the whole workspace
 
-The status line has a **Rules** button with two switches for the whole workspace. Only the workspace's owner can change them; each asks first and shows who is affected.
+**Rules** on the People page has two switches for the whole workspace. Only the workspace's owner can change them; each asks first and shows who is affected.
 
-- **The directory decides people and teams.** While it is on, nobody is invited or removed here, no team is made here, and nobody changes who is on a team — your company directory does all of that. Turning it on removes the members who were added here and are not in your directory; the confirmation names them first. Owners and admins stay, and teams made here stay, locked. The removed people's projects go to the workspace owner, and turning the rule off later does not bring anyone back. You can still leave a workspace yourself. The rule needs a connected directory.
+- **The directory decides people and teams.** While it is on, nobody is invited or removed here, no team is made here, and nobody changes who is on a team — your company directory does all of that. What a team may do, its data and its starter kit stay editable. Turning it on removes the members who were added here and are not in your directory; the confirmation names them first. Owners and admins stay, and teams made here stay, locked. The removed people's projects go to the workspace owner, and turning the rule off later does not bring anyone back. You can still leave a workspace yourself. The rule needs a connected directory.
 - **Share with teams only.** While it is on, share lists name teams and everyone, never a single person — in every Share dialog, on a project's member list and for Genie AI. Lines that already name a person stay until someone removes them.
 
 Genie AI can read both rules and changes one only through a [confirmation card](/workspaces/overview#confirmation-cards). MCP clients can [read them](/workspaces/mcp-api#workspace-management).
-
-## Teams
-
-A team is a department's people, its area of the [knowledge model](/workspaces/overview#knowledge-model) and its starter kit. Open **Workspace settings → Access**; on **Teams & people** you create a team with **New team** and open one in place, right in the list:
-
-- **People** — who is on the team. Being on a team is access: anything shared with the team reaches its people, and a person can be on several teams. People with permission to assign roles add and remove people here (with **Undo**), but never someone whose access is above their own. Nobody can put themselves on a team.
-- **Starter kit** — up to six **first questions**, shown under **Try asking** on a new chat's empty screen, and up to eight [chat templates](/workspaces/overview#chat-templates), shown first on the workspace home and in the template gallery.
-- **Knowledge** — every team gets an [area](/workspaces/overview#knowledge-model) of its own, named after it. The tab shows the areas the team reaches; open one to see its classes and properties, each with a level you can change and **Who reaches this**.
-- **Also shared with** — how many tools, agents and sources the team reaches.
-- **Delete team** — the confirmation says who loses what.
-
-**Your home team** is the one of your teams you start from: it picks the starter kit you see and the area the Model page opens on. You choose it among the teams you are on; it opens nothing by itself.
-
-When you share an item, prefer a team over naming people one by one — whoever joins the team later gets the same. A [directory group](/workspaces/provisioning#roles-and-teams-from-groups) can keep a team's people in step with your identity provider. A workspace can have up to 20 teams, and Genie AI can read teams and set your home team for you.
 
 ## Working in the same project at once
 
@@ -179,62 +189,3 @@ A workspace project supports one active editor at a time. If you open a project 
 <Tip>
   You don't need to ask anyone to "give it up" — the lock clears automatically shortly after the other person stops actively working, and you can start typing as soon as it's free.
 </Tip>
-
-## Manage existing members
-
-To view or change a member's roles, click the account row at the bottom of the sidebar, choose **Workspace settings**, then open **Members**.
-
-### Find a member
-
-The members table shows each person with their roles, and on wider screens when they joined and how many permissions their roles grant. Use the search bar above it to filter by name or email address. You can also filter by role using the tab buttons: **All**, **Owner**, **Admin**, **Member**, or **Editor**.
-
-### Change a member's roles
-
-<Steps>
-  <Step title="Open the member">
-    Click anywhere on a member's row. A large dialog opens — full screen on a phone — with who they are on top, their roles in the main column, and the ownership transfer and **Remove member** beside it. The open member is part of the page's address, so you can send a colleague the link, and your browser's Back button closes the dialog.
-  </Step>
-  <Step title="Choose the member's roles">
-    Under **Roles**, add or remove every role this member should hold — a built-in role, a custom role, or several at once. Their access is everything those roles allow added together. The options available depend on your own role: only owners can assign the Owner role to someone else.
-  </Step>
-  <Step title="Save">
-    Click **Save roles**; it stays disabled until something changed. The change takes effect immediately, and the dialog stays on that member. If you close the dialog with unsaved role changes, Genie asks before dropping them.
-  </Step>
-</Steps>
-
-You can also ask Genie AI to change roles. It shows a [confirmation card](/workspaces/overview#confirmation-cards) with the member's roles now and afterwards, and applies the change only when you press it.
-
-### Remove a member
-
-<Steps>
-  <Step title="Open the member">
-    Click the member's row to open their dialog.
-  </Step>
-  <Step title="Remove">
-    Click **Remove member** and confirm the action. The member loses access to the workspace and all its projects immediately.
-  </Step>
-</Steps>
-
-<Warning>
-Removing a member is immediate and cannot be undone from the UI. To restore access, you will need to invite them again.
-</Warning>
-
-While the rule [The directory decides people and teams](#rules-for-the-whole-workspace) is on, **Remove member** is hidden: people are removed in your company directory.
-
-### Leave a workspace
-
-If you are a member, admin, or editor (but not the sole owner), you can leave a workspace yourself. Open your own row in the members table and click **Leave workspace** in the dialog.
-
-<Warning>
-If you are the workspace's owner of record, you cannot leave until you transfer ownership to another member.
-</Warning>
-
-### Transfer ownership
-
-The workspace's owner of record can hand it on to another member. Open that member's row in the members table and press **Transfer ownership**, or ask Genie AI — it shows a card naming the person it found, and you confirm it there.
-
-- **The new owner** gets the built-in Owner role.
-- **You** keep your roles and can then leave or be removed like any other member.
-- **Billing does not move.** The subscription and payment details stay as they are until someone changes them under Billing; the transfer tells you so.
-- **The owner of record can't be removed or demoted below Admin** — from the web app, Genie AI or the [MCP API](/workspaces/mcp-api) — until they've handed the workspace on. A custom-role change that would leave them without an Owner or Admin role is refused.
-

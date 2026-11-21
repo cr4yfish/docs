@@ -4,6 +4,35 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="November 21, 2026" description="Weekly release">
+
+Covers what shipped November 20. Roles fold into teams, a new setup guide walks people in one step at a time, and every connection now lives in the Library.
+
+## New features
+
+- **Teams decide what people may do.** A team now says what its people may do on top of what everyone may do, what data it keeps and who else sees it. **Everyone** and **Admins** are always there, and a person only gets small exceptions of their own. **Workspace settings** has two pages for it, **Teams** and **People**, which replace the Access page. See [People and teams](/workspaces/members).
+- **A page per team, and a guided flow.** Each team opens on its own page — May do, its data, who sees it, who may change its model, what else it sees, people, starter kit. **New team** and **Edit team** ask one question a screen and save everything at once after a review. See [Create or edit a team](/workspaces/members#create-or-edit-a-team).
+- **A page per person.** People lists everyone with their teams; a person's page shows their teams and where each came from, what they may do and work with, and their exceptions. Remove, leave and transfer ownership live there now. See [A person's page](/workspaces/members#a-persons-page).
+- **Teams that manage teams.** A team can be allowed to add and remove the people of only the teams you pick. See [Who manages a team's people](/workspaces/members#who-manages-a-teams-people).
+- **Data without a team.** Data that belongs to no team shows up on the Teams page, and deleting a team asks where its data goes. Nothing moves until you decide. See [Data without a team](/workspaces/members#data-without-a-team).
+- **The setup guide.** New workspaces and new people get a guide that shows one step at a time — connect data, read it into the ontology, set up people and teams — with the real screens built in. Leave anytime; **Continue setup** on the home and **Setup guide** in the account menu bring you back. See [The setup guide](/workspaces/setup-guide).
+- **Team onboarding questions.** A team can ask the people who join it a few questions, such as *Which clients do you work on?*. Answers are private to the person and help Genie AI answer them better. See [Team questions](/workspaces/setup-guide#team-questions).
+
+## Updates
+
+- **Integrations moved to the Library.** **Settings → Integrations** is gone: every connection is on the Library's **Sources** page, and **Add a source** lists every connector, chat app (Slack, Microsoft Teams, WhatsApp) and **MCP server**. Old links land on Sources. See [Knowledge base](/workspaces/overview#knowledge-base) and [MCP integrations](/workspaces/integrations).
+- **Invitations give what everyone may do.** The Invite dialog no longer picks a role: people are put on teams after they join. Invitations sent before still work as sent. See [Invite people](/workspaces/members#invite-people-to-your-workspace).
+- **Roles become teams.** Existing custom roles are listed as *Teams that were roles*, with nothing changed for their people. **Make it a full team** gives one data and a starter kit. New roles can't be created. See [Teams that were roles](/workspaces/members#teams-that-were-roles).
+- **Genie AI offers only what you may change.** Settings actions your teams don't allow are no longer offered; Genie AI says an owner or admin can change them instead. See [Workspace AI](/workspaces/overview#what-you-can-ask).
+- **Team questions over MCP.** Four new tools read and change a team's onboarding questions and your own answers. Both invite tools now give what everyone may do. See [MCP API](/workspaces/mcp-api#team-onboarding-questions).
+
+## Fixes
+
+- **Connector addresses stay with admins.** People who may not manage integrations no longer see a connector's address or raw error on Sources, in Genie AI or through `list_workspace_mcp_servers`.
+
+</Update>
+
+
 <Update label="November 20, 2026" description="Weekly release">
 
 Covers what shipped November 19. The chat history gets a row menu, quick rename and badges for what a chat built, and settings open on the workspace.
@@ -33,16 +62,16 @@ Covers what shipped November 18. The Access page fits on one screen, you can inv
 
 ## New features
 
-- **Access on one screen.** The Access page is now a status line and two tabs, **Teams & people** and **Areas**. Rows open in place instead of leading to more pages. See [The Access page](/workspaces/members#the-access-page).
-- **Areas.** An area of your knowledge model answers two questions: who sees its records and who shapes its model. **See who** names every person with the reason, and **Sources** files a source's documents under an area. See [Areas](/workspaces/members#areas).
-- **A status line that stays.** After setup, one line says *Everything is in order* or what needs you: new directory groups, areas without data, a stopped sync. See [The status line](/workspaces/members#the-status-line).
+- **Access on one screen.** The Access page is now a status line and two tabs, **Teams & people** and **Areas**. Rows open in place instead of leading to more pages. See [The Access page](/workspaces/members#teams).
+- **Areas.** An area of your knowledge model answers two questions: who sees its records and who shapes its model. **See who** names every person with the reason, and **Sources** files a source's documents under an area. See [Areas](/workspaces/members#a-teams-page).
+- **A status line that stays.** After setup, one line says *Everything is in order* or what needs you: new directory groups, areas without data, a stopped sync. See [The status line](/workspaces/members#people).
 - **Nothing changes until you turn on.** A directory connected during setup only counts people at first. Nobody joins or leaves until you press **Turn on**, after a review of what it will do. See [Provisioning](/workspaces/provisioning#nothing-changes-until-you-turn-on).
 - **Rules for the whole workspace.** The owner can let the company directory decide people and teams, and can limit sharing to teams. See [Rules](/workspaces/members#rules-for-the-whole-workspace).
 - **Invite by email.** **Invite** on the Members page now sends personal invites to several addresses at once, beside invite links. See [Invite people](/workspaces/members#invite-people-to-your-workspace).
 
 ## Updates
 
-- **Members as a table.** Members has its own row in settings again. A row opens that person in a large dialog with their roles, and the link to it can be shared. See [Manage existing members](/workspaces/members#manage-existing-members).
+- **Members as a table.** Members has its own row in settings again. A row opens that person in a large dialog with their roles, and the link to it can be shared. See [Manage existing members](/workspaces/members#people).
 - **Tools open as the tool.** A Genie Tool opens in its own tab with no toolbar around it. Editors get a slim bar with **Share** and **Edit**; a tool's pages sit in the workspace sidebar. See [Building one](/workspaces/genie-tools#building-one).
 - **Calmer tool blocks.** A callout is now a quiet note with an optional title, and a calculator shows its main result as one large number.
 - **Processes and runs as one line.** An entity's process and an agent run's steps are drawn top to bottom on one line, with what is done, what is happening now and what comes next. See [Run results](/workspaces/workflow-apps#run-results).
@@ -62,7 +91,7 @@ Covers what shipped November 17. Access gets one home, teams now give access, an
 
 ## New features
 
-- **One Access page.** People, teams, roles, access areas and directory sync now live together under **Workspace settings → Access**. Old links still land on the right page. See [The Access page](/workspaces/members#the-access-page).
+- **One Access page.** People, teams, roles, access areas and directory sync now live together under **Workspace settings → Access**. Old links still land on the right page. See [The Access page](/workspaces/members#teams).
 - **Teams give access.** Anything shared with a team reaches its people, and a person can be on several teams. People who may assign roles add and remove team members; your **home team** picks your starter kit. See [Teams](/workspaces/members#teams).
 - **Set up access.** A guided setup for people, teams and what each team reaches — by hand or from your company directory. It saves as you go and shows who would lose access before you start. See [Set up access](/workspaces/members#set-up-access).
 - **Sync records from business apps.** Pipedrive, Jira, Notion, DATEV or any app with an API can copy its records into the knowledge model every hour, every 6 hours or once a day. See [Sync records from a business app](/workspaces/overview#sync-records-from-a-business-app).
@@ -357,7 +386,7 @@ Covers what shipped October 25 and 26. Your workspace now has a brand every outp
 
 - **100 MB files, no folder limits.** Documents can be up to 100 MB and go straight from your browser to storage; you can cancel a file or retry a failed one. Folders have no depth limit and hold any number of documents, and a workspace can have any number of folders. See [Knowledge base](/workspaces/overview#knowledge-base).
 - **Excel conversions queue up.** Starting a conversion while others are running no longer refuses it: it waits and starts on its own.
-- **Deleting needs its own permission.** Editors can no longer delete documents or projects, in the app, through Genie AI or over MCP. The Library's Sync view and the Ontology page follow their own permissions instead of the Owner or Admin role. See [Custom roles](/workspaces/members#custom-roles).
+- **Deleting needs its own permission.** Editors can no longer delete documents or projects, in the app, through Genie AI or over MCP. The Library's Sync view and the Ontology page follow their own permissions instead of the Owner or Admin role. See [Custom roles](/workspaces/members#teams-that-were-roles).
 - **Saved views are all kept.** The Library no longer drops older saved views, and its list loads a page at a time.
 - **More dependable chat.** When Genie AI's tool search is briefly unavailable, it still reaches the tools it needs, such as building a deck.
 
@@ -1006,7 +1035,7 @@ Covers what shipped September 20. Genie Tools becomes a serious data tool — im
 - **Export a Genie Tool's table as CSV, Excel, or PDF.** See [Genie Tools](/workspaces/genie-tools).
 - **A new chart block for Genie Tools** turns a table — or any other block's data — into a line, bar, or pie chart with one line of description. See [Genie Tools](/workspaces/genie-tools).
 - **A Genie Tool's file upload field now takes any file type**, through a real drag-and-drop zone instead of a fixed image/document allowlist. See [Genie Tools](/workspaces/genie-tools).
-- **Genie Agents and Genie Tools get their own permission categories in custom roles** — a workspace can now restrict who may view, build, edit, delete, or run either, separately from Genie Apps. See [Custom roles](/workspaces/members#custom-roles).
+- **Genie Agents and Genie Tools get their own permission categories in custom roles** — a workspace can now restrict who may view, build, edit, delete, or run either, separately from Genie Apps. See [Custom roles](/workspaces/members#teams-that-were-roles).
 - **Knowledge documents show their search-index status**, with a **Retry indexing** action if the semantic index failed to build the first time. See [Knowledge base](/workspaces/overview#knowledge-base).
 - **Upload any file type as a project asset**, not just images and video, and drop a whole folder at once. See [Adding images and videos to your app](/projects/overview#adding-images-and-videos-to-your-app).
 
@@ -1139,7 +1168,7 @@ Covers what shipped since September 12. The headline is a product-wide rename �
 ## Updates
 
 - **A Project is now called a Genie App.** Every screen that used to say "Project" — the sidebar, the dashboard, settings, and Genie AI's own replies — now says "Genie App", matching the name the rest of the product (like the generated app's own transactional email address) already used. Nothing about how they work changes, only the name.
-- **Members can hold more than one role at once.** Assign someone **Editor** plus a custom **Billing Manager** role, for example, and they get everything either one allows. See [Members and roles](/workspaces/members#custom-roles).
+- **Members can hold more than one role at once.** Assign someone **Editor** plus a custom **Billing Manager** role, for example, and they get everything either one allows. See [Members and roles](/workspaces/members#teams-that-were-roles).
 - **The Knowledge base is redesigned as a familiar file browser.** Folders and documents now behave like Drive: a breadcrumb to navigate, list or grid layouts, sortable columns, and dragging a document straight onto a folder to file it. See [Knowledge base](/workspaces/overview#knowledge-base).
 - **Tracing shows more, and shows it better.** A trace's detail view is now resizable, opens as its own fullscreen page, and every id in it — member, project, conversation — links back to that item. Each trace also now shows its **flaggings**: what your PII rules, Guardrails, and Governance rules noticed about that turn. See [Tracing](/workspaces/tracing#flaggings).
 - **Genie Agents: the Start card shows — and edits — the real start conditions.** It now names the agent's actual schedule or webhook trigger instead of a generic description, and its Start panel lets you add, retime, or switch off a trigger without describing the change to Genie AI. See [Genie Agents](/workspaces/workflow-apps#editing-triggers-from-the-canvas).
@@ -1203,7 +1232,7 @@ Covers what shipped on September 9. The headline is a reworked workspace: one se
 ## Updates
 
 - **Workspace and personal settings are now one surface.** They used to be two unrelated screens — workspace settings inside the workspace, personal settings as a bare page with no way back. Open either from the account menu at the bottom of the sidebar and you get the same navigation, with the other half always one click away. See [Account settings](/account/settings).
-- **Custom roles.** Beyond the four built-in roles, owners and admins can now build custom roles that narrow exactly what a role can do — remove billing access, keep member management, drop the ability to delete projects — from a catalog of granular permissions. See [Custom roles](/workspaces/members#custom-roles).
+- **Custom roles.** Beyond the four built-in roles, owners and admins can now build custom roles that narrow exactly what a role can do — remove billing access, keep member management, drop the ability to delete projects — from a catalog of granular permissions. See [Custom roles](/workspaces/members#teams-that-were-roles).
 - **A simpler workspace sidebar.** Your chat history is now the sidebar's main content, and the conversation you have open marks its own place there — no separate "Genie AI" entry needed. Drag the sidebar's edge to resize it or collapse it to icons only, and drag it back out to reopen.
 - **The command palette (⌘K) got a visual refresh** — a cleaner list of results without the extra sidebar it used to show.
 - **Workflow apps are now called Genie Agents.** You can now build one directly from the **Genie Agents** page — give it a name and a first step and you land straight in the editor, without describing it to Genie AI first. Rename, pause/resume, or delete an agent from its row menu, and switch between a card or table view of your agents. See [Genie Agents](/workspaces/workflow-apps).

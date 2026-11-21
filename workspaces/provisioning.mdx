@@ -6,7 +6,7 @@ description: "Connect Microsoft Entra ID, Okta or any SCIM 2.0 directory so peop
 Instead of typing invites, an owner or admin can connect the company's identity provider — Microsoft Entra ID, Okta or any SCIM 2.0 client. The directory then adds people to the workspace, keeps their names and groups current, and removes them when they leave the company.
 
 <Note>
-  Only **owners** and **admins** can open directory sync. It lives on **Workspace settings → Access**: open the status line on top and press **Manage** on its **Directory** line. Old links to the Directory sync page land there.
+  Only **owners** and **admins** can open directory sync. It lives on **Workspace settings → People**: press **Manage** on the line at the top that says where people come from. Old links to the Directory sync page land there.
 </Note>
 
 ## What you get
@@ -30,7 +30,7 @@ Instead of typing invites, an owner or admin can connect the company's identity 
 
 <Steps>
   <Step title="Add and verify your domain">
-    In the directory sync settings (**Workspace settings → Access** → status line → **Directory** → **Manage**), press **Add domain** and enter, for example, `contoso.com`. Genie shows a TXT record to publish at your DNS provider. Once it is live, press **Verify**. A domain can be verified by one workspace only, and each domain (such as `eu.contoso.com`) needs its own record.
+    In the directory sync settings (**Workspace settings → People** → **Manage**), press **Add domain** and enter, for example, `contoso.com`. Genie shows a TXT record to publish at your DNS provider. Once it is live, press **Verify**. A domain can be verified by one workspace only, and each domain (such as `eu.contoso.com`) needs its own record.
   </Step>
   <Step title="Create a provisioning key">
     On the [API keys](/workspaces/api-keys) page, create a key with the **Provision members (SCIM)** permission. The key acts as the person who created it, so it can only add, change or remove people that person could manage. Create it as the **owner** if the directory should also manage admins.
@@ -56,7 +56,7 @@ New members get the role their groups give them, or **Member** if none applies.
 - Leaving every mapped group returns a person to **Member** — if a group mapping gave them their role before.
 - Someone no mapping ever touched keeps the role a person gave them. Owners are never changed.
 
-A directory group can also fill a [team](/workspaces/members#teams) — instead of a role, as well as one, or neither. People who join the group are put on the team and people who leave it are taken off; people someone added to the team by hand stay. Admins are put on a team this way only when the owner set it up. A new group your directory sends shows up on the Access page's status line under **Teams**: press **Make it a team** to create a team named after it, or **Not a team** to stop being asked (with **Undo**). You can also ask Genie AI to link a group to a team, which shows a confirmation card. The directory sync settings show which team each group fills.
+A directory group can also fill a [team](/workspaces/members#teams) — instead of a role, as well as one, or neither. A team your directory fills can't be given anything that makes its people admins for the database. People who join the group are put on the team and people who leave it are taken off; people someone added to the team by hand stay. Admins are put on a team this way only when the owner set it up. A new group your directory sends shows up under **Needs you** on the Teams page: press **Make it a team** to create a team named after it, or **Not a team** to stop being asked (with **Undo**). You can also ask Genie AI to link a group to a team, which shows a confirmation card. The directory sync settings show which team each group fills.
 
 If you prefer to be guided, [Set up access](/workspaces/members#set-up-access) walks through the domain, the directory and teams in one flow.
 
@@ -72,14 +72,14 @@ A directory that was already running, or one you connect without the setup, is l
 
 ## Keep an eye on the sync
 
-After the setup, the status line on **Workspace settings → Access** shows how the sync is doing — see [The status line](/workspaces/members#the-status-line):
+After the setup, the top of **Workspace settings → People** shows how the sync is doing — see [People](/workspaces/members#people):
 
 - **Directory** says when the last change arrived, or that the sync is **stopped** because the provisioning key is paused, expired or revoked, or its creator may no longer manage members. While it is stopped, people removed in the directory keep their access here — remove them by hand if they have left.
 - **People** lists what needs you: an owner or admin your directory asked to remove, removals that have not gone through yet, and people waiting for a free seat.
 
 ## Let the directory decide
 
-By default the directory and the people in Genie both manage members: you can still invite someone by hand or change a team. An owner can turn on the rule **The directory decides people and teams** under **Access → Rules**. From then on nobody is invited, removed or put on a team in Genie — only the directory does that. See [Rules for the whole workspace](/workspaces/members#rules-for-the-whole-workspace).
+By default the directory and the people in Genie both manage members: you can still invite someone by hand or change a team. An owner can turn on the rule **The directory decides people and teams** under **People → Rules**. From then on nobody is invited, removed or put on a team in Genie — only the directory does that. See [Rules for the whole workspace](/workspaces/members#rules-for-the-whole-workspace).
 
 ## When someone leaves
 
@@ -92,8 +92,8 @@ When the directory deactivates or deletes a person, Genie removes them from the 
 ## Related pages
 
 <CardGroup cols={2}>
-  <Card title="Invite and manage members" icon="users" href="/workspaces/members">
-    Roles, custom roles and manual invites.
+  <Card title="People and teams" icon="users" href="/workspaces/members">
+    Teams, people and manual invites.
   </Card>
   <Card title="Workspace API keys" icon="key-round" href="/workspaces/api-keys">
     Create the key your identity provider uses.

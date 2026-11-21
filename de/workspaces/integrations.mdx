@@ -6,27 +6,27 @@ description: "Verbinde Linear, GitHub, Notion, Stripe und mehr per MCP-Server mi
 Genie unterstützt das Model Context Protocol (MCP), einen offenen Standard, der KI-Assistenten erlaubt, Tools in externen Diensten aufzurufen. Wenn du einen MCP-Server mit deinem Workspace verbindest, kann jedes Mitglied diese Tools in jedem Projekt nutzen — ohne dass jede Person eigene Zugangsdaten einrichten muss. Eine einzige Verbindung auf Workspace-Ebene deckt dein gesamtes Team ab.
 
 <Note>
-MCP-Integrationen sind im **Teams**-Tarif verfügbar. Wenn dein Workspace in einer niedrigeren Stufe ist, zeigt die **Integrationen**-Seite eine Upgrade-Aufforderung. Nur **Eigentümer** und **Admins** können Server hinzufügen oder entfernen.
+MCP-Integrationen sind im **Teams**-Tarif verfügbar. Wenn dein Workspace in einer niedrigeren Stufe ist, zeigt **Quelle hinzufügen** eine Upgrade-Aufforderung. Nur **Eigentümer** und **Admins** können Server hinzufügen oder entfernen.
 </Note>
 
 <Note>
-Möchtest du Genie stattdessen über WhatsApp, Slack oder Microsoft Teams erreichen? Das ist eine andere Art von Verbindung, die über dieselbe **Integrationen**-Seite verwaltet wird — siehe [Genie auf WhatsApp, Slack und Teams](/de/workspaces/chat-channels).
+Möchtest du Genie stattdessen über WhatsApp, Slack oder Microsoft Teams erreichen? Das ist eine andere Art von Verbindung, die über dasselbe **Quelle hinzufügen** hinzugefügt wird — siehe [Genie auf WhatsApp, Slack und Teams](/de/workspaces/chat-channels).
 </Note>
 
-## Die Integrationen-Seite öffnen
+## Wo Integrationen liegen
 
-Klicke auf die Kontozeile unten in der Workspace-Seitenleiste, wähle **Workspace-Einstellungen** und öffne dann **Integrationen**.
+Jede Verbindung steht auf der Seite **Quellen** der Bibliothek: Öffne **Bibliothek** in der Seitenleiste und drücke **Alle Quellen** im Kasten **Quellen**. Neue fügst du mit **Quelle hinzufügen** hinzu (das **+** in diesem Kasten). **Einstellungen → Integrationen** gibt es nicht mehr — alte Links und Lesezeichen landen auf Quellen. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank).
 
 ## Eine Preset-Integration hinzufügen
 
 Genie enthält Ein-Klick-Presets für die beliebtesten Tools. Preset-Verbindungen haben Server-URL, Transport und Authentifizierungstyp vorkonfiguriert — du autorisierst nur und legst los.
 
 <Steps>
-  <Step title="Auf Server hinzufügen klicken">
-    Klicke auf der **Integrationen**-Seite in der Kopfzeile des Bereichs **Verbundene Server** auf den Button **Server hinzufügen**.
+  <Step title="Quelle hinzufügen öffnen">
+    Drücke in der **Bibliothek** das **+** im Kasten **Quellen**.
   </Step>
   <Step title="Dienst auswählen">
-    Ein Dialog (oder unteres Drawer auf dem Mobilgerät) zeigt alle verfügbaren Preset-Integrationen. Klicke auf die Kachel des Dienstes, den du verbinden möchtest.
+    **Quelle hinzufügen** listet jede Preset-Integration neben E-Mail, Dateien, Business-Apps und Chat-Apps, mit Suche. Klicke auf die Kachel des Dienstes, den du verbinden möchtest; seine Anleitung öffnet sich mit einem Schritt **Verbinden**.
   </Step>
   <Step title="Anzeigenamen festlegen">
     Das Formular füllt einen Anzeigenamen vor (zum Beispiel „Linear"). Der Name wird zum Tool-Präfix, das die KI verwendet — zum Beispiel `linear__create_issue`. Bearbeite ihn, wenn du mehrere Verbindungen zum selben Dienst unterscheiden musst.
@@ -35,7 +35,7 @@ Genie enthält Ein-Klick-Presets für die beliebtesten Tools. Preset-Verbindunge
     Klicke auf **Server verbinden**. Bei OAuth-basierten Integrationen erscheint in der Server-Zeile ein zweiter **Autorisieren**-Button — klicke darauf, um den OAuth-Flow zu starten und Genie Zugriff auf dein Konto zu geben. Bei Bearer-Token-Integrationen füge dein API-Token ins Feld **Bearer-Token** ein, bevor du auf **Server verbinden** klickst.
   </Step>
   <Step title="Verbindung bestätigen">
-    Nach erfolgreicher OAuth-Autorisierung leitet Genie dich mit einem Bestätigungsbanner zurück zur **Integrationen**-Seite. Tools des verbundenen Servers stehen allen Workspace-Mitgliedern beim nächsten Gesprächsdurchgang zur Verfügung.
+    Nach erfolgreicher OAuth-Autorisierung bringt Genie dich zurück auf die Seite **Quellen** der Bibliothek und sagt dir, wie es lief. Tools des verbundenen Servers stehen allen Workspace-Mitgliedern beim nächsten Gesprächsdurchgang zur Verfügung.
   </Step>
 </Steps>
 
@@ -64,11 +64,11 @@ Jede Preset-Kachel zeigt eine kurze Beschreibung, was sie abdeckt — zum Beispi
 Wenn das benötigte Tool nicht in der Preset-Liste ist, kannst du jeden MCP-kompatiblen Server manuell verbinden.
 
 <Steps>
-  <Step title="Auf Server hinzufügen klicken">
-    Öffne den Dialog **Server hinzufügen** von der **Integrationen**-Seite aus.
+  <Step title="Quelle hinzufügen öffnen">
+    Drücke in der **Bibliothek** das **+** im Kasten **Quellen**.
   </Step>
-  <Step title="Sonstige auswählen">
-    Scrolle ans Ende des Preset-Rasters und klicke auf die Kachel **Sonstige** mit dem Label „Manuell konfigurieren".
+  <Step title="MCP-Server auswählen">
+    Wähle die Kachel **MCP-Server** (über die Suche oder unter *Etwas anderes*).
   </Step>
   <Step title="Server-Details ausfüllen">
     Vervollständige das Formular:
@@ -126,7 +126,7 @@ Ein Eigentümer oder Admin kann einen Konnektor später über dessen **Bearbeite
 
 ## Das eigene Postfach synchronisieren
 
-Jedes Mitglied kann sein **eigenes** Outlook- oder Gmail-Postfach in die Wissensbasis spiegeln, damit Genie AI aus der eigenen Post antworten kann. Öffne **Einstellungen → Integrationen** und suche die Karte **Mein Postfach**: Sie hat eine Zeile pro Postfach mit seinem Zustand und dem nächsten Schritt — dein Konto **verbinden** (ein Owner oder Admin muss die Integration zuerst hinzufügen, falls sie fehlt), **Synchronisierung starten**, **Pausieren**, **Fortsetzen**, **Erneut versuchen** nach einem fehlgeschlagenen Lauf oder **Beenden**. Genie AI kann denselben Zustand zeigen und startet, pausiert oder beendet eine Synchronisierung nur, wenn du die Karte drückst, die sie anbietet.
+Jedes Mitglied kann sein **eigenes** Outlook- oder Gmail-Postfach in die Wissensbasis spiegeln, damit Genie AI aus der eigenen Post antworten kann. Öffne die Seite **Quellen** der Bibliothek — dein Postfach steht unter *In die Bibliothek kopiert* — oder füge es über **Quelle hinzufügen → E-Mail** hinzu: Sie hat eine Zeile pro Postfach mit seinem Zustand und dem nächsten Schritt — dein Konto **verbinden** (ein Owner oder Admin muss die Integration zuerst hinzufügen, falls sie fehlt), **Synchronisierung starten**, **Pausieren**, **Fortsetzen**, **Erneut versuchen** nach einem fehlgeschlagenen Lauf oder **Beenden**. Genie AI kann denselben Zustand zeigen und startet, pausiert oder beendet eine Synchronisierung nur, wenn du die Karte drückst, die sie anbietet.
 
 - **Nur deine eigene Post, die letzten 90 Tage.** Eine Synchronisierung liest das Postfach der Person, die sie gestartet hat — nie das von jemand anderem — und beginnt 90 Tage zurück. Postfachordner werden nicht kopiert: Jede Nachricht wird ein Dokument in einem einzigen Fach, und eine Nachricht, die du zwischen Ordnern verschiebst, bleibt dasselbe Dokument.
 - **Nur für dich sichtbar.** Die Post landet in deinem eigenen **persönlichen Zugriffsbereich**: Andere Mitglieder sehen sie nicht und auch nicht, dass es sie gibt. Die Owner und Admins des Workspaces können sie weiterhin lesen. Verlässt du den Workspace, wird dein Bereich eingefroren statt für andere geöffnet.
@@ -139,7 +139,7 @@ Post wird wie jedes Dokument in die Wissensbasis gelesen und zählt daher zu den
 
 ## Verbundene Server verwalten
 
-Jeder verbundene Server erscheint als Zeile in der Liste **Verbundene Server**, mit einem Status in einfacher Sprache — verbunden, bereit, noch nicht verbunden, funktioniert nicht, pro Mitglied oder pausiert — statt roher Verbindungsdetails. Fehlt nur noch die Anmeldung, sitzt ein **Verbinden**-Button direkt in der Zeile statt in einem Menü. In der Zeile kannst du:
+Jeder verbundene Server erscheint als Zeile auf der Seite **Quellen** der Bibliothek, mit einem Status in einfacher Sprache — verbunden, bereit, noch nicht verbunden, funktioniert nicht, pro Mitglied oder pausiert — statt roher Verbindungsdetails. Fehlt nur noch die Anmeldung, sitzt ein **Verbinden**-Button direkt in der Zeile statt in einem Menü. In der Zeile kannst du:
 
 - **Aktivieren / Deaktivieren** — einen Server vorübergehend ausschalten, ohne ihn zu entfernen. Deaktivierte Server stellen der KI keine Tools bereit.
 - **Autorisieren / Erneut autorisieren** — (nur OAuth-Server) den OAuth-Flow starten oder neu starten.
@@ -158,7 +158,7 @@ Das geht auch im Chat: Bitte Genie AI, eine Integration neu zu verbinden oder zu
     Jedes Hinzufügen, Aktualisieren, Rotieren und Entfernen eines MCP-Servers wird im Workspace-Aktivitätsprotokoll erfasst und gibt Eigentümern und Admins ein vollständiges Protokoll der Zugangsdaten-Änderungen.
   </Card>
   <Card title="Rollenbasierter Zugriff" icon="users">
-    Nur Eigentümer und Admins können Server hinzufügen, bearbeiten oder entfernen. Mitglieder und Editoren können die Tools der verbundenen Server nutzen, aber keine Zugangsdaten einsehen oder ändern.
+    Nur Eigentümer und Admins können Server hinzufügen, bearbeiten oder entfernen. Andere Mitglieder können die Tools der verbundenen Server nutzen, aber keine Zugangsdaten einsehen oder ändern, und sie sehen nie die Adresse eines Servers.
   </Card>
 </CardGroup>
 

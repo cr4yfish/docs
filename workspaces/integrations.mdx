@@ -6,27 +6,27 @@ description: "Connect Linear, GitHub, Notion, Stripe, and more to your workspace
 Genie supports the Model Context Protocol (MCP), an open standard that lets AI assistants call tools in external services. When you connect an MCP server to your workspace, every member can use those tools inside any project — without each person setting up their own credentials. A single workspace-level connection covers your whole team.
 
 <Note>
-MCP integrations are available on the **Teams** plan. If your workspace is on a lower tier, the **Integrations** page will show an upgrade prompt. Only **owners** and **admins** can add or remove servers.
+MCP integrations are available on the **Teams** plan. If your workspace is on a lower tier, **Add a source** shows an upgrade prompt. Only **owners** and **admins** can add or remove servers.
 </Note>
 
 <Note>
-Looking to message Genie from WhatsApp, Slack, or Microsoft Teams instead? That's a different kind of connection, managed from the same **Integrations** page — see [Genie on WhatsApp, Slack, and Teams](/workspaces/chat-channels).
+Looking to message Genie from WhatsApp, Slack, or Microsoft Teams instead? That's a different kind of connection, added from the same **Add a source** — see [Genie on WhatsApp, Slack, and Teams](/workspaces/chat-channels).
 </Note>
 
-## Open the integrations page
+## Where integrations live
 
-Click the account row at the bottom of the workspace sidebar, choose **Workspace settings**, then open **Integrations**.
+Every connection is on the Library's **Sources** page: open **Library** in the sidebar and press **All sources** on the **Sources** box. New ones are added with **Add a source** (the **+** on that box). **Settings → Integrations** no longer exists — old links and bookmarks land on Sources. See [Knowledge base](/workspaces/overview#knowledge-base).
 
 ## Add a preset integration
 
 Genie includes one-click presets for the most popular tools. Preset connections have their server URL, transport, and authentication type pre-configured — you just authorise and go.
 
 <Steps>
-  <Step title="Click Add server">
-    On the **Integrations** page, click the **Add server** button in the **Connected servers** section header.
+  <Step title="Open Add a source">
+    In the **Library**, press **+** on the **Sources** box.
   </Step>
   <Step title="Pick a service">
-    A dialog (or bottom drawer on mobile) shows all available preset integrations. Click the tile for the service you want to connect.
+    **Add a source** lists every preset integration beside mail, files, business apps and chat apps, with a search. Click the tile for the service you want to connect; its guide opens with one **Connect** step.
   </Step>
   <Step title="Set a display name">
     The form pre-fills a display name (for example, "Linear"). The name becomes the tool prefix used by the AI — for example, `linear__create_issue`. Edit it if you need to distinguish multiple connections to the same service.
@@ -35,7 +35,7 @@ Genie includes one-click presets for the most popular tools. Preset connections 
     Click **Connect server**. For OAuth-based integrations, a second **Authorize** button appears on the server row — click it to start the OAuth flow and grant Genie access to your account. For Bearer token integrations, paste your API token into the **Bearer token** field before clicking **Connect server**.
   </Step>
   <Step title="Confirm the connection">
-    After a successful OAuth authorisation, Genie redirects you back to the **Integrations** page with a confirmation banner. Tools from the connected server become available to all workspace members on their next conversation turn.
+    After a successful OAuth authorisation, Genie brings you back to the Library's **Sources** page and tells you how it went. Tools from the connected server become available to all workspace members on their next conversation turn.
   </Step>
 </Steps>
 
@@ -64,11 +64,11 @@ Each preset tile shows a short description of what it covers — for example, Li
 If the tool you need is not in the preset list, you can connect any MCP-compatible server manually.
 
 <Steps>
-  <Step title="Click Add server">
-    Open the **Add server** dialog from the **Integrations** page.
+  <Step title="Open Add a source">
+    In the **Library**, press **+** on the **Sources** box.
   </Step>
-  <Step title="Choose Other">
-    Scroll to the bottom of the preset grid and click the **Other** tile labelled "Configure manually".
+  <Step title="Choose MCP server">
+    Pick the **MCP server** tile (search for it, or find it under *Something else*).
   </Step>
   <Step title="Fill in the server details">
     Complete the form:
@@ -126,7 +126,7 @@ An owner or admin can switch a connector between shared and per-member later, fr
 
 ## Sync your own mailbox
 
-Every member can mirror their **own** Outlook or Gmail mailbox into the knowledge base, so Genie AI can answer from their mail. Open **Settings → Integrations** and find the **My mailbox** card: it has one row per mailbox, each showing its state and the next step — **Connect** your account (an owner or admin has to add the integration first if it isn't there), **Start syncing**, **Pause**, **Resume**, **Try again** after a failed run, or **Stop**. Genie AI can show the same state, and starts, pauses or stops a sync only when you press the card it offers.
+Every member can mirror their **own** Outlook or Gmail mailbox into the knowledge base, so Genie AI can answer from their mail. Open the Library's **Sources** page — your mailbox is under *Copied into the Library* — or add it with **Add a source → Mail**: it has one row per mailbox, each showing its state and the next step — **Connect** your account (an owner or admin has to add the integration first if it isn't there), **Start syncing**, **Pause**, **Resume**, **Try again** after a failed run, or **Stop**. Genie AI can show the same state, and starts, pauses or stops a sync only when you press the card it offers.
 
 - **Only your own mail, last 90 days.** A sync reads the mailbox of whoever started it, never someone else's, and begins 90 days back. Mail folders aren't copied — every message becomes one document on a single shelf, and a message you move between folders stays the same document.
 - **Private to you.** The mail lands in your own **personal access area**: other members never see it, not even that it exists. The workspace's owners and admins can still read it. If you leave the workspace, your area is held rather than opened to others.
@@ -139,7 +139,7 @@ Mail is read into the knowledge base like any document, so it counts toward the 
 
 ## Manage connected servers
 
-Each connected server appears as a row in the **Connected servers** list, with a plain-language status — connected, ready, not connected yet, not working, per-member, or paused — instead of raw connection details. If the status is just a sign-in away, a **Connect** button sits right on the row rather than in a menu. From the row you can:
+Each connected server appears as a row on the Library's **Sources** page, with a plain-language status — connected, ready, not connected yet, not working, per-member, or paused — instead of raw connection details. If the status is just a sign-in away, a **Connect** button sits right on the row rather than in a menu. From the row you can:
 
 - **Enable / Disable** — temporarily turn a server off without removing it. Disabled servers do not provide tools to the AI.
 - **Authorize / Re-authorize** — (OAuth servers only) start or restart the OAuth flow.
@@ -158,7 +158,7 @@ You can also do this from the chat: ask Genie AI to reconnect or repair an integ
     Every add, update, rotation, and removal of an MCP server is recorded in the workspace activity log, giving owners and admins a complete record of credential changes.
   </Card>
   <Card title="Role-based access" icon="users">
-    Only owners and admins can add, edit, or remove servers. Members and editors can use the tools exposed by connected servers but cannot read or modify credentials.
+    Only owners and admins can add, edit, or remove servers. Other members can use the tools exposed by connected servers but cannot read or modify credentials, and never see a server's address.
   </Card>
 </CardGroup>
 
