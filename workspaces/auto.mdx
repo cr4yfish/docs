@@ -19,6 +19,16 @@ Everyone who uses Genie AI in the workspace can open the page: they see whether 
 Managing Auto takes a role that holds everything Auto itself can do. If you are an admin on a custom role with fewer permissions, you take part in Auto like any member but can't change its settings.
 </Note>
 
+## The Auto page
+
+The page keeps Auto's results and its settings apart:
+
+- **On top**, Auto's face beside a headline that says the same in words — what it is doing right now, *Auto has 2 things for you*, *Auto is on — nothing waits for you* or *Auto is off* — with the next check and the last ones. Owners and admins find the **Quick check** and **Deep run** buttons here, with what a deep run costs, and **Turn on Auto** while it is off.
+- **Work** (open by default; its tab shows how much waits for you): what waits for you first, then for managers what waits for others, then earlier runs and decided work, newest first.
+- **Settings**: whether Auto is on and your own notification switch, [goals](#give-auto-a-goal), [what Auto may do](#decide-what-auto-may-do-alone) in short, Auto's chats with Genie AI, and — for whoever manages the knowledge model — **Ontology upkeep**: how often Auto tidies the knowledge model and what its last run did, plus the AI duplicate check with its pause and daily budget. These upkeep controls used to sit on the Ontology settings, which now point here.
+
+The open tab is part of the page's address, so a link can open **Settings** directly.
+
 ## What Auto does
 
 Auto works in two steps:
@@ -78,7 +88,7 @@ The **Goals** section is first on the Auto page: the form, then every goal with 
 
 ## Auto's face
 
-Auto has a small round face at the top of its page. Its mood shows what Auto is doing, so you can tell at a glance: asleep while Auto is off, reading during a deep run, holding a magnifying glass during a quick check, sweeping while it tidies the knowledge model, waving a flag on a goal run, and holding an envelope when work waits for you. Its eyes follow your pointer, and you can poke it. With reduced motion turned on in your system, it stays still and only shows its mood.
+Auto has a small round face in its page's header, beside a headline that says the same thing in words. Its mood shows what Auto is doing, so you can tell at a glance: asleep while Auto is off, reading during a deep run, holding a magnifying glass during a quick check, sweeping while it tidies the knowledge model, waving a flag on a goal run, and holding an envelope when work waits for you. Its eyes follow your pointer, and you can poke it. With reduced motion turned on in your system, it stays still and only shows its mood.
 
 ## Talk to Genie AI itself
 
@@ -94,7 +104,8 @@ A run in a workspace answers to that workspace alone:
 - The workspace's [PII rules](/workspaces/pii-rules) apply to what Auto sends to the model.
 - The workspace's wallet pays when the workspace pays, and every run appears on the workspace's [Tracing](/workspaces/tracing) page.
 - Changes Auto makes are logged in the activity log under its own name.
-- Everything it does is bounded by spending limits (see [Spend limits](/workspaces/governance#spend-limits)). When a limit stops Auto, the page says so.
+- Everything it does is bounded by spending limits, including the workspace's own [budgets](/workspaces/governance#budgets). When a limit stops Auto, the page says so.
+- Its deep runs may run the workspace's [compliance checks](/workspaces/governance#compliance-rules) on one build or across the workspace — the same check a Governance manager can start. That writes only check results: Auto never changes a rule or a verdict. A run that reaches its time or spend limit says so, and the next run checks the rest.
 
 ## Ask Genie AI
 

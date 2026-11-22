@@ -4,6 +4,46 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="November 22, 2026" description="Weekly release">
+
+Covers what shipped November 21. Home gets a new shape, Governance becomes a step-by-step program with budgets of its own, and compliance rules now check agents and tools.
+
+## New features
+
+- **Home: Jump back in and For you.** Home now shows your favorites and recent items — apps, agents, tools, documents and chats — led by one large card that shows the item as it really is, then suggestions from Auto, setup and Genie AI, each ending in what it does. See [Home](/workspaces/overview#home-jump-back-in-and-for-you).
+- **A first visit that helps.** Until you have opened anything, Home shows **First steps** from the setup guide and **Try asking** questions — your team's first questions lead. See [First visit](/workspaces/overview#home-jump-back-in-and-for-you).
+- **Workspace budgets.** **Governance → Budgets** sets spend limits for the whole workspace, each member and any one run. They can only lower the platform's limits. See [Budgets](/workspaces/governance#budgets).
+- **Compliance rules for agents and tools.** A rule now says whether it checks Genie Agents, Genie Tools, Genie Apps or any mix of them, and agents and tools are judged by how they are set up. Private builds are checked too. See [Compliance rules](/workspaces/governance#compliance-rules).
+- **Select words to look them up.** Select words anywhere in a workspace — an answer, a document, a table cell — to see what the knowledge model knows about the names in them. See [Select words to look them up](/workspaces/overview#knowledge-model).
+- **Send while recording.** In the workspace chat and on Home, the recording row has **stop** to review the transcript and **send** to send it straight away. See [Talk instead of type](/workspaces/overview#talk-instead-of-type).
+- **Library search finds apps, agents, tools and chats.** The overview's search lists the apps, agents and tools you may open first and the chats you can read last, matched by title or by what was written in them. See [Knowledge base](/workspaces/overview#knowledge-base).
+- **Forms look composed.** Every form in a Genie Tool sits on one card, with short fields two to a row and *optional* on the fields that are. See [Forms look composed](/workspaces/genie-tools#forms-look-composed).
+
+## Updates
+
+- **Governance as a program.** Governance is now five chapters — Reach, Protect, Limit, Watch, Review — with an overview timeline and **Previous** / **Next** on every area. Personal data and Content safety split into tabs. See [Open Governance](/workspaces/governance#open-governance).
+- **A page of its own for the brand.** **Workspace settings → Brand** holds logos, colours, fonts and notes in four tabs beside the live preview. **General** keeps the name, description and icon, and its switches moved to the pages they affect. See [Workspace brand](/workspaces/overview#workspace-brand).
+- **The Auto page in two tabs.** Auto's status sits on top, with **Work** and **Settings** tabs under it. Ontology upkeep and the AI duplicate check moved here from the Ontology settings. See [The Auto page](/workspaces/auto#the-auto-page).
+- **Auto can run compliance checks.** A deep run may check the workspace's builds against its rules; it writes only results. See [It follows the workspace's rules](/workspaces/auto#it-follows-the-workspaces-rules).
+- **Ontology settings explain the cost.** The **Read documents** switch says what you get, what it costs and whose credits pay, and turning it on asks you to confirm. See [Knowledge model](/workspaces/overview#knowledge-model).
+- **A calmer notifications panel.** The inbox is a panel with fewer buttons: a card opens the notice in full, **Mark all as read** appears only while something is unread, and **New notification** floats over the list. See [Notification inbox](/account/settings#notification-inbox).
+- **Share from the chat's ⋯.** A chat shares from its **⋯** menu in the header and the chat history. The **Share** button elsewhere is now an icon and the word, with who has the item in its tooltip. See [Share an item](/workspaces/overview#share-an-item).
+- **A pill for a new agent.** When Genie AI builds an agent, the chat shows a pill with its name; press it to open the agent on the canvas or in the editor. See [Two ways to start one](/workspaces/workflow-apps#two-ways-to-start-one).
+- **A sparser agent editor.** Step cards show just an icon and a name, and the test run is a play button on the first card. See [The visual editor](/workspaces/workflow-apps#the-visual-editor).
+- **Upload from Add a source.** **Upload files** now leads the Files group in **Add a source** and replaces the overview's Upload button. See [Knowledge base](/workspaces/overview#knowledge-base).
+- **Chat templates are switched off for now.** Home has no template row or button, and team starter kits no longer ask for templates. Existing templates are kept. See [Chat templates](/workspaces/overview#chat-templates).
+- **Compliance over MCP.** `get_project_compliance` and `run_compliance_checks` take a Genie Agent or Tool, and rules set what they check with `subject_kinds`. See [MCP API](/workspaces/mcp-api#workspace-governance).
+- **New chats show up at once.** A new chat appears in your chat history as soon as you send it, and its title follows within seconds.
+
+## Fixes
+
+- **Tools at a readable width.** A tool's page stands in a centred column, so a form on a wide monitor no longer draws screen-wide inputs, and a table's search box stays compact.
+- **The chat header no longer covers text.** The transcript fades out under the floating header buttons instead of running behind them.
+- **Home's prompt box in dark mode** now sits on the page's own surface, with a quiet focus ring.
+
+</Update>
+
+
 <Update label="November 21, 2026" description="Weekly release">
 
 Covers what shipped November 20. Roles fold into teams, a new setup guide walks people in one step at a time, and every connection now lives in the Library.

@@ -544,13 +544,13 @@ Project reviews, shared-asset oversight, and natural-language compliance rules. 
 | Tool | What it does |
 |---|---|
 | `list_governance_projects` | Governance overview of the workspace's projects: owner, visibility, latest version, review verdict, compliance state, and integration-risk signals. Filter with `only_failing` / `only_unreviewed` |
-| `get_project_compliance` | One project's governance detail: current verdict plus the newest result of every compliance rule (with reasoning) and a bounded recent history |
+| `get_project_compliance` | One project's governance detail: current verdict plus the newest result of every compliance rule (with reasoning) and a bounded recent history. Or, with `build_kind` (`agent` or `tool`) and `build_id`, the newest result of every rule that checked that Genie Agent or Tool |
 | `review_project` | Record a verdict — `approved`, `flagged`, or `disabled` (blocks new builds from everyone but the owner) — or `clear` to remove it |
 | `list_compliance_rules` | List the workspace's compliance rules plus the built-in template library a new rule can start from |
-| `create_compliance_rule` | Create a rule (name, severity, a natural-language failure condition), optionally from a template, with an option to check existing projects immediately. Owner/admin only |
-| `update_compliance_rule` | Change a rule's name, description, severity, failure condition, and/or enabled state. Owner/admin only |
+| `create_compliance_rule` | Create a rule (name, severity, a natural-language failure condition, and which builds it checks — `subject_kinds`: `agent`, `tool`, `app`), optionally from a template, with an option to check existing projects immediately. Owner/admin only |
+| `update_compliance_rule` | Change a rule's name, description, severity, failure condition, what it checks (`subject_kinds`), and/or enabled state. Owner/admin only |
 | `delete_compliance_rule` | Permanently delete a rule and its check history. Requires `confirm_delete: true`. Owner/admin only |
-| `run_compliance_checks` | Run enabled rules now, on one project or across the workspace |
+| `run_compliance_checks` | Run enabled rules now: on one project (`project_slug`) or one Genie Agent or Tool (`build_kind` + `build_id`) with view access, or across the workspace with manage access. A workspace-wide run is bounded and says when it stopped at its limit. Each check costs a model call per build |
 
 ### Workspace Guardrails
 

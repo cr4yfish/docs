@@ -1,9 +1,9 @@
 ---
 title: "Governance: review projects and enforce compliance rules"
-description: "Review every project in your workspace, see what integrations and knowledge Genie AI has access to, and write natural-language compliance rules that check each project automatically whenever it ships."
+description: "Walk through what Genie AI may reach, what every message is checked against, what it may spend, what it is doing, and the plain-language compliance rules your agents, tools and apps must meet."
 ---
 
-**Governance** gives workspace owners and admins one place to review projects, see what Genie AI has access to across the workspace, and enforce compliance rules that re-check every project automatically whenever it ships a new version.
+**Governance** gives workspace owners and admins one place to see what Genie AI may do in the workspace and what it did — what it can reach, what every message is checked against, what it may spend, what it is doing — and to enforce plain-language compliance rules on the Genie Agents, Tools and Apps the workspace builds.
 
 <Note>
 Governance is part of every workspace by default — there's nothing to turn on. A workspace that hasn't written any compliance rules simply has nothing to check yet.
@@ -13,11 +13,21 @@ Governance is part of every workspace by default — there's nothing to turn on.
 
 Click the account row at the bottom of the workspace sidebar, choose **Workspace settings**, then open **Governance**.
 
-Governance has these tabs: **Projects**, **Integrations & Knowledge**, **Compliance rules** and **Spend**. The workspace's **PII Detection**, **Guardrails**, **Activities** and **Tracing** pages now live here too, as tabs of their own — see [PII rules](/workspaces/pii-rules), [Guardrails](/workspaces/guardrails) and [Tracing](/workspaces/tracing).
+Governance reads as a program in five chapters, in the order a request meets them:
+
+| Chapter | Areas |
+| --- | --- |
+| **Reach** | MCP integrations, Knowledge & ontology |
+| **Protect** | Personal data ([PII rules](/workspaces/pii-rules)), Content safety ([Guardrails](/workspaces/guardrails)) |
+| **Limit** | [Budgets](#budgets) |
+| **Watch** | [AI spend](#spend-limits), [Tracing](/workspaces/tracing), Activities |
+| **Review** | [Compliance rules](#compliance-rules), Genie Apps (Beta) |
+
+The **Overview** lists the chapters you may open as a numbered timeline. Each area page uses the full width, shows *Step n · Chapter* above its title, and has **Previous** and **Next** at its foot, so you can walk the whole program in order. Areas with distinct parts have tabs under the title: **Personal data** has *Detectors*, *Custom rules* and *Detection log*; **Content safety** has *Settings* and *Blocked messages*. You only see the areas your permissions let you open.
 
 ## Projects: review
 
-The **Projects** tab lists every project in the workspace with its review status and compliance state. Open a project to set a verdict:
+The **Genie Apps** area (Beta) lists every app in the workspace with its review status and compliance state. Open a project to set a verdict:
 
 - **Approve** — marks the project reviewed and compliant on its current version.
 - **Flag** — keeps the project running but records a note for other reviewers.
@@ -36,7 +46,9 @@ The **Integrations & Knowledge** tab is a read-only overview of everything share
 
 ## Compliance rules
 
-Turn your organization's policies into automatic checks. Each rule is a plain-language **failure condition** — for example, "The project fails when it handles personal data without a visible lawful basis" — with a name, description, and severity (**Low**, **Medium**, **High**, or **Critical**).
+Turn your organization's policies into automatic checks. Each rule is a plain-language **failure condition** — for example, "The build fails when it sends personal data to an outside service" — with a name, description, and severity (**Low**, **Medium**, **High**, or **Critical**).
+
+A rule also names **what it checks**: [Genie Agents](/workspaces/workflow-apps), [Genie Tools](/workspaces/genie-tools) and Genie Apps (Beta), in any combination. A new blank rule checks all three; a rule saved before checks apps, as it always did; a template starts with the kinds it is written for.
 
 <Steps>
   <Step title="Open Compliance rules">
@@ -53,13 +65,35 @@ Turn your organization's policies into automatic checks. Each rule is a plain-la
   </Step>
 </Steps>
 
-Genie checks each project against every enabled rule by looking at its name, description, visibility, connected integrations, and what its most recently published version actually shipped — never the contents of your chat conversations. Checks run automatically every time a project publishes a new version, and you can also trigger them manually: **Run checks** on a single project, **Run checks on all projects** from the project list, or **Run on all projects** from a specific rule.
+**What is checked.** For an app, Genie looks at its name, description, visibility, connected integrations, and what its most recently published version actually shipped. For an agent or tool, it looks at how it is set up: its name, description and visibility, how an agent starts and who it runs as, a tool's pages, and one line per step — the kind of step and the one fact a policy is about, such as the host an HTTP step calls, the connected app a step uses or the table it touches. Never the contents of your chats, a step's prompts or request bodies, run data, or credentials. What people type and what documents hold is checked on every message by [Personal data](/workspaces/pii-rules) and [Content safety](/workspaces/guardrails) instead.
 
-A rule's own page shows analytics — how many times it's run, how often it's failed, and its results across projects over time.
+**When checks run.** Apps are checked every time they publish a new version. Agents and tools are checked on demand: **Run** on a rule, a new rule saved with **Check existing builds now**, or asking Genie AI. You can also run the checks on a single app, agent or tool.
+
+**Who may run them.** Anyone who may see Governance can run the checks on one app, agent or tool. A run across the whole workspace — a rule's **Run**, **Run all checks**, or asking Genie AI to check everything — takes Governance's manage permission, or the workspace's [Auto](/workspaces/auto).
+
+**Nothing skips the checks.** Private apps, agents and tools are checked like any other. **Hide private builds** only keeps them out of Governance's lists and counts.
+
+**Runs have limits.** A workspace-wide run checks the most recently changed builds first, up to a set number of each kind, and says when it reached that number. It also stops at its spending budget or time limit and says so; nothing it didn't judge is recorded as a result, and running it again checks the rest.
+
+A rule's own page shows analytics — how many times it's run, how often it's failed — and its newest results for apps, agents and tools, failures first. The rules list shows what each rule checks, and a rule's failing count covers every kind. Narrow a rule to fewer kinds and the results for the kinds it no longer checks stop counting everywhere.
+
+## Budgets
+
+**Budgets** let a workspace set spend limits for itself, in USD, on top of the platform's own:
+
+| Budget | What it limits |
+| --- | --- |
+| **Whole workspace** | Everyone in the workspace together, over any 24 hours |
+| **Each member** | What one member may spend in this workspace, over any 24 hours |
+| **Any one run** | Every single run — a chat answer, a sync, an extraction |
+
+None is set by default. A budget can only **lower** the platform's limits, never raise them: one set above the platform's limit is kept but doesn't apply, and the page says so. Once a budget is reached, further model calls are refused until the last 24 hours make room, or the run stops — with a message that names the limit. Each row shows the limit in force, and the 24-hour rows show what the workspace, and you, have used.
+
+Anyone who may see Governance can read the budgets; people with Governance's manage permission set or remove them in place. Genie AI can read them too, and proposes a change as a confirmation card that you press yourself.
 
 ## Spend limits
 
-The **Spend** tab shows what Genie AI's model calls cost in this workspace — totals, the daily ceiling, recent runs and alerts. Every model call is checked against a hard limit **before** it runs: each run has its own budget, and rolling 24-hour ceilings cap what a person, the workspace and the whole platform can spend. A call that would cross a limit doesn't run, and what a run had done up to then is kept. When a limit stops something — a chat turn, an agent run, [Auto](/workspaces/auto) — it says which one, in plain words.
+The **AI spend** area shows what Genie AI's model calls cost in this workspace — totals, the daily ceiling, recent runs and alerts. Every model call is checked against a hard limit **before** it runs: each run has its own budget, and rolling 24-hour ceilings cap what a person, the workspace and the whole platform can spend — lowered further by any [budgets](#budgets) the workspace set. A call that would cross a limit doesn't run, and what a run had done up to then is kept. When a limit stops something — a chat turn, an agent run, [Auto](/workspaces/auto) — it says which one, in plain words.
 
 - Open a run to see every call it made, with times, alerts and how it ended. A figure the provider didn't report is marked *estimated*.
 - Anyone who may see Governance sees the workspace's totals and runs. Members with Governance's manage permission also see who started each run and a per-member breakdown, and may stop anyone's run. Anyone can stop a run they started.
@@ -76,7 +110,7 @@ Governance access used to be a separate per-member toggle on the settings page. 
 </Note>
 
 <Note>
-Owners and admins can also choose to **hide private projects** from the Governance view, from the workspace settings page.
+The **Hide private builds** switch sits on the **Genie Apps** area, above the list it filters, for people with Governance's manage permission. It is on by default for new workspaces. It only hides private apps, agents and tools from Governance's lists and counts — they are still checked.
 </Note>
 
 ## Manage Governance from workspace chat
@@ -85,8 +119,9 @@ Ask the Genie workspace AI in plain language:
 
 - *"Which projects are failing compliance right now?"*
 - *"Flag the customer-portal project — it's handling PII without a policy"*
-- *"Create a compliance rule that every project must have a description"*
-- *"Run compliance checks on all projects"*
+- *"Create a compliance rule that no agent sends data to a host outside the EU"*
+- *"Run the compliance checks on the Invoice sync agent"*
+- *"Lower our workspace budget to $50 a day"*
 
 <Tip>
 Every Governance page has an **Ask Genie AI** button with a ready-made prompt for that page — including describing a policy in plain language and letting Genie draft the failure condition for you.

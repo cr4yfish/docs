@@ -19,6 +19,16 @@ Alle, die Genie AI im Workspace nutzen, können die Seite öffnen: Sie sehen, ob
 Auto zu verwalten setzt eine Rolle voraus, die alles umfasst, was Auto selbst tun kann. Bist du Admin mit einer benutzerdefinierten Rolle mit weniger Berechtigungen, nimmst du an Auto teil wie jedes Mitglied, kannst aber seine Einstellungen nicht ändern.
 </Note>
 
+## Die Auto-Seite
+
+Die Seite hält Autos Ergebnisse und seine Einstellungen auseinander:
+
+- **Oben** steht Autos Gesicht neben einer Überschrift, die dasselbe in Worten sagt — was es gerade tut, *2 warten auf dich*, *Auto ist an – nichts wartet auf dich* oder *Auto ist aus* —, mit der nächsten Prüfung und den letzten. Eigentümer und Admins finden hier die Schaltflächen **Schnellprüfung** und **Tiefenlauf**, samt dem, was ein Tiefenlauf kostet, und **Auto einschalten**, solange es aus ist.
+- **Arbeit** (standardmäßig offen; der Tab zeigt, wie viel auf dich wartet): zuerst, was auf dich wartet, dann für Manager, was auf andere wartet, dann frühere Läufe und entschiedene Arbeit, das Neueste zuerst.
+- **Einstellungen**: ob Auto an ist und dein eigener Benachrichtigungsschalter, [Ziele](#gib-auto-ein-ziel), [was Auto darf](#entscheide-was-auto-allein-tun-darf) in Kürze, Autos Chats mit Genie AI und — für alle, die das Wissensmodell verwalten — **Ontologie-Pflege**: wie oft Auto das Wissensmodell aufräumt und was sein letzter Lauf getan hat, dazu die KI-Duplikatprüfung mit ihrer Pause und ihrem Tagesbudget. Diese Pflege-Einstellungen standen bisher in den Ontologie-Einstellungen, die jetzt hierher verweisen.
+
+Der offene Tab ist Teil der Seitenadresse, sodass ein Link direkt **Einstellungen** öffnen kann.
+
 ## Was Auto tut
 
 Auto arbeitet in zwei Schritten:
@@ -78,7 +88,7 @@ Der Abschnitt **Ziele** steht auf der Auto-Seite ganz oben: das Formular, dann j
 
 ## Autos Gesicht
 
-Auto hat oben auf seiner Seite ein kleines rundes Gesicht. Seine Stimmung zeigt, was Auto gerade tut, sodass du es auf einen Blick erkennst: Es schläft, solange Auto aus ist, liest während eines Tiefenlaufs, hält bei einer Schnellprüfung eine Lupe, fegt, während es das Wissensmodell aufräumt, schwenkt bei einem Ziel-Lauf eine Fahne und hält einen Umschlag, wenn Arbeit auf dich wartet. Seine Augen folgen deinem Mauszeiger, und du kannst es anstupsen. Ist in deinem System „Bewegung reduzieren" eingeschaltet, bleibt es still und zeigt nur seine Stimmung.
+Auto hat in der Kopfzeile seiner Seite ein kleines rundes Gesicht, neben einer Überschrift, die dasselbe in Worten sagt. Seine Stimmung zeigt, was Auto gerade tut, sodass du es auf einen Blick erkennst: Es schläft, solange Auto aus ist, liest während eines Tiefenlaufs, hält bei einer Schnellprüfung eine Lupe, fegt, während es das Wissensmodell aufräumt, schwenkt bei einem Ziel-Lauf eine Fahne und hält einen Umschlag, wenn Arbeit auf dich wartet. Seine Augen folgen deinem Mauszeiger, und du kannst es anstupsen. Ist in deinem System „Bewegung reduzieren" eingeschaltet, bleibt es still und zeigt nur seine Stimmung.
 
 ## Mit Genie AI selbst sprechen
 
@@ -94,7 +104,8 @@ Ein Lauf in einem Workspace unterliegt allein den Regeln dieses Workspace:
 - Die [PII-Regeln](/de/workspaces/pii-rules) des Workspace gelten für das, was Auto an das Modell sendet.
 - Das Guthaben des Workspace zahlt, wenn der Workspace zahlt, und jeder Lauf erscheint auf der [Tracing](/de/workspaces/tracing)-Seite des Workspace.
 - Änderungen, die Auto vornimmt, stehen im Aktivitätsprotokoll unter seinem eigenen Namen.
-- Alles, was er tut, ist durch Ausgabenlimits begrenzt (siehe [Ausgabenlimits](/de/workspaces/governance#ausgabenlimits)). Stoppt ein Limit Auto, sagt die Seite es.
+- Alles, was er tut, ist durch Ausgabenlimits begrenzt, auch durch die eigenen [Budgets](/de/workspaces/governance#budgets) des Workspace. Stoppt ein Limit Auto, sagt die Seite es.
+- Seine Tiefenläufe dürfen die [Compliance-Prüfungen](/de/workspaces/governance#compliance-regeln) des Workspace ausführen, für einen Build oder den ganzen Workspace — dieselbe Prüfung, die ein Governance-Manager starten kann. Dabei entstehen nur Prüfergebnisse: Auto ändert nie eine Regel oder ein Urteil. Erreicht ein Lauf sein Zeit- oder Ausgabenlimit, sagt er es, und der nächste Lauf prüft den Rest.
 
 ## Frag Genie AI
 

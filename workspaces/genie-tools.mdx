@@ -30,7 +30,7 @@ There's no separate form-based builder — Genie AI is how you create and change
 
 Genie AI shows the tool working right in the chat as it builds it — a live table, a working form — not just a description of what it did. Once you're happy with it, it's saved and appears on the **Tools** page — private to you until you share it, the same as a [Genie Agent](/workspaces/workflow-apps#managing-an-agent): press **Share** and choose who gets it.
 
-**A tool opens as the tool, and nothing else.** A tool opens in a browser tab of its own: its icon, name and description on top, then the tool across the whole width. There is no toolbar around it. People who may edit the tool get one slim bar above it with **Share** and **Edit** — **Edit** reopens the exact Genie AI conversation you built or last changed it in, with the tool beside the chat, instead of starting from scratch. Everyone else sees the tool and no controls they could not use. The canvas beside the chat draws a tool exactly as its own page does.
+**A tool opens as the tool, and nothing else.** A tool opens in a browser tab of its own: its icon, name and description on top, then the tool. The page's background runs edge to edge, but the tool stands in a centred column of readable width, so a form on a wide monitor no longer stretches across the screen; a search box over a table, list or board stays compact with its filters beside it. There is no toolbar around it. People who may edit the tool get one slim bar above it with **Share** and **Edit** — **Edit** reopens the exact Genie AI conversation you built or last changed it in, with the tool beside the chat, instead of starting from scratch. Everyone else sees the tool and no controls they could not use. The canvas beside the chat draws a tool exactly as its own page does.
 
 <Tip>
 Because there's no separate editor, changing a tool is always a conversation: *"add a column for the customer's phone number"* or *"remove the delete button, I don't want anyone deleting orders by accident."*
@@ -50,7 +50,7 @@ A tool's page is built from a small set of building blocks, and Genie AI picks a
 | Compare | Two or more segments of your data side by side, with the differences highlighted |
 | Anomalies | Outliers, empty fields, and duplicate rows found automatically in a table |
 | Insights | An AI-written summary of what stands out in a table |
-| Table | Rows of data, with the columns you want. Cells show their kind — dates and times in your zone, numbers in your decimal mark, status chips, links — and names from your [knowledge model](/workspaces/overview#knowledge-model) are marked in text cells, with a card on hover |
+| Table | Rows of data, with the columns you want. Cells show their kind — dates and times in your zone, numbers in your decimal mark, status chips, links — and selecting words in a cell shows what your [knowledge model](/workspaces/overview#knowledge-model) knows about the names in them |
 | List | A node's rows as items — a plain list, a grid or small cards, a timeline, an inbox-style reading pane, or a feed — a changelog-style log with one line per entry, its time, a colored dot, links and pills, grouped into sections with counts |
 | Filter | A row of quick-filter chips ("All", then one per preset). Picking a chip narrows every list, calendar, board, org chart or map that uses it |
 | Details | One selected record's full fields, with buttons that act on it (update, delete, anything you describe) |
@@ -87,6 +87,14 @@ Uploads — into an **Import** block, a file field in a **Form**, or picked from
 Pressing a row in a **List**, **Table**, **Calendar**, **Kanban**, **Org chart**, or **Map** selects its record for the rest of the page: a **Details** block shows that record's full fields, a **Comments** block shows its thread, a **Form** can `follow` it to edit or act on it directly, and any block can be shown only while the selected record matches something specific. A **List** can also be `linked` to another one — showing only the rows that belong to whatever's selected, like a project's own tasks under the project it belongs to.
 
 A **Form** that follows a selected record can also **prefill** itself with that record's current values, for editing it in place rather than only creating new ones — only the fields you actually change are sent back, so a value another action changed while the form was open is never overwritten with a stale one.
+
+## Forms look composed
+
+You never lay out a form yourself — Genie gives every form a tidy layout:
+
+- **One card.** On the tool's page a form, title included, sits on one card of readable width.
+- **Short answers two to a row.** Text, number, choice, date, email, URL and phone fields pair up side by side once there is room; longer fields — a text area, a multi-choice, a file, a checkbox — take a whole row, and so does a field that only shows for some answers, so showing or hiding it never shuffles the fields around it. On a phone every field gets its own row.
+- **"optional" where it helps.** When a form has required fields, the others carry a quiet *optional* tag.
 
 ## Forms behind a button, and record sheets
 
