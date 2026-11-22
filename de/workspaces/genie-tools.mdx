@@ -30,7 +30,7 @@ Es gibt keinen separaten formularbasierten Baukasten — Genie AI ist der Weg, e
 
 Genie AI zeigt das Tool schon während des Bauens direkt im Chat in Aktion — eine live funktionierende Tabelle, ein funktionierendes Formular — nicht nur eine Beschreibung dessen, was gemacht wurde. Sobald du zufrieden bist, wird es gespeichert und erscheint auf der **Tools**-Seite — privat für dich, bis du es teilst, genau wie bei einem [Genie Agent](/de/workspaces/workflow-apps#einen-agenten-verwalten): drücke **Teilen** und wähle, wer es bekommt.
 
-**Ein Tool öffnet sich als das Tool, und sonst nichts.** Ein Tool öffnet sich in einem eigenen Browser-Tab: oben sein Symbol, sein Name und seine Beschreibung, darunter das Tool über die ganze Breite. Es gibt keine Werkzeugleiste darum herum. Wer das Tool bearbeiten darf, bekommt darüber eine schmale Leiste mit **Teilen** und **Bearbeiten** — **Bearbeiten** öffnet genau das Genie-AI-Gespräch wieder, in dem du es gebaut oder zuletzt geändert hast, mit dem Tool neben dem Chat, statt bei null anzufangen. Alle anderen sehen das Tool und keine Bedienelemente, die sie nicht nutzen könnten. Die Canvas neben dem Chat zeichnet ein Tool genau so wie seine eigene Seite.
+**Ein Tool öffnet sich als das Tool, und sonst nichts.** Ein Tool öffnet sich in einem eigenen Browser-Tab: oben sein Symbol, sein Name und seine Beschreibung, darunter das Tool. Der Hintergrund der Seite reicht bis an den Rand, das Tool selbst steht aber in einer zentrierten Spalte lesbarer Breite, sodass sich ein Formular auf einem breiten Monitor nicht mehr über den ganzen Bildschirm zieht; ein Suchfeld über einer Tabelle, Liste oder einem Board bleibt kompakt, mit seinen Filtern direkt daneben. Es gibt keine Werkzeugleiste darum herum. Wer das Tool bearbeiten darf, bekommt darüber eine schmale Leiste mit **Teilen** und **Bearbeiten** — **Bearbeiten** öffnet genau das Genie-AI-Gespräch wieder, in dem du es gebaut oder zuletzt geändert hast, mit dem Tool neben dem Chat, statt bei null anzufangen. Alle anderen sehen das Tool und keine Bedienelemente, die sie nicht nutzen könnten. Die Canvas neben dem Chat zeichnet ein Tool genau so wie seine eigene Seite.
 
 <Tip>
 Weil es keinen separaten Editor gibt, ist das Ändern eines Tools immer ein Gespräch: „füge eine Spalte für die Telefonnummer des Kunden hinzu" oder „entferne den Löschen-Button, ich möchte nicht, dass jemand aus Versehen Bestellungen löscht."
@@ -50,7 +50,7 @@ Die Seite eines Tools setzt sich aus einer kleinen Auswahl an Bausteinen zusamme
 | Vergleich | Zwei oder mehr Segmente deiner Daten nebeneinander, mit hervorgehobenen Unterschieden |
 | Anomalien | Ausreißer, leere Felder und doppelte Zeilen, automatisch in einer Tabelle gefunden |
 | Insights | Eine von der KI verfasste Zusammenfassung dessen, was in einer Tabelle auffällt |
-| Tabelle | Datenzeilen, mit den Spalten, die du möchtest. Zellen zeigen ihre Art — Datum und Uhrzeit in deiner Zeitzone, Zahlen mit deinem Dezimalzeichen, Status-Chips, Links — und Namen aus deinem [Knowledge-Modell](/workspaces/overview#knowledge-model) sind in Textzellen markiert, mit einer Karte beim Darüberfahren |
+| Tabelle | Datenzeilen, mit den Spalten, die du möchtest. Zellen zeigen ihre Art — Datum und Uhrzeit in deiner Zeitzone, Zahlen mit deinem Dezimalzeichen, Status-Chips, Links — und wenn du Wörter in einer Zelle markierst, zeigt dir dein [Wissensmodell](/de/workspaces/overview#wissensmodell), was es über die Namen darin weiß |
 | Liste | Die Zeilen eines Knotens als Einträge — als einfache Liste, Kachel- oder Karten-Ansicht, Zeitleiste, Posteingang-Ansicht oder Feed — ein Protokoll im Changelog-Stil mit einer Zeile pro Eintrag, seiner Uhrzeit, einem farbigen Punkt, Links und Pills, gruppiert in Abschnitte mit Anzahl |
 | Filter | Eine Reihe von Schnellfilter-Chips („Alle", dann einer pro Voreinstellung). Ein Chip schränkt jede Liste, jeden Kalender, jedes Board, Organigramm oder jede Karte ein, die ihn verwenden |
 | Details | Alle Felder eines ausgewählten Datensatzes, mit Buttons, die darauf wirken (aktualisieren, löschen, was du beschreibst) |
@@ -87,6 +87,14 @@ Uploads — in einen **Import**-Baustein, ein Datei-Feld in einem **Formular**, 
 Ein Klick auf eine Zeile in **Liste**, **Tabelle**, **Kalender**, **Kanban**, **Organigramm** oder **Karte** wählt ihren Datensatz für den Rest der Seite aus: Ein **Details**-Baustein zeigt alle Felder dieses Datensatzes, ein **Kommentare**-Baustein zeigt seinen Thread, ein **Formular** kann ihm `follows` und ihn direkt bearbeiten oder darauf einwirken, und jeder Baustein kann nur angezeigt werden, solange der ausgewählte Datensatz etwas Bestimmtes erfüllt. Eine **Liste** kann außerdem mit einer anderen `linked` sein — sie zeigt dann nur die Zeilen, die zu dem gerade Ausgewählten gehören, etwa die eigenen Aufgaben eines Projekts unter dem Projekt, zu dem sie gehören.
 
 Ein **Formular**, das einem ausgewählten Datensatz folgt, kann sich auch mit dessen aktuellen Werten **vorausfüllen** — zum Bearbeiten an Ort und Stelle statt nur zum Anlegen neuer Datensätze; nur die Felder, die du tatsächlich änderst, werden zurückgesendet, sodass ein Wert, den eine andere Aktion geändert hat, während das Formular offen war, nie mit einem veralteten Wert überschrieben wird.
+
+## Formulare sehen aufgeräumt aus
+
+Du legst ein Formular nie selbst an — Genie gibt jedem Formular ein ordentliches Layout:
+
+- **Eine Karte.** Auf der Seite des Tools steht ein Formular samt Titel auf einer Karte lesbarer Breite.
+- **Kurze Antworten zu zweit in einer Reihe.** Text-, Zahl-, Auswahl-, Datums-, E-Mail-, URL- und Telefonfelder stehen nebeneinander, sobald Platz ist; längere Felder — ein Textbereich, eine Mehrfachauswahl, eine Datei, eine Checkbox — nehmen eine ganze Reihe ein, ebenso ein Feld, das nur bei bestimmten Antworten erscheint, sodass sein Ein- und Ausblenden die Felder daneben nie verschiebt. Auf dem Handy bekommt jedes Feld eine eigene Reihe.
+- **„optional", wo es hilft.** Hat ein Formular Pflichtfelder, tragen die übrigen ein dezentes *optional*.
 
 ## Formulare hinter einer Schaltfläche und Datensatz-Panels
 

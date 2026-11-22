@@ -69,12 +69,12 @@ Genie as a built-in connected app means a step can do anything Genie AI itself c
 </Steps>
 
 <Tip>
-When Genie AI builds an agent for you, the chat shows a card with its actual graph — the steps and how they connect — right as it's being created, not just a one-line confirmation. And every step Genie AI's tools take while working on an agent now shows a plain-language label in the transcript instead of a generic "Working on it".
+When Genie AI builds an agent for you, the chat shows a small pill with the agent's name — shimmering while it is being built, with a check once it exists. Press it to open the agent: on the canvas beside the chat on a desktop, where its steps take shape as Genie writes them, or in the editor on a smaller screen. An amber pill means nothing was created, and pressing it shows why. Every step Genie AI's tools take while working on an agent shows a plain-language label in the transcript instead of a generic "Working on it".
 </Tip>
 
 ## The visual editor
 
-Select an agent from the **Genie Agents** page to reach its editor — a canvas showing every step and how they connect. You can connect two steps by clicking one step's output and then the step that should use it, rename a step, or remove one.
+Select an agent from the **Genie Agents** page to reach its editor — a canvas showing every step and how they connect. Each step's card is one line: its kind's icon and its name; hover a card, or select it, for what the step does. The first card is named for what starts the agent and carries the **test run** as a round play button. Names on the connections show when you hover, focus or select them. On a desktop, zoom with the wheel, a pinch or the **+**, **−** and **0** keys, and use **Fit** to see everything; a phone keeps its zoom buttons. You can connect two steps by clicking one step's output and then the step that should use it, rename a step, or remove one.
 
 Saving never overwrites a newer version. If Genie AI, a revert or another tab saved while you were editing, your draft stays on screen and the editor offers to load the newer version.
 
@@ -114,7 +114,7 @@ Ask Genie AI things like *"loop over every row and add up the total"* — it set
 
 Before you commit to a change, you can run a real test to see exactly what an agent — or just one step of it — actually does.
 
-- **Test run** — starts a real run of your last saved version and paints live status on every step's card as it goes: waiting, running, done, or failed, along with the value each step produced. This uses your real data and connected apps, and spends any credits it normally would — it isn't a simulation. Save your changes first; a test run always uses the saved version.
+- **Test run** — the play button on the first card starts a real run of your last saved version and paints live status on every step's card as it goes: waiting, running, done, or failed, along with the value each step produced. This uses your real data and connected apps, and spends any credits it normally would — it isn't a simulation. Save your changes first; a test run always uses the saved version.
 - **Test this step** — test a single **Connected app** step on its own, without saving or running the rest of the flow. Genie fills in realistic example values for anything the step would normally get from an earlier step, so the test is likely to succeed on the first try. Because it's a real call, a step that writes data will actually write it.
 - **Ask Genie AI to fix it** — if a step's test fails, hand the failure to Genie AI with one click. Genie sees the tool that failed, the connected app's own error, and exactly what was sent, and proposes a fix.
 

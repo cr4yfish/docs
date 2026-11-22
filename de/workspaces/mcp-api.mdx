@@ -544,13 +544,13 @@ Projektüberprüfungen, Aufsicht über geteilte Ressourcen und Compliance-Regeln
 | Tool | Was es tut |
 |---|---|
 | `list_governance_projects` | Governance-Übersicht der Projekte des Workspaces: Eigentümer:in, Sichtbarkeit, letzte Version, Überprüfungsurteil, Compliance-Zustand und Integrationsrisiko-Signale. Filtern mit `only_failing` / `only_unreviewed` |
-| `get_project_compliance` | Governance-Detail eines Projekts: aktuelles Urteil plus das neueste Ergebnis jeder Compliance-Regel (mit Begründung) und eine begrenzte kürzliche Historie |
+| `get_project_compliance` | Governance-Detail eines Projekts: aktuelles Urteil plus das neueste Ergebnis jeder Compliance-Regel (mit Begründung) und eine begrenzte kürzliche Historie. Oder, mit `build_kind` (`agent` oder `tool`) und `build_id`, das neueste Ergebnis jeder Regel, die diesen Genie Agent oder dieses Tool geprüft hat |
 | `review_project` | Setzt ein Urteil — `approved`, `flagged` oder `disabled` (blockiert neue Builds für alle außer dem Eigentümer bzw. der Eigentümerin) — oder `clear`, um es zu entfernen |
 | `list_compliance_rules` | Listet die Compliance-Regeln des Workspaces plus die integrierte Vorlagenbibliothek, von der eine neue Regel starten kann |
-| `create_compliance_rule` | Erstellt eine Regel (Name, Schweregrad, eine Fehlerbedingung in natürlicher Sprache), optional aus einer Vorlage, mit der Option, bestehende Projekte sofort zu prüfen. Nur Eigentümer:in/Admin |
-| `update_compliance_rule` | Ändert Name, Beschreibung, Schweregrad, Fehlerbedingung und/oder Aktivierungsstatus einer Regel. Nur Eigentümer:in/Admin |
+| `create_compliance_rule` | Erstellt eine Regel (Name, Schweregrad, eine Fehlerbedingung in natürlicher Sprache und welche Builds sie prüft — `subject_kinds`: `agent`, `tool`, `app`), optional aus einer Vorlage, mit der Option, bestehende Projekte sofort zu prüfen. Nur Eigentümer:in/Admin |
+| `update_compliance_rule` | Ändert Name, Beschreibung, Schweregrad, Fehlerbedingung, was sie prüft (`subject_kinds`) und/oder Aktivierungsstatus einer Regel. Nur Eigentümer:in/Admin |
 | `delete_compliance_rule` | Löscht eine Regel und ihre Prüfhistorie dauerhaft. Erfordert `confirm_delete: true`. Nur Eigentümer:in/Admin |
-| `run_compliance_checks` | Führt aktivierte Regeln jetzt aus, für ein Projekt oder workspaceweit |
+| `run_compliance_checks` | Führt aktivierte Regeln jetzt aus: für ein Projekt (`project_slug`) oder einen Genie Agent bzw. ein Tool (`build_kind` + `build_id`) mit Lesezugriff, oder workspaceweit mit Verwaltungszugriff. Ein workspaceweiter Lauf ist begrenzt und sagt, wenn er an seinem Limit gestoppt hat. Jede Prüfung kostet einen Modellaufruf pro Build |
 
 ### Workspace-Guardrails
 
