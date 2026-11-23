@@ -33,7 +33,7 @@ Instead of typing invites, an owner or admin can connect the company's identity 
     In the directory sync settings (**Workspace settings → People** → **Manage**), press **Add domain** and enter, for example, `contoso.com`. Genie shows a TXT record to publish at your DNS provider. Once it is live, press **Verify**. A domain can be verified by one workspace only, and each domain (such as `eu.contoso.com`) needs its own record.
   </Step>
   <Step title="Create a provisioning key">
-    On the [API keys](/workspaces/api-keys) page, create a key with the **Provision members (SCIM)** permission. The key acts as the person who created it, so it can only add, change or remove people that person could manage. Create it as the **owner** if the directory should also manage admins.
+    On the [Genie AI API](/workspaces/api-keys#where-to-manage-keys) page (**Workspace settings → Connections**), create a key with the **Provision members (SCIM)** permission. The key acts as the person who created it, so it can only add, change or remove people that person could manage. Create it as the **owner** if the directory should also manage admins.
   </Step>
   <Step title="Connect your identity provider">
     In Microsoft Entra ID, open your enterprise application → **Provisioning** → **Automatic**. Paste the tenant URL shown in the directory sync settings and use the key as the secret token. The default attribute mappings work as they are; provisioning groups is optional.

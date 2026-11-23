@@ -65,7 +65,7 @@ Read and update your workspace, members, invitations, settings, and billing.
 | `remove_workspace_member` | Remove a member immediately, along with their access to the workspace's projects — invited back, they start without it. Refused while the directory decides people and teams. The workspace's owner of record can't be removed (or demoted below Admin) until they've handed the workspace on — see [Transfer ownership](/workspaces/members#transfer-ownership) |
 | `update_workspace` | Rename the workspace, update its description, or set its icon and accent color |
 | `update_workspace_settings` | Toggle activity log, project access control, or automatic knowledge-base reading (entity/relation extraction — see [Knowledge model](/workspaces/overview#knowledge-model)) |
-| `get_workspace_billing` | Subscription plan, status, and billing period |
+| `get_workspace_billing` | Subscription plan, status, and billing period. Owners and admins on a plan also get `creditStatus`: the balance, the recent daily pace and the [Billing page's](/workspaces/overview#workspace-billing) verdict (`unknown`, `payment`, `empty`, `ending`, `low`, `spike` or `ok`). Read-only — plans, seats and credit purchases change in the app |
 | `get_workspace_credits` | Current credit balance |
 | `get_credit_usage` | Credit consumption, optionally broken down by project, member, or day, and sortable by spend or date |
 | `get_recent_workspace_activity` | Activity log with filters and pagination |

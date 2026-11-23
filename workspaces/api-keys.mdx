@@ -11,7 +11,14 @@ A workspace can mint API keys that let your own software talk to **Genie AI** �
 
 ## Where to manage keys
 
-Click the account row at the bottom of the workspace sidebar, choose **Workspace settings**, then open **API keys**. Creating, renaming, rescoping, and revoking keys is restricted to workspace **owners and admins**.
+Click the account row at the bottom of the workspace sidebar and choose **Workspace settings**. Keys live on two pages under **Connections**, depending on who is on the other end. Creating, renaming, rescoping, and revoking keys is restricted to workspace **owners and admins** on both.
+
+| Page | For | What it holds |
+|---|---|---|
+| **Genie AI API** (Beta) | People who want Genie AI in their own tools and scripts | First the no-code way: add the [MCP](/workspaces/mcp-api) address to an assistant such as Claude, ChatGPT or Cursor and sign in — no key needed. Then ready-made prompts to paste into a coding agent, and the keys that talk to Genie AI or [provision members](/workspaces/provisioning) |
+| **Ontology connections** | Developers connecting another system to the [knowledge model](/workspaces/overview#knowledge-model) | A diagram of the path — write → intake queue → knowledge model → read changes — with the queue's live totals, then the integration keys with their queues and *Review first* |
+
+Each page's **New key** offers only its own scopes. A key created before the split with scopes of both kinds is listed on both pages.
 
 You can also manage keys by asking Genie AI directly in chat — it can list your keys, create a new one, rename or rescope an existing one, and revoke one, the same as using the settings page. Creating a key, or changing one, shows a [confirmation card](/workspaces/overview#confirmation-cards) first, and nothing happens until you press it:
 
