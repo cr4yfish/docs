@@ -11,7 +11,14 @@ Ein Workspace kann API-Schlüssel erstellen, mit denen deine eigene Software per
 
 ## Wo Schlüssel verwaltet werden
 
-Klicke auf die Kontozeile unten in der Workspace-Seitenleiste, wähle **Workspace-Einstellungen** und öffne dann **API-Schlüssel**. Erstellen, Umbenennen, Neu-Skopieren und Widerrufen von Schlüsseln ist auf **Inhaber:innen und Admins** des Workspace beschränkt.
+Klicke auf die Kontozeile unten in der Workspace-Seitenleiste und wähle **Workspace-Einstellungen**. Schlüssel liegen auf zwei Seiten unter **Verbindungen**, je nachdem, wer am anderen Ende ist. Erstellen, Umbenennen, Neu-Skopieren und Widerrufen von Schlüsseln ist auf beiden auf **Inhaber:innen und Admins** des Workspace beschränkt.
+
+| Seite | Für | Was sie enthält |
+|---|---|---|
+| **Genie AI-API** (Beta) | Personen, die Genie AI in ihren eigenen Tools und Skripten nutzen wollen | Zuerst der Weg ohne Code: Füge die [MCP](/de/workspaces/mcp-api)-Adresse einem Assistenten wie Claude, ChatGPT oder Cursor hinzu und melde dich an — ganz ohne Schlüssel. Dann fertige Prompts zum Einfügen in einen Coding-Agenten und die Schlüssel, die mit Genie AI sprechen oder [Mitglieder provisionieren](/de/workspaces/provisioning) |
+| **Ontologie-Verbindungen** | Entwickler:innen, die ein anderes System mit dem [Wissensmodell](/de/workspaces/overview#wissensmodell) verbinden | Ein Diagramm des Wegs — schreiben → Eingangs-Warteschlange → Wissensmodell → Änderungen lesen — mit den Live-Zahlen der Warteschlange, dann die Integrationsschlüssel mit ihren Warteschlangen und *Erst prüfen* |
+
+**Neuer Schlüssel** bietet auf jeder Seite nur deren eigene Berechtigungen an. Ein Schlüssel, der vor der Trennung mit Berechtigungen beider Arten erstellt wurde, erscheint auf beiden Seiten.
 
 Du kannst Schlüssel auch verwalten, indem du Genie AI direkt im Chat darum bittest — sie kann deine Schlüssel auflisten, einen neuen erstellen, einen bestehenden umbenennen oder neu skopieren und einen widerrufen, genauso wie über die Einstellungsseite. Einen Schlüssel zu erstellen oder zu ändern zeigt zuerst eine [Bestätigungskarte](/de/workspaces/overview#best%C3%A4tigungskarten), und es passiert nichts, bis du sie drückst:
 

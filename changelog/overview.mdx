@@ -4,6 +4,40 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="November 23, 2026" description="Weekly release">
+
+Covers what shipped November 22. Billing answers your questions at a glance, the Model page becomes one full-screen canvas with an entity map, and API keys split by who uses them.
+
+## New features
+
+- **A Billing page that answers first.** **Workspace settings → Billing** leads with one verdict in words — all good, running low, a payment due, a day that stood out — then a chart of each day by your biggest apps with the days that stood out flagged, the top apps and people beside it, and your plan. Pick a day to see who and what spent it. See [Workspace billing](/workspaces/overview#workspace-billing).
+- **The entity map.** The Model page now draws the things themselves, not only their kinds: the most linked entities you may see, in an area or of one class, with a search for the rest. A class's panel shows two example entities and **Show on entity map**. See [The entity map](/workspaces/overview#knowledge-model).
+- **Try reading live in the setup guide.** The ontology step reads a logistics example or one of your own documents in front of you and marks what it finds. Nothing is saved; a preview costs a few credits. See [The setup guide](/workspaces/setup-guide#the-steps).
+- **Two pages for API keys.** **Genie AI API** is for people — connect an assistant over MCP without a key, or paste a ready-made prompt into a coding agent. **Ontology connections** is for developers wiring another system into the knowledge model, with a diagram of the path and the queue's live totals. See [Where to manage keys](/workspaces/api-keys#where-to-manage-keys).
+- **An agent's latest run, first.** An agent on the chat canvas opens on its latest run and its answer, with the earlier runs on one line under it. While Genie AI edits the agent, the steps it writes are marked **New** or **Changing** in place. See [Genie Agents](/workspaces/workflow-apps#two-ways-to-start-one).
+- **Credit status over MCP.** `get_workspace_billing` now returns `creditStatus` — balance, pace and the Billing page's verdict — for owners and admins. See [MCP API](/workspaces/mcp-api#workspace-management).
+
+## Updates
+
+- **The Model page is one canvas with one rail.** Every control is an icon on a rail down the left edge, **Full screen** fills the window, and a small dot says when a draft, a filter or a pending change is in play. **Processes** opens a table to pick a process from. See [Knowledge model](/workspaces/overview#knowledge-model).
+- **Beta badges.** Auto, Delegations, the Genie AI API and reference ontologies are marked **Beta** in settings. See [Workspaces](/workspaces/overview#sidebar).
+- **Brand is now Branding.** The settings page for logos, colours, fonts and notes is called **Branding**. See [Workspace brand](/workspaces/overview#workspace-brand).
+- **The chat says what it's waiting for.** A chat's first answer shows its phase beside the typing dots, and a new chat reads *Naming chat…* until its title arrives, instead of a grey bar. See [Typing bubble](/workspaces/overview#typing-bubble-and-step-list).
+- **A tool's state on the canvas.** The canvas bar says **Building**, **Updating** or **Live** beside the tool's name, and the card in the thread that's on the canvas is lit. See [Genie Tools](/workspaces/genie-tools#building-one).
+- **The Share dialog stays open.** Adding someone or pressing **Save** keeps the dialog open; only **Done**, ✕ or Esc close it. A class's panel puts **Share** in its **⋯** menu. See [Share an item](/workspaces/overview#share-an-item).
+- **Clearer Set up access steps.** The **Teams** step has you make a team first, then tick its people, and locks your own row and people you may not manage instead of failing on the click. The **Reach** step says in one sentence who may do what in which area. See [The setup guide](/workspaces/setup-guide#the-steps).
+- **A plain Home prompt.** Typing on Home no longer opens a dropdown of actions and suggestions: Enter always asks Genie AI. Start a project from the sidebar, the command palette or a template.
+- **A calmer hand-off from Home.** When you send from Home, the page dissolves in place and your message is on screen at once while the chat opens.
+
+## Fixes
+
+- **Code blocks stay in place.** Wide code in a Genie Tool scrolls sideways inside its frame, and no longer scrolls twice on the chat canvas.
+- **No duplicate chat history groups.** Opening a chat older than the loaded history no longer shows a group twice or a ghost row.
+- **The setup guide in dark mode** draws its app windows in the dark theme.
+
+</Update>
+
+
 <Update label="November 22, 2026" description="Weekly release">
 
 Covers what shipped November 21. Home gets a new shape, Governance becomes a step-by-step program with budgets of its own, and compliance rules now check agents and tools.

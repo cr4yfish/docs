@@ -4,6 +4,40 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="23. November 2026" description="Wöchentliches Release">
+
+Umfasst, was am 22. November erschienen ist. Die Abrechnung beantwortet deine Fragen auf einen Blick, die Modell-Seite wird zu einer Vollbild-Arbeitsfläche mit Entitätenkarte, und API-Schlüssel teilen sich danach auf, wer sie nutzt.
+
+## Neue Funktionen
+
+- **Eine Abrechnungsseite, die zuerst antwortet.** **Workspace-Einstellungen → Abrechnung** beginnt mit einem Urteil in Worten — alles gut, Guthaben wird knapp, eine Zahlung ist offen, ein Tag ist aufgefallen —, dann ein Diagramm jedes Tages nach deinen größten Apps mit markierten Auffälligkeiten, daneben die größten Apps und Personen, und dein Tarif. Wähle einen Tag, um zu sehen, wer und was ihn verbraucht hat. Siehe [Workspace-Abrechnung](/de/workspaces/overview#workspace-abrechnung).
+- **Die Entitätenkarte.** Die Modell-Seite zeichnet jetzt die Dinge selbst, nicht nur ihre Arten: die am stärksten verknüpften Entitäten, die du sehen darfst, in einem Bereich oder einer Klasse, mit einer Suche für den Rest. Das Panel einer Klasse zeigt zwei Beispiel-Entitäten und **Auf der Entitätenkarte zeigen**. Siehe [Wissensmodell](/de/workspaces/overview#wissensmodell).
+- **Lesen live ausprobieren im Einrichtungsleitfaden.** Der Ontologie-Schritt liest ein Logistik-Beispiel oder eines deiner Dokumente vor deinen Augen und markiert, was er findet. Nichts wird gespeichert; eine Vorschau kostet ein paar Credits. Siehe [Der Einrichtungsleitfaden](/de/workspaces/setup-guide).
+- **Zwei Seiten für API-Schlüssel.** **Genie AI-API** ist für Personen — verbinde einen Assistenten per MCP ohne Schlüssel oder füge einen fertigen Prompt in einen Coding-Agenten ein. **Ontologie-Verbindungen** ist für Entwickler:innen, die ein anderes System an das Wissensmodell anbinden, mit einem Diagramm des Wegs und den Live-Zahlen der Warteschlange. Siehe [Wo Schlüssel verwaltet werden](/de/workspaces/api-keys#wo-schl%C3%BCssel-verwaltet-werden).
+- **Der letzte Lauf eines Agenten zuerst.** Ein Agent auf der Chat-Canvas öffnet mit seinem letzten Lauf und dessen Antwort, die früheren Läufe in einer Zeile darunter. Während Genie AI den Agenten bearbeitet, werden die geschriebenen Schritte an Ort und Stelle als **Neu** oder **Wird geändert** markiert. Siehe [Genie Agents](/de/workspaces/workflow-apps).
+- **Credit-Status per MCP.** `get_workspace_billing` liefert Ownern und Admins jetzt `creditStatus` — Guthaben, Tempo und das Urteil der Abrechnungsseite. Siehe [MCP-API](/de/workspaces/mcp-api).
+
+## Updates
+
+- **Die Modell-Seite ist eine Arbeitsfläche mit einer Leiste.** Jedes Bedienelement ist ein Icon auf einer Leiste am linken Rand, **Vollbild** füllt das Fenster, und ein kleiner Punkt zeigt, wenn ein Entwurf, ein Filter oder eine offene Änderung im Spiel ist. **Prozesse** öffnet eine Tabelle, aus der du einen Prozess wählst. Siehe [Wissensmodell](/de/workspaces/overview#wissensmodell).
+- **Beta-Abzeichen.** Auto, Delegationen, die Genie AI-API und Referenz-Ontologien sind in den Einstellungen als **Beta** gekennzeichnet. Siehe [Workspaces](/de/workspaces/overview#seitenleiste).
+- **Aus Marke wird Branding.** Die Einstellungsseite für Logos, Farben, Schriften und Hinweise heißt jetzt **Branding**. Siehe [Workspace-Marke](/de/workspaces/overview#workspace-marke).
+- **Der Chat sagt, worauf er wartet.** Die erste Antwort eines Chats zeigt ihre Phase neben den Tipp-Punkten, und ein neuer Chat zeigt *Chat wird benannt …*, bis sein Titel da ist, statt eines grauen Balkens.
+- **Der Stand eines Tools auf der Canvas.** Die Leiste der Canvas sagt **Wird gebaut**, **Wird aktualisiert** oder **Live** neben dem Namen des Tools, und die Karte im Verlauf, die auf der Canvas liegt, ist hervorgehoben. Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Der Teilen-Dialog bleibt offen.** Jemanden hinzuzufügen oder **Speichern** zu drücken lässt den Dialog offen; nur **Fertig**, ✕ oder Esc schließen ihn. Das Panel einer Klasse hat **Teilen** in seinem **⋯**-Menü.
+- **Klarere Schritte in Zugriff einrichten.** Der Schritt **Teams** lässt dich zuerst ein Team anlegen und dann seine Personen anhaken und sperrt deine eigene Zeile und Personen, die du nicht verwalten darfst, statt beim Klick zu scheitern. Der Schritt **Reichweite** sagt in einem Satz, wer in welchem Bereich was darf. Siehe [Der Einrichtungsleitfaden](/de/workspaces/setup-guide).
+- **Ein schlichter Prompt auf der Startseite.** Tippen auf der Startseite öffnet kein Dropdown mit Aktionen und Vorschlägen mehr: Enter fragt immer Genie AI. Ein Projekt startest du über die Seitenleiste, die Befehlspalette oder eine Vorlage.
+- **Ein ruhigerer Übergang von der Startseite.** Wenn du auf der Startseite sendest, löst sich die Seite an Ort und Stelle auf, und deine Nachricht steht sofort auf dem Bildschirm, während der Chat öffnet.
+
+## Fehlerbehebungen
+
+- **Codeblöcke bleiben an ihrem Platz.** Breiter Code in einem Genie Tool scrollt seitwärts in seinem Rahmen und scrollt auf der Chat-Canvas nicht mehr doppelt.
+- **Keine doppelten Gruppen im Chatverlauf.** Ein Chat, der älter ist als der geladene Verlauf, zeigt keine Gruppe mehr doppelt und keine Geisterzeile.
+- **Der Einrichtungsleitfaden im Dunkelmodus** zeichnet seine App-Fenster im dunklen Design.
+
+</Update>
+
+
 <Update label="22. November 2026" description="Wöchentliches Release">
 
 Umfasst, was am 21. November erschienen ist. Die Startseite bekommt eine neue Form, Governance wird zu einem Schritt-für-Schritt-Programm mit eigenen Budgets, und Compliance-Regeln prüfen jetzt auch Agents und Tools.
