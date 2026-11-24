@@ -4,6 +4,36 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="November 24, 2026" description="Weekly release">
+
+Covers what shipped November 23. Genie Tools follow their data live, agents accept webhooks from services that sign their requests, and each person gets one workspace of their own.
+
+## New features
+
+- **Tools that update themselves.** A Genie Tool's page and the canvas beside the chat now show new rows within about 10 seconds — from an agent's webhook run, a form in another tab or the chat — without a reload, and pick up a new version of the tool the same way. Steps that ask a model or call another service are never re-run automatically. See [Genie Tools](/workspaces/genie-tools#building-one).
+- **Webhooks from services that sign their requests.** A webhook trigger can now hold the sender's own signing secret instead of a Genie token, so Resend, Clerk and other Svix or Standard Webhooks senders can start an agent. Paste the secret into Genie AI's card, never into the chat. A delivery the service retries starts the agent only once. See [Triggers](/workspaces/workflow-apps#webhooks-from-services-that-sign-their-requests).
+- **Create as cards.** **Create** on the Projects page opens one large card per kind — Genie App, Agent, Tool — each with a small picture, a description and examples. An empty workspace shows the same cards right on the page. See [Projects page](/workspaces/overview#projects-page).
+- **A graph in the setup guide's reading demo.** The document now stands beside a small graph: each find is marked in the text as its dot arrives, with the values the text states — dates, amounts, weights — and the links between entries. The prepared logistics example is free and the same every time; your own document costs a few credits. See [The setup guide](/workspaces/setup-guide#the-steps).
+
+## Updates
+
+- **One workspace of your own.** By default, each person can own one workspace they created; workspaces you're invited to don't count. Once you're at the limit, **New Workspace** no longer appears. Workspaces you already own stay as they are. See [Create a workspace](/workspaces/overview#create-a-workspace).
+- **Library is now Data, and the home row says Home.** The sidebar's **Library** row, its page title, search box and back links now read **Data**; the first row reads **Home** instead of *Genie*. Old links keep working. See [Sidebar](/workspaces/overview#sidebar).
+- **Reading is on for new workspaces, and paid by the workspace.** New workspaces read documents into the knowledge model by default. Automatic reading runs on a paid workspace's credits only — it never spends a member's own credits, and a workspace without a paid plan reads nothing until it has one. Work you press for yourself may still use your own credits. See [Knowledge model](/workspaces/overview#knowledge-model).
+- **A simpler setup guide.** The guide is one screen high with no header: the steps are a slim rail of dots that opens over the step, and the bar at the bottom gains **Finish later**. The ontology step shows where reading stands in one line instead of a switch. See [Moving through it](/workspaces/setup-guide#moving-through-it).
+- **See what Genie AI is changing in a tool.** While an edit streams in, the blocks being changed are outlined on the live tool with a *Genie AI* flag, instead of a strip at the bottom of the canvas. See [Genie Tools](/workspaces/genie-tools#building-one).
+- **Examples for an empty workspace.** Home's examples in a workspace with nothing in it yet are **Work with my data**, **Just chat** and **Build a tool or agent**. See [Home](/workspaces/overview#home-jump-back-in-and-for-you).
+- **A notification step reports what it said.** Its output now includes the title and message it sent, so an agent built around a notification returns the text instead of a count. See [Genie Agents](/workspaces/workflow-apps).
+- **Workspace allowance over MCP.** `list_user_workspaces` returns `canCreateWorkspace`, and `create_workspace` creates the workspace and your membership together or not at all. See [MCP API](/workspaces/mcp-api#workspace-management).
+
+## Fixes
+
+- **No half-created workspaces.** A workspace whose owner membership failed to save is no longer left behind, unreachable.
+- **An empty Projects page** no longer shows a toolbar with nothing to search or a second large heading.
+- **Tab titles are consistent.** A project's tab title now follows the same pattern as every other page.
+
+</Update>
+
 <Update label="November 23, 2026" description="Weekly release">
 
 Covers what shipped November 22. Billing answers your questions at a glance, the Model page becomes one full-screen canvas with an entity map, and API keys split by who uses them.

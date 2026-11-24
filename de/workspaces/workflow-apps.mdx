@@ -23,7 +23,7 @@ Aktuell stehen sechzehn Arten von Schritten zur Verfügung:
 | **KI** | Bittet Genies KI, als ein Schritt im Ablauf etwas zu erledigen — zusammenfassen, einen Text entwerfen, eine Entscheidung treffen |
 | **Edge Function** | Führt eine bereitgestellte Backend-Funktion aus — standardmäßig die des an den Agenten gebundenen Projekts, oder die jeder anderen Genie App in deinem Workspace |
 | **Verbundene App** | Ruft ein Tool einer der [verbundenen Integrationen](/de/workspaces/integrations) deines Workspaces auf — Linear, Notion, Outlook und mehr — oder **Genie selbst**, immer verfügbar als integrierte verbundene App, ganz ohne Einrichtung |
-| **Benachrichtigung** | Sendet eine Benachrichtigung in die Genie-App, an die Person, die den Agenten ausgeführt hat, oder an den Eigentümer bzw. die Eigentümerin des Agenten |
+| **Benachrichtigung** | Sendet eine Benachrichtigung in die Genie-App, an die Person, die den Agenten ausgeführt hat, oder an den Eigentümer bzw. die Eigentümerin des Agenten. Die Ausgabe enthält Titel und Nachricht, die gesendet wurden — ein Agent, dessen ganze Aufgabe die Benachrichtigung ist, kann also zurückgeben, was er gesagt hat |
 | **Websuche** | Durchsucht das lebende Web. **Schnell** liefert die Ergebnisse als Daten zurück — Titel, Links, Ausschnitte — für einen späteren Schritt; **Tief** recherchiert eine Frage in einer Schleife und liefert einen Bericht mit Quellenangaben, ein Schritt, der Minuten dauert und Credits verbraucht. Ein Zeitlimit (bis zu 20 Minuten) begrenzt eine tiefe Suche, und beim Erreichen bleibt erhalten, was gefunden wurde |
 | **Webseite lesen** | Liest eine Seite über Genies sicheren Seitenleser (denselben, den Genie AI im Chat verwendet) und liefert ihren Text zurück |
 | **Compliance-Prüfung** | Prüft einen Wert gegen die [PII-Regeln](/de/workspaces/pii-rules) und/oder [Guardrails](/de/workspaces/guardrails) deines Workspace, bevor er im Ablauf weitergeht |
@@ -165,6 +165,31 @@ Ein Agent kann mehrere Auslöser gleichzeitig haben — zum Beispiel nächtlich 
 <Tip>
   Bitte Genie AI zum Beispiel: „Führe das jeden Montag um 9 Uhr aus" oder „Gib mir eine Webhook-URL, die diesen Agenten auslöst" — dasselbe Gespräch, das ihn baut, richtet auch ein, wie er startet.
 </Tip>
+
+### Webhooks von Diensten, die ihre Anfragen signieren
+
+Ein Webhook-Auslöser prüft jede eingehende Anfrage gegen genau ein Geheimnis. Es gibt zwei Arten:
+
+| Geheimnis | Wer es erzeugt | Wie sich eine Anfrage ausweist |
+| --- | --- | --- |
+| **Genie-Token** | Genie erzeugt es und zeigt es einmal | Der Absender schickt es im Header `Authorization: Bearer …` oder `X-Workflow-Token` |
+| **Signaturschlüssel des Absenders** | Der Dienst, der den Webhook sendet | Der Dienst signiert jede Zustellung; Genie prüft die Signatur |
+
+Nutze den Signaturschlüssel für Dienste, die keinen frei wählbaren Header senden können und ihre Zustellungen selbst signieren — Resend, Clerk und alles andere, das auf Svix aufbaut oder der Spezifikation [Standard Webhooks](https://www.standardwebhooks.com/) folgt. So richtest du ihn ein:
+
+<Steps>
+  <Step title="Auslöser anfragen">
+    Bitte Genie AI um einen Webhook-Auslöser und nenne den Dienst, zum Beispiel „Gib diesem Agenten einen Webhook für Resend". Genie AI zeigt eine Karte, die beide Geheimnisse anbietet.
+  </Step>
+  <Step title="Schlüssel in die Karte einfügen">
+    Kopiere den Signaturschlüssel (`whsec_…`) aus dem Dashboard des Dienstes und füge ihn in die Karte ein — nie in den Chat. Genie speichert ihn verschlüsselt und zeigt ihn nie wieder an.
+  </Step>
+  <Step title="URL beim Dienst eintragen">
+    Die Karte zeigt die URL, die du beim Dienst als Webhook-Endpunkt einträgst.
+  </Step>
+</Steps>
+
+Ein Auslöser hält immer nur ein Geheimnis: Das eine zu setzen ersetzt das andere, und das Rotieren funktioniert genauso. Eine signierte Zustellung muss aktuell sein — höchstens fünf Minuten alt —, und eine Zustellung, die der Dienst nach einem Timeout erneut sendet, startet den Agenten nur einmal. Ein Token im Query-String der URL wird nicht akzeptiert.
 
 ### Einen Agenten aus dem Wissensmodell starten
 

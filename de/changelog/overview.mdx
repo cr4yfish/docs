@@ -4,6 +4,36 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="24. November 2026" description="Wöchentliches Release">
+
+Umfasst, was am 23. November erschienen ist. Genie Tools folgen ihren Daten live, Agenten nehmen Webhooks von Diensten an, die ihre Anfragen signieren, und jede Person bekommt einen eigenen Workspace.
+
+## Neue Funktionen
+
+- **Tools, die sich selbst aktualisieren.** Die Seite eines Genie Tools und die Arbeitsfläche neben dem Chat zeigen neue Zeilen jetzt innerhalb von etwa 10 Sekunden — aus dem Webhook-Lauf eines Agenten, einem Formular in einem anderen Tab oder dem Chat — ohne Neuladen, und übernehmen eine neue Version des Tools genauso. Schritte, die ein Modell fragen oder einen anderen Dienst aufrufen, werden nie automatisch erneut ausgeführt. Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Webhooks von Diensten, die ihre Anfragen signieren.** Ein Webhook-Auslöser kann jetzt statt eines Genie-Tokens den Signaturschlüssel des Absenders halten, sodass Resend, Clerk und andere Svix- oder Standard-Webhooks-Absender einen Agenten starten können. Füge den Schlüssel in die Karte von Genie AI ein, nie in den Chat. Eine Zustellung, die der Dienst wiederholt, startet den Agenten nur einmal. Siehe [Auslöser](/de/workspaces/workflow-apps#webhooks-von-diensten-die-ihre-anfragen-signieren).
+- **Erstellen als Karten.** **Erstellen** auf der Projektseite öffnet eine große Karte pro Art — Genie App, Agent, Tool —, jede mit einem kleinen Bild, einer Beschreibung und Beispielen. Ein leerer Workspace zeigt dieselben Karten direkt auf der Seite. Siehe [Projektseite](/de/workspaces/overview#projektseite).
+- **Ein Graph in der Lese-Demo des Einrichtungsassistenten.** Das Dokument steht jetzt neben einem kleinen Graphen: Jeder Fund wird im Text markiert, während sein Punkt erscheint, mit den Werten, die der Text nennt — Daten, Beträge, Gewichte —, und den Verknüpfungen zwischen den Einträgen. Das vorbereitete Logistik-Beispiel ist kostenlos und jedes Mal gleich; dein eigenes Dokument kostet ein paar Credits. Siehe [Der Einrichtungsassistent](/de/workspaces/setup-guide).
+
+## Updates
+
+- **Ein eigener Workspace.** Standardmäßig kann jede Person einen Workspace besitzen, den sie selbst erstellt hat; Workspaces, in die du eingeladen wurdest, zählen nicht. Bist du an der Grenze, erscheint **Neuer Workspace** nicht mehr. Workspaces, die du bereits besitzt, bleiben, wie sie sind. Siehe [Einen Workspace erstellen](/de/workspaces/overview#einen-workspace-erstellen).
+- **Die Bibliothek heißt jetzt Daten, und die Startzeile heißt Home.** Die Zeile **Bibliothek** in der Seitenleiste, ihr Seitentitel, ihr Suchfeld und die Links zurück zu ihr heißen jetzt **Daten**; die erste Zeile heißt **Home** statt *Genie*. Alte Links funktionieren weiter. Siehe [Workspaces](/de/workspaces/overview).
+- **Das Lesen ist in neuen Workspaces an und wird vom Workspace bezahlt.** Neue Workspaces lesen Dokumente standardmäßig in das Wissensmodell. Das automatische Lesen läuft nur auf die Credits eines bezahlten Workspace — es verbraucht nie die eigenen Credits eines Mitglieds, und ein Workspace ohne bezahlten Plan liest nichts, bis er einen hat. Was du selbst anstößt, darf weiterhin deine eigenen Credits nutzen. Siehe [Wissensmodell](/de/workspaces/overview#wissensmodell).
+- **Ein einfacherer Einrichtungsassistent.** Der Assistent ist einen Bildschirm hoch und hat keinen Kopfbereich: Die Schritte sind eine schmale Leiste aus Punkten, die sich über dem Schritt öffnet, und die Leiste unten bekommt **Später abschließen**. Der Ontologie-Schritt zeigt in einer Zeile, wo das Lesen steht, statt eines Schalters. Siehe [Der Einrichtungsassistent](/de/workspaces/setup-guide).
+- **Sieh, was Genie AI an einem Tool ändert.** Während eine Änderung einströmt, sind die betroffenen Blöcke auf dem laufenden Tool umrandet und tragen eine *Genie AI*-Markierung, statt eines Streifens am unteren Rand der Arbeitsfläche. Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Beispiele für einen leeren Workspace.** Die Beispiele auf der Startseite eines Workspace, in dem noch nichts liegt, sind **Mit meinen Daten arbeiten**, **Einfach chatten** und **Tool oder Agent bauen**. Siehe [Workspaces](/de/workspaces/overview).
+- **Ein Benachrichtigungsschritt meldet, was er gesagt hat.** Seine Ausgabe enthält jetzt Titel und Nachricht, die gesendet wurden — ein Agent, der um eine Benachrichtigung herum gebaut ist, gibt also den Text zurück statt einer Zahl. Siehe [Genie Agents](/de/workspaces/workflow-apps).
+- **Workspace-Kontingent über MCP.** `list_user_workspaces` liefert `canCreateWorkspace`, und `create_workspace` legt den Workspace und deine Mitgliedschaft gemeinsam an oder gar nicht. Siehe [MCP API](/de/workspaces/mcp-api).
+
+## Fixes
+
+- **Keine halb angelegten Workspaces.** Ein Workspace, dessen Owner-Mitgliedschaft nicht gespeichert werden konnte, bleibt nicht mehr unerreichbar zurück.
+- **Eine leere Projektseite** zeigt keine Werkzeugleiste mehr, mit der es nichts zu suchen gibt, und keine zweite große Überschrift.
+- **Tab-Titel sind einheitlich.** Der Tab-Titel eines Projekts folgt jetzt demselben Muster wie jede andere Seite.
+
+</Update>
+
 <Update label="23. November 2026" description="Wöchentliches Release">
 
 Umfasst, was am 22. November erschienen ist. Die Abrechnung beantwortet deine Fragen auf einen Blick, die Modell-Seite wird zu einer Vollbild-Arbeitsfläche mit Entitätenkarte, und API-Schlüssel teilen sich danach auf, wer sie nutzt.

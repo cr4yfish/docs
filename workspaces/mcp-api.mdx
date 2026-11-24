@@ -71,8 +71,8 @@ Read and update your workspace, members, invitations, settings, and billing.
 | `get_recent_workspace_activity` | Activity log with filters and pagination |
 | `get_workspace_activity_stats` | Aggregated trend KPIs — events and active members per day, and the busiest actions — the same figures the Activity page's insights panel charts |
 | `list_workspaces` | All workspaces the authenticated user belongs to |
-| `list_user_workspaces` | Same list, with the currently-connected workspace marked |
-| `create_workspace` | Create a new workspace, owned by you. Independent of the currently connected workspace — it appears in your workspace list right away |
+| `list_user_workspaces` | Same list, with the currently-connected workspace marked. Also returns `canCreateWorkspace`: `true` when you may still create a workspace of your own, `false` when you already own as many as you may, `null` when that couldn't be read. Check it before proposing `create_workspace` |
+| `create_workspace` | Create a new workspace, owned by you. Independent of the currently connected workspace — it appears in your workspace list right away. The workspace and your owner membership are created together or not at all. Refused, with nothing created, when you already own as many workspaces as you may create ([one by default](/workspaces/overview#create-a-workspace)) |
 | `invite_workspace_member_by_email` | Send a single-use invite directly to an email address. The invitee doesn't need an existing Genie account — they become a member once they accept. Takes one plain address. Each email counts toward your daily invite emails, the same count the app's Invite dialog uses; past it, the tool says so and points to `invite_workspace_member`. Like the link, it gives what everyone may do and refuses any other role |
 
 ### Workspace roles and permissions

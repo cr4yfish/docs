@@ -71,8 +71,8 @@ Lese und aktualisiere deinen Workspace, Mitglieder, Einladungen, Einstellungen u
 | `get_recent_workspace_activity` | Aktivitätsprotokoll mit Filtern und Paginierung |
 | `get_workspace_activity_stats` | Aggregierte Trend-KPIs — Ereignisse und aktive Mitglieder pro Tag sowie die meistgenutzten Aktionen — dieselben Werte, die das Insights-Panel der Aktivitätsseite als Diagramm zeigt |
 | `list_workspaces` | Alle Workspaces, denen der authentifizierte Nutzer angehört |
-| `list_user_workspaces` | Dieselbe Liste, mit dem aktuell verbundenen Workspace markiert |
-| `create_workspace` | Erstelle einen neuen Workspace, den du besitzt. Unabhängig vom aktuell verbundenen Workspace — er erscheint sofort in deiner Workspace-Liste |
+| `list_user_workspaces` | Dieselbe Liste, mit dem aktuell verbundenen Workspace markiert. Liefert außerdem `canCreateWorkspace`: `true`, wenn du noch einen eigenen Workspace erstellen darfst, `false`, wenn du bereits so viele besitzt, wie du darfst, `null`, wenn sich das nicht lesen ließ. Prüfe es, bevor du `create_workspace` vorschlägst |
+| `create_workspace` | Erstelle einen neuen Workspace, den du besitzt. Unabhängig vom aktuell verbundenen Workspace — er erscheint sofort in deiner Workspace-Liste. Der Workspace und deine Owner-Mitgliedschaft werden gemeinsam angelegt oder gar nicht. Abgelehnt, ohne dass etwas angelegt wird, wenn du bereits so viele Workspaces besitzt, wie du erstellen darfst ([standardmäßig einen](/de/workspaces/overview#einen-workspace-erstellen)) |
 | `invite_workspace_member_by_email` | Sende eine einmalig nutzbare Einladung direkt an eine E-Mail-Adresse. Die eingeladene Person benötigt kein bestehendes Genie-Konto — sie wird nach Annahme Mitglied. Nimmt genau eine einfache Adresse. Jede E-Mail zählt zu deinen täglichen Einladungs-E-Mails, derselbe Zähler wie im Einladen-Dialog der App; darüber hinaus sagt das Tool das und verweist auf `invite_workspace_member`. Wie der Link gibt sie, was alle dürfen, und lehnt jede andere Rolle ab |
 
 ### Workspace-Rollen und -Berechtigungen
