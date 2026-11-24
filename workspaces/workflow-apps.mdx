@@ -23,7 +23,7 @@ Sixteen kinds of step are available today:
 | **AI** | Asks Genie's AI to do something as one step in the flow — summarize, draft a message, make a decision |
 | **Edge function** | Runs a deployed backend function — the agent's own bound project by default, or any other Genie App in your workspace |
 | **Connected app** | Calls a tool on one of your workspace's [connected integrations](/workspaces/integrations) — Linear, Notion, Outlook, and more — or on **Genie itself**, always available as a built-in connected app with nothing to set up |
-| **Notification** | Pushes a notification into the Genie app, to whoever ran the agent or to the agent's owner |
+| **Notification** | Pushes a notification into the Genie app, to whoever ran the agent or to the agent's owner. Its output includes the title and message it sent, so an agent whose whole job is the notification can return what it said |
 | **Web search** | Searches the live web. **Quick** returns the results as data — titles, links, snippets — for a later step to use; **Deep** researches one question in a loop and returns a cited report, a step that takes minutes and uses credits. A time limit (up to 20 minutes) bounds a deep search, and hitting it keeps what was found |
 | **Read a webpage** | Reads one page through Genie's safe page reader (the same one Genie AI uses in chat) and returns its text |
 | **Compliance check** | Checks a value against your workspace's [PII rules](/workspaces/pii-rules) and/or [Guardrails](/workspaces/guardrails) before it goes any further in the flow |
@@ -165,6 +165,31 @@ An agent can hold more than one trigger at once — nightly *and* reachable by w
 <Tip>
   Ask Genie AI things like *"run this every Monday at 9am"* or *"give me a webhook URL that triggers this agent"* — the same conversation that builds it also sets up how it starts.
 </Tip>
+
+### Webhooks from services that sign their requests
+
+A webhook trigger checks every incoming request against one credential. There are two kinds:
+
+| Credential | Who creates it | How a request proves itself |
+| --- | --- | --- |
+| **Genie token** | Genie generates it and shows it once | The sender puts it in an `Authorization: Bearer …` or `X-Workflow-Token` header |
+| **Sender's signing secret** | The service that sends the webhook | The service signs each delivery; Genie checks the signature |
+
+Use the signing secret for services that can't send a header of your choosing and sign their deliveries themselves — Resend, Clerk and anything else built on Svix or following the [Standard Webhooks](https://www.standardwebhooks.com/) spec. To set one up:
+
+<Steps>
+  <Step title="Ask for the trigger">
+    Ask Genie AI for a webhook trigger and name the service, for example *"give this agent a webhook for Resend"*. Genie AI shows a card that offers both credentials.
+  </Step>
+  <Step title="Paste the secret into the card">
+    Copy the signing secret (`whsec_…`) from the service's dashboard and paste it into the card — never into the chat. Genie stores it encrypted and never shows it again.
+  </Step>
+  <Step title="Enter the URL at the service">
+    The card shows the URL to enter as the webhook endpoint at the service.
+  </Step>
+</Steps>
+
+A trigger holds one credential at a time: setting either one replaces the other, and rotating works the same way. A signed delivery must be recent — within five minutes — and a delivery the service sends again after a timeout starts the agent only once. A token in the URL's query string is not accepted.
 
 ### Start an agent from the knowledge model
 

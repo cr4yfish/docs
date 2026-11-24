@@ -30,6 +30,10 @@ Full team features — including member management and MCP integrations — requ
   </Step>
 </Steps>
 
+<Note>
+  **One workspace of your own.** By default, each person can own one workspace they created themselves. Workspaces you were invited to don't count, so you can join as many as you like. Once you own as many as you may create, **New Workspace** no longer appears — in the switcher, on the workspace list or when adding a project to a workspace — and the new-workspace page explains the limit instead of showing the form. Workspaces you already own are never removed or moved.
+</Note>
+
 ## The workspace home
 
 When you open a workspace you land on the workspace home — your team's dashboard. It has three main areas:
@@ -42,14 +46,14 @@ The left sidebar is the primary navigation hub for your workspace.
   <Card title="Workspace switcher" icon="arrow-left-right">
     The workspace name and plan appear at the top of the sidebar. Click it to switch to another workspace or create a new one — workspaces you own are listed before ones you've joined, with your personal default workspace pinned at the very top.
   </Card>
-  <Card title="Genie" icon="house">
-    The workspace home. Returns you to the dashboard from anywhere inside the workspace.
+  <Card title="Home" icon="house">
+    The workspace home. Returns you to the dashboard from anywhere inside the workspace. The row used to be labelled *Genie*; the command palette, the breadcrumb and the browser tab call it **Home** too.
   </Card>
   <Card title="Projects" icon="folder-kanban">
-    Everything your workspace builds in one list: [Genie Apps](/projects/overview), [Genie Agents](/workspaces/workflow-apps) and [Genie Tools](/workspaces/genie-tools), each marked with its kind. A **Create** menu starts a guided Genie AI chat for any of the three. See [Projects page](#projects-page).
+    Everything your workspace builds in one list: [Genie Apps](/projects/overview), [Genie Agents](/workspaces/workflow-apps) and [Genie Tools](/workspaces/genie-tools), each marked with its kind. **Create** shows one card per kind and starts a guided Genie AI chat for any of the three. See [Projects page](#projects-page).
   </Card>
-  <Card title="Library" icon="book-open">
-    The workspace's documents, open to every member, with one search that also finds your apps, agents, tools and chats. See [Knowledge base](#knowledge-base).
+  <Card title="Data" icon="book-open">
+    The workspace's documents, open to every member, with one search that also finds your apps, agents, tools and chats. This is the page that used to be called **Library** — the row, its page title, its search box and the links back to it now say **Data**, and old links keep working. Where these docs still say *Library*, they mean this page. See [Knowledge base](#knowledge-base).
   </Card>
   <Card title="Recent chats" icon="message-square">
     Your workspace chat history fills the rest of the sidebar. Click any conversation to reopen it — the one you currently have open marks its own place in the list. Start a new one from the dashboard's Genie input, the command palette, or by asking something else inside an open chat. A chat that is connected to a Genie App, Agent or Tool wears a coloured badge with that kind's icon, and a **+N** pill counts its other connections; clicking the row opens the chat together with what the badge shows. Every other chat shows a plain chat icon.
@@ -88,7 +92,7 @@ Ask Genie AI to do it for you instead — *"rename the workspace to Northwind Op
 
 One toolbar line holds a **kind switch** (All, Apps, Agents, Tools), a **search** that runs as you type, and a single **filter and sort** menu. The menu's first section is the scope (All in workspace, Favorites, Mine, Archive, Unlisted); a dot on its icon tells you when a scope is narrowing the list. You only see the kinds your role may view. The old Genie Agents and Tools pages now open this page with their type preselected. Every empty state offers a way forward, such as **Clear search**, **Show everything** or **Create**.
 
-**Create** in the page header opens a menu with one entry per kind you may build. Each starts a new Genie AI chat that asks what you're starting from and guides you into building it. Genie Apps are still in beta, so that entry carries a Beta marker.
+**Create** in the page header opens a dialog with one large card per kind you may build. Each card shows a small picture of what the kind is — a site in a browser window, a trigger running steps, a table with a chart — with a short description and three examples, so picking explains itself. Choosing a card starts a new Genie AI chat that asks what you're starting from and guides you into building it. An empty workspace shows the same cards right on the page, and the toolbar folds away until there is something to search, filter or sort. Genie Apps are still in beta, so that card carries a Beta marker.
 
 ### Home: Jump back in and For you
 
@@ -100,7 +104,7 @@ Home opens with a greeting and the Genie AI prompt box, then two sections:
 **First visit.** While you haven't opened anything in a workspace yet and the [setup guide](/workspaces/setup-guide) still has steps for you, Home shows two other sections instead:
 
 - **First steps** — the guide's next step as a card with **Continue**, beside its other steps (a tick on the done ones, *Later* on the ones you put off) and **Open setup**. A new workspace's admin sees the full setup; an invited member sees the short one.
-- **Try asking** — up to three questions that open Genie AI with one press. If your team set [first questions](/workspaces/members#create-or-edit-a-team), they come first, under **Questions from your team**.
+- **Try asking** — up to three questions that open Genie AI with one press. If your team set [first questions](/workspaces/members#create-or-edit-a-team), they come first, under **Questions from your team**. In a workspace with nothing in it yet, the examples are one of each thing Genie does: **Work with my data**, **Just chat** and **Build a tool or agent**.
 
 Once you open anything, or the guide has nothing left for you, Home shows the usual two sections. Each section has its own loading, empty and error state, with **Retry** where something couldn't be loaded.
 
@@ -462,7 +466,7 @@ If you'd rather have a **web slide deck** with its own link, ask for that and Ge
 
 Beyond search and citations, Genie AI can also build a structured model of what your knowledge base actually talks about — the **entities** in it (a person, an organisation, a contract, a decision) and the **relationships** between them, each one traceable back to the exact passage it came from. The Graph is a tab of the **Library**, so every member can open it. The Knowledge page switches between its views of it — **Documents** and **Graph** — from a header of its own (owners and admins open it from **Workspace settings → Ontology**; members browse the documents in **Library**).
 
-Turn on **Read documents automatically** at the bottom of the Documents view (owners and admins only, off by default) and Genie reads every document in the workspace and proposes the entities, values, and links it finds — new and changed documents are picked up automatically from then on. Everyone in the workspace can browse the result in the **Classes and relations** panel further down the same page: the kinds of things being tracked (people, organisations, decisions, terms, and any custom class an admin adds), how many properties each has, and how many entities you can see. Open a class to see its entities, each marked **Proposed** until confirmed, and **Partly hidden** where a document you can't read says more about it.
+Turn on **Read documents automatically** at the bottom of the Documents view (owners and admins only; on by default in workspaces created since November 23, 2026 — older workspaces keep their setting) and Genie reads every document in the workspace and proposes the entities, values, and links it finds — new and changed documents are picked up automatically from then on. Everyone in the workspace can browse the result in the **Classes and relations** panel further down the same page: the kinds of things being tracked (people, organisations, decisions, terms, and any custom class an admin adds), how many properties each has, and how many entities you can see. Open a class to see its entities, each marked **Proposed** until confirmed, and **Partly hidden** where a document you can't read says more about it.
 
 New entities, links, and classes don't apply themselves — they wait in the **Review queue** below the classes panel until someone with permission decides. Confirm or reject a proposed entity or link one at a time, or use **Confirm all** to accept what is currently listed at once (it runs in the background, and the queue shows exact counts; possible duplicates are only merged when Genie rates them *Likely the same*, and every other pair stays for a person to decide) — or pick one kind from its menu, such as only entities or only duplicates; a possible duplicate is offered as a **merge** (with a reason), and a class or relationship Genie thinks your workspace needs is offered as a suggestion you can create or dismiss.
 
@@ -532,7 +536,7 @@ The **Graph** runs the full width of the page. Pick an entity and its card float
 
 **Big merges run in the background.** Merging or splitting an entity with a great many links no longer has to fit in one step: the decision is made at once and the links move in the background, up to 200,000 rows. The entity's card shows a **Merging · 61%** chip while it runs, and an entity being moved can't be merged or split again until it is done.
 
-**Classes as a table.** **Classes and relations** lists classes as a searchable table that loads a page at a time, so it stays quick with hundreds of classes. Each row shows how many properties the class has, how many of its entities you can see, and its process as a row of stages. Press a row to open the class in a side sheet with its properties, process, relationship types and entities. The **Ontology** page in **Workspace settings** now holds settings only. It opens with a short explanation of what the knowledge model is for, then the **Read documents** switch with what you get from it and what it costs: credits for every document read and again for every new or changed one, and whose credits pay — the workspace's on a paid plan, otherwise the member who last wrote the document. Turning reading on asks you to confirm, repeating the cost and who pays; turning it off spends nothing and doesn't ask.
+**Classes as a table.** **Classes and relations** lists classes as a searchable table that loads a page at a time, so it stays quick with hundreds of classes. Each row shows how many properties the class has, how many of its entities you can see, and its process as a row of stages. Press a row to open the class in a side sheet with its properties, process, relationship types and entities. The **Ontology** page in **Workspace settings** now holds settings only. It opens with a short explanation of what the knowledge model is for, then the **Read documents** switch with what you get from it and what it costs: credits for every document read and again for every new or changed one, and whose credits pay: the workspace's, on a paid plan. A workspace without a paid plan reads nothing automatically — automatic reading never spends a member's own credits. Only work you press for yourself, such as reading one document now, interpreting a workbook or the setup guide's preview, may use your own credits when the workspace has no plan. Turning reading on asks you to confirm, repeating the cost and who pays; turning it off spends nothing and doesn't ask.
 
 **Names that mean the same.** Genie also compares names by meaning, not just spelling, and proposes a merge when two names in one class clearly refer to the same thing. Like every duplicate, it waits in the review queue for a person to decide. Whoever manages the knowledge model can **pause** the AI duplicate check and give it a **daily budget** on the [Auto](/workspaces/auto#the-auto-page) page's **Settings** tab, under **Ontology upkeep** (it moved there from the Ontology settings); once the budget is used up the check waits until the next day.
 
