@@ -4,6 +4,44 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="November 25, 2026" description="Weekly release">
+
+Covers what shipped November 24. Genie AI writes Word documents you can edit alongside it, the setup guide becomes a chat, and you can follow other people's agents.
+
+## New features
+
+- **Word documents.** Genie AI creates and edits real `.docx` files — title, headings, lists, tables and pictures — and you edit the same document in a page-like editor at the same time. On the chat page you watch it being written on the canvas, and the paragraphs it changed are lit. Download as `.docx` or PDF, or make an editable copy of a Word file you attach or already have in the Library. See [Word documents](/workspaces/overview#word-documents).
+- **The setup guide is a chat.** Genie AI walks you through setting up a workspace one step at a time, in a chat, and links to the pages a step needs. Nobody is sent into it: Home leads with its next step and the sidebar shows **Onboarding** with how far along you are until it's done. See [The setup guide](/workspaces/setup-guide).
+- **Follow an agent.** Switch on **Notify me** in an agent's settings to get the notifications its author shares with followers — only for runs you could open yourself. Authors pick **Owner and followers** on a notification step to share it. See [Get an agent's notifications](/workspaces/workflow-apps#get-an-agents-notifications).
+- **Choose whether GPT Image on OpenAI may draw.** **Allow GPT Image on OpenAI** under Governance → Content safety switches off the US image service for your workspace; pictures are then made by another service, and people are told. While it's on, every prompt sent there is checked against your PII rules and guardrails first. See [GPT Image on OpenAI](/workspaces/guardrails#gpt-image-on-openai).
+- **Billing without admin rights.** A team can be allowed to see billing, or to manage it, without its people becoming admins or seeing all data — a controller can read the Billing page and nothing more. See [Billing without admin rights](/workspaces/members#billing-without-admin-rights).
+- **Word documents over MCP.** `list_`, `create_`, `read_`, `edit_` and `import_workspace_word_document`. See [MCP API](/workspaces/mcp-api#word-documents).
+
+## Updates
+
+- **An agent's canvas shows the result first.** The steps read like a recipe under **How it works** — one plain line each, with no ids or wiring — and on a wide canvas a short agent's steps sit beside the result. See [Genie Agents](/workspaces/workflow-apps#two-ways-to-start-one).
+- **Every file in a chat has a cover.** Documents, workbooks, PDFs, pictures, videos and recordings show as cards with their cover, like a deck's title slide, with **View** and **Download** on the corner. See [Open a Genie Tool or Agent beside the chat](/workspaces/overview#open-a-genie-tool-or-agent-beside-the-chat).
+- **Chats stay inside the workspace.** Genie's own platform administrators can no longer open a workspace's chats; support tools show chats only as counts. See [Workspace chats are private by default](/workspaces/overview#workspace-chats-are-private-by-default).
+- **Genie's own reads load on open.** A Genie Tool page that only reads from Genie itself — such as activity figures or the member list — loads them when it opens, without a **Load** button. See [Genie Tools](/workspaces/genie-tools).
+- **Send while recording, sooner.** The send button appears one second into a recording instead of two, and the waveform spans the whole row. See [Talk instead of type](/workspaces/overview#talk-instead-of-type).
+- **API keys and credits ask their own permission.** Managing API keys needs the permission to manage API keys, and the MCP credit tools need the permission to see billing, instead of the role they're based on. See [Workspace API keys](/workspaces/api-keys#where-to-manage-keys).
+- **Longer build prompts over MCP.** `create_project` and `send_followup_prompt` take up to 15,000 characters. See [MCP API](/workspaces/mcp-api#projects).
+- **Home greets you by name only when it knows it** — never by your email address.
+
+## Fixes
+
+- **A stopped answer says it was stopped**, and the chat settles straight away.
+- **No more notes-to-self between retries.** When Genie AI retries a step that failed, the note it writes in between no longer shows as part of the answer.
+- **Fewer refused Genie Tool edits.** Genie AI no longer has to read the design principles again on every turn when it read them a moment ago.
+- **Knowledge pages with several reads save.** Two independent steps that read from Genie on one Tool page no longer refuse each other.
+- **Attached HTML pages that build themselves with scripts** reach Genie AI with their content instead of arriving empty.
+- **Microsoft 365 profile photos** now show as your avatar.
+- **Chats that built an app from the chat** show the app badge in the chat history.
+- **Decks keep their slide titles.** Genie AI no longer leaves out designed slides for a missing heading.
+- **New Genie Cloud projects get their backend again.** A change in the storage service had made the backend setup of new projects fail.
+
+</Update>
+
 <Update label="November 24, 2026" description="Weekly release">
 
 Covers what shipped November 23. Genie Tools follow their data live, agents accept webhooks from services that sign their requests, and each person gets one workspace of their own.

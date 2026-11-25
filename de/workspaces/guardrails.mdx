@@ -57,6 +57,15 @@ Guardrails prüfen standardmäßig nur den Text einer Nachricht. Zwei weitere Sc
 
 Ein Dokument wie eine `.txt`-, `.docx`- oder Tabellendatei ist bereits als Text abgedeckt — sein Inhalt wird extrahiert, bevor Genie AI ihn überhaupt sieht.
 
+## GPT Image bei OpenAI
+
+Manche Bilder, die Genie für deinen Workspace zeichnet — in Präsentationen, Word-Dokumenten, Design-Mockups und App-Bildern —, können von **GPT Image bei OpenAI** stammen, einem Bilddienst mit Sitz in den USA. **GPT Image bei OpenAI erlauben** auf der Seite **Inhaltssicherheit** unter **Governance** entscheidet, ob er genutzt werden darf. Der Schalter ist standardmäßig an und wird sofort gespeichert.
+
+- **Aus:** Jedes Bild wird stattdessen von einem anderen Bilddienst erstellt, und Genie AI sagt den Personen in einfachen Worten, wenn das passiert ist. Nichts wird an OpenAI gesendet.
+- **An:** Bevor ein Prompt an OpenAI geht, wird er gegen die [PII-Regeln](/de/workspaces/pii-rules) deines Workspace geprüft und, wenn du sie eingeschaltet hast, gegen deine Guardrails. Ein Prompt, der eine Regel verletzt, wird abgelehnt — die Ablehnung nennt die Regel, nie den Prompt —, und Genie AI wird gebeten, ihn ohne personenbezogene Daten neu zu schreiben. Kann die Prüfung selbst nicht laufen, wird das Bild abgelehnt statt ungeprüft gesendet. Erkennungen und Blockierungen erscheinen in den Protokollen unter **Bilderzeugung**.
+
+Geprüft wird nur der Text des Prompts; ein Screenshot, der zum Bearbeiten eines Design-Mockups mitgeschickt wird, nicht. Owner und Admins (oder ein Team, das Governance verwalten darf) können den Schalter ändern, und Genie AI kann ihn im Workspace-Chat lesen und ändern.
+
 ## Protokoll blockierter Nachrichten
 
 Die Guardrails-Seite führt ein Protokoll der letzten Eingriffe: welche Kategorie oder welches Thema die Blockierung ausgelöst hat, wo es passiert ist (Workspace-Chat oder ein Projekt), wer es gesendet hat und wann. Der Inhalt der Nachricht selbst wird nie gespeichert — nur der Grund für die Blockierung. Wer dieses Protokoll ohnehin schon einsehen kann, kann außerdem **E-Mail-Benachrichtigungen** für neue Blockierungen einschalten — siehe [Aktivitätsprotokoll](/de/workspaces/overview#aktivitätsprotokoll).

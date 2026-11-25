@@ -59,6 +59,18 @@ Nothing is saved before the last screen. Your answers are kept in the browser as
 
 You can never give what you may not do yourself, and nobody can put themselves on a team. A team your directory fills can't be given anything that makes its people admins for the database.
 
+### Billing without admin rights
+
+The **Billing** group — **See billing** and **Manage billing** — can be given to any team without making its people admins. Billing never decides what data someone may read, so a finance team gets the Billing page and nothing else an admin can do:
+
+| Who | What the team may do | Sees all data |
+|---|---|---|
+| Controller | See billing | No |
+| Whoever pays | See billing and Manage billing | No |
+| IT admin | Admins | Yes |
+
+**See billing** opens the [Billing page](/workspaces/overview#workspace-billing), its usage by app and person, and the credit tools for Genie AI and [MCP](/workspaces/mcp-api#workspace-management). **Manage billing** adds buying credits, changing the plan and the payment portal. Someone who sees billing but isn't an admin sees an app that isn't shared with them as *Deleted or not shared with you* beside its credits. A team your directory fills can hold billing too.
+
 ### Who manages a team's people
 
 People who may manage teams change who is on any team. You can also let a team manage only some teams: when you tick **Manage teams and their people** in the flow, choose **Every team** or **Teams I pick**. A team that manages Sales, for example, can add and remove Sales's people — and nothing else. The team's **Managed by** section shows who that is.
@@ -160,11 +172,11 @@ Create a link with a high **Max uses** count for open team onboarding (for examp
 While the rule [The directory decides people and teams](#rules-for-the-whole-workspace) is on, nobody is invited here: the People page hides **Invite**, and people are added in your company directory.
 </Note>
 
-New people go through a short [setup guide](/workspaces/setup-guide) that tells them which teams they are on and asks their teams' onboarding questions.
+New people are offered a short [setup guide](/workspaces/setup-guide) — a chat with Genie AI — that tells them which teams they are on and asks their teams' onboarding questions.
 
 ## Set up access
 
-A guided setup gets a new workspace's people, teams and access right in one go. Owners and admins who may manage members and document access start it from the top of the Teams page, or as the **Set up access** step of the [setup guide](/workspaces/setup-guide). It offers two paths:
+A guided setup gets a new workspace's people, teams and access right in one go. Owners and admins who may manage members and document access start it from the top of the Teams page, or from the **People and teams** step of the [setup guide](/workspaces/setup-guide), which links to it. It offers two paths:
 
 - **Company directory** — people, your verified domain, the directory connection, teams, what each team reaches, review.
 - **By hand** — people, invites, teams, what each team reaches, review.

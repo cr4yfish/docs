@@ -66,8 +66,8 @@ Read and update your workspace, members, invitations, settings, and billing.
 | `update_workspace` | Rename the workspace, update its description, or set its icon and accent color |
 | `update_workspace_settings` | Toggle activity log, project access control, or automatic knowledge-base reading (entity/relation extraction — see [Knowledge model](/workspaces/overview#knowledge-model)) |
 | `get_workspace_billing` | Subscription plan, status, and billing period. Owners and admins on a plan also get `creditStatus`: the balance, the recent daily pace and the [Billing page's](/workspaces/overview#workspace-billing) verdict (`unknown`, `payment`, `empty`, `ending`, `low`, `spike` or `ok`). Read-only — plans, seats and credit purchases change in the app |
-| `get_workspace_credits` | Current credit balance |
-| `get_credit_usage` | Credit consumption, optionally broken down by project, member, or day, and sortable by spend or date |
+| `get_workspace_credits` | Current credit balance. Needs permission to [see billing](/workspaces/members#billing-without-admin-rights) |
+| `get_credit_usage` | Credit consumption, optionally broken down by project, member, or day, and sortable by spend or date. Your own usage by default; the workspace-wide total and the per-member breakdown need permission to see billing |
 | `get_recent_workspace_activity` | Activity log with filters and pagination |
 | `get_workspace_activity_stats` | Aggregated trend KPIs — events and active members per day, and the busiest actions — the same figures the Activity page's insights panel charts |
 | `list_workspaces` | All workspaces the authenticated user belongs to |
@@ -99,7 +99,7 @@ The questions a team asks people who join it, and your own answers — see [Team
 
 ### Workspace API keys
 
-Manage the bearer-token keys that let your own code call Genie AI over HTTP — see [Workspace API keys](/workspaces/api-keys). Owner or admin only.
+Manage the bearer-token keys that let your own code call Genie AI over HTTP — see [Workspace API keys](/workspaces/api-keys). Needs permission to manage API keys (owners and admins by default).
 
 | Tool | What it does |
 |---|---|
@@ -117,8 +117,8 @@ Browse projects, create new ones from prompts, and manage the full project lifec
 | `search_projects` | Full-text search with sort options (`recentlyEdited`, `bestMatch`, etc.); pass `favorites_only` to search just your [favorites](/workspaces/overview#recent-projects), or `unlisted_only` to list your own projects that are in no workspace |
 | `set_project_favorite` | Star or unstar a project as one of your personal favorites |
 | `get_project` | Full details: name, description, visibility, deployment URL, credit usage |
-| `create_project` | Create a project from a natural-language prompt and start the first build |
-| `send_followup_prompt` | Send a follow-up instruction to an existing project |
+| `create_project` | Create a project from a natural-language prompt (up to 15,000 characters) and start the first build |
+| `send_followup_prompt` | Send a follow-up instruction (up to 15,000 characters) to an existing project |
 | `get_project_status` | Lightweight check: is a build currently running? |
 | `get_project_build_status` | The richest live-status call — phase, countdown ETA, progress, active agents, preview link, changed pages, closing summary, and suggested follow-ups, matching the web app's build-status card |
 | `list_connected_project_activity` | What a project (or every project connected to a given workspace chat) is doing right now — building, running autofix, or has prompts waiting in its queue — the same snapshot the status badge on every workspace-chat surface shows. Pass a `conversation_id` and/or a `project_slug` |
@@ -328,6 +328,20 @@ List, create, read, and edit real `.pptx` decks — the same tools available to 
 | `create_workspace_presentation` | Build a deck — titles, bullets, tables, and speaker notes, up to 40 slides — in one call. Decks are designed like those from chat, in the workspace [brand](/workspaces/overview#workspace-brand) when it has one |
 | `read_workspace_presentation` | An overview of every slide, a range of slides in full, or a text search |
 | `edit_workspace_presentation` | Apply a batch of slide, text, notes, and table edits in the deck's own design — saved together or not at all |
+
+### Word documents
+
+List, create, read, edit, and import real `.docx` documents — the same tools available to Genie AI in [chat](/workspaces/overview#word-documents). A Word document is a knowledge document, so renaming, moving, and deleting one use the [knowledge document tools](#workspace-knowledge-documents).
+
+| Tool | What it does |
+|---|---|
+| `list_workspace_word_documents` | List the workspace's editable Word documents, newest first |
+| `create_workspace_word_document` | Write a `.docx` — title, headings, lists, and tables — from Markdown in one call |
+| `read_workspace_word_document` | An overview with the headings, a range of blocks as numbered Markdown, or a text search |
+| `edit_workspace_word_document` | Apply a batch of block, style, text, and table edits — saved together or not at all |
+| `import_workspace_word_document` | Make an editable copy of a `.docx` that's already in the Library |
+
+If someone edits the document at the same time and an edit names blocks by number, the call reports the conflict and asks you to read the document again instead of guessing. Drawing new pictures stays in the workspace chat; a picture drawn there can be placed over MCP.
 
 ### Chat templates
 

@@ -23,7 +23,7 @@ Sixteen kinds of step are available today:
 | **AI** | Asks Genie's AI to do something as one step in the flow — summarize, draft a message, make a decision |
 | **Edge function** | Runs a deployed backend function — the agent's own bound project by default, or any other Genie App in your workspace |
 | **Connected app** | Calls a tool on one of your workspace's [connected integrations](/workspaces/integrations) — Linear, Notion, Outlook, and more — or on **Genie itself**, always available as a built-in connected app with nothing to set up |
-| **Notification** | Pushes a notification into the Genie app, to whoever ran the agent or to the agent's owner. Its output includes the title and message it sent, so an agent whose whole job is the notification can return what it said |
+| **Notification** | Pushes a notification into the Genie app, to whoever ran the agent, to the agent's owner, or to the owner and the agent's [followers](#get-an-agents-notifications). Its output includes the title and message it sent, so an agent whose whole job is the notification can return what it said |
 | **Web search** | Searches the live web. **Quick** returns the results as data — titles, links, snippets — for a later step to use; **Deep** researches one question in a loop and returns a cited report, a step that takes minutes and uses credits. A time limit (up to 20 minutes) bounds a deep search, and hitting it keeps what was found |
 | **Read a webpage** | Reads one page through Genie's safe page reader (the same one Genie AI uses in chat) and returns its text |
 | **Compliance check** | Checks a value against your workspace's [PII rules](/workspaces/pii-rules) and/or [Guardrails](/workspaces/guardrails) before it goes any further in the flow |
@@ -72,7 +72,7 @@ Genie as a built-in connected app means a step can do anything Genie AI itself c
 When Genie AI builds an agent for you, the chat shows a small pill with the agent's name — shimmering while it is being built, with a check once it exists. Press it to open the agent: on the canvas beside the chat on a desktop, where its steps take shape as Genie writes them, or in the editor on a smaller screen. An amber pill means nothing was created, and pressing it shows why. Every step Genie AI's tools take while working on an agent shows a plain-language label in the transcript instead of a generic "Working on it".
 </Tip>
 
-**An agent on the canvas reads top to bottom.** A created agent on the chat canvas starts with its **Latest run**: how it went, how it started and when (*Schedule · 04.11.26, 19:00*), and one short answer — what came out, or where it stopped and why. Under it, **History** is a single line with a mark per earlier run and **See all runs**; tap a mark to put that run on the card (it then reads **Earlier run**, with **Show latest**). Every step says what it does under its name, and tapping one shows how it went in that run. Nothing on the canvas folds or scrolls on its own: a long answer is cut with a link to the run's full results. While Genie AI edits the agent, each step it writes is marked **New** or **Changing** where it stands, live as the edit streams in.
+**An agent on the canvas reads top to bottom, result first.** The canvas has two parts: what came out, and **How it works**. **How it works** reads like a recipe for someone who has never seen a workflow editor — one line per step, each with its icon and a plain name (*Looks up matching rows in orders* rather than an internal id), with no wiring or paths. A loop and the steps it repeats sit together under *Repeats 3 steps* (during a run, *Pass 2 of 8* with a bar), and branches that meet again are grouped under the step they lead to. How each step went in the run on show is marked on its icon: a ring where the run is now, a tick or a cross when done, and dimmed where a branch wasn't taken. On a wide canvas, a short agent's steps sit in a column beside the result; otherwise the result comes first and the steps follow. An agent that hasn't run yet says so — starting a run stays in the chat. The result starts with its **Latest run**: how it went, how it started and when (*Schedule · 04.11.26, 19:00*), and one short answer — what came out, or where it stopped and why. Under it, **History** is a single line with a mark per earlier run and **See all runs**; tap a mark to put that run on the card (it then reads **Earlier run**, with **Show latest**). Tapping a step shows what it does in full and how it went in that run. Nothing on the canvas folds or scrolls on its own: a long answer is cut with a link to the run's full results. While Genie AI edits the agent, each step it writes is marked **New** or **Changing** where it stands, live as the edit streams in.
 
 ## The visual editor
 
@@ -150,7 +150,18 @@ The **Genie Agents** page lists every agent in your workspace — as cards or as
 - **Pause / Resume** — pause stops it from starting any new run (on a schedule, a webhook, or another agent calling it) until you resume it; it never interrupts a run already in progress.
 - **Share** — private to its creator by default; the owner can share it with the whole workspace or with specific people, the same three states as a [workspace chat](/workspaces/overview#workspace-chats-are-private-by-default). A member it's shared with can open, edit, and delete it just like the owner can — only the owner can change who it's shared with.
 - **Recent runs** — see its run history, what happened on each one, and open any run's own [results page](#run-results).
+- **Notify me** — follow the agent to get the notifications its author shares with followers. See [Get an agent's notifications](#get-an-agents-notifications).
 - **Delete** — permanently removes the agent, every version of it, and its whole run history. This can't be undone — pause it instead if you just want it to stop.
+
+### Get an agent's notifications
+
+You don't need edit access to someone else's agent to hear from it. Anyone who can view an agent can switch on **Notify me** in its settings, under **Notifications**, or ask Genie AI to follow it for you.
+
+- **The author decides what's shared.** Only notification steps set to **Owner and followers** reach followers — use it for news meant for a team, such as *"the nightly import failed"*, not for one person's data. Steps meant for whoever ran the agent or for the owner never reach you.
+- **You decide whether you hear it.** Nobody can make you a follower: only you can switch it on, and only you can switch it off.
+- **You're only told what you could open.** Each run checks every follower: if you couldn't open that run's results, you aren't notified. Losing access to the agent silences your follow without anyone removing it.
+
+Notifications reach followers by push and email, following each person's own notification settings. An agent can have a limited number of followers; once it's full, **Notify me** says so.
 
 ## Triggers
 

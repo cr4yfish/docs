@@ -106,6 +106,10 @@ Ist [Dokumente automatisch lesen](/de/workspaces/overview#wissensmodell) aktiv, 
 
 Diese Einträge zeigen **Wissensmodell** als Quelle. Kann Genie deine Regeln nicht lesen, speichert es aus diesem Dokument nichts und versucht es später erneut.
 
+## Regeln gelten auch für Bild-Prompts
+
+Bevor Genie den Prompt eines Bildes an [GPT Image bei OpenAI](/de/workspaces/guardrails#gpt-image-bei-openai) sendet, prüft es ihn gegen deine Regeln. Eine Regel auf **Blockieren** lehnt das Bild ab, und die Ablehnung nennt die Regel — steht zum Beispiel die eingebaute E-Mail-Regel auf **Blockieren**, wird *„Porträt von anna.meier@example.com"* abgelehnt. Eine Regel auf **Protokollieren** protokolliert nur. Diese Einträge zeigen **Bilderzeugung** als Quelle.
+
 ## Regeln über den Workspace-Chat verwalten
 
 Du kannst PII-Regeln lesen und aktualisieren, indem du die Genie-Workspace-KI in natürlicher Sprache fragst:

@@ -57,6 +57,15 @@ Guardrails judge a message's text by default. Two more switches, both off until 
 
 A document like a `.txt`, `.docx`, or spreadsheet is already covered as text — its content is extracted before Genie AI ever sees it.
 
+## GPT Image on OpenAI
+
+Some pictures Genie draws for your workspace — in decks, Word documents, design mock-ups and app images — may be made by **GPT Image on OpenAI**, an image service based in the US. **Allow GPT Image on OpenAI**, on the **Content safety** page under **Governance**, decides whether it may be used. It's on by default and saves as soon as you switch it.
+
+- **Off:** every picture is made by a different image service instead, and Genie AI tells people in plain words when that happened. Nothing is sent to OpenAI.
+- **On:** before a prompt is sent to OpenAI, it's checked against your workspace's [PII rules](/workspaces/pii-rules) and, if you have them on, your guardrails. A prompt that breaks a rule is refused — the refusal names the rule, never the prompt — and Genie AI is told to write it again without personal data. If the check itself can't run, the picture is refused rather than sent unchecked. Detections and blocks appear in the logs under **Image generation**.
+
+Only the prompt's text is checked; a screenshot sent along to edit a design mock-up isn't. Owners and admins (or a team allowed to manage governance) can change the switch, and Genie AI can read and change it from the workspace chat.
+
 ## Blocked messages log
 
 The Guardrails page keeps a log of recent interventions: which category or topic triggered the block, where it happened (workspace chat or a project), who sent it, and when. The message content itself is never stored — only the reason it was blocked. Anyone who can already see this log can also turn on **email alerts** for new blocks — see [Activity log](/workspaces/overview#activity-log).

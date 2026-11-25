@@ -59,6 +59,18 @@ Vor dem letzten Bildschirm wird nichts gespeichert. Deine Antworten bleiben als 
 
 Du kannst nie geben, was du selbst nicht darfst, und niemand kann sich selbst in ein Team setzen. Ein Team, das dein Verzeichnis füllt, kann nichts bekommen, was seine Personen für die Datenbank zu Admins macht.
 
+### Abrechnung ohne Adminrechte
+
+Die Gruppe **Abrechnung** — **Abrechnung sehen** und **Abrechnung verwalten** — kann jedem Team gegeben werden, ohne seine Personen zu Admins zu machen. Die Abrechnung entscheidet nie, welche Daten jemand lesen darf, also bekommt ein Finanzteam die Abrechnungsseite und sonst nichts, was ein Admin kann:
+
+| Wer | Was das Team darf | Sieht alle Daten |
+|---|---|---|
+| Controlling | Abrechnung sehen | Nein |
+| Wer bezahlt | Abrechnung sehen und Abrechnung verwalten | Nein |
+| IT-Admin | Admins | Ja |
+
+**Abrechnung sehen** öffnet die [Abrechnungsseite](/de/workspaces/overview#workspace-abrechnung), ihre Nutzung nach App und Person und die Credit-Tools für Genie AI und [MCP](/de/workspaces/mcp-api#workspace-verwaltung). **Abrechnung verwalten** fügt Credits kaufen, den Plan ändern und das Zahlungsportal hinzu. Wer die Abrechnung sieht, aber kein Admin ist, sieht eine App, die nicht mit ihm geteilt ist, als *Gelöscht oder nicht mit dir geteilt* neben ihren Credits. Auch ein Team, das dein Verzeichnis füllt, kann die Abrechnung halten.
+
 ### Wer die Personen eines Teams verwaltet
 
 Wer Teams verwalten darf, ändert, wer in einem beliebigen Team ist. Du kannst ein Team auch nur einige Teams verwalten lassen: Kreuzt du im Ablauf **Teams und ihre Personen verwalten** an, wähle **Jedes Team** oder **Teams, die ich auswähle**. Ein Team, das zum Beispiel Vertrieb verwaltet, kann Personen zu Vertrieb hinzufügen und daraus entfernen — und sonst nichts. Der Abschnitt **Verwaltet von** des Teams zeigt, wer das ist.
@@ -160,11 +172,11 @@ Erstelle einen Link mit hohem **Max. Nutzungen**-Wert für offenes Team-Onboardi
 Solange die Regel [Das Verzeichnis entscheidet über Personen und Teams](#regeln-für-den-ganzen-workspace) eingeschaltet ist, wird hier niemand eingeladen: Die Personen-Seite blendet **Einladen** aus, und Personen werden in deinem Firmenverzeichnis hinzugefügt.
 </Note>
 
-Neue Personen gehen durch einen kurzen [Einrichtungsassistenten](/de/workspaces/setup-guide), der ihnen sagt, in welchen Teams sie sind, und die Onboarding-Fragen ihrer Teams stellt.
+Neuen Personen wird ein kurzer [Einrichtungsassistent](/de/workspaces/setup-guide) angeboten — ein Chat mit Genie AI —, der ihnen sagt, in welchen Teams sie sind, und die Onboarding-Fragen ihrer Teams stellt.
 
 ## Zugriff einrichten
 
-Eine geführte Einrichtung bringt Personen, Teams und Zugriff eines neuen Workspaces in einem Zug in Ordnung. Owner und Admins, die Mitglieder und Dokumentzugriff verwalten dürfen, starten sie oben auf der Teams-Seite oder als Schritt **Zugriff einrichten** des [Einrichtungsassistenten](/de/workspaces/setup-guide). Es gibt zwei Wege:
+Eine geführte Einrichtung bringt Personen, Teams und Zugriff eines neuen Workspaces in einem Zug in Ordnung. Owner und Admins, die Mitglieder und Dokumentzugriff verwalten dürfen, starten sie oben auf der Teams-Seite oder aus dem Schritt **Personen und Teams** des [Einrichtungsassistenten](/de/workspaces/setup-guide), der dorthin verlinkt. Es gibt zwei Wege:
 
 - **Firmenverzeichnis** — Personen, deine verifizierte Domain, die Verzeichnisverbindung, Teams, worauf jedes Team zugreift, Prüfen.
 - **Von Hand** — Personen, Einladungen, Teams, worauf jedes Team zugreift, Prüfen.
