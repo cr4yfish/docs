@@ -1,55 +1,54 @@
 ---
 title: "Der Einrichtungsassistent"
-description: "Ein Schritt-für-Schritt-Assistent, der einen neuen Workspace verbindet, einlesen lässt und teilt — und neuen Personen sagt, in welchen Teams sie sind und was ihre Teams wissen möchten."
+description: "Ein Chat mit Genie AI, der dich durch das Verbinden, Einlesen und Teilen eines Workspace führt — und neuen Personen sagt, in welchen Teams sie sind und was ihre Teams wissen möchten."
 ---
 
-Der **Einrichtungsassistent** führt dich Schritt für Schritt durch die Einrichtung eines Workspace. Nimm die Schritte der Reihe nach oder in beliebiger Reihenfolge, verlasse ihn, wann du willst, und komm später zurück — nichts muss fertig werden. Nur **Über dich** kommt zuerst; alle anderen Schritte bleiben gelistet, aber gesperrt, bis du ihn gespeichert hast.
+Der **Einrichtungsassistent** ist ein Chat. Genie AI führt dich Schritt für Schritt durch die Einrichtung eines Workspace, im Workspace-Chat auf dunklem Hintergrund. Verlasse ihn, wann du willst, und komm später zurück — nichts muss fertig werden. Nur **Über dich** kommt zuerst; vorher markiert Genie AI keinen anderen Schritt.
 
 Zwei Arten von Personen sehen ihn: wer einen neuen Workspace einrichtet, und die Personen, die eingeladen werden. Welche Schritte du bekommst, hängt davon ab, was du im Workspace darfst.
 
+## Niemand wird hingeschickt
+
+Der Assistent ist ein Angebot, nie Pflicht. Ein neues Konto landet wie alle anderen auf der [Startseite](/de/workspaces/overview#startseite-weitermachen-und-für-dich), und zwei Dinge weisen auf den Assistenten hin, bis er fertig ist:
+
+- **Erste Schritte** auf der Startseite — der nächste Schritt des Assistenten als Karte mit **Fortsetzen**, neben seinen anderen Schritten.
+- **Onboarding** ganz oben in der Seitenleiste, mit deinem Fortschritt — zum Beispiel *Onboarding 2/7*. Die Zeile verschwindet, sobald alles erledigt ist.
+
+**Einrichtung** im Kontomenü unten in der Seitenleiste ist immer da, für alle, damit du auch lange nach der Einrichtung noch etwas ändern kannst. Alle drei öffnen denselben Chat, dort, wo du aufgehört hast, auf jedem Gerät. Alte Links zum Assistenten funktionieren weiter und öffnen den Assistenten deines Workspace.
+
 ## Die Schritte
+
+Genie AI sagt, wofür ein Schritt da ist, erledigt ihn mit dir im Chat und geht weiter, sobald er erledigt ist oder du ihn zurückstellst (*Später*). Ein Schritt, der eine eigene Seite braucht — die Anmeldung bei einer Quelle, das Einrichten des Zugriffs, die Benachrichtigungen eines Geräts —, kommt mit einem Link zu dieser Seite, und die Zeile **Onboarding** in der Seitenleiste bringt dich zurück.
 
 <Tabs>
   <Tab title="Den Workspace einrichten">
     Für Personen, die die Einstellungen des Workspace verwalten dürfen — meist der Eigentümer oder ein Admin, der ihn einrichtet.
 
     1. **Über dich** — dein Name und, optional, was du machst.
-    2. **Daten verbinden** — das [Quelle hinzufügen](/de/workspaces/overview#wissensdatenbank) der Bibliothek, direkt im Schritt: Wähle E-Mail, Dateien, eine Business-App oder eine Datenbank und richte sie ein, ohne den Assistenten zu verlassen.
-    3. **In die Ontologie lesen** — zeigt, wie Genie deine Daten in das [Wissensmodell](/de/workspaces/overview#wissensmodell) einliest. In einem neuen Workspace ist das Lesen standardmäßig an, deshalb gibt es hier keinen Schalter: Eine Zeile sagt, wo das Lesen steht, und bietet höchstens einen nächsten Schritt — **Zuerst Daten verbinden**, **Lesen einschalten**, falls es ausgeschaltet wurde, **Plan wählen**, wenn der Workspace noch keinen bezahlten Plan hat (gelesen wird nur auf die Credits eines bezahlten Workspace), oder **Ontologie öffnen**, sobald es Einträge gibt. Darunter füllt ein Live-Lesen den Rest des Bildschirms: Spiele das vorbereitete Beispiel aus der Logistik ab — kostenlos und jedes Mal gleich — oder wähle eines deiner eigenen Dokumente (ein PDF mit Text, TXT, MD oder CSV; die ersten 12.000 Zeichen; ein paar Credits). Das Dokument steht neben einem kleinen Graphen. Jeder Fund wird im Text markiert, während sein Punkt im Graphen erscheint, mit den Werten, die der Text dazu nennt — Daten, Beträge, Gewichte —, und den Verknüpfungen zwischen den Einträgen. **Alles zeigen** überspringt die Wiedergabe, **Nochmal lesen** wiederholt sie, und ein Klick auf einen Eintrag zeigt alles, was dazu gefunden wurde. Nichts wird gespeichert.
-    4. **Personen und Teams** — derselbe Assistent [Zugriff einrichten](/de/workspaces/members#zugriff-einrichten) wie auf der Teams-Seite, direkt im Schritt. Teams und Einladungen sind Schritte dieses Assistenten. Sein Schritt **Teams** lässt dich zuerst ein Team anlegen und dann anhaken, wer dazugehört; ein Team ohne Personen wird markiert, und dich selbst oder Personen, die du nicht verwalten darfst, kannst du nicht anhaken — ihre Zeilen sagen, warum. Der Schritt **Reichweite** sagt für jedes Team in einem Satz, wer in welchem Bereich was darf.
-    5. **Fragen an neue Personen** — die [Onboarding-Fragen](#team-fragen) jedes Teams, direkt bearbeitbar.
-    6. **Erste Frage stellen** — öffnet Genie AI.
-    7. **Benachrichtigungen** — schalte Push-Benachrichtigungen auf diesem Gerät ein.
+    2. **Daten verbinden** — was schon verbunden ist, das Synchronisieren eines Ordners oder Dateien, die du in den Chat ziehst. [Quelle hinzufügen](/de/workspaces/overview#wissensdatenbank) der Bibliothek ist einen Link entfernt.
+    3. **In die Ontologie lesen** — was das Einlesen deiner Daten ins [Wissensmodell](/de/workspaces/overview#wissensmodell) bedeutet, und der Schalter, den Genie AI als Bestätigungskarte anbietet. In einem neuen Workspace ist das Lesen standardmäßig an und läuft nur auf die Credits eines bezahlten Workspace.
+    4. **Personen und Teams** — wo [Zugriff einrichten](/de/workspaces/members#zugriff-einrichten) steht und sein nächster Schritt, mit einem Link dorthin.
+    5. **Fragen an neue Personen** — die [Onboarding-Fragen](#team-fragen) jedes Teams.
+    6. **Erste Frage stellen** — eine echte Frage, beantwortet aus dem Wissen des Workspace.
+    7. **Benachrichtigungen** — deine Benachrichtigungseinstellungen.
   </Tab>
   <Tab title="Einem Workspace beitreten">
     Für alle anderen — Personen, die der Workspace eingeladen hat.
 
     1. **Über dich** — dein Name.
     2. **Deine Teams** — in welchen Teams du bist, was jedes dir erlaubt, und die Fragen deiner Teams, falls es welche gibt.
-    3. **Erste Frage stellen** — öffnet Genie AI.
-    4. **Benachrichtigungen** — schalte Push-Benachrichtigungen auf diesem Gerät ein.
+    3. **Erste Frage stellen** — beantwortet aus dem Wissen des Workspace.
+    4. **Benachrichtigungen** — deine Benachrichtigungseinstellungen.
   </Tab>
 </Tabs>
 
-Ein Schritt ist erledigt, wenn der Workspace es sagt, nicht weil jemand ihn abgehakt hat: **Daten verbinden** ist erledigt, sobald Daten hereinkommen, **In die Ontologie lesen**, sobald das Wissensmodell seinen ersten Eintrag hat, und **Personen und Teams**, sobald der Zugriff eingerichtet ist. Verbindet also ein Admin Google Drive, ist der Schritt auch für jeden anderen Admin erledigt. Die übrigen Schritte sind erledigt, wenn du sie markierst.
+Ein Schritt ist erledigt, wenn der Workspace es sagt, nicht weil jemand ihn abgehakt hat: **Daten verbinden** ist erledigt, sobald Daten hereinkommen, **In die Ontologie lesen**, sobald das Wissensmodell seinen ersten Eintrag hat, und **Personen und Teams**, sobald der Zugriff eingerichtet ist. Verbindet also ein Admin Google Drive, ist der Schritt auch für jeden anderen Admin erledigt. Diese Schritte kann Genie AI nicht für dich abhaken, aber zurückstellen. Die übrigen Schritte sind erledigt, wenn du sie abschließt.
 
 ## Sich durch den Assistenten bewegen
 
-- **Ein Bildschirm, ein Schritt.** Ab Tablet-Größe ist der Assistent einen Bildschirm hoch und hat keinen Kopfbereich: Der Schritt und die Leiste bleiben stehen, nur der Schritt selbst scrollt. Die Schritte sind eine schmale Leiste aus Statuspunkten links. Fahre mit der Maus darüber, fokussiere sie mit der Tastatur oder drücke ihren Umschalter, um die Titel über dem Schritt zu öffnen — jeder sagt, wo der Schritt steht, etwa *Begonnen · Schritt 3 von 5* oder *Wartet auf Daten* — und klicke auf eine Zeile, um zu ihr zu springen. Die Sprachauswahl sitzt am Fuß der Leiste. Auf dem Handy öffnet ein Button oben, etwa *3/7 · Daten verbinden*, die Schritte als Sheet.
-- **Die Leiste unten** enthält **Später abschließen** (zurück zum Workspace, sobald **Über dich** gespeichert ist), **Vorheriger Schritt**, wie weit du bist (*2 von 7 erledigt*), **Später** und **Weiter:** mit dem Namen des nächsten Schritts. Auf dem letzten Schritt steht dort **Zum Workspace**.
-- **Später** stellt einen Schritt zurück und geht weiter. Ein zurückgestellter Schritt zeigt **Doch jetzt**.
-- **Der Schritt steht in der Adresse**, sodass ein Neuladen, ein Link oder der Zurück-Button deines Browsers auf dem richtigen Schritt landet.
-
-## Zurückkommen
-
-Verlässt du den Assistenten, landest du im Workspace. Zwei Wege führen zurück:
-
-- **Einrichtung fortsetzen** auf der Workspace-Startseite unter *Für dich*, solange der Assistent noch Schritte hat, die weder erledigt noch zurückgestellt sind — zum Beispiel *2 von 6 Kapiteln erledigt*.
-- **Einrichtung** im Kontomenü unten in der Seitenleiste, immer da, für alle. Nutze sie, um lange nach der Einrichtung noch etwas zu ändern.
-
-Der Assistent öffnet sich auf dem Schritt, den du zuletzt offen hattest.
-
-Genie AI kann dir sagen, was noch offen ist — frag *„Was ist noch einzurichten?"* — und einen Schritt für dich zurückstellen oder als erledigt markieren, mit einem Link zu jedem Schritt. **Über dich** lässt sich nur auf der Seite ausfüllen.
+- **Zwischendurch fragen.** Frag, was ein Schritt bedeutet — *„Was ist die Ontologie? Kostet das extra?"* —, und Genie AI antwortet kurz und kehrt dann zum Schritt zurück.
+- **Später abschließen** im Kopfbereich bringt dich jederzeit zum Workspace. Ist alles erledigt, steht dort **Zum Workspace**.
+- **Aus jedem Chat fragen.** Frag in einem beliebigen Workspace-Chat *„Was ist noch einzurichten?"* — Genie AI listet, was offen ist, mit einem Link zu jedem Schritt, und kann einen Schritt für dich zurückstellen oder als erledigt markieren.
 
 ## Team-Fragen
 
@@ -57,10 +56,10 @@ Standardmäßig fragt dich der Beitritt zu einem Workspace nichts außer deinem 
 
 <Steps>
   <Step title="Ein Admin schreibt die Fragen">
-    Auf der Seite eines Teams (**Workspace-Einstellungen → Teams** → das Team → **Onboarding-Fragen**) oder im Schritt **Fragen an neue Personen** des Einrichtungsassistenten, der jedes Team listet. Jedes Team kann einige Fragen stellen; der Editor zeigt, wie viele noch gehen. Wird eine Frage entfernt, werden auch die Antworten darauf entfernt.
+    Auf der Seite eines Teams (**Workspace-Einstellungen → Teams** → das Team → **Onboarding-Fragen**) oder indem du Genie AI im Schritt **Fragen an neue Personen** des Einrichtungsassistenten fragst, der jedes Team durchgeht. Jedes Team kann einige Fragen stellen; der Editor zeigt, wie viele noch gehen. Wird eine Frage entfernt, werden auch die Antworten darauf entfernt.
   </Step>
   <Step title="Neue Personen beantworten sie">
-    In **Deine Teams** bekommt jedes Team, das etwas fragt, eine eigene Gruppe von Feldern. Nichts ist Pflicht: Beantworte, was du möchtest, und drücke **Speichern und weiter**. Deine Antworten kannst du später im selben Schritt ändern.
+    In **Deine Teams** stellt Genie AI die Fragen jedes Teams im Chat und speichert, was du antwortest. Nichts ist Pflicht: Beantworte, was du möchtest. Deine Antworten kannst du später ändern, indem du Genie AI darum bittest.
   </Step>
   <Step title="Genie AI nutzt die Antworten">
     Wenn du Genie AI etwas fragst, kennt es deine Antworten und nutzt sie — zum Beispiel, um sich auf die Kunden zu konzentrieren, die du genannt hast.

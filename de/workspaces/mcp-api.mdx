@@ -66,8 +66,8 @@ Lese und aktualisiere deinen Workspace, Mitglieder, Einladungen, Einstellungen u
 | `update_workspace` | Benenne den Workspace um, aktualisiere seine Beschreibung oder setze sein Icon und seine Akzentfarbe |
 | `update_workspace_settings` | Schalte das Aktivitätsprotokoll, die Projektzugangskontrolle oder das automatische Lesen der Wissensdatenbank um (Entitäten-/Beziehungs-Extraktion — siehe [Wissensmodell](/de/workspaces/overview#wissensmodell)) |
 | `get_workspace_billing` | Abonnement-Tarif, Status und Abrechnungszeitraum. Owner und Admins mit einem Tarif erhalten zusätzlich `creditStatus`: das Guthaben, den jüngsten Tagesschnitt und das Urteil der [Abrechnungsseite](/de/workspaces/overview#workspace-abrechnung) (`unknown`, `payment`, `empty`, `ending`, `low`, `spike` oder `ok`). Nur lesend — Tarife, Plätze und Credit-Käufe werden in der App geändert |
-| `get_workspace_credits` | Aktuelles Credit-Guthaben |
-| `get_credit_usage` | Credit-Verbrauch, optional aufgeschlüsselt nach Projekt, Mitglied oder Tag, sortierbar nach Verbrauch oder Datum |
+| `get_workspace_credits` | Aktuelles Credit-Guthaben. Braucht die Berechtigung, die [Abrechnung zu sehen](/de/workspaces/members#abrechnung-ohne-adminrechte) |
+| `get_credit_usage` | Credit-Verbrauch, optional aufgeschlüsselt nach Projekt, Mitglied oder Tag, sortierbar nach Verbrauch oder Datum. Standardmäßig dein eigener Verbrauch; die Summe für den ganzen Workspace und die Aufschlüsselung nach Mitglied brauchen die Berechtigung, die Abrechnung zu sehen |
 | `get_recent_workspace_activity` | Aktivitätsprotokoll mit Filtern und Paginierung |
 | `get_workspace_activity_stats` | Aggregierte Trend-KPIs — Ereignisse und aktive Mitglieder pro Tag sowie die meistgenutzten Aktionen — dieselben Werte, die das Insights-Panel der Aktivitätsseite als Diagramm zeigt |
 | `list_workspaces` | Alle Workspaces, denen der authentifizierte Nutzer angehört |
@@ -99,7 +99,7 @@ Die Fragen, die ein Team neuen Personen stellt, und deine eigenen Antworten — 
 
 ### Workspace-API-Schlüssel
 
-Verwalte die Bearer-Token-Schlüssel, mit denen dein eigener Code Genie AI über HTTP aufrufen kann — siehe [Workspace-API-Schlüssel](/de/workspaces/api-keys). Nur Owner oder Admin.
+Verwalte die Bearer-Token-Schlüssel, mit denen dein eigener Code Genie AI über HTTP aufrufen kann — siehe [Workspace-API-Schlüssel](/de/workspaces/api-keys). Braucht die Berechtigung, API-Schlüssel zu verwalten (standardmäßig Owner und Admins).
 
 | Tool | Was es tut |
 |---|---|
@@ -117,8 +117,8 @@ Durchsuche Projekte, erstelle neue aus Prompts und verwalte den vollständigen P
 | `search_projects` | Volltextsuche mit Sortieroptionen (`recentlyEdited`, `bestMatch` usw.); übergib `favorites_only`, um nur deine [Favoriten](/de/workspaces/overview#zuletzt-bearbeitete-projekte) zu durchsuchen, oder `unlisted_only`, um deine eigenen Projekte aufzulisten, die in keinem Workspace liegen |
 | `set_project_favorite` | Markiere ein Projekt als persönlichen Favoriten oder entferne die Markierung |
 | `get_project` | Vollständige Details: Name, Beschreibung, Sichtbarkeit, Deployment-URL, Credit-Verbrauch |
-| `create_project` | Erstelle ein Projekt aus einem natürlichsprachigen Prompt und starte den ersten Build |
-| `send_followup_prompt` | Sende eine Folgeanweisung an ein bestehendes Projekt |
+| `create_project` | Erstelle ein Projekt aus einem natürlichsprachigen Prompt (bis 15.000 Zeichen) und starte den ersten Build |
+| `send_followup_prompt` | Sende eine Folgeanweisung (bis 15.000 Zeichen) an ein bestehendes Projekt |
 | `get_project_status` | Leichtgewichtige Prüfung: Läuft gerade ein Build? |
 | `get_project_build_status` | Der umfassendste Live-Status-Aufruf — Phase, Restzeit-Countdown, Fortschritt, aktive Agents, Vorschau-Link, geänderte Seiten, Abschlusszusammenfassung und Vorschläge für Folge-Prompts, entsprechend der Live-Status-Karte der Web-App |
 | `list_connected_project_activity` | Was ein Projekt (oder jedes mit einem bestimmten Workspace-Chat verbundene Projekt) gerade tut — baut, führt eine automatische Korrektur aus oder hat Prompts in seiner Warteschlange wartend — derselbe Schnappschuss, den das Status-Abzeichen auf jeder Workspace-Chat-Oberfläche zeigt. Übergib eine `conversation_id` und/oder einen `project_slug` |
@@ -328,6 +328,20 @@ Liste, erstelle, lies und bearbeite echte `.pptx`-Präsentationen — dieselben 
 | `create_workspace_presentation` | Erstelle eine Präsentation — Titel, Aufzählungen, Tabellen und Sprechernotizen, bis zu 40 Folien — in einem Aufruf. Die Präsentationen sind wie die aus dem Chat gestaltet, in der [Marke](/de/workspaces/overview#workspace-marke) des Workspace, wenn er eine hat |
 | `read_workspace_presentation` | Eine Übersicht aller Folien, ein Folienbereich vollständig oder eine Textsuche |
 | `edit_workspace_presentation` | Wende einen Stapel Folien-, Text-, Notiz- und Tabellenänderungen im eigenen Design der Präsentation an — ganz oder gar nicht gespeichert |
+
+### Word-Dokumente
+
+Echte `.docx`-Dokumente auflisten, erstellen, lesen, bearbeiten und importieren — dieselben Tools, die Genie AI im [Chat](/de/workspaces/overview#word-dokumente) nutzt. Ein Word-Dokument ist ein Wissensdokument, also nutzen Umbenennen, Verschieben und Löschen die [Tools für Wissensdokumente](#workspace-wissensdokumente).
+
+| Tool | Was es tut |
+|---|---|
+| `list_workspace_word_documents` | Listet die bearbeitbaren Word-Dokumente des Workspace, neueste zuerst |
+| `create_workspace_word_document` | Schreibt eine `.docx` — Titel, Überschriften, Listen und Tabellen — in einem Aufruf aus Markdown |
+| `read_workspace_word_document` | Ein Überblick mit den Überschriften, ein Bereich von Blöcken als nummeriertes Markdown oder eine Textsuche |
+| `edit_workspace_word_document` | Wendet einen Stapel von Block-, Format-, Text- und Tabellenänderungen an — zusammen gespeichert oder gar nicht |
+| `import_workspace_word_document` | Legt eine bearbeitbare Kopie einer `.docx` an, die schon in der Bibliothek liegt |
+
+Bearbeitet jemand das Dokument gleichzeitig und benennt eine Änderung Blöcke nach Nummer, meldet der Aufruf den Konflikt und bittet dich, das Dokument neu zu lesen, statt zu raten. Neue Bilder zeichnen bleibt dem Workspace-Chat vorbehalten; ein dort gezeichnetes Bild lässt sich über MCP einfügen.
 
 ### Chat-Vorlagen
 

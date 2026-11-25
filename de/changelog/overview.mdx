@@ -4,6 +4,44 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="25. November 2026" description="Wöchentliches Release">
+
+Umfasst, was am 24. November erschienen ist. Genie AI schreibt Word-Dokumente, die du gleichzeitig bearbeiten kannst, der Einrichtungsassistent wird ein Chat, und du kannst den Agenten anderer Personen folgen.
+
+## Neue Funktionen
+
+- **Word-Dokumente.** Genie AI erstellt und bearbeitet echte `.docx`-Dateien — Titel, Überschriften, Listen, Tabellen und Bilder —, und du bearbeitest dasselbe Dokument gleichzeitig in einem seitenähnlichen Editor. Auf der Chat-Seite siehst du auf der Canvas zu, wie es geschrieben wird, und die geänderten Absätze leuchten auf. Lade es als `.docx` oder PDF herunter, oder lege eine bearbeitbare Kopie einer Word-Datei an, die du anhängst oder schon in der Bibliothek hast. Siehe [Word-Dokumente](/de/workspaces/overview#word-dokumente).
+- **Der Einrichtungsassistent ist ein Chat.** Genie AI führt dich Schritt für Schritt in einem Chat durch die Einrichtung eines Workspace und verlinkt die Seiten, die ein Schritt braucht. Niemand wird hineingeschickt: Die Startseite beginnt mit seinem nächsten Schritt, und die Seitenleiste zeigt **Onboarding** mit deinem Fortschritt, bis er fertig ist. Siehe [Der Einrichtungsassistent](/de/workspaces/setup-guide).
+- **Einem Agenten folgen.** Schalte in den Einstellungen eines Agenten **Benachrichtige mich** ein, um die Benachrichtigungen zu bekommen, die sein Autor mit Followern teilt — nur für Läufe, die du selbst öffnen könntest. Autoren wählen bei einem Benachrichtigungsschritt **Eigentümer und Follower**, um ihn zu teilen. Siehe [Benachrichtigungen eines Agenten erhalten](/de/workspaces/workflow-apps#benachrichtigungen-eines-agenten-erhalten).
+- **Wählen, ob GPT Image bei OpenAI zeichnen darf.** **GPT Image bei OpenAI erlauben** unter Governance → Inhaltssicherheit schaltet den US-Bilddienst für deinen Workspace ab; Bilder erstellt dann ein anderer Dienst, und die Personen erfahren es. Solange er an ist, wird jeder Prompt, der dorthin geht, zuerst gegen deine PII-Regeln und Guardrails geprüft. Siehe [GPT Image bei OpenAI](/de/workspaces/guardrails#gpt-image-bei-openai).
+- **Abrechnung ohne Adminrechte.** Ein Team darf die Abrechnung sehen oder verwalten, ohne dass seine Personen Admins werden oder alle Daten sehen — das Controlling kann die Abrechnungsseite lesen und sonst nichts. Siehe [Abrechnung ohne Adminrechte](/de/workspaces/members#abrechnung-ohne-adminrechte).
+- **Word-Dokumente über MCP.** `list_`, `create_`, `read_`, `edit_` und `import_workspace_word_document`. Siehe [MCP API](/de/workspaces/mcp-api#word-dokumente).
+
+## Updates
+
+- **Die Canvas eines Agenten zeigt zuerst das Ergebnis.** Die Schritte lesen sich unter **So funktioniert es** wie ein Rezept — je eine schlichte Zeile, ohne Kennungen oder Verdrahtung —, und auf einer breiten Canvas stehen die Schritte eines kurzen Agenten neben dem Ergebnis. Siehe [Genie Agents](/de/workspaces/workflow-apps#zwei-wege-einen-zu-starten).
+- **Jede Datei im Chat hat ein Cover.** Dokumente, Arbeitsmappen, PDFs, Bilder, Videos und Aufnahmen erscheinen als Karten mit ihrem Cover, wie die Titelfolie einer Präsentation, mit **Ansehen** und **Herunterladen** in der Ecke. Siehe [Ein Genie Tool oder ein Agent neben dem Chat öffnen](/de/workspaces/overview#ein-genie-tool-oder-ein-agent-neben-dem-chat-öffnen).
+- **Chats bleiben im Workspace.** Die Plattform-Administratoren von Genie selbst können die Chats eines Workspace nicht mehr öffnen; Support-Werkzeuge zeigen Chats nur als Anzahl. Siehe [Workspace-Chats sind standardmäßig privat](/de/workspaces/overview#workspace-chats-sind-standardmäßig-privat).
+- **Genies eigene Lesezugriffe laden beim Öffnen.** Eine Genie-Tool-Seite, die nur von Genie selbst liest — etwa Aktivitätszahlen oder die Mitgliederliste —, lädt sie beim Öffnen, ohne Schaltfläche **Laden**. Siehe [Genie Tools](/de/workspaces/genie-tools).
+- **Senden während der Aufnahme, früher.** Der Senden-Button erscheint eine Sekunde nach Beginn einer Aufnahme statt nach zwei, und die Wellenform reicht über die ganze Zeile. Siehe [Sprechen statt tippen](/de/workspaces/overview#sprechen-statt-tippen).
+- **API-Schlüssel und Credits fragen ihre eigene Berechtigung.** API-Schlüssel zu verwalten braucht die Berechtigung, API-Schlüssel zu verwalten, und die Credit-Tools über MCP brauchen die Berechtigung, die Abrechnung zu sehen — statt der Rolle, auf der sie beruhen. Siehe [Workspace-API-Schlüssel](/de/workspaces/api-keys#wo-schlüssel-verwaltet-werden).
+- **Längere Build-Prompts über MCP.** `create_project` und `send_followup_prompt` nehmen bis zu 15.000 Zeichen. Siehe [MCP API](/de/workspaces/mcp-api#projekte).
+- **Die Startseite begrüßt dich nur mit Namen, wenn sie ihn kennt** — nie mit deiner E-Mail-Adresse.
+
+## Fixes
+
+- **Eine angehaltene Antwort sagt, dass sie angehalten wurde**, und der Chat kommt sofort zur Ruhe.
+- **Keine Notizen an sich selbst mehr zwischen Wiederholungen.** Wenn Genie AI einen fehlgeschlagenen Schritt erneut versucht, erscheint die Notiz dazwischen nicht mehr als Teil der Antwort.
+- **Weniger abgelehnte Änderungen an Genie Tools.** Genie AI muss die Design-Prinzipien nicht in jedem Zug neu lesen, wenn es sie gerade erst gelesen hat.
+- **Wissensseiten mit mehreren Lesezugriffen lassen sich speichern.** Zwei unabhängige Schritte, die auf einer Tool-Seite von Genie lesen, lehnen sich nicht mehr gegenseitig ab.
+- **Angehängte HTML-Seiten, die sich per Skript aufbauen,** erreichen Genie AI mit ihrem Inhalt, statt leer anzukommen.
+- **Microsoft-365-Profilfotos** erscheinen jetzt als dein Avatar.
+- **Chats, die aus dem Chat heraus eine App gebaut haben,** zeigen im Chatverlauf das App-Abzeichen.
+- **Präsentationen behalten ihre Folientitel.** Genie AI lässt gestaltete Folien nicht mehr wegen einer fehlenden Überschrift weg.
+- **Neue Genie-Cloud-Projekte bekommen wieder ihr Backend.** Eine Änderung im Speicherdienst hatte die Backend-Einrichtung neuer Projekte scheitern lassen.
+
+</Update>
+
 <Update label="24. November 2026" description="Wöchentliches Release">
 
 Umfasst, was am 23. November erschienen ist. Genie Tools folgen ihren Daten live, Agenten nehmen Webhooks von Diensten an, die ihre Anfragen signieren, und jede Person bekommt einen eigenen Workspace.

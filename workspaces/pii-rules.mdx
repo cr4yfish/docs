@@ -106,6 +106,10 @@ When [Read documents automatically](/workspaces/overview#knowledge-model) is on,
 
 These entries show **Knowledge model** as their source. If Genie can't read your rules, it stores nothing from that document and tries again later.
 
+## Rules also apply to image prompts
+
+When Genie is about to send a picture's prompt to [GPT Image on OpenAI](/workspaces/guardrails#gpt-image-on-openai), it checks the prompt against your rules first. A **Block** rule refuses the picture, and the refusal names the rule — for example, with the built-in email rule on **Block**, *"portrait of anna.meier@example.com"* is refused. A **Log** rule only logs. These entries show **Image generation** as their source.
+
 ## Manage rules from workspace chat
 
 You can read and update PII rules by asking the Genie workspace AI in plain language:
