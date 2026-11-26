@@ -36,6 +36,8 @@ The **Genie Apps** area (Beta) lists every app in the workspace with its review 
 
 You can attach an internal note to any verdict. It's visible to other reviewers, and — if you disable a project — to its owner.
 
+**Agents and tools get verdicts too.** A reviewer gives a Genie Agent or Tool the same three verdicts from a compliance rule's page: each agent and tool row shows its verdict and opens a review sheet with the rule's result and a link to the build. A **disabled** agent or tool does not run for anyone, its owner included — not by hand, on a schedule, from a webhook, as a step of another agent, or from Genie AI — and a disabled tool's page says only that a governance reviewer disabled it. The verdict covers the version it was given on and every earlier one: saving a fixed version lifts it, and going back to the disabled version doesn't. Every verdict is written to the activity log.
+
 <Warning>
 Disabling a project immediately blocks builds for everyone but the owner. Reach for **Flag** instead if you just want to record a concern without interrupting work.
 </Warning>
@@ -65,7 +67,7 @@ A rule also names **what it checks**: [Genie Agents](/workspaces/workflow-apps),
   </Step>
 </Steps>
 
-**What is checked.** For an app, Genie looks at its name, description, visibility, connected integrations, and what its most recently published version actually shipped. For an agent or tool, it looks at how it is set up: its name, description and visibility, how an agent starts and who it runs as, a tool's pages, and one line per step — the kind of step and the one fact a policy is about, such as the host an HTTP step calls, the connected app a step uses or the table it touches. Never the contents of your chats, a step's prompts or request bodies, run data, or credentials. What people type and what documents hold is checked on every message by [Personal data](/workspaces/pii-rules) and [Content safety](/workspaces/guardrails) instead.
+**What is checked.** For an app, Genie looks at its name, description, who it is shared with, connected integrations, and what its most recently published version actually shipped. For an agent or tool, it looks at how it is set up: its name, description and visibility, how an agent starts and who it runs as, a tool's pages, and one line per step — the kind of step and the one fact a policy is about, such as the host an HTTP step calls, the connected app a step uses or the table it touches. Never the contents of your chats, a step's prompts or request bodies, run data, or credentials. What people type and what documents hold is checked on every message by [Personal data](/workspaces/pii-rules) and [Content safety](/workspaces/guardrails) instead.
 
 **When checks run.** Apps are checked every time they publish a new version. Agents and tools are checked on demand: **Run** on a rule, a new rule saved with **Check existing builds now**, or asking Genie AI. You can also run the checks on a single app, agent or tool.
 

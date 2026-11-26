@@ -1,6 +1,6 @@
 ---
-title: "Projekteinstellungen: Name, Beschreibung und Sichtbarkeit"
-description: "Konfiguriere den Anzeigenamen, die Beschreibung, die öffentliche oder private Sichtbarkeit deines Projekts und ob andere Nutzer:innen es remixen können."
+title: "Projekteinstellungen: Name, Beschreibung und Teilen"
+description: "Konfiguriere den Anzeigenamen, die Beschreibung und den Workspace deines Projekts und lege fest, wer in deinem Workspace es öffnen darf."
 ---
 
 Die Projekteinstellungen geben dir Kontrolle darüber, wie deine App identifiziert wird und wer darauf zugreifen kann. Du kannst sie jederzeit aktualisieren, ohne die laufende App zu beeinträchtigen. Um die Einstellungen zu öffnen, klicke in der Projektansicht auf den Button **Einstellungen** — der Einstellungsdialog öffnet sich mit einer Tab-Seitenleiste links und dem Inhalt des aktiven Tabs rechts.
@@ -15,13 +15,13 @@ Die Projekteinstellungen geben dir Kontrolle darüber, wie deine App identifizie
     Klicke in der Projektansicht auf den Button **Einstellungen** (Zahnradsymbol). Der Projekteinstellungs-Dialog öffnet sich.
   </Step>
   <Step title="Wähle den Tab Allgemein">
-    Der Dialog öffnet sich standardmäßig im Tab **Allgemein**. Hier findest du die Einstellungen für Name, Beschreibung, Workspace, Sichtbarkeit und Remixable.
+    Der Dialog öffnet sich standardmäßig im Tab **Allgemein**. Hier findest du die Einstellungen für Name, Beschreibung und Workspace.
   </Step>
 </Steps>
 
 ## Allgemeine Einstellungen
 
-Der Tab **Allgemein** enthält fünf Felder. Name, Beschreibung, Sichtbarkeit und Remixable werden gemeinsam gespeichert — klicke nach Änderungen auf **Speichern**, um sie anzuwenden, oder auf **Abbrechen**, um sie zu verwerfen. Workspace ist unabhängig davon: Wählst du im zugehörigen Umschalter einen Workspace aus, wird das Projekt sofort verschoben, ganz ohne Speichern-Schritt.
+Der Tab **Allgemein** enthält drei Felder. Name und Beschreibung werden gemeinsam gespeichert — klicke nach Änderungen auf **Speichern**, um sie anzuwenden, oder auf **Abbrechen**, um sie zu verwerfen. Workspace ist unabhängig davon: Wählst du im zugehörigen Umschalter einen Workspace aus, wird das Projekt sofort verschoben, ganz ohne Speichern-Schritt.
 
 ### Name
 
@@ -35,7 +35,7 @@ Das Feld **Name** legt den Anzeigenamen deines Projekts fest. Dieser Name ersche
 Das Feld **Beschreibung** ist ein Freitextbereich, in dem du eine kurze Zusammenfassung deiner App schreiben kannst. Die Beschreibung wird an mehreren Stellen verwendet:
 
 - Sie füllt die **SEO-Beschreibung** im SEO-Einstellungs-Tab vor, die Suchmaschinen zur Indexierung der öffentlichen Projekt-URL nutzen.
-- Sie gibt allen Kontext, die dein Projekt in der öffentlichen Galerie finden (wenn dein Projekt öffentlich ist).
+- Sie gibt den Personen Kontext, mit denen du das Projekt teilst.
 
 <Tip>
   Schreibe die Beschreibung aus der Perspektive von jemandem, der deine App zum ersten Mal entdeckt. Ein oder zwei Sätze, die erklären, was die App tut und für wen sie gedacht ist, reichen meist.
@@ -53,39 +53,11 @@ Ein Klick auf **Wechseln** öffnet eine Auswahl deiner anderen Workspaces. Wähl
 
 Siehst du keine anderen Workspaces zum Wechseln? Der leere Zustand der Auswahl bietet einen Button **Neuer Workspace**, mit dem du direkt im selben Ablauf einen erstellst und das Projekt dorthin verschiebst. Siehe [Workspaces](/de/workspaces/overview) für mehr dazu, was ein Workspace ist.
 
-### Sichtbarkeit
+### Teilen
 
-Der Schalter **Sichtbarkeit** steuert, ob dein Projekt **öffentlich** oder **privat** ist.
+Wer das Projekt öffnen darf, wird nicht mehr im Tab Allgemein festgelegt. **Einstellungen → Teilen → Personen mit Zugriff** listet die Workspace-Mitglieder und Teams, die es öffnen dürfen, jeweils mit einer Stufe — Ansehen, Bearbeiten oder Vollzugriff. Ein neues Projekt ist privat und gehört nur der Person, die es angelegt hat; ein Projekt, das in keinem Workspace liegt, kann nur diese Person öffnen.
 
-| Zustand | Was er bedeutet |
-|---|---|
-| **Öffentlich** (Schalter an) | Jeder mit dem Link kann deine Live-App ansehen. Das Projekt kann auch in öffentlichen Listings erscheinen. |
-| **Privat** (Schalter aus) | Nur du kannst auf das Projekt zugreifen. Besucher, die den Link öffnen, können es nicht ansehen. |
-
-<Note>
-  Eine Änderung der Sichtbarkeit wird sofort nach dem Speichern wirksam. Wenn du ein zuvor öffentliches Projekt auf privat schaltest, funktionieren bestehende Links für andere Nutzer sofort nicht mehr.
-</Note>
-
-Es gibt keinen separaten „unlisted"-Status — ein Projekt ist entweder vollständig öffentlich oder vollständig privat.
-
-### Remixable
-
-<Warning>
-  Remix ist vorübergehend nicht verfügbar, während wir die Funktion überarbeiten. Der unten beschriebene Schalter **Remixable** ist bis dahin in den Projekteinstellungen ausgeblendet — deine gespeicherte Einstellung bleibt davon unberührt.
-</Warning>
-
-Der Schalter **Remixable** steuert, ob andere angemeldete Nutzer:innen eine eigene Kopie deines Projekts mit dem **Remix**-Button erstellen können.
-
-| Zustand | Was er bedeutet |
-|---|---|
-| **Remixable** (Schalter an) | Auf deinem öffentlichen Projekt erscheint ein **Remix**-Button. Wer darauf klickt, erhält eine Kopie deines Projekts in seinem eigenen Konto. |
-| **Remixable aus** (Standard) | Anderen Nutzer:innen wird keine Remix-Option angezeigt. Dein Projektcode kann nicht von anderen geforkt werden. |
-
-<Warning>
-  Remixen ist nur bei öffentlichen Projekten verfügbar. Wenn du **Remixable** bei einem privaten Projekt aktivierst, hat das keinen sichtbaren Effekt, bis das Projekt auch öffentlich gemacht wird.
-</Warning>
-
-Wenn jemand dein Projekt remixt, ist die Kopie ein vollständig unabhängiges Projekt — Änderungen, die diese Person macht, beeinflussen dein Original nicht. Genie verfolgt die Herkunft, indem die ID des Quellprojekts in der remixten Kopie hinterlegt wird.
+Die Schalter **Sichtbarkeit** und **Remixable** gibt es nicht mehr: Projekte sind nie öffentlich, und Remix wurde entfernt. Siehe [Deine App teilen](/de/projects/visibility).
 
 ## Tabs des Einstellungsdialogs
 
@@ -93,7 +65,7 @@ Der Einstellungsdialog enthält weitere Tabs neben Allgemein. Hier eine Zusammen
 
 <AccordionGroup>
   <Accordion title="Allgemein">
-    Name, Beschreibung, Workspace, Sichtbarkeit (öffentlich/privat) und Remixable-Schalter. Wird auf dieser Seite behandelt.
+    Name, Beschreibung und Workspace. Wird auf dieser Seite behandelt.
   </Accordion>
   <Accordion title="SEO">
     Titel, Beschreibung, kanonische URL, Open-Graph-Bild und noIndex-Flag für Suchmaschinenoptimierung.

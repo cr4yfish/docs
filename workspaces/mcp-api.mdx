@@ -64,7 +64,7 @@ Read and update your workspace, members, invitations, settings, and billing.
 | `revoke_workspace_invite` | Cancel a pending invite |
 | `remove_workspace_member` | Remove a member immediately, along with their access to the workspace's projects — invited back, they start without it. Refused while the directory decides people and teams. The workspace's owner of record can't be removed (or demoted below Admin) until they've handed the workspace on — see [Transfer ownership](/workspaces/members#transfer-ownership) |
 | `update_workspace` | Rename the workspace, update its description, or set its icon and accent color |
-| `update_workspace_settings` | Toggle activity log, project access control, or automatic knowledge-base reading (entity/relation extraction — see [Knowledge model](/workspaces/overview#knowledge-model)) |
+| `update_workspace_settings` | Toggle the activity log, automatic knowledge-base reading (entity/relation extraction — see [Knowledge model](/workspaces/overview#knowledge-model)) or the knowledge model's draft staging. Who may open an app is no workspace setting any more: read an app's own list with `get_access` (kind `app`) |
 | `get_workspace_billing` | Subscription plan, status, and billing period. Owners and admins on a plan also get `creditStatus`: the balance, the recent daily pace and the [Billing page's](/workspaces/overview#workspace-billing) verdict (`unknown`, `payment`, `empty`, `ending`, `low`, `spike` or `ok`). Read-only — plans, seats and credit purchases change in the app |
 | `get_workspace_credits` | Current credit balance. Needs permission to [see billing](/workspaces/members#billing-without-admin-rights) |
 | `get_credit_usage` | Credit consumption, optionally broken down by project, member, or day, and sortable by spend or date. Your own usage by default; the workspace-wide total and the per-member breakdown need permission to see billing |
@@ -116,7 +116,7 @@ Browse projects, create new ones from prompts, and manage the full project lifec
 | `list_latest_projects` | 10 most recently updated projects |
 | `search_projects` | Full-text search with sort options (`recentlyEdited`, `bestMatch`, etc.); pass `favorites_only` to search just your [favorites](/workspaces/overview#recent-projects), or `unlisted_only` to list your own projects that are in no workspace |
 | `set_project_favorite` | Star or unstar a project as one of your personal favorites |
-| `get_project` | Full details: name, description, visibility, deployment URL, credit usage |
+| `get_project` | Full details: name, description, deployment URL, credit usage |
 | `create_project` | Create a project from a natural-language prompt (up to 15,000 characters) and start the first build |
 | `send_followup_prompt` | Send a follow-up instruction (up to 15,000 characters) to an existing project |
 | `get_project_status` | Lightweight check: is a build currently running? |
@@ -131,12 +131,10 @@ Browse projects, create new ones from prompts, and manage the full project lifec
 | `search_project_console_logs` | Search a deployed project's live runtime telemetry — console output, errors, unhandled crashes, clicks, and page views — filtered by keyword, severity, or event type, over a configurable time window |
 | `suggest_project_prompts` | AI-generated next-step ideas based on build history |
 | `abort_project_build` | Cancel the currently running build |
-| `archive_project` / `unarchive_project` | Hide or restore a project |
+| `archive_project` / `unarchive_project` | Hide or restore a project. The project's owner or someone with Full access |
 | `list_archived_projects` | All archived projects in the workspace |
-| `delete_project` | Permanently delete a project |
-| `update_project` | Rename, update description, change visibility, or toggle remixing |
-| `list_project_members` | Members explicitly granted access (when project access control is on) |
-| `add_project_member` / `remove_project_member` | Grant or revoke a member's access to a specific project. While the workspace shares with teams only, adding a single person is refused, naming the rule |
+| `delete_project` | Permanently delete a project. The project's owner or someone with Full access |
+| `update_project` | Rename a project or update its description. Projects are never public and can't be remixed, so there is no visibility or remix setting. Who may open a project is its own list: read it with `get_access` (kind `app`); it is changed in the app — see [Share your app](/projects/visibility) |
 | `rename_project` | Rename a project (a focused alternative to `update_project`) |
 | `add_project_to_workspace` | Move one of your personal projects into the connected workspace |
 | `remove_project_from_workspace` | Remove a project from the workspace without deleting it — it becomes a personal project again |
@@ -218,18 +216,18 @@ Genie's workspace AI also keeps notes that belong to a project itself — a stan
 
 ### Workspace knowledge documents
 
-Material a team wants every build to respect — brand guidelines, tone of voice, an API schema, a data dictionary — filed against the whole workspace or one project. See [Knowledge base](/workspaces/overview#knowledge-base). Like project memory above, these tools run as the connected user rather than impersonating the project owner, so a project's own access rules decide who can read or change its documents.
+Material a team wants every build to respect — brand guidelines, tone of voice, an API schema, a data dictionary — filed as the workspace's knowledge. Projects no longer scope it: no tool takes a `scope` or a project, and a document that was filed against one project now reads as a workspace document. The only fence is a folder's [access area](/workspaces/overview#access-areas). See [Knowledge base](/workspaces/overview#knowledge-base). These tools run as the connected user, so that member's own access decides what they can read or change.
 
 | Tool | What it does |
 |---|---|
-| `list_workspace_documents` | List knowledge documents, paginated and filterable by title/description/filename. `scope`: `workspace`, `project`, `effective` (workspace + one project — what actually applies when building it), or `all` (default). Also narrows by `source` (uploaded, or from a drive or mailbox), `type` and `changed` (7d, 30d or 365d), and, with `folder`, `include_subfolders` |
+| `list_workspace_documents` | List knowledge documents, paginated and filterable by title/description/filename. Narrows by `source` (uploaded, or from a drive or mailbox), `type` and `changed` (7d, 30d or 365d), and, with `folder`, `include_subfolders` |
 | `search_workspace_documents` | Search inside documents' text (hybrid semantic + keyword) and get back matching passages |
 | `read_workspace_document` | Read one document's full text in bounded, pageable slices; a truncated page returns `nextOffset`, where the next page starts |
-| `add_workspace_documents` | File one or more documents (up to 10 per call) for the workspace or a project |
-| `update_workspace_document` | Retitle, re-describe, move a document between scopes, move it between folders via `folder`, or rewrite its full text in place via `text` (re-indexed immediately; refused on a document mirrored in from a connected cloud drive — edit it at the source instead) |
+| `add_workspace_documents` | File one or more documents (up to 10 per call) for the workspace |
+| `update_workspace_document` | Retitle, re-describe, move a document between folders via `folder`, or rewrite its full text in place via `text` (re-indexed immediately; refused on a document mirrored in from a connected cloud drive — edit it at the source instead) |
 | `delete_workspace_document` | Permanently delete a document and its search index. Set `also_delete_ontology` to also delete the knowledge-model entities only this document supports (needs the knowledge-model edit permission as well); a very large purge may answer partly done — call again to finish |
 | `reindex_workspace_document` | Repair a document stuck at keyword-only or failed search indexing, or bring it onto the current embedding spec. Safe to call on any document — never changes its text |
-| `get_knowledge_index_status` | The workspace's indexing status at a glance — how many documents are fully searchable, still indexing, keyword-only, or stalled, and how many still need their date read — plus a list of the documents most needing attention |
+| `get_knowledge_index_status` | The workspace's indexing status at a glance — how many documents are fully searchable, still indexing, keyword-only, or stalled, and how many still need their date read — plus a list of the documents most needing attention. `linkedSources` counts, apart from the total, the documents that stay in each [linked source](/workspaces/integrations#linked-sources) |
 | `get_document_cover_image` | Read a document's cover picture — whether one exists, is being drawn right now, or the last attempt's outcome |
 | `regenerate_document_cover_image` | Draw a new cover picture for a document, replacing whatever is there. Runs in the background |
 | `list_workspace_document_folders` | The workspace's filing folders, each with how many documents it holds and how much room is left before the 200-per-folder cap |
@@ -238,11 +236,12 @@ Material a team wants every build to respect — brand guidelines, tone of voice
 | `delete_workspace_document_folder` | Delete a folder. The documents in it are **not** deleted — they become unfiled and stay searchable; the result says how many |
 | `list_knowledge_sources` | Where the calling member's connected [cloud drives](/workspaces/overview#cloud-drives) (Google Drive, OneDrive) stand: not available on this deployment, not connected, or connected and browsable |
 | `browse_knowledge_source` | Browse a connected cloud drive's folders and files, paginated, to find the id of a file to import |
-| `import_knowledge_source_file` | Import a file from a connected cloud drive as a knowledge document, at a chosen scope and folder |
+| `import_knowledge_source_file` | Import a file from a connected cloud drive as a knowledge document, in a chosen folder |
+| `add_knowledge_source_connector` | Add the preset connector a cloud drive or mailbox needs when the workspace has none yet: Microsoft 365 (OneDrive/SharePoint, Outlook), Google Drive or Gmail. Needs permission to manage integrations. It holds no credential and reaches no account — each person still signs in themselves in the app. Returns the existing connector if there is one |
 
 Like the tools above, the three cloud-drive tools run as the connected member and only ever reach that member's own drive connection — never anyone else's.
 
-**Folders are orthogonal to scope.** Scope decides which projects may *use* a document; a folder only decides where a human *finds* it, and no retrieval path reads it — filing a document, or deleting the folder it's in, never changes what a search returns. `list_workspace_documents`, `add_workspace_documents`, and `update_workspace_document` each accept a `folder` (a name, an id, or `unfiled`), addressable by name since that's what a client actually sees. A folder holds at most 200 documents, enforced the same way for MCP, the in-app agent, and the browser.
+**Folders decide where a human finds a document, not what a search returns.** No retrieval path reads a folder — filing a document, or deleting the folder it's in, never changes what a search returns. `list_workspace_documents`, `add_workspace_documents`, and `update_workspace_document` each accept a `folder` (a name, an id, or `unfiled`), addressable by name since that's what a client actually sees. A folder holds at most 200 documents, enforced the same way for MCP, the in-app agent, and the browser.
 
 ### Knowledge access areas
 
@@ -286,6 +285,17 @@ See the [record syncs](/workspaces/overview#sync-records-from-a-business-app) th
 |---|---|
 | `list_record_syncs` | The workspace's record syncs with their status and schedule |
 | `get_record_sync` | One sync: its kinds of records, how far each got, and any problem |
+
+### Linked sources (read-only)
+
+Read the workspace's [linked sources](/workspaces/integrations#linked-sources) — systems whose records stay where they are and are read live. Everything runs under the same access rules as in the app. Connecting, changing, removing and forgetting a source, and running one of its actions, stay in the app.
+
+| Tool | What it does |
+|---|---|
+| `list_linked_sources` | The linked sources: state, the area each one locks in the knowledge model, which classes joined, and removed sources not yet forgotten. Needs permission to view integrations |
+| `list_linked_documents` | The documents that stay in a linked source, by folder, a page at a time |
+| `read_linked_document` | The text of one linked document's file, by page. Counts against the same hourly limit per person as opening it in the app |
+| `list_linked_actions` | What a linked record or class offers in its source: its process (the stages and the record's current one) and the actions the connection is granted, with their input fields and whether you may run them. An action that writes a field you may not see is not listed |
 
 ### Workspace knowledge model (read-only)
 
@@ -557,9 +567,9 @@ Project reviews, shared-asset oversight, and natural-language compliance rules. 
 
 | Tool | What it does |
 |---|---|
-| `list_governance_projects` | Governance overview of the workspace's projects: owner, visibility, latest version, review verdict, compliance state, and integration-risk signals. Filter with `only_failing` / `only_unreviewed` |
+| `list_governance_projects` | Governance overview of the workspace's projects: `projectId`, owner, sharing, latest version, review verdict, compliance state, and integration-risk signals. Filter with `only_failing` / `only_unreviewed`. With `build_kind` (`agent` or `tool`), that kind's verdicts instead: name, current version and verdict |
 | `get_project_compliance` | One project's governance detail: current verdict plus the newest result of every compliance rule (with reasoning) and a bounded recent history. Or, with `build_kind` (`agent` or `tool`) and `build_id`, the newest result of every rule that checked that Genie Agent or Tool |
-| `review_project` | Record a verdict — `approved`, `flagged`, or `disabled` (blocks new builds from everyone but the owner) — or `clear` to remove it |
+| `review_project` | Record a verdict — `approved`, `flagged`, or `disabled` (blocks new builds from everyone but the owner) — or `clear` to remove it. With `build_kind` + `build_id`, the verdict on a Genie Agent or Tool; `disabled` stops every run of it. `project_slug` takes a slug or the `projectId` the list returns, so a reviewer can act on every app the list shows them, a private one included — the same holds for `get_project_compliance` and `run_compliance_checks` |
 | `list_compliance_rules` | List the workspace's compliance rules plus the built-in template library a new rule can start from |
 | `create_compliance_rule` | Create a rule (name, severity, a natural-language failure condition, and which builds it checks — `subject_kinds`: `agent`, `tool`, `app`), optionally from a template, with an option to check existing projects immediately. Owner/admin only |
 | `update_compliance_rule` | Change a rule's name, description, severity, failure condition, what it checks (`subject_kinds`), and/or enabled state. Owner/admin only |
@@ -708,20 +718,19 @@ Role-based access is enforced on every tool call.
 | Manage PII rules | Owner or admin |
 | Create, update, rename, archive, or delete projects | Any member |
 | Move a project in or out of the workspace | Owner, admin, or member (not editor) |
-| Check or cancel a scheduled project deletion | Project owner |
+| Check or cancel a scheduled project deletion | Project owner, or Full access on the project |
 | Send follow-up prompts and trigger builds | Any member |
 | Turn Auto mode on or off for a project | Any member |
 | Query a project's code graph | Any member |
 | List or read a project's files | Any member |
 | Read or update a project's design guidelines | Any member |
 | Read a project's feature tree | Any member (who can view the project) |
-| Add or edit a feature in the tree | Project owner |
+| Add or edit a feature in the tree | Project owner, or Edit access on the project |
 | Read a project's known issues | Any member (who can view the project) |
-| Report a known issue | Project owner |
+| Report a known issue | Project owner, or Edit access on the project |
 | Search the shared bug-solution knowledge base | Any connected user |
 | Search or forget the connected user's memory | Any connected user |
-| Read or write a workspace-wide knowledge document | Any member |
-| Read or write a project-scoped knowledge document | Anyone with edit access to that project — tighter than plain view access, since a public project must never expose its team's internal material |
+| Read or write a knowledge document | Any member, inside the access areas they can reach |
 | Create, rename, or delete a knowledge-document folder | Any member |
 | Browse or import a file from a connected cloud drive as a knowledge document | Any member, using their own drive connection |
 | View or redraw a knowledge document's cover picture, or repair its search index | Any member (who can read the document) |
@@ -735,15 +744,15 @@ Role-based access is enforced on every tool call.
 | See who else has a project open right now | Any member (who can view the project) |
 | View or manage a project's prompt queue | Any member |
 | Generate, view, or give feedback on a project's design mock-ups | Any member |
-| Roll back a project or view its version history | Project owner |
-| Read or update a project's SEO settings | Project owner |
-| Browse a project's Genie Cloud database tables | Project owner |
-| List a project's deployed edge functions | Project owner |
-| Manage a project's scheduled jobs | Project owner |
+| Roll back a project or view its version history | Project owner, or Edit access on the project |
+| Read or update a project's SEO settings | Project owner, or Edit access on the project |
+| Browse a project's Genie Cloud database tables | Project owner, or Edit access on the project |
+| List a project's deployed edge functions | Project owner, or Edit access on the project |
+| Manage a project's scheduled jobs | Project owner, or Edit access on the project |
 | Manage a project's Genie Cloud roles, sign-in providers, and access settings | Project owner |
 | View workspace secret names (never values) | Members who can view the relevant integrations, agents, or tools |
 | Manage a project's secrets | Project owner |
-| Manage a project's storage files | Project owner |
+| Manage a project's storage files | Project owner, or Edit access on the project |
 | Read Genie pricing | Any member |
 | Read Genie's status page | Any connected user |
 | View Governance (project reviews, compliance results) | Owner, admin, or a member granted "View governance" |

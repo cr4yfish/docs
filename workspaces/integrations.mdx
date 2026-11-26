@@ -17,6 +17,8 @@ Looking to message Genie from WhatsApp, Slack, or Microsoft Teams instead? That'
 
 Every connection is on the Library's **Sources** page: open **Library** in the sidebar and press **All sources** on the **Sources** box. New ones are added with **Add a source** (the **+** on that box). **Settings → Integrations** no longer exists — old links and bookmarks land on Sources. See [Knowledge base](/workspaces/overview#knowledge-base).
 
+The **Sources** page mirrors **Add a source**: what is connected is shown as tiles in the same groups, each with its state in words — *Active*, *Running*, *Paused*, *Needs attention*, or *Unknown* when it could not be checked. Whatever needs someone comes first in its group, and a line at the top counts those and filters to them. A group shows eight tiles until you press **Show all**, and each group heading leads to the picker. Press a tile to open that connection on the same page. Record syncs and [linked sources](#linked-sources) are listed there too, and **Add a source** marks what is already connected.
+
 ## Add a preset integration
 
 Genie includes one-click presets for the most popular tools. Preset connections have their server URL, transport, and authentication type pre-configured — you just authorise and go.
@@ -136,6 +138,37 @@ Every member can mirror their **own** Outlook or Gmail mailbox into the knowledg
 - **Time and cost, up front.** Before you start, the row says how many messages it will read, roughly how long that takes and what the import and each following month cost in credits. While it runs, it shows what is left, when it should be done and what the sync has cost so far. If a mailbox is too large to count completely, the figures say *at least*; if the count can't be finished in time it says so and offers **Try again** instead of guessing. A paused or stopped sync, or one with automatic sync off, says that new mail waits for a run to be started.
 
 Mail is read into the knowledge base like any document, so it counts toward the same limits and the same credits as other synced files.
+
+## Linked sources
+
+A **linked source** is a system whose records are never copied into your workspace. Its data model — its classes, their properties and how they relate — joins your [knowledge model](/workspaces/overview#knowledge-model) as an area of its own, and its records are read live through the connection whenever someone opens them. It is the third way to bring data in:
+
+| | Copied in | Looked up live | Linked |
+|---|---|---|---|
+| Example | A SharePoint folder, a record sync | A connector Genie AI asks | Captiva One |
+| Where the data lives | In your workspace | In the source | In the source |
+| In the knowledge model | Yes, as entities | No | Yes — as a locked area of its own |
+| Browse it like any class | Yes | No | Yes |
+
+The first linked source is **Captiva One**.
+
+**Connect one.** Open **Library → Sources → Add a source** and pick the source. Paste the connection's address and key and press **Test connection** — nothing is saved yet. Then choose which of the source's classes join, each shown with its record count, and who sees their records: **Everyone in the workspace**, **Only owners and admins**, or people and teams you pick. **Start** connects it. Records start closed: until you open them, only owners and admins can read them. Genie AI can set a source up with you too — you type the key into a card, never into the chat.
+
+**A locked area.** The source's classes and relations appear in an area named after it, marked with a plug and the source's name. Nobody can change that area here — not a manager, not Genie AI, not a draft: its classes, relations and records come from the source, so you change them there. Relations from your own classes may still point at a linked class.
+
+**It follows the source.** Genie checks the source for changes regularly, and **Check for changes now** does it right away. New properties arrive on their own; a class the source stops offering is hidden. A class the source newly offers joins only when you tick it under **Change what joins**.
+
+**Reading records.** A linked class's records open like any others. A line above them says when they were read and whether the source answered — *Read live from Captiva One · 12 s ago*, or that the source isn't answering and you are looking at what was read earlier. Linked records also appear on the Graph page and the entity map, a record lists the records that point at it, and a record's name in a text is recognised once the workspace has read it. Genie AI reads linked records through the same access rules as everyone else.
+
+**Documents that stay in the source.** If the source keeps documents, Genie AI searches them beside your own and cites the passages it uses. The Library's Files search lists them in a section per source, and each source has a read-only folder among the Files page's places. **Open document** shows the file in the same viewer as your own PDFs, at the cited page. The Library's knowledge figures list each source's document count on its own row, never added to your workspace's own count.
+
+**Processes and actions.** A source can publish the stages its records move through and grant the connection actions on them. A record's page then shows its stage, and each action as a button: a short form, a confirmation that lists exactly what is sent and says Genie can't undo it, and the result. A class with a process is listed under the Model's **Processes** too. Running an action needs permission to manage integrations and to edit the knowledge model, plus *Can change them* on the class's records. An action that would write a field you may not see is never offered. Genie AI runs an action only through a [confirmation card](/workspaces/overview#confirmation-cards).
+
+**Pause, remove, forget.** A paused source is not asked anything. **Remove** hides its classes, archives its area and deletes its key and everything cached; nothing changes at the source. A removed source is listed under **Removed sources** and still counts toward the workspace's limit of linked sources (five by default) — connecting the same account again brings the same classes back. **Forget** gives that up for good: the area becomes an ordinary archived area you can reuse, and the place under the limit is free again.
+
+**Who may do what.** Connecting, changing what joins, removing and forgetting need permission to manage integrations and to manage the knowledge model. Checking for changes, pausing and pasting a new key need permission to manage integrations. Everyone sees which area is linked and to what. Who sees a linked class's records is decided by its [records line](/workspaces/overview#share-an-item), as for any class.
+
+MCP clients can [read linked sources](/workspaces/mcp-api#linked-sources-read-only).
 
 ## Manage connected servers
 

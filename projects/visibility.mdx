@@ -1,92 +1,49 @@
 ---
-title: "Publish and share your Genie app"
-description: "Control who can access your project, get a shareable link, let others remix your work, and connect a custom domain to your live app."
+title: "Share your Genie app"
+description: "Choose which workspace members can open your app in Genie, send people the link to the live app, and connect a custom domain."
 ---
 
-When you are ready to share your app with the world — or even just with a colleague — Genie gives you several tools to control access and distribution. You can make your project public, grab a shareable link, allow others to fork it with the Remix feature, and connect a custom domain so your app lives at your own URL.
+There are two things you can share: the **project in Genie** — its chat, code and settings — and the **live app** that Genie deployed for you. They are separate. Who may open the project is decided on its Sharing page; the live app runs at its own address and is opened by its link.
 
-## Public vs. private
+## Projects are private
 
-Every project in Genie has a **visibility** setting that is either **public** or **private**. You control this with the **Visibility** toggle in **Settings > General**.
-
-<Tabs>
-  <Tab title="Public">
-    A public project is accessible to anyone who has the link — no Genie account required to view the live app. Public projects can also appear in community listings on Genie.
-
-    **When to use:** when you want to share your app with customers, collaborators, or the general public.
-  </Tab>
-  <Tab title="Private">
-    A private project is only accessible to you (the owner). Anyone else who navigates to the project URL will not be able to view it.
-
-    **When to use:** while you are building and testing, or for internal tools you do not want publicly accessible.
-  </Tab>
-</Tabs>
+A project in Genie is never public. A new one starts private: only its owner can open it. There is no public/private switch and no public listing of projects — the community page is gone, and nobody outside your workspace can browse or open your project.
 
 <Note>
-  Changing visibility takes effect immediately after you click **Save** in project settings. There is no delay or re-deployment step.
+  Projects that were public before became private. The live apps they deployed were not touched and keep running at the same address.
 </Note>
 
-There is no separate "unlisted" state — a project is either fully public or fully private. The toggle in **Settings > General** is the only control you need.
+## Share a project with your workspace
 
-## Getting a shareable link
-
-Each project has a persistent URL you can send to anyone. You can find this URL in **Settings > General** or by copying it directly from your browser's address bar when you are viewing the live app.
+A project is shared like a [Genie Agent or Tool](/workspaces/overview#share-an-item): you name the people and teams who get it.
 
 <Steps>
-  <Step title="Make the project public">
-    In **Settings > General**, turn on the **Visibility** toggle and click **Save**.
+  <Step title="Open Sharing">
+    In the project, open **Settings → Sharing → People with access**. The line in the project's top bar that says who can see it opens the same page.
   </Step>
-  <Step title="Copy the URL">
-    Copy the project URL from your browser's address bar, or from the URL shown in **Settings > General**.
-  </Step>
-  <Step title="Share it">
-    Paste the URL into an email, a chat message, or anywhere else. Recipients can open the live app immediately.
-  </Step>
-</Steps>
-
-## Remixable projects
-
-<Warning>
-  Remix is temporarily unavailable while we rework the feature. The Remix button and the Remixable toggle described below are hidden until it's back, and no remix settings or history are lost in the meantime.
-</Warning>
-
-Making your project **remixable** allows other Genie users to create their own independent copy of your app with a single click. This is similar to "forking" in version control — the person who remixes gets a full copy they can customize without affecting your original.
-
-### Enabling remixing
-
-<Steps>
-  <Step title="Open Settings">
-    Click **Settings** in the project view to open the project settings dialog.
-  </Step>
-  <Step title="Go to the General tab">
-    The **General** tab is selected by default.
-  </Step>
-  <Step title="Turn on Remixable">
-    Toggle the **Remixable** switch to on.
+  <Step title="Add people or teams">
+    Search for a person, a team or everyone in the workspace, and pick a level: **View** to open it, **Edit** to build and change it, **Full access** to also share, archive and delete it.
   </Step>
   <Step title="Save">
-    Click **Save**. A **Remix** button now appears on your project for other signed-in users.
+    **Save** applies the list. Leaving the page with unsaved changes asks first.
   </Step>
 </Steps>
 
-### What happens when someone remixes
+The owner always keeps Full access. Someone who can only read the list sees it without a Save button. A project that is in no workspace can only be opened by its owner — add it to a workspace under **Settings → General** to share it.
 
-When a signed-in user clicks **Remix** on your project:
+The workspace-wide switch that used to control access to all apps at once is gone, and so is the per-project member list: every project now has its own list. A project that has never been shared keeps the access it had before.
 
-1. Genie creates a new project in their account.
-2. The new project is a complete copy of your generated app at the moment of remixing.
-3. Genie records that the new project was remixed from yours (tracked internally for attribution).
-4. The user is redirected to their new project, where they can prompt Genie to make further changes.
+Genie AI can read and change a project's list for you, through a [confirmation card](/workspaces/overview#confirmation-cards).
 
-Changes the other user makes to their remixed copy have no effect on your original project.
+## Share the live app
 
-<Note>
-  Remixing requires the user to be signed in to Genie. If an unauthenticated visitor clicks **Remix**, they are redirected to the login page and then returned to complete the remix after signing in.
-</Note>
+Every deployed app has its own address. Copy it from the preview or from your browser's address bar while viewing the live app, and send it to anyone. Opening the live app needs no Genie account.
 
-<Warning>
-  The **Remixable** toggle only has a visible effect when the project is also **public**. If your project is private, the Remix button is not shown even if Remixable is enabled.
-</Warning>
+Who can use the live app is up to the app itself: if it has sign-in, its own users and roles decide — see [Authentication](/cloud/auth). Sharing the project in Genie and sharing the live app's link don't affect each other.
+
+## Remix is gone
+
+Remix — copying someone else's project into your own account — has been removed, together with the **Remix** button, *Remix from here* and the **Remixable** switch. Projects can no longer be copied into another account. Projects that were created by remixing stay as they are.
 
 ## Custom domains
 
@@ -113,8 +70,8 @@ Once your custom domain is active, visitors who go to your Genie URL are redirec
 
 ## Summary of sharing options
 
-| Option | Requires public project | Requires Genie Cloud | Who can access |
-|---|---|---|---|
-| Default project URL | Yes | No | Anyone with the link |
-| Remixing | Yes + Remixable enabled | No | Signed-in Genie users |
-| Custom domain | Yes | Yes | Anyone with the domain |
+| Option | Where | Who gets in |
+|---|---|---|
+| The project in Genie | **Settings → Sharing** | The owner, plus the workspace members and teams on its list |
+| The live app's link | The app's own address | Anyone with the link; the app's own sign-in decides the rest |
+| Custom domain | Genie Cloud | The same as the live app's link, at your own address |

@@ -97,6 +97,10 @@ Wenn du etwas teilst, wähle lieber ein Team, statt Personen einzeln zu nennen �
 
 **Workspace-Einstellungen → Personen** listet alle im Workspace, 50 auf einmal, mit Suche. Jede Zeile nennt die Teams der Person. **Alle ansehen** bei einem Team öffnet die Liste gefiltert auf dieses Team, mit einem Chip, der den Filter entfernt. Oben sagt eine Zeile, woher die Personen kommen — aus deinem Firmenverzeichnis oder aus Einladungen hier —, mit **Verwalten** für den [Verzeichnisabgleich](/de/workspaces/provisioning); **Regeln** und **Einladen** stehen neben dem Titel. Was dich braucht, steht ebenfalls dort: ein Owner oder Admin, den dein Verzeichnis entfernen wollte, und Personen, die auf einen freien Sitzplatz warten.
 
+**Teams aus der Liste zuweisen.** Jede Zeile zeigt die Teams der Person als Chips — **Admins** zuerst, mit einem Schild bei Teams mit Adminrechten — und, wo du sie ändern darfst, eine Team-Auswahl: eine Checkliste mit Admins und jedem Team. Filtere die Liste auf alle, auf Personen in **keinem Team**, auf **Admins** oder auf ein Team; die Zahl *Kein Team* auf der Teams-Seite öffnet die Liste mit diesem Filter. Hake mehrere Personen an, um sie in einem Zug in ein Team aufzunehmen oder herauszunehmen: Eine Leiste unten öffnet die Änderung, und danach sagt Genie, bei wie vielen Personen sich wirklich etwas geändert hat, und listet namentlich, bei wem nicht und warum. Jemanden zu Admins oder zu einem Team mit Adminrechten hinzuzufügen, fragt vorher nach, und deine eigenen Teams kannst du so nicht ändern. Wo du eine Zeile nicht ändern darfst, steht der Grund.
+
+**Admins von Hand.** Admins ist ein Team wie jedes andere: Füge Personen auf der Admins-Seite, auf der Seite einer Person oder aus der Personenliste hinzu oder nimm sie heraus. Die Person, der der Workspace gehört, ist immer dabei. Auch für Genie AI sind **Alle** und **Admins** Teams — *„Nimm Dana zu den Admins“* funktioniert also, über eine [Bestätigungskarte](/de/workspaces/overview#bestätigungskarten).
+
 Wer nur einladen darf, sieht die Einladungen, nicht die Liste der Personen.
 
 ### Die Seite einer Person
@@ -176,7 +180,7 @@ Neuen Personen wird ein kurzer [Einrichtungsassistent](/de/workspaces/setup-guid
 
 ## Zugriff einrichten
 
-Eine geführte Einrichtung bringt Personen, Teams und Zugriff eines neuen Workspaces in einem Zug in Ordnung. Owner und Admins, die Mitglieder und Dokumentzugriff verwalten dürfen, starten sie oben auf der Teams-Seite oder aus dem Schritt **Personen und Teams** des [Einrichtungsassistenten](/de/workspaces/setup-guide), der dorthin verlinkt. Es gibt zwei Wege:
+Eine geführte Einrichtung bringt Personen, Teams und Zugriff eines neuen Workspaces in einem Zug in Ordnung. Owner und Admins, die Mitglieder und Dokumentzugriff verwalten dürfen, starten sie oben auf der Teams-Seite oder aus dem Schritt **Personen und Teams** des [Einrichtungsassistenten](/de/workspaces/setup-guide), in dem Genie AI dich im Chat hindurchführt. Es gibt zwei Wege:
 
 - **Firmenverzeichnis** — Personen, deine verifizierte Domain, die Verzeichnisverbindung, Teams, worauf jedes Team zugreift, Prüfen.
 - **Von Hand** — Personen, Einladungen, Teams, worauf jedes Team zugreift, Prüfen.
@@ -190,7 +194,7 @@ Die Einrichtung speichert laufend und hat keinen Speichern-Button: Schließe sie
 **Regeln** auf der Personen-Seite hat zwei Schalter für den ganzen Workspace. Nur der Eigentümer des Workspace kann sie ändern; jeder fragt zuerst und zeigt, wer betroffen ist.
 
 - **Das Verzeichnis entscheidet über Personen und Teams.** Solange die Regel eingeschaltet ist, wird hier niemand eingeladen oder entfernt, kein Team angelegt und nicht geändert, wer in einem Team ist — das alles macht dein Firmenverzeichnis. Was ein Team darf, seine Daten und sein Starterpaket bleiben änderbar. Das Einschalten entfernt die Mitglieder, die hier hinzugefügt wurden und nicht in deinem Verzeichnis sind; die Bestätigung nennt sie vorher. Eigentümer und Admins bleiben, und hier angelegte Teams bleiben, gesperrt. Die Projekte der entfernten Personen gehen an den Eigentümer des Workspace, und ein späteres Ausschalten der Regel bringt niemanden zurück. Selbst verlassen kannst du einen Workspace weiterhin. Die Regel braucht ein verbundenes Verzeichnis.
-- **Nur mit Teams teilen.** Solange die Regel eingeschaltet ist, nennen Teilen-Listen Teams und alle, nie eine einzelne Person — in jedem Teilen-Dialog, in der Mitgliederliste eines Projekts und für Genie AI. Zeilen, die bereits eine Person nennen, bleiben, bis jemand sie entfernt.
+- **Nur mit Teams teilen.** Solange die Regel eingeschaltet ist, nennen Teilen-Listen Teams und alle, nie eine einzelne Person — in jedem Teilen-Dialog, auf der Seite „Teilen“ einer App und für Genie AI. Zeilen, die bereits eine Person nennen, bleiben, bis jemand sie entfernt.
 
 Genie AI kann beide Regeln lesen und ändert eine nur über eine [Bestätigungskarte](/de/workspaces/overview#bestätigungskarten). MCP-Clients können sie [lesen](/de/workspaces/mcp-api#workspace-verwaltung).
 

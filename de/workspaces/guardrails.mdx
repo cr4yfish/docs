@@ -53,9 +53,9 @@ Schreibe optional deine eigene Nachricht, die einem Mitglied anstelle von Genies
 Guardrails prüfen standardmäßig nur den Text einer Nachricht. Zwei weitere Schalter, beide zunächst ausgeschaltet, erweitern das auf Anhänge:
 
 - **Bilder prüfen** — angehängte PNG/JPEG-Bilder werden zusammen mit dem Nachrichtentext auf schädliche Inhalte geprüft (Hassrede, Gewalt, sexuelle Inhalte und so weiter). Tabuisierte Themen und gesperrte Wörter gelten immer nur für Text.
-- **Nicht prüfbare Anhänge ablehnen** — blockiert eine Nachricht komplett, wenn sie etwas enthält, das Guardrails überhaupt nicht beurteilen können: ein PDF, ein GIF- oder WebP-Bild, oder jedes Bild, solange **Bilder prüfen** aus ist.
+- **Nicht prüfbare Anhänge ablehnen** — blockiert eine Nachricht komplett, wenn sie etwas enthält, das Guardrails überhaupt nicht beurteilen können: ein GIF- oder WebP-Bild, jedes Bild, solange **Bilder prüfen** aus ist, und jedes Dokument. In einem Workspace-Chat wird jedes Dokument — ein PDF, eine Textdatei, eine Word-Datei, eine Tabelle — gespeichert und später von Genie AI geöffnet, statt in die Nachricht eingefügt zu werden; nichts von seinem Inhalt steht also in dem Text, der beurteilt wird. Ist dieser Schalter an, lässt sich an einen Chat gar kein Dokument anhängen, und Genie AI kann auch keine gespeicherte Datei öffnen.
 
-Ein Dokument wie eine `.txt`-, `.docx`- oder Tabellendatei ist bereits als Text abgedeckt — sein Inhalt wird extrahiert, bevor Genie AI ihn überhaupt sieht.
+Ist der Schalter aus, lassen sich Dokumente anhängen, und ihr Inhalt wird von Guardrails nicht beurteilt — nur der Text der Nachricht selbst.
 
 ## GPT Image bei OpenAI
 
