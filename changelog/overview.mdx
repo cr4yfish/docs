@@ -4,6 +4,48 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="November 26, 2026" description="Weekly release">
+
+Covers what shipped November 25. Systems can be linked without copying their data, apps are private and shared like everything else, and files you attach to a chat stay private and are no longer cut off.
+
+## New features
+
+- **Linked sources.** Link a system whose records stay where they are: its data model joins your knowledge model as a locked area of its own, and its records are read live when someone opens them. Genie AI searches the source's documents beside your own, the Library lists them in a read-only folder, and — where the source grants it — a record shows its process and actions you can run. Captiva One is the first. See [Linked sources](/workspaces/integrations#linked-sources).
+- **Apps are private, and shared on their own page.** A Genie App is never public: a new one is private to its owner, and **Settings → Sharing** names the workspace members and teams who may open it, with View, Edit or Full access — the same list agents and tools have. The live app keeps its own address. See [Share your app](/projects/visibility).
+- **Attach any file up to 100 MB.** In a workspace chat a document is now stored whole instead of being pasted into the message, so nothing is cut off; Genie AI opens it when your question needs it and looks at a PDF's pages itself when text isn't enough. A message carries up to 20 files and 20 images, and the per-chat file limit is gone. See [Attachments carry into your build](/workspaces/overview#attachments-carry-into-your-build).
+- **Chat attachments are private.** A file attached in a workspace chat can only be opened by people who can read that chat, and it no longer has a public link.
+- **Verdicts for agents and tools.** Governance reviewers can approve, flag or disable a Genie Agent or Tool from a rule's page. A disabled one doesn't run for anyone until a fixed version is saved. See [Projects: review](/workspaces/governance#projects-review).
+- **Assign teams from People.** Each person's teams show as chips with a team picker beside them; filter to people on no team or to Admins, and put several people on a team at once. Admins is now a team you add people to and take them off by hand. See [People](/workspaces/members#people).
+- **Linked sources over MCP.** `list_linked_sources`, `list_linked_documents`, `read_linked_document` and `list_linked_actions`, plus `add_knowledge_source_connector` to add the connector a drive or mailbox needs. See [MCP API](/workspaces/mcp-api#linked-sources-read-only).
+
+## Updates
+
+- **Remix and the community page are gone.** The **Remix** button, *Remix from here*, the **Remixable** and **Visibility** switches and the public listing of projects have been removed. Projects that were public became private; their live apps keep running. See [Share your app](/projects/visibility).
+- **One access list per app.** The workspace-wide switch for app access and the per-project member list are replaced by each app's Sharing page. An app that has never been shared keeps the access it had.
+- **Knowledge belongs to the workspace.** Projects no longer have knowledge documents of their own: a document filed under one project is now a workspace document, and the only fence is its folder's access area. See [Knowledge base](/workspaces/overview#knowledge-base).
+- **The setup guide does everything in the chat.** No step sends you to a settings page any more: sign-ins, the folder sync, invitations, the access setup and this device's push notifications are cards in the conversation, and Genie AI explains each step before it asks. See [The setup guide](/workspaces/setup-guide#the-steps).
+- **Home stays out of the setup's way.** While the guide still asks you for something, Home shows only **Recently used**, and the sidebar's **Onboarding** row carries a softly blinking dot instead of a count. See [Home](/workspaces/overview#home-jump-back-in-and-for-you).
+- **Sources as tiles.** The Library's Sources page shows what is connected in the same groups and tiles as **Add a source**, each with its state in words and what needs attention first; **Add a source** marks what is already connected. See [Where integrations live](/workspaces/integrations#where-integrations-live).
+- **A bigger entity map.** It draws 500 entities by default, loads larger maps in parts, and says on the canvas when it shows only part of what there is. The class map shows its progress while it loads. See [Knowledge model](/workspaces/overview#knowledge-model).
+- **A tip the first time you attach.** A short dialog explains that attachments are for one chat and that material to keep belongs on the Data page.
+- **Guardrails and stored documents.** Because documents are stored rather than pasted in, **Refuse attachments that cannot be checked** now refuses every document. See [Scanning attachments](/workspaces/guardrails#scanning-attachments).
+- **Cards without a box.** Genie AI's questions and confirmations sit directly on the chat, with their options as pills as wide as their label.
+- **MCP follows the new access.** Project tools that were owner-only now also work with Edit access (Full access for archiving and deleting); `update_project` no longer takes visibility or remix; `list_project_members`, `add_project_member` and `remove_project_member` are gone in favour of `get_access`; knowledge-document tools no longer take a `scope`; and the governance tools accept the `projectId` their list returns and a `build_kind` for agents and tools. See [MCP API](/workspaces/mcp-api#projects).
+
+## Fixes
+
+- **Chats with many PDFs answer again.** A chat whose files were larger than the model could take in was refused on every turn; the newest files that fit are now kept.
+- **Microsoft Teams chats with long ids** are saved instead of failing.
+- **Library uploads start filing** as soon as you pick the files.
+- **A paused reading queue says it is paused**, not that every place is taken.
+- **The setup guide moves on to the next source** after you answer *Not now*.
+- **An integration's card shows only Connect** while a sign-in is pending.
+- **The credit balance stays in step** with charges smaller than one credit.
+- **Selecting text opens the entity popover** only when the selection names something.
+- **Entity map search results** no longer open over the search bar.
+
+</Update>
+
 <Update label="November 25, 2026" description="Weekly release">
 
 Covers what shipped November 24. Genie AI writes Word documents you can edit alongside it, the setup guide becomes a chat, and you can follow other people's agents.

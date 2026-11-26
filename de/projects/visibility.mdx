@@ -1,92 +1,49 @@
 ---
-title: "Deine Genie-App veröffentlichen und teilen"
-description: "Steuere, wer auf dein Projekt zugreifen kann, hole dir einen teilbaren Link, erlaube anderen das Remixen deiner Arbeit und verbinde eine eigene Domain mit deiner Live-App."
+title: "Deine Genie-App teilen"
+description: "Lege fest, welche Workspace-Mitglieder deine App in Genie öffnen dürfen, schicke anderen den Link zur Live-App und verbinde eine eigene Domain."
 ---
 
-Wenn du bereit bist, deine App mit der Welt — oder auch nur mit einer Kollegin — zu teilen, gibt Genie dir mehrere Werkzeuge, um Zugriff und Verbreitung zu steuern. Du kannst dein Projekt öffentlich machen, einen teilbaren Link holen, anderen das Forken über die Remix-Funktion erlauben und eine eigene Domain verbinden, sodass deine App unter deiner eigenen URL läuft.
+Du kannst zwei Dinge teilen: das **Projekt in Genie** — mit Chat, Code und Einstellungen — und die **Live-App**, die Genie für dich bereitgestellt hat. Beides ist getrennt. Wer das Projekt öffnen darf, entscheidet seine Seite „Teilen“; die Live-App läuft unter ihrer eigenen Adresse und wird über ihren Link geöffnet.
 
-## Öffentlich vs. privat
+## Projekte sind privat
 
-Jedes Projekt in Genie hat eine **Sichtbarkeits**-Einstellung, die entweder **öffentlich** oder **privat** ist. Du steuerst das mit dem Schalter **Sichtbarkeit** unter **Einstellungen > Allgemein**.
-
-<Tabs>
-  <Tab title="Öffentlich">
-    Ein öffentliches Projekt ist für jeden mit dem Link zugänglich — kein Genie-Konto erforderlich, um die Live-App anzusehen. Öffentliche Projekte können auch in Community-Listings auf Genie erscheinen.
-
-    **Wann verwenden:** wenn du deine App mit Kunden, Mitarbeiter:innen oder der Öffentlichkeit teilen möchtest.
-  </Tab>
-  <Tab title="Privat">
-    Ein privates Projekt ist nur für dich (die Eigentümerin) zugänglich. Andere, die zur Projekt-URL navigieren, können es nicht ansehen.
-
-    **Wann verwenden:** während du baust und testest, oder für interne Tools, die du nicht öffentlich zugänglich haben möchtest.
-  </Tab>
-</Tabs>
+Ein Projekt in Genie ist nie öffentlich. Ein neues startet privat: Nur die Person, der es gehört, kann es öffnen. Es gibt keinen Schalter für öffentlich/privat und keine öffentliche Liste von Projekten — die Community-Seite gibt es nicht mehr, und niemand außerhalb deines Workspace kann dein Projekt durchsuchen oder öffnen.
 
 <Note>
-  Eine Änderung der Sichtbarkeit wird sofort nach dem Klick auf **Speichern** in den Projekteinstellungen wirksam. Es gibt keine Verzögerung und keinen erneuten Deployment-Schritt.
+  Projekte, die vorher öffentlich waren, sind jetzt privat. Die Live-Apps, die sie bereitgestellt haben, wurden nicht angefasst und laufen unter derselben Adresse weiter.
 </Note>
 
-Es gibt keinen separaten „unlisted"-Status — ein Projekt ist entweder vollständig öffentlich oder vollständig privat. Der Schalter unter **Einstellungen > Allgemein** ist die einzige Steuerung, die du brauchst.
+## Ein Projekt mit deinem Workspace teilen
 
-## Einen teilbaren Link holen
-
-Jedes Projekt hat eine dauerhafte URL, die du an jeden senden kannst. Du findest diese URL unter **Einstellungen > Allgemein** oder kannst sie direkt aus der Adressleiste deines Browsers kopieren, wenn du die Live-App ansiehst.
+Ein Projekt wird geteilt wie ein [Genie Agent oder Tool](/de/workspaces/overview#ein-objekt-teilen): Du nennst die Personen und Teams, die es bekommen.
 
 <Steps>
-  <Step title="Mache das Projekt öffentlich">
-    Aktiviere unter **Einstellungen > Allgemein** den Schalter **Sichtbarkeit** und klicke auf **Speichern**.
+  <Step title="Teilen öffnen">
+    Öffne im Projekt **Einstellungen → Teilen → Personen mit Zugriff**. Die Zeile in der oberen Leiste des Projekts, die sagt, wer es sehen kann, öffnet dieselbe Seite.
   </Step>
-  <Step title="Kopiere die URL">
-    Kopiere die Projekt-URL aus der Adressleiste deines Browsers oder aus der unter **Einstellungen > Allgemein** angezeigten URL.
-  </Step>
-  <Step title="Teile sie">
-    Füge die URL in eine E-Mail, eine Chat-Nachricht oder anderswo ein. Empfänger:innen können die Live-App sofort öffnen.
-  </Step>
-</Steps>
-
-## Remixbare Projekte
-
-<Warning>
-  Remix ist vorübergehend nicht verfügbar, während wir die Funktion überarbeiten. Der Remix-Button und der unten beschriebene Remixable-Schalter sind bis dahin ausgeblendet, und es gehen dabei keine Remix-Einstellungen oder -Historie verloren.
-</Warning>
-
-Wenn du dein Projekt **remixbar** machst, können andere Genie-Nutzer:innen mit einem einzigen Klick eine eigene unabhängige Kopie deiner App erstellen. Das ähnelt dem „Forken" in der Versionskontrolle — wer remixt, erhält eine vollständige Kopie, die er anpassen kann, ohne dein Original zu beeinflussen.
-
-### Remixen aktivieren
-
-<Steps>
-  <Step title="Einstellungen öffnen">
-    Klicke in der Projektansicht auf **Einstellungen**, um den Projekteinstellungs-Dialog zu öffnen.
-  </Step>
-  <Step title="Zum Tab Allgemein wechseln">
-    Der Tab **Allgemein** ist standardmäßig ausgewählt.
-  </Step>
-  <Step title="Remixable einschalten">
-    Aktiviere den Schalter **Remixable**.
+  <Step title="Personen oder Teams hinzufügen">
+    Suche eine Person, ein Team oder alle im Workspace und wähle eine Stufe: **Ansehen** zum Öffnen, **Bearbeiten** zum Bauen und Ändern, **Vollzugriff**, um es auch zu teilen, zu archivieren und zu löschen.
   </Step>
   <Step title="Speichern">
-    Klicke auf **Speichern**. Ein **Remix**-Button erscheint nun für andere angemeldete Nutzer:innen auf deinem Projekt.
+    **Speichern** wendet die Liste an. Verlässt du die Seite mit ungespeicherten Änderungen, fragt Genie vorher nach.
   </Step>
 </Steps>
 
-### Was passiert, wenn jemand remixt
+Die Person, der das Projekt gehört, behält immer Vollzugriff. Wer die Liste nur lesen darf, sieht sie ohne Speichern-Button. Ein Projekt, das in keinem Workspace liegt, kann nur von der Person geöffnet werden, der es gehört — füge es unter **Einstellungen → Allgemein** einem Workspace hinzu, um es zu teilen.
 
-Wenn eine angemeldete Person auf **Remix** in deinem Projekt klickt:
+Den Workspace-weiten Schalter, der früher den Zugriff auf alle Apps auf einmal gesteuert hat, gibt es nicht mehr, ebenso wenig die Mitgliederliste pro Projekt: Jedes Projekt hat jetzt seine eigene Liste. Ein Projekt, das noch nie geteilt wurde, behält den Zugriff, den es vorher hatte.
 
-1. Genie erstellt ein neues Projekt in ihrem Konto.
-2. Das neue Projekt ist eine vollständige Kopie deiner generierten App zum Zeitpunkt des Remixens.
-3. Genie hinterlegt, dass das neue Projekt aus deinem remixt wurde (intern für die Attribution verfolgt).
-4. Die Person wird zu ihrem neuen Projekt weitergeleitet, wo sie Genie um weitere Änderungen bitten kann.
+Genie AI kann die Liste eines Projekts für dich lesen und ändern — über eine [Bestätigungskarte](/de/workspaces/overview#bestätigungskarten).
 
-Änderungen, die diese Person an ihrer remixten Kopie vornimmt, haben keinen Einfluss auf dein Originalprojekt.
+## Die Live-App teilen
 
-<Note>
-  Remixen erfordert, dass die Person bei Genie angemeldet ist. Klickt ein nicht authentifizierter Besucher auf **Remix**, wird er zur Login-Seite weitergeleitet und danach zurückgebracht, um den Remix nach der Anmeldung abzuschließen.
-</Note>
+Jede bereitgestellte App hat ihre eigene Adresse. Kopiere sie aus der Vorschau oder aus der Adressleiste deines Browsers, während du die Live-App ansiehst, und schicke sie an wen du möchtest. Zum Öffnen der Live-App braucht niemand ein Genie-Konto.
 
-<Warning>
-  Der Schalter **Remixable** hat nur eine sichtbare Wirkung, wenn das Projekt auch **öffentlich** ist. Wenn dein Projekt privat ist, wird der Remix-Button nicht angezeigt, selbst wenn Remixable aktiviert ist.
-</Warning>
+Wer die Live-App nutzen kann, entscheidet die App selbst: Hat sie eine Anmeldung, bestimmen ihre eigenen Nutzer:innen und Rollen — siehe [Authentifizierung](/de/cloud/auth). Das Teilen des Projekts in Genie und das Teilen des Links der Live-App beeinflussen einander nicht.
+
+## Remix gibt es nicht mehr
+
+Remix — das Kopieren eines fremden Projekts in das eigene Konto — wurde entfernt, zusammen mit dem Button **Remix**, *Von hier remixen* und dem Schalter **Remixable**. Projekte können nicht mehr in ein anderes Konto kopiert werden. Projekte, die durch Remixen entstanden sind, bleiben, wie sie sind.
 
 ## Eigene Domains
 
@@ -113,8 +70,8 @@ Sobald deine eigene Domain aktiv ist, werden Besucher, die zur Genie-URL gehen, 
 
 ## Zusammenfassung der Teiloptionen
 
-| Option | Benötigt öffentliches Projekt | Benötigt Genie Cloud | Wer kann zugreifen |
-|---|---|---|---|
-| Standard-Projekt-URL | Ja | Nein | Jeder mit dem Link |
-| Remixen | Ja + Remixable aktiviert | Nein | Angemeldete Genie-Nutzer:innen |
-| Eigene Domain | Ja | Ja | Jeder mit der Domain |
+| Option | Wo | Wer hineinkommt |
+|---|---|---|
+| Das Projekt in Genie | **Einstellungen → Teilen** | Die Person, der es gehört, sowie die Workspace-Mitglieder und Teams auf seiner Liste |
+| Der Link der Live-App | Die eigene Adresse der App | Alle mit dem Link; über alles Weitere entscheidet die Anmeldung der App |
+| Eigene Domain | Genie Cloud | Wie beim Link der Live-App, unter deiner eigenen Adresse |

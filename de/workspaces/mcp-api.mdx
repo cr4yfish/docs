@@ -64,7 +64,7 @@ Lese und aktualisiere deinen Workspace, Mitglieder, Einladungen, Einstellungen u
 | `revoke_workspace_invite` | Breche eine ausstehende Einladung ab |
 | `remove_workspace_member` | Entferne ein Mitglied sofort, zusammen mit seinem Zugriff auf die Projekte des Workspace — wird es erneut eingeladen, beginnt es ohne ihn. Wird abgelehnt, solange das Verzeichnis über Personen und Teams entscheidet. Der Hauptverantwortliche des Workspace kann nicht entfernt (oder unter Admin herabgestuft) werden, bevor er den Workspace weitergegeben hat — siehe [Eigentümerschaft übertragen](/de/workspaces/members#eigent%C3%BCmerschaft-%C3%BCbertragen) |
 | `update_workspace` | Benenne den Workspace um, aktualisiere seine Beschreibung oder setze sein Icon und seine Akzentfarbe |
-| `update_workspace_settings` | Schalte das Aktivitätsprotokoll, die Projektzugangskontrolle oder das automatische Lesen der Wissensdatenbank um (Entitäten-/Beziehungs-Extraktion — siehe [Wissensmodell](/de/workspaces/overview#wissensmodell)) |
+| `update_workspace_settings` | Schalte das Aktivitätsprotokoll, das automatische Lesen der Wissensdatenbank (Entitäten-/Beziehungs-Extraktion — siehe [Wissensmodell](/de/workspaces/overview#wissensmodell)) oder das Entwurfs-Staging des Wissensmodells um. Wer eine App öffnen darf, ist keine Workspace-Einstellung mehr: Lies die eigene Liste einer App mit `get_access` (Art `app`) |
 | `get_workspace_billing` | Abonnement-Tarif, Status und Abrechnungszeitraum. Owner und Admins mit einem Tarif erhalten zusätzlich `creditStatus`: das Guthaben, den jüngsten Tagesschnitt und das Urteil der [Abrechnungsseite](/de/workspaces/overview#workspace-abrechnung) (`unknown`, `payment`, `empty`, `ending`, `low`, `spike` oder `ok`). Nur lesend — Tarife, Plätze und Credit-Käufe werden in der App geändert |
 | `get_workspace_credits` | Aktuelles Credit-Guthaben. Braucht die Berechtigung, die [Abrechnung zu sehen](/de/workspaces/members#abrechnung-ohne-adminrechte) |
 | `get_credit_usage` | Credit-Verbrauch, optional aufgeschlüsselt nach Projekt, Mitglied oder Tag, sortierbar nach Verbrauch oder Datum. Standardmäßig dein eigener Verbrauch; die Summe für den ganzen Workspace und die Aufschlüsselung nach Mitglied brauchen die Berechtigung, die Abrechnung zu sehen |
@@ -116,7 +116,7 @@ Durchsuche Projekte, erstelle neue aus Prompts und verwalte den vollständigen P
 | `list_latest_projects` | Die 10 zuletzt aktualisierten Projekte |
 | `search_projects` | Volltextsuche mit Sortieroptionen (`recentlyEdited`, `bestMatch` usw.); übergib `favorites_only`, um nur deine [Favoriten](/de/workspaces/overview#zuletzt-bearbeitete-projekte) zu durchsuchen, oder `unlisted_only`, um deine eigenen Projekte aufzulisten, die in keinem Workspace liegen |
 | `set_project_favorite` | Markiere ein Projekt als persönlichen Favoriten oder entferne die Markierung |
-| `get_project` | Vollständige Details: Name, Beschreibung, Sichtbarkeit, Deployment-URL, Credit-Verbrauch |
+| `get_project` | Vollständige Details: Name, Beschreibung, Deployment-URL, Credit-Verbrauch |
 | `create_project` | Erstelle ein Projekt aus einem natürlichsprachigen Prompt (bis 15.000 Zeichen) und starte den ersten Build |
 | `send_followup_prompt` | Sende eine Folgeanweisung (bis 15.000 Zeichen) an ein bestehendes Projekt |
 | `get_project_status` | Leichtgewichtige Prüfung: Läuft gerade ein Build? |
@@ -131,12 +131,10 @@ Durchsuche Projekte, erstelle neue aus Prompts und verwalte den vollständigen P
 | `search_project_console_logs` | Durchsuche die Live-Laufzeit-Telemetrie eines veröffentlichten Projekts — Konsolenausgaben, Fehler, unbehandelte Abstürze, Klicks und Seitenaufrufe — gefiltert nach Stichwort, Schweregrad oder Ereignistyp, über ein konfigurierbares Zeitfenster |
 | `suggest_project_prompts` | KI-generierte Ideen für nächste Schritte basierend auf dem Build-Verlauf |
 | `abort_project_build` | Brich den aktuell laufenden Build ab |
-| `archive_project` / `unarchive_project` | Verstecke oder stelle ein Projekt wieder her |
+| `archive_project` / `unarchive_project` | Verstecke oder stelle ein Projekt wieder her. Die Person, der das Projekt gehört, oder jemand mit Vollzugriff |
 | `list_archived_projects` | Alle archivierten Projekte im Workspace |
-| `delete_project` | Lösche ein Projekt dauerhaft |
-| `update_project` | Umbenennen, Beschreibung aktualisieren, Sichtbarkeit ändern oder Remixing umschalten |
-| `list_project_members` | Mitglieder, denen explizit Zugriff gewährt wurde (wenn die Projektzugangskontrolle aktiviert ist) |
-| `add_project_member` / `remove_project_member` | Gewähre oder entziehe einem Mitglied den Zugriff auf ein bestimmtes Projekt. Teilt der Workspace nur mit Teams, wird das Hinzufügen einer einzelnen Person mit Nennung der Regel abgelehnt |
+| `delete_project` | Lösche ein Projekt dauerhaft. Die Person, der das Projekt gehört, oder jemand mit Vollzugriff |
+| `update_project` | Ein Projekt umbenennen oder seine Beschreibung aktualisieren. Projekte sind nie öffentlich und lassen sich nicht remixen, deshalb gibt es keine Einstellung für Sichtbarkeit oder Remix. Wer ein Projekt öffnen darf, steht auf seiner eigenen Liste: Lies sie mit `get_access` (Art `app`); geändert wird sie in der App — siehe [Deine App teilen](/de/projects/visibility) |
 | `rename_project` | Benenne ein Projekt um (eine fokussierte Alternative zu `update_project`) |
 | `add_project_to_workspace` | Verschiebe eines deiner persönlichen Projekte in den verbundenen Workspace |
 | `remove_project_from_workspace` | Entferne ein Projekt aus dem Workspace, ohne es zu löschen — es wird wieder zu einem persönlichen Projekt |
@@ -218,18 +216,18 @@ Genies Workspace-KI hält außerdem Notizen fest, die zu einem Projekt selbst ge
 
 ### Workspace-Wissensdokumente
 
-Material, das ein Team von jedem Build respektiert haben will — Markenrichtlinien, Tonalität, ein API-Schema, ein Datenwörterbuch — abgelegt für den ganzen Workspace oder ein einzelnes Projekt. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank). Wie das Projekt-Gedächtnis oben laufen diese Tools als der verbundene Nutzer, statt den Projekt-Eigentümer zu imitieren — die eigenen Zugriffsregeln des Projekts entscheiden, wer seine Dokumente lesen oder ändern darf.
+Material, das ein Team von jedem Build respektiert haben will — Markenrichtlinien, Tonalität, ein API-Schema, ein Datenwörterbuch — abgelegt als Wissen des Workspace. Projekte grenzen es nicht mehr ein: Kein Tool nimmt einen `scope` oder ein Projekt entgegen, und ein Dokument, das für ein einzelnes Projekt abgelegt war, zählt jetzt als Workspace-Dokument. Die einzige Grenze ist der [Zugriffsbereich](/de/workspaces/overview#zugriffsbereiche) eines Ordners. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank). Diese Tools laufen als der verbundene Nutzer — dessen eigener Zugriff entscheidet, was er lesen oder ändern kann.
 
 | Tool | Was es tut |
 |---|---|
-| `list_workspace_documents` | Liste Wissensdokumente, paginiert und filterbar nach Titel/Beschreibung/Dateiname. `scope`: `workspace`, `project`, `effective` (Workspace + ein Projekt — was beim Bauen tatsächlich gilt) oder `all` (Standard). Lässt sich außerdem eingrenzen mit `source` (hochgeladen oder aus einem Laufwerk bzw. Postfach), `type` und `changed` (7d, 30d oder 365d) sowie, mit `folder`, `include_subfolders` |
+| `list_workspace_documents` | Liste Wissensdokumente, paginiert und filterbar nach Titel/Beschreibung/Dateiname. Lässt sich eingrenzen mit `source` (hochgeladen oder aus einem Laufwerk bzw. Postfach), `type` und `changed` (7d, 30d oder 365d) sowie, mit `folder`, `include_subfolders` |
 | `search_workspace_documents` | Durchsuche den Text der Dokumente (hybrid, semantisch + Stichwort) und erhalte passende Textstellen zurück |
 | `read_workspace_document` | Lies den vollständigen Text eines Dokuments in begrenzten, seitenweise abrufbaren Abschnitten; eine gekürzte Seite liefert `nextOffset`, den Start der nächsten Seite |
-| `add_workspace_documents` | Lege ein oder mehrere Dokumente ab (bis zu 10 pro Aufruf) für den Workspace oder ein Projekt |
-| `update_workspace_document` | Benenne um, beschreibe neu, verschiebe ein Dokument zwischen Geltungsbereichen, verschiebe es über `folder` zwischen Ordnern, oder überschreibe seinen ganzen Text direkt über `text` (sofort neu indexiert; wird bei einem aus einem verbundenen Cloud-Speicher gespiegelten Dokument abgelehnt — ändere es stattdessen an der Quelle) |
+| `add_workspace_documents` | Lege ein oder mehrere Dokumente für den Workspace ab (bis zu 10 pro Aufruf) |
+| `update_workspace_document` | Benenne um, beschreibe neu, verschiebe ein Dokument über `folder` zwischen Ordnern, oder überschreibe seinen ganzen Text direkt über `text` (sofort neu indexiert; wird bei einem aus einem verbundenen Cloud-Speicher gespiegelten Dokument abgelehnt — ändere es stattdessen an der Quelle) |
 | `delete_workspace_document` | Lösche ein Dokument und seinen Suchindex dauerhaft. Mit `also_delete_ontology` löschst du zusätzlich die Entitäten des Wissensmodells, die nur dieses Dokument belegt (erfordert zusätzlich die Berechtigung zum Bearbeiten des Wissensmodells); ein sehr großer Löschvorgang kann teilweise abgeschlossen antworten — rufe erneut auf, um ihn zu beenden |
 | `reindex_workspace_document` | Repariere ein Dokument, das bei nur-Stichwort-Suche oder fehlgeschlagener Indexierung feststeckt, oder bringe es auf die aktuelle Embedding-Spec. Auf jedem Dokument gefahrlos aufrufbar — ändert nie dessen Text |
-| `get_knowledge_index_status` | Der Indexierungsstatus des Workspace auf einen Blick — wie viele Dokumente vollständig durchsuchbar sind, noch indexiert werden, nur nach Stichwort durchsuchbar sind oder feststecken, und wie viele noch ihr Datum gelesen bekommen müssen — plus eine Liste der Dokumente, die am dringendsten Aufmerksamkeit brauchen |
+| `get_knowledge_index_status` | Der Indexierungsstatus des Workspace auf einen Blick — wie viele Dokumente vollständig durchsuchbar sind, noch indexiert werden, nur nach Stichwort durchsuchbar sind oder feststecken, und wie viele noch ihr Datum gelesen bekommen müssen — plus eine Liste der Dokumente, die am dringendsten Aufmerksamkeit brauchen. `linkedSources` zählt, getrennt von der Gesamtzahl, die Dokumente, die in jeder [verknüpften Quelle](/de/workspaces/integrations#verknüpfte-quellen) bleiben |
 | `get_document_cover_image` | Lies das Titelbild eines Dokuments — ob eines existiert, gerade gezeichnet wird, oder das Ergebnis des letzten Versuchs |
 | `regenerate_document_cover_image` | Zeichne ein neues Titelbild für ein Dokument, ersetzt, was vorhanden ist. Läuft im Hintergrund |
 | `list_workspace_document_folders` | Die Ablage-Ordner des Workspace, jeweils mit der Zahl abgelegter Dokumente und wie viel Platz vor der 200er-Grenze pro Ordner bleibt |
@@ -238,11 +236,12 @@ Material, das ein Team von jedem Build respektiert haben will — Markenrichtlin
 | `delete_workspace_document_folder` | Lösche einen Ordner. Die darin enthaltenen Dokumente werden **nicht** gelöscht — sie werden unabgelegt und bleiben durchsuchbar; das Ergebnis nennt, wie viele |
 | `list_knowledge_sources` | Wo die verbundenen [Cloud-Speicher](/de/workspaces/overview#cloud-speicher) (Google Drive, OneDrive) des anfragenden Mitglieds stehen: auf diesem Deployment nicht verfügbar, nicht verbunden, oder verbunden und durchsuchbar |
 | `browse_knowledge_source` | Durchsuche die Ordner und Dateien eines verbundenen Cloud-Speichers, seitenweise, um die ID einer zu importierenden Datei zu finden |
-| `import_knowledge_source_file` | Importiere eine Datei aus einem verbundenen Cloud-Speicher als Wissensdokument, in einem gewählten Geltungsbereich und Ordner |
+| `import_knowledge_source_file` | Importiere eine Datei aus einem verbundenen Cloud-Speicher als Wissensdokument, in einem gewählten Ordner |
+| `add_knowledge_source_connector` | Füge den vorgefertigten Connector hinzu, den ein Cloud-Speicher oder Postfach braucht, wenn der Workspace noch keinen hat: Microsoft 365 (OneDrive/SharePoint, Outlook), Google Drive oder Gmail. Erfordert die Berechtigung, Integrationen zu verwalten. Er enthält keine Zugangsdaten und erreicht kein Konto — jede Person meldet sich weiterhin selbst in der App an. Gibt den vorhandenen Connector zurück, falls es einen gibt |
 
 Wie die Tools oben laufen auch die drei Cloud-Speicher-Tools als das anfragende Mitglied und erreichen ausschließlich dessen eigene Speicherverbindung — nie die einer anderen Person.
 
-**Ordner stehen quer zum Geltungsbereich.** Der Geltungsbereich entscheidet, welche Projekte ein Dokument *nutzen* dürfen; ein Ordner entscheidet nur, wo ein Mensch es *findet*, und kein Suchpfad liest ihn aus — ein Dokument abzulegen oder den Ordner zu löschen, in dem es liegt, ändert nie, was eine Suche zurückgibt. `list_workspace_documents`, `add_workspace_documents` und `update_workspace_document` akzeptieren jeweils einen `folder` (Name, ID oder `unfiled`), adressierbar per Name, da das ist, was ein Client tatsächlich sieht. Ein Ordner fasst höchstens 200 Dokumente, für MCP, den In-App-Agenten und den Browser auf dieselbe Weise durchgesetzt.
+**Ordner entscheiden, wo ein Mensch ein Dokument findet, nicht, was eine Suche zurückgibt.** Kein Suchpfad liest einen Ordner aus — ein Dokument abzulegen oder den Ordner zu löschen, in dem es liegt, ändert nie, was eine Suche zurückgibt. `list_workspace_documents`, `add_workspace_documents` und `update_workspace_document` akzeptieren jeweils einen `folder` (Name, ID oder `unfiled`), adressierbar per Name, da das ist, was ein Client tatsächlich sieht. Ein Ordner fasst höchstens 200 Dokumente, für MCP, den In-App-Agenten und den Browser auf dieselbe Weise durchgesetzt.
 
 ### Knowledge-Zugriffsbereiche
 
@@ -286,6 +285,17 @@ Sieh dir die [Synchronisierungen](/de/workspaces/overview#einträge-aus-einer-bu
 |---|---|
 | `list_record_syncs` | Die Datensatz-Synchronisierungen des Workspaces mit Status und Zeitplan |
 | `get_record_sync` | Eine Synchronisierung: ihre Arten von Einträgen, wie weit jede ist, und etwaige Probleme |
+
+### Verknüpfte Quellen (nur lesend)
+
+Lies die [verknüpften Quellen](/de/workspaces/integrations#verknüpfte-quellen) des Workspace — Systeme, deren Einträge bleiben, wo sie sind, und live gelesen werden. Alles läuft unter denselben Zugriffsregeln wie in der App. Verbinden, Ändern, Entfernen und Vergessen einer Quelle sowie das Ausführen einer ihrer Aktionen bleiben in der App.
+
+| Tool | Was es tut |
+|---|---|
+| `list_linked_sources` | Die verknüpften Quellen: Zustand, der Bereich, den jede im Wissensmodell sperrt, welche Klassen dazugekommen sind, und entfernte, noch nicht vergessene Quellen. Erfordert die Berechtigung, Integrationen zu sehen |
+| `list_linked_documents` | Die Dokumente, die in einer verknüpften Quelle bleiben, nach Ordner, seitenweise |
+| `read_linked_document` | Der Text der Datei eines verknüpften Dokuments, seitenweise. Zählt auf dasselbe stündliche Limit pro Person wie das Öffnen in der App |
+| `list_linked_actions` | Was ein verknüpfter Eintrag oder eine Klasse in ihrer Quelle anbietet: der Prozess (die Stufen und die aktuelle des Eintrags) und die Aktionen, die der Verbindung gewährt sind, mit ihren Eingabefeldern und ob du sie ausführen darfst. Eine Aktion, die ein Feld schreibt, das du nicht sehen darfst, wird nicht gelistet |
 
 ### Workspace-Wissensmodell (nur lesend)
 
@@ -557,9 +567,9 @@ Projektüberprüfungen, Aufsicht über geteilte Ressourcen und Compliance-Regeln
 
 | Tool | Was es tut |
 |---|---|
-| `list_governance_projects` | Governance-Übersicht der Projekte des Workspaces: Eigentümer:in, Sichtbarkeit, letzte Version, Überprüfungsurteil, Compliance-Zustand und Integrationsrisiko-Signale. Filtern mit `only_failing` / `only_unreviewed` |
+| `list_governance_projects` | Governance-Übersicht der Projekte des Workspaces: `projectId`, Eigentümer:in, Freigabe, letzte Version, Überprüfungsurteil, Compliance-Zustand und Integrationsrisiko-Signale. Filtern mit `only_failing` / `only_unreviewed`. Mit `build_kind` (`agent` oder `tool`) stattdessen die Urteile dieser Art: Name, aktuelle Version und Urteil |
 | `get_project_compliance` | Governance-Detail eines Projekts: aktuelles Urteil plus das neueste Ergebnis jeder Compliance-Regel (mit Begründung) und eine begrenzte kürzliche Historie. Oder, mit `build_kind` (`agent` oder `tool`) und `build_id`, das neueste Ergebnis jeder Regel, die diesen Genie Agent oder dieses Tool geprüft hat |
-| `review_project` | Setzt ein Urteil — `approved`, `flagged` oder `disabled` (blockiert neue Builds für alle außer dem Eigentümer bzw. der Eigentümerin) — oder `clear`, um es zu entfernen |
+| `review_project` | Setzt ein Urteil — `approved`, `flagged` oder `disabled` (blockiert neue Builds für alle außer dem Eigentümer bzw. der Eigentümerin) — oder `clear`, um es zu entfernen. Mit `build_kind` + `build_id` das Urteil über einen Genie Agent oder ein Tool; `disabled` stoppt jeden Lauf. `project_slug` nimmt einen Slug oder die `projectId`, die die Liste zurückgibt — so kann eine prüfende Person auf jede App wirken, die die Liste ihr zeigt, auch eine private. Dasselbe gilt für `get_project_compliance` und `run_compliance_checks` |
 | `list_compliance_rules` | Listet die Compliance-Regeln des Workspaces plus die integrierte Vorlagenbibliothek, von der eine neue Regel starten kann |
 | `create_compliance_rule` | Erstellt eine Regel (Name, Schweregrad, eine Fehlerbedingung in natürlicher Sprache und welche Builds sie prüft — `subject_kinds`: `agent`, `tool`, `app`), optional aus einer Vorlage, mit der Option, bestehende Projekte sofort zu prüfen. Nur Eigentümer:in/Admin |
 | `update_compliance_rule` | Ändert Name, Beschreibung, Schweregrad, Fehlerbedingung, was sie prüft (`subject_kinds`) und/oder Aktivierungsstatus einer Regel. Nur Eigentümer:in/Admin |
@@ -708,20 +718,19 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | PII-Regeln verwalten | Eigentümer:in oder Admin |
 | Projekte erstellen, aktualisieren, umbenennen, archivieren oder löschen | Jedes Mitglied |
 | Ein Projekt in den Workspace verschieben oder daraus entfernen | Eigentümer:in, Admin oder Mitglied (nicht Editor) |
-| Eine geplante Projektlöschung prüfen oder stornieren | Projektinhaber:in |
+| Eine geplante Projektlöschung prüfen oder stornieren | Projektinhaber:in oder Vollzugriff auf das Projekt |
 | Folgeanweisungen senden und Builds auslösen | Jedes Mitglied |
 | Auto-Modus für ein Projekt ein- oder ausschalten | Jedes Mitglied |
 | Den Code-Graph eines Projekts abfragen | Jedes Mitglied |
 | Die Dateien eines Projekts auflisten oder lesen | Jedes Mitglied |
 | Die Design-Richtlinien eines Projekts lesen oder aktualisieren | Jedes Mitglied |
 | Den Feature-Baum eines Projekts lesen | Jedes Mitglied (das das Projekt einsehen kann) |
-| Ein Feature im Baum hinzufügen oder bearbeiten | Projektinhaber:in |
+| Ein Feature im Baum hinzufügen oder bearbeiten | Projektinhaber:in oder Bearbeitungszugriff auf das Projekt |
 | Bekannte Bugs eines Projekts lesen | Jedes Mitglied (das das Projekt einsehen kann) |
-| Einen bekannten Bug melden | Projektinhaber:in |
+| Einen bekannten Bug melden | Projektinhaber:in oder Bearbeitungszugriff auf das Projekt |
 | Die gemeinsame Bug-Lösungs-Wissensdatenbank durchsuchen | Jeder verbundene Nutzer |
 | Das Gedächtnis des verbundenen Nutzers durchsuchen oder löschen | Jeder verbundene Nutzer |
-| Ein workspaceweites Wissensdokument lesen oder schreiben | Jedes Mitglied |
-| Ein projektbezogenes Wissensdokument lesen oder schreiben | Jeder mit Bearbeitungszugriff auf das Projekt — enger als reiner Ansichtszugriff, da ein öffentliches Projekt niemals interne Team-Materialien preisgeben darf |
+| Ein Wissensdokument lesen oder schreiben | Jedes Mitglied, innerhalb der Zugriffsbereiche, die es erreicht |
 | Einen Wissensdokument-Ordner anlegen, umbenennen oder löschen | Jedes Mitglied |
 | Eine Datei aus einem verbundenen Cloud-Speicher durchsuchen oder importieren | Jedes Mitglied, über die eigene Speicherverbindung |
 | Das Titelbild eines Wissensdokuments ansehen oder neu zeichnen, oder seinen Suchindex reparieren | Jedes Mitglied (das das Dokument lesen kann) |
@@ -735,15 +744,15 @@ Rollenbasierter Zugriff wird bei jedem Tool-Aufruf durchgesetzt.
 | Sehen, wer sonst gerade ein Projekt geöffnet hat | Jedes Mitglied (das das Projekt einsehen kann) |
 | Die Prompt-Warteschlange eines Projekts einsehen oder verwalten | Jedes Mitglied |
 | Design-Mockups eines Projekts erzeugen, ansehen oder mit Feedback versehen | Jedes Mitglied |
-| Ein Projekt zurücksetzen oder seinen Versionsverlauf einsehen | Projektinhaber:in |
-| SEO-Einstellungen eines Projekts lesen oder aktualisieren | Projektinhaber:in |
-| Datenbanktabellen der Genie Cloud eines Projekts durchsuchen | Projektinhaber:in |
-| Bereitgestellte Edge Functions eines Projekts auflisten | Projektinhaber:in |
-| Geplante Jobs eines Projekts verwalten | Projektinhaber:in |
+| Ein Projekt zurücksetzen oder seinen Versionsverlauf einsehen | Projektinhaber:in oder Bearbeitungszugriff auf das Projekt |
+| SEO-Einstellungen eines Projekts lesen oder aktualisieren | Projektinhaber:in oder Bearbeitungszugriff auf das Projekt |
+| Datenbanktabellen der Genie Cloud eines Projekts durchsuchen | Projektinhaber:in oder Bearbeitungszugriff auf das Projekt |
+| Bereitgestellte Edge Functions eines Projekts auflisten | Projektinhaber:in oder Bearbeitungszugriff auf das Projekt |
+| Geplante Jobs eines Projekts verwalten | Projektinhaber:in oder Bearbeitungszugriff auf das Projekt |
 | Genie-Cloud-Rollen, Anmeldeanbieter und Zugriffseinstellungen eines Projekts verwalten | Projektinhaber:in |
 | Namen von Workspace-Secrets einsehen (nie Werte) | Mitglieder, die die jeweiligen Integrationen, Agenten oder Tools einsehen dürfen |
 | Secrets eines Projekts verwalten | Projektinhaber:in |
-| Speicherdateien eines Projekts verwalten | Projektinhaber:in |
+| Speicherdateien eines Projekts verwalten | Projektinhaber:in oder Bearbeitungszugriff auf das Projekt |
 | Genie-Preise lesen | Jedes Mitglied |
 | Genies Status-Seite lesen | Jeder verbundene Nutzer |
 | Governance einsehen (Projektüberprüfungen, Compliance-Ergebnisse) | Eigentümer:in, Admin, oder ein Mitglied mit „Governance einsehen" |

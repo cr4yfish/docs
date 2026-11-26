@@ -17,6 +17,8 @@ Möchtest du Genie stattdessen über WhatsApp, Slack oder Microsoft Teams erreic
 
 Jede Verbindung steht auf der Seite **Quellen** der Bibliothek: Öffne **Bibliothek** in der Seitenleiste und drücke **Alle Quellen** im Kasten **Quellen**. Neue fügst du mit **Quelle hinzufügen** hinzu (das **+** in diesem Kasten). **Einstellungen → Integrationen** gibt es nicht mehr — alte Links und Lesezeichen landen auf Quellen. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank).
 
+Die Seite **Quellen** spiegelt **Quelle hinzufügen**: Was verbunden ist, erscheint als Kacheln in denselben Gruppen, jede mit ihrem Zustand in Worten — *Aktiv*, *Läuft*, *Pausiert*, *Braucht Aufmerksamkeit* oder *Unbekannt*, wenn er sich nicht prüfen ließ. Was jemanden braucht, steht in seiner Gruppe vorn, und eine Zeile oben zählt diese Einträge und filtert auf sie. Eine Gruppe zeigt acht Kacheln, bis du **Alle anzeigen** drückst, und jede Gruppenüberschrift führt zur Auswahl. Drücke eine Kachel, um diese Verbindung auf derselben Seite zu öffnen. Datensatz-Synchronisierungen und [verknüpfte Quellen](#verknüpfte-quellen) stehen dort ebenfalls, und **Quelle hinzufügen** markiert, was schon verbunden ist.
+
 ## Eine Preset-Integration hinzufügen
 
 Genie enthält Ein-Klick-Presets für die beliebtesten Tools. Preset-Verbindungen haben Server-URL, Transport und Authentifizierungstyp vorkonfiguriert — du autorisierst nur und legst los.
@@ -136,6 +138,37 @@ Jedes Mitglied kann sein **eigenes** Outlook- oder Gmail-Postfach in die Wissens
 - **Zeit und Kosten vorab.** Vor dem Start nennt die Zeile, wie viele Nachrichten gelesen werden, wie lange das ungefähr dauert und was der Import und jeder weitere Monat an Credits kosten. Während der Lauf geht, zeigt sie, was noch fehlt, wann er voraussichtlich fertig ist und was die Synchronisierung bisher gekostet hat. Ist ein Postfach zu groß, um vollständig gezählt zu werden, stehen bei den Angaben *mindestens*; lässt sich die Zählung nicht rechtzeitig abschließen, steht das da und es gibt **Erneut versuchen**, statt zu raten. Bei einer pausierten oder gestoppten Synchronisierung oder bei ausgeschalteter automatischer Synchronisierung steht, dass neue Mails warten, bis ein Lauf gestartet wird.
 
 Post wird wie jedes Dokument in die Wissensbasis gelesen und zählt daher zu denselben Limits und denselben Credits wie andere synchronisierte Dateien.
+
+## Verknüpfte Quellen
+
+Eine **verknüpfte Quelle** ist ein System, dessen Einträge nie in deinen Workspace kopiert werden. Ihr Datenmodell — ihre Klassen, deren Eigenschaften und wie sie zusammenhängen — kommt als eigener Bereich in dein [Wissensmodell](/de/workspaces/overview#wissensmodell), und ihre Einträge werden live über die Verbindung gelesen, sobald jemand sie öffnet. Es ist der dritte Weg, Daten hereinzuholen:
+
+| | Hineinkopiert | Live nachgeschlagen | Verknüpft |
+|---|---|---|---|
+| Beispiel | Ein SharePoint-Ordner, eine Datensatz-Synchronisierung | Ein Connector, den Genie AI fragt | Captiva One |
+| Wo die Daten liegen | In deinem Workspace | In der Quelle | In der Quelle |
+| Im Wissensmodell | Ja, als Entitäten | Nein | Ja — als eigener, gesperrter Bereich |
+| Wie jede Klasse durchsuchbar | Ja | Nein | Ja |
+
+Die erste verknüpfte Quelle ist **Captiva One**.
+
+**Eine verbinden.** Öffne **Bibliothek → Quellen → Quelle hinzufügen** und wähle die Quelle. Füge Adresse und Schlüssel der Verbindung ein und drücke **Verbindung testen** — gespeichert wird noch nichts. Wähle dann, welche Klassen der Quelle dazukommen, jede mit ihrer Anzahl an Einträgen, und wer ihre Einträge sieht: **Alle im Workspace**, **Nur Inhaber und Admins** oder Personen und Teams, die du auswählst. **Starten** verbindet sie. Einträge sind zunächst geschlossen: Bis du sie öffnest, können nur Inhaber und Admins sie lesen. Genie AI kann eine Quelle auch mit dir einrichten — den Schlüssel tippst du in eine Karte, nie in den Chat.
+
+**Ein gesperrter Bereich.** Die Klassen und Beziehungen der Quelle erscheinen in einem nach ihr benannten Bereich, markiert mit einem Stecker und dem Namen der Quelle. Niemand kann diesen Bereich hier ändern — keine verwaltende Person, nicht Genie AI, kein Entwurf: Klassen, Beziehungen und Einträge kommen aus der Quelle, du änderst sie also dort. Beziehungen deiner eigenen Klassen dürfen weiterhin auf eine verknüpfte Klasse zeigen.
+
+**Er folgt der Quelle.** Genie prüft die Quelle regelmäßig auf Änderungen, und **Jetzt auf Änderungen prüfen** tut es sofort. Neue Eigenschaften kommen von selbst; eine Klasse, die die Quelle nicht mehr anbietet, wird ausgeblendet. Eine Klasse, die die Quelle neu anbietet, kommt erst dazu, wenn du sie unter **Auswahl ändern** anhakst.
+
+**Einträge lesen.** Die Einträge einer verknüpften Klasse öffnen sich wie alle anderen. Eine Zeile darüber sagt, wann sie gelesen wurden und ob die Quelle geantwortet hat — *Live aus Captiva One gelesen · vor 12 s* oder dass die Quelle nicht antwortet und du siehst, was früher gelesen wurde. Verknüpfte Einträge erscheinen auch auf der Graph-Seite und der Entitätenkarte, ein Eintrag listet die Einträge, die auf ihn zeigen, und der Name eines Eintrags wird in einem Text erkannt, sobald der Workspace ihn gelesen hat. Genie AI liest verknüpfte Einträge nach denselben Zugriffsregeln wie alle anderen.
+
+**Dokumente, die in der Quelle bleiben.** Führt die Quelle Dokumente, durchsucht Genie AI sie neben deinen eigenen und zitiert die Passagen, die es nutzt. Die Dateisuche der Bibliothek listet sie in einem Abschnitt pro Quelle, und jede Quelle hat unter den Orten der Dateien-Seite einen schreibgeschützten Ordner. **Dokument öffnen** zeigt die Datei im selben Viewer wie deine eigenen PDFs, auf der zitierten Seite. Die Wissenszahlen der Bibliothek nennen die Dokumentanzahl jeder Quelle in einer eigenen Zeile, nie addiert zur eigenen Zahl deines Workspace.
+
+**Prozesse und Aktionen.** Eine Quelle kann die Stufen veröffentlichen, die ihre Einträge durchlaufen, und der Verbindung Aktionen darauf gewähren. Die Seite eines Eintrags zeigt dann seine Stufe und jede Aktion als Button: ein kurzes Formular, eine Bestätigung, die genau auflistet, was gesendet wird, und sagt, dass Genie es nicht rückgängig machen kann, und das Ergebnis. Eine Klasse mit Prozess steht auch unter **Prozesse** im Modell. Eine Aktion auszuführen erfordert die Berechtigung, Integrationen zu verwalten und das Wissensmodell zu bearbeiten, sowie *Kann sie ändern* auf den Einträgen der Klasse. Eine Aktion, die ein Feld schreiben würde, das du nicht sehen darfst, wird nie angeboten. Genie AI führt eine Aktion nur über eine [Bestätigungskarte](/de/workspaces/overview#bestätigungskarten) aus.
+
+**Pausieren, entfernen, vergessen.** Eine pausierte Quelle wird nichts gefragt. **Entfernen** blendet ihre Klassen aus, archiviert ihren Bereich und löscht ihren Schlüssel und alles Zwischengespeicherte; an der Quelle ändert sich nichts. Eine entfernte Quelle steht unter **Entfernte Quellen** und zählt weiter auf das Limit des Workspace für verknüpfte Quellen (standardmäßig fünf) — verbindest du dasselbe Konto erneut, kommen dieselben Klassen zurück. **Vergessen** gibt das endgültig auf: Der Bereich wird ein gewöhnlicher archivierter Bereich, den du wiederverwenden kannst, und der Platz unter dem Limit ist wieder frei.
+
+**Wer was darf.** Verbinden, die Auswahl ändern, entfernen und vergessen erfordern die Berechtigung, Integrationen zu verwalten und das Wissensmodell zu verwalten. Auf Änderungen prüfen, pausieren und einen neuen Schlüssel einfügen erfordern die Berechtigung, Integrationen zu verwalten. Alle sehen, welcher Bereich womit verknüpft ist. Wer die Einträge einer verknüpften Klasse sieht, entscheidet ihre [Eintragszeile](/de/workspaces/overview#ein-objekt-teilen), wie bei jeder Klasse.
+
+MCP-Clients können [verknüpfte Quellen lesen](/de/workspaces/mcp-api#verknüpfte-quellen-nur-lesend).
 
 ## Verbundene Server verwalten
 

@@ -53,9 +53,9 @@ Optionally write your own message, shown to a member instead of Genie's answer w
 Guardrails judge a message's text by default. Two more switches, both off until you turn them on, extend that to what's attached:
 
 - **Check images** — attached PNG/JPEG images are judged for harmful content (hate, violence, sexual content, and so on) alongside the message's text. Off-limits topics and blocked words only ever apply to text.
-- **Refuse attachments that cannot be checked** — block a message outright if it carries something guardrails can't judge at all: a PDF, a GIF or WebP image, or any image while **Check images** is off.
+- **Refuse attachments that cannot be checked** — block a message outright if it carries something guardrails can't judge at all: a GIF or WebP image, any image while **Check images** is off, and any document. In a workspace chat every document — a PDF, a text file, a Word file, a spreadsheet — is stored and opened by Genie AI later instead of being pasted into the message, so none of its content is in the text that is judged. With this switch on, no document can be attached to a chat at all, and Genie AI can't open a stored file either.
 
-A document like a `.txt`, `.docx`, or spreadsheet is already covered as text — its content is extracted before Genie AI ever sees it.
+With the switch off, documents can be attached, and their content is not judged by guardrails — only the message's own text is.
 
 ## GPT Image on OpenAI
 

@@ -4,6 +4,48 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="26. November 2026" description="Wöchentliches Release">
+
+Umfasst, was am 25. November erschienen ist. Systeme lassen sich verknüpfen, ohne ihre Daten zu kopieren, Apps sind privat und werden wie alles andere geteilt, und Dateien, die du an einen Chat anhängst, bleiben privat und werden nicht mehr abgeschnitten.
+
+## Neue Funktionen
+
+- **Verknüpfte Quellen.** Verknüpfe ein System, dessen Einträge bleiben, wo sie sind: Sein Datenmodell kommt als eigener, gesperrter Bereich in dein Wissensmodell, und seine Einträge werden live gelesen, wenn jemand sie öffnet. Genie AI durchsucht die Dokumente der Quelle neben deinen eigenen, die Bibliothek listet sie in einem schreibgeschützten Ordner, und — wo die Quelle es gewährt — zeigt ein Eintrag seinen Prozess und Aktionen, die du ausführen kannst. Captiva One ist die erste. Siehe [Verknüpfte Quellen](/de/workspaces/integrations#verknüpfte-quellen).
+- **Apps sind privat und werden auf ihrer eigenen Seite geteilt.** Eine Genie App ist nie öffentlich: Eine neue ist privat und gehört nur der Person, die sie angelegt hat, und **Einstellungen → Teilen** nennt die Workspace-Mitglieder und Teams, die sie öffnen dürfen, mit Ansehen, Bearbeiten oder Vollzugriff — dieselbe Liste, die Agents und Tools haben. Die Live-App behält ihre eigene Adresse. Siehe [Deine App teilen](/de/projects/visibility).
+- **Jede Datei bis 100 MB anhängen.** In einem Workspace-Chat wird ein Dokument jetzt als Ganzes gespeichert, statt in die Nachricht eingefügt zu werden — nichts wird mehr abgeschnitten; Genie AI öffnet es, wenn deine Frage es braucht, und sieht sich die Seiten eines PDFs selbst an, wenn Text nicht reicht. Eine Nachricht trägt bis zu 20 Dateien und 20 Bilder, und das Dateilimit pro Chat gibt es nicht mehr. Siehe [Anhänge fließen in deinen Build ein](/de/workspaces/overview#anhänge-fließen-in-deinen-build-ein).
+- **Chat-Anhänge sind privat.** Eine Datei, die in einem Workspace-Chat angehängt wird, kann nur öffnen, wer diesen Chat lesen kann, und sie hat keinen öffentlichen Link mehr.
+- **Urteile für Agents und Tools.** Governance-Prüfer:innen können einen Genie Agent oder ein Tool von der Seite einer Regel aus genehmigen, markieren oder deaktivieren. Ein deaktivierter läuft für niemanden, bis eine korrigierte Version gespeichert ist. Siehe [Projekte: Überprüfung](/de/workspaces/governance#projekte-überprüfung).
+- **Teams aus Personen zuweisen.** Die Teams jeder Person erscheinen als Chips mit einer Team-Auswahl daneben; filtere auf Personen ohne Team oder auf Admins und nimm mehrere Personen auf einmal in ein Team auf. Admins ist jetzt ein Team, in das du Personen von Hand aufnimmst und aus dem du sie herausnimmst. Siehe [Personen](/de/workspaces/members#personen).
+- **Verknüpfte Quellen über MCP.** `list_linked_sources`, `list_linked_documents`, `read_linked_document` und `list_linked_actions`, dazu `add_knowledge_source_connector`, um den Connector hinzuzufügen, den ein Laufwerk oder Postfach braucht. Siehe [MCP-API](/de/workspaces/mcp-api#verknüpfte-quellen-nur-lesend).
+
+## Updates
+
+- **Remix und die Community-Seite gibt es nicht mehr.** Der Button **Remix**, *Von hier remixen*, die Schalter **Remixable** und **Sichtbarkeit** und die öffentliche Liste von Projekten wurden entfernt. Projekte, die öffentlich waren, sind jetzt privat; ihre Live-Apps laufen weiter. Siehe [Deine App teilen](/de/projects/visibility).
+- **Eine Zugriffsliste pro App.** Der Workspace-weite Schalter für den App-Zugriff und die Mitgliederliste pro Projekt werden durch die Seite „Teilen“ jeder App ersetzt. Eine App, die noch nie geteilt wurde, behält den Zugriff, den sie hatte.
+- **Wissen gehört dem Workspace.** Projekte haben keine eigenen Wissensdokumente mehr: Ein Dokument, das unter einem einzelnen Projekt abgelegt war, ist jetzt ein Workspace-Dokument, und die einzige Grenze ist der Zugriffsbereich seines Ordners. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank).
+- **Der Einrichtungsassistent erledigt alles im Chat.** Kein Schritt schickt dich mehr auf eine Einstellungsseite: Anmeldungen, die Ordner-Synchronisierung, Einladungen, die Zugriffseinrichtung und die Push-Benachrichtigungen dieses Geräts sind Karten im Gespräch, und Genie AI erklärt jeden Schritt, bevor es fragt. Siehe [Der Einrichtungsassistent](/de/workspaces/setup-guide).
+- **Die Startseite hält sich während der Einrichtung zurück.** Solange der Assistent noch etwas von dir braucht, zeigt die Startseite nur **Zuletzt verwendet**, und die Zeile **Onboarding** in der Seitenleiste trägt einen sanft blinkenden Punkt statt einer Zahl. Siehe [Startseite](/de/workspaces/overview#startseite-weitermachen-und-für-dich).
+- **Quellen als Kacheln.** Die Seite „Quellen“ der Bibliothek zeigt, was verbunden ist, in denselben Gruppen und Kacheln wie **Quelle hinzufügen**, jeweils mit dem Zustand in Worten und dem, was Aufmerksamkeit braucht, zuerst; **Quelle hinzufügen** markiert, was schon verbunden ist. Siehe [Wo Integrationen liegen](/de/workspaces/integrations#wo-integrationen-liegen).
+- **Eine größere Entitätenkarte.** Sie zeichnet standardmäßig 500 Entitäten, lädt größere Karten in Teilen und sagt auf der Arbeitsfläche, wenn sie nur einen Teil zeigt. Die Klassenkarte zeigt ihren Fortschritt, während sie lädt. Siehe [Wissensmodell](/de/workspaces/overview#wissensmodell).
+- **Ein Hinweis beim ersten Anhängen.** Ein kurzer Dialog erklärt, dass Anhänge für einen einzelnen Chat gedacht sind und dass Material zum Behalten auf die Seite „Daten“ gehört.
+- **Guardrails und gespeicherte Dokumente.** Weil Dokumente gespeichert statt eingefügt werden, lehnt **Nicht prüfbare Anhänge ablehnen** jetzt jedes Dokument ab. Siehe [Anhänge scannen](/de/workspaces/guardrails#anhänge-scannen).
+- **Karten ohne Kasten.** Die Fragen und Bestätigungen von Genie AI stehen direkt im Chat, mit ihren Optionen als Pillen, so breit wie ihr Text.
+- **MCP folgt dem neuen Zugriff.** Projekt-Tools, die nur der Person offenstanden, der das Projekt gehört, funktionieren jetzt auch mit Bearbeitungszugriff (Vollzugriff fürs Archivieren und Löschen); `update_project` nimmt keine Sichtbarkeit und kein Remix mehr entgegen; `list_project_members`, `add_project_member` und `remove_project_member` entfallen zugunsten von `get_access`; die Tools für Wissensdokumente nehmen keinen `scope` mehr entgegen; und die Governance-Tools akzeptieren die `projectId`, die ihre Liste zurückgibt, sowie ein `build_kind` für Agents und Tools. Siehe [MCP-API](/de/workspaces/mcp-api#projekte).
+
+## Fehlerbehebungen
+
+- **Chats mit vielen PDFs antworten wieder.** Ein Chat, dessen Dateien größer waren, als das Modell aufnehmen konnte, wurde bei jedem Schritt abgelehnt; jetzt bleiben die neuesten Dateien, die passen, erhalten.
+- **Microsoft-Teams-Chats mit langen IDs** werden gespeichert, statt fehlzuschlagen.
+- **Uploads in die Bibliothek werden abgelegt**, sobald du die Dateien ausgewählt hast.
+- **Eine pausierte Lese-Warteschlange sagt, dass sie pausiert ist** — nicht, dass jeder Platz belegt ist.
+- **Der Einrichtungsassistent geht zur nächsten Quelle weiter**, nachdem du mit *Nicht jetzt* geantwortet hast.
+- **Die Karte einer Integration zeigt nur Verbinden**, solange eine Anmeldung aussteht.
+- **Das Credit-Guthaben bleibt im Takt** mit Abbuchungen, die kleiner als ein Credit sind.
+- **Text markieren öffnet das Entitäten-Popover** nur, wenn die Auswahl etwas benennt.
+- **Suchergebnisse der Entitätenkarte** öffnen sich nicht mehr über der Suchleiste.
+
+</Update>
+
 <Update label="25. November 2026" description="Wöchentliches Release">
 
 Umfasst, was am 24. November erschienen ist. Genie AI schreibt Word-Dokumente, die du gleichzeitig bearbeiten kannst, der Einrichtungsassistent wird ein Chat, und du kannst den Agenten anderer Personen folgen.

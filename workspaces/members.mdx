@@ -97,6 +97,10 @@ When you share an item, prefer a team over naming people one by one — whoever 
 
 **Workspace settings → People** lists everyone in the workspace, 50 at a time, with search. Each row names the person's teams. Open a team's **See all** to see the list filtered to that team, with a chip that removes the filter. At the top, a line says where people come from — your company directory or invites here — with **Manage** for [directory sync](/workspaces/provisioning); **Rules** and **Invite** sit beside the title. What needs you is listed there too: an owner or admin your directory asked to remove, and people waiting for a free seat.
 
+**Assign teams from the list.** Each row shows the person's teams as chips — **Admins** first, with a shield on teams that carry admin rights — and, where you may change them, a team picker: a checklist of Admins and every team. Filter the list to everyone, people on **No team**, **Admins**, or one team; the Teams page's *No team* figure opens the list on that filter. Tick several people to put them on a team, or take them off, in one go: a bar at the bottom opens the change, and afterwards Genie says how many people really changed and lists by name who didn't and why. Adding someone to Admins or to a team with admin rights asks first, and you can't change your own teams this way. Where you may not change a row, it says why.
+
+**Admins by hand.** Admins is a team like any other: add people to it and take them off on the Admins page, on a person's page or from the People list. The workspace's owner is always one of them. Genie AI treats **Everyone** and **Admins** as teams too, so *"put Dana on Admins"* works — through a [confirmation card](/workspaces/overview#confirmation-cards).
+
 Someone who may only invite sees the invitations, not the list of people.
 
 ### A person's page
@@ -176,7 +180,7 @@ New people are offered a short [setup guide](/workspaces/setup-guide) — a chat
 
 ## Set up access
 
-A guided setup gets a new workspace's people, teams and access right in one go. Owners and admins who may manage members and document access start it from the top of the Teams page, or from the **People and teams** step of the [setup guide](/workspaces/setup-guide), which links to it. It offers two paths:
+A guided setup gets a new workspace's people, teams and access right in one go. Owners and admins who may manage members and document access start it from the top of the Teams page, or from the **People and teams** step of the [setup guide](/workspaces/setup-guide), where Genie AI takes you through it in the chat. It offers two paths:
 
 - **Company directory** — people, your verified domain, the directory connection, teams, what each team reaches, review.
 - **By hand** — people, invites, teams, what each team reaches, review.
@@ -190,7 +194,7 @@ The setup saves as you go and has no Save button: close it and pick it up later,
 **Rules** on the People page has two switches for the whole workspace. Only the workspace's owner can change them; each asks first and shows who is affected.
 
 - **The directory decides people and teams.** While it is on, nobody is invited or removed here, no team is made here, and nobody changes who is on a team — your company directory does all of that. What a team may do, its data and its starter kit stay editable. Turning it on removes the members who were added here and are not in your directory; the confirmation names them first. Owners and admins stay, and teams made here stay, locked. The removed people's projects go to the workspace owner, and turning the rule off later does not bring anyone back. You can still leave a workspace yourself. The rule needs a connected directory.
-- **Share with teams only.** While it is on, share lists name teams and everyone, never a single person — in every Share dialog, on a project's member list and for Genie AI. Lines that already name a person stay until someone removes them.
+- **Share with teams only.** While it is on, share lists name teams and everyone, never a single person — in every Share dialog, on an app's Sharing page and for Genie AI. Lines that already name a person stay until someone removes them.
 
 Genie AI can read both rules and changes one only through a [confirmation card](/workspaces/overview#confirmation-cards). MCP clients can [read them](/workspaces/mcp-api#workspace-management).
 
