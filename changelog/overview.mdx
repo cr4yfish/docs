@@ -4,6 +4,35 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="November 27, 2026" description="Weekly release">
+
+Covers what shipped November 26. Team chat can be copied into the Library, Genie tells original sources from secondary ones, decks and workbooks download as PDFs, and a run opens on its agent's canvas.
+
+## New features
+
+- **Slack and Teams channels in the Library.** **Add a source → Chat apps** now offers **Slack channels** and **Microsoft Teams channels**: pick channels (or all of them) and their messages are filed as documents for the whole workspace — a Slack channel per day, a Teams channel per thread — along with Slack canvases and Teams Planner boards. Direct messages are never read. See [Copy Slack and Teams channels into the Library](/workspaces/integrations#copy-slack-and-teams-channels-into-the-library).
+- **Secondary sources.** Decks, workbooks and Word documents Genie AI builds, and material you mark as third-party (a market report, an article), are marked as secondary sources: still found by search, but Genie AI cites the original where one says the same and otherwise says what the source is. Set a document's **Source type** in **Edit details**, at upload, or for a whole folder at once, and filter the Files page by it. See [Knowledge base](/workspaces/overview#knowledge-base).
+- **PDF downloads for decks and workbooks.** Every download of a PowerPoint deck or an Excel workbook — and now of a Word document too — offers a PDF beside the file: on the canvas, the chat card, the document sheet and the Library's row menu. A workbook prints the way Excel prints it, with print areas, page setup, headers and footers, and charts, and Genie AI can set the print up for you. See [Excel workbooks](/workspaces/overview#excel-workbooks) and [PowerPoint presentations](/workspaces/overview#powerpoint-presentations).
+- **Check a Slack connection.** **Check the connection** shows whether Slack still accepts the app, whether messages arrive, which channels it is in, and which members it recognises. See [Genie on WhatsApp, Slack, and Teams](/workspaces/chat-channels).
+- **New MCP tools.** `export_workspace_workbook_pdf`, `export_workspace_presentation_pdf` and `export_workspace_word_document_pdf`; `get_conversation_sources` and `list_conversation_source_channels`; `mark_workspace_documents` and a `source_type` on the document tools; and `verify_chat_channel`. See [MCP API](/workspaces/mcp-api).
+
+## Updates
+
+- **A run opens on its agent's canvas.** Notifications, Genie AI and the agents list open a run as a replay on the agent's graph. The separate results page and **Runs** page are gone; old links still land on the run. See [Run results](/workspaces/workflow-apps#run-results).
+- **The agent on the chat canvas, redrawn.** Three sections — **Result**, **History** as a row of bars, and **Steps** opened by what starts the agent — with the run named once and each step wearing its kind's icon. See [Run results](/workspaces/workflow-apps#run-results).
+- **Onboarding moves to a pill on Home.** While the setup guide still asks you for something, a **Continue onboarding** pill floats at the bottom of Home with your progress; the sidebar's Onboarding row is gone. See [The setup guide](/workspaces/setup-guide).
+- **Linked documents open straight away.** Pressing a citation from a linked source opens its file at the cited page with the passage highlighted, without a dialog in between, and Genie AI can open it on the chat's canvas. See [Linked sources](/workspaces/integrations#linked-sources).
+- **Edit details.** The Library's *Rename or move* dialog is now **Edit details**, and also sets a document's source type.
+- **Citations from code.** When Genie AI searches your documents from a program it runs, the answer keeps its source chips. See [Genie AI can run code](/workspaces/overview#genie-ai-can-run-code).
+
+## Fixes
+
+- **Linked-source searches no longer wait** for the source's status, so a large source answers within its time.
+- **Steps on the agent canvas wear their kind's icon and colour** again.
+- **A Word document on the chat canvas has one header**, not two.
+
+</Update>
+
 <Update label="November 26, 2026" description="Weekly release">
 
 Covers what shipped November 25. Systems can be linked without copying their data, apps are private and shared like everything else, and files you attach to a chat stay private and are no longer cut off.

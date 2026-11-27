@@ -4,6 +4,35 @@ description: "Wöchentliche Produkt-Updates für Genie — neue Funktionen, Verb
 mode: "center"
 ---
 
+<Update label="27. November 2026" description="Wöchentliches Release">
+
+Umfasst, was am 26. November erschienen ist. Team-Chats lassen sich in die Bibliothek kopieren, Genie unterscheidet Original- von Sekundärquellen, Präsentationen und Arbeitsmappen lassen sich als PDF herunterladen, und ein Lauf öffnet sich auf der Canvas seines Agenten.
+
+## Neue Funktionen
+
+- **Slack- und Teams-Kanäle in der Bibliothek.** **Quelle hinzufügen → Chat-Apps** bietet jetzt **Slack-Kanäle** und **Microsoft-Teams-Kanäle**: Wähle Kanäle (oder alle), und ihre Nachrichten werden als Dokumente für den ganzen Workspace abgelegt — bei Slack ein Dokument pro Tag, bei Teams eines pro Thread —, dazu Slack-Canvases und Teams-Planner-Boards. Direktnachrichten werden nie gelesen. Siehe [Kanäle aus Slack und Teams in die Bibliothek kopieren](/de/workspaces/integrations#kanäle-aus-slack-und-teams-in-die-bibliothek-kopieren).
+- **Sekundärquellen.** Präsentationen, Arbeitsmappen und Word-Dokumente, die Genie AI baut, und Material, das du als Fremdquelle markierst (ein Marktbericht, ein Artikel), sind als Sekundärquellen markiert: Die Suche findet sie weiter, aber Genie AI zitiert das Original, wo eines dasselbe sagt, und sagt sonst, was die Quelle ist. Setze den **Quelltyp** eines Dokuments unter **Details bearbeiten**, beim Hochladen oder für einen ganzen Ordner auf einmal, und filtere die Seite Dateien danach. Siehe [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank).
+- **PDF-Downloads für Präsentationen und Arbeitsmappen.** Jeder Download einer PowerPoint-Präsentation oder Excel-Arbeitsmappe — und jetzt auch eines Word-Dokuments — bietet neben der Datei ein PDF an: auf der Canvas, auf der Chat-Karte, im Dokument-Panel und im Zeilenmenü der Bibliothek. Eine Arbeitsmappe wird gedruckt, wie Excel druckt, mit Druckbereichen, Seiteneinrichtung, Kopf- und Fußzeilen und Diagrammen, und Genie AI kann den Druck für dich einrichten. Siehe [Excel-Arbeitsmappen](/de/workspaces/overview#excel-arbeitsmappen) und [PowerPoint-Präsentationen](/de/workspaces/overview#powerpoint-präsentationen).
+- **Eine Slack-Verbindung prüfen.** **Verbindung prüfen** zeigt, ob Slack die App noch akzeptiert, ob Nachrichten ankommen, in welchen Kanälen sie ist und welche Mitglieder sie erkennt. Siehe [Genie auf WhatsApp, Slack und Teams](/de/workspaces/chat-channels).
+- **Neue MCP-Tools.** `export_workspace_workbook_pdf`, `export_workspace_presentation_pdf` und `export_workspace_word_document_pdf`; `get_conversation_sources` und `list_conversation_source_channels`; `mark_workspace_documents` und ein `source_type` bei den Dokument-Tools; sowie `verify_chat_channel`. Siehe [MCP-API](/de/workspaces/mcp-api).
+
+## Updates
+
+- **Ein Lauf öffnet sich auf der Canvas seines Agenten.** Benachrichtigungen, Genie AI und die Agentenliste öffnen einen Lauf als Wiedergabe auf dem Graphen des Agenten. Die eigene Ergebnisseite und die **Läufe**-Seite gibt es nicht mehr; alte Links landen weiter beim Lauf. Siehe [Lauf-Ergebnisse](/de/workspaces/workflow-apps#lauf-ergebnisse).
+- **Der Agent auf der Chat-Canvas, neu gezeichnet.** Drei Abschnitte — **Ergebnis**, **Verlauf** als Reihe von Balken und **Ablauf**, eröffnet mit dem, was den Agenten startet —, der Lauf einmal benannt und jeder Schritt mit dem Symbol seiner Art. Siehe [Lauf-Ergebnisse](/de/workspaces/workflow-apps#lauf-ergebnisse).
+- **Das Onboarding wird eine Pille auf der Startseite.** Solange der Einrichtungsassistent noch etwas von dir braucht, schwebt unten auf der Startseite eine Pille **Onboarding fortsetzen** mit deinem Fortschritt; die Onboarding-Zeile in der Seitenleiste ist weg. Siehe [Der Einrichtungsassistent](/de/workspaces/setup-guide).
+- **Verknüpfte Dokumente öffnen sich sofort.** Ein Klick auf ein Zitat aus einer verknüpften Quelle öffnet ihre Datei auf der zitierten Seite mit hervorgehobener Passage, ohne Dialog dazwischen, und Genie AI kann sie auf der Canvas des Chats öffnen. Siehe [Verknüpfte Quellen](/de/workspaces/integrations#verknüpfte-quellen).
+- **Details bearbeiten.** Der Dialog *Umbenennen oder verschieben* der Bibliothek heißt jetzt **Details bearbeiten** und setzt auch den Quelltyp eines Dokuments.
+- **Zitate aus Code.** Durchsucht Genie AI deine Dokumente aus einem Programm heraus, das sie ausführt, behält die Antwort ihre Quellen-Chips. Siehe [Genie AI kann Code ausführen](/de/workspaces/overview#genie-ai-kann-code-ausführen).
+
+## Fehlerbehebungen
+
+- **Suchen in verknüpften Quellen warten nicht mehr** auf den Status der Quelle, sodass auch eine große Quelle in ihrer Zeit antwortet.
+- **Schritte auf der Agenten-Canvas tragen wieder** Symbol und Farbe ihrer Art.
+- **Ein Word-Dokument auf der Chat-Canvas hat einen Kopf**, nicht zwei.
+
+</Update>
+
 <Update label="26. November 2026" description="Wöchentliches Release">
 
 Umfasst, was am 25. November erschienen ist. Systeme lassen sich verknüpfen, ohne ihre Daten zu kopieren, Apps sind privat und werden wie alles andere geteilt, und Dateien, die du an einen Chat anhängst, bleiben privat und werden nicht mehr abgeschnitten.

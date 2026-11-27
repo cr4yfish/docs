@@ -220,11 +220,12 @@ Material a team wants every build to respect — brand guidelines, tone of voice
 
 | Tool | What it does |
 |---|---|
-| `list_workspace_documents` | List knowledge documents, paginated and filterable by title/description/filename. Narrows by `source` (uploaded, or from a drive or mailbox), `type` and `changed` (7d, 30d or 365d), and, with `folder`, `include_subfolders` |
-| `search_workspace_documents` | Search inside documents' text (hybrid semantic + keyword) and get back matching passages |
+| `list_workspace_documents` | List knowledge documents, paginated and filterable by title/description/filename. Narrows by `source` (uploaded, or from a drive or mailbox), `type`, `changed` (7d, 30d or 365d), `source_type` (`original`, `secondary`, `ai_compiled`, `third_party`) and, with `folder`, `include_subfolders`. A [secondary source](/workspaces/overview#knowledge-base) carries its kind as `sourceType` |
+| `search_workspace_documents` | Search inside documents' text (hybrid semantic + keyword) and get back matching passages. A secondary source's hit is marked with its kind and the documents it was built from; `source_type` narrows the search, e.g. to `original` |
 | `read_workspace_document` | Read one document's full text in bounded, pageable slices; a truncated page returns `nextOffset`, where the next page starts |
 | `add_workspace_documents` | File one or more documents (up to 10 per call) for the workspace |
-| `update_workspace_document` | Retitle, re-describe, move a document between folders via `folder`, or rewrite its full text in place via `text` (re-indexed immediately; refused on a document mirrored in from a connected cloud drive — edit it at the source instead) |
+| `update_workspace_document` | Retitle, re-describe, move a document between folders via `folder`, or rewrite its full text in place via `text` (re-indexed immediately; refused on a document mirrored in from a connected cloud drive — edit it at the source instead). `source_type` (with optional `source_document_ids`) marks it original or secondary |
+| `mark_workspace_documents` | Mark up to 100 documents, or a folder's own documents a chunk at a time, as original, AI-compiled or third-party. Needs permission to upload documents; documents you may read but not change are counted and left as they are |
 | `delete_workspace_document` | Permanently delete a document and its search index. Set `also_delete_ontology` to also delete the knowledge-model entities only this document supports (needs the knowledge-model edit permission as well); a very large purge may answer partly done — call again to finish |
 | `reindex_workspace_document` | Repair a document stuck at keyword-only or failed search indexing, or bring it onto the current embedding spec. Safe to call on any document — never changes its text |
 | `get_knowledge_index_status` | The workspace's indexing status at a glance — how many documents are fully searchable, still indexing, keyword-only, or stalled, and how many still need their date read — plus a list of the documents most needing attention. `linkedSources` counts, apart from the total, the documents that stay in each [linked source](/workspaces/integrations#linked-sources) |
@@ -297,6 +298,15 @@ Read the workspace's [linked sources](/workspaces/integrations#linked-sources) �
 | `read_linked_document` | The text of one linked document's file, by page. Counts against the same hourly limit per person as opening it in the app |
 | `list_linked_actions` | What a linked record or class offers in its source: its process (the stages and the record's current one) and the actions the connection is granted, with their input fields and whether you may run them. An action that writes a field you may not see is not listed |
 
+### Slack and Teams channels (read-only)
+
+See whether the workspace's [Slack and Teams channel sources](/workspaces/integrations#copy-slack-and-teams-channels-into-the-library) are set up. Choosing channels, pausing and stopping stay a card in the app.
+
+| Tool | What it does |
+|---|---|
+| `get_conversation_sources` | Both platforms: connected or not, and each sync — all channels or a chosen number, running or paused, last sync, documents, last problem. Any member; which account and which permissions are missing only for people who manage integrations |
+| `list_conversation_source_channels` | One page of channels: `available` (what the connection can read, each marked if chosen; `query` finds one by name) or `chosen` (what the sync holds). Needs permission to manage integrations |
+
 ### Workspace knowledge model (read-only)
 
 Read what the [knowledge model](/workspaces/overview#knowledge-model) knows, as the connected user. Everything runs under the same access rules as in the app, so you only ever read what that member may see. These tools never change the model; reviewing, editing and extracting stay with people in the app and with Genie AI. Answers quote documents, so treat them as untrusted document text.
@@ -327,6 +337,7 @@ Create, read, search, and edit real `.xlsx` files — the same tools available t
 | `find_in_workbook` | Find cells whose value or formula matches, with the matching rows |
 | `edit_workbook` | Apply a batch of edits — set cells, insert/delete rows or columns, sort, merge, format, and more — saved together or not at all |
 | `evaluate_workbook_formula` | Calculate one or more formulas against the workbook's current values, without saving |
+| `export_workspace_workbook_pdf` | The workbook as a PDF, printed the way Excel prints it: a download link and the page count |
 
 ### PowerPoint presentations
 
@@ -338,6 +349,7 @@ List, create, read, and edit real `.pptx` decks — the same tools available to 
 | `create_workspace_presentation` | Build a deck — titles, bullets, tables, and speaker notes, up to 40 slides — in one call. Decks are designed like those from chat, in the workspace [brand](/workspaces/overview#workspace-brand) when it has one |
 | `read_workspace_presentation` | An overview of every slide, a range of slides in full, or a text search |
 | `edit_workspace_presentation` | Apply a batch of slide, text, notes, and table edits in the deck's own design — saved together or not at all |
+| `export_workspace_presentation_pdf` | The deck as a PDF: a download link and the page count |
 
 ### Word documents
 
@@ -350,6 +362,9 @@ List, create, read, edit, and import real `.docx` documents — the same tools a
 | `read_workspace_word_document` | An overview with the headings, a range of blocks as numbered Markdown, or a text search |
 | `edit_workspace_word_document` | Apply a batch of block, style, text, and table edits — saved together or not at all |
 | `import_workspace_word_document` | Make an editable copy of a `.docx` that's already in the Library |
+| `export_workspace_word_document_pdf` | The document as a PDF: a download link and the page count |
+
+The three PDF tools share the app's per-person rate with the download menu and Genie AI. The link is the app's own: whoever opens it needs to be signed in and able to read the document. No browser language reaches MCP, so a workbook's printed notes are in English.
 
 If someone edits the document at the same time and an edit names blocks by number, the call reports the conflict and asks you to read the document again instead of guessing. Drawing new pictures stays in the workspace chat; a picture drawn there can be placed over MCP.
 
@@ -541,6 +556,7 @@ Manage [Genie on WhatsApp, Slack, and Teams](/workspaces/chat-channels) — conn
 | `create_chat_channel` | Connect a channel to the workspace (a WhatsApp number, a Slack install, a Teams tenant). Only owners and admins |
 | `set_chat_channel` | Rename a channel, change who answers it, edit its sender allowlist, or pause/resume it. Only owners and admins |
 | `remove_chat_channel` | Disconnect a channel and delete its stored credentials. Only owners and admins |
+| `verify_chat_channel` | Check a Slack connection: the app's access, whether messages arrive, which channels it is in, and which members it recognises by email. Reads only. Needs permission to manage integrations |
 | `send_chat_channel_message` | Send a message from a workspace channel to a real person outside the workspace |
 | `create_chat_link_code` | Mint a one-time code to link your own WhatsApp, Slack, or Teams account. Valid 15 minutes, shown once |
 | `list_chat_identity_links` | Chat accounts linked to the workspace — your own by default, or everyone's for an owner or admin |

@@ -72,7 +72,7 @@ Genie as a built-in connected app means a step can do anything Genie AI itself c
 When Genie AI builds an agent for you, the chat shows a small pill with the agent's name — shimmering while it is being built, with a check once it exists. Press it to open the agent: on the canvas beside the chat on a desktop, where its steps take shape as Genie writes them, or in the editor on a smaller screen. An amber pill means nothing was created, and pressing it shows why. Every step Genie AI's tools take while working on an agent shows a plain-language label in the transcript instead of a generic "Working on it".
 </Tip>
 
-**An agent on the canvas reads top to bottom, result first.** The canvas has two parts: what came out, and **How it works**. **How it works** reads like a recipe for someone who has never seen a workflow editor — one line per step, each with its icon and a plain name (*Looks up matching rows in orders* rather than an internal id), with no wiring or paths. A loop and the steps it repeats sit together under *Repeats 3 steps* (during a run, *Pass 2 of 8* with a bar), and branches that meet again are grouped under the step they lead to. How each step went in the run on show is marked on its icon: a ring where the run is now, a tick or a cross when done, and dimmed where a branch wasn't taken. On a wide canvas, a short agent's steps sit in a column beside the result; otherwise the result comes first and the steps follow. An agent that hasn't run yet says so — starting a run stays in the chat. The result starts with its **Latest run**: how it went, how it started and when (*Schedule · 04.11.26, 19:00*), and one short answer — what came out, or where it stopped and why. Under it, **History** is a single line with a mark per earlier run and **See all runs**; tap a mark to put that run on the card (it then reads **Earlier run**, with **Show latest**). Tapping a step shows what it does in full and how it went in that run. Nothing on the canvas folds or scrolls on its own: a long answer is cut with a link to the run's full results. While Genie AI edits the agent, each step it writes is marked **New** or **Changing** where it stands, live as the edit streams in.
+**An agent on the canvas reads top to bottom, result first.** Its card has three sections — **Result**, **History** and **Steps** — in plain words for someone who has never seen a workflow editor: one line per step with its icon and a plain name (*Looks up matching rows in orders* rather than an internal id), no wiring or paths. A loop and the steps it repeats sit together under *Repeats 3 steps* (during a run, *Pass 2 of 8*), and branches that meet again are grouped under the step they lead to. An agent that hasn't run yet says so — starting a run stays in the chat. While Genie AI edits the agent, each step it writes is marked **New** or **Changing** where it stands, live as the edit streams in. See [Run results](#run-results) for what each section shows.
 
 ## The visual editor
 
@@ -128,19 +128,23 @@ Before you commit to a change, you can run a real test to see exactly what an ag
 
 ## Run results
 
-Every run gets a results page of its own: the outcome, and every step that produced it, in the order it ran, each with its status, how long it took, and what it produced. An AI step's answer renders as formatted text rather than raw markdown. Open it on a run still in progress and it follows along as each step finishes.
+**A run opens on its agent's canvas.** Every link to a run — a notification, Genie AI, a run row in the agents list — opens the agent's editor replaying that run on its graph: each step shows how it went, what it produced and any error. Open a run still in progress and it follows along. A run of another agent, one that's gone, or one you may not open says so; a read that fails offers a retry. Old links to a run's page or an agent's **Runs** page still work and land on the canvas.
 
-**The steps are one line.** The steps run top to bottom along one line: a step that ran has a check, the one running is lit with a **Now** pill, and a failed step is red with its error right under it. Steps not reached yet, skipped or on a branch not taken are hollow and dashed, and each says which in words. A long run folds around the step that matters — the one running, else the one that failed — and keeps the rest behind *N earlier steps* and *N more steps*. An agent on the chat canvas and an entity's [process](/workspaces/overview#knowledge-model) are drawn the same way.
+The separate results page and **Runs** page are gone. The run history lives in the agents list, on the chat canvas and with Genie AI, which reads the same runs when you ask.
 
-Each agent also has a **Runs** page — its recent runs, newest first — one tap from the editor's toolbar. On the chat canvas, an agent shows its last five runs and how each step went in the picked run; tap a step to see what it does and ask Genie AI about it.
+**On the chat canvas.** An agent beside the chat reads top to bottom in three sections:
 
-**Steps of a called agent.** When a step calls another agent, its row in the run results shows a pill such as *28 steps inside · 1 failed*. Open it to see the called agent's own steps with their status, duration and any error, and open further calls inside it. Steps of an agent you may not see stay hidden. Genie AI can read the same steps when you ask about a run.
+- **Result** — the run on show, named once (*Run of 14:02 · By hand*). An answer shows its heading, its size and its first lines; a raw value or an error shows on one line with a copy button that copies all of it; a run that returned nothing says so. **Show all** opens the run on the agent's canvas.
+- **History** — the latest runs as a row of up to ten bars, oldest on the left. Each bar's colour and height say how its run went; tap one to put it on the card, and **Show latest** goes back.
+- **Steps** — what starts the agent (*Every 10 minutes*), then each step with its kind's icon and a badge for how it went: a tick, a cross, a breathing ring while it runs, dimmed when never reached. A short value appears beside a step's name where one fits (*#1040*, *2 entries*). Loops show *Pass 3 of 12*. Steps are a picture, not buttons — **Open agent** in the card's header has the rest.
+
+An entity's [process](/workspaces/overview#knowledge-model) is drawn with the same line.
 
 **Who can read a run.** A run someone started by hand is readable in full by that person, the agent's owner and people with Full access; others who can view the agent see a locked row with who started it, when and how it went, and *This run's result is not shared with you*. Runs started by a schedule, webhook, channel or stage change follow the agent's **Who reads automatic runs** setting: everyone who can view the agent (the default) or only the owner and Full access. People with Full access change it; Genie AI can only narrow it. Runs from before this setting keep how they were shared.
 
 **Agents that run as one member.** When someone else starts such an agent by hand, it still uses that member's integrations and credits, but reads knowledge, the knowledge model and tables as the person who started it.
 
-A notify step links here by default — choose **This run's results** or **a page inside Genie** from the step's settings to point it somewhere else.
+A notify step links to the run on its agent's canvas by default — choose **a page inside Genie** from the step's settings to point it somewhere else.
 
 ## Managing an agent
 
@@ -149,7 +153,7 @@ The **Genie Agents** page lists every agent in your workspace — as cards or as
 - **Rename** — change its display name. This never changes its underlying identifier, so any published tool or webhook URL built on it keeps working.
 - **Pause / Resume** — pause stops it from starting any new run (on a schedule, a webhook, or another agent calling it) until you resume it; it never interrupts a run already in progress.
 - **Share** — private to its creator by default; the owner can share it with the whole workspace or with specific people, the same three states as a [workspace chat](/workspaces/overview#workspace-chats-are-private-by-default). A member it's shared with can open, edit, and delete it just like the owner can — only the owner can change who it's shared with.
-- **Recent runs** — see its run history, what happened on each one, and open any run's own [results page](#run-results).
+- **Recent runs** — see its run history, what happened on each one, and open any run on the agent's canvas — see [Run results](#run-results).
 - **Notify me** — follow the agent to get the notifications its author shares with followers. See [Get an agent's notifications](#get-an-agents-notifications).
 - **Delete** — permanently removes the agent, every version of it, and its whole run history. This can't be undone — pause it instead if you just want it to stop.
 

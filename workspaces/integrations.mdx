@@ -139,6 +139,22 @@ Every member can mirror their **own** Outlook or Gmail mailbox into the knowledg
 
 Mail is read into the knowledge base like any document, so it counts toward the same limits and the same credits as other synced files.
 
+## Copy Slack and Teams channels into the Library
+
+Decisions made in team chat can become knowledge like any document. **Add a source → Chat apps** lists each platform twice: **Slack** and **Microsoft Teams** let people [message Genie](/workspaces/chat-channels), while **Slack channels** and **Microsoft Teams channels** (tagged *Copies messages*) copy what people wrote to each other into the Library.
+
+1. **Connect.** Nothing new to sign in to: Slack channels are read through the workspace's Slack install, Teams channels through your Microsoft 365 organization's consent. If a permission is missing, the guide names it and links to where you install or consent again.
+2. **Choose.** Pick channels — search finds them by name, and a Teams channel also by its team — or take **All channels** (up to 200). Direct messages are never offered.
+3. **Start.** The guide sums up what happens: the Slack app joins the public channels it reads, and everything read is filed for the **whole workspace**. The last 90 days are read first; after that the copy is kept current.
+
+**What becomes a document.** A Slack channel files one document per day, each thread under its first message, plus the channel's canvases. A Teams channel files one document per thread, plus the team's Planner board. Each message names its author: a workspace member is shown with the name and address your workspace holds for them; anyone else keeps the name the platform shows.
+
+**Status and control.** Once set up, the same place shows how far it is (channels, documents, last read), what's wrong and where to fix it, and the channels it holds. **Sync now**, **Pause**, **Resume**, **Change channels**, **Stop** (what was filed stays) and removing a single channel need permission to manage integrations; every member can see the status. The tile on the Sources page and the row on the Library overview say the same.
+
+**Genie AI.** Ask *"is our Slack copied into the Library?"* and any member gets the answer. Adding or removing channels, pausing or stopping is a card that lists exactly which channels change, and runs only when you press it — never from a message, never over MCP. MCP clients can [read the status and the channel list](/workspaces/mcp-api#slack-and-teams-channels-read-only).
+
+Reading channels uses no new kind of paid call; the documents it files cost what any synced document costs and count toward the same limits and [spend limits](/workspaces/governance#spend-limits).
+
 ## Linked sources
 
 A **linked source** is a system whose records are never copied into your workspace. Its data model — its classes, their properties and how they relate — joins your [knowledge model](/workspaces/overview#knowledge-model) as an area of its own, and its records are read live through the connection whenever someone opens them. It is the third way to bring data in:
@@ -160,7 +176,7 @@ The first linked source is **Captiva One**.
 
 **Reading records.** A linked class's records open like any others. A line above them says when they were read and whether the source answered — *Read live from Captiva One · 12 s ago*, or that the source isn't answering and you are looking at what was read earlier. Linked records also appear on the Graph page and the entity map, a record lists the records that point at it, and a record's name in a text is recognised once the workspace has read it. Genie AI reads linked records through the same access rules as everyone else.
 
-**Documents that stay in the source.** If the source keeps documents, Genie AI searches them beside your own and cites the passages it uses. The Library's Files search lists them in a section per source, and each source has a read-only folder among the Files page's places. **Open document** shows the file in the same viewer as your own PDFs, at the cited page. The Library's knowledge figures list each source's document count on its own row, never added to your workspace's own count.
+**Documents that stay in the source.** If the source keeps documents, Genie AI searches them beside your own and cites the passages it uses. The Library's Files search lists them in a section per source, and each source has a read-only folder among the Files page's places. Pressing a citation, a search hit or **Open document** opens the file straight away in the same viewer as your own PDFs, at the cited page with the passage highlighted. Genie AI can open such a document on the chat's canvas too. The Library's knowledge figures list each source's document count on its own row, never added to your workspace's own count.
 
 **Processes and actions.** A source can publish the stages its records move through and grant the connection actions on them. A record's page then shows its stage, and each action as a button: a short form, a confirmation that lists exactly what is sent and says Genie can't undo it, and the result. A class with a process is listed under the Model's **Processes** too. Running an action needs permission to manage integrations and to edit the knowledge model, plus *Can change them* on the class's records. An action that would write a field you may not see is never offered. Genie AI runs an action only through a [confirmation card](/workspaces/overview#confirmation-cards).
 
