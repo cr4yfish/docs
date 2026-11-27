@@ -139,6 +139,22 @@ Jedes Mitglied kann sein **eigenes** Outlook- oder Gmail-Postfach in die Wissens
 
 Post wird wie jedes Dokument in die Wissensbasis gelesen und zählt daher zu denselben Limits und denselben Credits wie andere synchronisierte Dateien.
 
+## Kanäle aus Slack und Teams in die Bibliothek kopieren
+
+Entscheidungen aus dem Team-Chat können Wissen werden wie jedes Dokument. **Quelle hinzufügen → Chat-Apps** führt jede Plattform zweimal: **Slack** und **Microsoft Teams** lassen Personen [Genie schreiben](/de/workspaces/chat-channels), während **Slack-Kanäle** und **Microsoft-Teams-Kanäle** (markiert mit *Kopiert Nachrichten*) das, was Personen einander geschrieben haben, in die Bibliothek kopieren.
+
+1. **Verbinden.** Keine neue Anmeldung: Slack-Kanäle werden über die Slack-Installation des Workspace gelesen, Teams-Kanäle über die Zustimmung deiner Microsoft-365-Organisation. Fehlt eine Berechtigung, nennt der Assistent sie und verlinkt dorthin, wo du neu installierst oder erneut zustimmst.
+2. **Auswählen.** Wähle Kanäle — die Suche findet sie nach Namen, einen Teams-Kanal auch über sein Team — oder nimm **Alle Kanäle** (bis zu 200). Direktnachrichten werden nie angeboten.
+3. **Starten.** Der Assistent fasst zusammen, was passiert: Die Slack-App tritt den öffentlichen Kanälen bei, die sie liest, und alles Gelesene wird für den **ganzen Workspace** abgelegt. Zuerst werden die letzten 90 Tage gelesen; danach bleibt die Kopie aktuell.
+
+**Was ein Dokument wird.** Ein Slack-Kanal legt ein Dokument pro Tag ab, jeden Thread unter seiner ersten Nachricht, dazu die Canvases des Kanals. Ein Teams-Kanal legt ein Dokument pro Thread ab, dazu das Planner-Board des Teams. Jede Nachricht nennt ihren Autor: Ein Workspace-Mitglied erscheint mit dem Namen und der Adresse, die dein Workspace für es führt; alle anderen behalten den Namen, den die Plattform zeigt.
+
+**Status und Steuerung.** Ist die Quelle eingerichtet, zeigt dieselbe Stelle, wie weit sie ist (Kanäle, Dokumente, zuletzt gelesen), was nicht stimmt und wo es zu beheben ist, und die Kanäle, die sie hält. **Jetzt synchronisieren**, **Pausieren**, **Fortsetzen**, **Kanäle ändern**, **Stoppen** (Abgelegtes bleibt) und das Entfernen eines einzelnen Kanals brauchen die Berechtigung, Integrationen zu verwalten; den Status sieht jedes Mitglied. Die Kachel auf der Seite Quellen und die Zeile in der Bibliotheksübersicht sagen dasselbe.
+
+**Genie AI.** Frag *„wird unser Slack in die Bibliothek kopiert?“*, und jedes Mitglied bekommt die Antwort. Kanäle hinzufügen oder entfernen, pausieren oder stoppen ist eine Karte, die genau auflistet, welche Kanäle sich ändern, und nur läuft, wenn du sie drückst — nie aus einer Nachricht heraus, nie über MCP. MCP-Clients können [den Status und die Kanalliste lesen](/de/workspaces/mcp-api#slack-und-teams-kanäle-nur-lesen).
+
+Das Lesen von Kanälen nutzt keine neue Art kostenpflichtiger Aufrufe; die abgelegten Dokumente kosten, was jedes synchronisierte Dokument kostet, und zählen zu denselben Grenzen und [Ausgabenlimits](/de/workspaces/governance#ausgabenlimits).
+
 ## Verknüpfte Quellen
 
 Eine **verknüpfte Quelle** ist ein System, dessen Einträge nie in deinen Workspace kopiert werden. Ihr Datenmodell — ihre Klassen, deren Eigenschaften und wie sie zusammenhängen — kommt als eigener Bereich in dein [Wissensmodell](/de/workspaces/overview#wissensmodell), und ihre Einträge werden live über die Verbindung gelesen, sobald jemand sie öffnet. Es ist der dritte Weg, Daten hereinzuholen:
@@ -160,7 +176,7 @@ Die erste verknüpfte Quelle ist **Captiva One**.
 
 **Einträge lesen.** Die Einträge einer verknüpften Klasse öffnen sich wie alle anderen. Eine Zeile darüber sagt, wann sie gelesen wurden und ob die Quelle geantwortet hat — *Live aus Captiva One gelesen · vor 12 s* oder dass die Quelle nicht antwortet und du siehst, was früher gelesen wurde. Verknüpfte Einträge erscheinen auch auf der Graph-Seite und der Entitätenkarte, ein Eintrag listet die Einträge, die auf ihn zeigen, und der Name eines Eintrags wird in einem Text erkannt, sobald der Workspace ihn gelesen hat. Genie AI liest verknüpfte Einträge nach denselben Zugriffsregeln wie alle anderen.
 
-**Dokumente, die in der Quelle bleiben.** Führt die Quelle Dokumente, durchsucht Genie AI sie neben deinen eigenen und zitiert die Passagen, die es nutzt. Die Dateisuche der Bibliothek listet sie in einem Abschnitt pro Quelle, und jede Quelle hat unter den Orten der Dateien-Seite einen schreibgeschützten Ordner. **Dokument öffnen** zeigt die Datei im selben Viewer wie deine eigenen PDFs, auf der zitierten Seite. Die Wissenszahlen der Bibliothek nennen die Dokumentanzahl jeder Quelle in einer eigenen Zeile, nie addiert zur eigenen Zahl deines Workspace.
+**Dokumente, die in der Quelle bleiben.** Führt die Quelle Dokumente, durchsucht Genie AI sie neben deinen eigenen und zitiert die Passagen, die es nutzt. Die Dateisuche der Bibliothek listet sie in einem Abschnitt pro Quelle, und jede Quelle hat unter den Orten der Dateien-Seite einen schreibgeschützten Ordner. Ein Klick auf ein Zitat, einen Suchtreffer oder **Dokument öffnen** öffnet die Datei sofort im selben Viewer wie deine eigenen PDFs, auf der zitierten Seite mit hervorgehobener Passage. Genie AI kann ein solches Dokument auch auf der Canvas des Chats öffnen. Die Wissenszahlen der Bibliothek nennen die Dokumentanzahl jeder Quelle in einer eigenen Zeile, nie addiert zur eigenen Zahl deines Workspace.
 
 **Prozesse und Aktionen.** Eine Quelle kann die Stufen veröffentlichen, die ihre Einträge durchlaufen, und der Verbindung Aktionen darauf gewähren. Die Seite eines Eintrags zeigt dann seine Stufe und jede Aktion als Button: ein kurzes Formular, eine Bestätigung, die genau auflistet, was gesendet wird, und sagt, dass Genie es nicht rückgängig machen kann, und das Ergebnis. Eine Klasse mit Prozess steht auch unter **Prozesse** im Modell. Eine Aktion auszuführen erfordert die Berechtigung, Integrationen zu verwalten und das Wissensmodell zu bearbeiten, sowie *Kann sie ändern* auf den Einträgen der Klasse. Eine Aktion, die ein Feld schreiben würde, das du nicht sehen darfst, wird nie angeboten. Genie AI führt eine Aktion nur über eine [Bestätigungskarte](/de/workspaces/overview#bestätigungskarten) aus.
 

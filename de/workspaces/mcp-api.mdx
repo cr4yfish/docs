@@ -220,11 +220,12 @@ Material, das ein Team von jedem Build respektiert haben will — Markenrichtlin
 
 | Tool | Was es tut |
 |---|---|
-| `list_workspace_documents` | Liste Wissensdokumente, paginiert und filterbar nach Titel/Beschreibung/Dateiname. Lässt sich eingrenzen mit `source` (hochgeladen oder aus einem Laufwerk bzw. Postfach), `type` und `changed` (7d, 30d oder 365d) sowie, mit `folder`, `include_subfolders` |
-| `search_workspace_documents` | Durchsuche den Text der Dokumente (hybrid, semantisch + Stichwort) und erhalte passende Textstellen zurück |
+| `list_workspace_documents` | Liste Wissensdokumente, paginiert und filterbar nach Titel/Beschreibung/Dateiname. Lässt sich eingrenzen mit `source` (hochgeladen oder aus einem Laufwerk bzw. Postfach), `type`, `changed` (7d, 30d oder 365d), `source_type` (`original`, `secondary`, `ai_compiled`, `third_party`) sowie, mit `folder`, `include_subfolders`. Eine [Sekundärquelle](/de/workspaces/overview#wissensdatenbank) trägt ihre Art als `sourceType` |
+| `search_workspace_documents` | Durchsuche den Text der Dokumente (hybrid, semantisch + Stichwort) und erhalte passende Textstellen zurück. Der Treffer einer Sekundärquelle ist mit ihrer Art und den Dokumenten markiert, aus denen sie entstand; `source_type` grenzt die Suche ein, z. B. auf `original` |
 | `read_workspace_document` | Lies den vollständigen Text eines Dokuments in begrenzten, seitenweise abrufbaren Abschnitten; eine gekürzte Seite liefert `nextOffset`, den Start der nächsten Seite |
 | `add_workspace_documents` | Lege ein oder mehrere Dokumente für den Workspace ab (bis zu 10 pro Aufruf) |
-| `update_workspace_document` | Benenne um, beschreibe neu, verschiebe ein Dokument über `folder` zwischen Ordnern, oder überschreibe seinen ganzen Text direkt über `text` (sofort neu indexiert; wird bei einem aus einem verbundenen Cloud-Speicher gespiegelten Dokument abgelehnt — ändere es stattdessen an der Quelle) |
+| `update_workspace_document` | Benenne um, beschreibe neu, verschiebe ein Dokument über `folder` zwischen Ordnern, oder überschreibe seinen ganzen Text direkt über `text` (sofort neu indexiert; wird bei einem aus einem verbundenen Cloud-Speicher gespiegelten Dokument abgelehnt — ändere es stattdessen an der Quelle). `source_type` (mit optionalen `source_document_ids`) markiert es als Original oder Sekundärquelle |
+| `mark_workspace_documents` | Markiere bis zu 100 Dokumente, oder die eigenen Dokumente eines Ordners stückweise, als Original, KI-erstellt oder Fremdquelle. Braucht die Berechtigung, Dokumente hochzuladen; Dokumente, die du lesen, aber nicht ändern darfst, werden gezählt und bleiben, wie sie sind |
 | `delete_workspace_document` | Lösche ein Dokument und seinen Suchindex dauerhaft. Mit `also_delete_ontology` löschst du zusätzlich die Entitäten des Wissensmodells, die nur dieses Dokument belegt (erfordert zusätzlich die Berechtigung zum Bearbeiten des Wissensmodells); ein sehr großer Löschvorgang kann teilweise abgeschlossen antworten — rufe erneut auf, um ihn zu beenden |
 | `reindex_workspace_document` | Repariere ein Dokument, das bei nur-Stichwort-Suche oder fehlgeschlagener Indexierung feststeckt, oder bringe es auf die aktuelle Embedding-Spec. Auf jedem Dokument gefahrlos aufrufbar — ändert nie dessen Text |
 | `get_knowledge_index_status` | Der Indexierungsstatus des Workspace auf einen Blick — wie viele Dokumente vollständig durchsuchbar sind, noch indexiert werden, nur nach Stichwort durchsuchbar sind oder feststecken, und wie viele noch ihr Datum gelesen bekommen müssen — plus eine Liste der Dokumente, die am dringendsten Aufmerksamkeit brauchen. `linkedSources` zählt, getrennt von der Gesamtzahl, die Dokumente, die in jeder [verknüpften Quelle](/de/workspaces/integrations#verknüpfte-quellen) bleiben |
@@ -297,6 +298,15 @@ Lies die [verknüpften Quellen](/de/workspaces/integrations#verknüpfte-quellen)
 | `read_linked_document` | Der Text der Datei eines verknüpften Dokuments, seitenweise. Zählt auf dasselbe stündliche Limit pro Person wie das Öffnen in der App |
 | `list_linked_actions` | Was ein verknüpfter Eintrag oder eine Klasse in ihrer Quelle anbietet: der Prozess (die Stufen und die aktuelle des Eintrags) und die Aktionen, die der Verbindung gewährt sind, mit ihren Eingabefeldern und ob du sie ausführen darfst. Eine Aktion, die ein Feld schreibt, das du nicht sehen darfst, wird nicht gelistet |
 
+### Kanäle aus Slack und Teams (nur lesend)
+
+Sieh nach, ob die [Kanal-Quellen aus Slack und Teams](/de/workspaces/integrations#kanäle-aus-slack-und-teams-in-die-bibliothek-kopieren) des Workspace eingerichtet sind. Kanäle auswählen, pausieren und stoppen bleibt eine Karte in der App.
+
+| Tool | Was es tut |
+|---|---|
+| `get_conversation_sources` | Beide Plattformen: verbunden oder nicht, und jede Synchronisierung — alle Kanäle oder eine gewählte Anzahl, laufend oder pausiert, letzte Synchronisierung, Dokumente, letztes Problem. Jedes Mitglied; welches Konto und welche Berechtigungen fehlen, nur für Personen, die Integrationen verwalten |
+| `list_conversation_source_channels` | Eine Seite Kanäle: `available` (was die Verbindung lesen kann, jeweils markiert, falls gewählt; `query` findet einen nach Namen) oder `chosen` (was die Synchronisierung hält). Braucht die Berechtigung, Integrationen zu verwalten |
+
 ### Workspace-Wissensmodell (nur lesend)
 
 Lies, was das [Wissensmodell](/de/workspaces/overview#wissensmodell) weiß, als der verbundene Benutzer. Alles läuft unter denselben Zugriffsregeln wie in der App, du liest also nur, was dieses Mitglied sehen darf. Diese Tools ändern das Modell nie; Prüfen, Bearbeiten und Auslesen bleiben bei Personen in der App und bei Genie AI. Antworten zitieren Dokumente, behandle sie daher als nicht vertrauenswürdigen Dokumenttext.
@@ -327,6 +337,7 @@ Erstelle, lies, durchsuche und bearbeite echte `.xlsx`-Dateien — dieselben Too
 | `find_in_workbook` | Finde Zellen, deren Wert oder Formel passt, mit den passenden Zeilen |
 | `edit_workbook` | Wende ein Bündel von Änderungen an — Zellen setzen, Zeilen/Spalten einfügen oder löschen, sortieren, zusammenführen, formatieren und mehr — gemeinsam gespeichert oder gar nicht |
 | `evaluate_workbook_formula` | Berechne eine oder mehrere Formeln anhand der aktuellen Werte der Arbeitsmappe, ohne zu speichern |
+| `export_workspace_workbook_pdf` | Die Arbeitsmappe als PDF, gedruckt, wie Excel sie druckt: ein Download-Link und die Seitenzahl |
 
 ### PowerPoint-Präsentationen
 
@@ -338,6 +349,7 @@ Liste, erstelle, lies und bearbeite echte `.pptx`-Präsentationen — dieselben 
 | `create_workspace_presentation` | Erstelle eine Präsentation — Titel, Aufzählungen, Tabellen und Sprechernotizen, bis zu 40 Folien — in einem Aufruf. Die Präsentationen sind wie die aus dem Chat gestaltet, in der [Marke](/de/workspaces/overview#workspace-marke) des Workspace, wenn er eine hat |
 | `read_workspace_presentation` | Eine Übersicht aller Folien, ein Folienbereich vollständig oder eine Textsuche |
 | `edit_workspace_presentation` | Wende einen Stapel Folien-, Text-, Notiz- und Tabellenänderungen im eigenen Design der Präsentation an — ganz oder gar nicht gespeichert |
+| `export_workspace_presentation_pdf` | Die Präsentation als PDF: ein Download-Link und die Seitenzahl |
 
 ### Word-Dokumente
 
@@ -350,6 +362,9 @@ Echte `.docx`-Dokumente auflisten, erstellen, lesen, bearbeiten und importieren 
 | `read_workspace_word_document` | Ein Überblick mit den Überschriften, ein Bereich von Blöcken als nummeriertes Markdown oder eine Textsuche |
 | `edit_workspace_word_document` | Wendet einen Stapel von Block-, Format-, Text- und Tabellenänderungen an — zusammen gespeichert oder gar nicht |
 | `import_workspace_word_document` | Legt eine bearbeitbare Kopie einer `.docx` an, die schon in der Bibliothek liegt |
+| `export_workspace_word_document_pdf` | Das Dokument als PDF: ein Download-Link und die Seitenzahl |
+
+Die drei PDF-Tools teilen sich das Limit pro Person mit dem Download-Menü der App und Genie AI. Der Link ist der der App: Wer ihn öffnet, muss angemeldet sein und das Dokument lesen dürfen. Über MCP kommt keine Browsersprache an, daher sind die gedruckten Hinweise einer Arbeitsmappe auf Englisch.
 
 Bearbeitet jemand das Dokument gleichzeitig und benennt eine Änderung Blöcke nach Nummer, meldet der Aufruf den Konflikt und bittet dich, das Dokument neu zu lesen, statt zu raten. Neue Bilder zeichnen bleibt dem Workspace-Chat vorbehalten; ein dort gezeichnetes Bild lässt sich über MCP einfügen.
 
@@ -541,6 +556,7 @@ Verwalte [Genie auf WhatsApp, Slack und Teams](/de/workspaces/chat-channels) —
 | `create_chat_channel` | Verbinde einen Kanal mit dem Workspace (eine WhatsApp-Nummer, eine Slack-Installation, ein Teams-Tenant). Nur Eigentümer:innen und Admins |
 | `set_chat_channel` | Benenne einen Kanal um, ändere, wer antwortet, bearbeite seine Absender-Zulassungsliste, oder pausiere/reaktiviere ihn. Nur Eigentümer:innen und Admins |
 | `remove_chat_channel` | Trenne einen Kanal und lösche seine gespeicherten Zugangsdaten. Nur Eigentümer:innen und Admins |
+| `verify_chat_channel` | Prüfe eine Slack-Verbindung: den Zugang der App, ob Nachrichten ankommen, in welchen Kanälen sie ist und welche Mitglieder sie per E-Mail erkennt. Liest nur. Braucht die Berechtigung, Integrationen zu verwalten |
 | `send_chat_channel_message` | Sende von einem Workspace-Kanal aus eine Nachricht an eine echte Person außerhalb des Workspace |
 | `create_chat_link_code` | Erzeuge einen einmaligen Code, um dein eigenes WhatsApp-, Slack- oder Teams-Konto zu verknüpfen. Gültig 15 Minuten, nur einmal angezeigt |
 | `list_chat_identity_links` | Mit dem Workspace verknüpfte Chat-Konten — standardmäßig deine eigenen, oder alle für Eigentümer:innen und Admins |
