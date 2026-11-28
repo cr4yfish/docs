@@ -4,6 +4,33 @@ description: "Weekly product updates for Genie — new features, improvements, a
 mode: "center"
 ---
 
+<Update label="November 28, 2026" description="Weekly release">
+
+Covers what shipped November 27. A personal area is now its member's alone, members can copy their own Slack messages and Teams chats, and every run has a page of its own again.
+
+## New features
+
+- **Personal areas are visible only to their member.** Your synced mail, drive and chats — and everything Genie makes from them — are no longer readable by the workspace's owners and admins, Auto or Genie's staff. Traces and agent runs that read from someone's personal area show their shape to everyone else, with *Not shown: from a personal area* in place of the content. See [Access areas](/workspaces/overview#access-areas).
+- **Copy your own Slack messages and Teams chats.** **My Slack messages** and **My Microsoft Teams chats** under **Add a source → Chat apps** copy your direct messages into your personal area after you sign in with your own account. An admin can turn this off for the workspace. See [Copy your own Slack messages and Teams chats](/workspaces/integrations#copy-your-own-slack-messages-and-teams-chats).
+- **An owner's logged read access.** On a member's page under **People**, an owner can give themselves read-only access to that member's personal area, with a reason. The member is told at once, sees who and why, and the activity log records it. See [Personal area](/workspaces/members#personal-area).
+- **Hand over a leaver's personal area.** After someone leaves, the owners can read and change their personal area or hand it to one successor, who then owns it. **People** lists who left one behind. See [Personal area](/workspaces/members#personal-area).
+- **A page for every run.** A notification, Genie AI and **Show all** on the chat canvas open the run's own page, made for a phone: the result and every output in full, the steps, and a link to fix a failed run. Run rows in the agents list still replay the run on the canvas. See [Run results](/workspaces/workflow-apps#run-results).
+
+## Updates
+
+- **Recently used on Home, quieter.** Each item shows its type as a small icon, times read as you'd say them (*This morning*, *Yesterday evening*), the **Ask** button is gone, and there is no large card when the first item has nothing to show. See [Home](/workspaces/overview#home-jump-back-in-and-for-you).
+- **Workspace channels stay in their workspace.** On a workspace's own Slack, Teams or number, a member's linked account only says who they are — a link to another workspace is ignored there. See [Who a message runs as](/workspaces/chat-channels#who-a-message-runs-as).
+- **Create, then link, in one press.** A Genie Tool's form or button can run several writes in a row, such as creating an entity and linking it. See [Forms behind a button](/workspaces/genie-tools#forms-behind-a-button-and-record-sheets).
+- **MCP trace tools say when content was withheld.** A trace of a turn that read a personal area you can't read carries a `contentWithheld` note. See [MCP API](/workspaces/mcp-api#workspace-tracing).
+
+## Fixes
+
+- **A failed Slack or Teams install explains what went wrong** instead of showing a raw code.
+- **Filter chips no longer overlap**: they size to their label and wrap.
+- **The chat header shows more of the chat's name.**
+
+</Update>
+
 <Update label="November 27, 2026" description="Weekly release">
 
 Covers what shipped November 26. Team chat can be copied into the Library, Genie tells original sources from secondary ones, decks and workbooks download as PDFs, and a run opens on its agent's canvas.

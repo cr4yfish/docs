@@ -108,6 +108,8 @@ Opening a row opens its record as a **sheet**: the record's fields, its edit for
 
 A page that reads your [knowledge base](/workspaces/overview#knowledge-base) runs steps that write or send only from their own button — opening or paging the page never triggers one.
 
+**Several writes behind one press.** One form or button can run more than one write — for example *create the entity, then link it*. A step that only feeds the button's action runs in the press too, never when the page opens. The writes are separate: if the link fails, the created entity stays and the press says which step failed.
+
 **Genie's own reads load on open.** A step that only reads from Genie itself as the person viewing — such as the workspace's activity figures or its member list — runs as soon as the page opens, so a dashboard over them needs no **Load** button. Anything that writes, sends or costs money, and every other connected app's tools, still waits for its own press.
 
 **Knowledge stays out of apps.** A step that can reach a Genie App may not be handed what the page read from your knowledge — directly, through another step, or through the form or selected row that started it. Two independent steps that merely share a page are fine.

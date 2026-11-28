@@ -22,6 +22,10 @@ Klicke auf die Kontozeile unten in der Workspace-Seitenleiste, wähle **Workspac
 
 Klicke auf eine Zeile, um die vollständigen Details zu öffnen: eine Zeitleiste der Phasen des Durchlaufs, die Nachricht des Mitglieds, Genies Überlegungen, jeden Tool-Aufruf mit dem, was gesendet und zurückgegeben wurde, die endgültige Antwort und etwaige Fehler. Das Detail öffnet als größenveränderbares Panel — zieh an seinem Rand, um es breiter zu machen — oder klicke auf seinen Erweitern-Button (oder direkt auf die Zeile eines Traces) für dieselbe Ansicht als eigene, vollständige Seite. Jede angezeigte ID — Mitglied, Projekt, Gespräch — ist ein Link zu diesem Element, aufgelöst zu einem lesbaren Namen mit der rohen ID darunter.
 
+## Durchläufe, die einen persönlichen Bereich gelesen haben
+
+Ein Durchlauf, der aus dem [persönlichen Bereich](/de/workspaces/overview#zugriffsbereiche) eines Mitglieds gelesen hat — seinen synchronisierten Mails, Ablagen oder Chats oder dem, was Genie daraus gemacht hat —, zeigt, was geschrieben wurde (die Nachricht, Überlegungen, Ein- und Ausgaben der Tools, die Antwort), nur diesem Mitglied und allen anderen, die diesen Bereich lesen können. Alle anderen mit Tracing sehen die Form des Durchlaufs — Zeit, Status, Tokens, Tool-Namen — und *Nicht angezeigt: aus einem persönlichen Bereich*, wo der Inhalt stünde. Die Suche findet einen solchen Durchlauf nur über seine Tool-Namen. Die Trace-Tools von Genie AI und der [MCP-API](/de/workspaces/mcp-api#workspace-tracing) folgen derselben Regel.
+
 ## Ein lesbarer Name für jeden Trace
 
 Ein Trace wird nicht mehr nur über eine rohe ID identifiziert — er heißt jetzt `<workspace-slug>-<n>` (zum Beispiel `genie-demo-142`), ein kurzer, für deinen Workspace eindeutiger Zähler. Dieser Name erscheint in der Tabelle, im Titel und in der URL der Detailseite und ist das, was Genie AI verwendet, wenn sie einen Trace erwähnt oder du sie bittest, einen zu öffnen. Eine Umbenennung deines Workspace macht darauf aufbauende Links nie kaputt, da wirklich nur die Nummer aufgelöst wird — und ein alter Link mit der rohen ID öffnet weiterhin denselben Trace.

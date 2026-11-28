@@ -108,6 +108,8 @@ Ein Formular muss nicht auf der Seite stehen. Eine **Tabelle**, **Liste**, ein *
 
 Eine Seite, die deine [Wissensdatenbank](/de/workspaces/overview#wissensdatenbank) liest, führt Schritte, die schreiben oder senden, nur über deren eigene Schaltfläche aus — das Öffnen oder Blättern der Seite löst nie einen aus.
 
+**Mehrere Schreibvorgänge hinter einem Klick.** Ein Formular oder eine Schaltfläche kann mehr als einen Schreibvorgang ausführen — etwa *Entität anlegen, dann verknüpfen*. Ein Schritt, der nur die Aktion der Schaltfläche speist, läuft ebenfalls beim Klick, nie beim Öffnen der Seite. Die Schreibvorgänge sind getrennt: Schlägt das Verknüpfen fehl, bleibt die angelegte Entität bestehen, und der Klick sagt, welcher Schritt fehlschlug.
+
 **Genies eigene Lesezugriffe laden beim Öffnen.** Ein Schritt, der nur von Genie selbst liest, als die Person, die die Seite ansieht — etwa die Aktivitätszahlen des Workspace oder seine Mitgliederliste —, läuft, sobald sich die Seite öffnet, sodass ein Dashboard darüber keine Schaltfläche **Laden** braucht. Alles, was schreibt, sendet oder Geld kostet, und die Tools jeder anderen verbundenen App warten weiterhin auf ihren eigenen Klick.
 
 **Wissen bleibt aus Apps heraus.** Ein Schritt, der eine Genie App erreichen kann, darf nichts übergeben bekommen, was die Seite aus deinem Wissen gelesen hat — weder direkt noch über einen anderen Schritt noch über das Formular oder die ausgewählte Zeile, die ihn gestartet hat. Zwei unabhängige Schritte, die nur eine Seite teilen, sind in Ordnung.

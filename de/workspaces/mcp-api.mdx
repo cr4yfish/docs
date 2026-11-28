@@ -622,6 +622,8 @@ Workspaceweite Beobachtbarkeit über die Genie-AI-Durchläufe aller Mitglieder �
 | `list_workspace_traces` | Listet Lauf-Traces über alle Workspace-Mitglieder hinweg: Status, Oberfläche, Modell, Tokens, abgerechnete Credits, Dauer, Tool-Namen und kurze Ausschnitte. Optionale Volltextsuche `query`; neueste zuerst |
 | `get_workspace_trace` | Liest einen Lauf-Trace vollständig: Timings, die Nachricht der Nutzerin oder des Nutzers, Überlegungen, jeden Tool-Aufruf (begrenzte Vorschau von Eingabe/Ausgabe), die Antwort, etwaige Fehler, aufgelöste Mitglieds-/Projektnamen und die Markierungen des Traces (siehe [Tracing](/de/workspaces/tracing#markierungen)) |
 
+**Ein Durchlauf, der einen persönlichen Bereich gelesen hat.** Die Trace-Tools lesen einen Durchlauf als die verbundene Person. Hat der Durchlauf aus dem [persönlichen Bereich](/de/workspaces/overview#zugriffsbereiche) eines Mitglieds gelesen, den du nicht lesen kannst, werden Nachrichten, Überlegungen, Fehler sowie Ein- und Ausgaben der Tools weggelassen, und seine Form bleibt (Status, Tools, Timing, Tokens). Der Trace trägt dann einen Hinweis `contentWithheld`, damit eine leere Nachricht nicht als „es gab keine" gelesen wird. Ein lesbarer Durchlauf hat kein Feld `contentWithheld`.
+
 ### Preise
 
 | Tool | Was es tut |
