@@ -128,13 +128,15 @@ Bevor du eine Änderung endgültig machst, kannst du einen echten Test ausführe
 
 ## Lauf-Ergebnisse
 
-**Ein Lauf öffnet sich auf der Canvas seines Agenten.** Jeder Link zu einem Lauf — eine Benachrichtigung, Genie AI, eine Laufzeile in der Agentenliste — öffnet den Editor des Agenten und spielt diesen Lauf auf seinem Graphen ab: Jeder Schritt zeigt, wie er lief, was er ergab und einen etwaigen Fehler. Öffnest du einen Lauf, der noch läuft, folgt die Ansicht ihm. Ein Lauf eines anderen Agenten, einer, den es nicht mehr gibt, oder einer, den du nicht öffnen darfst, sagt das; schlägt das Lesen fehl, gibt es einen Neuversuch. Alte Links zur Seite eines Laufs oder zur **Läufe**-Seite eines Agenten funktionieren weiter und landen auf der Canvas.
+**Jeder Lauf hat eine Seite.** Eine Benachrichtigung, Genie AI und **Ganz anzeigen** auf der Chat-Canvas öffnen die eigene Seite des Laufs, zuerst fürs Handy gebaut. Sie beginnt wie der Agent auf der Chat-Canvas — Name des Agenten, sein Zeitplan und was er tut, mit **Teilen** und dem Editor — und zeigt dann **Ergebnis** und **Ablauf** des Laufs. Sie zeigt genau diesen einen Lauf: seine Antwort und einen etwaigen Fehler vollständig, jede Ausgabe als Zeile zum Kopieren und bei einem fehlgeschlagenen Lauf einen Link zum Editor, um ihn zu beheben. Ein Lauf, der noch läuft, aktualisiert sich an Ort und Stelle. Ein Lauf, den es nicht mehr gibt oder der zu einem anderen Agenten gehört, sagt *Lauf nicht gefunden* mit einem Link zum Agenten; der Lauf einer Kollegin oder eines Kollegen, den du nicht lesen darfst, sagt, wer ihn gestartet hat, und nichts von seinen Daten; schlägt das Lesen fehl, gibt es einen Neuversuch.
 
-Die eigene Ergebnisseite und die **Läufe**-Seite gibt es nicht mehr. Die Lauf-Historie steht in der Agentenliste, auf der Chat-Canvas und bei Genie AI, die dieselben Läufe liest, wenn du fragst.
+**Wiedergabe auf der Canvas.** Eine Laufzeile in der Agentenliste öffnet den Editor des Agenten und spielt diesen Lauf auf seinem Graphen ab: Jeder Schritt zeigt, wie er lief, was er ergab und einen etwaigen Fehler — der Ort, um ihn zu debuggen.
+
+Die **Läufe**-Seite eines Agenten gibt es nicht mehr; alte Links landen beim Agenten. Die Lauf-Historie steht in der Agentenliste, auf der Chat-Canvas und bei Genie AI, die dieselben Läufe liest, wenn du fragst.
 
 **Auf der Chat-Canvas.** Ein Agent neben dem Chat liest sich in drei Abschnitten von oben nach unten:
 
-- **Ergebnis** — der gezeigte Lauf, einmal benannt (*Lauf von 14:02 · Von Hand*). Eine Antwort zeigt ihre Überschrift, ihren Umfang und ihre ersten Zeilen; ein Rohwert oder ein Fehler steht in einer Zeile mit einem Kopier-Button, der alles kopiert; ein Lauf ohne Rückgabe sagt das. **Ganz anzeigen** öffnet den Lauf auf der Canvas des Agenten.
+- **Ergebnis** — der gezeigte Lauf, einmal benannt (*Lauf von 14:02 · Von Hand*). Eine Antwort zeigt ihre Überschrift, ihren Umfang und ihre ersten Zeilen; ein Rohwert oder ein Fehler steht in einer Zeile mit einem Kopier-Button, der alles kopiert; ein Lauf ohne Rückgabe sagt das. **Ganz anzeigen** öffnet die Seite des Laufs in einem neuen Tab.
 - **Verlauf** — die letzten Läufe als Reihe von bis zu zehn Balken, der älteste links. Farbe und Höhe jedes Balkens sagen, wie sein Lauf ging; tippe einen an, um ihn auf die Karte zu holen, und **Neuesten zeigen** führt zurück.
 - **Ablauf** — was den Agenten startet (*Alle 10 Minuten*), dann jeder Schritt mit dem Symbol seiner Art und einem Abzeichen dafür, wie er lief: ein Haken, ein Kreuz, ein atmender Ring, während er läuft, gedimmt, wenn er nie erreicht wurde. Wo ein kurzer Wert passt, steht er neben dem Namen des Schritts (*#1040*, *2 Einträge*). Schleifen zeigen *Durchgang 3 von 12*. Die Schritte sind ein Bild, keine Buttons — **Agent öffnen** im Kopf der Karte hat den Rest.
 
@@ -142,9 +144,11 @@ Der [Prozess](/de/workspaces/overview#wissensmodell) einer Entität wird mit der
 
 **Wer einen Lauf lesen kann.** Einen Lauf, den jemand von Hand gestartet hat, können diese Person, der Owner des Agenten und Personen mit Vollzugriff vollständig lesen; andere, die den Agenten sehen dürfen, sehen eine gesperrte Zeile mit Starter, Zeitpunkt und Status sowie *Das Ergebnis dieses Laufs ist nicht mit dir geteilt*. Läufe, die ein Zeitplan, Webhook, Kanal oder Phasenwechsel startet, folgen der Einstellung **Wer automatische Läufe liest**: alle, die den Agenten sehen dürfen (Standard), oder nur Owner und Vollzugriff. Personen mit Vollzugriff ändern sie; Genie AI kann sie nur einschränken. Läufe von vor dieser Einstellung bleiben geteilt wie bisher.
 
+**Ein Lauf, der einen persönlichen Bereich gelesen hat.** Hat ein Lauf aus dem [persönlichen Bereich](/de/workspaces/overview#zugriffsbereiche) eines Mitglieds gelesen, erreichen seine Eingabe, Ausgabe, Fehler und Schritt-Ausgaben nur Personen, die diesen Bereich lesen können — meist das Mitglied, für das er lief. Alle anderen, auch der Owner des Agenten, sehen, dass er lief, wer ihn gestartet hat, wann, wie er endete und welcher Schritt fehlschlug, mit *Nicht angezeigt: aus einem persönlichen Bereich*, wo der Inhalt stünde.
+
 **Agenten, die als ein Mitglied laufen.** Startet jemand anderes einen solchen Agenten von Hand, nutzt er weiter die Integrationen und Credits dieses Mitglieds, liest Wissen, Wissensmodell und Tabellen aber als die Person, die ihn gestartet hat.
 
-Ein Benachrichtigen-Schritt verlinkt standardmäßig auf den Lauf auf der Canvas seines Agenten — wähle in den Einstellungen des Schritts **eine Seite in Genie**, um woanders hinzuzeigen.
+Ein Benachrichtigen-Schritt verlinkt standardmäßig auf die Seite des Laufs — wähle in den Einstellungen des Schritts **eine Seite in Genie**, um woanders hinzuzeigen.
 
 ## Einen Agenten verwalten
 

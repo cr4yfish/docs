@@ -128,13 +128,15 @@ Before you commit to a change, you can run a real test to see exactly what an ag
 
 ## Run results
 
-**A run opens on its agent's canvas.** Every link to a run — a notification, Genie AI, a run row in the agents list — opens the agent's editor replaying that run on its graph: each step shows how it went, what it produced and any error. Open a run still in progress and it follows along. A run of another agent, one that's gone, or one you may not open says so; a read that fails offers a retry. Old links to a run's page or an agent's **Runs** page still work and land on the canvas.
+**Every run has a page.** A notification, Genie AI and the chat canvas's **Show all** open the run's own page, built for a phone first. It starts like the agent on the chat canvas — the agent's name, its schedule and what it does, with **Share** and the editor — then shows the run's **Result** and **Steps**. It shows that one run: its answer and any error in full, every output as a row you can copy, and for a failed run a link to the editor to fix it. A run still in progress updates in place. A run that's gone or belongs to another agent says *Run not found* with a link to the agent; a colleague's run you may not read says who started it and nothing of its data; a read that fails offers a retry.
 
-The separate results page and **Runs** page are gone. The run history lives in the agents list, on the chat canvas and with Genie AI, which reads the same runs when you ask.
+**Replay on the canvas.** A run row in the agents list opens the agent's editor replaying that run on its graph, where each step shows how it went, what it produced and any error — the place to debug it.
+
+The agent's **Runs** page is gone; old links land on the agent. The run history lives in the agents list, on the chat canvas and with Genie AI, which reads the same runs when you ask.
 
 **On the chat canvas.** An agent beside the chat reads top to bottom in three sections:
 
-- **Result** — the run on show, named once (*Run of 14:02 · By hand*). An answer shows its heading, its size and its first lines; a raw value or an error shows on one line with a copy button that copies all of it; a run that returned nothing says so. **Show all** opens the run on the agent's canvas.
+- **Result** — the run on show, named once (*Run of 14:02 · By hand*). An answer shows its heading, its size and its first lines; a raw value or an error shows on one line with a copy button that copies all of it; a run that returned nothing says so. **Show all** opens the run's page in a new tab.
 - **History** — the latest runs as a row of up to ten bars, oldest on the left. Each bar's colour and height say how its run went; tap one to put it on the card, and **Show latest** goes back.
 - **Steps** — what starts the agent (*Every 10 minutes*), then each step with its kind's icon and a badge for how it went: a tick, a cross, a breathing ring while it runs, dimmed when never reached. A short value appears beside a step's name where one fits (*#1040*, *2 entries*). Loops show *Pass 3 of 12*. Steps are a picture, not buttons — **Open agent** in the card's header has the rest.
 
@@ -142,9 +144,11 @@ An entity's [process](/workspaces/overview#knowledge-model) is drawn with the sa
 
 **Who can read a run.** A run someone started by hand is readable in full by that person, the agent's owner and people with Full access; others who can view the agent see a locked row with who started it, when and how it went, and *This run's result is not shared with you*. Runs started by a schedule, webhook, channel or stage change follow the agent's **Who reads automatic runs** setting: everyone who can view the agent (the default) or only the owner and Full access. People with Full access change it; Genie AI can only narrow it. Runs from before this setting keep how they were shared.
 
+**A run that read a personal area.** When a run read from a member's [personal area](/workspaces/overview#access-areas), its input, output, errors and step outputs reach only people who can read that area — usually the member it ran for. Everyone else, the agent's owner included, sees that it ran, who started it, when, how it ended and which step failed, with *Not shown: from a personal area* where the content would be.
+
 **Agents that run as one member.** When someone else starts such an agent by hand, it still uses that member's integrations and credits, but reads knowledge, the knowledge model and tables as the person who started it.
 
-A notify step links to the run on its agent's canvas by default — choose **a page inside Genie** from the step's settings to point it somewhere else.
+A notify step links to the run's page by default — choose **a page inside Genie** from the step's settings to point it somewhere else.
 
 ## Managing an agent
 

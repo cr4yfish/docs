@@ -131,7 +131,7 @@ An owner or admin can switch a connector between shared and per-member later, fr
 Every member can mirror their **own** Outlook or Gmail mailbox into the knowledge base, so Genie AI can answer from their mail. Open the Library's **Sources** page — your mailbox is under *Copied into the Library* — or add it with **Add a source → Mail**: it has one row per mailbox, each showing its state and the next step — **Connect** your account (an owner or admin has to add the integration first if it isn't there), **Start syncing**, **Pause**, **Resume**, **Try again** after a failed run, or **Stop**. Genie AI can show the same state, and starts, pauses or stops a sync only when you press the card it offers.
 
 - **Only your own mail, last 90 days.** A sync reads the mailbox of whoever started it, never someone else's, and begins 90 days back. Mail folders aren't copied — every message becomes one document on a single shelf, and a message you move between folders stays the same document.
-- **Private to you.** The mail lands in your own **personal access area**: other members never see it, not even that it exists. The workspace's owners and admins can still read it. If you leave the workspace, your area is held rather than opened to others.
+- **Private to you.** The mail lands in your own [personal area](/workspaces/overview#access-areas): only you can see it and what Genie makes from it — not other members, and not the workspace's owners and admins. An owner can read it only through a logged access grant you're told about, or after you leave, when the owners can read and change it or hand it to a successor.
 - **Not everything is knowledge.** Newsletters and mailing lists, automated mail, calendar invitations and no-reply senders are skipped before anything is read, and show as *Not knowledge* in the sync's file list. Junk, Deleted Items, Drafts and similar folders are never read.
 - **Stopping keeps what was filed.** The mail already read stays in your area; starting again files it a second time.
 
@@ -144,7 +144,7 @@ Mail is read into the knowledge base like any document, so it counts toward the 
 Decisions made in team chat can become knowledge like any document. **Add a source → Chat apps** lists each platform twice: **Slack** and **Microsoft Teams** let people [message Genie](/workspaces/chat-channels), while **Slack channels** and **Microsoft Teams channels** (tagged *Copies messages*) copy what people wrote to each other into the Library.
 
 1. **Connect.** Nothing new to sign in to: Slack channels are read through the workspace's Slack install, Teams channels through your Microsoft 365 organization's consent. If a permission is missing, the guide names it and links to where you install or consent again.
-2. **Choose.** Pick channels — search finds them by name, and a Teams channel also by its team — or take **All channels** (up to 200). Direct messages are never offered.
+2. **Choose.** Pick channels — search finds them by name, and a Teams channel also by its team — or take **All channels** (up to 200). Direct messages are never offered here — each member copies their own [into their personal area](#copy-your-own-slack-messages-and-teams-chats).
 3. **Start.** The guide sums up what happens: the Slack app joins the public channels it reads, and everything read is filed for the **whole workspace**. The last 90 days are read first; after that the copy is kept current.
 
 **What becomes a document.** A Slack channel files one document per day, each thread under its first message, plus the channel's canvases. A Teams channel files one document per thread, plus the team's Planner board. Each message names its author: a workspace member is shown with the name and address your workspace holds for them; anyone else keeps the name the platform shows.
@@ -154,6 +154,19 @@ Decisions made in team chat can become knowledge like any document. **Add a sour
 **Genie AI.** Ask *"is our Slack copied into the Library?"* and any member gets the answer. Adding or removing channels, pausing or stopping is a card that lists exactly which channels change, and runs only when you press it — never from a message, never over MCP. MCP clients can [read the status and the channel list](/workspaces/mcp-api#slack-and-teams-channels-read-only).
 
 Reading channels uses no new kind of paid call; the documents it files cost what any synced document costs and count toward the same limits and [spend limits](/workspaces/governance#spend-limits).
+
+## Copy your own Slack messages and Teams chats
+
+Every member can also copy their **own** direct messages into their [personal area](/workspaces/overview#access-areas), so Genie AI can answer from them for that member. **Add a source → Chat apps** lists **My Slack messages** and **My Microsoft Teams chats** beside the channel sources.
+
+1. **Connect.** The workspace has to be connected to Slack or Microsoft 365 first — if it isn't, the guide says an owner or admin connects it and links there. Then **Sign in** with your own account. The step says what is read, where it goes, who can see it, that the people you write with aren't asked, and how to stop. Tick *I understand who can see what is copied.* to continue.
+2. **Choose** your conversations — one-to-one and group messages; on Slack also channels you're in, picked one by one — or take **All my direct messages**, which never sweeps in a channel.
+3. **Start.** The last 90 days are read first, one document per conversation and day; after that the copy is kept current. The status offers **Sync now**, **Pause**, **Change conversations** and **Disconnect**, which asks twice, stops the sync and ends your sign-in — what was copied stays. If Slack or Microsoft stops accepting your sign-in, the row says **Sign in again**.
+
+- **Only you can see them.** Your messages, the names of the people you write with, and what Genie makes from them are visible only to you. An owner can see them only through a logged access grant you're told about, or after you leave.
+- **Nobody else drives your sync.** Owners and admins can't start, run, pause, stop or read the conversation list of anyone else's copy.
+- **One switch for the workspace.** Whoever manages integrations finds **Members' own direct messages** in the channel guide, on by default. Off, nobody signs in or runs a copy; members can still pause, stop or disconnect, and what was copied stays. Beside it is a list of who copies their own messages — never what they read.
+- **Genie AI** shows your own copies and starts, pauses, stops or disconnects them through a card. It can't sign in for you.
 
 ## Linked sources
 
